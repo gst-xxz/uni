@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-06-13 11:47:12
- * @LastEditTime: 2023-08-07 20:19:49
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\pages\divider\Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <demo-block title="基本用法" transparent>

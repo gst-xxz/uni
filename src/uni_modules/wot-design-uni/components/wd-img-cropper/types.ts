@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-06-03 23:43:43
- * @LastEditTime: 2024-06-06 21:40:53
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-img-cropper/types.ts
- * 记得注释
- */
 import type { ComponentPublicInstance, ExtractPropTypes } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
 

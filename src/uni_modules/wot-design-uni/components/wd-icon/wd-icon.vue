@@ -1,6 +1,6 @@
 <template>
   <view @click="handleClick" :class="rootClass" :style="rootStyle">
-    <image v-if="isImage" class="wd-icon__image" :src="name"></image>
+    <span :class="className"></span>
   </view>
 </template>
 
@@ -41,6 +41,10 @@ const rootStyle = computed(() => {
     style['font-size'] = addUnit(props.size)
   }
   return `${objToStyle(style)}; ${props.customStyle}`
+})
+
+const className = computed(() => {
+  return `iconfont icon-${props.name}`
 })
 
 function handleClick(event: any) {

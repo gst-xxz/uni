@@ -1,19 +1,14 @@
 <template>
-  <view
-    v-if="currentStatus"
-    :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${
-      vertical ? 'is-vertical' : ''
-    }`"
-    :style="rootStyle"
-  >
+  <view v-if="currentStatus" :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
+    }`" :style="rootStyle">
     <view :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
       <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
         <view v-if="dot" class="wd-step__dot"></view>
         <slot v-else-if="$slots.icon" name="icon" />
         <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
         <view v-else class="wd-step__icon-outer">
-          <wd-icon v-if="currentStatus === 'finished'" name="check-bold" />
-          <wd-icon v-else-if="currentStatus === 'error'" name="close-bold" />
+          <wd-icon v-if="currentStatus === 'finished'" name="success" />
+          <wd-icon v-else-if="currentStatus === 'error'" name="cross" />
           <text v-else>{{ index + 1 }}</text>
         </view>
       </view>

@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-18 22:36:44
- * @LastEditTime: 2024-07-07 18:59:40
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-upload/utils.ts
- * 记得注释
- */
 import { isArray, isDef } from '../common/util'
 import type { ChooseFile, ChooseFileOption } from './types'
 

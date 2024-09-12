@@ -1,25 +1,13 @@
 <template>
   <view>
-    <wd-popup
-      v-model="show"
-      transition="zoom-in"
-      position="center"
-      :close-on-click-modal="closeOnClickModal"
-      :hide-when-close="hideWhenClose"
-      @before-enter="beforeenter"
-      @enter="enter"
-      @after-enter="afterenter"
-      @before-leave="beforeleave"
-      @leave="leave"
-      @after-leave="afterleave"
-      @close="close"
-      @click-modal="clickModal"
-      :custom-class="`wd-curtain ${customClass}`"
-      :custom-style="customStyle"
-    >
+    <wd-popup v-model="show" transition="zoom-in" position="center" :close-on-click-modal="closeOnClickModal"
+      :hide-when-close="hideWhenClose" @before-enter="beforeenter" @enter="enter" @after-enter="afterenter"
+      @before-leave="beforeleave" @leave="leave" @after-leave="afterleave" @close="close" @click-modal="clickModal"
+      :custom-class="`wd-curtain ${customClass}`" :custom-style="customStyle">
       <view class="wd-curtain__content">
-        <image :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr" @load="imgLoad"></image>
-        <wd-icon name="close-outline" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
+        <image :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr"
+          @load="imgLoad"></image>
+        <wd-icon name="cross" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
       </view>
     </wd-popup>
   </view>

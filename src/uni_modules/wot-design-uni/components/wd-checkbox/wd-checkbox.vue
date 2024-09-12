@@ -1,28 +1,18 @@
 <template>
-  <view
-    :class="`wd-checkbox ${innerCell ? 'is-cell-box' : ''} ${innerShape === 'button' ? 'is-button-box' : ''} ${isChecked ? 'is-checked' : ''} ${
-      isFirst ? 'is-first-child' : ''
-    } ${isLast ? 'is-last-child' : ''} ${innerInline ? 'is-inline' : ''} ${innerShape === 'button' ? 'is-button' : ''} ${
-      innerDisabled ? 'is-disabled' : ''
-    } ${innerSize ? 'is-' + innerSize : ''} ${customClass}`"
-    :style="customStyle"
-    @click="toggle"
-  >
+  <view :class="`wd-checkbox ${innerCell ? 'is-cell-box' : ''} ${innerShape === 'button' ? 'is-button-box' : ''} ${isChecked ? 'is-checked' : ''} ${isFirst ? 'is-first-child' : ''
+    } ${isLast ? 'is-last-child' : ''} ${innerInline ? 'is-inline' : ''} ${innerShape === 'button' ? 'is-button' : ''} ${innerDisabled ? 'is-disabled' : ''
+    } ${innerSize ? 'is-' + innerSize : ''} ${customClass}`" :style="customStyle" @click="toggle">
     <!--shape为button时，移除wd-checkbox__shape，只保留wd-checkbox__label-->
-    <view
-      v-if="innerShape !== 'button'"
+    <view v-if="innerShape !== 'button'"
       :class="`wd-checkbox__shape ${innerShape === 'square' ? 'is-square' : ''} ${customShapeClass}`"
-      :style="isChecked && !innerDisabled && innerCheckedColor ? 'color :' + innerCheckedColor : ''"
-    >
-      <wd-icon custom-class="wd-checkbox__check" name="check-bold" />
+      :style="isChecked && !innerDisabled && innerCheckedColor ? 'color :' + innerCheckedColor : ''">
+      <wd-icon custom-class="wd-checkbox__check" name="success" />
     </view>
     <!--shape为button时只保留wd-checkbox__label-->
-    <view
-      :class="`wd-checkbox__label ${customLabelClass}`"
-      :style="isChecked && innerShape === 'button' && !innerDisabled && innerCheckedColor ? 'color:' + innerCheckedColor : ''"
-    >
+    <view :class="`wd-checkbox__label ${customLabelClass}`"
+      :style="isChecked && innerShape === 'button' && !innerDisabled && innerCheckedColor ? 'color:' + innerCheckedColor : ''">
       <!--button选中时展示的icon-->
-      <wd-icon v-if="innerShape === 'button' && isChecked" custom-class="wd-checkbox__btn-check" name="check-bold" />
+      <wd-icon v-if="innerShape === 'button' && isChecked" custom-class="wd-checkbox__btn-check" name="success" />
       <!--文案-->
       <view class="wd-checkbox__txt" :style="maxWidth ? 'max-width:' + maxWidth : ''">
         <slot></slot>

@@ -108,7 +108,7 @@
 
   @include when(dot) {
     .wd-radio__shape {
-      border: 2px solid $-radio-dot-border-color;
+      border: 1px solid $-radio-dot-border-color;
       border-radius: 50%;
       position: relative;
       display: inline-block;

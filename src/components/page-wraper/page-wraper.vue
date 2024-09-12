@@ -48,6 +48,7 @@ const themeVars: ConfigProviderThemeVars = {
 
 const theme = computed(() => {
   return darkMode.isDark.value || isDark.value ? 'dark' : 'light'
+  // return 'light'
 })
 
 onMounted(() => {
@@ -64,6 +65,7 @@ onMounted(() => {
     background: #000;
   }
 }
+
 .page-wraper {
   min-height: calc(100vh - var(--window-top));
   box-sizing: border-box;

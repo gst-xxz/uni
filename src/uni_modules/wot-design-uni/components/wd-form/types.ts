@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2023-12-14 11:21:58
- * @LastEditTime: 2024-03-18 12:50:41
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-form\types.ts
- * 记得注释
- */
 import { type ComponentPublicInstance, type ExtractPropTypes, type InjectionKey, type PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeRequiredProp } from '../common/props'
 

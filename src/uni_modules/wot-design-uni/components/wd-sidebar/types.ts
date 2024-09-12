@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-01-05 18:03:27
- * @LastEditTime: 2024-03-18 15:52:37
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-sidebar\types.ts
- * 记得注释
- */
 import { type ExtractPropTypes, type InjectionKey } from 'vue'
 import { baseProps, makeNumericProp } from '../common/props'
 

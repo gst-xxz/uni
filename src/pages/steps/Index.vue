@@ -27,7 +27,7 @@
     <demo-block title="修改图标">
       <wd-steps :active="1" align-center>
         <wd-step icon="setting" />
-        <wd-step icon="list" />
+        <wd-step icon="star-o" />
         <wd-step icon="clock" />
       </wd-steps>
     </demo-block>

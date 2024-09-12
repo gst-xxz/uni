@@ -1,33 +1,24 @@
 <template>
   <view :class="`wd-pager ${customClass}`" :style="customStyle" v-if="!(hideIfOnePage && totalPageNum === 1)">
     <view class="wd-pager__content">
-      <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1" custom-class="wd-pager__nav" @click="sub">
+      <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1"
+        custom-class="wd-pager__nav" @click="sub">
         <text v-if="!showIcon">{{ prevText || translate('prev') }}</text>
-        <wd-icon
-          v-else
+        <wd-icon v-else
           :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow-right"
-        ></wd-icon>
+          name="arrow-left"></wd-icon>
       </wd-button>
       <view class="wd-pager__size">
         <text class="wd-pager__current">{{ modelValue }}</text>
         <text class="wd-pager__separator">/</text>
         <text>{{ totalPageNum }}</text>
       </view>
-      <wd-button
-        :plain="modelValue < totalPageNum"
-        type="info"
-        size="small"
-        :disabled="modelValue >= totalPageNum"
-        custom-class="wd-pager__nav"
-        @click="add"
-      >
+      <wd-button :plain="modelValue < totalPageNum" type="info" size="small" :disabled="modelValue >= totalPageNum"
+        custom-class="wd-pager__nav" @click="add">
         <text v-if="!showIcon">{{ nextText || translate('next') }}</text>
-        <wd-icon
-          v-else
+        <wd-icon v-else
           :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow-right"
-        ></wd-icon>
+          name="arrow"></wd-icon>
       </wd-button>
     </view>
     <view class="wd-pager__message" v-if="showMessage">

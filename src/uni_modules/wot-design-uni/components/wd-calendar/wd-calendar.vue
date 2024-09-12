@@ -2,43 +2,31 @@
   <view :class="`wd-calendar ${cell.border.value ? 'is-border' : ''} ${customClass}`">
     <view class="wd-calendar__field" @click="open">
       <slot v-if="useDefaultSlot"></slot>
-      <view
-        v-else
-        :class="`wd-calendar__cell ${disabled ? 'is-disabled' : ''} ${readonly ? 'is-readonly' : ''} ${alignRight ? 'is-align-right' : ''} ${
-          error ? 'is-error' : ''
-        } ${size ? 'is-' + size : ''} ${center ? 'is-center' : ''}`"
-      >
-        <view
-          v-if="label || useLabelSlot"
+      <view v-else :class="`wd-calendar__cell ${disabled ? 'is-disabled' : ''} ${readonly ? 'is-readonly' : ''} ${alignRight ? 'is-align-right' : ''} ${error ? 'is-error' : ''
+        } ${size ? 'is-' + size : ''} ${center ? 'is-center' : ''}`">
+        <view v-if="label || useLabelSlot"
           :class="`wd-calendar__label ${isRequired ? 'is-required' : ''} ${customLabelClass}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
-        >
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
         <view class="wd-calendar__body">
           <view class="wd-calendar__value-wraper">
             <view
-              :class="`wd-calendar__value ${ellipsis ? 'is-ellipsis' : ''} ${customValueClass} ${showValue ? '' : 'wd-calendar__value--placeholder'}`"
-            >
+              :class="`wd-calendar__value ${ellipsis ? 'is-ellipsis' : ''} ${customValueClass} ${showValue ? '' : 'wd-calendar__value--placeholder'}`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-calendar__arrow" name="arrow-right" />
+            <wd-icon v-if="!disabled && !readonly" custom-class="wd-calendar__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-calendar__error-message">{{ errorMessage }}</view>
         </view>
       </view>
     </view>
-    <wd-action-sheet
-      v-model="pickerShow"
-      :duration="250"
-      :close-on-click-modal="closeOnClickModal"
-      :safe-area-inset-bottom="safeAreaInsetBottom"
-      :z-index="zIndex"
-      @close="close"
-    >
+    <wd-action-sheet v-model="pickerShow" :duration="250" :close-on-click-modal="closeOnClickModal"
+      :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="close">
       <view class="wd-calendar__header">
-        <view v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title">{{ title || translate('title') }}</view>
+        <view v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title">{{ title || translate('title')
+          }}</view>
         <view v-if="showTypeSwitch" class="wd-calendar__tabs">
           <wd-tabs ref="calendarTabs" v-model="currentTab" @change="handleTypeChange">
             <wd-tab :title="translate('day')" :name="translate('day')" />
@@ -47,58 +35,36 @@
           </wd-tabs>
         </view>
         <view v-if="shortcuts.length > 0" class="wd-calendar__shortcuts">
-          <wd-tag
-            v-for="(item, index) in shortcuts"
-            :key="index"
-            custom-class="wd-calendar__tag"
-            type="primary"
-            plain
-            round
-            @click="handleShortcutClick(index)"
-          >
+          <wd-tag v-for="(item, index) in shortcuts" :key="index" custom-class="wd-calendar__tag" type="primary" plain
+            round @click="handleShortcutClick(index)">
             {{ item.text }}
           </wd-tag>
         </view>
-        <wd-icon custom-class="wd-calendar__close" name="add" @click="close" />
+        <wd-icon custom-class="wd-calendar__close" name="cross" @click="close" />
       </view>
-      <view
-        v-if="inited"
-        :class="`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'is-range' : ''} ${showConfirm ? 'is-show-confirm' : ''}`"
-      >
+      <view v-if="inited"
+        :class="`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'is-range' : ''} ${showConfirm ? 'is-show-confirm' : ''}`">
         <view v-if="range(type)" :class="`wd-calendar__range-label ${type === 'monthrange' ? 'is-monthrange' : ''}`">
           <view
             :class="`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[0] ? 'is-placeholder' : ''}`"
-            style="text-align: right"
-          >
+            style="text-align: right">
             {{ rangeLabel[0] }}
           </view>
           <view class="wd-calendar__range-sperator">/</view>
-          <view :class="`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[1] ? 'is-placeholder' : ''}`">
+          <view
+            :class="`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[1] ? 'is-placeholder' : ''}`">
             {{ rangeLabel[1] }}
           </view>
         </view>
-        <wd-calendar-view
-          ref="calendarView"
-          v-model="calendarValue"
-          :type="currentType"
-          :min-date="minDate"
-          :max-date="maxDate"
-          :first-day-of-week="firstDayOfWeek"
-          :formatter="formatter"
-          :panel-height="panelHeight"
-          :max-range="maxRange"
-          :range-prompt="rangePrompt"
-          :allow-same-day="allowSameDay"
-          :default-time="defaultTime"
-          :time-filter="timeFilter"
-          :hide-second="hideSecond"
-          :show-panel-title="!range(type)"
-          :immediate-change="immediateChange"
-          @change="handleChange"
-        />
+        <wd-calendar-view ref="calendarView" v-model="calendarValue" :type="currentType" :min-date="minDate"
+          :max-date="maxDate" :first-day-of-week="firstDayOfWeek" :formatter="formatter" :panel-height="panelHeight"
+          :max-range="maxRange" :range-prompt="rangePrompt" :allow-same-day="allowSameDay" :default-time="defaultTime"
+          :time-filter="timeFilter" :hide-second="hideSecond" :show-panel-title="!range(type)"
+          :immediate-change="immediateChange" @change="handleChange" />
       </view>
       <view v-if="showConfirm" class="wd-calendar__confirm">
-        <wd-button block :disabled="confirmBtnDisabled" @click="handleConfirm">{{ confirmText || translate('confirm') }}</wd-button>
+        <wd-button block :disabled="confirmBtnDisabled" @click="handleConfirm">{{ confirmText || translate('confirm')
+          }}</wd-button>
       </view>
     </wd-action-sheet>
   </view>
@@ -143,9 +109,8 @@ const defaultDisplayFormat = (value: number | number[], type: CalendarType): str
         })
         .join(', ')
     case 'daterange':
-      return `${(value as number[])[0] ? dayjs((value as number[])[0]).format('YYYY-MM-DD') : translate('startTime')} ${translate('to')} ${
-        (value as number[])[1] ? dayjs((value as number[])[1]).format('YYYY-MM-DD') : translate('endTime')
-      }`
+      return `${(value as number[])[0] ? dayjs((value as number[])[0]).format('YYYY-MM-DD') : translate('startTime')} ${translate('to')} ${(value as number[])[1] ? dayjs((value as number[])[1]).format('YYYY-MM-DD') : translate('endTime')
+        }`
     case 'datetime':
       return dayjs(value as number).format('YYYY-MM-DD HH:mm:ss')
     case 'datetimerange':
@@ -162,16 +127,14 @@ const defaultDisplayFormat = (value: number | number[], type: CalendarType): str
       const week1 = getWeekNumber((value as number[])[0])
       const year2 = new Date((value as number[])[1]).getFullYear()
       const week2 = getWeekNumber((value as number[])[1])
-      return `${(value as number[])[0] ? translate('weekFormat', year1, padZero(week1)) : translate('startWeek')} - ${
-        (value as number[])[1] ? translate('weekFormat', year2, padZero(week2)) : translate('endWeek')
-      }`
+      return `${(value as number[])[0] ? translate('weekFormat', year1, padZero(week1)) : translate('startWeek')} - ${(value as number[])[1] ? translate('weekFormat', year2, padZero(week2)) : translate('endWeek')
+        }`
     }
     case 'month':
       return dayjs(value as number).format('YYYY / MM')
     case 'monthrange':
-      return `${(value as number[])[0] ? dayjs((value as number[])[0]).format('YYYY / MM') : translate('startMonth')} ${translate('to')} ${
-        (value as number[])[1] ? dayjs((value as number[])[1]).format('YYYY / MM') : translate('endMonth')
-      }`
+      return `${(value as number[])[0] ? dayjs((value as number[])[0]).format('YYYY / MM') : translate('startMonth')} ${translate('to')} ${(value as number[])[1] ? dayjs((value as number[])[1]).format('YYYY / MM') : translate('endMonth')
+        }`
   }
 }
 

@@ -1,16 +1,8 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-10-17 17:20:31
- * @LastEditTime: 2024-03-04 12:48:00
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\pages\navbar\Index.vue
- * 记得注释
--->
 <template>
   <wd-toast></wd-toast>
   <page-wraper>
-    <wd-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop @click-left="handleClickLeft"></wd-navbar>
+    <wd-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop
+      @click-left="handleClickLeft"></wd-navbar>
 
     <demo-block title="基础用法" transparent>
       <wd-navbar title="标题"></wd-navbar>
@@ -21,7 +13,8 @@
     </demo-block>
 
     <demo-block title="右侧按钮" transparent>
-      <wd-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft" @click-right="handleClickRight"></wd-navbar>
+      <wd-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft"
+        @click-right="handleClickRight"></wd-navbar>
     </demo-block>
 
     <demo-block title="使用插槽" transparent>

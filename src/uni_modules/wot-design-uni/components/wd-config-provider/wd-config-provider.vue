@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-06-13 11:34:35
- * @LastEditTime: 2024-03-15 17:00:16
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-config-provider\wd-config-provider.vue
- * 记得注释
--->
 <template>
   <view :class="themeClass" :style="themeStyle">
     <slot />
@@ -32,7 +23,7 @@ import { objToStyle } from '../common/util'
 const props = defineProps(configProviderProps)
 
 const themeClass = computed(() => {
-  return `wot-theme-${props.theme} ${props.customClass}`
+  return `wot-theme-${props.theme} ${props.customClass} ${props.theme}`
 })
 
 const themeStyle = computed(() => {

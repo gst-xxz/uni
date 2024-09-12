@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-15 20:40:34
- * @LastEditTime: 2024-06-09 14:38:57
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-calendar/types.ts
- * 记得注释
- */
 import type { PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
 import type { CalendarFormatter, CalendarTimeFilter, CalendarType } from '../wd-calendar-view/types'

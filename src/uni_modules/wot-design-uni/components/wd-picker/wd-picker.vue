@@ -1,42 +1,29 @@
 <template>
-  <view
-    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
-      alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`"
-    :style="customStyle"
-  >
+  <view :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${alignRight ? 'is-align-right' : ''
+    } ${error ? 'is-error' : ''} ${customClass}`" :style="customStyle">
     <view class="wd-picker__field" @click="showPopup">
       <slot v-if="useDefaultSlot"></slot>
       <view v-else class="wd-picker__cell">
-        <view
-          v-if="label || useLabelSlot"
+        <view v-if="label || useLabelSlot"
           :class="`wd-picker__label ${customLabelClass}  ${isRequired ? 'is-required' : ''}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
-        >
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
           <template v-if="label">{{ label }}</template>
           <slot v-else name="label"></slot>
         </view>
         <view class="wd-picker__body">
           <view class="wd-picker__value-wraper">
-            <view :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
+            <view
+              :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow-right" />
+            <wd-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</view>
         </view>
       </view>
     </view>
-    <wd-popup
-      v-model="popupShow"
-      position="bottom"
-      :hide-when-close="false"
-      :close-on-click-modal="closeOnClickModal"
-      :z-index="zIndex"
-      :safe-area-inset-bottom="safeAreaInsetBottom"
-      @close="onCancel"
-      custom-class="wd-picker__popup"
-    >
+    <wd-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
+      :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom" @close="onCancel" custom-class="wd-picker__popup">
       <view class="wd-picker__wraper">
         <view class="wd-picker__toolbar" @touchmove="noop">
           <view class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
@@ -47,22 +34,10 @@
             {{ confirmButtonText || translate('done') }}
           </view>
         </view>
-        <wd-picker-view
-          ref="pickerViewWd"
-          :custom-class="customViewClass"
-          v-model="pickerValue"
-          :columns="displayColumns"
-          :loading="isLoading"
-          :loading-color="loadingColor"
-          :columns-height="columnsHeight"
-          :value-key="valueKey"
-          :label-key="labelKey"
-          :immediate-change="immediateChange"
-          @change="pickerViewChange"
-          @pickstart="onPickStart"
-          @pickend="onPickEnd"
-          :column-change="columnChange"
-        />
+        <wd-picker-view ref="pickerViewWd" :custom-class="customViewClass" v-model="pickerValue"
+          :columns="displayColumns" :loading="isLoading" :loading-color="loadingColor" :columns-height="columnsHeight"
+          :value-key="valueKey" :label-key="labelKey" :immediate-change="immediateChange" @change="pickerViewChange"
+          @pickstart="onPickStart" @pickend="onPickEnd" :column-change="columnChange" />
       </view>
     </wd-popup>
   </view>
@@ -363,7 +338,7 @@ function setShowValue(items: ColumnItem | ColumnItem[]) {
   const { valueKey, labelKey } = props
   showValue.value = (props.displayFormat || defaultDisplayFormat)(items, { valueKey, labelKey })
 }
-function noop() {}
+function noop() { }
 function onPickStart() {
   isPicking.value = true
 }

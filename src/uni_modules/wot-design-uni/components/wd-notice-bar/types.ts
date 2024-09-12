@@ -40,7 +40,10 @@ export const noticeBarProps = {
   /**
    * 设置左侧图标，使用 icon 章节中的图标名
    */
-  prefix: String,
+  prefix: {
+    type: String,
+    default: 'volume-o'
+  },
   /**
    * 文字、图标颜色
    */

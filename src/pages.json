@@ -11,6 +11,13 @@
       }
     },
     {
+      "path": "pages/pro-list/Index",
+      "name": "pro-list",
+      "style": {
+        "navigationBarTitleText": "ProList 列表"
+      }
+    },
+    {
       "path": "pages/button/Index",
       "name": "button",
       "style": {

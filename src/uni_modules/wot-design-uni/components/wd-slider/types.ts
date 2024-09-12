@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-06-03 23:43:43
- * @LastEditTime: 2024-06-06 22:03:57
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-slider/types.ts
- * 记得注释
- */
 import type { ComponentPublicInstance, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
 

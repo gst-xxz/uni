@@ -2,13 +2,8 @@
   <page-wraper>
     <demo-block title="基本用法（适用于按钮加载状态和页面轻提示）">
       <view class="flex">
-        <wd-loading custom-class="loading" />
-      </view>
-    </demo-block>
-
-    <demo-block title="outline 类型（适用于通用模块加载）">
-      <view class="flex">
-        <wd-loading type="outline" custom-class="loading" />
+        <wd-loading />
+        <wd-loading type="spinner" />
       </view>
     </demo-block>
 
@@ -33,6 +28,7 @@
   display: flex;
   align-items: center;
 }
+
 :deep(.loading) {
   margin-right: 20px;
 }

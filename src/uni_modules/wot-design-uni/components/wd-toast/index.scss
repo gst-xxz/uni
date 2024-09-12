@@ -25,8 +25,6 @@
     font-size: $-toast-icon-size;
   }
   @include e(iconWrap){
-    font-size: 0;
-    line-height: 0;
     vertical-align: middle;
   }
   @include e(iconBox){
@@ -37,8 +35,7 @@
   @include e(iconSvg){
     width: $-toast-icon-size;
     height: $-toast-icon-size;
-    background-size: cover;
-    background-repeat: no-repeat;
+    line-height: $-toast-icon-size;
   }
   @include e(loading) {
     margin-bottom: 16px;

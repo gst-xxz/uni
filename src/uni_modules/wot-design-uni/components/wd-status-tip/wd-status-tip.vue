@@ -1,15 +1,7 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-06-12 10:04:19
- * @LastEditTime: 2024-09-02 16:26:44
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-status-tip\wd-status-tip.vue
- * 记得注释
--->
 <template>
   <view :class="`wd-status-tip  ${customClass}`" :style="customStyle">
-    <wd-img v-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image" :custom-style="imgStyle"></wd-img>
+    <wd-img v-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image"
+      :custom-style="imgStyle"></wd-img>
     <view v-if="tip" class="wd-status-tip__text">{{ tip }}</view>
   </view>
 </template>

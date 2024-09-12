@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-06-13 11:47:12
- * @LastEditTime: 2023-08-11 18:49:11
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\pages\card\Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <view>
@@ -21,9 +12,7 @@
           <view class="content">
             <image
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
-              alt="joy"
-              style="width: 70px; height: 70px; border-radius: 4px; margin-right: 12px"
-            />
+              alt="joy" style="width: 70px; height: 70px; border-radius: 4px; margin-right: 12px" />
             <view>
               <view>蜜滋兰(mizland)新西兰进口多花种…</view>
               <view>数量：1件</view>
@@ -41,11 +30,8 @@
           <view style="height: 40px" class="content">
             <image
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
-              width="40"
-              height="40"
-              alt="joy"
-              style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px"
-            />
+              width="40" height="40" alt="joy"
+              style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px" />
             <view>
               <view class="custom-main">智云好客CRM短信_催评营销</view>
               <view class="custom-sub">高级版-快速吸粉 | 周期一年</view>
@@ -63,7 +49,7 @@
             <view class="title">
               <view>2020-02-03服务到期</view>
               <view class="title-tip">
-                <wd-icon name="warning" size="14px" custom-style="vertical-align: bottom" />
+                <wd-icon name="warning" size="14px" custom-style="vertical-align: bottom; display: inline-block;" />
                 您可以去电脑上使用该服务
               </view>
             </view>
@@ -72,11 +58,8 @@
           <view style="height: 40px" class="content">
             <image
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
-              width="40"
-              height="40"
-              alt="joy"
-              style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px"
-            />
+              width="40" height="40" alt="joy"
+              style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px" />
             <view>
               <view class="custom-main">智云好客CRM短信_催评营销</view>
               <view class="custom-sub">高级版-快速吸粉 | 周期一年</view>
@@ -103,6 +86,7 @@
   .custom-main {
     color: $-dark-color;
   }
+
   .custom-sub {
     color: $-dark-color-gray;
   }
@@ -115,12 +99,15 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .content {
   justify-content: flex-start;
 }
+
 .title {
   justify-content: space-between;
 }
+
 .title-tip {
   color: rgba(0, 0, 0, 0.25);
   font-size: 12px;
@@ -130,6 +117,7 @@
   color: rgba(0, 0, 0, 0.85);
   font-size: 16px;
 }
+
 .custom-sub {
   color: rgba(0, 0, 0, 0.25);
   font-size: 12px;

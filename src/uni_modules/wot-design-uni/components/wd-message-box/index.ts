@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2022-12-14 17:33:21
- * @LastEditTime: 2024-08-17 18:18:16
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-message-box/index.ts
- * 记得注释
- */
 import { provide, ref } from 'vue'
 import type { Message, MessageOptions, MessageResult, MessageType } from './types'
 import { deepMerge } from '../common/util'

@@ -10,25 +10,15 @@
           <text class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</text>
         </view>
         <!--icon:search-->
-        <wd-icon v-if="showInput || str || placeholderLeft" name="search" custom-class="wd-search__search-left-icon"></wd-icon>
+        <wd-icon v-if="showInput || str || placeholderLeft" name="search"
+          custom-class="wd-search__search-left-icon"></wd-icon>
         <!--搜索框-->
-        <input
-          v-if="showInput || str || placeholderLeft"
-          :placeholder="placeholder || translate('search')"
-          placeholder-class="wd-search__placeholder-txt"
-          confirm-type="search"
-          v-model="str"
-          class="wd-search__input"
-          @focus="searchFocus"
-          @input="inputValue"
-          @blur="searchBlur"
-          @confirm="search"
-          :disabled="disabled"
-          :maxlength="maxlength"
-          :focus="isFocused"
-        />
+        <input v-if="showInput || str || placeholderLeft" :placeholder="placeholder || translate('search')"
+          placeholder-class="wd-search__placeholder-txt" confirm-type="search" v-model="str" class="wd-search__input"
+          @focus="searchFocus" @input="inputValue" @blur="searchBlur" @confirm="search" :disabled="disabled"
+          :maxlength="maxlength" :focus="isFocused" />
         <!--icon:clear-->
-        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="error-fill" @click="clearSearch" />
+        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="close" @click="clearSearch" />
       </view>
     </view>
     <!--the button behind input,care for hideCancel without displaying-->

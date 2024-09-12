@@ -1,19 +1,11 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-11-05 12:09:52
- * @LastEditTime: 2024-03-18 21:33:29
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: /wot-design-uni/src/pages/sidebar/demo1.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <view class="wraper">
       <wd-sidebar v-model="active" @change="handleChange">
         <wd-sidebar-item v-for="(item, index) in categories" :key="index" :value="index" :label="item.label" />
       </wd-sidebar>
-      <scroll-view class="content" scroll-y scroll-with-animation :scroll-top="scrollTop" :throttle="false" @scroll="onScroll">
+      <scroll-view class="content" scroll-y scroll-with-animation :scroll-top="scrollTop" :throttle="false"
+        @scroll="onScroll">
         <view v-for="(item, index) in categories" :key="index" class="category">
           <wd-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">

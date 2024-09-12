@@ -87,19 +87,6 @@
     opacity: $-button-disabled-opacity;
   }
 
-  @include e(loading) {
-    margin-right: 5px;
-    animation: wd-rotate 0.8s linear infinite;
-    animation-duration: 2s;
-  }
-
-  @include e(loading-svg) {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
   @include when(loading) {}
 
   @include when(primary) {
@@ -346,4 +333,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+.wd-button__loading {
+  margin-right: 2px;
+}
+.wd-button__loading-icon{
+  vertical-align: top;
 }

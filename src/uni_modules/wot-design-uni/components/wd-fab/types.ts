@@ -31,11 +31,11 @@ export const fabProps = {
   /**
    * 悬浮按钮未展开时的图标
    */
-  inactiveIcon: makeStringProp('add'),
+  inactiveIcon: makeStringProp('plus'),
   /**
    * 悬浮按钮展开时的图标
    */
-  activeIcon: makeStringProp('close'),
+  activeIcon: makeStringProp('cross'),
   /**
    * 自定义悬浮按钮层级
    */

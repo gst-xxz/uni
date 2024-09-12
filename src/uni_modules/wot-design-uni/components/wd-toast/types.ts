@@ -1,21 +1,11 @@
-/*
- * @Author: weisheng
- * @Date: 2023-06-19 12:47:57
- * @LastEditTime: 2024-07-18 22:18:07
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-toast/types.ts
- * 记得注释
- */
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeStringProp } from '../common/props'
-import type { LoadingType } from '../wd-loading/types'
 
-export type ToastIconType = 'success' | 'error' | 'warning' | 'loading' | 'info' // 图标类型
+export type ToastIconType = 'success' | 'error' | 'warning' | 'loading' | 'info' | 'fail' // 图标类型
 
 export type ToastPositionType = 'top' | 'middle' | 'bottom' // 提示信息框的位置类型
 
-export type ToastLoadingType = LoadingType // 提示信息加载状态类型
+export type ToastLoadingType = 'spinner' | 'circular' // 提示信息加载状态类型
 
 export type ToastOptions = {
   msg?: string

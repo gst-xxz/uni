@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2024-08-09 10:12:54
- * @LastEditTime: 2024-08-09 13:10:34
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\pages\countDown\Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <demo-block title="基本用法">
@@ -34,7 +25,8 @@
     </demo-block>
 
     <demo-block title="手动控制">
-      <wd-count-down ref="countDown" :time="3000" millisecond :auto-start="false" format="ss:SSS" @finish="onFinish"></wd-count-down>
+      <wd-count-down ref="countDown" :time="3000" millisecond :auto-start="false" format="ss:SSS"
+        @finish="onFinish"></wd-count-down>
       <wd-grid clickable border>
         <wd-grid-item text="开始" icon="play-circle-stroke" @itemclick="start" />
         <wd-grid-item text="暂停" icon="pause-circle" @itemclick="pause" />

@@ -1,12 +1,8 @@
 <template>
   <view :class="rootClass" :style="rootStyle">
-    <canvas
-      v-if="!canvasOffScreenable && showCanvas"
-      type="2d"
-      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }"
-      :canvas-id="canvasId"
-      :id="canvasId"
-    />
+    <canvas v-if="!canvasOffScreenable && showCanvas" type="2d"
+      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }" :canvas-id="canvasId"
+      :id="canvasId" />
   </view>
 </template>
 
@@ -48,9 +44,9 @@ const showCanvas = ref<boolean>(true) // 是否展示canvas
  * 水印css类
  */
 const rootClass = computed(() => {
-  let classess: string = 'wd-watermark'
+  let classess: string = 'absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat'
   if (props.fullScreen) {
-    classess = `${classess} is-fullscreen`
+    classess = `${classess} !fixed`
   }
   return `${classess} ${props.customClass}`
 })
@@ -360,14 +356,14 @@ function drawTextOnScreen(ctx: UniApp.CanvasContext, content: string, contentWid
   ctx.fillText(content, 0, 0)
   ctx.restore()
   ctx.draw()
-  // #ifdef MP-DINGTALK
-  // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
-  ;(ctx as any).toTempFilePath({
-    success(res: any) {
-      showCanvas.value = false
-      waterMarkUrl.value = res.filePath
-    }
-  })
+    // #ifdef MP-DINGTALK
+    // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
+    ; (ctx as any).toTempFilePath({
+      success(res: any) {
+        showCanvas.value = false
+        waterMarkUrl.value = res.filePath
+      }
+    })
   // #endif
   // #ifndef MP-DINGTALK
   uni.canvasToTempFilePath({
@@ -461,7 +457,7 @@ function drawImageOnScreen(
   ctx.draw(false, () => {
     // #ifdef MP-DINGTALK
     // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
-    ;(ctx as any).toTempFilePath({
+    ; (ctx as any).toTempFilePath({
       success(res: any) {
         showCanvas.value = false
         waterMarkUrl.value = res.filePath
@@ -480,7 +476,3 @@ function drawImageOnScreen(
   })
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

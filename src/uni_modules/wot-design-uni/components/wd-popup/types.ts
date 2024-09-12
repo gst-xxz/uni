@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-18 11:22:03
- * @LastEditTime: 2024-03-18 15:29:43
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-popup\types.ts
- * 记得注释
- */
 import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
 
 export type PopupType = 'center' | 'top' | 'right' | 'bottom' | 'left'

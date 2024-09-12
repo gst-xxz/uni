@@ -1,90 +1,188 @@
 <template>
-  <view :class="`wd-loading ${props.customClass}`" :style="rootStyle">
-    <view class="wd-loading__body">
-      <view class="wd-loading__svg" :style="`background-image: url(${svg});`"></view>
+  <view :class="wrapperClass">
+    <view :class="loadingClass" :style="loadingStyle">
+      <view v-if="type === 'spinner'" v-for="(item, index) in array12" :key="index" class="wd-loading__dot" />
+    </view>
+    <view class="wd-loading__text" :style="textStyle">
+      <slot />
     </view>
   </view>
 </template>
-<script lang="ts">
+
+<script>
 export default {
-  name: 'wd-loading',
-  options: {
-    virtualHost: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared'
+  props: {
+    // spinner | circular
+    type: { type: String, default: 'circular' },
+    color: { type: String, default: '#c9c9c9' },
+    size: {
+      type: [String, Number],
+      default: '30px'
+    },
+    customClass: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    wrapperClass () {
+      return `wd-loading wd-loading-${this.type} ${this.customClass}`
+    },
+    loadingClass () {
+      return `wd-loading__spinner wd-loading__spinner--${this.type}`
+    },
+    loadingStyle () {
+      return {
+        color: this.color,
+        width: typeof this.size === 'string' ? this.size : `${this.size}px`,
+        height: typeof this.size === 'string' ? this.size : `${this.size}px`
+      }
+    },
+    textStyle () {
+      return {
+        fontSize: typeof this.size === 'string' ? this.size : `${this.size}px`
+      }
+    },
+    array12 () {
+      return new Array(12).fill(0)
+    }
   }
 }
 </script>
+<style>
+@keyframes wd-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 
-<script lang="ts" setup>
-import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
-import base64 from '../common/base64'
-import { gradient, context, objToStyle, addUnit, isDef } from '../common/util'
-import { loadingProps } from './types'
-
-const svgDefineId = context.id++
-const svgDefineId1 = context.id++
-const svgDefineId2 = context.id++
-
-const icon = {
-  outline(color = '#4D80F0') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><defs><linearGradient x1="100%" y1="0%" x2="0%" y2="0%" id="${svgDefineId}"><stop stop-color="#FFF" offset="0%" stop-opacity="0"/><stop stop-color="#FFF" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M21 1c11.046 0 20 8.954 20 20s-8.954 20-20 20S1 32.046 1 21 9.954 1 21 1zm0 7C13.82 8 8 13.82 8 21s5.82 13 13 13 13-5.82 13-13S28.18 8 21 8z" fill="${color}"/><path d="M4.599 21c0 9.044 7.332 16.376 16.376 16.376 9.045 0 16.376-7.332 16.376-16.376" stroke="url(#${svgDefineId}) " stroke-width="3.5" stroke-linecap="round"/></g></svg>`
-  },
-  ring(color = '#4D80F0', intermediateColor = '#a6bff7') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="${svgDefineId1}" gradientUnits="userSpaceOnUse" x1="50" x2="50" y2="180"><stop offset="0" stop-color="${color}"></stop> <stop offset="1" stop-color="${intermediateColor}"></stop></linearGradient> <path fill="url(#${svgDefineId1})" d="M20 100c0-44.1 35.9-80 80-80V0C44.8 0 0 44.8 0 100s44.8 100 100 100v-20c-44.1 0-80-35.9-80-80z"></path> <linearGradient id="${svgDefineId2}" gradientUnits="userSpaceOnUse" x1="150" y1="20" x2="150" y2="180"><stop offset="0" stop-color="#fff" stop-opacity="0"></stop> <stop offset="1" stop-color="${intermediateColor}"></stop></linearGradient> <path fill="url(#${svgDefineId2})" d="M100 0v20c44.1 0 80 35.9 80 80s-35.9 80-80 80v20c55.2 0 100-44.8 100-100S155.2 0 100 0z"></path> <circle cx="100" cy="10" r="10" fill="${color}"></circle></svg>`
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-const props = defineProps(loadingProps)
-
-const svg = ref<string>('')
-const intermediateColor = ref<string>('')
-const iconSize = ref<string | number | null>(null)
-
-watch(
-  () => props.size,
-  (newVal) => {
-    iconSize.value = addUnit(newVal)
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.type,
-  () => {
-    buildSvg()
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-const rootStyle = computed(() => {
-  const style: CSSProperties = {}
-  if (isDef(iconSize.value)) {
-    style.height = addUnit(iconSize.value)
-    style.width = addUnit(iconSize.value)
-  }
-  return `${objToStyle(style)}; ${props.customStyle}`
-})
-
-onBeforeMount(() => {
-  intermediateColor.value = gradient(props.color, '#ffffff', 2)[1]
-  buildSvg()
-})
-
-function buildSvg() {
-  const { type, color } = props
-  let ringType: 'outline' | 'ring' = isDef(type) ? type : 'ring'
-  const svgStr = `"data:image/svg+xml;base64,${base64(ringType === 'ring' ? icon[ringType](color, intermediateColor.value) : icon[ringType](color))}"`
-  svg.value = svgStr
+.wd-loading {
+  align-items: center;
+  color: var(--loading-spinner-color, #c8c9cc);
+  display: inline-flex;
+  justify-content: center
 }
-</script>
 
-<style lang="scss" scoped>
-@import './index.scss';
+.wd-loading__spinner {
+  animation: wd-rotate var(--loading-spinner-animation-duration, .8s) linear infinite;
+  box-sizing: border-box;
+  height: var(--loading-spinner-size, 30px);
+  max-height: 100%;
+  max-width: 100%;
+  position: relative;
+  width: var(--loading-spinner-size, 30px)
+}
+
+.wd-loading__spinner--spinner {
+  animation-timing-function: steps(12)
+}
+
+.wd-loading__spinner--circular {
+  border: 1px solid transparent;
+  border-radius: 100%;
+  border-top-color: initial
+}
+
+.wd-loading__text {
+  color: var(--loading-text-color, #969799);
+  font-size: var(--loading-text-font-size, 14px);
+  line-height: var(--loading-text-line-height, 20px);
+  margin-left: var(--padding-xs, 8px)
+}
+
+.wd-loading__text:empty {
+  display: none
+}
+
+.wd-loading--vertical {
+  flex-direction: column
+}
+
+.wd-loading--vertical .wd-loading__text {
+  margin: var(--padding-xs, 8px) 0 0
+}
+
+.wd-loading__dot {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%
+}
+
+.wd-loading__dot:before {
+  background-color: currentColor;
+  border-radius: 40%;
+  content: " ";
+  display: block;
+  height: 25%;
+  margin: 0 auto;
+  width: 2px
+}
+
+.wd-loading__dot:first-of-type {
+  opacity: 1;
+  transform: rotate(30deg)
+}
+
+.wd-loading__dot:nth-of-type(2) {
+  opacity: .9375;
+  transform: rotate(60deg)
+}
+
+.wd-loading__dot:nth-of-type(3) {
+  opacity: .875;
+  transform: rotate(90deg)
+}
+
+.wd-loading__dot:nth-of-type(4) {
+  opacity: .8125;
+  transform: rotate(120deg)
+}
+
+.wd-loading__dot:nth-of-type(5) {
+  opacity: .75;
+  transform: rotate(150deg)
+}
+
+.wd-loading__dot:nth-of-type(6) {
+  opacity: .6875;
+  transform: rotate(180deg)
+}
+
+.wd-loading__dot:nth-of-type(7) {
+  opacity: .625;
+  transform: rotate(210deg)
+}
+
+.wd-loading__dot:nth-of-type(8) {
+  opacity: .5625;
+  transform: rotate(240deg)
+}
+
+.wd-loading__dot:nth-of-type(9) {
+  opacity: .5;
+  transform: rotate(270deg)
+}
+
+.wd-loading__dot:nth-of-type(10) {
+  opacity: .4375;
+  transform: rotate(300deg)
+}
+
+.wd-loading__dot:nth-of-type(11) {
+  opacity: .375;
+  transform: rotate(330deg)
+}
+
+.wd-loading__dot:nth-of-type(12) {
+  opacity: .3125;
+  transform: rotate(1turn)
+}
 </style>

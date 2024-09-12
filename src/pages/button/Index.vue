@@ -46,16 +46,16 @@
         <wd-button type="success" loading>加载中</wd-button>
         <wd-button type="warning" loading>加载中</wd-button>
         <wd-button type="error" loading>加载中</wd-button>
-        <wd-button type="info" loading>加载中</wd-button>
-        <wd-button type="info" plain loading>加载中</wd-button>
+        <wd-button type="info" loading size="small">加载中</wd-button>
+        <wd-button type="info" plain size="large" loading>加载中</wd-button>
       </demo-block>
       <demo-block title="文字按钮">
         <wd-button type="text">按钮</wd-button>
         <wd-button type="text" disabled>按钮</wd-button>
       </demo-block>
       <demo-block title="图标按钮">
-        <wd-button type="icon" icon="delete-thin"></wd-button>
-        <wd-button type="icon" icon="delete-thin" disabled></wd-button>
+        <wd-button type="icon" icon="delete"></wd-button>
+        <wd-button type="icon" icon="delete" disabled></wd-button>
       </demo-block>
       <demo-block title="带图标的基本按钮">
         <wd-button icon="download">下载</wd-button>

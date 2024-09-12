@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-07-29 17:03:39
- * @LastEditTime: 2024-03-17 20:19:52
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: /wot-design-uni/src/pages/rate/Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <demo-block title="基本用法">
@@ -23,15 +14,13 @@
 
     <demo-block title="修改选中颜色">
       <view style="margin-bottom: 10px">
-        <wd-rate v-model="value4" active-color="linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)" @change="changeValue2" />
+        <wd-rate v-model="value4" active-color="linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)"
+          @change="changeValue2" />
       </view>
-      <wd-rate
-        v-model="value5"
-        :active-color="[
-          'linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)',
-          'linear-gradient(315deg, rgba(245,34,34,1) 0%,rgba(255,117,102,1) 100%)'
-        ]"
-      />
+      <wd-rate v-model="value5" :active-color="[
+        'linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)',
+        'linear-gradient(315deg, rgba(245,34,34,1) 0%,rgba(255,117,102,1) 100%)'
+      ]" />
     </demo-block>
 
     <demo-block title="修改icon和选中颜色">

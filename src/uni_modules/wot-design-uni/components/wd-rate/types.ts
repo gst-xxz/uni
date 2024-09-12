@@ -64,14 +64,14 @@ export const rateProps = {
    * 类型: string
    * 默认值: 'star-on'
    */
-  icon: makeStringProp('star-on'),
+  icon: makeStringProp('star-o'),
 
   /**
    * 选中的图标类名
    * 类型: string
    * 默认值: 'star-on'
    */
-  activeIcon: makeStringProp('star-on'),
+  activeIcon: makeStringProp('star-0'),
 
   /**
    * 是否禁用

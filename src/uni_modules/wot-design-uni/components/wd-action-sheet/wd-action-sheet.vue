@@ -1,43 +1,21 @@
 <template>
   <view>
-    <wd-popup
-      custom-class="wd-action-sheet__popup"
+    <wd-popup custom-class="wd-action-sheet__popup"
       :custom-style="`${(actions && actions.length) || (panels && panels.length) ? 'background: transparent;' : ''}`"
-      v-model="showPopup"
-      :duration="duration"
-      position="bottom"
-      :close-on-click-modal="closeOnClickModal"
-      :safe-area-inset-bottom="safeAreaInsetBottom"
-      :lazy-render="lazyRender"
-      @enter="handleOpen"
-      @close="close"
-      @after-enter="handleOpened"
-      @after-leave="handleClosed"
-      @click-modal="handleClickModal"
-      :z-index="zIndex"
-    >
-      <view
-        :class="`wd-action-sheet ${customClass}`"
-        :style="`${
-          (actions && actions.length) || (panels && panels.length)
-            ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
-            : 'margin-bottom: var(--window-bottom);'
-        } ${customStyle}`"
-      >
+      v-model="showPopup" :duration="duration" position="bottom" :close-on-click-modal="closeOnClickModal"
+      :safe-area-inset-bottom="safeAreaInsetBottom" :lazy-render="lazyRender" @enter="handleOpen" @close="close"
+      @after-enter="handleOpened" @after-leave="handleClosed" @click-modal="handleClickModal" :z-index="zIndex">
+      <view :class="`wd-action-sheet ${customClass}`" :style="`${(actions && actions.length) || (panels && panels.length)
+        ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
+        : 'margin-bottom: var(--window-bottom);'
+        } ${customStyle}`">
         <view v-if="title" :class="`wd-action-sheet__header ${customHeaderClass}`">
           {{ title }}
-          <wd-icon custom-class="wd-action-sheet__close" name="add" @click="close" />
+          <wd-icon custom-class="wd-action-sheet__close" name="cross" @click="close" />
         </view>
         <view class="wd-action-sheet__actions" v-if="actions && actions.length">
-          <button
-            v-for="(action, rowIndex) in actions"
-            :key="rowIndex"
-            :class="`wd-action-sheet__action ${action.disabled ? 'wd-action-sheet__action--disabled' : ''}  ${
-              action.loading ? 'wd-action-sheet__action--loading' : ''
-            }`"
-            :style="`color: ${action.color}`"
-            @click="select(rowIndex, 'action')"
-          >
+          <button v-for="(action, rowIndex) in actions" :key="rowIndex" :class="`wd-action-sheet__action ${action.disabled ? 'wd-action-sheet__action--disabled' : ''}  ${action.loading ? 'wd-action-sheet__action--loading' : ''
+            }`" :style="`color: ${action.color}`" @click="select(rowIndex, 'action')">
             <wd-loading custom-class="`wd-action-sheet__action-loading" v-if="action.loading" />
             <view v-else class="wd-action-sheet__name">{{ action.name }}</view>
             <view v-if="!action.loading && action.subname" class="wd-action-sheet__subname">{{ action.subname }}</view>
@@ -46,7 +24,8 @@
         <view v-if="formatPanels && formatPanels.length">
           <view v-for="(panel, rowIndex) in formatPanels" :key="rowIndex" class="wd-action-sheet__panels">
             <view class="wd-action-sheet__panels-content">
-              <view v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel" @click="select(rowIndex, 'panels', colIndex)">
+              <view v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel"
+                @click="select(rowIndex, 'panels', colIndex)">
                 <image class="wd-action-sheet__panel-img" :src="(col as any).iconUrl" />
                 <view class="wd-action-sheet__panel-title">{{ (col as any).title }}</view>
               </view>

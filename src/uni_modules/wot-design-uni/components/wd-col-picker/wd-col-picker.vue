@@ -2,53 +2,35 @@
   <view :class="`wd-col-picker ${cell.border.value ? 'is-border' : ''} ${customClass}`" :style="customStyle">
     <view class="wd-col-picker__field" @click="showPicker">
       <slot v-if="useDefaultSlot"></slot>
-      <view
-        v-else
-        :class="`wd-col-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
-          error && 'is-error'
-        }  ${size && 'is-' + size}`"
-      >
-        <view
-          v-if="label || useLabelSlot"
+      <view v-else :class="`wd-col-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${error && 'is-error'
+        }  ${size && 'is-' + size}`">
+        <view v-if="label || useLabelSlot"
           :class="`wd-col-picker__label ${isRequired && 'is-required'} ${customLabelClass}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
-        >
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
         <view class="wd-col-picker__body">
           <view class="wd-col-picker__value-wraper">
             <view
-              :class="`wd-col-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-col-picker__value--placeholder'}`"
-            >
+              :class="`wd-col-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-col-picker__value--placeholder'}`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow-right" />
+            <wd-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-col-picker__error-message">{{ errorMessage }}</view>
         </view>
       </view>
     </view>
-    <wd-action-sheet
-      v-model="pickerShow"
-      :duration="250"
-      :title="title || translate('title')"
-      :close-on-click-modal="closeOnClickModal"
-      :z-index="zIndex"
-      :safe-area-inset-bottom="safeAreaInsetBottom"
-      @open="handlePickerOpend"
-      @close="handlePickerClose"
-      @closed="handlePickerClosed"
-    >
+    <wd-action-sheet v-model="pickerShow" :duration="250" :title="title || translate('title')"
+      :close-on-click-modal="closeOnClickModal" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
+      @open="handlePickerOpend" @close="handlePickerClose" @closed="handlePickerClosed">
       <view class="wd-col-picker__selected">
         <scroll-view :scroll-x="true" scroll-with-animation :scroll-left="scrollLeft">
           <view class="wd-col-picker__selected-container">
-            <view
-              v-for="(_, colIndex) in selectList"
-              :key="colIndex"
+            <view v-for="(_, colIndex) in selectList" :key="colIndex"
               :class="`wd-col-picker__selected-item  ${colIndex === currentCol && 'is-selected'}`"
-              @click="handleColClick(colIndex)"
-            >
+              @click="handleColClick(colIndex)">
               {{ selectShowList[colIndex] || translate('select') }}
             </view>
             <view class="wd-col-picker__selected-line" :style="state.lineStyle"></view>
@@ -56,25 +38,15 @@
         </scroll-view>
       </view>
       <view class="wd-col-picker__list-container">
-        <view
-          v-for="(col, colIndex) in selectList"
-          :key="colIndex"
-          class="wd-col-picker__list"
-          :style="colIndex === currentCol ? 'display: block;' : 'display: none;'"
-        >
-          <view
-            v-for="(item, index) in col"
-            :key="index"
-            :class="`wd-col-picker__list-item ${pickerColSelected[colIndex] && item[valueKey] === pickerColSelected[colIndex] && 'is-selected'} ${
-              item.disabled && 'is-disabled'
-            }`"
-            @click="chooseItem(colIndex, index)"
-          >
+        <view v-for="(col, colIndex) in selectList" :key="colIndex" class="wd-col-picker__list"
+          :style="colIndex === currentCol ? 'display: block;' : 'display: none;'">
+          <view v-for="(item, index) in col" :key="index" :class="`wd-col-picker__list-item ${pickerColSelected[colIndex] && item[valueKey] === pickerColSelected[colIndex] && 'is-selected'} ${item.disabled && 'is-disabled'
+            }`" @click="chooseItem(colIndex, index)">
             <view>
               <view class="wd-col-picker__list-item-label">{{ item[labelKey] }}</view>
               <view v-if="item[tipKey]" class="wd-col-picker__list-item-tip">{{ item[tipKey] }}</view>
             </view>
-            <wd-icon custom-class="wd-col-picker__checked" name="check"></wd-icon>
+            <wd-icon custom-class="wd-col-picker__checked" name="success"></wd-icon>
           </view>
           <view v-if="loading" class="wd-col-picker__loading">
             <wd-loading :color="loadingColor" />
@@ -454,7 +426,7 @@ function setLineStyle(animation: boolean = true) {
 
       state.lineStyle = objToStyle(lineStyle)
     })
-    .catch(() => {})
+    .catch(() => { })
 }
 /**
  * @description scroll-view滑动到active的tab_nav
@@ -471,7 +443,7 @@ function lineScrollIntoView() {
       // scroll-view滑动到selectItem的偏移量
       scrollLeft.value = offsetLeft - ((navRect as any).width - Number(selectItem.width)) / 2
     })
-    .catch(() => {})
+    .catch(() => { })
 }
 
 // 递归列数据补齐

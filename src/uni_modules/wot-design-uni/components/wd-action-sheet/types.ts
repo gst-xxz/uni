@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-18 11:22:03
- * @LastEditTime: 2024-04-04 22:35:25
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-action-sheet/types.ts
- * 记得注释
- */
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
 

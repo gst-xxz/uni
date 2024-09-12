@@ -1,12 +1,3 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-15 11:36:12
- * @LastEditTime: 2024-07-18 19:02:32
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-table\types.ts
- * 记得注释
- */
 import type { CSSProperties, ExtractPropTypes, InjectionKey } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
 import type { TableColumnProps } from '../wd-table-col/types'
