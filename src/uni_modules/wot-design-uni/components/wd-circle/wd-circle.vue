@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-circle ${customClass}`" :style="customStyle">
+  <view :class="`relative inline-block text-center ${customClass}`" :style="customStyle">
     <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
     <!-- #endif -->
@@ -7,12 +7,12 @@
     <canvas :width="canvasSize" :height="canvasSize" :style="canvasStyle" :id="canvasId" :canvas-id="canvasId"></canvas>
     <!-- #endif -->
 
-    <view v-if="!text" class="wd-circle__text">
+    <view v-if="!text" class="absolute z-[1] top-[50%] left-[0] w-[100%] -translate-y-[50%] text-slate-600">
       <!-- 自定义提示内容 -->
       <slot></slot>
     </view>
 
-    <text v-else class="wd-circle__text">
+    <text v-else class="absolute z-[1] top-[50%] left-[0] w-[100%] -translate-y-[50%] text-slate-600">
       {{ text }}
     </text>
   </view>
@@ -23,7 +23,6 @@ export default {
   options: {
     addGlobalClass: true,
     virtualHost: true,
-    styleIsolation: 'shared'
   }
 }
 </script>
@@ -288,7 +287,3 @@ function clearTimeInterval() {
   interval.value && clearTimeout(interval.value)
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

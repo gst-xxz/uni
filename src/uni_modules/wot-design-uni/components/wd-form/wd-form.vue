@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-form ${customClass}`" :style="customStyle">
+  <view :class="`${customClass}`" :style="customStyle">
     <slot></slot>
     <wd-toast v-if="props.errorType === 'toast'" selector="wd-form-toast" />
   </view>
@@ -11,7 +11,6 @@ export default {
   options: {
     addGlobalClass: true,
     virtualHost: true,
-    styleIsolation: 'shared'
   }
 }
 </script>
@@ -47,6 +46,7 @@ watch(
  * @param prop 指定校验字段
  */
 async function validate(prop?: string): Promise<{ valid: boolean; errors: ErrorMessage[] }> {
+  clearMessage()
   const errors: ErrorMessage[] = []
   let valid: boolean = true
   const promises: Promise<void>[] = []
@@ -181,7 +181,3 @@ function reset() {
 
 defineExpose<FormExpose>({ validate, reset })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

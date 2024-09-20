@@ -55,7 +55,7 @@
     /* 小程序特有相关 */
     "mp-weixin" : {
         "darkmode" : true,
-        "themeLocation" : "theme.json",
+        // "themeLocation" : "theme.json",
         "appid" : "wx18107b71aa1672e2",
         "setting" : {
             "urlCheck" : false
@@ -64,13 +64,13 @@
     },
     "mp-alipay" : {
         "darkmode" : true,
-        "themeLocation" : "theme.json",
+        // "themeLocation" : "theme.json",
         "usingComponents" : true,
         "styleIsolation" : "shared"
     },
     "h5" : {
-        "darkmode" : true,
-        "themeLocation" : "theme.json",
+        // "darkmode" : true,
+        // "themeLocation" : "theme.json",
         "optimization" : {
             "treeShaking" : {
                 "enable" : true

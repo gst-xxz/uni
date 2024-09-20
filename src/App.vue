@@ -1,28 +1,7 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide, onThemeChange } from '@dcloudio/uni-app'
-import { useDark } from './store'
-const darkMode = useDark()
-
-onThemeChange((option) => {
-  darkMode.setDark(option.theme === 'dark')
-})
+import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 
 onLaunch((ctx) => {
-  const systemInfo = uni.getSystemInfoSync()
-  darkMode.setDark(systemInfo.theme === 'dark')
-
-  // #ifdef H5
-
-  window.addEventListener('message', function (event) {
-    if (event.source !== parent) return
-    // 处理收到的消息
-    if (typeof event.data === 'boolean') {
-      darkMode.setDark(event.data)
-    } else {
-      darkMode.setDark(false)
-    }
-  })
-  // #endif
   console.log('App Launch')
 })
 onShow(() => {
@@ -44,7 +23,9 @@ page {
   font-family: San Francisco, Rotobo, arial, PingFang SC, Noto SansCJK, Microsoft Yahei, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 13px;
-  background: #f8f9fa;
+}
+
+uni-page-body {
+  height: 100%;
 }
 </style>

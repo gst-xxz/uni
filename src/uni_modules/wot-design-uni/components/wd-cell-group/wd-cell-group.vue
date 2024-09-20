@@ -1,6 +1,6 @@
 <template>
   <view :class="['wd-cell-group', border ? 'is-border' : '', customClass]" :style="customStyle">
-    <view v-if="title || value || useSlot" class="wd-cell-group__title">
+    <view v-if="title || value || useSlot" class="wd-cell-group__title relative flex justify-between font-medium">
       <!--左侧标题-->
       <view class="wd-cell-group__left">
         <text v-if="title">{{ title }}</text>

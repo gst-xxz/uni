@@ -3,11 +3,17 @@ import App from './App.vue'
 // #ifdef H5
 import '@vant/touch-emulator'
 // #endif
-import '@/uni_modules/pro-core/css/index.css'
-import '@/output.css'
+import '@/lib/global.output.css'
+
+import { addGlobalProperties } from '@/lib/addGlobalProperties'
+import globalMixins from '@/lib/global.mixins'
 
 export function createApp() {
   const app = createSSRApp(App)
+
+  addGlobalProperties(app)
+  app.mixin(globalMixins)
+
   return {
     app
   }

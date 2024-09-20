@@ -117,8 +117,6 @@ $-action-sheet-panel-img-radius: var(--wot-action-sheet-panel-img-radius, 4px) !
 $-badge-bg: var(--wot-badge-bg, $-color-danger) !default; // 背景填充颜色
 $-badge-color: var(--wot-badge-color, #fff) !default; // 文字颜色
 $-badge-fs: var(--wot-badge-fs, 12px) !default; // 文字字号
-$-badge-padding: var(--wot-badge-padding, 0 5px) !default; // padding
-$-badge-height: var(--wot-badge-height, 16px) !default; // 高度
 $-badge-primary: var(--wot-badge-primary, $-color-theme) !default;
 $-badge-success: var(--wot-badge-success, $-color-success) !default;
 $-badge-warning: var(--wot-badge-warning, $-color-warning) !default;

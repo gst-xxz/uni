@@ -2,11 +2,9 @@
 node_modules/
 unpackage/
 dist/
-lib/
 website/
 .temp
 .cache
-/docs/.vitepress/cache
 
 # local env files
 .env.local

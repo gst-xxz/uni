@@ -35,9 +35,6 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
-    "docs:serve": "vitepress serve docs",
-    "dev:docs": "vitepress dev docs --port 5174",
-    "build:docs": "npm run build:h5 && vitepress build docs && node build/demoCopy.js",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "lint": "eslint --fix --ext .js,.vue,.ts src",
@@ -47,7 +44,7 @@
     "upload:mp-weixin": "uni build -p mp-weixin && minici --platform weixin",
     "upload:mp-alipay": "uni build -p mp-alipay && minici --platform alipay",
     "upload:mp-dingtalk": "uni build -p mp-dingtalk && minici --platform dd",
-    "build:css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+    "build:css": "npx tailwindcss -i ./src/lib/global.css -o ./src/lib/global.output.css --watch"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-3090920231225001",
@@ -64,9 +61,8 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-3090920231225001",
     "@dcloudio/uni-mp-xhs": "3.0.0-3090920231225001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090920231225001",
-    "element-plus": "^2.3.9",
+    "classnames": "^2.5.1",
     "vite-plugin-compression": "^0.5.1",
-    "vitepress": "^1.0.1",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2"
   },

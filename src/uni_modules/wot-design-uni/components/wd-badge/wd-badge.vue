@@ -1,11 +1,7 @@
 <template>
-  <view :class="['wd-badge', customClass]" :style="customStyle">
+  <view :class="['wd-badge relative align-middle inline-block', customClass]" :style="customStyle">
     <slot></slot>
-    <view
-      v-if="isBadgeShow"
-      :class="['wd-badge__content', 'is-fixed', type ? 'wd-badge__content--' + type : '', isDot ? 'is-dot' : '']"
-      :style="contentStyle"
-    >
+    <view v-if="isBadgeShow" :class="contentClass" :style="contentStyle">
       {{ content }}
     </view>
   </view>
@@ -23,6 +19,7 @@ export default {
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { badgeProps } from './types'
+import classNames from 'classnames'
 
 const props = defineProps(badgeProps)
 const content = ref<number | string | null>(null)
@@ -57,6 +54,17 @@ function notice() {
   }
   content.value = value
 }
+
+const contentClass = computed(() => {
+  return classNames(
+    'wd-badge__content inline-block leading-[1] text-center font-medium rounded-full h-4 px-[5px] py-0 text-white',
+    'absolute translate-x-1/2 -translate-y-1/2',
+    props.type ? 'wd-badge__content--' + props.type : '',
+    {
+      '!w-2.5 !h-2.5 !p-0 !rounded-full': props.isDot
+    }
+  )
+})
 </script>
 
 <style lang="scss" scoped>

@@ -29,7 +29,7 @@ const isImage = computed(() => {
 
 const rootClass = computed(() => {
   const prefix = props.classPrefix
-  return `${prefix} ${props.customClass} ${isImage.value ? 'wd-icon--image' : prefix + '-' + props.name}`
+  return `${prefix} ${props.customClass} ${isImage.value ? '' : prefix + '-' + props.name}`
 })
 
 const rootStyle = computed(() => {

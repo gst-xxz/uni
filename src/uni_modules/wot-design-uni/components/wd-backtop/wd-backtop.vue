@@ -1,9 +1,10 @@
 <template>
   <wd-transition :show="show" name="fade">
-    <view :class="`wd-backtop ${customClass} is-${shape}`"
+    <view
+      :class="[`wd-backtop ${customClass} w-10 h-10 flex justify-center items-center fixed`, { 'rounded-full': shape === 'circle', 'rounded': shape === 'square' }]"
       :style="`z-index: ${zIndex}; bottom: ${bottom}px; right: ${right}px; ${customStyle}`" @click="handleBacktop">
       <slot v-if="$slots.default"></slot>
-      <wd-icon v-else custom-class="wd-backtop__backicon" name="arrow-up" :custom-style="iconStyle" />
+      <wd-icon v-else custom-class="text-xl" name="arrow-up" :custom-style="iconStyle" />
     </view>
   </wd-transition>
 </template>

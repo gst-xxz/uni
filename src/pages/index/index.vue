@@ -36,7 +36,12 @@ const list = ref([
       {
         id: 'pro-list',
         name: 'ProList 列表'
-      },]
+      },
+      {
+        id: 'pro-form',
+        name: 'ProForm 表单'
+      }
+    ]
   },
   {
     id: 'widget',
