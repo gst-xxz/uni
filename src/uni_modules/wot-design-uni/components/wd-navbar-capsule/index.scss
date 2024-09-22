@@ -1,21 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(navbar-capsule) {
-    &::before {
-      border: 2rpx solid $-dark-border-color;
-    }
-
-    &::after {
-      background: $-dark-border-color;
-    }
-
-    :deep(.wd-navbar-capsule__icon) {
-      color: $-dark-color;
-    }
-  }
-}
 
 
 @include b(navbar-capsule) {

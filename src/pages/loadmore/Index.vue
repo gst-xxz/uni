@@ -39,15 +39,6 @@ function loadmore() {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .list-item {
-    background: $-dark-background2;
-    color: $-dark-color;
-  }
-  .list-item:after {
-    background: $-dark-border-color;
-  }
-}
 
 .list-item {
   position: relative;

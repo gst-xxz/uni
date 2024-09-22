@@ -40,7 +40,8 @@
       </demo-block>
       <demo-block title="异步打开/关闭" transparent>
         <wd-drop-menu>
-          <wd-drop-menu-item v-model="value10" :options="option1" @change="handleChange1" :before-toggle="handleBeforeToggle" />
+          <wd-drop-menu-item v-model="value10" :options="option1" @change="handleChange1"
+            :before-toggle="handleBeforeToggle" />
         </wd-drop-menu>
       </demo-block>
       <demo-block title="向上弹出" transparent>
@@ -146,11 +147,6 @@ const handleBeforeToggle: DropMenuItemBeforeToggle = ({ status, resolve }) => {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .custom-menu {
-    background: $-dark-background2;
-  }
-}
 .demo-body {
   height: 100vh;
 }

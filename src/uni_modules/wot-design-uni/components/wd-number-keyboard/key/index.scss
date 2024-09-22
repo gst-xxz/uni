@@ -1,21 +1,6 @@
 @import "./../../common/abstracts/_mixin.scss";
 @import "./../../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(key) {
-    background: $-dark-background2;
-    color: $-dark-color;
-
-    &:active {
-      background-color: $-dark-background4;
-    }
-
-    @include m(active) {
-      background-color: $-dark-background4;
-    }
-
-  }
-}
 
 .wd-key-wrapper {
   position: relative;

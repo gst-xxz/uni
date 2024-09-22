@@ -7,6 +7,10 @@ module.exports = {
       colors: {
         // 主题色
         primary: 'hsl(var(--primary))',
+        success: 'hsl(var(--success))',
+        warning: 'hsl(var(--warning))',
+        danger: 'hsl(var(--danger))',
+
         // 遮罩层背景色
         'overlay-bg': 'hsla(var(--overlay-bg))'
       }

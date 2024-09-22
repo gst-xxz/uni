@@ -92,11 +92,8 @@
         </demo-block>
         <demo-block title="自定义样式" transparent>
           <wd-grid>
-            <wd-grid-item
-              custom-class="custom-item"
-              icon="search"
-              text="京东JD.COM-专业的综合网上购物商城，销售超数万品牌、4020万种商品，囊括家电、手机、电脑、母婴、服装等13大品类。"
-            />
+            <wd-grid-item custom-class="custom-item" icon="search"
+              text="京东JD.COM-专业的综合网上购物商城，销售超数万品牌、4020万种商品，囊括家电、手机、电脑、母婴、服装等13大品类。" />
             <wd-grid-item custom-class="custom-item" icon="setting" text="秉承客户为先的理念，京东所售商品为正品行货、全国联保、机打发票。" />
           </wd-grid>
         </demo-block>
@@ -126,8 +123,10 @@
         </demo-block>
         <demo-block title="页面导航" transparent>
           <wd-grid clickable>
-            <wd-grid-item link-type="redirectTo" url="/pages/button/Index" @itemclick="click" icon="edit-outline" text="Redirect to ..." />
-            <wd-grid-item link-type="navigateTo" url="/pages/button/Index" @itemclick="click" icon="edit-outline" text="Navigate to ..." />
+            <wd-grid-item link-type="redirectTo" url="/pages/button/Index" @itemclick="click" icon="edit-outline"
+              text="Redirect to ..." />
+            <wd-grid-item link-type="navigateTo" url="/pages/button/Index" @itemclick="click" icon="edit-outline"
+              text="Navigate to ..." />
           </wd-grid>
         </demo-block>
         <demo-block title="提示信息" transparent>
@@ -153,15 +152,6 @@ function click() {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .grid {
-    :deep(.custom-item) {
-      color: #e2231a;
-      background: $-dark-background2;
-    }
-  }
-}
-
 :deep(.custom-item) {
   height: 80px !important;
   color: #e2231a;
@@ -169,6 +159,7 @@ function click() {
   padding: 0 10px;
   background: #fff;
 }
+
 .img {
   width: 100%;
   height: 90px;
@@ -176,11 +167,13 @@ function click() {
   background-size: cover;
   vertical-align: middle;
 }
+
 .slot-img {
   height: 36px;
   width: 36px;
   border-radius: 4px;
 }
+
 .text {
   color: #ffb300;
   margin-top: 8px;

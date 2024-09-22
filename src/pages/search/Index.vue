@@ -94,20 +94,6 @@ function changeSearchType({ item, index }: any) {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .search-type {
-    color: #f5f5f5;
-  }
-
-  .search-type::after {
-    color: #f5f5f5;
-  }
-
-  .search-type .icon-arrow {
-    color: #f5f5f5;
-  }
-}
-
 .search-type {
   position: relative;
   height: 30px;
@@ -115,6 +101,7 @@ function changeSearchType({ item, index }: any) {
   padding: 0 8px 0 16px;
   color: rgba(0, 0, 0, 0.45);
 }
+
 .search-type::after {
   position: absolute;
   content: '';
@@ -125,6 +112,7 @@ function changeSearchType({ item, index }: any) {
   background: rgba(0, 0, 0, 0.25);
   transform: scaleX(0.5);
 }
+
 .search-type .icon-arrow {
   margin-left: 4px;
   display: inline-block;
@@ -132,6 +120,7 @@ function changeSearchType({ item, index }: any) {
   vertical-align: middle;
   color: rgba(0, 0, 0, 0.65);
 }
+
 .overflowauto {
   overflow: normal;
 }

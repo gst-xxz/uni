@@ -163,14 +163,6 @@ function handleConfirm({ value }: any) {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .default-slot {
-    background: $-dark-background2;
-  }
-  .default-slot-txt {
-    color: $-dark-color3;
-  }
-}
 .default-slot {
   background: #fff;
   padding: 15px;

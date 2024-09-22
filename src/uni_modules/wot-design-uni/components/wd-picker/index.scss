@@ -2,67 +2,6 @@
 @import "./../common/abstracts/variable.scss";
 
 
-.wot-theme-dark {
-  @include b(picker) {
-    @include when(border) {
-      .wd-picker__cell {
-        @include halfPixelBorder('top', $-cell-padding, $-dark-border-color);
-      }
-    }
-
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    @include e(label) {
-      color: $-dark-color;
-    }
-    @include e(value) {
-      color: $-dark-color;
-    }
-
-    @include e(placeholder) {
-      color: $-dark-color-gray;
-    }
-
-    :deep(.wd-picker__arrow){
-      color: $-dark-color;
-    }
-
-    @include e(cell) {
-      background-color: $-dark-background2;
-      color: $-dark-color;
-      @include when(disabled) {
-        .wd-picker__value {
-          color: $-dark-color3;
-        }
-        .wd-picker__placeholder {
-          color: $-dark-color-gray;
-        }
-      }
-    }
-
-    @include when(disabled) {
-      .wd-picker__value {
-        color: $-dark-color3;
-      }
-
-      .wd-picker__placeholder {
-        color: $-dark-color-gray;
-      }
-    }
-
-    @include e(action) {
-      @include m(cancel) {
-        color: $-dark-color;
-      }
-      @include when(loading) {
-        color: $-dark-color3;
-      }
-    }
-  }
-}
-
 
 @include b(picker) {
   @include edeep(popup) {

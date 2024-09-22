@@ -1,35 +1,6 @@
 @import "../common/abstracts/variable";
 @import "../common/abstracts/mixin";
 
-.wot-theme-dark {
-  @include b(password-input) {
-    @include e(item) {
-      color: $-dark-color;
-      background: $-dark-background2;
-
-      @include when(border) {
-        border-color: $-dark-border-color;
-      }
-    }
-
-    @include e(mask) {
-      background-color: $-dark-color;
-    }
-
-    @include e(cursor) {
-      background-color: $-dark-color;
-    }
-
-    @include e(info) {
-      color: $-dark-color;
-
-      @include when(border) {
-        color: $-dark-color2;
-      }
-    }
-  }
-}
-
 @include b(password-input) {
   position: relative;
   margin: 0 $-password-input-margin;

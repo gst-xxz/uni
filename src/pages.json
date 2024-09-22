@@ -827,24 +827,14 @@
       }
     }
   ],
-  // "tabBar": {
-  //   "color": "#7a7e83",
-  //   "selectedColor": "#1C64FD",
-  //   "backgroundColor": "#ffffff",
-  //   "list": [ ]
-  // },
   "globalStyle": {
-    "navigationBarBackgroundColor": "@navBgColor",
-    "navigationBarTextStyle": "@navTxtStyle",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Wot Design Uni",
-    "backgroundColor": "@bgColor",
-    "backgroundTextStyle": "@bgTxtStyle",
-    "backgroundColorTop": "@bgColorTop",
-    "backgroundColorBottom": "@bgColorBottom",
+    "backgroundColor": "#F8F8F8",
+    "backgroundTextStyle": "light",
+    "backgroundColorTop": "#f8f9fa",
+    "backgroundColorBottom": "#f8f9fa",
     "navigationStyle": "default"
-
-    // "navigationBarTextStyle": "black",
-    // "navigationBarBackgroundColor": "#FFF",
-    // "backgroundColor": "#F8F8F8"
   }
 }

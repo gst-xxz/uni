@@ -1,31 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(input-number) {
-    @include e(action) {
-      color: $-dark-color;
-      @include when(disabled) {
-        color: $-dark-color-gray;
-      }
-    }
-
-    @include e(input) {
-      color: $-dark-color;
-    }
-
-    @include when(disabled) {
-      .wd-input-number__input {
-        color: $-dark-color-gray;
-      }
-      .wd-input-number__sub,
-      .wd-input-number__add {
-        color: $-dark-color-gray;
-      }
-    }
-  }
-}
-
 @include b(input-number) {
   display: inline-block;
   user-select: none;

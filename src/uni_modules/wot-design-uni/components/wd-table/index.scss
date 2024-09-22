@@ -1,36 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(table) {
-    background: $-dark-background;
-
-    @include when(border) {
-      border: 1px solid $-dark-border-color;
-    }
-
-    @include e(cell) {
-      color: $-dark-color;
-      background: $-dark-background2;
-
-      @include when(stripe) {
-        background: $-dark-background4;
-      }
-
-      @include when(border) {
-        border-right: 1px solid $-dark-border-color;
-        border-bottom: 1px solid $-dark-border-color;
-      }
-
-      @include when(shadow) {
-        &::after {
-          background: linear-gradient(270deg, rgba(17, 17, 17, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
-        }
-      }
-    }
-  }
-}
-
 
 
 @include b(table) {

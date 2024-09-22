@@ -3,17 +3,6 @@
 
 @import '../wd-table/index';
 
-.wot-theme-dark {
-  @include b(table-col) {
-    @include when(shadow) {
-      &::after {
-        background: linear-gradient(270deg, rgba(17, 17, 17, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
-      }
-    }
-  }
-}
-
-
 @include b(table-col) {
   .wd-table__cell {
     width: 100%;

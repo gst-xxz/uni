@@ -1,15 +1,6 @@
 @import './../common/abstracts/_mixin.scss';
 @import './../common/abstracts/variable.scss';
 
-.wot-theme-dark {
-  @include b(popup) {
-    background: $-dark-background2;
-
-    @include e(close) {
-      color: $-dark-color;
-    }
-  }
-}
 
 @include b(popup) {
   position: fixed;

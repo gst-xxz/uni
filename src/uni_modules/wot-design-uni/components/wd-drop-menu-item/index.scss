@@ -1,15 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(drop-item) {
-    color: $-dark-color;
-
-    @include e(tip) {
-      color: $-dark-color3;
-    }
-  }
-}
 
 @include b(drop-item) {
   position: fixed;

@@ -60,19 +60,6 @@ function handleClick(icon: string) {
 <style lang="scss" scoped>
 $-light-color: #999;
 
-.wot-theme-dark {
-  .icon-list {
-    background: $-dark-background2;
-
-    :deep(.icon-item-class) {
-      color: $-dark-color;
-    }
-  }
-
-  .icon-item-name {
-    color: $-dark-color3;
-  }
-}
 
 .icon {
   position: relative;

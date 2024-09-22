@@ -85,11 +85,7 @@ function handleResize(detail: Record<string, string | number>) {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .tip-item {
-    color: $-dark-color;
-  }
-}
+
 .tip-item {
   margin-top: 15px;
   color: rgba(0, 0, 0, 0.45);

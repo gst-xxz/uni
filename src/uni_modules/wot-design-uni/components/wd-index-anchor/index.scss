@@ -1,12 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(index-anchor) {
-    background-color: $-color-gray-8;
-    color: $-color-white;
-  }
-}
 
 // #ifdef MP-DINGTALK
 @include b(index-anchor-ding) {

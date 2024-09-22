@@ -1,25 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(slider) {
-    @include e(label-min, label-max) {
-      color: $-dark-color;
-    }
-
-    @include e(label) {
-      color: $-dark-color;
-      background-color: rgba($color: $-dark-background2, $alpha: 0.5);
-    }
-
-    @include m(disabled) {
-      @include me(label-min, label-max) {
-        color: $-dark-color-gray;
-      }
-    }
-  }
-}
-
 
 @include b(slider) {
   display: flex;

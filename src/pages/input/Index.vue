@@ -106,11 +106,7 @@ function handleInput(event: any) {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .custom-txt {
-    color: $-dark-color;
-  }
-}
+
 .custom-txt {
   display: inline-block;
   vertical-align: middle;

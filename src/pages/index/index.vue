@@ -3,7 +3,7 @@
     <view class="page">
       <view class="page__bd">
         <block v-for="(item, index) in list" :key="index">
-          <view class="kind-list__item">
+          <view class="kind-list__item  !bg-slate-300">
             <view :id="item.id" class="wd-flex kind-list__item-hd" @click="kindToggle(item.id)">
               <view class="wd-flex__item title">{{ item.name }}</view>
               <image class="kind-list__img" :src="item.icon"></image>
@@ -401,26 +401,6 @@ function kindToggle(id: string) {
 </script>
 
 <style lang="scss" scoped>
-.wot-theme-dark {
-
-  .page__hd,
-  .kind-list__item {
-    background: $-dark-background2;
-  }
-
-  .title {
-    color: $-dark-color;
-  }
-
-  :deep(.wd-cell__label) {
-    color: $-dark-color3 !important;
-  }
-
-  .kind-list__img {
-    filter: invert(100%);
-  }
-}
-
 .page__hd {
   padding: 40px 40px 30px;
   margin-bottom: 30px;

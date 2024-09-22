@@ -49,15 +49,6 @@ function handleCancel(event: any) {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  :deep(.profile-img) {
-    border: 1px solid $-dark-border-color;
-  }
-
-  .img {
-    background-color: $-dark-background4;
-  }
-}
 
 .profile {
   display: flex;

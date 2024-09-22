@@ -1,12 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(tabbar) {
-    background: $-dark-background;
-  }
-}
-
 @include b(tabbar) {
   display: flex;
   align-items: center;

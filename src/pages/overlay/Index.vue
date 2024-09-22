@@ -26,9 +26,6 @@ const show = ref<boolean>(false)
 const show1 = ref<boolean>(false)
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-}
-
 .wrapper {
   display: flex;
   align-items: center;

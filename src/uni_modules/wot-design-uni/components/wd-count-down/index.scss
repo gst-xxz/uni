@@ -1,11 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(count-down) {
-    color: $-dark-color;
-  }
-}
 
 
 @include b(count-down) {

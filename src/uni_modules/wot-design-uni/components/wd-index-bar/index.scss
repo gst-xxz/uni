@@ -1,13 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(index-bar) {
-    @include e(index) {
-      color: $-color-white;
-    }
-  }
-}
 
 @include b(index-bar) {
   position: relative;

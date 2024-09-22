@@ -1,27 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(picker-view) {
-    @include e(columns) {
-      background: $-dark-background2;
-    }
-
-    :deep(.wd-picker-view__roller) {
-      background: $-dark-background4;
-    }
-  }
-
-  @include b(picker-view-column) {
-    color: $-dark-color;
-
-    @include e(item) {
-      @include m(disabled) {
-        color: $-dark-color-gray;
-      }
-    }
-  }
-}
 
 
 @include b(picker-view) {

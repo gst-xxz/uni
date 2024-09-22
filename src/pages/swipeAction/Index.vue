@@ -129,17 +129,13 @@ function handleAction(action: string) {
   toast.show(`点击了${action}`)
 }
 
-function noop() {}
+function noop() { }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .button-group {
-    background: $-dark-background2;
-  }
-}
 .action {
   height: 100%;
 }
+
 .button {
   display: inline-block;
   padding: 0 15px;
@@ -147,6 +143,7 @@ function noop() {}
   color: white;
   line-height: 46px;
 }
+
 .button-group {
   padding: 10px;
   background: white;

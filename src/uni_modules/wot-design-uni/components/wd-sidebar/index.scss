@@ -1,14 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(sidebar) {
-    background: $-dark-background;
-    @include e(padding){
-      background: $-dark-background2;
-    }
-  }
-}
 
 @include b(sidebar) {
   display: flex;

@@ -1,26 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(navbar) {
-    background-color: $-dark-background;
-
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    @include e(text) {
-      color: $-dark-color;
-      @include m(hover){
-        background-color: $-dark-background3;
-      }
-    }
-
-    :deep(.wd-navbar__arrow) {
-      color: $-dark-color;
-    }
-  }
-}
 
 
 @include b(navbar) {

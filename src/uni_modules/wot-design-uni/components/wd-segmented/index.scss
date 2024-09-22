@@ -1,36 +1,6 @@
 @import './../common/abstracts/_mixin.scss';
 @import './../common/abstracts/variable.scss';
 
-.wot-theme-dark {
-  @include b(segmented) {
-    background: $-dark-background2;
-
-    @include e(item) {
-      color: $-dark-color3;
-
-      @include when(active) {
-        color: $-dark-color;
-
-        @include when(disabled) {
-          color: $-dark-color3;
-        }
-      }
-
-      @include when(disabled) {
-        color: $-dark-color-gray;
-      }
-
-      @include m(active) {
-        background-color: $-color-theme;
-
-        @include when(disabled) {
-          opacity: 0.6;
-        }
-      }
-    }
-
-  }
-}
 
 @include b(segmented) {
   position: relative;

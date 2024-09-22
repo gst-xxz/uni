@@ -73,11 +73,6 @@ onShow(() => {
 })
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .custom-container {
-    background: $-dark-background2;
-  }
-}
 
 .demo-block {
   padding: 15px 0;

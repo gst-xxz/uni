@@ -1,14 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(sort-button) {
-    @include e(wrapper) {
-      color: $-dark-color;
-    }
-  }
-
-}
 
 @include b(sort-button) {
   display: inline-block;

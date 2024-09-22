@@ -1,7 +1,12 @@
 <template>
   <button :id="buttonId" :hover-class="`${disabled || loading ? '' : 'wd-button--active'}`" :style="customStyle" :class="[
     'wd-button',
-    'is-' + type,
+    'overflow-hidden inline-flex relative justify-center items-center outline-none box-border border-none font-normal',
+    // 'is-' + type,
+    type === 'primary' ? 'bg-primary text-white' : '',
+    type === 'success' ? 'bg-success text-white' : '',
+    type === 'warning' ? 'bg-warning text-white' : '',
+    type === 'error' ? 'bg-danger text-white' : '',
     'is-' + size,
     plain ? 'is-plain' : '',
     disabled ? 'is-disabled' : '',

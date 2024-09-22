@@ -1,25 +1,6 @@
 @import '../../common/abstracts/variable';
 @import '../../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(month-panel) {
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    @include e(weeks) {
-      box-shadow: 0px 4px 8px 0 rgba(255, 255, 255, 0.02);
-      color: $-dark-color;
-    }
-
-    @include e(time-label) {
-      color: $-dark-color;
-      &::after{
-        background: $-dark-background4;
-      }
-    }
-  }
-}
 
 @include b(month-panel) {
   font-size: $-calendar-fs;

@@ -1,50 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(calendar) {
-    @include e(cell) {
-      background-color: $-dark-background2;
-      color: $-dark-color;
-    }
-    
-    @include e(label) {
-      color: $-dark-color;
-    }
-
-    @include e(value) {
-      color: $-dark-color;
-    }
-
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    :deep(.wd-calendar__arrow),
-    :deep(.wd-calendar__close) {
-      color: $-dark-color;
-    }
-
-
-    @include when(border) {
-      .wd-calendar__cell {
-        @include halfPixelBorder('top', $-cell-padding, $-dark-border-color);
-      }
-    }
-
-    @include e(range-label-item) {
-      color: $-dark-color;
-
-      @include when(placeholder) {
-        color: $-dark-color-gray;
-      }
-    }
-
-    @include e(range-sperator) {
-      color: $-dark-color-gray;
-    }
-  }
-}
 
 @include b(calendar) {
   @include when(border) {

@@ -1,15 +1,6 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
-.wot-theme-dark {
-  @include b(number-keyboard) {
-    background: $-dark-background5;
-
-    @include e(header){
-      color: $-dark-color;
-    }
-  }
-}
 
 @include b(number-keyboard) {
   width: 100%;

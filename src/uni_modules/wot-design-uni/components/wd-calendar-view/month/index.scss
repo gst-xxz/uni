@@ -1,26 +1,6 @@
 @import '../../common/abstracts/variable';
 @import '../../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(month) {
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    @include e(days) {
-      color: $-dark-color;
-    }
-
-    @include e(day) {
-      @include when(disabled) {
-        .wd-month__day-text {
-          color: $-dark-color-gray;
-        }
-      }
-    }
-  }
-}
-
 @include b(month) {
   @include e(title) {
     display: flex;

@@ -1,43 +1,6 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
-.wot-theme-dark {
-  @include b(select-picker) {
-    @include when(border) {
-      .wd-select-picker__cell {
-        @include halfPixelBorder('top', $-cell-padding, $-dark-border-color);
-      }
-    }
-
-    @include e(cell) {
-      background-color: $-dark-background2;
-      color: $-dark-color;
-      @include when(disabled) {
-        .wd-select-picker__value {
-          color: $-dark-color3;
-        }
-      }
-    }
-
-    @include e(label) {
-      color: $-dark-color;
-    }
-    @include e(value) {
-      color: $-dark-color;
-      @include m(placeholder) {
-        color: $-dark-color-gray;
-      }
-    }
-
-    :deep(.wd-select-picker__arrow),
-    :deep(.wd-select-picker__close) {
-      color: $-dark-color;
-    }
-
-  }
-
-}
-
 @include b(select-picker) {
   @include when(border) {
     .wd-select-picker__cell {

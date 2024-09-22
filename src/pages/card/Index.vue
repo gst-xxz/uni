@@ -78,20 +78,6 @@
 </template>
 <script lang="ts" setup></script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .title-tip {
-    color: rgba(232, 230, 227, 0.8);
-  }
-
-  .custom-main {
-    color: $-dark-color;
-  }
-
-  .custom-sub {
-    color: $-dark-color-gray;
-  }
-}
-
 .content,
 .title {
   display: flex;

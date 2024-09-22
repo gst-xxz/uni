@@ -1,61 +1,10 @@
 @import './../common/abstracts/_mixin.scss';
 @import './../common/abstracts/variable.scss';
 
-
-.wot-theme-dark {
-  @include b(button) {
-    @include when(info) {
-      background: $-dark-background4;
-      color: $-dark-color3;
-    }
-
-    @include when(plain) {
-      background: transparent;
-
-      @include when(info) {
-        color: $-dark-color;
-
-        &::after {
-          border-color: $-dark-background5;
-        }
-      }
-    }
-
-    @include when(text) {
-      @include when(disabled) {
-        color: $-dark-color-gray;
-        background: transparent;
-      }
-    }
-
-    @include when(icon) {
-      color: $-dark-color;
-
-      @include when(disabled) {
-        color: $-dark-color-gray;
-        background: transparent;
-      }
-
-    }
-  }
-}
-
 @include b(button) {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
   -webkit-appearance: none;
-  outline: none;
-  background: transparent;
-  box-sizing: border-box;
-  border: none;
-  color: $-button-normal-color;
   transition: opacity 0.2s;
   user-select: none;
-  font-weight: normal;
-
 
   &::before {
     position: absolute;

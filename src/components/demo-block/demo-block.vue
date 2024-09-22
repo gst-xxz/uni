@@ -49,16 +49,6 @@ function setStyle() {
 }
 </script>
 <style lang="scss" scoped>
-.wot-theme-dark {
-  .is-white {
-    background: $-dark-background2;
-  }
-
-  .demo-block {
-    color: $-dark-color3;
-  }
-}
-
 .demo-block {
   position: relative;
   color: #666;
