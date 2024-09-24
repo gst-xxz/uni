@@ -1,26 +1,29 @@
 <template>
-  <view :class="['wd-loadmore', customClass]" :style="customStyle" @click="reload">
-    <wd-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</wd-divider>
+  <view :class="['pro-loadmore w-full text-center h-12 leading-[48px] text-black/45', customClass]" :style="customStyle"
+    @click="reload">
+    <pro-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</pro-divider>
     <block v-if="state === 'error'">
       <block v-if="errorText">
         {{ errorText }}
       </block>
       <block v-else>
-        <text class="wd-loadmore__text">{{ translate('error') }}</text>
-        <text class="wd-loadmore__text is-light">{{ translate('retry') }}</text>
-        <wd-icon name="refresh" custom-class="wd-loadmore__refresh" />
+        <text class="inline-block align-middle text-sm">{{ translate('error') }}</text>
+        <text class="inline-block align-middle text-sm text-primary mx-0 mt-1.5">{{
+          translate('retry')
+          }}</text>
+        <pro-icon name="refresh" custom-class="inline-block align-middle text-primary text-base" />
       </block>
     </block>
     <block v-if="state === 'loading'">
-      <wd-loading custom-class="wd-loadmore__loading" />
-      <text class="wd-loadmore__text">{{ loadingText || translate('loading') }}</text>
+      <pro-loading custom-class="inline-block align-middle mr-2 h-4 w-4" />
+      <text class="inline-block align-middle text-sm">{{ loadingText || translate('loading') }}</text>
     </block>
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-loadmore',
+  name: 'pro-loadmore',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -30,8 +33,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdLoading from '../wd-loading/wd-loading.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'
@@ -49,7 +51,3 @@ function reload() {
   emit('reload')
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

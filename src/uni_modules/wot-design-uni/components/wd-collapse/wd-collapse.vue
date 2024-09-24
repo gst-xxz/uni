@@ -6,10 +6,8 @@
     </block>
     <!-- 查看更多模式 -->
     <view v-else>
-      <view
-        :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
-        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`"
-      >
+      <view :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
+        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`">
         <slot></slot>
       </view>
       <view class="wd-collapse__more" @click="handleMore">
@@ -21,7 +19,7 @@
         <block v-else>
           <span class="wd-collapse__more-txt">{{ !modelValue ? translate('expand') : translate('retract') }}</span>
           <view :class="`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`">
-            <wd-icon name="arrow-down"></wd-icon>
+            <pro-icon name="arrow-down"></pro-icon>
           </view>
         </block>
       </view>
@@ -41,7 +39,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { onBeforeMount, ref, watch } from 'vue'
 import { COLLAPSE_KEY, collapseProps, type CollapseExpose, type CollapseToggleAllOptions } from './types'
 import { useChildren } from '../composables/useChildren'

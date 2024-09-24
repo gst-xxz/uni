@@ -1,5 +1,5 @@
 <template>
-  <view :class="`relative inline-block text-center ${customClass}`" :style="customStyle">
+  <view class="pro-circle relative inline-block text-center" :class="customClass" :style="customStyle">
     <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
     <!-- #endif -->
@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-circle',
+  name: 'pro-circle',
   options: {
     addGlobalClass: true,
     virtualHost: true,

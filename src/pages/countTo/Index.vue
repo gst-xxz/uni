@@ -1,24 +1,17 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法">
-      <wd-count-to :endVal="endVal" suffix="年" color="#16baaa"></wd-count-to>
-      <wd-count-to prefix="￥" :decimals="2" :endVal="186.321" :fontSize="32" suffix="%" color="#1e9fff"></wd-count-to>
-      <wd-count-to prefix="￥" :decimals="2" :endVal="21286.321" :fontSize="32" suffix="%" color="#ff5722"></wd-count-to>
-      <wd-count-to prefix="￥" :decimals="2" :endVal="21286.321" :fontSize="32" suffix="%" color="#ffb800" :duration="2000"></wd-count-to>
+      <pro-count-to :endVal="endVal" suffix="年" color="#16baaa"></pro-count-to>
+      <pro-count-to prefix="￥" :decimals="2" :endVal="186.321" :fontSize="32" suffix="%" color="#1e9fff"></pro-count-to>
+      <pro-count-to prefix="￥" :decimals="2" :endVal="21286.321" :fontSize="32" suffix="%"
+        color="#ff5722"></pro-count-to>
+      <pro-count-to prefix="￥" :decimals="2" :endVal="21286.321" :fontSize="32" suffix="%" color="#ffb800"
+        :duration="2000"></pro-count-to>
     </demo-block>
 
     <demo-block title="手动控制">
-      <wd-count-to
-        ref="countTo"
-        :auto-start="false"
-        prefix="￥"
-        :startVal="1000"
-        :decimals="3"
-        :endVal="9999.32"
-        :fontSize="32"
-        suffix="%"
-        color="#1e9fff"
-      ></wd-count-to>
+      <pro-count-to ref="countTo" :auto-start="false" prefix="￥" :startVal="1000" :decimals="3" :endVal="9999.32"
+        :fontSize="32" suffix="%" color="#1e9fff"></pro-count-to>
 
       <wd-grid clickable border>
         <wd-grid-item text="开始" icon="play-circle-stroke" @itemclick="start" />
@@ -29,7 +22,7 @@
   </page-wraper>
 </template>
 <script lang="ts" setup>
-import type { CountToInstance } from '@/uni_modules/wot-design-uni/components/wd-count-to/types'
+import type { CountToInstance } from '@/uni_modules/wot-design-uni/components/pro-count-to/types'
 import { ref } from 'vue'
 
 const endVal = ref<number>(2024)

@@ -1,6 +1,6 @@
 <template>
   <view v-if="show" :class="`wd-notice-bar ${customClass} ${noticeBarClass}`" :style="rootStyle">
-    <wd-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></wd-icon>
+    <pro-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></pro-icon>
     <slot v-else name="prefix"></slot>
     <view class="wd-notice-bar__wrap">
       <view class="wd-notice-bar__content" :style="animation" @transitionend="animationEnd" @click="handleClick">
@@ -11,7 +11,7 @@
         <slot v-else>{{ currentText }}</slot>
       </view>
     </view>
-    <wd-icon v-if="closable" custom-class="wd-notice-bar__suffix" name="close-bold" @click="handleClose"></wd-icon>
+    <pro-icon v-if="closable" custom-class="wd-notice-bar__suffix" name="close-bold" @click="handleClose"></pro-icon>
     <slot v-else name="suffix"></slot>
   </view>
 </template>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { ref, watch, nextTick, computed, getCurrentInstance, type CSSProperties } from 'vue'
 import { getRect, isArray, isDef, objToStyle } from '../common/util'
 import { noticeBarProps } from './types'
@@ -190,13 +190,13 @@ function animationEnd() {
 function handleClick() {
   const result = isArray(props.text)
     ? {
-        index: currentIndex.value,
-        text: props.text[currentIndex.value]
-      }
+      index: currentIndex.value,
+      text: props.text[currentIndex.value]
+    }
     : {
-        index: 0,
-        text: props.text
-      }
+      index: 0,
+      text: props.text
+    }
   emit('click', result)
 }
 </script>

@@ -26,7 +26,7 @@
       </wd-cell-group>
     </demo-block>
     <wd-notify selector="visible" type="success" v-model:visible="visible">
-      <wd-icon name="check-outline" size="inherit" color="inherit" />
+      <pro-icon name="check-outline" size="inherit" color="inherit" />
       成功通知
     </wd-notify>
   </page-wraper>

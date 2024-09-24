@@ -1,10 +1,10 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法" transparent>
-      <wd-divider>这是分割线</wd-divider>
+      <pro-divider>这是分割线</pro-divider>
     </demo-block>
     <demo-block title="自定义颜色" transparent>
-      <wd-divider color="#4D80F0">自定义颜色</wd-divider>
+      <pro-divider color="#4D80F0">自定义颜色</pro-divider>
     </demo-block>
   </page-wraper>
 </template>

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-transition',
+  name: 'pro-transition',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -32,10 +32,10 @@ const getClassNames = (name?: string) => {
   }
 
   return {
-    enter: `wd-${name}-enter wd-${name}-enter-active`,
-    'enter-to': `wd-${name}-enter-to wd-${name}-enter-active`,
-    leave: `wd-${name}-leave wd-${name}-leave-active`,
-    'leave-to': `wd-${name}-leave-to wd-${name}-leave-active`
+    enter: `pro-${name}-enter pro-${name}-enter-active`,
+    'enter-to': `pro-${name}-enter-to pro-${name}-enter-active`,
+    leave: `pro-${name}-leave pro-${name}-leave-active`,
+    'leave-to': `pro-${name}-leave-to pro-${name}-leave-active`
   }
 }
 
@@ -64,13 +64,12 @@ const enterLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 const leaveLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 
 const style = computed(() => {
-  return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${
-    display.value ? '' : 'display: none;'
-  }${props.customStyle}`
+  return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${display.value ? '' : 'display: none;'
+    }${props.customStyle}`
 })
 
 const rootClass = computed(() => {
-  return `wd-transition ${props.customClass}  ${classes.value}`
+  return `pro-transition ${props.customClass}  ${classes.value}`
 })
 
 onBeforeMount(() => {
@@ -202,6 +201,6 @@ function onTransitionEnd() {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

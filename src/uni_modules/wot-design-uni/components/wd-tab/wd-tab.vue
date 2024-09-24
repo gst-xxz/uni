@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-tab ${customClass}`" :style="customStyle">
+  <view :class="`wd-tab w-full flex-shrink-0 box-border ${customClass}`" :style="customStyle">
     <view v-if="painted" class="wd-tab__body" :style="isShow ? '' : 'display: none;'">
       <slot />
     </view>
@@ -96,6 +96,3 @@ defineExpose({
   painted
 })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

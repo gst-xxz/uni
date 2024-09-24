@@ -16,7 +16,7 @@
               :class="`wd-col-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-col-picker__value--placeholder'}`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-col-picker__error-message">{{ errorMessage }}</view>
         </view>
@@ -46,10 +46,10 @@
               <view class="wd-col-picker__list-item-label">{{ item[labelKey] }}</view>
               <view v-if="item[tipKey]" class="wd-col-picker__list-item-tip">{{ item[tipKey] }}</view>
             </view>
-            <wd-icon custom-class="wd-col-picker__checked" name="success"></wd-icon>
+            <pro-icon custom-class="wd-col-picker__checked" name="success"></pro-icon>
           </view>
           <view v-if="loading" class="wd-col-picker__loading">
-            <wd-loading :color="loadingColor" />
+            <pro-loading :color="loadingColor" />
           </view>
         </view>
       </view>
@@ -68,8 +68,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdLoading from '../wd-loading/wd-loading.vue'
+
 import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties, reactive, nextTick } from 'vue'
 import { addUnit, debounce, getRect, isArray, isBoolean, isDef, isFunction, objToStyle } from '../common/util'

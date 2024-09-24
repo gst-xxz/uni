@@ -49,7 +49,7 @@
             <view class="title">
               <view>2020-02-03服务到期</view>
               <view class="title-tip">
-                <wd-icon name="warning" size="14px" custom-style="vertical-align: bottom; display: inline-block;" />
+                <pro-icon name="warning" size="14px" custom-style="vertical-align: bottom; display: inline-block;" />
                 您可以去电脑上使用该服务
               </view>
             </view>

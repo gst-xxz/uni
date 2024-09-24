@@ -3,16 +3,16 @@
     :class="`wd-fab fixed z-[99] ${customClass}`" :style="rootStyle" @click.stop="">
     <view @click.stop="" :style="{ visibility: inited ? 'visible' : 'hidden' }" id="trigger">
       <wd-button @click="handleClick" custom-class="wd-fab__trigger" round :type="type" :disabled="disabled">
-        <wd-icon custom-class="wd-fab__icon" :name="isActive ? activeIcon : inactiveIcon"></wd-icon>
+        <pro-icon custom-class="wd-fab__icon" :name="isActive ? activeIcon : inactiveIcon"></pro-icon>
       </wd-button>
     </view>
-    <wd-transition :enter-class="`wd-fab__transition-enter--${fabDirection}`"
+    <pro-transition :enter-class="`wd-fab__transition-enter--${fabDirection}`"
       enter-active-class="wd-fab__transition-enter-active"
       :leave-to-class="`wd-fab__transition-leave-to--${fabDirection}`"
       leave-active-class="wd-fab__transition-leave-active"
       :custom-class="`wd-fab__actions wd-fab__actions--${fabDirection}`" :show="isActive" :duration="300" name="">
       <slot></slot>
-    </wd-transition>
+    </pro-transition>
   </view>
 </template>
 
@@ -29,8 +29,7 @@ export default {
 
 <script lang="ts" setup>
 import wdButton from '../wd-button/wd-button.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 import { type CSSProperties, computed, ref, watch, inject, getCurrentInstance, onBeforeUnmount, onMounted, nextTick } from 'vue'
 import { getRect, isDef, isH5, objToStyle } from '../common/util'
 import { type Queue, queueKey } from '../composables/useQueue'

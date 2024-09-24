@@ -32,7 +32,7 @@
                 {{ showValue ? showValue : placeholder || translate('placeholder') }}
               </view>
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</view>
         </view>

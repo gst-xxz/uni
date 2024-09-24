@@ -1,14 +1,14 @@
 <template>
   <view class="flex flex-col gap-y-2 p-3" :class="customClass">
     <slot name="item" :item="item" v-for="item in data" :key="item[keyField as 'id']" />
-    <wd-loadmore :state="loadMoreState" v-if="showLoadMore" :finished-text="textMap.finished"
+    <pro-loadmore :state="loadMoreState" v-if="showLoadMore" :finished-text="textMap.finished"
       :loading-text="textMap.loading" custom-class="mt-4" />
     <wd-status-tip image="content" :tip="textMap.empty || '暂无数据'" v-if="status === 'noMore' && data.length === 0" />
   </view>
 </template>
 
 <script lang="ts">
-import type { LoadMoreState } from '@/uni_modules/wot-design-uni/components/wd-loadmore/types';
+import type { LoadMoreState } from '@/uni_modules/wot-design-uni/components/pro-loadmore/types';
 
 export default {
   name: 'pro-list',

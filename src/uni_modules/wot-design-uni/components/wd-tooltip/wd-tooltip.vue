@@ -6,16 +6,18 @@
         <view v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</view>
       </view>
     </view>
-    <wd-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip" name="fade" :duration="200">
+    <pro-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip"
+      name="fade" :duration="200">
       <view class="wd-tooltip__container custom-pop">
-        <view v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`" :style="popover.arrowStyle.value"></view>
+        <view v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`"
+          :style="popover.arrowStyle.value"></view>
         <!-- 普通模式 -->
         <view v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</view>
         <!-- 用户自定义样式 -->
         <slot name="content" v-else />
       </view>
-      <wd-icon v-if="showClose" name="close" custom-class="wd-tooltip__close-icon" @click="toggle"></wd-icon>
-    </wd-transition>
+      <pro-icon v-if="showClose" name="close" custom-class="wd-tooltip__close-icon" @click="toggle"></pro-icon>
+    </pro-transition>
     <view @click="toggle" class="wd-tooltip__target" id="target">
       <slot />
     </view>
@@ -34,8 +36,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { usePopover } from '../composables/usePopover'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'

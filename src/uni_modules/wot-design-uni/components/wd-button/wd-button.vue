@@ -24,9 +24,9 @@
     @opensetting="handleOpensetting" @chooseavatar="handleChooseavatar"
     @agreeprivacyauthorization="handleAgreePrivacyAuthorization">
     <view v-if="loading" class="wd-button__loading">
-      <wd-loading :size="loadingSize" custom-class="wd-button__loading-icon" />
+      <pro-loading :size="loadingSize" custom-class="wd-button__loading-icon" />
     </view>
-    <wd-icon v-else-if="icon" custom-class="wd-button__icon" :name="icon" :classPrefix="classPrefix"></wd-icon>
+    <pro-icon v-else-if="icon" custom-class="wd-button__icon" :name="icon" :classPrefix="classPrefix"></pro-icon>
     <view class="wd-button__text">
       <slot />
     </view>
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, ref } from 'vue'
 import { buttonProps } from './types'
 

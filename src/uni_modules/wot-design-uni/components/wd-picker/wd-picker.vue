@@ -16,7 +16,7 @@
               :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</view>
         </view>
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdPopup from '../wd-popup/wd-popup.vue'
 import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'

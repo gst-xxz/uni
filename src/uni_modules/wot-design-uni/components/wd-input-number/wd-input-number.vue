@@ -3,7 +3,7 @@
     :class="`wd-input-number ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`"
     :style="customStyle">
     <view :class="`wd-input-number__action ${minDisabled || disableMinus ? 'is-disabled' : ''}`" @click="sub">
-      <wd-icon name="minus" custom-class="wd-input-number__action-icon"></wd-icon>
+      <pro-icon name="minus" custom-class="wd-input-number__action-icon"></pro-icon>
     </view>
     <view v-if="!withoutInput" class="wd-input-number__inner" @click.stop="">
       <input class="wd-input-number__input" :style="`${inputWidth ? 'width: ' + inputWidth : ''}`" type="digit"
@@ -12,7 +12,7 @@
       <view class="wd-input-number__input-border"></view>
     </view>
     <view :class="`wd-input-number__action ${maxDisabled || disablePlus ? 'is-disabled' : ''}`" @click="add">
-      <wd-icon name="plus" custom-class="wd-input-number__action-icon"></wd-icon>
+      <pro-icon name="plus" custom-class="wd-input-number__action-icon"></pro-icon>
     </view>
   </view>
 </template>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { ref, watch } from 'vue'
 import { debounce, isDef, isEqual } from '../common/util'
 import { inputNumberProps } from './types'

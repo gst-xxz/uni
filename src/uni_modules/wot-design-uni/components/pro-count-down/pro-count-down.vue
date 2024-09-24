@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-count-down text-sm text-gray-8 ${customClass}`" :style="customStyle">
+  <view :class="`pro-count-down text-sm text-gray-8 ${customClass}`" :style="customStyle">
     <slot :current="current" v-if="$slots.default" />
     <block v-else>{{ timeText }}</block>
   </view>
@@ -7,7 +7,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-count-down',
+  name: 'pro-count-down',
   options: {
   }
 }

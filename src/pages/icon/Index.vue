@@ -8,7 +8,7 @@
         </view>
         <view class="icon-list">
           <view v-for="(icon, index) in showIcons" :key="index" class="icon-item" @click="handleClick(icon)">
-            <view><wd-icon :name="icon" size="22px" custom-class="icon-item-class" /></view>
+            <view><pro-icon :name="icon" size="22px" custom-class="icon-item-class" /></view>
             <view class="icon-item-name">{{ icon }}</view>
           </view>
           <wd-status-tip v-if="!showIcons.length" image="search" tip="当前无相关图标" />
@@ -43,13 +43,13 @@ function handleClear() {
 function handleClick(icon: string) {
   // #ifdef H5
   uni.setClipboardData({
-    data: `<wd-icon name="${icon}" size="22px"></wd-icon>`,
+    data: `<pro-icon name="${icon}" size="22px"></pro-icon>`,
     showToast: false,
     success: () => {
       showNotify({
         type: 'success',
         duration: 1500,
-        message: `复制成功: <wd-icon name="${icon}" size="22px"></wd-icon>`
+        message: `复制成功: <pro-icon name="${icon}" size="22px"></pro-icon>`
       })
     }
   })

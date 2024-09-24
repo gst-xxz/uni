@@ -2,10 +2,11 @@
   <page-wraper>
     <view class="container">
       <view v-for="index in num" :key="index" class="list-item">
-        <image src="https://img10.360buyimg.com/jmadvertisement/jfs/t1/70325/36/14954/36690/5dcd3e3bEee5006e0/aed1ccf6d5ffc764.png" />
+        <image
+          src="https://img10.360buyimg.com/jmadvertisement/jfs/t1/70325/36/14954/36690/5dcd3e3bEee5006e0/aed1ccf6d5ffc764.png" />
         <view class="right">这是一条测试{{ index + 1 }}</view>
       </view>
-      <wd-loadmore :state="state" @reload="loadmore" />
+      <pro-loadmore :state="state" @reload="loadmore" />
     </view>
   </page-wraper>
 </template>
@@ -39,7 +40,6 @@ function loadmore() {
 }
 </script>
 <style lang="scss" scoped>
-
 .list-item {
   position: relative;
   display: flex;
@@ -59,12 +59,14 @@ function loadmore() {
   background: #eee;
   transform: scaleY(0.5);
 }
+
 image {
   display: block;
   width: 120px;
   height: 78px;
   margin-right: 15px;
 }
+
 .right {
   -webkit-box-flex: 1;
   -ms-flex: 1;

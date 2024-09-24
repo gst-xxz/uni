@@ -6,19 +6,19 @@
       <slot name="prefix"></slot>
       <view class="wd-search__field">
         <view v-if="!placeholderLeft" :style="coverStyle" class="wd-search__cover" @click="closeCover">
-          <wd-icon name="search" custom-class="wd-search__search-icon"></wd-icon>
+          <pro-icon name="search" custom-class="wd-search__search-icon"></pro-icon>
           <text class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</text>
         </view>
         <!--icon:search-->
-        <wd-icon v-if="showInput || str || placeholderLeft" name="search"
-          custom-class="wd-search__search-left-icon"></wd-icon>
+        <pro-icon v-if="showInput || str || placeholderLeft" name="search"
+          custom-class="wd-search__search-left-icon"></pro-icon>
         <!--搜索框-->
         <input v-if="showInput || str || placeholderLeft" :placeholder="placeholder || translate('search')"
           placeholder-class="wd-search__placeholder-txt" confirm-type="search" v-model="str" class="wd-search__input"
           @focus="searchFocus" @input="inputValue" @blur="searchBlur" @confirm="search" :disabled="disabled"
           :maxlength="maxlength" :focus="isFocused" />
         <!--icon:clear-->
-        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="close" @click="clearSearch" />
+        <pro-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="close" @click="clearSearch" />
       </view>
     </view>
     <!--the button behind input,care for hideCancel without displaying-->
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { type CSSProperties, computed, onMounted, ref, watch } from 'vue'
 import { objToStyle, requestAnimationFrame } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'

@@ -17,5 +17,5 @@ export const iconProps = {
   /**
    * 类名前缀，用于使用自定义图标
    */
-  classPrefix: makeStringProp('wd-icon')
+  classPrefix: makeStringProp('pro-icon')
 }

@@ -1,10 +1,10 @@
 <template>
-  <wd-overlay v-if="modal" :show="modelValue" :z-index="zIndex" :lock-scroll="lockScroll" :duration="duration"
+  <pro-overlay v-if="modal" :show="modelValue" :z-index="zIndex" :lock-scroll="lockScroll" :duration="duration"
     :custom-style="modalStyle" @click="handleClickModal" @touchmove="noop" />
   <view v-if="!lazyRender || inited" :class="[rootClass, 'fixed maxh-full overflow-auto bg-white']" :style="style"
     @transitionend="onTransitionEnd">
     <slot />
-    <wd-icon v-if="closable" custom-class="wd-popup__close absolute top-2.5 right-2.5" name="add" @click="close" />
+    <pro-icon v-if="closable" custom-class="wd-popup__close absolute top-2.5 right-2.5" name="add" @click="close" />
   </view>
 </template>
 
@@ -20,8 +20,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdOverlay from '../wd-overlay/wd-overlay.vue'
+
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { isObj, requestAnimationFrame } from '../common/util'
 import { popupProps } from './types'

@@ -41,7 +41,7 @@ export const buttonProps = {
   /**
    * 类名前缀，用于使用自定义图标，用法参考Icon组件
    */
-  classPrefix: makeStringProp('wd-icon'),
+  classPrefix: makeStringProp('pro-icon'),
   /**
    * 加载中按钮
    */

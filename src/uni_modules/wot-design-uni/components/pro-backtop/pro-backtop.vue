@@ -1,17 +1,17 @@
 <template>
-  <wd-transition :show="show" name="fade">
+  <pro-transition :show="show" name="fade">
     <view
-      :class="[`wd-backtop bg-backtop-bg text-gray-8 ${customClass} w-10 h-10 flex justify-center items-center fixed`, { 'rounded-full': shape === 'circle', 'rounded': shape === 'square' }]"
+      :class="[`pro-backtop bg-backtop-bg text-gray-8 ${customClass} w-10 h-10 flex justify-center items-center fixed`, { 'rounded-full': shape === 'circle', 'rounded': shape === 'square' }]"
       :style="`z-index: ${zIndex}; bottom: ${bottom}px; right: ${right}px; ${customStyle}`" @click="handleBacktop">
       <slot v-if="$slots.default"></slot>
-      <wd-icon v-else custom-class="text-xl" name="arrow-up" :custom-style="iconStyle" />
+      <pro-icon v-else custom-class="text-xl" name="arrow-up" :custom-style="iconStyle" />
     </view>
-  </wd-transition>
+  </pro-transition>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-backtop',
+  name: 'pro-backtop',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -21,8 +21,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdTransition from '../wd-transition/wd-transition.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed } from 'vue'
 import { backtopProps } from './types'
 

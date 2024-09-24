@@ -1,7 +1,7 @@
 <template>
   <view class="wd-navbar-capsule">
-    <wd-icon @click="handleBack" name="chevron-left" custom-class="wd-navbar-capsule__icon" />
-    <wd-icon @click="handleBackHome" name="home" custom-class="wd-navbar-capsule__icon" />
+    <pro-icon @click="handleBack" name="chevron-left" custom-class="wd-navbar-capsule__icon" />
+    <pro-icon @click="handleBackHome" name="home" custom-class="wd-navbar-capsule__icon" />
   </view>
 </template>
 <script lang="ts">
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 const emit = defineEmits(['back', 'back-home'])
 
 function handleBack() {

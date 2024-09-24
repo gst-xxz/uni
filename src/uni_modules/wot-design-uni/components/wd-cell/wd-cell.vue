@@ -6,7 +6,7 @@
       <view :class="['wd-cell__left', isRequired ? 'is-required' : '']"
         :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''">
         <!--左侧icon部位-->
-        <wd-icon v-if="icon" :name="icon" :custom-class="`wd-cell__icon  ${customIconClass}`"></wd-icon>
+        <pro-icon v-if="icon" :name="icon" :custom-class="`wd-cell__icon  ${customIconClass}`"></pro-icon>
         <slot v-else name="icon" />
 
         <view class="wd-cell__title">
@@ -29,7 +29,7 @@
             <slot>{{ value }}</slot>
           </view>
           <!--箭头-->
-          <wd-icon v-if="isLink" custom-class="wd-cell__arrow-right" name="arrow" />
+          <pro-icon v-if="isLink" custom-class="wd-cell__arrow-right" name="arrow" />
           <slot v-else name="right-icon" />
         </view>
         <view v-if="errorMessage" class="wd-cell__error-message">{{ errorMessage }}</view>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed } from 'vue'
 import { useCell } from '../composables/useCell'
 import { useParent } from '../composables/useParent'

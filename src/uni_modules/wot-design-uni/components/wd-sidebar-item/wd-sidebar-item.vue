@@ -1,14 +1,9 @@
 <template>
-  <view
-    @click="handleClick"
-    :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${
-      suffix ? 'wd-sidebar-item--suffix' : ''
-    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`"
-    :style="customStyle"
-  >
+  <view @click="handleClick" :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
+    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
-      <wd-icon custom-class="wd-sidebar-item__icon" :name="icon"></wd-icon>
+      <pro-icon custom-class="wd-sidebar-item__icon" :name="icon"></pro-icon>
     </template>
     <wd-badge v-bind="customBadgeProps" custom-class="wd-sidebar-item__badge">
       {{ label }}
@@ -28,7 +23,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdBadge from '../wd-badge/wd-badge.vue'
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'

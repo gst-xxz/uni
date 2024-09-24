@@ -2,22 +2,22 @@
   <page-wraper>
     <demo-block title="基本用法（适用于按钮加载状态和页面轻提示）">
       <view class="flex">
-        <wd-loading />
-        <wd-loading type="spinner" />
+        <pro-loading />
+        <pro-loading type="spinner" />
       </view>
     </demo-block>
 
     <demo-block title="修改颜色">
       <view class="flex">
-        <wd-loading custom-class="loading" color="#fa34aa" />
+        <pro-loading custom-class="loading" color="#fa34aa" />
       </view>
     </demo-block>
 
     <demo-block title="修改指示器大小">
       <view class="flex">
-        <wd-loading custom-class="loading" :size="20" />
-        <wd-loading custom-class="loading" :size="30" />
-        <wd-loading custom-class="loading" size="50px" />
+        <pro-loading custom-class="loading" :size="20" />
+        <pro-loading custom-class="loading" :size="30" />
+        <pro-loading custom-class="loading" size="50px" />
       </view>
     </demo-block>
   </page-wraper>

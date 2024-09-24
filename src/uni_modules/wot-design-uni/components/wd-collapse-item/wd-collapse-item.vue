@@ -3,7 +3,7 @@
     <view :class="`wd-collapse-item__header  ${isFirst ? 'wd-collapse-item__header-first' : ''}`" @click="handleClick">
       <slot name="title" :expanded="expanded" :disabled="disabled" :isFirst="isFirst">
         <text class="wd-collapse-item__title">{{ title }}</text>
-        <wd-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
+        <pro-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
       </slot>
     </view>
     <view class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties } from 'vue'
 import { addUnit, getRect, isArray, isDef, isPromise, objToStyle, requestAnimationFrame, uuid } from '../common/util'
 import { useParent } from '../composables/useParent'

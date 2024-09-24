@@ -9,9 +9,6 @@
   }
   @include e(title) {
     padding: $-cell-group-padding;
-    font-size: $-cell-group-title-fs;
-    color: $-cell-group-title-color;
-    line-height: 1.43;
   }
   @include e(right) {
     color: $-cell-group-value-color;

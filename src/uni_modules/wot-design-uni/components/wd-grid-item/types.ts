@@ -15,7 +15,7 @@ export const gridItemProps = {
    */
   customIcon: makeStringProp(''),
   /**
-   * 图标名称，可选值见 wd-icon 组件
+   * 图标名称，可选值见 pro-icon 组件
    */
   icon: makeStringProp(''),
   /**

@@ -7,7 +7,7 @@
       <view class="wd-curtain__content">
         <image :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr"
           @load="imgLoad"></image>
-        <wd-icon name="cross" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
+        <pro-icon name="cross" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
       </view>
     </wd-popup>
   </view>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdPopup from '../wd-popup/wd-popup.vue'
 import { ref, watch } from 'vue'
 import { curtainProps } from './types'

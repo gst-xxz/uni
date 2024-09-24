@@ -33,7 +33,7 @@ export const dorpMenuItemProps = {
    */
   disabled: makeBooleanProp(false),
   /**
-   * 选中的图标名称(可选名称在 wd-icon 组件中)
+   * 选中的图标名称(可选名称在 pro-icon 组件中)
    */
   iconName: makeStringProp('check'),
   /**

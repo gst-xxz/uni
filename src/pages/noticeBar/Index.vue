@@ -18,7 +18,7 @@
       <demo-block title="插槽">
         <wd-notice-bar :scrollable="false">
           <template #prefix>
-            <wd-icon custom-class="prefix" name="volume-o">占位符</wd-icon>
+            <pro-icon custom-class="prefix" name="volume-o">占位符</pro-icon>
           </template>
           通知被禁或时段内消息屏蔽可能造成消…
           <template #suffix>

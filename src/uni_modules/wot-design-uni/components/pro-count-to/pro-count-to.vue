@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass" class="align-bottom">
+  <view :class="customClass" class="pro-count-to align-bottom">
     <!-- 前缀插槽 -->
     <slot name="prefix">
       <span class="whitespace-pre-line" :style="prefixSuffixStyle">{{ props.prefix }}</span>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-count-to',
+  name: 'pro-count-to',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -31,7 +31,7 @@ import { computed, watch, onMounted } from 'vue'
 import { countToProps } from './types'
 import { easingFn, isNumber } from '../common/util'
 import { useCountDown } from '../composables/useCountDown'
-import type { CountDownExpose } from '../wd-count-down/types'
+import type { CountDownExpose } from '../pro-count-down/types'
 
 const props = defineProps(countToProps)
 const emit = defineEmits(['mounted', 'finish'])
@@ -40,11 +40,6 @@ const { start, pause, reset, current } = useCountDown({
   time: props.duration,
   millisecond: true,
   onFinish: () => emit('finish')
-})
-
-// 计算根元素的类名
-const rootClass = computed(() => {
-  return `wd-count-to ${props.customClass}`
 })
 
 const prefixSuffixStyle = computed(() => {

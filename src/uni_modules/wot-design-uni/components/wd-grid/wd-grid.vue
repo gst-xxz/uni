@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-grid ${customClass}`" :style="rootStyle">
+  <view :class="`wd-grid relative box-border overflow-hidden h-auto ${customClass}`" :style="rootStyle">
     <!-- 默认插入的 item -->
     <slot />
   </view>
@@ -100,7 +100,3 @@ function init() {
   })
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

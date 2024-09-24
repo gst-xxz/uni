@@ -10,7 +10,7 @@
         <view v-for="(item, index) in categories" :key="index" class="category">
           <wd-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">
-              <wd-icon name="github-filled" size="24px"></wd-icon>
+              <pro-icon name="github-filled" size="24px"></pro-icon>
             </wd-cell>
           </wd-cell-group>
         </view>

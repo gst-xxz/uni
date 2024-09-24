@@ -7,9 +7,9 @@
     </view>
     <!--文案、图标-->
     <view v-if="!hideText" class="wd-progress__label">{{ percentage }}%</view>
-    <wd-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${progressClass}`"
+    <pro-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${progressClass}`"
       :name="status == 'danger' ? 'close-outline' : 'check-outline'"
-      :color="typeof color === 'string' ? color : ''"></wd-icon>
+      :color="typeof color === 'string' ? color : ''"></pro-icon>
   </view>
 </template>
 
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, ref, watch } from 'vue'
 import { checkNumRange, isArray, objToStyle } from '../common/util'
 import { progressProps } from './types'

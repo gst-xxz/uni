@@ -16,7 +16,7 @@
               }`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-select-picker__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="wd-select-picker__arrow" name="arrow" />
           </view>
 
           <view v-if="errorMessage" class="wd-select-picker__error-message">{{ errorMessage }}</view>
@@ -71,7 +71,7 @@
           </wd-radio-group>
         </view>
         <view v-if="loading" class="wd-select-picker__loading" @touchmove="noop">
-          <wd-loading :color="loadingColor" />
+          <pro-loading :color="loadingColor" />
         </view>
       </scroll-view>
       <!-- 确认按钮 -->
@@ -100,7 +100,6 @@ import wdCheckboxGroup from '../wd-checkbox-group/wd-checkbox-group.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
 import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
 import wdButton from '../wd-button/wd-button.vue'
-import wdLoading from '../wd-loading/wd-loading.vue'
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'
 import { useCell } from '../composables/useCell'

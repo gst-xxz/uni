@@ -5,10 +5,10 @@
       <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
         <view v-if="dot" class="wd-step__dot"></view>
         <slot v-else-if="$slots.icon" name="icon" />
-        <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
+        <pro-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
         <view v-else class="wd-step__icon-outer">
-          <wd-icon v-if="currentStatus === 'finished'" name="success" />
-          <wd-icon v-else-if="currentStatus === 'error'" name="cross" />
+          <pro-icon v-if="currentStatus === 'finished'" name="success" />
+          <pro-icon v-else-if="currentStatus === 'error'" name="cross" />
           <text v-else>{{ index + 1 }}</text>
         </view>
       </view>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { STEPS_KEY } from '../wd-steps/types'

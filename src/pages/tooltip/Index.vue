@@ -29,7 +29,7 @@
           <wd-tooltip placement="left-start" content="left-start 提示文字" @change="handleChange7">
             <wd-button :round="false">
               left-start
-              <wd-icon name="setting" />
+              <pro-icon name="setting" />
             </wd-button>
           </wd-tooltip>
           <wd-tooltip placement="left" content="left 提示文字" customStyle="margin: 20px 0" @change="handleChange8">
@@ -192,14 +192,17 @@ function handleChange17(event: any) {
 .position-wrap {
   position: relative;
 }
+
 .center {
   text-align: center;
 }
+
 .left {
   float: left;
   display: flex;
   flex-direction: column;
 }
+
 .right {
   float: right;
   display: flex;
@@ -207,24 +210,29 @@ function handleChange17(event: any) {
   text-align: right;
   margin-bottom: 20px;
 }
+
 .top {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .bottom {
   clear: both;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
+
 .demo-left {
   text-align: left;
 }
+
 .button-control {
   float: left;
 }
+
 .demo-control {
   text-align: center;
   display: block;
@@ -232,9 +240,11 @@ function handleChange17(event: any) {
   clear: both;
   margin-bottom: 10px;
 }
+
 .lines-demo {
   padding: 30px 0;
 }
+
 .lines-content {
   color: #fff;
   padding: 5px;

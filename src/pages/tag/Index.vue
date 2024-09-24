@@ -57,7 +57,7 @@
           <wd-tag custom-class="space" mark use-icon-slot>
             <text>插槽</text>
             <template #icon>
-              <wd-icon name="dong" />
+              <pro-icon name="dong" />
             </template>
           </wd-tag>
         </view>
@@ -72,28 +72,22 @@
 
       <demo-block title="可关闭">
         <view>
-          <wd-tag
-            v-for="(tag, index) in tags"
-            :key="index"
-            custom-class="space"
-            round
-            closable
-            @click="handleClick(index)"
-            @close="handleClose(index)"
-          >
+          <wd-tag v-for="(tag, index) in tags" :key="index" custom-class="space" round closable
+            @click="handleClick(index)" @close="handleClose(index)">
             {{ tag.value }}
           </wd-tag>
         </view>
       </demo-block>
       <demo-block title="新增标签">
         <view>
-          <wd-tag v-for="(tag, index) in dynamicTags" :key="index" custom-class="space" round closable @close="handleClose1(index)">
+          <wd-tag v-for="(tag, index) in dynamicTags" :key="index" custom-class="space" round closable
+            @close="handleClose1(index)">
             {{ tag }}
           </wd-tag>
           <wd-tag custom-class="space" round dynamic @confirm="handleConfirm"></wd-tag>
           <wd-tag custom-class="space" round dynamic @confirm="handleConfirm">
             <template #add>
-              <wd-icon name="pin" size="12px"></wd-icon>
+              <pro-icon name="pin" size="12px"></pro-icon>
               <text style="margin-left: 4px">自定义</text>
             </template>
           </wd-tag>

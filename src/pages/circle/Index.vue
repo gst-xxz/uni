@@ -4,20 +4,20 @@
       <wd-message-box></wd-message-box>
 
       <demo-block title="基础用法">
-        <wd-circle custom-class="custom-circle" v-model="current" :text="current + '%'" />
+        <pro-circle custom-class="custom-circle" v-model="current" :text="current + '%'" />
       </demo-block>
       <demo-block title="样式定制">
-        <wd-circle custom-class="custom-circle" v-model="current" :stroke-width="6" text="宽度定制" />
-        <wd-circle custom-class="custom-circle" v-model="current" layer-color="#eee" color="#ee0a24" text="颜色定制" />
-        <wd-circle custom-class="custom-circle" v-model="current" :color="gradientColor" text="渐变色" />
-        <wd-circle custom-class="custom-circle" v-model="current" color="#07c160" :clockwise="false" text="逆时针" />
-        <wd-circle custom-class="custom-circle" v-model="current" :size="120" text="大小定制" />
+        <pro-circle custom-class="custom-circle" v-model="current" :stroke-width="6" text="宽度定制" />
+        <pro-circle custom-class="custom-circle" v-model="current" layer-color="#eee" color="#ee0a24" text="颜色定制" />
+        <pro-circle custom-class="custom-circle" v-model="current" :color="gradientColor" text="渐变色" />
+        <pro-circle custom-class="custom-circle" v-model="current" color="#07c160" :clockwise="false" text="逆时针" />
+        <pro-circle custom-class="custom-circle" v-model="current" :size="120" text="大小定制" />
       </demo-block>
 
       <demo-block title="使用slot">
-        <wd-circle custom-class="custom-circle" v-model="current" :stroke-width="6">
+        <pro-circle custom-class="custom-circle" v-model="current" :stroke-width="6">
           <view style="color: red">{{ current }}%</view>
-        </wd-circle>
+        </pro-circle>
       </demo-block>
 
       <demo-block>

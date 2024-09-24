@@ -6,13 +6,13 @@
     <view v-if="innerShape !== 'button'"
       :class="`wd-checkbox__shape ${innerShape === 'square' ? 'is-square' : ''} ${customShapeClass}`"
       :style="isChecked && !innerDisabled && innerCheckedColor ? 'color :' + innerCheckedColor : ''">
-      <wd-icon custom-class="wd-checkbox__check" name="success" />
+      <pro-icon custom-class="wd-checkbox__check" name="success" />
     </view>
     <!--shape为button时只保留wd-checkbox__label-->
     <view :class="`wd-checkbox__label ${customLabelClass}`"
       :style="isChecked && innerShape === 'button' && !innerDisabled && innerCheckedColor ? 'color:' + innerCheckedColor : ''">
       <!--button选中时展示的icon-->
-      <wd-icon v-if="innerShape === 'button' && isChecked" custom-class="wd-checkbox__btn-check" name="success" />
+      <pro-icon v-if="innerShape === 'button' && isChecked" custom-class="wd-checkbox__btn-check" name="success" />
       <!--文案-->
       <view class="wd-checkbox__txt" :style="maxWidth ? 'max-width:' + maxWidth : ''">
         <slot></slot>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, getCurrentInstance, onBeforeMount, watch } from 'vue'
 import { useParent } from '../composables/useParent'
 import { CHECKBOX_GROUP_KEY } from '../wd-checkbox-group/types'

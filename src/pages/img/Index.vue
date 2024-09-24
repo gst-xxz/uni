@@ -13,7 +13,7 @@
         </template>
         <template #loading>
           <view class="loading-wrap">
-            <wd-loading />
+            <pro-loading />
           </view>
         </template>
       </wd-img>

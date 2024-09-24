@@ -3,8 +3,7 @@
     <wd-sticky-box>
       <view
         :class="`wd-tabs ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'is-map' : ''}`"
-        :style="customStyle"
-      >
+        :style="customStyle">
         <wd-sticky :offset-top="offsetTop">
           <!--头部导航容器-->
           <view class="wd-tabs__nav wd-tabs__nav--sticky">
@@ -12,13 +11,9 @@
               <scroll-view :scroll-x="slidableNum < items.length" scroll-with-animation :scroll-left="state.scrollLeft">
                 <view class="wd-tabs__nav-container">
                   <!--nav列表-->
-                  <view
-                    @click="handleSelect(index)"
-                    v-for="(item, index) in items"
-                    :key="index"
+                  <view @click="handleSelect(index)" v-for="(item, index) in items" :key="index"
                     :class="`wd-tabs__nav-item  ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
-                    :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''"
-                  >
+                    :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                     {{ item.title }}
                   </view>
                   <!--下划线-->
@@ -30,26 +25,27 @@
             <view class="wd-tabs__map" v-if="mapNum < items.length && mapNum !== 0">
               <view :class="`wd-tabs__map-btn  ${state.animating ? 'is-open' : ''}`" @click="toggleMap">
                 <view :class="`wd-tabs__map-arrow  ${state.animating ? 'is-open' : ''}`">
-                  <wd-icon name="arrow-down" />
+                  <pro-icon name="arrow-down" />
                 </view>
               </view>
-              <view class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
+              <view class="wd-tabs__map-header"
+                :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
                 {{ translate('all') }}
               </view>
-              <view :class="`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`" :style="state.mapShow ? '' : 'display:none'">
-                <view class="wd-tabs__map-nav-item" v-for="(item, index) in items" :key="index" @click="handleSelect(index)">
+              <view :class="`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`"
+                :style="state.mapShow ? '' : 'display:none'">
+                <view class="wd-tabs__map-nav-item" v-for="(item, index) in items" :key="index"
+                  @click="handleSelect(index)">
                   <view
                     :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`"
-                    :style="
-                      state.activeIndex === index
-                        ? color
-                          ? 'color:' + color + ';border-color:' + color
-                          : ''
-                        : inactiveColor
+                    :style="state.activeIndex === index
+                      ? color
+                        ? 'color:' + color + ';border-color:' + color
+                        : ''
+                      : inactiveColor
                         ? 'color:' + inactiveColor
                         : ''
-                    "
-                  >
+                      ">
                     {{ item.title }}
                   </view>
                 </view>
@@ -59,37 +55,33 @@
         </wd-sticky>
 
         <!--标签页-->
-        <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+        <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
+          @touchcancel="onTouchEnd">
           <view :class="['wd-tabs__body', animated ? 'is-animated' : '']" :style="bodyStyle">
             <slot />
           </view>
         </view>
 
         <!--map表的阴影浮层-->
-        <view
-          class="wd-tabs__mask"
-          :style="`${state.mapShow ? '' : 'display:none;'} ${state.animating ? 'opacity:1;' : ''}`"
-          @click="toggleMap"
-        ></view>
+        <view class="wd-tabs__mask"
+          :style="`${state.mapShow ? '' : 'display:none;'} ${state.animating ? 'opacity:1;' : ''}`" @click="toggleMap">
+        </view>
       </view>
     </wd-sticky-box>
   </template>
 
   <template v-else>
-    <view :class="`wd-tabs  ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'is-map' : ''}`">
+    <view
+      :class="`wd-tabs  ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'is-map' : ''}`">
       <!--头部导航容器-->
       <view class="wd-tabs__nav">
         <view class="wd-tabs__nav--wrap">
           <scroll-view :scroll-x="slidableNum < items.length" scroll-with-animation :scroll-left="state.scrollLeft">
             <view class="wd-tabs__nav-container">
               <!--nav列表-->
-              <view
-                v-for="(item, index) in items"
-                @click="handleSelect(index)"
-                :key="index"
+              <view v-for="(item, index) in items" @click="handleSelect(index)" :key="index"
                 :class="`wd-tabs__nav-item ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
-                :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''"
-              >
+                :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                 {{ item.title }}
               </view>
               <!--下划线-->
@@ -101,15 +93,19 @@
         <view class="wd-tabs__map" v-if="mapNum < items.length && mapNum !== 0">
           <view class="wd-tabs__map-btn" @click="toggleMap">
             <view :class="`wd-tabs__map-arrow ${state.animating ? 'is-open' : ''}`">
-              <wd-icon name="arrow-down" />
+              <pro-icon name="arrow-down" />
             </view>
           </view>
-          <view class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
+          <view class="wd-tabs__map-header"
+            :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
             {{ translate('all') }}
           </view>
-          <view :class="`wd-tabs__map-body ${state.animating ? 'is-open' : ''}`" :style="state.mapShow ? '' : 'display:none'">
-            <view class="wd-tabs__map-nav-item" v-for="(item, index) in items" :key="index" @click="handleSelect(index)">
-              <view :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`">
+          <view :class="`wd-tabs__map-body ${state.animating ? 'is-open' : ''}`"
+            :style="state.mapShow ? '' : 'display:none'">
+            <view class="wd-tabs__map-nav-item" v-for="(item, index) in items" :key="index"
+              @click="handleSelect(index)">
+              <view
+                :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`">
                 {{ item.title }}
               </view>
             </view>
@@ -118,14 +114,17 @@
       </view>
 
       <!--标签页-->
-      <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+      <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
+        @touchcancel="onTouchEnd">
         <view :class="['wd-tabs__body', animated ? 'is-animated' : '']" :style="bodyStyle">
           <slot />
         </view>
       </view>
 
       <!--map表的阴影浮层-->
-      <view class="wd-tabs__mask" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1' : ''}`" @click="toggleMap"></view>
+      <view class="wd-tabs__mask"
+        :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1' : ''}`" @click="toggleMap">
+      </view>
     </view>
   </template>
 </template>
@@ -140,7 +139,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdSticky from '../wd-sticky/wd-sticky.vue'
 import wdStickyBox from '../wd-sticky-box/wd-sticky-box.vue'
 

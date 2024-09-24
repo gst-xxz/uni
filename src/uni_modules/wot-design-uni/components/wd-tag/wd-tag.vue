@@ -3,19 +3,19 @@
     <view v-if="useIconSlot" class="wd-tag__icon">
       <slot name="icon" />
     </view>
-    <wd-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon" />
+    <pro-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon" />
     <view class="wd-tag__text" :style="textStyle">
       <slot />
     </view>
     <view class="wd-tag__close" v-if="closable && round" @click.stop="handleClose">
-      <wd-icon name="cross" />
+      <pro-icon name="cross" />
     </view>
     <input v-if="dynamicInput && dynamic" class="wd-tag__add-text" :placeholder="translate('placeholder')" type="text"
       focus="true" v-model="dynamicValue" @blur="handleBlur" @confirm="handleConfirm" />
     <view v-else-if="dynamic" class="wd-tag__text" :style="textStyle" @click.stop="handleAdd">
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
-        <wd-icon name="plus" custom-class="wd-tag__add wd-tag__icon" />
+        <pro-icon name="plus" custom-class="wd-tag__add wd-tag__icon" />
         <text>{{ translate('add') }}</text>
       </template>
     </view>
@@ -33,7 +33,6 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
 import { objToStyle } from '../common/util'
 import { computed, ref, watch } from 'vue'
 import { useTranslate } from '../composables/useTranslate'

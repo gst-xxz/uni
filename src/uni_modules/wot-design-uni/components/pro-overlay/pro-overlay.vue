@@ -1,13 +1,13 @@
 <template>
-  <wd-transition :show="show" name="fade" custom-class="fixed left-0 right-0 top-0 bottom-0 bg-overlay-bg"
+  <pro-transition :show="show" name="fade" custom-class="fixed left-0 right-0 top-0 bottom-0 bg-overlay-bg"
     :duration="duration" :custom-style="`z-index: ${zIndex}; ${customStyle}`" @click="handleClick"
     @touchmove.stop.prevent="lockScroll ? noop : ''">
     <slot></slot>
-  </wd-transition>
+  </pro-transition>
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-overlay',
+  name: 'pro-overlay',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -16,7 +16,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdTransition from '../wd-transition/wd-transition.vue'
 import useLockScroll from '../composables/useLockScroll'
 import { overlayProps } from './types'
 

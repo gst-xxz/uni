@@ -20,10 +20,10 @@
     <demo-block title="使用插槽" transparent>
       <wd-navbar title="标题" @click-left="handleClickLeft">
         <template #left>
-          <wd-icon name="arrow-left" size="24px" class="wd-navbar__arrow" />
+          <pro-icon name="arrow-left" size="24px" class="wd-navbar__arrow" />
         </template>
         <template #right>
-          <wd-icon name="search" size="18" />
+          <pro-icon name="search" size="18" />
         </template>
       </wd-navbar>
     </demo-block>

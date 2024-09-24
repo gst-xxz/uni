@@ -4,9 +4,9 @@
       <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1"
         custom-class="wd-pager__nav" @click="sub">
         <text v-if="!showIcon">{{ prevText || translate('prev') }}</text>
-        <wd-icon v-else
+        <pro-icon v-else
           :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow-left"></wd-icon>
+          name="arrow-left"></pro-icon>
       </wd-button>
       <view class="wd-pager__size">
         <text class="wd-pager__current">{{ modelValue }}</text>
@@ -16,9 +16,9 @@
       <wd-button :plain="modelValue < totalPageNum" type="info" size="small" :disabled="modelValue >= totalPageNum"
         custom-class="wd-pager__nav" @click="add">
         <text v-if="!showIcon">{{ nextText || translate('next') }}</text>
-        <wd-icon v-else
+        <pro-icon v-else
           :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow"></wd-icon>
+          name="arrow"></pro-icon>
       </wd-button>
     </view>
     <view class="wd-pager__message" v-if="showMessage">
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdButton from '../wd-button/wd-button.vue'
 import { ref, watch } from 'vue'
 import { useTranslate } from '../composables/useTranslate'

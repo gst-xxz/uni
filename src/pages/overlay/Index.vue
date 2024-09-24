@@ -10,13 +10,13 @@
         <wd-button type="primary" @click="show1 = true">嵌入内容</wd-button>
       </demo-block>
     </page-wraper>
-    <wd-overlay :show="show" @click="show = false" />
+    <pro-overlay :show="show" @click="show = false" />
 
-    <wd-overlay :show="show1" @click="show1 = false">
+    <pro-overlay :show="show1" @click="show1 = false">
       <view class="wrapper">
         <view class="block" @click.stop="" />
       </view>
-    </wd-overlay>
+    </pro-overlay>
   </view>
 </template>
 <script lang="ts" setup>

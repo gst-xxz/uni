@@ -42,8 +42,8 @@
       :style="`width: ${Number(canvasWidth) * canvasScale}px; height: ${Number(canvasHeight) * canvasScale}px;`" />
     <!-- 下方按钮 -->
     <view class="wd-img-cropper__footer">
-      <wd-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="setting-o"
-        @click="handleRotate"></wd-icon>
+      <pro-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="setting-o"
+        @click="handleRotate"></pro-icon>
       旋转
       <view class="wd-img-cropper__footer--button">
         <view class="is-cancel" @click="handleCancel">{{ cancelButtonText || translate('cancel') }}</view>
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdButton from '../wd-button/wd-button.vue'
 import { computed, getCurrentInstance, ref, watch } from 'vue'
 import { addUnit, objToStyle } from '../common/util'

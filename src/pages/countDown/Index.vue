@@ -1,19 +1,19 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法">
-      <wd-count-down :time="time" />
+      <pro-count-down :time="time" />
     </demo-block>
 
     <demo-block title="自定义格式">
-      <wd-count-down :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
+      <pro-count-down :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
     </demo-block>
 
     <demo-block title="毫秒级渲染">
-      <wd-count-down :time="time" millisecond format="HH:mm:ss:SS" />
+      <pro-count-down :time="time" millisecond format="HH:mm:ss:SS" />
     </demo-block>
 
     <demo-block title="自定义样式">
-      <wd-count-down :time="time">
+      <pro-count-down :time="time">
         <template #default="{ current }">
           <span class="custom-count-down">{{ current.hours }}</span>
           <span class="custom-count-down-colon">:</span>
@@ -21,12 +21,12 @@
           <span class="custom-count-down-colon">:</span>
           <span class="custom-count-down">{{ current.seconds }}</span>
         </template>
-      </wd-count-down>
+      </pro-count-down>
     </demo-block>
 
     <demo-block title="手动控制">
-      <wd-count-down ref="countDown" :time="3000" millisecond :auto-start="false" format="ss:SSS"
-        @finish="onFinish"></wd-count-down>
+      <pro-count-down ref="countDown" :time="3000" millisecond :auto-start="false" format="ss:SSS"
+        @finish="onFinish"></pro-count-down>
       <wd-grid clickable border>
         <wd-grid-item text="开始" icon="play-circle-stroke" @itemclick="start" />
         <wd-grid-item text="暂停" icon="pause-circle" @itemclick="pause" />
@@ -38,7 +38,7 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { CountDownInstance } from '@/uni_modules/wot-design-uni/components/wd-count-down/types'
+import type { CountDownInstance } from '@/uni_modules/wot-design-uni/components/pro-count-down/types'
 import { ref } from 'vue'
 const { show: showToast } = useToast()
 

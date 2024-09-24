@@ -1,12 +1,12 @@
 <template>
-  <view @click="handleClick" :class="rootClass" :style="rootStyle">
-    <span :class="className"></span>
+  <view @click="handleClick" :class="customClass" :style="rootStyle">
+    <span :class="['iconfont', `icon-${props.name}`]"></span>
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-icon',
+  name: 'pro-icon',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -17,20 +17,11 @@ export default {
 
 <script lang="ts" setup>
 import { computed, type CSSProperties } from 'vue'
-import { addUnit, isDef, objToStyle, isImageUrl } from '../common/util'
+import { addUnit, objToStyle } from '../common/util'
 import { iconProps } from './types'
 
 const props = defineProps(iconProps)
 const emit = defineEmits(['click', 'touch'])
-
-const isImage = computed(() => {
-  return isDef(props.name) && isImageUrl(props.name)
-})
-
-const rootClass = computed(() => {
-  const prefix = props.classPrefix
-  return `${prefix} ${props.customClass} ${isImage.value ? '' : prefix + '-' + props.name}`
-})
 
 const rootStyle = computed(() => {
   const style: CSSProperties = {}
@@ -43,15 +34,11 @@ const rootStyle = computed(() => {
   return `${objToStyle(style)}; ${props.customStyle}`
 })
 
-const className = computed(() => {
-  return `iconfont icon-${props.name}`
-})
-
 function handleClick(event: any) {
   emit('click', event)
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+@import './styles/iconfont.css';
 </style>

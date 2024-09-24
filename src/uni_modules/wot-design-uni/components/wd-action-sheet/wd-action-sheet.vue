@@ -11,12 +11,12 @@
         } ${customStyle}`">
         <view v-if="title" :class="`wd-action-sheet__header ${customHeaderClass}`">
           {{ title }}
-          <wd-icon custom-class="wd-action-sheet__close" name="cross" @click="close" />
+          <pro-icon custom-class="wd-action-sheet__close" name="cross" @click="close" />
         </view>
         <view class="wd-action-sheet__actions" v-if="actions && actions.length">
           <button v-for="(action, rowIndex) in actions" :key="rowIndex" :class="`wd-action-sheet__action ${action.disabled ? 'wd-action-sheet__action--disabled' : ''}  ${action.loading ? 'wd-action-sheet__action--loading' : ''
             }`" :style="`color: ${action.color}`" @click="select(rowIndex, 'action')">
-            <wd-loading custom-class="`wd-action-sheet__action-loading" v-if="action.loading" />
+            <pro-loading custom-class="`wd-action-sheet__action-loading" v-if="action.loading" />
             <view v-else class="wd-action-sheet__name">{{ action.name }}</view>
             <view v-if="!action.loading && action.subname" class="wd-action-sheet__subname">{{ action.subname }}</view>
           </button>
@@ -51,8 +51,7 @@ export default {
 
 <script lang="ts" setup>
 import wdPopup from '../wd-popup/wd-popup.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdLoading from '../wd-loading/wd-loading.vue'
+
 import { watch, ref } from 'vue'
 import { actionSheetProps, type Panel } from './types'
 import { isArray } from '../common/util'

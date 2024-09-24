@@ -1,24 +1,24 @@
 <template>
-  <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show"
-    custom-style="background-color: transparent;pointer-events: auto;"></wd-overlay>
-  <wd-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter"
+  <pro-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show"
+    custom-style="background-color: transparent;pointer-events: auto;"></pro-overlay>
+  <pro-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter"
     @after-leave="handleAfterLeave">
     <view :class="rootClass">
       <!--iconName优先级更高-->
-      <wd-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize"
+      <pro-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize"
         custom-class="wd-toast__icon" />
       <view class="wd-toast__iconWrap wd-toast__icon"
         v-else-if="iconName === 'success' || iconName === 'warning' || iconName === 'info' || iconName === 'error'">
         <view class="wd-toast__iconBox">
-          <wd-icon class="wd-toast__iconSvg" :name="iconName" :size="iconSize"></wd-icon>
+          <pro-icon class="wd-toast__iconSvg" :name="iconName" :size="iconSize"></pro-icon>
         </view>
       </view>
-      <wd-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix"
-        :name="iconClass"></wd-icon>
+      <pro-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix"
+        :name="iconClass"></pro-icon>
       <!--文本-->
       <view v-if="msg" class="wd-toast__msg">{{ msg }}</view>
     </view>
-  </wd-transition>
+  </pro-transition>
 </template>
 
 <script lang="ts">
@@ -33,10 +33,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdLoading from '../wd-loading/wd-loading.vue'
-import wdOverlay from '../wd-overlay/wd-overlay.vue'
-import wdTransition from '../wd-transition/wd-transition.vue'
 
 import { computed, inject, ref, watch, type CSSProperties } from 'vue'
 import { defaultOptions, toastDefaultOptionKey, } from '.'
@@ -55,7 +51,7 @@ const loadingColor = ref<string>('#4D80F0')
 const iconSize = ref<string>() // 图标大小
 const loadingSize = ref<string>() // loading大小
 const cover = ref<boolean>(false) // 是否存在遮罩层
-const classPrefix = ref<string>('wd-icon') // 图标前缀
+const classPrefix = ref<string>('pro-icon') // 图标前缀
 const iconClass = ref<string>('') // 图标类名
 
 let opened: (() => void) | null = null
@@ -129,7 +125,7 @@ function reset(option: ToastOptions) {
       iconSize.value = isDef(option.iconSize) ? addUnit(option.iconSize) : option.iconSize
       loadingSize.value = isDef(option.loadingSize) ? addUnit(option.loadingSize) : option.loadingSize
       cover.value = isDef(option.cover!) ? option.cover! : false
-      classPrefix.value = isDef(option.classPrefix) ? option.classPrefix : 'wd-icon'
+      classPrefix.value = isDef(option.classPrefix) ? option.classPrefix : 'pro-icon'
       closed = isFunction(option.closed) ? option.closed : null
       opened = isFunction(option.opened) ? option.opened : null
     }

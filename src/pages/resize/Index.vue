@@ -7,37 +7,37 @@
       <view class="tip-item">
         <view class="tip-label">width:</view>
         {{ lastWidth }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeWidth }}
       </view>
       <view class="tip-item">
         <view class="tip-label">height:</view>
         {{ lastHeight }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeHeight }}
       </view>
       <view class="tip-item">
         <view class="tip-label">top:</view>
         {{ lastTop }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeTop }}
       </view>
       <view class="tip-item">
         <view class="tip-label">right:</view>
         {{ lastRight }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeRight }}
       </view>
       <view class="tip-item">
         <view class="tip-label">bottom:</view>
         {{ lastBottom }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeBottom }}
       </view>
       <view class="tip-item">
         <view class="tip-label">left:</view>
         {{ lastLeft }}
-        <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
+        <pro-icon name="arrow-thin-up" custom-class="icon"></pro-icon>
         {{ sizeLeft }}
       </view>
     </demo-block>
@@ -85,16 +85,17 @@ function handleResize(detail: Record<string, string | number>) {
 }
 </script>
 <style lang="scss" scoped>
-
 .tip-item {
   margin-top: 15px;
   color: rgba(0, 0, 0, 0.45);
   font-size: 12px;
 }
+
 .tip-label {
   display: inline-block;
   width: 70px;
 }
+
 :deep(.icon) {
   margin: 0 4px;
   transform: rotate(90deg);

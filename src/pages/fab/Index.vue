@@ -43,19 +43,20 @@
           <wd-button type="primary" @click="active = !active" round>切换</wd-button>
         </view>
       </demo-block>
-      <wd-fab v-model:active="active" :disabled="disabled" :type="type" :position="position" :direction="direction" :draggable="draggable">
+      <wd-fab v-model:active="active" :disabled="disabled" :type="type" :position="position" :direction="direction"
+        :draggable="draggable">
         <wd-button @click="showToast('一键三连')" :disabled="disabled" custom-class="custom-button" type="primary" round>
-          <wd-icon name="github-filled" size="22px"></wd-icon>
+          <pro-icon name="github-filled" size="22px"></pro-icon>
         </wd-button>
         <wd-button @click="showToast('我要收藏')" :disabled="disabled" custom-class="custom-button" type="success" round>
-          <wd-icon name="star" size="22px"></wd-icon>
+          <pro-icon name="star" size="22px"></pro-icon>
         </wd-button>
 
         <wd-button @click="showToast('我要投币')" :disabled="disabled" custom-class="custom-button" type="error" round>
-          <wd-icon name="money-circle" size="22px"></wd-icon>
+          <pro-icon name="money-circle" size="22px"></pro-icon>
         </wd-button>
         <wd-button @click="showToast('我要点赞')" :disabled="disabled" custom-class="custom-button" type="warning" round>
-          <wd-icon name="thumb-up" size="22px"></wd-icon>
+          <pro-icon name="thumb-up" size="22px"></pro-icon>
         </wd-button>
       </wd-fab>
     </page-wraper>
@@ -78,6 +79,7 @@ const { closeOutside } = useQueue()
   position: relative;
   height: 100%;
   width: 100%;
+
   :deep(.custom-button) {
     min-width: auto !important;
     box-sizing: border-box;

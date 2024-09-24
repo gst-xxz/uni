@@ -4,15 +4,11 @@
     <view :id="dropMenuId">
       <!-- #endif -->
       <view class="wd-drop-menu__list">
-        <view
-          v-for="(child, index) in children"
-          :key="index"
-          @click="toggle(child)"
-          :class="`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`"
-        >
+        <view v-for="(child, index) in children" :key="index" @click="toggle(child)"
+          :class="`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`">
           <view class="wd-drop-menu__item-title">
             <view class="wd-drop-menu__item-title-text">{{ getDisplayTitle(child) }}</view>
-            <wd-icon :name="child.icon" :size="child.iconSize" custom-class="wd-drop-menu__arrow" />
+            <pro-icon :name="child.icon" :size="child.iconSize" custom-class="wd-drop-menu__arrow" />
           </view>
         </view>
       </view>

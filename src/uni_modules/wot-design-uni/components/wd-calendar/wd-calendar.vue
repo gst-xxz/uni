@@ -16,7 +16,7 @@
               :class="`wd-calendar__value ${ellipsis ? 'is-ellipsis' : ''} ${customValueClass} ${showValue ? '' : 'wd-calendar__value--placeholder'}`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-calendar__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="wd-calendar__arrow" name="arrow" />
           </view>
           <view v-if="errorMessage" class="wd-calendar__error-message">{{ errorMessage }}</view>
         </view>
@@ -40,7 +40,7 @@
             {{ item.text }}
           </wd-tag>
         </view>
-        <wd-icon custom-class="wd-calendar__close" name="cross" @click="close" />
+        <pro-icon custom-class="wd-calendar__close" name="cross" @click="close" />
       </view>
       <view v-if="inited"
         :class="`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'is-range' : ''} ${showConfirm ? 'is-show-confirm' : ''}`">
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdCalendarView from '../wd-calendar-view/wd-calendar-view.vue'
 import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import wdButton from '../wd-button/wd-button.vue'

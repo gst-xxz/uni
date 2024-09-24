@@ -173,9 +173,7 @@ $-button-text-hover-opacity: var(--wot-button-text-hover-opacity, 0.7) !default;
 $-cell-padding: var(--wot-cell-padding, $-size-side-padding) !default; // cell 左右padding距离
 $-cell-line-height: var(--wot-cell-line-height, 24px) !default; // 行高
 
-$-cell-group-title-fs: var(--wot-cell-group-title-fs, $-fs-title) !default; // 组标题字号
 $-cell-group-padding: var(--wot-cell-group-padding, 13px $-cell-padding) !default; // 组padding
-$-cell-group-title-color: var(--wot-cell-group-title-color, rgba(0, 0, 0, 0.85)) !default; // 组标题文字颜色
 $-cell-group-value-fs: var(--wot-cell-group-value-fs, $-fs-content) !default; // 组值字号
 $-cell-group-value-color: var(--wot-cell-group-value-color, $-color-content) !default; // 组值文字颜色
 
@@ -352,14 +350,6 @@ $-textarea-count-fs: var(--wot-textarea-count-fs, 14px) !default; // 计数字�
 $-textarea-count-fs-large: var(--wot-textarea-count-fs-large, 14px) !default; // 大尺寸计数字号
 $-textarea-icon-size: var(--wot-textarea-icon-size, 16px) !default; // 图标大小
 $-textarea-icon-size-large: var(--wot-textarea-icon-size-large, 18px) !default; // 大尺寸图标大小
-
-/* loadmore */
-$-loadmore-height: var(--wot-loadmore-height, 48px) !default; // 高度
-$-loadmore-color: var(--wot-loadmore-color, rgba(0, 0, 0, 0.45)) !default; // 颜色
-$-loadmore-fs: var(--wot-loadmore-fs, 14px) !default; // 字号
-$-loadmore-error-color: var(--wot-loadmore-error-color, $-color-theme) !default; // 点击重试颜色
-$-loadmore-refresh-fs: var(--wot-loadmore-refresh-fs, $-fs-title) !default; // refresh图标字号
-$-loadmore-loading-size: var(--wot-loadmore-loading-size, $-fs-title) !default; // loading尺寸
 
 /* message-box */
 $-message-box-width: var(--wot-message-box-width, 300px) !default; // 宽度
@@ -637,9 +627,6 @@ $-toast-icon-size: var(--wot-toast-icon-size, 32px) !default; // 图标大小
 $-toast-icon-margin-right: var(--wot-toast-icon-margin-right, 12px) !default; // 图标右边距
 $-toast-loading-padding: var(--wot-toast-loading-padding, 10px) !default; // loading 下的padding
 $-toast-box-shadow: var(--wot-toast-box-shadow, 0px 6px 16px 0px rgba(0, 0, 0, 0.08)) !default; // 外部阴影
-
-/* loading */
-$-loading-size: var(--wot-loading-size, 32px) !default; // loading 大小
 
 /* tooltip */
 $-tooltip-bg: var(--wot-tooltip-bg, rgba(38, 39, 40, 0.8)) !default; // 背景色

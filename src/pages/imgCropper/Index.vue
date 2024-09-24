@@ -8,7 +8,7 @@
         @imgloaderror="imgLoaderror" @imgloaded="imgLoaded"></wd-img-cropper>
       <view class="profile">
         <view v-if="!imgSrc" class="img" @click="upload">
-          <wd-icon name="photo-o" custom-class="img-icon"></wd-icon>
+          <pro-icon name="photo-o" custom-class="img-icon"></pro-icon>
         </view>
         <wd-img v-if="imgSrc" round width="200px" height="200px" :src="imgSrc" mode="aspectFit"
           custom-class="profile-img" @click="upload" />
@@ -49,7 +49,6 @@ function handleCancel(event: any) {
 }
 </script>
 <style lang="scss" scoped>
-
 .profile {
   display: flex;
   flex-direction: column;

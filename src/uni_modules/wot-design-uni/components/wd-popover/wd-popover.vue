@@ -8,41 +8,36 @@
         </view>
         <view v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'" class="wd-popover__menu">
           <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)">
-            <wd-icon v-if="item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
+            <pro-icon v-if="item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
             <text>{{ item.content }}</text>
           </view>
         </view>
       </view>
     </view>
-    <wd-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover" name="fade" :duration="200">
+    <pro-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover"
+      name="fade" :duration="200">
       <view :class="`wd-popover__container ${customPop}`">
-        <view
-          v-if="props.visibleArrow"
-          :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
-          :style="popover.arrowStyle.value"
-        ></view>
+        <view v-if="props.visibleArrow" :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
+          :style="popover.arrowStyle.value"></view>
         <!-- 普通模式 -->
         <view v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
           {{ content }}
         </view>
         <!-- 列表模式 -->
         <view v-if="!useContentSlot && mode === 'menu'" class="wd-popover__menu">
-          <view
-            v-for="(item, index) in content"
-            :key="index"
-            class="wd-popover__menu-inner"
-            @click="menuClick(index)"
-            :style="index === 0 ? 'border-top: none' : ''"
-          >
-            <wd-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
-            <view style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content : '' }}</view>
+          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)"
+            :style="index === 0 ? 'border-top: none' : ''">
+            <pro-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass"
+              custom-class="wd-popover__icon" />
+            <view style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content : '' }}
+            </view>
           </view>
         </view>
         <!-- 用户自定义样式 -->
         <slot name="content" v-else />
       </view>
-      <wd-icon v-if="showClose" name="close" custom-class="wd-popover__close-icon" @click="toggle"></wd-icon>
-    </wd-transition>
+      <pro-icon v-if="showClose" name="close" custom-class="wd-popover__close-icon" @click="toggle"></pro-icon>
+    </pro-transition>
     <view @click="toggle" class="wd-popover__target" id="target">
       <slot />
     </view>
@@ -61,8 +56,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { usePopover } from '../composables/usePopover'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'

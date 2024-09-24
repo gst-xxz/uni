@@ -1,6 +1,5 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
-import type { LoadingType } from '../wd-loading/types'
 import type { ImageMode } from '../wd-img/types'
 
 export interface ChooseFileOption {
@@ -248,7 +247,7 @@ export const uploadProps = {
    * 类型：string
    * 默认值：'ring'
    */
-  loadingType: makeStringProp<LoadingType>('ring'),
+  loadingType: makeStringProp<'spinner' | 'circular'>('circular'),
   /**
    * 加载中图标颜色
    * 类型：string

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="['wd-badge relative align-middle inline-block bg-danger text-xs leading-3 whitespace-nowrap border-[2] border-solid border-white', customClass]"
+    :class="['wd-badge relative align-middle inline-block text-xs leading-3 whitespace-nowrap border-[2px] border-solid border-white', customClass]"
     :style="customStyle">
     <slot></slot>
     <view v-if="isBadgeShow" :class="contentClass" :style="contentStyle">
