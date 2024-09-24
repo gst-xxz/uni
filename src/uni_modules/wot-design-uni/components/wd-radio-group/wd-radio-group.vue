@@ -1,5 +1,7 @@
 <template>
-  <view :class="`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`" :style="customStyle">
+  <view
+    :class="`wd-radio-group text-[0] bg-white ${customClass} ${cell && shape === 'button' ? 'w-full h-auto overflow-hidden box-border pt-2 pr-[3px] pb-5 pl-[15px]' : ''}`"
+    :style="customStyle">
     <slot />
   </view>
 </template>
@@ -46,6 +48,3 @@ function updateValue(value: string | number | boolean) {
   })
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

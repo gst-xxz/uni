@@ -1,24 +1,17 @@
 <template>
   <!--注意阻止横向滑动的穿透：横向移动时阻止冒泡-->
-  <view
-    :class="`wd-swipe-action ${customClass}`"
-    :style="customStyle"
-    @click.stop="onClick()"
-    @touchstart="startDrag"
-    @touchmove="onDrag"
-    @touchend="endDrag"
-    @touchcancel="endDrag"
-  >
+  <view :class="`wd-swipe-action relative overflow-hidden ${customClass}`" :style="customStyle" @click.stop="onClick()"
+    @touchstart="startDrag" @touchmove="onDrag" @touchend="endDrag" @touchcancel="endDrag">
     <!--容器-->
     <view class="wd-swipe-action__wrapper" :style="wrapperStyle">
       <!--左侧操作-->
-      <view class="wd-swipe-action__left" @click="onClick('left')">
+      <view class="wd-swipe-action__left absolute top-0 left-0 h-full translate-x-[-100%]" @click="onClick('left')">
         <slot name="left" />
       </view>
       <!--内容-->
       <slot />
       <!--右侧操作-->
-      <view class="wd-swipe-action__right" @click="onClick('right')">
+      <view class="wd-swipe-action__right absolute top-0 right-0 h-full translate-x-[100%]" @click="onClick('right')">
         <slot name="right" />
       </view>
     </view>
@@ -289,6 +282,3 @@ function close(reason: SwipeActionReason, position?: SwipeActionPosition) {
 
 defineExpose({ close })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

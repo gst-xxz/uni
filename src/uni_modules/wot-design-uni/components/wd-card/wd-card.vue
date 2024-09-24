@@ -1,5 +1,7 @@
 <template>
-  <view :class="['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass]" :style="customStyle">
+  <view
+    :class="['wd-card mb-3 my-0 mx-[15px]', type == 'rectangle' ? 'is-rectangle mx-0 rounded-none shadow-none' : '', customClass]"
+    :style="customStyle">
     <view :class="['wd-card__title-content', customTitleClass]">
       <view class="wd-card__title">
         <text v-if="title">{{ title }}</text>
@@ -9,7 +11,7 @@
     <view :class="`wd-card__content ${customContentClass}`">
       <slot></slot>
     </view>
-    <view :class="`wd-card__footer ${customFooterClass}`">
+    <view :class="`wd-card__footer text-right ${customFooterClass}`">
       <slot name="footer"></slot>
     </view>
   </view>

@@ -20,7 +20,4 @@
     color: $-cell-group-value-color;
     font-size: $-cell-group-value-fs;
   }
-  @include e(body) {
-    background: $-color-white;
-  }
 }

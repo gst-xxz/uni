@@ -1,5 +1,5 @@
 <template>
-  <view :class="['wd-cell-group', border ? 'is-border' : '', customClass]" :style="customStyle">
+  <view :class="['wd-cell-group bg-white', border ? 'is-border' : '', customClass]" :style="customStyle">
     <view v-if="title || value || useSlot" class="wd-cell-group__title relative flex justify-between font-medium">
       <!--左侧标题-->
       <view class="wd-cell-group__left">
@@ -12,7 +12,7 @@
         <slot v-else name="value"></slot>
       </view>
     </view>
-    <view class="wd-cell-group__body">
+    <view class="wd-cell-group__body bg-white">
       <slot></slot>
     </view>
   </view>

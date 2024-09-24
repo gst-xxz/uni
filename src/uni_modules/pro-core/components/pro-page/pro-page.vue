@@ -1,5 +1,5 @@
 <template>
-  <view class="min-h-full" :class="customClass">
+  <view :class="['min-h-full', customClass, theme === 'dark' ? 'dark' : '']">
     <wd-toast />
     <slot />
     <wd-notify />
@@ -14,6 +14,7 @@
 import { useToast } from '@/uni_modules/wot-design-uni'
 import { useNotify } from '@/uni_modules/wot-design-uni'
 import { useMessage } from '@/uni_modules/wot-design-uni'
+import pro from '@/uni_modules/pro-core/lib/pro'
 
 export default {
   name: 'pro-page',
@@ -30,7 +31,8 @@ export default {
   },
   data () {
     return {
-      actionSheetData: this.$actionSheet.defaultData
+      actionSheetData: pro.actionSheetDefaultData,
+      theme: 'light'
     }
   },
   setup () {
@@ -45,40 +47,40 @@ export default {
   },
   mounted () {
     const that = this
-    this.$actionSheet.bind((newActionSheet) => {
+    pro.bindActionSheet((newActionSheet) => {
       that.actionSheetData = {
         ...newActionSheet,
         onClose: () => {
-          that.actionSheetData = this.$actionSheet.defaultData
+          that.actionSheetData = pro.actionSheetDefaultData
           newActionSheet.onClose?.()
         }
       }
     })
   },
   unmounted () {
-    this.$toast.unbind()
-    this.$notify.unbind()
-    this.$message.unbind()
-    this.$actionSheet.unbind()
+    pro.unbindToast()
+    pro.unbindNotify()
+    pro.unbindMessage()
+    pro.unbindActionSheet()
   },
   watch: {
     toast: {
       handler (newVal) {
-        this.$toast.bind(newVal)
+        pro.bindToast(newVal)
       },
       immediate: true,
       deep: true
     },
     notify: {
       handler (newVal) {
-        this.$notify.bind(newVal)
+        pro.bindNotify(newVal)
       },
       immediate: true,
       deep: true
     },
     message: {
       handler (newVal) {
-        this.$message.bind(newVal)
+        pro.bindMessage(newVal)
       },
       immediate: true,
       deep: true

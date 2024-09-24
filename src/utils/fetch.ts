@@ -1,4 +1,4 @@
-import { createRequest, createUpload, type CreateRequestParams } from '@/lib/createRequest'
+import { createRequest, createUpload, type CreateRequestParams } from '@/uni_modules/pro-core/lib/createRequest'
 import { tokenStorage } from './storage'
 
 const createRequestOptions: CreateRequestParams = {

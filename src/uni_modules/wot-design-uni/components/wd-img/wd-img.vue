@@ -1,14 +1,8 @@
 <template>
   <view :class="rootClass" @click="handleClick" :style="rootStyle">
-    <image
-      :class="`wd-img__image ${customImage}`"
-      :style="status !== 'success' ? 'width: 0;height: 0;' : ''"
-      :src="src"
-      :mode="mode"
-      :lazy-load="lazyLoad"
-      @load="handleLoad"
-      @error="handleError"
-    />
+    <image :class="`wd-img__image block w-full h-full box-border ${customImage}`"
+      :style="status !== 'success' ? 'width: 0;height: 0;' : ''" :src="src" :mode="mode" :lazy-load="lazyLoad"
+      @load="handleLoad" @error="handleError" />
     <slot v-if="status === 'loading'" name="loading"></slot>
     <slot v-if="status === 'error'" name="error"></slot>
   </view>
@@ -52,7 +46,7 @@ const rootStyle = computed(() => {
 })
 
 const rootClass = computed(() => {
-  return `wd-img  ${props.round ? 'is-round' : ''} ${props.customClass}`
+  return `wd-img relative inline-block ${props.round ? 'overflow-hidden rounded-full' : ''} ${props.customClass}`
 })
 
 const status = ref<'loading' | 'error' | 'success'>('loading')
@@ -74,7 +68,3 @@ function handleLoad(event: Event) {
   emit('load', event)
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

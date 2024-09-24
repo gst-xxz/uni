@@ -1,17 +1,8 @@
 import type { App } from 'vue'
-import CreateToast from './createToast'
-import CreateNotify from './createNotify'
-import CreateMessage from './createMessage'
-import CreateActionSheet from './createActionSheet'
 import { request, upload } from '@/utils/fetch'
-import type { RequestOptions } from './createRequest'
+import type { RequestOptions } from './uni_modules/pro-core/lib/createRequest'
 
 export const addGlobalProperties = (app: App<Element>) => {
-  app.config.globalProperties.$toast = new CreateToast()
-  app.config.globalProperties.$notify = new CreateNotify()
-  app.config.globalProperties.$message = new CreateMessage()
-  app.config.globalProperties.$actionSheet = new CreateActionSheet()
-
   // 请求
   app.config.globalProperties.$request = request
   app.config.globalProperties.$upload = upload

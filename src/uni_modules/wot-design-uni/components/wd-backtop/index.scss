@@ -1,7 +1,0 @@
-@import '../common/abstracts/variable';
-@import '../common/abstracts/mixin';
-
-@include b(backtop) {
-  background-color: $-backtop-bg;
-  color: $-color-gray-8;
-}

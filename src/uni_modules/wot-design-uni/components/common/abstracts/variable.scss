@@ -481,7 +481,6 @@ $-popup-close-size: var(--wot-popup-close-size, 24px) !default; // 关闭按钮�
 $-popup-close-color: var(--wot-popup-close-color, #666) !default; // 关闭按钮颜色
 
 /* progress */
-$-progress-padding: var(--wot-progress-padding, 9px 0 8px) !default; // 进度条内边距
 $-progress-bg: var(--wot-progress-bg, rgba(229, 229, 229, 1)) !default; // 进度条底色
 $-progress-danger-color: var(--wot-progress-danger-color, $-color-danger) !default; // 进度条danger颜色
 $-progress-success-color: var(--wot-progress-success-color, $-color-success) !default; // 进度条success进度条颜色
@@ -700,7 +699,6 @@ $-card-footer-padding: var(--wot-card-footer-padding, 12px 0 16px) !default; // 
 $-card-shadow-color: var(--wot-card-shadow-color, 0px 4px 8px 0px rgba(0, 0, 0, 0.02)) !default; // 阴影
 $-card-radius: var(--wot-card-radius, 8px) !default; // 圆角大小
 $-card-line-height: var(--wot-card-line-height, 1.1) !default; // 行高
-$-card-margin: var(--wot-card-margin, 0 $-size-side-padding) !default; // 外边距
 $-card-title-color: var(--wot-card-title-color, rgba(0, 0, 0, 0.85)) !default; // 标题颜色
 $-card-title-fs: var(--wot-card-title-fs, $-fs-title) !default; //  矩形卡片标题字号
 $-card-content-border-color: var(--wot-card-content-border-color, rgba(0, 0, 0, 0.09)) !default; // 内容边框
@@ -758,10 +756,6 @@ $-skeleton-border-radius-circle: var(--wot-skeleton-border-radius-circle, 50%) !
 
 /* circle */
 $-circle-text-color: var(--wot-circle-text-color, $-color-content) !default; // circle文字颜色
-
-/* swiper */
-$-swiper-radius: var(--wot-swiper-radius, 8px);
-$-swiper-item-padding: var(--wot-swiper-item-padding, 0);
 
 /* swiper-nav */
 // dot & dots-bar
@@ -855,8 +849,6 @@ $-fab-icon-fs: var(--wot-fab-icon-fs, 20px) !default;
 
 /* count-down */
 $-count-down-text-color: var(--wot-count-down-text-color, $-color-gray-8) !default;
-$-count-down-font-size: var(--wot-count-down-font-size, $-fs-content) !default;
-$-count-down-line-height: var(--wot-count-down-line-height, 20px) !default;
 
 /* keyboard */
 $-keyboard-key-height: var(--wot-keyboard-key-height, 48px) !default;

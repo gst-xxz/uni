@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import pro from '@/uni_modules/pro-core/lib/pro'
+
 export default {
   name: 'XItem',
   props: {
@@ -25,7 +27,7 @@ export default {
       // })
       // this.$message.alert('123')
 
-      this.$actionSheet.show({
+      pro.actionSheet.show({
         actions: [
           {
             name: '选项1'

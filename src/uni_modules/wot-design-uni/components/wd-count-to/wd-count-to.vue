@@ -1,16 +1,16 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClass" class="align-bottom">
     <!-- 前缀插槽 -->
     <slot name="prefix">
-      <wd-text :color="props.color" :size="`${props.fontSize * 0.7}px`" :text="props.prefix"></wd-text>
+      <span class="whitespace-pre-line" :style="prefixSuffixStyle">{{ props.prefix }}</span>
     </slot>
     <!-- 默认文本插槽 -->
     <slot>
-      <wd-text :color="props.color" :size="`${props.fontSize}px`" :text="timeText"></wd-text>
+      <span class="whitespace-pre-line" :style="timeTextStyle">{{ timeText }}</span>
     </slot>
     <!-- 后缀插槽 -->
     <slot name="suffix">
-      <wd-text :color="props.color" :size="`${props.fontSize * 0.7}px`" :text="props.suffix"></wd-text>
+      <span class="whitespace-pre-line" :style="prefixSuffixStyle">{{ props.suffix }}</span>
     </slot>
   </view>
 </template>
@@ -27,7 +27,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdText from '../wd-text/wd-text.vue'
 import { computed, watch, onMounted } from 'vue'
 import { countToProps } from './types'
 import { easingFn, isNumber } from '../common/util'
@@ -46,6 +45,20 @@ const { start, pause, reset, current } = useCountDown({
 // 计算根元素的类名
 const rootClass = computed(() => {
   return `wd-count-to ${props.customClass}`
+})
+
+const prefixSuffixStyle = computed(() => {
+  return {
+    color: props.color,
+    fontSize: `${props.fontSize * 0.7}px`
+  }
+})
+
+const timeTextStyle = computed(() => {
+  return {
+    color: props.color,
+    fontSize: `${props.fontSize}px`
+  }
 })
 
 const timeText = computed(() => {
@@ -119,7 +132,3 @@ function formatNumber(num: any): string {
 
 defineExpose<CountDownExpose>({ start, reset: resetTime, pause })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

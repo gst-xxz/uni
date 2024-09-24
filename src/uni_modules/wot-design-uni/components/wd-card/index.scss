@@ -5,17 +5,11 @@
   padding: $-card-padding;
   background-color: $-card-bg;
   line-height: $-card-line-height;
-  margin: $-card-margin;
   border-radius: $-card-radius;
   box-shadow: $-card-shadow-color;
   font-size: $-card-fs;
-  margin-bottom: 12px;
 
   @include when(rectangle) {
-    margin-left: 0;
-    margin-right: 0;
-    border-radius: 0;
-    box-shadow: none;
 
     .wd-card__title-content {
       font-size: $-card-fs;
@@ -44,6 +38,5 @@
   }
   @include e(footer) {
     padding: $-card-footer-padding;
-    text-align: right;
   }
 } 

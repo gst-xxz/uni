@@ -30,6 +30,7 @@ class CreateMessage {
   bind = (message: Message) => {
     this.instance = message
   }
+
   unbind = () => {
     this.instance = defaultMessage
   }

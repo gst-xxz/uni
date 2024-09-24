@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-count-down ${customClass}`" :style="customStyle">
+  <view :class="`wd-count-down text-sm text-gray-8 ${customClass}`" :style="customStyle">
     <slot :current="current" v-if="$slots.default" />
     <block v-else>{{ timeText }}</block>
   </view>
@@ -9,9 +9,6 @@
 export default {
   name: 'wd-count-down',
   options: {
-    virtualHost: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared'
   }
 }
 </script>
@@ -54,7 +51,3 @@ defineExpose<CountDownExpose>({
   reset: resetTime
 })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

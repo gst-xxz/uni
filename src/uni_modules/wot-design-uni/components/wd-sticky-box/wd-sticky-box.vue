@@ -1,6 +1,6 @@
 <template>
-  <view style="position: relative">
-    <view :class="`wd-sticky-box ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
+  <view class="relative">
+    <view :class="`wd-sticky-box relative ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
       <wd-resize @resize="handleResize">
         <slot />
       </wd-resize>
@@ -150,6 +150,3 @@ function handleRelativeTo(exposed: any, { boundingClientRect }: any) {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

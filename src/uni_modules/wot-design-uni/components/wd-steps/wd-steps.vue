@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-steps ${customClass} ${vertical ? 'is-vertical' : ''}`">
+  <view :class="`wd-steps text-[0] ${customClass} ${vertical ? 'block' : ''}`">
     <slot />
   </view>
 </template>
@@ -23,6 +23,3 @@ const { linkChildren } = useChildren(STEPS_KEY)
 
 linkChildren({ props })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

@@ -1,17 +1,14 @@
 <template>
-  <view :class="`wd-progress ${customClass}`" :style="customStyle">
+  <view :class="`wd-progress w-full flex items-center pt-[9px] pb-2 px-0 h-[3px] ${customClass}`" :style="customStyle">
     <!--进度条-->
     <view class="wd-progress__outer">
       <view :class="`wd-progress__inner ${progressClass}`" :style="rootStyle"></view>
     </view>
     <!--文案、图标-->
     <view v-if="!hideText" class="wd-progress__label">{{ percentage }}%</view>
-    <wd-icon
-      v-else-if="status"
-      :custom-class="`wd-progress__label wd-progress__icon ${progressClass}`"
+    <wd-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${progressClass}`"
       :name="status == 'danger' ? 'close-outline' : 'check-outline'"
-      :color="typeof color === 'string' ? color : ''"
-    ></wd-icon>
+      :color="typeof color === 'string' ? color : ''"></wd-icon>
   </view>
 </template>
 
@@ -158,32 +155,32 @@ function controlProgress() {
   const partList = isObjArray
     ? colorArray.sort((a: any, b: any) => a.percentage - b.percentage)
     : colorArray.map((item, index) => {
-        return {
-          color: item,
-          percentage: (index + 1) * partNum
-        }
-      })
+      return {
+        color: item,
+        percentage: (index + 1) * partNum
+      }
+    })
   /**
    * 找到当前目标
    */
   showPercent.value > percentage
     ? // 减小不加动画，找到第一个比target大的锚点，取锚点颜色并设置target值
-      partList.some((part: any) => {
-        if (percentage <= part.percentage) {
-          update(percentage, part.color)
-          return true
-        }
-      })
+    partList.some((part: any) => {
+      if (percentage <= part.percentage) {
+        update(percentage, part.color)
+        return true
+      }
+    })
     : // 增加使用分段动画
-      partList.some((part: any, index: number) => {
-        if (showPercent.value < part.percentage && part.percentage <= percentage) {
-          // 找到第一个比now大的点，如果这个点比target小或等，就把这个点设置为下一个即将展示的点
-          update(part.percentage, part.color)
-          return true
-        } else if (index === partList.length - 1) {
-          update(percentage, part.color)
-        }
-      })
+    partList.some((part: any, index: number) => {
+      if (showPercent.value < part.percentage && part.percentage <= percentage) {
+        // 找到第一个比now大的点，如果这个点比target小或等，就把这个点设置为下一个即将展示的点
+        update(part.percentage, part.color)
+        return true
+      } else if (index === partList.length - 1) {
+        update(percentage, part.color)
+      }
+    })
 }
 </script>
 <style lang="scss" scoped>

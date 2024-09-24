@@ -3,10 +3,10 @@ import App from './App.vue'
 // #ifdef H5
 import '@vant/touch-emulator'
 // #endif
-import '@/lib/global.output.css'
+import './main.css'
 
-import { addGlobalProperties } from '@/lib/addGlobalProperties'
-import globalMixins from '@/lib/global.mixins'
+import { addGlobalProperties } from '@/globalProperties'
+import globalMixins from '@/global.mixins'
 
 export function createApp() {
   const app = createSSRApp(App)

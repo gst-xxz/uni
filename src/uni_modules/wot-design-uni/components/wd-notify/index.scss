@@ -2,18 +2,12 @@
 @import '../common/abstracts/mixin';
 
 @include b(notify) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
   padding: $-notify-padding;
   font-size: $-notify-font-size;
   line-height: $-notify-line-height;
   color: $-notify-text-color;
   
   // allow newline character
-  white-space: pre-wrap;
-  text-align: center;
   word-wrap: break-word;
 
   @include m(primary) {

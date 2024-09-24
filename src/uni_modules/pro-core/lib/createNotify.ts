@@ -1,6 +1,6 @@
 import type { NotifyProps } from '@/uni_modules/wot-design-uni/components/wd-notify/types'
 
-interface NotifyInstance {
+export interface NotifyInstance {
   showNotify: (option: NotifyProps | string) => void
   closeNotify: () => void
 }

@@ -1,11 +1,11 @@
 import type { ActionSheetProps } from '@/uni_modules/wot-design-uni/components/wd-action-sheet/types'
 
-type Instance = (props: ActionSheetProps) => void
+export type ActionSheetInstance = (props: ActionSheetProps) => void
 
-const defaultInstance: Instance = () => {}
+const defaultInstance: ActionSheetInstance = () => {}
 
 class CreateActionSheet {
-  instance: Instance = defaultInstance
+  instance: ActionSheetInstance = defaultInstance
 
   defaultData: Partial<ActionSheetProps> & { modelValue: boolean } & { onClose: () => void } & { onSelect: () => void } = {
     modelValue: false,
@@ -16,7 +16,7 @@ class CreateActionSheet {
     onSelect: () => {}
   }
 
-  bind = (newVal: Instance) => {
+  bind = (newVal: ActionSheetInstance) => {
     this.instance = newVal
   }
 

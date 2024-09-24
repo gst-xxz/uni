@@ -746,16 +746,7 @@
         "navigationBarTitleText": "Fab 悬浮按钮"
       }
     },
-    {
-      "path": "pages/text/Index",
-      "name": "text",
-      "style": {
-        "mp-alipay": {
-          "allowsBounceVertical": "NO"
-        },
-        "navigationBarTitleText": "Text 文本"
-      }
-    },
+    
     {
       "path": "pages/countDown/Index",
       "name": "countDown",

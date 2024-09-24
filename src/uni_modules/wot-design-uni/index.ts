@@ -16,5 +16,3 @@ export * as CommonUtil from './components/common/util'
 export * as clickOut from './components/common/clickoutside'
 
 export * from './locale'
-
-export type { ConfigProviderThemeVars } from './components/wd-config-provider/types'

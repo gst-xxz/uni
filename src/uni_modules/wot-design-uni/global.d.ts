@@ -15,7 +15,6 @@ declare module 'vue' {
     WdColPicker: typeof import('./components/wd-col-picker/wd-col-picker.vue')['default']
     WdCollapse: typeof import('./components/wd-collapse/wd-collapse.vue')['default']
     WdCollapseItem: typeof import('./components/wd-collapse-item/wd-collapse-item.vue')['default']
-    WdConfigProvider: typeof import('./components/wd-config-provider/wd-config-provider.vue')['default']
     WdCurtain: typeof import('./components/wd-curtain/wd-curtain.vue')['default']
     WdDatetimePicker: typeof import('./components/wd-datetime-picker/wd-datetime-picker.vue')['default']
     WdDatetimePickerView: typeof import('./components/wd-datetime-picker-view/wd-datetime-picker-view.vue')['default']

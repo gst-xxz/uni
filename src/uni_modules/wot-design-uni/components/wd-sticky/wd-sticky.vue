@@ -1,7 +1,7 @@
 <template>
-  <view :style="`${rootStyle};display: inline-block;`">
-    <view :class="`wd-sticky ${customClass}`" :style="stickyStyle" :id="styckyId">
-      <view class="wd-sticky__container" :style="containerStyle">
+  <view :style="`${rootStyle};`" class="inline-block">
+    <view :class="`wd-sticky inline-block ${customClass}`" :style="stickyStyle" :id="styckyId">
+      <view class="wd-sticky__container inline-block" :style="containerStyle">
         <wd-resize @resize="handleResize" custom-style="display: inline-block;">
           <slot />
         </wd-resize>
@@ -186,6 +186,3 @@ defineExpose({
   offsetTop: props.offsetTop
 })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

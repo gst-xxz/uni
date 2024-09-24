@@ -2,9 +2,6 @@
 @import "../common/abstracts/mixin";
 
 @include b(fab) {
-  position: fixed;
-  z-index: 99;
-
   @include edeep(trigger) {
     min-width: auto !important;
     box-sizing: border-box;

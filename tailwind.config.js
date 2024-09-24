@@ -12,7 +12,15 @@ module.exports = {
         danger: 'hsl(var(--danger))',
 
         // 遮罩层背景色
-        'overlay-bg': 'hsla(var(--overlay-bg))'
+        'overlay-bg': 'hsla(var(--overlay-bg))',
+
+        // 返回顶部按钮背景色
+        'backtop-bg': 'hsl(var(--backtop-bg))',
+
+        // 灰色
+        gray: {
+          8: 'hsl(var(--gray-8))'
+        }
       }
     }
   },
