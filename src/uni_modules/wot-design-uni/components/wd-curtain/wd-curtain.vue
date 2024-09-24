@@ -1,6 +1,6 @@
 <template>
   <view>
-    <wd-popup v-model="show" transition="zoom-in" position="center" :close-on-click-modal="closeOnClickModal"
+    <pro-popup v-model="show" transition="zoom-in" position="center" :close-on-click-modal="closeOnClickModal"
       :hide-when-close="hideWhenClose" @before-enter="beforeenter" @enter="enter" @after-enter="afterenter"
       @before-leave="beforeleave" @leave="leave" @after-leave="afterleave" @close="close" @click-modal="clickModal"
       :custom-class="`wd-curtain ${customClass}`" :custom-style="customStyle">
@@ -9,7 +9,7 @@
           @load="imgLoad"></image>
         <pro-icon name="cross" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
       </view>
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 
 <script lang="ts" setup>
 
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import { ref, watch } from 'vue'
 import { curtainProps } from './types'
 

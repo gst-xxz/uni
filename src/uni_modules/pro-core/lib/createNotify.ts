@@ -1,4 +1,4 @@
-import type { NotifyProps } from '@/uni_modules/wot-design-uni/components/wd-notify/types'
+import type { NotifyProps } from '@/uni_modules/wot-design-uni/components/pro-notify/types'
 
 export interface NotifyInstance {
   showNotify: (option: NotifyProps | string) => void

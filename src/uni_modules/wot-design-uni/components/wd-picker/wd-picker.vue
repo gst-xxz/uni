@@ -22,7 +22,7 @@
         </view>
       </view>
     </view>
-    <wd-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
+    <pro-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
       :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom" @close="onCancel" custom-class="wd-picker__popup">
       <view class="wd-picker__wraper">
         <view class="wd-picker__toolbar" @touchmove="noop">
@@ -39,7 +39,7 @@
           :value-key="valueKey" :label-key="labelKey" :immediate-change="immediateChange" @change="pickerViewChange"
           @pickstart="onPickStart" @pickend="onPickEnd" :column-change="columnChange" />
       </view>
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 
 <script lang="ts" setup>
 
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'
 import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'

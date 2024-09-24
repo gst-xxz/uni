@@ -1,15 +1,7 @@
 <template>
   <view>
-    <wd-popup
-      transition="zoom-in"
-      v-model="show"
-      :close-on-click-modal="closeOnClickModal"
-      :lazy-render="lazyRender"
-      custom-class="wd-message-box"
-      @click-modal="toggleModal('modal')"
-      :z-index="zIndex"
-      :duration="200"
-    >
+    <pro-popup transition="zoom-in" v-model="show" :close-on-click-modal="closeOnClickModal" :lazy-render="lazyRender"
+      custom-class="wd-message-box" @click-modal="toggleModal('modal')" :z-index="zIndex" :duration="200">
       <view :class="rootClass">
         <view :class="bodyClass">
           <view v-if="title" class="wd-message-box__title">
@@ -17,7 +9,8 @@
           </view>
           <view class="wd-message-box__content">
             <block v-if="type === 'prompt'">
-              <wd-input v-model="inputValue" :type="inputType" size="large" :placeholder="inputPlaceholder || '请输入'" @input="inputValChange" />
+              <wd-input v-model="inputValue" :type="inputType" size="large" :placeholder="inputPlaceholder || '请输入'"
+                @input="inputValChange" />
               <view v-if="showErr" class="wd-message-box__input-error">
                 {{ inputError || translate('inputNoValidate') }}
               </view>
@@ -26,7 +19,8 @@
           </view>
         </view>
         <view :class="`wd-message-box__actions ${showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
-          <wd-button type="info" block v-if="showCancelButton" custom-style="margin-right: 16px;" @click="toggleModal('cancel')">
+          <wd-button type="info" block v-if="showCancelButton" custom-style="margin-right: 16px;"
+            @click="toggleModal('cancel')">
             {{ cancelButtonText || translate('cancel') }}
           </wd-button>
           <wd-button block @click="toggleModal('confirm')">
@@ -34,7 +28,7 @@
           </wd-button>
         </view>
       </view>
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 <script lang="ts">
@@ -49,7 +43,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import wdButton from '../wd-button/wd-button.vue'
 import wdInput from '../wd-input/wd-input.vue'
 import { computed, inject, ref, watch } from 'vue'

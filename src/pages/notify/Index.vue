@@ -25,15 +25,15 @@
         <wd-cell title="使用 Notify 组件" is-link @click="showNotifyComponent" />
       </wd-cell-group>
     </demo-block>
-    <wd-notify selector="visible" type="success" v-model:visible="visible">
+    <pro-notify selector="visible" type="success" v-model:visible="visible">
       <pro-icon name="check-outline" size="inherit" color="inherit" />
       成功通知
-    </wd-notify>
+    </pro-notify>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { NotifyType } from '@/uni_modules/wot-design-uni/components/wd-notify/types'
+import type { NotifyType } from '@/uni_modules/wot-design-uni/components/pro-notify/types'
 import { useNotify } from '@/uni_modules/wot-design-uni'
 
 let timer: ReturnType<typeof setTimeout>

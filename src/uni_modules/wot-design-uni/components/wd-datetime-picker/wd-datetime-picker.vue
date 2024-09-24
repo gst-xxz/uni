@@ -39,7 +39,7 @@
       </view>
     </view>
     <!--弹出层，picker-view 在隐藏时修改值，会触发多次change事件，从而导致所有列选中第一项，因此picker在关闭时不隐藏 -->
-    <wd-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
+    <pro-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
       :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="onCancel" custom-class="wd-picker__popup">
       <view class="wd-picker__wraper">
         <!--toolBar-->
@@ -86,7 +86,7 @@
             @pickstart="onPickStart" @pickend="onPickEnd" />
         </view>
       </view>
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import wdDatetimePickerView from '../wd-datetime-picker-view/wd-datetime-picker-view.vue'
 import { computed, getCurrentInstance, nextTick, onBeforeMount, onMounted, ref, watch } from 'vue'
 import { deepClone, isArray, isDef, isEqual, isFunction, padZero } from '../common/util'

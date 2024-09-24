@@ -45,23 +45,23 @@
         </wd-cell-group>
       </demo-block>
 
-      <wd-popup v-model="show1" custom-style="padding: 30px 40px;" @close="handleClose1"><text
-          class="custom-txt">内容</text></wd-popup>
-      <wd-popup v-model="show2" position="top" custom-style="height: 200px;" @close="handleClose2"></wd-popup>
-      <wd-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></wd-popup>
-      <wd-popup v-model="show4" position="bottom" custom-style="height: 200px;" @close="handleClose4"></wd-popup>
-      <wd-popup v-model="show5" position="left" custom-style="width: 200px;" @close="handleClose5"></wd-popup>
-      <wd-popup v-model="show6" position="bottom" closable custom-style="height: 200px;"
-        @close="handleClose6"></wd-popup>
-      <wd-popup v-model="show7" position="bottom" :close-on-click-modal="false" closable custom-style="height: 200px;"
-        @close="handleClose7"></wd-popup>
+      <pro-popup v-model="show1" custom-style="padding: 30px 40px;" @close="handleClose1"><text
+          class="custom-txt">内容</text></pro-popup>
+      <pro-popup v-model="show2" position="top" custom-style="height: 200px;" @close="handleClose2"></pro-popup>
+      <pro-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></pro-popup>
+      <pro-popup v-model="show4" position="bottom" custom-style="height: 200px;" @close="handleClose4"></pro-popup>
+      <pro-popup v-model="show5" position="left" custom-style="width: 200px;" @close="handleClose5"></pro-popup>
+      <pro-popup v-model="show6" position="bottom" closable custom-style="height: 200px;"
+        @close="handleClose6"></pro-popup>
+      <pro-popup v-model="show7" position="bottom" :close-on-click-modal="false" closable custom-style="height: 200px;"
+        @close="handleClose7"></pro-popup>
 
-      <wd-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;"
-        @close="handleClose8"></wd-popup>
-      <wd-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;"
-        @close="handleClose9"></wd-popup>
-      <wd-popup v-model="show10" lock-scroll position="bottom" :safe-area-inset-bottom="true"
-        custom-style="height: 200px;" @close="handleClose10"></wd-popup>
+      <pro-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;"
+        @close="handleClose8"></pro-popup>
+      <pro-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;"
+        @close="handleClose9"></pro-popup>
+      <pro-popup v-model="show10" lock-scroll position="bottom" :safe-area-inset-bottom="true"
+        custom-style="height: 200px;" @close="handleClose10"></pro-popup>
     </page-wraper>
   </view>
 </template>

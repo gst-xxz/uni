@@ -1,6 +1,6 @@
 <template>
   <view>
-    <wd-popup custom-class="wd-action-sheet__popup"
+    <pro-popup custom-class="wd-action-sheet__popup"
       :custom-style="`${(actions && actions.length) || (panels && panels.length) ? 'background: transparent;' : ''}`"
       v-model="showPopup" :duration="duration" position="bottom" :close-on-click-modal="closeOnClickModal"
       :safe-area-inset-bottom="safeAreaInsetBottom" :lazy-render="lazyRender" @enter="handleOpen" @close="close"
@@ -35,7 +35,7 @@
         <slot />
         <button v-if="cancelText" class="wd-action-sheet__cancel" @click="handleCancel">{{ cancelText }}</button>
       </view>
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 <script lang="ts">
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 
 import { watch, ref } from 'vue'
 import { actionSheetProps, type Panel } from './types'

@@ -1,16 +1,27 @@
 <template>
   <pro-overlay v-if="modal" :show="modelValue" :z-index="zIndex" :lock-scroll="lockScroll" :duration="duration"
     :custom-style="modalStyle" @click="handleClickModal" @touchmove="noop" />
-  <view v-if="!lazyRender || inited" :class="[rootClass, 'fixed maxh-full overflow-auto bg-white']" :style="style"
-    @transitionend="onTransitionEnd">
+  <view v-if="!lazyRender || inited" :class="[
+    `pro-popup`, 'fixed max-h-full overflow-auto bg-white',
+    {
+      '-left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2': props.position === 'center',
+      'top-0 left-0 bottom-0': props.position === 'left',
+      'top-0 right-0 bottom-0': props.position === 'right',
+      'top-0 left-0 right-0': props.position === 'top',
+      'right-0 bottom-0 left-0': props.position === 'bottom',
+    },
+    customClass,
+    classes
+  ]" :style="style" @transitionend="onTransitionEnd">
     <slot />
-    <pro-icon v-if="closable" custom-class="wd-popup__close absolute top-2.5 right-2.5" name="add" @click="close" />
+    <pro-icon v-if="closable" custom-class="pro-popup__close absolute top-2.5 right-2.5 -rotate-45 text-[#666] text-xl"
+      name="add" @click="close" />
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-popup',
+  name: 'pro-popup',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -49,10 +60,10 @@ const getClassNames = (name?: string) => {
   }
 
   return {
-    enter: `wd-${name}-enter wd-${name}-enter-active`,
-    'enter-to': `wd-${name}-enter-to wd-${name}-enter-active`,
-    leave: `wd-${name}-leave wd-${name}-leave-active`,
-    'leave-to': `wd-${name}-leave-to wd-${name}-leave-active`
+    enter: `pro-${name}-enter pro-${name}-enter-active`,
+    'enter-to': `pro-${name}-enter-to pro-${name}-enter-active`,
+    leave: `pro-${name}-leave pro-${name}-leave-active`,
+    'leave-to': `pro-${name}-leave-to pro-${name}-leave-active`
   }
 }
 
@@ -76,10 +87,6 @@ const name = ref<string>('') // 动画名
 const style = computed(() => {
   return `z-index: ${props.zIndex}; padding-bottom: ${safeBottom.value}px; -webkit-transition-duration: ${currentDuration.value
     }ms; transition-duration: ${currentDuration.value}ms; ${display.value || !props.hideWhenClose ? '' : 'display: none;'} ${props.customStyle}`
-})
-
-const rootClass = computed(() => {
-  return `wd-popup wd-popup--${props.position} ${props.customClass || ''} ${classes.value || ''}`
 })
 
 onBeforeMount(() => {
@@ -200,6 +207,57 @@ function close() {
 }
 function noop() { }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
+<style lang="scss">
+.pro-center-enter-active,
+.pro-center-leave-active {
+  transition-property: opacity;
+}
+
+.pro-center-enter,
+.pro-center-leave-to {
+  opacity: 0;
+}
+
+.pro-top-enter-active,
+.pro-top-leave-active,
+.pro-bottom-enter-active,
+.pro-bottom-leave-active,
+.pro-left-enter-active,
+.pro-left-leave-active,
+.pro-right-enter-active,
+.pro-right-enter-active {
+  transition-property: transform;
+}
+
+.pro-top-enter,
+.pro-top-leave-to {
+  transform: translate3d(0, -100%, 0);
+}
+
+.pro-bottom-enter,
+.pro-bottom-leave-to {
+  transform: translate3d(0, 100%, 0);
+}
+
+.pro-left-enter,
+.pro-left-leave-to {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.pro-right-enter,
+.pro-right-leave-to {
+  transform: translate3d(100%, 0, 0);
+}
+
+.pro-zoom-in-enter-active,
+.pro-zoom-in-leave-active {
+  transition-property: opacity, transform;
+  transform-origin: center center;
+}
+
+.pro-zoom-in-enter,
+.pro-zoom-in-leave-to {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.7);
+}
 </style>

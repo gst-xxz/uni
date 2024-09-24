@@ -367,7 +367,6 @@ $-message-box-input-error-color: var(--wot-message-box-input-error-color, $-inpu
 
 /* notice-bar */
 $-notice-bar-fs: var(--wot-notice-bar-fs, 12px) !default; // 字号
-$-notice-bar-line-height: var(--wot-notice-bar-line-height, 18px) !default; // 行高
 $-notice-bar-border-radius: var(--wot-notice-bar-border-radius, 8px) !default; // 圆角
 $-notice-bar-padding: var(--wot-notice-bar-padding, 9px 20px 9px 15px) !default; // 非换行下的padding
 $-notice-bar-warning-bg: var(--wot-notice-bar-warning-bg, #fff6c8) !default; // 背景色
@@ -454,10 +453,6 @@ $-col-picker-list-color-checked: var(--wot-col-picker-list-color-checked, $-colo
 $-overlay-bg: var(--wot-overlay-bg, rgba(0, 0, 0, 0.65)) !default;
 $-overlay-bg-dark: var(--wot-overlay-bg-dark, rgba(0, 0, 0, 0.75)) !default;
 
-/* popup */
-$-popup-close-size: var(--wot-popup-close-size, 24px) !default; // 关闭按钮尺寸
-$-popup-close-color: var(--wot-popup-close-color, #666) !default; // 关闭按钮颜色
-
 /* progress */
 $-progress-danger-color: var(--wot-progress-danger-color, $-color-danger) !default; // 进度条danger颜色
 $-progress-success-color: var(--wot-progress-success-color, $-color-success) !default; // 进度条success进度条颜色
@@ -471,9 +466,6 @@ $-progress-linear-danger-color: var(
   resultColor(315deg, $-color-theme, 'dark' 'light', #e04350 #ff5964, 0% 100%)
 ) !default; // danger进度条渐变色
 $-progress-height: var(--wot-progress-height, 3px) !default; // 进度条高度
-$-progress-label-color: var(--wot-progress-label-color, #333) !default; // 文字颜色
-$-progress-label-fs: var(--wot-progress-label-fs, 14px) !default; // 文字字号
-$-progress-icon-fs: var(--wot-progress-icon-fs, 18px) !default; // 图标字号
 
 /* radio */
 $-radio-margin: var(--wot-radio-margin, $-checkbox-margin) !default; // 多个单选框距离
@@ -705,16 +697,6 @@ $-upload-cover-icon-size: var(--wot-upload-cover-icon-size, 22px) !default; // �
 $-curtain-content-radius: var(--wot-curtain-content-radius, 24px) !default; // 内容圆角
 $-curtain-content-close-color: var(--wot-curtain-content-close-color, $-color-white) !default; // 关闭按钮颜色
 $-curtain-content-close-fs: var(--wot-curtain-content-close-fs, $-fs-big) !default; // 关闭按钮大小
-
-/* notify */
-$-notify-text-color: var(--wot-notify-text-color, $-color-white) !default;
-$-notify-padding: var(--wot-notify-padding, 8px 16px) !default;
-$-notify-font-size: var(--wot-notify-font-size, $-fs-content) !default;
-$-notify-line-height: var(--wot-notify-line-height, 20px) !default;
-$-notify-primary-background: var(--wot-notify-primary-background, $-color-theme) !default;
-$-notify-success-background: var(--wot-notify-success-background, $-color-success) !default;
-$-notify-danger-background: var(--wot-notify-danger-background, $-color-danger) !default;
-$-notify-warning-background: var(--wot-notify-warning-background, $-color-warning) !default;
 
 /* skeleton */
 $-skeleton-background-color: var(--wot-skeleton-background-color, #eee) !default;

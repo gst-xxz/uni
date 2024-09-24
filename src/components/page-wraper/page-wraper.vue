@@ -4,7 +4,7 @@
     <view class="page-wraper">
       <slot />
     </view>
-    <wd-notify />
+    <pro-notify />
   </view>
 </template>
 <script lang="ts">

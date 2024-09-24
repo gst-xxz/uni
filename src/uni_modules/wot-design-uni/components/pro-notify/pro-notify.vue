@@ -1,24 +1,28 @@
 <template>
-  <wd-popup v-model="state.visible" :custom-style="customStyle" :position="state.position" :z-index="state.zIndex"
+  <pro-popup v-model="state.visible" :custom-style="customStyle" :position="state.position" :z-index="state.zIndex"
     :duration="250" :modal="false" @leave="onClosed" @enter="onOpened">
-    <view class="wd-notify flex items-center justify-center box-border whitespace-pre-wrap text-center"
-      :class="[`wd-notify--${state.type}`]" :style="{ color: state.color, background: state.background }"
-      @click="onClick">
+    <view
+      class="pro-notify flex items-center justify-center box-border whitespace-pre-wrap text-center text-white text-sm py-2 px-4"
+      :class="{
+        'bg-primary': state.type == 'primary',
+        'bg-success': state.type == 'success',
+        'bg-danger': state.type == 'danger',
+        'bg-warning': state.type == 'warning',
+      }" :style="{ color: state.color, background: state.background, wordWrap: 'break-word' }" @click="onClick">
       <slot>{{ state.message }}</slot>
     </view>
-  </wd-popup>
+  </pro-popup>
 </template>
 <script lang="ts">
 export default {
   // #ifdef H5
-  name: 'wd-notify',
+  name: 'pro-notify',
   // #endif
   options: { virtualHost: true, addGlobalClass: true, styleIsolation: 'shared' }
 }
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
 import { inject, computed, watch } from 'vue'
 import { notifyProps, type NotifyProps } from './types'
 import { getNotifyOptionKey } from '.'
@@ -67,7 +71,3 @@ watch(
   (visible) => emits('update:visible', visible as boolean)
 )
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

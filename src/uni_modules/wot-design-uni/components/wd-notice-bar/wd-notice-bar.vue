@@ -1,9 +1,11 @@
 <template>
-  <view v-if="show" :class="`wd-notice-bar ${customClass} ${noticeBarClass}`" :style="rootStyle">
-    <pro-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></pro-icon>
+  <view v-if="show" :class="`wd-notice-bar flex items-center relative box-border ${customClass} ${noticeBarClass}`"
+    :style="rootStyle">
+    <pro-icon v-if="prefix" custom-class="wd-notice-bar__prefix pr-1" :name="prefix"></pro-icon>
     <slot v-else name="prefix"></slot>
-    <view class="wd-notice-bar__wrap">
-      <view class="wd-notice-bar__content" :style="animation" @transitionend="animationEnd" @click="handleClick">
+    <view class="wd-notice-bar__wrap relative flex-1 overflow-hidden h-[18px] leading-[18px]">
+      <view class="wd-notice-bar__content absolute whitespace-nowrap" :style="animation" @transitionend="animationEnd"
+        @click="handleClick">
         <template v-if="isVertical">
           <view v-for="item in textArray" :key="item">{{ item }}</view>
           <view v-if="textArray.length > 1">{{ textArray[0] }}</view>
@@ -11,7 +13,8 @@
         <slot v-else>{{ currentText }}</slot>
       </view>
     </view>
-    <pro-icon v-if="closable" custom-class="wd-notice-bar__suffix" name="close-bold" @click="handleClose"></pro-icon>
+    <pro-icon v-if="closable" custom-class="wd-notice-bar__suffix text-center inline-block absolute right-0 top-0 p-0"
+      name="close-bold" @click="handleClose"></pro-icon>
     <slot v-else name="suffix"></slot>
   </view>
 </template>

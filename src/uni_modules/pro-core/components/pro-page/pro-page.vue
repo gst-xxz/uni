@@ -2,7 +2,7 @@
   <view :class="['min-h-full', customClass, theme === 'dark' ? 'dark' : '']">
     <wd-toast />
     <slot />
-    <wd-notify />
+    <pro-notify />
     <wd-message-box />
     <wd-action-sheet v-model="actionSheetData.modelValue" :actions="actionSheetData.actions"
       :panels="actionSheetData.panels" :cancelText="actionSheetData.cancelText" @close="actionSheetData.onClose"

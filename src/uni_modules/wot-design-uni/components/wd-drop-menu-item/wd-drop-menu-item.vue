@@ -1,7 +1,7 @@
 <template>
   <view v-if="showWrapper" :class="`wd-drop-item  ${customClass}`"
     :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
-    <wd-popup v-model="showPop" :z-index="zIndex" :duration="duration" :position="position"
+    <pro-popup v-model="showPop" :z-index="zIndex" :duration="duration" :position="position"
       custom-style="position: absolute; max-height: 80%;" modal-style="position: absolute;" :modal="modal"
       :close-on-click-modal="false" @click-modal="closeOnClickModal && close()" @before-enter="beforeEnter"
       @after-enter="afterEnter" @before-leave="beforeLeave" @after-leave="afterLeave">
@@ -17,7 +17,7 @@
         </view>
       </view>
       <slot v-else />
-    </wd-popup>
+    </pro-popup>
   </view>
 </template>
 <script lang="ts">
@@ -32,12 +32,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 
 import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue'
 import { pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
-import type { PopupType } from '../wd-popup/types'
+import type { PopupType } from '../pro-popup/types'
 import { useParent } from '../composables/useParent'
 import { DROP_MENU_KEY } from '../wd-drop-menu/types'
 import { isDef, isFunction } from '../common/util'

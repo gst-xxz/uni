@@ -2,12 +2,17 @@
   <view :class="`wd-progress w-full flex items-center pt-[9px] pb-2 px-0 h-[3px] ${customClass}`" :style="customStyle">
     <!--进度条-->
     <view class="wd-progress__outer block relative flex-1 h-[3px] rounded-[1.5px] bg-[rgba(229,229,229,1)]">
-      <view :class="`wd-progress__inner block h-full rounded-[1.5px] absolute top-0 left-0 ${progressClass}`"
-        :style="rootStyle"></view>
+      <view :class="['wd-progress__inner block h-full rounded-[1.5px] absolute top-0 left-0 text-lg', {
+        'bg-danger': status === 'danger',
+        'bg-success': status === 'success'
+      }]" :style="rootStyle"></view>
     </view>
     <!--文案、图标-->
-    <view v-if="!hideText" class="wd-progress__label">{{ percentage }}%</view>
-    <pro-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${progressClass}`"
+    <view v-if="!hideText" class="w-[30px] ml-[9px] text-sm text-[#333]">
+      {{ percentage }}%
+    </view>
+    <pro-icon v-else-if="status"
+      :custom-class="`w-[30px] ml-[9px] text-lg text-[#333] ${status === 'danger' ? 'text-danger' : ''} ${status === 'success' ? 'text-success' : ''}`"
       :name="status == 'danger' ? 'close-outline' : 'check-outline'"
       :color="typeof color === 'string' ? color : ''"></pro-icon>
   </view>
@@ -37,7 +42,6 @@ const showColor = ref<string>('')
 const showPercent = ref<number>(0)
 // newPercent - oldPercent 的绝对值
 const changeCount = ref<number>(0)
-const progressClass = ref<string>('')
 
 let timer: NodeJS.Timeout | null = null // 定时器
 
@@ -73,17 +77,6 @@ watch(
 )
 
 watch(
-  () => props.status,
-  () => {
-    computeProgressClass()
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
   () => props.duration,
   (newValue) => {
     checkNumRange(newValue)
@@ -94,12 +87,6 @@ watch(
   }
 )
 
-function computeProgressClass() {
-  const { status } = props
-  let progressClasses: string[] = []
-  status && progressClasses.push(`is-${status}`)
-  progressClass.value = progressClasses.join(' ')
-}
 
 /**
  * @description

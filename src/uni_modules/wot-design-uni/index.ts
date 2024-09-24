@@ -7,7 +7,7 @@ export { useMessage } from './components/wd-message-box'
 export { useQueue } from './components/composables/useQueue'
 
 // Notify
-export * from './components/wd-notify'
+export * from './components/pro-notify'
 
 export { dayjs } from './components/common/dayjs'
 

@@ -1,26 +1,21 @@
 <template>
-  <wd-popup
-    v-model="show"
-    position="bottom"
-    :z-index="zIndex"
-    :safe-area-inset-bottom="safeAreaInsetBottom"
-    :modal-style="modal ? '' : 'opacity: 0;'"
-    :modal="hideOnClickOutside"
-    :lockScroll="lockScroll"
-    @click-modal="handleClose"
-  >
+  <pro-popup v-model="show" position="bottom" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
+    :modal-style="modal ? '' : 'opacity: 0;'" :modal="hideOnClickOutside" :lockScroll="lockScroll"
+    @click-modal="handleClose">
     <view :class="`wd-number-keyboard ${customClass}`" :style="customStyle">
       <view class="wd-number-keyboard__header" v-if="showTitle">
         <slot name="title">
           <text class="wd-number-keyboard__title">{{ title }}</text>
         </slot>
-        <view class="wd-number-keyboard__close" hover-class="wd-number-keyboard__close--hover" v-if="showClose" @click="handleClose">
+        <view class="wd-number-keyboard__close" hover-class="wd-number-keyboard__close--hover" v-if="showClose"
+          @click="handleClose">
           <text>{{ closeText }}</text>
         </view>
       </view>
       <view class="wd-number-keyboard__body">
         <view class="wd-number-keyboard__keys">
-          <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider" @press="handlePress"></wd-key>
+          <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
+            @press="handlePress"></wd-key>
         </view>
         <view class="wd-number-keyboard__sidebar" v-if="mode === 'custom'">
           <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
@@ -28,7 +23,7 @@
         </view>
       </view>
     </view>
-  </wd-popup>
+  </pro-popup>
 </template>
 <script lang="ts">
 export default {
@@ -42,7 +37,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import { computed, ref, watch } from 'vue'
 import WdKey from './key/index.vue'
 import { numberKeyboardProps, type Key } from './types'
@@ -80,8 +75,8 @@ function shuffleArray<T>(arr: T[]): T[] {
     // 生成一个随机索引 j，范围是 [0, i]
     const j = Math.floor(Math.random() * (i + 1))
 
-    // 交换索引 i 和 j 处的元素
-    ;[newArr[i], newArr[j]] = [newArr[j], newArr[i]]
+      // 交换索引 i 和 j 处的元素
+      ;[newArr[i], newArr[j]] = [newArr[j], newArr[i]]
   }
   return newArr
 }

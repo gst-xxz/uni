@@ -86,16 +86,6 @@
       }
     },
     {
-      "path": "pages/layout/Index",
-      "name": "layout",
-      "style": {
-        "mp-alipay": {
-          "allowsBounceVertical": "NO"
-        },
-        "navigationBarTitleText": "Layout 布局"
-      }
-    },
-    {
       "path": "pages/card/Index",
       "name": "card",
       "style": {
