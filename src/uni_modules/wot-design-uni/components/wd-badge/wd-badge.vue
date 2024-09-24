@@ -1,5 +1,7 @@
 <template>
-  <view :class="['wd-badge relative align-middle inline-block', customClass]" :style="customStyle">
+  <view
+    :class="['wd-badge relative align-middle inline-block bg-danger text-xs leading-3 whitespace-nowrap border-[2] border-solid border-white', customClass]"
+    :style="customStyle">
     <slot></slot>
     <view v-if="isBadgeShow" :class="contentClass" :style="contentStyle">
       {{ content }}
@@ -59,14 +61,15 @@ const contentClass = computed(() => {
   return classNames(
     'wd-badge__content inline-block leading-[1] text-center font-medium rounded-full h-4 px-[5px] py-0 text-white',
     'absolute translate-x-1/2 -translate-y-1/2',
-    props.type ? 'wd-badge__content--' + props.type : '',
+    // props.type ? 'wd-badge__content--' + props.type : '',
+    props.type === 'primary' ? 'bg-primary' : '',
+    props.type === 'success' ? 'bg-success' : '',
+    props.type === 'warning' ? 'bg-warning' : '',
+    props.type === 'info' ? 'bg-info' : '',
+    props.type === 'danger' ? 'bg-danger' : '',
     {
       '!w-2.5 !h-2.5 !p-0 !rounded-full': props.isDot
     }
   )
 })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

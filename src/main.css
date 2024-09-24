@@ -17,6 +17,8 @@
     --overlay-bg: 0 0% 0% / 65%;
     --backtop-bg: 0 0% 88.24%;
 
+    /* f2f3f5 */
+    --gray-2: 0 0% 94.9%;
     --gray-8: 0 0% 19.8%;
   }
 
@@ -77,4 +79,12 @@
 }
 .hairline--surround:after {
   border-width: 1px;
+}
+
+.clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
 }

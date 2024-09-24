@@ -1,8 +1,10 @@
 <template>
   <!-- #ifdef MP-DINGTALK -->
-  <view :class="`wd-index-anchor-ding ${isSticky ? 'is-sticky' : ''}`">
+  <view :class="`wd-index-anchor-ding ${isSticky ? 'sticky top-0 left-0 z-[1]' : ''}`">
     <!-- #endif -->
-    <view :class="`wd-index-anchor ${isSticky ? 'is-sticky' : ''} ${customClass}`" :style="customStyle" :id="indexAnchorId">
+    <view
+      :class="`wd-index-anchor p-2.5 text-sm text-black bg-gray-2 ${isSticky ? 'sticky top-0 left-0 z-[1]' : ''} ${customClass}`"
+      :style="customStyle" :id="indexAnchorId">
       <slot>
         {{ index }}
       </slot>
@@ -49,7 +51,3 @@ defineExpose({
   top
 })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

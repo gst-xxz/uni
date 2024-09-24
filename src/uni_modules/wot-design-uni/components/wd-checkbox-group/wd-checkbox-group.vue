@@ -1,5 +1,7 @@
 <template>
-  <view :class="`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`" :style="customStyle">
+  <view
+    :class="`wd-checkbox-group ${shape === 'button' && cell ? 'w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : ''} ${customClass}`"
+    :style="customStyle">
     <slot />
   </view>
 </template>
@@ -94,7 +96,3 @@ function changeSelectState(value: string | number | boolean) {
   })
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

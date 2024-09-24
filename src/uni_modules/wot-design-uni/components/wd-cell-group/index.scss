@@ -2,8 +2,6 @@
 @import '../common/abstracts/_mixin.scss';
 
 @include b(cell-group) {
-  background-color: $-color-white;
-
   @include when(border) {
     .wd-cell-group__title {
       @include halfPixelBorder;
@@ -11,7 +9,6 @@
   }
   @include e(title) {
     padding: $-cell-group-padding;
-    background: $-color-white;
     font-size: $-cell-group-title-fs;
     color: $-cell-group-title-color;
     line-height: 1.43;

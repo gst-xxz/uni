@@ -113,18 +113,6 @@ $-action-sheet-panel-padding: var(--wot-action-sheet-panel-padding, 12px 0 11px)
 $-action-sheet-panel-img-fs: var(--wot-action-sheet-panel-img-fs, 40px) !default; // 自定义面板图片大小
 $-action-sheet-panel-img-radius: var(--wot-action-sheet-panel-img-radius, 4px) !default; // 自定义面板图片圆角大小
 
-/* badge */
-$-badge-bg: var(--wot-badge-bg, $-color-danger) !default; // 背景填充颜色
-$-badge-color: var(--wot-badge-color, #fff) !default; // 文字颜色
-$-badge-fs: var(--wot-badge-fs, 12px) !default; // 文字字号
-$-badge-primary: var(--wot-badge-primary, $-color-theme) !default;
-$-badge-success: var(--wot-badge-success, $-color-success) !default;
-$-badge-warning: var(--wot-badge-warning, $-color-warning) !default;
-$-badge-danger: var(--wot-badge-danger, $-color-danger) !default;
-$-badge-info: var(--wot-badge-info, $-color-info) !default;
-$-badge-dot-size: var(--wot-badge-dot-size, 6px) !default; // dot 类型大小
-$-badge-border: var(--wot-badge-border, 2px solid $-badge-color) !default; // 边框样式
-
 /* button */
 $-button-disabled-opacity: var(--wot-button-disabled-opacity, 0.6) !default; // button禁用透明度
 
@@ -481,7 +469,6 @@ $-popup-close-size: var(--wot-popup-close-size, 24px) !default; // 关闭按钮�
 $-popup-close-color: var(--wot-popup-close-color, #666) !default; // 关闭按钮颜色
 
 /* progress */
-$-progress-bg: var(--wot-progress-bg, rgba(229, 229, 229, 1)) !default; // 进度条底色
 $-progress-danger-color: var(--wot-progress-danger-color, $-color-danger) !default; // 进度条danger颜色
 $-progress-success-color: var(--wot-progress-success-color, $-color-success) !default; // 进度条success进度条颜色
 $-progress-color: var(--wot-progress-color, resultColor(315deg, $-color-theme, 'dark' 'light', #517cf0 #769ef5, 0% 100%)) !default; // 进度条渐变色
@@ -925,10 +912,6 @@ $-text-error-color: var(--wot-text-error-color, $-color-danger) !default;
 $-text-warning-color: var(--wot-text-warning-color, $-color-warning) !default;
 $-text-success-color: var(--wot-text-success-color, $-color-success) !default;
 
-/* video-preview */
-$-video-preview-bg: var(--wot-video-preview-bg, rgba(0, 0, 0, 0.8)) !default; // 背景色
-$-video-preview-close-color: var(--wot-video-preview-close-color, #fff) !default; // 图标颜色
-$-video-preview-close-font-size: var(--wot-video-preview-close-font-size, 20px) !default; // 图标大小
 
 /* img-cropper */
 $-img-cropper-icon-size: var(--wot-img-cropper-icon-size, $-fs-big) !default; // 图标大小

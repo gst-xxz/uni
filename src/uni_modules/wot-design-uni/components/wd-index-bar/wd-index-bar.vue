@@ -1,19 +1,17 @@
 <template>
-  <view class="wd-index-bar" :id="indexBarId">
+  <view class="wd-index-bar relative w-full h-full" :id="indexBarId">
     <!-- #ifdef MP-DINGTALK -->
     <view class="wd-index-bar" :id="indexBarId">
       <!-- #endif -->
-      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content" @scroll="hanleScroll">
+      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content w-full h-full"
+        @scroll="hanleScroll">
         <slot></slot>
       </scroll-view>
-      <view
-        class="wd-index-bar__sidebar"
-        @touchstart.stop.prevent="handleTouchStart"
-        @touchmove.stop.prevent="handleTouchMove"
-        @touchend.stop.prevent="handleTouchEnd"
-        @touchcancel.stop.prevent="handleTouchEnd"
-      >
-        <view class="wd-index-bar__index" :class="{ 'is-active': item.index === state.activeIndex }" v-for="item in children" :key="item.index">
+      <view class="wd-index-bar__sidebar absolute -top-1/2 right-1 -translate-y-1/2"
+        @touchstart.stop.prevent="handleTouchStart" @touchmove.stop.prevent="handleTouchMove"
+        @touchend.stop.prevent="handleTouchEnd" @touchcancel.stop.prevent="handleTouchEnd">
+        <view class="wd-index-bar__index text-xs text-black py-1 px-1.5 font-medium"
+          :class="{ 'text-primary': item.index === state.activeIndex }" v-for="item in children" :key="item.index">
           {{ item.index }}
         </view>
       </view>
@@ -151,7 +149,3 @@ function setScrollTop(top: number) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

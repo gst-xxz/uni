@@ -19,6 +19,7 @@ module.exports = {
 
         // 灰色
         gray: {
+          2: 'hsl(var(--gray-2))',
           8: 'hsl(var(--gray-8))'
         }
       }

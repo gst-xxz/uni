@@ -1,8 +1,9 @@
 <template>
   <view :class="`wd-progress w-full flex items-center pt-[9px] pb-2 px-0 h-[3px] ${customClass}`" :style="customStyle">
     <!--进度条-->
-    <view class="wd-progress__outer">
-      <view :class="`wd-progress__inner ${progressClass}`" :style="rootStyle"></view>
+    <view class="wd-progress__outer block relative flex-1 h-[3px] rounded-[1.5px] bg-[rgba(229,229,229,1)]">
+      <view :class="`wd-progress__inner block h-full rounded-[1.5px] absolute top-0 left-0 ${progressClass}`"
+        :style="rootStyle"></view>
     </view>
     <!--文案、图标-->
     <view v-if="!hideText" class="wd-progress__label">{{ percentage }}%</view>
