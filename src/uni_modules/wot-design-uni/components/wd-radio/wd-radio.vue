@@ -26,7 +26,7 @@ export default {
 
 import { computed, watch } from 'vue'
 import { useParent } from '../composables/useParent'
-import { RADIO_GROUP_KEY } from '../wd-radio-group/types'
+import { RADIO_GROUP_KEY } from '../pro-radio-group/types'
 import { radioProps } from './types'
 import { getPropByPath, isDef } from '../common/util'
 

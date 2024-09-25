@@ -1,6 +1,9 @@
 <template>
-  <view class="pro-watermark absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat"
-    :class="[fullScreen ? 'fixed' : '', customClass]" :style="rootStyle">
+  <view :class="cn([
+    'pro-watermark absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat',
+    fullScreen ? 'fixed' : '',
+    customClass
+  ])" :style="rootStyle">
     <canvas v-if="!canvasOffScreenable && showCanvas" type="2d"
       :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }" :canvas-id="canvasId"
       :id="canvasId" />
@@ -22,6 +25,7 @@ export default {
 import { computed, onMounted, ref, watch, nextTick } from 'vue'
 import { addUnit, buildUrlWithParams, isBase64Image, objToStyle, uuid } from '../common/util'
 import { watermarkProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(watermarkProps)
 

@@ -1,14 +1,14 @@
 <template>
   <view :class="['wd-cell-group bg-white', border ? 'is-border' : '', customClass]" :style="customStyle">
     <view v-if="title || value || useSlot"
-      class="wd-cell-group__title relative flex justify-between font-medium bg-white leading-[1.43] text-black/85 text-base">
+      class="wd-cell-group__title relative flex justify-between font-medium bg-white leading-[1.43] text-black/85 text-base py-[13px] px-[15px]">
       <!--左侧标题-->
       <view class="wd-cell-group__left">
         <text v-if="title">{{ title }}</text>
         <slot v-else name="title"></slot>
       </view>
       <!--右侧标题-->
-      <view class="wd-cell-group__right">
+      <view class="wd-cell-group__right text-[#262626] text-sm">
         <text v-if="value">{{ value }}</text>
         <slot v-else name="value"></slot>
       </view>

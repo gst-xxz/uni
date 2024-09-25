@@ -1,6 +1,6 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp } from '../common/props'
-import type { BadgeProps, BadgeType } from '../wd-badge/types'
+import type { BadgeProps, BadgeType } from '../pro-badge/types'
 
 export type LinkType = 'navigateTo' | 'switchTab' | 'reLaunch' | 'redirectTo'
 

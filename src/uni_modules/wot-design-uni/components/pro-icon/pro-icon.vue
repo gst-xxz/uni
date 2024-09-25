@@ -1,6 +1,6 @@
 <template>
   <view @click="handleClick" :class="customClass" :style="rootStyle">
-    <span :class="['iconfont', `icon-${props.name}`]"></span>
+    <span :class="['iconfont', `icon-${name}`]"></span>
   </view>
 </template>
 

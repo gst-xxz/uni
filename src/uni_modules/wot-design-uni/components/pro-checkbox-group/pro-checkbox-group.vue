@@ -1,13 +1,13 @@
 <template>
   <view
-    :class="`wd-checkbox-group ${shape === 'button' && cell ? 'w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : ''} ${customClass}`"
+    :class="cn({ 'w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto': shape === 'button' && cell }, customClass)"
     :style="customStyle">
     <slot />
   </view>
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-checkbox-group',
+  name: 'pro-checkbox-group',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -21,6 +21,7 @@ import { watch } from 'vue'
 import { checkNumRange, deepClone } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { CHECKBOX_GROUP_KEY, checkboxGroupProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(checkboxGroupProps)
 const emit = defineEmits(['change', 'update:modelValue'])

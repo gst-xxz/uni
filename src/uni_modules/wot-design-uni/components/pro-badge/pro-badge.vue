@@ -1,16 +1,27 @@
 <template>
   <view
-    :class="['wd-badge relative align-middle inline-block text-xs leading-3 whitespace-nowrap border-[2px] border-solid border-white', customClass]"
+    :class="cn(['pro-badge relative align-middle inline-block text-xs leading-3 whitespace-nowrap border-[2px] border-solid border-white', customClass])"
     :style="customStyle">
     <slot></slot>
-    <view v-if="isBadgeShow" :class="contentClass" :style="contentStyle">
+    <view v-if="isBadgeShow" :class="cn([
+      'pro-badge__content inline-block leading-[1] text-center font-medium rounded-full h-4 px-[5px] py-0 text-white',
+      'absolute translate-x-1/2 -translate-y-1/2',
+      type === 'primary' ? 'bg-primary' : '',
+      type === 'success' ? 'bg-success' : '',
+      type === 'warning' ? 'bg-warning' : '',
+      type === 'info' ? 'bg-info' : '',
+      type === 'danger' ? 'bg-danger' : '',
+      {
+        'w-2.5 h-2.5 p-0 rounded-full': isDot
+      }
+    ])" :style="contentStyle">
       {{ content }}
     </view>
   </view>
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-badge',
+  name: 'pro-badge',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -21,7 +32,7 @@ export default {
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { badgeProps } from './types'
-import classNames from 'classnames'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(badgeProps)
 const content = ref<number | string | null>(null)
@@ -57,19 +68,4 @@ function notice() {
   content.value = value
 }
 
-const contentClass = computed(() => {
-  return classNames(
-    'wd-badge__content inline-block leading-[1] text-center font-medium rounded-full h-4 px-[5px] py-0 text-white',
-    'absolute translate-x-1/2 -translate-y-1/2',
-    // props.type ? 'wd-badge__content--' + props.type : '',
-    props.type === 'primary' ? 'bg-primary' : '',
-    props.type === 'success' ? 'bg-success' : '',
-    props.type === 'warning' ? 'bg-warning' : '',
-    props.type === 'info' ? 'bg-info' : '',
-    props.type === 'danger' ? 'bg-danger' : '',
-    {
-      '!w-2.5 !h-2.5 !p-0 !rounded-full': props.isDot
-    }
-  )
-})
 </script>

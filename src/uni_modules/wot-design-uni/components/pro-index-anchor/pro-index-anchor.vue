@@ -1,9 +1,9 @@
 <template>
   <!-- #ifdef MP-DINGTALK -->
-  <view :class="`wd-index-anchor-ding ${isSticky ? 'sticky top-0 left-0 z-[1]' : ''}`">
+  <view :class="cn('pro-index-anchor-ding', { 'sticky top-0 left-0 z-[1]': isSticky })">
     <!-- #endif -->
     <view
-      :class="`wd-index-anchor p-2.5 text-sm text-black bg-gray-2 ${isSticky ? 'sticky top-0 left-0 z-[1]' : ''} ${customClass}`"
+      :class="cn('pro-index-anchor p-2.5 text-sm text-black bg-gray-2', { 'sticky top-0 left-0 z-[1]': isSticky }, customClass)"
       :style="customStyle" :id="indexAnchorId">
       <slot>
         {{ index }}
@@ -17,9 +17,10 @@
 <script setup lang="ts">
 import { indexAnchorProps } from './type'
 import { onMounted, getCurrentInstance, ref, computed } from 'vue'
-import { indexBarInjectionKey } from '../wd-index-bar/type'
+import { indexBarInjectionKey } from '../pro-index-bar/type'
 import { getRect, isDef, uuid } from '../common/util'
 import { useParent } from '../composables/useParent'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(indexAnchorProps)
 

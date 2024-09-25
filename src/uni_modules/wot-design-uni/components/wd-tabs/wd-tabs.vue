@@ -1,10 +1,10 @@
 <template>
   <template v-if="sticky">
-    <wd-sticky-box>
+    <pro-sticky-box>
       <view
-        :class="`wd-tabs ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'is-map' : ''}`"
+        :class="`wd-tabs relative bg-white w-full ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'absolute top-0 left-0 right-0 z-[1]' : ''}`"
         :style="customStyle">
-        <wd-sticky :offset-top="offsetTop">
+        <pro-sticky :offset-top="offsetTop">
           <!--头部导航容器-->
           <view class="wd-tabs__nav wd-tabs__nav--sticky">
             <view class="wd-tabs__nav--wrap">
@@ -52,7 +52,7 @@
               </view>
             </view>
           </view>
-        </wd-sticky>
+        </pro-sticky>
 
         <!--标签页-->
         <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
@@ -67,12 +67,13 @@
           :style="`${state.mapShow ? '' : 'display:none;'} ${state.animating ? 'opacity:1;' : ''}`" @click="toggleMap">
         </view>
       </view>
-    </wd-sticky-box>
+    </pro-sticky-box>
   </template>
 
   <template v-else>
     <view
-      :class="`wd-tabs  ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'is-map' : ''}`">
+      :class="`wd-tabs relative bg-white w-full ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'absolute top-0 left-0 right-0 z-[1]' : ''}`"
+      :style="customStyle">
       <!--头部导航容器-->
       <view class="wd-tabs__nav">
         <view class="wd-tabs__nav--wrap">
@@ -140,8 +141,7 @@ export default {
 </script>
 <script lang="ts" setup>
 
-import wdSticky from '../wd-sticky/wd-sticky.vue'
-import wdStickyBox from '../wd-sticky-box/wd-sticky-box.vue'
+import wdSticky from '../pro-sticky/pro-sticky.vue'
 
 import { computed, getCurrentInstance, onMounted, watch, nextTick, reactive, type CSSProperties } from 'vue'
 import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, objToStyle } from '../common/util'

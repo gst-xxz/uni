@@ -1,5 +1,6 @@
 <template>
-  <view v-if="inited" :class="rootClass" :style="style" @transitionend="onTransitionEnd" @click="handleClick">
+  <view v-if="inited" :class="`pro-transition ${customClass} ${classes}`" :style="style"
+    @transitionend="onTransitionEnd" @click="handleClick">
     <slot />
   </view>
 </template>
@@ -66,10 +67,6 @@ const leaveLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 const style = computed(() => {
   return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${display.value ? '' : 'display: none;'
     }${props.customStyle}`
-})
-
-const rootClass = computed(() => {
-  return `pro-transition ${props.customClass}  ${classes.value}`
 })
 
 onBeforeMount(() => {

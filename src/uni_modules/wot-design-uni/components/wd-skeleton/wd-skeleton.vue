@@ -1,7 +1,8 @@
 <template>
-  <view :class="`wd-skeleton ${customClass}`" :style="customStyle">
+  <view :class="`wd-skeleton box-border ${customClass}`" :style="customStyle">
     <view class="wd-skeleton__content" v-if="show">
-      <view class="wd-skeleton__row" v-for="(row, index) of parsedRowCols" :key="`row-${index}`">
+      <view class="wd-skeleton__row flex justify-between items-center mb-4 only:mb-0 last:mb-0"
+        v-for="(row, index) of parsedRowCols" :key="`row-${index}`">
         <view v-for="(col, idx) of row" :key="`col-${idx}`" :class="col.class" :style="col.style" />
       </view>
     </view>

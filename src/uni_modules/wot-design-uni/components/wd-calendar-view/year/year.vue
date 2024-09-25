@@ -4,12 +4,9 @@
   <view class="wd-year year">
     <view class="wd-year__title">{{ yearTitle(date) }}</view>
     <view class="wd-year__months">
-      <view
-        v-for="(item, index) in months"
-        :key="index"
+      <view v-for="(item, index) in months" :key="index"
         :class="`wd-year__month ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
-        @click="handleDateClick(index)"
-      >
+        @click="handleDateClick(index)">
         <view class="wd-year__month-top">{{ item.topInfo }}</view>
         <view class="wd-year__month-text">{{ getMonthLabel(item.date) }}</view>
         <view class="wd-year__month-bottom">{{ item.bottomInfo }}</view>

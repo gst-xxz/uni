@@ -1,5 +1,5 @@
 <template>
-  <view :class="customClass" class="pro-count-to align-bottom">
+  <view :class="cn('pro-count-to align-bottom', customClass)" :style="customStyle">
     <!-- 前缀插槽 -->
     <slot name="prefix">
       <span class="whitespace-pre-line" :style="prefixSuffixStyle">{{ props.prefix }}</span>
@@ -32,6 +32,7 @@ import { countToProps } from './types'
 import { easingFn, isNumber } from '../common/util'
 import { useCountDown } from '../composables/useCountDown'
 import type { CountDownExpose } from '../pro-count-down/types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(countToProps)
 const emit = defineEmits(['mounted', 'finish'])

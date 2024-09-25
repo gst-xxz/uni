@@ -1,22 +1,26 @@
 <template>
   <!-- 绘制的图片canvas -->
-  <view v-if="modelValue" :class="`wd-img-cropper ${customClass}`" :style="customStyle" @touchmove="preventTouchMove">
+  <view v-if="modelValue" :class="`wd-img-cropper bg-black fixed top-0 left-0 w-screen h-screen z-[1] ${customClass}`"
+    :style="customStyle" @touchmove="preventTouchMove">
     <!-- 展示在用户面前的裁剪框 -->
-    <view class="wd-img-cropper__wrapper">
+    <view class="wd-img-cropper__wrapper relative bg-black/45">
       <!-- 画出裁剪框 -->
-      <view class="wd-img-cropper__cut">
+      <view class="wd-img-cropper__cut absolute z-[9] w-screen h-screen flex flex-col pointer-events-none">
         <!-- 上方阴影块 -->
-        <view :class="`wd-img-cropper__cut--top ${IS_TOUCH_END ? '' : 'is-hightlight'}`"
+        <view
+          :class="`wd-img-cropper__cut--top bg-black/85 transition-[background_0.2s] ${IS_TOUCH_END ? '' : 'bg-white'}`"
           :style="`height: ${cutTop}px;`"></view>
-        <view class="wd-img-cropper__cut--middle">
+        <view class="wd-img-cropper__cut--middle flex">
           <!-- 左侧阴影块 -->
-          <view :class="`wd-img-cropper__cut--left ${IS_TOUCH_END ? '' : 'is-hightlight'}`"
+          <view
+            :class="`wd-img-cropper__cut--left bg-black/85 transition-[background_0.2s] ${IS_TOUCH_END ? '' : 'bg-white'}`"
             :style="`width: ${cutLeft}px; height: ${cutWidth}px;`"></view>
           <!-- 裁剪框 -->
-          <view class="wd-img-cropper__cut--body" :style="`width: ${cutWidth}px; height: ${cutHeight}px;`">
+          <view class="wd-img-cropper__cut--body bg-transparent relative"
+            :style="`width: ${cutWidth}px; height: ${cutHeight}px;`">
             <!-- 内部网格线 -->
-            <view class="is-gridlines-x"></view>
-            <view class="is-gridlines-y"></view>
+            <view class="is-gridlines-x w-full h-full absolute left-0 top-0 flex justify-center"></view>
+            <view class="is-gridlines-y w-full h-full absolute left-0 top-0 flex items-center"></view>
             <!-- 裁剪窗体四个对角 -->
             <view class="is-left-top"></view>
             <view class="is-left-bottom"></view>
@@ -24,30 +28,38 @@
             <view class="is-right-bottom"></view>
           </view>
           <!-- 右侧阴影块 -->
-          <view :class="`wd-img-cropper__cut--right ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></view>
+          <view
+            :class="`wd-img-cropper__cut--right bg-black/85 transition-[background_0.2s] flex-auto ${IS_TOUCH_END ? '' : 'bg-white'}`">
+          </view>
         </view>
 
         <!-- 底部阴影块 -->
-        <view :class="`wd-img-cropper__cut--bottom ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></view>
+        <view
+          :class="`wd-img-cropper__cut--bottom bg-black/85 transition-[background_0.2s] flex-auto ${IS_TOUCH_END ? '' : 'bg-white'}`">
+        </view>
       </view>
       <!-- 展示的传过来的图片: 控制图片的旋转角度(rotate)、缩放程度(imgScale)、移动位置(translate) -->
-      <image :prop="isAnimation" :change:prop="animation ? animation.setAnimation : ''" class="wd-img-cropper__img"
+      <image :prop="isAnimation" :change:prop="animation ? animation.setAnimation : ''"
+        class="wd-img-cropper__img z-[2] absolute top-0 left-0 border-none w-full origin-center backface-visibility-hidden"
         :src="imgSrc" :style="imageStyle" :lazy-load="false" @touchstart="handleImgTouchStart"
         @touchmove="handleImgTouchMove" @touchend="handleImgTouchEnd" @error="handleImgLoadError"
         @load="handleImgLoaded" />
     </view>
     <!-- 绘制的图片canvas -->
-    <canvas canvas-id="wd-img-cropper-canvas" id="wd-img-cropper-canvas" class="wd-img-cropper__canvas"
+    <canvas canvas-id="wd-img-cropper-canvas" id="wd-img-cropper-canvas"
+      class="wd-img-cropper__canvas fixed bg-white w-[150px] h-[150px] z-[10] top-[-200%] pointer-events-none"
       :disable-scroll="true"
       :style="`width: ${Number(canvasWidth) * canvasScale}px; height: ${Number(canvasHeight) * canvasScale}px;`" />
     <!-- 下方按钮 -->
-    <view class="wd-img-cropper__footer">
-      <pro-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="setting-o"
+    <view class="wd-img-cropper__footer fixed z-[10] bottom-2.5 w-full h-[15vh] text-center">
+      <pro-icon custom-class="text-2xl text-white" v-if="!disabledRotate" name="setting-o"
         @click="handleRotate"></pro-icon>
       旋转
-      <view class="wd-img-cropper__footer--button">
-        <view class="is-cancel" @click="handleCancel">{{ cancelButtonText || translate('cancel') }}</view>
-        <wd-button size="small" :custom-style="buttonStyle" @click="handleConfirm">{{ confirmButtonText ||
+      <view class="wd-img-cropper__footer--button relative text-left my-0 mx-5 pt-[4vh] box-border">
+        <view class="inline-block text-white text-base" @click="handleCancel">{{ cancelButtonText ||
+          translate('cancel') }}</view>
+        <wd-button size="small" custom-class="absolute right-0 w-16 text-base rounded-2xl" @click="handleConfirm">{{
+          confirmButtonText ||
           translate('confirm') }}</wd-button>
       </view>
     </view>
@@ -216,19 +228,6 @@ watch(
     immediate: true
   }
 )
-
-const buttonStyle = computed(() => {
-  const style: Record<string, string | number> = {
-    position: 'absolute',
-    right: 0,
-    // height: 32px;
-    width: '56px',
-    'border-radius': '16px',
-    'font-size': '16px'
-  }
-
-  return objToStyle(style)
-})
 
 const imageStyle = computed(() => {
   const style: Record<string, string | number> = {

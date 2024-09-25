@@ -173,7 +173,6 @@ $-button-text-hover-opacity: var(--wot-button-text-hover-opacity, 0.7) !default;
 $-cell-padding: var(--wot-cell-padding, $-size-side-padding) !default; // cell 左右padding距离
 $-cell-line-height: var(--wot-cell-line-height, 24px) !default; // 行高
 
-$-cell-group-padding: var(--wot-cell-group-padding, 13px $-cell-padding) !default; // 组padding
 $-cell-group-value-fs: var(--wot-cell-group-value-fs, $-fs-content) !default; // 组值字号
 $-cell-group-value-color: var(--wot-cell-group-value-color, $-color-content) !default; // 组值文字颜色
 
@@ -278,9 +277,6 @@ $-drop-menu-arrow-fs: var(--wot-drop-menu-arrow-fs, $-fs-content) !default; // �
 $-drop-menu-side-padding: var(--wot-drop-menu-side-padding, $-size-side-padding) !default; // 两边留白间距
 $-drop-menu-disabled-color: var(--wot-drop-menu-disabled-color, rgba(0, 0, 0, 0.25)) !default; // 禁用颜色
 $-drop-menu-item-height: var(--wot-drop-menu-item-height, 48px) !default; // 选项高度
-$-drop-menu-item-color: var(--wot-drop-menu-item-color, $-color-content) !default; // 选项颜色
-$-drop-menu-item-fs: var(--wot-drop-menu-item-fs, $-fs-content) !default; // 选项字号
-$-drop-menu-item-color-active: var(--wot-drop-menu-item-color-active, $-color-theme) !default; // 选中颜色
 $-drop-menu-item-color-tip: var(--wot-drop-menu-item-color-tip, rgba(0, 0, 0, 0.45)) !default; // 提示文字颜色
 $-drop-menu-item-fs-tip: var(--wot-drop-menu-item-fs-tip, $-fs-secondary) !default; // 提示文字字号
 $-drop-menu-option-check-size: var(--wot-drop-menu-option-check-size, 20px) !default; // check 图标大小
@@ -652,10 +648,6 @@ $-grid-item-padding: var(--wot-grid-item-padding, 14px 0px) !default; // 内容�
 $-grid-item-border-color: var(--wot-grid-item-border-color, $-color-border-light) !default; // 边框颜色
 
 /* statustip */
-$-statustip-fs: var(--wot-statustip-fs, $-fs-content) !default; // 字号
-$-statustip-color: var(--wot-statustip-color, rgba(0, 0, 0, 0.45)) !default; // 文字颜色
-$-statustip-line-height: var(--wot-statustip-line-height, 16px) !default; // 文字行高
-$-statustip-padding: var(--wot-statustip-padding, 5px 10px) !default; // 间距
 
 /* card */
 $-card-bg: var(--wot-card-bg, $-color-white) !default; // 背景色
@@ -705,7 +697,6 @@ $-skeleton-animation-flashed: var(--wot-skeleton-animation-flashed, rgba(230, 23
 $-skeleton-text-height-default: var(--wot-skeleton-text-height-default, 16px) !default;
 $-skeleton-rect-height-default: var(--wot-skeleton-rect-height-default, 16px) !default;
 $-skeleton-circle-height-default: var(--wot-skeleton-circle-height-default, 48px) !default;
-$-skeleton-row-margin-bottom: var(--wot-skeleton-row-margin-bottom, 16px) !default;
 $-skeleton-border-radius-text: var(--wot-skeleton-border-radius-text, 2px) !default;
 $-skeleton-border-radius-rect: var(--wot-skeleton-border-radius-rect, 4px) !default;
 $-skeleton-border-radius-circle: var(--wot-skeleton-border-radius-circle, 50%) !default;
@@ -727,11 +718,9 @@ $-swiper-nav-fraction-font-size: var(--wot-swiper-nav-fraction-font-size, 24rpx)
 // button
 $-swiper-nav-btn-color: var(--wot-swiper-nav-btn-color, $-font-white-1) !default;
 $-swiper-nav-btn-bg-color: var(--wot-swiper-nav-btn-bg-color, $-font-gray-3) !default;
-$-swiper-nav-btn-size: var(--wot-swiper-nav-btn-size, 48rpx) !default;
 
 /* segmented */
 $-segmented-padding: var(--wot-segmented-padding, 4px) !default; // 分段器padding
-$-segmented-item-bg-color: var(--wot-segmented-item-bg-color, #eeeeee) !default;
 $-segmented-item-color: var(--wot-segmented-item-color, rgba(0, 0, 0, 0.85)) !default; // 标题文字颜色
 $-segmented-item-acitve-bg: var(--wot-segmented-item-acitve-bg, #ffffff) !default; // 标题文字颜色
 $-segmented-item-disabled-color: var(--wot-segmented-item-disabled-color, rgba(0, 0, 0, 0.25)) !default; // 标题文字禁用颜色
@@ -767,8 +756,6 @@ $-navbar-hover-color: var(--wot-navbar-hover-color, #eee) !default; // navbar ho
 /* navbar-capsule */
 $-navbar-capsule-border-color: var(--wot-navbar-capsule-border-color, #e7e7e7) !default;
 $-navbar-capsule-border-radius: var(--wot-navbar-capsule-border-radius, 16px) !default;
-$-navbar-capsule-width: var(--wot-navbar-capsule-width, 88px) !default;
-$-navbar-capsule-height: var(--wot-navbar-capsule-height, 32px) !default;
 $-navbar-capsule-icon-size: var(--wot-navbar-capsule-icon-size, 20px) !default; // navbar capsule图标大小
 
 /* table */
@@ -780,8 +767,6 @@ $-table-font-size: var(--wot-table-font-size, 13px) !default; // 表格字体大
 
 /* sidebar */
 $-sidebar-bg: var(--wot-sidebar-bg, $-color-gray-1) !default; // 侧边栏背景色
-$-sidebar-width: var(--wot-sidebar-width, 104px) !default; // 侧边栏宽度
-$-sidebar-height: var(--wot-sidebar-height, 100%) !default; // 侧边栏高度
 
 /* sidebar-item */
 $-sidebar-color: var(--wot-sidebar-color, $-font-gray-1) !default;
@@ -881,7 +866,3 @@ $-text-error-color: var(--wot-text-error-color, $-color-danger) !default;
 $-text-warning-color: var(--wot-text-warning-color, $-color-warning) !default;
 $-text-success-color: var(--wot-text-success-color, $-color-success) !default;
 
-
-/* img-cropper */
-$-img-cropper-icon-size: var(--wot-img-cropper-icon-size, $-fs-big) !default; // 图标大小
-$-img-cropper-icon-color: var(--wot-img-cropper-icon-color, #fff) !default; // 图标颜色

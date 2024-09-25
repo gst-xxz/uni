@@ -1,10 +1,10 @@
 <template>
   <view :style="`${rootStyle};`" class="inline-block">
-    <view :class="`wd-sticky inline-block ${customClass}`" :style="stickyStyle" :id="styckyId">
-      <view class="wd-sticky__container inline-block" :style="containerStyle">
-        <wd-resize @resize="handleResize" custom-style="display: inline-block;">
+    <view :class="cn('inline-block', customClass)" :style="stickyStyle" :id="styckyId">
+      <view class="inline-block" :style="containerStyle">
+        <pro-resize @resize="handleResize" custom-style="display: inline-block;">
           <slot />
-        </wd-resize>
+        </pro-resize>
       </view>
     </view>
   </view>
@@ -12,7 +12,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-sticky',
+  name: 'pro-sticky',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -22,15 +22,15 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdResize from '../wd-resize/wd-resize.vue'
 import { computed, getCurrentInstance, reactive, ref, type CSSProperties } from 'vue'
 import { addUnit, getRect, objToStyle, requestAnimationFrame, uuid } from '../common/util'
 import { stickyProps } from './types'
 import { useParent } from '../composables/useParent'
-import { STICKY_BOX_KEY } from '../wd-sticky-box/types'
+import { STICKY_BOX_KEY } from '../pro-sticky-box/types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(stickyProps)
-const styckyId = ref<string>(`wd-sticky${uuid()}`)
+const styckyId = ref<string>(`pro-sticky${uuid()}`)
 const observerList = ref<UniApp.IntersectionObserver[]>([])
 
 const stickyState = reactive({
@@ -143,7 +143,7 @@ function observerContentScroll() {
  * @description 根据位置进行吸顶
  */
 function handleRelativeTo({ boundingClientRect }: any) {
-  // sticky 高度大于或等于 wd-sticky-box，使用 wd-sticky-box 无任何意义
+  // sticky 高度大于或等于 pro-sticky-box，使用 pro-sticky-box 无任何意义
   if (stickyBox && stickyState.height >= stickyBox.boxStyle.height) {
     stickyState.position = 'absolute'
     stickyState.top = 0

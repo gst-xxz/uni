@@ -20,4 +20,4 @@ export type InderBarProvide = {
   }
 }
 
-export const indexBarInjectionKey: InjectionKey<InderBarProvide> = Symbol('wd-index-bar')
+export const indexBarInjectionKey: InjectionKey<InderBarProvide> = Symbol('pro-index-anchor')

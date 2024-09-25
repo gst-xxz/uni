@@ -4,14 +4,6 @@
 
 
 @include b(navbar-capsule) {
-  position: relative;
-  box-sizing: border-box;
-  width: $-navbar-capsule-width;
-  height: $-navbar-capsule-height;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   &::before {
     content: '';
     position: absolute;
@@ -23,7 +15,7 @@
     transform-origin: 0 0;
     box-sizing: border-box;
     border-radius: calc($-navbar-capsule-border-radius * 2);
-    border: 2rpx solid $-navbar-capsule-border-color;
+    border: 1px solid $-navbar-capsule-border-color;
   }
 
   &::after {

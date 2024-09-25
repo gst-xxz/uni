@@ -1,14 +1,15 @@
 <template>
   <pro-popup v-model="state.visible" :custom-style="customStyle" :position="state.position" :z-index="state.zIndex"
     :duration="250" :modal="false" @leave="onClosed" @enter="onOpened">
-    <view
-      class="pro-notify flex items-center justify-center box-border whitespace-pre-wrap text-center text-white text-sm py-2 px-4"
-      :class="{
+    <view :class="cn(
+      'flex items-center justify-center box-border whitespace-pre-wrap text-center text-white text-sm py-2 px-4',
+      {
         'bg-primary': state.type == 'primary',
         'bg-success': state.type == 'success',
         'bg-danger': state.type == 'danger',
         'bg-warning': state.type == 'warning',
-      }" :style="{ color: state.color, background: state.background, wordWrap: 'break-word' }" @click="onClick">
+      }
+    )" :style="{ color: state.color, background: state.background, wordWrap: 'break-word' }" @click="onClick">
       <slot>{{ state.message }}</slot>
     </view>
   </pro-popup>
@@ -27,6 +28,7 @@ import { inject, computed, watch } from 'vue'
 import { notifyProps, type NotifyProps } from './types'
 import { getNotifyOptionKey } from '.'
 import { addUnit, isFunction } from '../common/util'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(notifyProps)
 const emits = defineEmits<{

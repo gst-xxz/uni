@@ -1,21 +1,21 @@
 <template>
   <view
-    :class="`wd-video-preview fixed top-0 left-0 right-0 bottom-0 z-[999] w-full h-full flex flex-col items-center justify-center bg-black/80 ${customClass}`"
+    :class="cn('fixed top-0 left-0 right-0 bottom-0 z-[999] w-full h-full flex flex-col items-center justify-center bg-black/80', customClass)"
     :style="customStyle" v-if="showPopup" @click="close">
-    <view class="wd-video-preview__video w-full h-[242px] transition-[all_0.3s_ease]" @click.stop="">
-      <video class="wd-video-preview__video" v-if="previdewVideo.url" :controls="true" :poster="previdewVideo.poster"
-        :title="previdewVideo.title" play-btn-position="center" :enableNative="true" :src="previdewVideo.url"
-        :enable-progress-gesture="false"></video>
+    <view class="w-full h-[242px] transition-[all_0.3s_ease]" @click.stop="">
+      <video class="w-full h-[242px] transition-[all_0.3s_ease]" v-if="previdewVideo.url" :controls="true"
+        :poster="previdewVideo.poster" :title="previdewVideo.title" play-btn-position="center" :enableNative="true"
+        :src="previdewVideo.url" :enable-progress-gesture="false"></video>
     </view>
     <pro-icon name="close"
-      :custom-class="`wd-video-preview__close absolute top-0 right-0 p-3 text-center cursor-pointer text-[20px] text-white box-border`"
+      custom-class="absolute top-0 right-0 p-3 text-center cursor-pointer text-[20px] text-white box-border"
       @click="close" />
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-video-preview',
+  name: 'pro-video-preview',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -25,10 +25,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { nextTick, reactive, ref } from 'vue'
 import { videoPreviewProps, type PreviewVideo, type VideoPreviewExpose } from './types'
 import useLockScroll from '../composables/useLockScroll'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 defineProps(videoPreviewProps)
 
 const showPopup = ref<boolean>(false)

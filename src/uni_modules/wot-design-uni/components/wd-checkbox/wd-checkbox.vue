@@ -36,7 +36,7 @@ export default {
 
 import { computed, getCurrentInstance, onBeforeMount, watch } from 'vue'
 import { useParent } from '../composables/useParent'
-import { CHECKBOX_GROUP_KEY } from '../wd-checkbox-group/types'
+import { CHECKBOX_GROUP_KEY } from '../pro-checkbox-group/typess'
 import { getPropByPath, isDef } from '../common/util'
 import { checkboxProps, type CheckboxExpose } from './types'
 

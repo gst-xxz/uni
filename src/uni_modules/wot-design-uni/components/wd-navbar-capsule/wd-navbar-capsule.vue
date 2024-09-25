@@ -1,5 +1,5 @@
 <template>
-  <view class="wd-navbar-capsule">
+  <view class="wd-navbar-capsule relative box-border flex items-center justify-center w-[88px] h-8">
     <pro-icon @click="handleBack" name="chevron-left" custom-class="wd-navbar-capsule__icon" />
     <pro-icon @click="handleBackHome" name="home" custom-class="wd-navbar-capsule__icon" />
   </view>

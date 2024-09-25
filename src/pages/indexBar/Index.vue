@@ -2,12 +2,13 @@
   <page-wraper>
     <wd-search hide-cancel placeholder="我要去哪里？" v-model="keyword" @search="handleSearch" @clear="handleClear" />
     <view class="wraper">
-      <wd-index-bar sticky v-if="showList.length">
+      <pro-index-anchor sticky v-if="showList.length">
         <view v-for="item in showList" :key="item.index">
           <wd-index-anchor :index="item.index" />
-          <wd-cell border clickable v-for="city in item.data" :key="city" :title="city" @click="handleClick(item.index, city)"></wd-cell>
+          <wd-cell border clickable v-for="city in item.data" :key="city" :title="city"
+            @click="handleClick(item.index, city)"></wd-cell>
         </view>
-      </wd-index-bar>
+      </pro-index-anchor>
     </view>
   </page-wraper>
 </template>

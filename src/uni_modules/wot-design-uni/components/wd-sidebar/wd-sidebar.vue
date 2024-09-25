@@ -1,7 +1,7 @@
 <template>
-  <view :class="`wd-sidebar ${customClass}`" :style="customStyle">
+  <view :class="cn(`flex flex-col overflow-y-auto w-[104px] h-full bg-white ${customClass}`)" :style="customStyle">
     <slot></slot>
-    <view class="wd-sidebar__padding"></view>
+    <view class="flex-auto bg-gray-1"></view>
   </view>
 </template>
 
@@ -19,6 +19,7 @@ export default {
 <script lang="ts" setup>
 import { useChildren } from '../composables/useChildren'
 import { SIDEBAR_KEY, sidebarProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(sidebarProps)
 const emit = defineEmits(['change', 'update:modelValue'])
@@ -35,7 +36,3 @@ function setChange(value: number | string, label: string) {
   emit('change', { value, label })
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass" :style="rootStyle" @click="handleClick">
+  <view :class="[`wd-tag`, customClass, tagClass]" :style="rootStyle" @click="handleClick">
     <view v-if="useIconSlot" class="wd-tag__icon">
       <slot name="icon" />
     </view>

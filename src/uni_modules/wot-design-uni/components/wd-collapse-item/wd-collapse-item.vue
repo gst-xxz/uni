@@ -7,7 +7,7 @@
       </slot>
     </view>
     <view class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">
-      <view class="wd-collapse-item__body" :id="collapseId">
+      <view class="wd-collapse-item__body leading-[1.43]" :id="collapseId">
         <slot />
       </view>
     </view>

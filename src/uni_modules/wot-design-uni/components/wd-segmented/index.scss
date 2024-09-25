@@ -3,16 +3,6 @@
 
 
 @include b(segmented) {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  justify-items: flex-start;
-  width: 100%;
-  background-color: $-segmented-item-bg-color;
-  padding: $-segmented-padding;
-  border-radius: 4px;
-  box-sizing: border-box;
-
 
   @include e(item) {
     position: relative;
@@ -60,12 +50,6 @@
         opacity: 0.8;
       }
     }
-  }
-
-  @include e(item-label) {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
 }

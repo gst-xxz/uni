@@ -18,17 +18,17 @@
 
     <demo-block title="禁用状态">
       <view style="margin-bottom: 10px">
-        <wd-checkbox-group v-model="value1" disabled>
+        <pro-checkbox-group v-model="value1" disabled>
           <wd-checkbox :modelValue="1">沃特</wd-checkbox>
           <wd-checkbox :modelValue="2" :disabled="false">商家后台</wd-checkbox>
           <wd-checkbox :modelValue="3" shape="square">沃特</wd-checkbox>
           <wd-checkbox :modelValue="4" shape="square">商家后台</wd-checkbox>
-        </wd-checkbox-group>
+        </pro-checkbox-group>
       </view>
-      <wd-checkbox-group v-model="value2" disabled>
+      <pro-checkbox-group v-model="value2" disabled>
         <wd-checkbox :modelValue="1" shape="button">沃特</wd-checkbox>
         <wd-checkbox :modelValue="2" shape="button">商家后台</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block :title="`修改 true-value 和 false-value ${value3}`">
@@ -36,28 +36,28 @@
     </demo-block>
 
     <demo-block title="同行展示">
-      <wd-checkbox-group v-model="value4" inline>
+      <pro-checkbox-group v-model="value4" inline>
         <wd-checkbox :modelValue="1">沃特</wd-checkbox>
         <wd-checkbox :modelValue="2">商家后台</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="复选框组">
-      <wd-checkbox-group v-model="value5">
+      <pro-checkbox-group v-model="value5">
         <wd-checkbox :modelValue="1">沃特</wd-checkbox>
         <wd-checkbox :modelValue="2">商家后台</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="表单模式---复选框组" transparent>
-      <wd-checkbox-group v-model="value6" cell>
+      <pro-checkbox-group v-model="value6" cell>
         <wd-checkbox :modelValue="1">沃特</wd-checkbox>
         <wd-checkbox :modelValue="2">商家后台</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="表单模式---复选框按钮组" transparent>
-      <wd-checkbox-group v-model="value7" cell shape="button">
+      <pro-checkbox-group v-model="value7" cell shape="button">
         <wd-checkbox :modelValue="1" disabled>选项一</wd-checkbox>
         <wd-checkbox :modelValue="2">选项二</wd-checkbox>
         <wd-checkbox :modelValue="3">选项三</wd-checkbox>
@@ -65,32 +65,32 @@
         <wd-checkbox :modelValue="5">选项五</wd-checkbox>
         <wd-checkbox :modelValue="6">选项六</wd-checkbox>
         <wd-checkbox :modelValue="7">选项七</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="设置最小选中数量和最大选中数量" transparent>
-      <wd-checkbox-group v-model="value8" :min="1" :max="3" cell>
+      <pro-checkbox-group v-model="value8" :min="1" :max="3" cell>
         <wd-checkbox :modelValue="1">京东</wd-checkbox>
         <wd-checkbox :modelValue="2">沃特</wd-checkbox>
         <wd-checkbox :modelValue="3">商家后台</wd-checkbox>
         <wd-checkbox :modelValue="4">营销中心</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="大尺寸">
-      <wd-checkbox-group v-model="value9" inline size="large">
+      <pro-checkbox-group v-model="value9" inline size="large">
         <wd-checkbox modelValue="jingmai">沃特</wd-checkbox>
         <wd-checkbox modelValue="shop">商家后台</wd-checkbox>
-      </wd-checkbox-group>
-      <wd-checkbox-group v-model="value10" size="large" class="group">
+      </pro-checkbox-group>
+      <pro-checkbox-group v-model="value10" size="large" class="group">
         <wd-checkbox modelValue="jingmai">沃特</wd-checkbox>
         <wd-checkbox modelValue="shop">商家后台</wd-checkbox>
-      </wd-checkbox-group>
+      </pro-checkbox-group>
     </demo-block>
 
     <demo-block title="结合Cell使用" transparent>
       <wd-cell-group border>
-        <wd-checkbox-group v-model="value10" size="large">
+        <pro-checkbox-group v-model="value10" size="large">
           <wd-cell title="点赞" center clickable @click="handleCheck1">
             <view @click.stop="noop">
               <wd-checkbox model-value="1" ref="checkBox1" custom-style="margin:0;"></wd-checkbox>
@@ -106,7 +106,7 @@
               <wd-checkbox model-value="3" ref="checkBox3" custom-style="margin:0;"></wd-checkbox>
             </view>
           </wd-cell>
-        </wd-checkbox-group>
+        </pro-checkbox-group>
       </wd-cell-group>
     </demo-block>
   </page-wraper>
@@ -130,7 +130,7 @@ function handleCheck3() {
   checkBox3.value && checkBox3.value.toggle()
 }
 
-function noop() {}
+function noop() { }
 
 const check1 = ref<boolean>(true)
 const check2 = ref<boolean>(true)

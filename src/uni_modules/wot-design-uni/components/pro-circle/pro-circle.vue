@@ -1,5 +1,5 @@
 <template>
-  <view class="pro-circle relative inline-block text-center" :class="customClass" :style="customStyle">
+  <view :class="cn('relative inline-block text-center', customClass)" :style="customStyle">
     <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
     <!-- #endif -->
@@ -31,6 +31,7 @@ import { computed, getCurrentInstance, onBeforeMount, onMounted, onUnmounted, re
 import { addUnit, isObj, objToStyle, uuid } from '../common/util'
 import { circleProps } from './types'
 import { canvas2dAdapter } from '../common/canvasHelper'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 // 大于等于0且小于等于100
 function format(rate: number) {

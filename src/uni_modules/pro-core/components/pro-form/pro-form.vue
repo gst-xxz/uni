@@ -7,12 +7,12 @@
           :placeholder="field.placeholder" v-model="innerFormData[field.prop]" v-if="field.component === 'calendar'" />
 
         <wd-cell v-else-if="field.component === 'checkbox'" :label="field.label">
-          <wd-checkbox-group v-model="innerFormData[field.prop]" :min="field.min" :max="field.max"
+          <pro-checkbox-group v-model="innerFormData[field.prop]" :min="field.min" :max="field.max"
             custom-class="flex gap-x-2 items-center justify-end">
             <wd-checkbox v-for="item in field.options" :key="item.value" :modelValue="item.value" customClass="!mb-0">
               {{ item.label }}
             </wd-checkbox>
-          </wd-checkbox-group>
+          </pro-checkbox-group>
 
         </wd-cell>
 

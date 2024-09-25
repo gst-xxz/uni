@@ -99,7 +99,7 @@ import {
   type UploadRemoveEvent,
   type UploadMethod
 } from './types'
-import type { VideoPreviewInstance } from '../wd-video-preview/types'
+import type { VideoPreviewInstance } from '../pro-video-preview/types'
 
 const props = defineProps(uploadProps)
 

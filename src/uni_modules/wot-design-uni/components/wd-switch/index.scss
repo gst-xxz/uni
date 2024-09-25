@@ -2,8 +2,6 @@
 @import '../common/abstracts/mixin';
 
 @include b(switch) {
-  display: inline-block;
-  position: relative;
   width: $-switch-width;
   height: $-switch-height;
   border-radius: $-switch-circle-size;
@@ -19,14 +17,8 @@
     margin: 0;
   }
   @include e(circle) {
-    box-sizing: border-box;
-    position: absolute;
-    display: inline-block;
     width: $-switch-circle-size;
     height: $-switch-circle-size;
-    top: 2px;
-    left: 2px;
-    background: #fff;
     border-radius: 50%;
     transition: left .3s ease-out;
     box-shadow: 0 2px 4px 0 $-switch-inactive-shadow-color;

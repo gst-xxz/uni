@@ -1,13 +1,13 @@
 <template>
-  <view @click="handleClick" :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
+  <view @click="handleClick" :class="`wd-sidebar-item flex items-center justify-center relative p-4 box-border ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
     } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
-      <pro-icon custom-class="wd-sidebar-item__icon" :name="icon"></pro-icon>
+      <pro-icon custom-class="mr-0.5 text-xl" :name="icon"></pro-icon>
     </template>
-    <wd-badge v-bind="customBadgeProps" custom-class="wd-sidebar-item__badge">
+    <pro-badge v-bind="customBadgeProps" custom-class="z-[2]">
       {{ label }}
-    </wd-badge>
+    </pro-badge>
   </view>
 </template>
 
@@ -23,13 +23,11 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdBadge from '../wd-badge/wd-badge.vue'
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { SIDEBAR_KEY } from '../wd-sidebar/types'
 import { sidebarItemProps } from './types'
-import type { BadgeProps } from '../wd-badge/types'
+import type { BadgeProps } from '../pro-badge/types'
 import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
 
 const props = defineProps(sidebarItemProps)

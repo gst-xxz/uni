@@ -4,31 +4,31 @@
       <view class="demo-block">
         <view class="demo-title">基本用法</view>
         <view class="demo-container">
-          <wd-sticky custom-style="margin-left: 20px">
+          <pro-sticky custom-style="margin-left: 20px">
             <wd-button type="success">基础用法</wd-button>
-          </wd-sticky>
+          </pro-sticky>
         </view>
       </view>
 
       <view class="demo-block">
         <view class="demo-title">吸顶距离</view>
         <view class="demo-container">
-          <wd-sticky :offset-top="50" custom-style="margin-left: 120px">
+          <pro-sticky :offset-top="50" custom-style="margin-left: 120px">
             <wd-button>吸顶距离</wd-button>
-          </wd-sticky>
+          </pro-sticky>
         </view>
       </view>
 
       <view class="demo-block">
         <view class="demo-title">相对容器</view>
         <view class="demo-container">
-          <wd-sticky-box>
+          <pro-sticky-box>
             <view class="custom-container">
-              <wd-sticky custom-style="margin-left: 220px">
+              <pro-sticky custom-style="margin-left: 220px">
                 <wd-button type="warning">相对容器</wd-button>
-              </wd-sticky>
+              </pro-sticky>
             </view>
-          </wd-sticky-box>
+          </pro-sticky-box>
         </view>
       </view>
 
@@ -36,22 +36,22 @@
         <view class="demo-title">动态插入</view>
         <view class="demo-container">
           <wd-button type="info" plain @click="insert">点击插入</wd-button>
-          <wd-sticky custom-style="margin-left: 220px">
+          <pro-sticky custom-style="margin-left: 220px">
             <wd-button type="error" v-if="show">动态生成</wd-button>
-          </wd-sticky>
+          </pro-sticky>
         </view>
       </view>
 
       <view class="demo-block">
         <view class="demo-title">相对容器+吸顶距离</view>
         <view class="demo-container">
-          <wd-sticky-box>
+          <pro-sticky-box>
             <view class="custom-container">
-              <wd-sticky :offset-top="150">
+              <pro-sticky :offset-top="150">
                 <wd-button type="warning">相对容器+吸顶距离</wd-button>
-              </wd-sticky>
+              </pro-sticky>
             </view>
-          </wd-sticky-box>
+          </pro-sticky-box>
         </view>
       </view>
     </view>
@@ -73,7 +73,6 @@ onShow(() => {
 })
 </script>
 <style lang="scss" scoped>
-
 .demo-block {
   padding: 15px 0;
   color: #666;

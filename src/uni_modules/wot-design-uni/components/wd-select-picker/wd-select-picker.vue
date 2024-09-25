@@ -33,8 +33,8 @@
         :class="`wd-select-picker__wrapper ${filterable ? 'is-filterable' : ''} ${loading ? 'is-loading' : ''} ${customContentClass}`"
         :scroll-y="!loading" :scroll-top="scrollTop" :scroll-with-animation="true">
         <!-- 多选 -->
-        <view v-if="type === 'checkbox' && isArray(selectList)" id="wd-checkbox-group">
-          <wd-checkbox-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor" :min="min"
+        <view v-if="type === 'checkbox' && isArray(selectList)" id="pro-checkbox-group">
+          <pro-checkbox-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor" :min="min"
             :max="max" @change="handleChange">
             <view v-for="item in filterColumns" :key="item[valueKey]" :id="'check' + item[valueKey]">
               <wd-checkbox :modelValue="item[valueKey]" :disabled="item.disabled">
@@ -49,11 +49,11 @@
                 </block>
               </wd-checkbox>
             </view>
-          </wd-checkbox-group>
+          </pro-checkbox-group>
         </view>
         <!-- 单选 -->
-        <view v-if="type === 'radio' && !isArray(selectList)" id="wd-radio-group">
-          <wd-radio-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor"
+        <view v-if="type === 'radio' && !isArray(selectList)" id="pro-radio-group">
+          <pro-radio-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor"
             @change="handleChange">
             <view v-for="(item, index) in filterColumns" :key="index" :id="'radio' + item[valueKey]">
               <wd-radio :value="item[valueKey]" :disabled="item.disabled">
@@ -68,7 +68,7 @@
                 </block>
               </wd-radio>
             </view>
-          </wd-radio-group>
+          </pro-radio-group>
         </view>
         <view v-if="loading" class="wd-select-picker__loading" @touchmove="noop">
           <pro-loading :color="loadingColor" />
@@ -96,9 +96,7 @@ export default {
 <script lang="ts" setup>
 import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import wdCheckbox from '../wd-checkbox/wd-checkbox.vue'
-import wdCheckboxGroup from '../wd-checkbox-group/wd-checkbox-group.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
-import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
 import wdButton from '../wd-button/wd-button.vue'
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'
@@ -240,13 +238,13 @@ function setScrollIntoView() {
   let wraperSelector: string = ''
   let selectorPromise: Promise<UniApp.NodeInfo | UniApp.NodeInfo[]>[] = []
   if (isDef(selectList.value) && selectList.value !== '' && !isArray(selectList.value)) {
-    wraperSelector = '#wd-radio-group'
+    wraperSelector = '#pro-radio-group'
     selectorPromise = [getRect(`#radio${selectList.value}`, false, proxy)]
   } else if (isArray(selectList.value) && selectList.value.length > 0) {
     selectList.value.forEach((value) => {
       selectorPromise.push(getRect(`#check${value}`, false, proxy))
     })
-    wraperSelector = '#wd-checkbox-group'
+    wraperSelector = '#pro-checkbox-group'
   }
   if (wraperSelector) {
     requestAnimationFrame().then(() => {

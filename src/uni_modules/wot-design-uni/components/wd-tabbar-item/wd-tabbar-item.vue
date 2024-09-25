@@ -1,6 +1,6 @@
 <template>
   <view :class="`wd-tabbar-item ${customClass}`" :style="customStyle" @click="handleClick">
-    <wd-badge v-bind="customBadgeProps">
+    <pro-badge v-bind="customBadgeProps">
       <view class="wd-tabbar-item__body">
         <slot name="icon" :active="active"></slot>
         <template v-if="!$slots.icon && icon">
@@ -12,7 +12,7 @@
           {{ title }}
         </text>
       </view>
-    </wd-badge>
+    </pro-badge>
   </view>
 </template>
 <script lang="ts">
@@ -26,14 +26,12 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import wdBadge from '../wd-badge/wd-badge.vue'
-
 import { type CSSProperties, computed } from 'vue'
 import { deepAssign, isDef, isUndefined, objToStyle, omitBy } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { TABBAR_KEY } from '../wd-tabbar/types'
 import { tabbarItemProps } from './types'
-import type { BadgeProps } from '../wd-badge/types'
+import type { BadgeProps } from '../pro-badge/types'
 
 const props = defineProps(tabbarItemProps)
 

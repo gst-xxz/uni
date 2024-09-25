@@ -1,5 +1,5 @@
 <template>
-  <view :class="['pro-loadmore w-full text-center h-12 leading-[48px] text-black/45', customClass]" :style="customStyle"
+  <view :class="cn('w-full text-center h-12 leading-[48px] text-black/45', customClass)" :style="customStyle"
     @click="reload">
     <pro-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</pro-divider>
     <block v-if="state === 'error'">
@@ -10,7 +10,7 @@
         <text class="inline-block align-middle text-sm">{{ translate('error') }}</text>
         <text class="inline-block align-middle text-sm text-primary mx-0 mt-1.5">{{
           translate('retry')
-          }}</text>
+        }}</text>
         <pro-icon name="refresh" custom-class="inline-block align-middle text-primary text-base" />
       </block>
     </block>
@@ -37,6 +37,7 @@ export default {
 import { ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(loadmoreProps)
 const emit = defineEmits(['reload'])

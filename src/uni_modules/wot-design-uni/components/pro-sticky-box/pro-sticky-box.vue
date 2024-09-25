@@ -1,16 +1,16 @@
 <template>
   <view class="relative">
-    <view :class="`wd-sticky-box relative ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
-      <wd-resize @resize="handleResize">
+    <view :class="cn('relative', customClass)" :style="customStyle" :id="styckyBoxId">
+      <pro-resize @resize="handleResize">
         <slot />
-      </wd-resize>
+      </pro-resize>
     </view>
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-sticky-box',
+  name: 'pro-sticky-box',
   options: {
     addGlobalClass: true,
     // virtualHost: true,
@@ -20,16 +20,16 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdResize from '../wd-resize/wd-resize.vue'
 import { getCurrentInstance, onBeforeMount, reactive, ref } from 'vue'
 import { getRect, uuid } from '../common/util'
 import { baseProps } from '../common/props'
 import { STICKY_BOX_KEY } from './types'
 import { useChildren } from '../composables/useChildren'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
-const props = defineProps(baseProps)
+defineProps(baseProps)
 
-const styckyBoxId = ref<string>(`wd-sticky-box${uuid()}`)
+const styckyBoxId = ref<string>(`pro-sticky-box${uuid()}`)
 
 const observerMap = ref<Map<any, any>>(new Map())
 
@@ -55,10 +55,10 @@ onBeforeMount(() => {
  * @param detail
  */
 function handleResize(detail: any) {
-  // 相对的容器大小改变后，同步设置 wd-sticky-box 的大小
+  // 相对的容器大小改变后，同步设置 pro-sticky-box 的大小
   boxStyle.width = detail.width
   boxStyle.height = detail.height
-  // wd-sticky-box 大小变化时，重新监听所有吸顶元素
+  // pro-sticky-box 大小变化时，重新监听所有吸顶元素
   const temp = observerMap.value
   observerMap.value = new Map()
   for (const [uid] of temp) {
@@ -127,7 +127,7 @@ function observerForChild(child: any) {
 }
 /**
  *  监听容器组件
- * @param {Object} exposed wd-sticky实例暴露出的事件
+ * @param {Object} exposed pro-sticky实例暴露出的事件
  * @param {Object} boundingClientRect 边界信息
  */
 function handleRelativeTo(exposed: any, { boundingClientRect }: any) {

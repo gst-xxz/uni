@@ -3,29 +3,29 @@
   <view class="fab" @click="closeOutside">
     <page-wraper>
       <demo-block title="悬浮按钮主题色">
-        <wd-radio-group v-model="type" inline shape="dot">
+        <pro-radio-group v-model="type" inline shape="dot">
           <wd-radio value="primary" custom-class="custom-radio">主要按钮</wd-radio>
           <wd-radio value="success" custom-class="custom-radio">成功按钮</wd-radio>
           <wd-radio value="warning" custom-class="custom-radio">警告按钮</wd-radio>
           <wd-radio value="error" custom-class="custom-radio">危险按钮</wd-radio>
           <wd-radio value="info" custom-class="custom-radio">信息按钮</wd-radio>
-        </wd-radio-group>
+        </pro-radio-group>
       </demo-block>
       <demo-block title="悬浮按钮位置">
-        <wd-radio-group v-model="position" inline shape="dot">
+        <pro-radio-group v-model="position" inline shape="dot">
           <wd-radio value="left-top" custom-class="custom-radio">左上</wd-radio>
           <wd-radio value="right-top" custom-class="custom-radio">右上</wd-radio>
           <wd-radio value="left-bottom" custom-class="custom-radio">左下</wd-radio>
           <wd-radio value="right-bottom" custom-class="custom-radio">右下</wd-radio>
-        </wd-radio-group>
+        </pro-radio-group>
       </demo-block>
       <demo-block title="菜单弹出方向">
-        <wd-radio-group v-model="direction" inline shape="dot">
+        <pro-radio-group v-model="direction" inline shape="dot">
           <wd-radio value="top" custom-class="custom-radio">向上</wd-radio>
           <wd-radio value="bottom" custom-class="custom-radio">向下</wd-radio>
           <wd-radio value="right" custom-class="custom-radio">向右</wd-radio>
           <wd-radio value="left" custom-class="custom-radio">向左</wd-radio>
-        </wd-radio-group>
+        </pro-radio-group>
       </demo-block>
       <demo-block title="禁用">
         <view @click.stop="">

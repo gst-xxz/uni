@@ -7,11 +7,4 @@
       @include halfPixelBorder;
     }
   }
-  @include e(title) {
-    padding: $-cell-group-padding;
-  }
-  @include e(right) {
-    color: $-cell-group-value-color;
-    font-size: $-cell-group-value-fs;
-  }
 }

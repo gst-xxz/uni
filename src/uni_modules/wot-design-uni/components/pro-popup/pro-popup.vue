@@ -1,7 +1,7 @@
 <template>
   <pro-overlay v-if="modal" :show="modelValue" :z-index="zIndex" :lock-scroll="lockScroll" :duration="duration"
     :custom-style="modalStyle" @click="handleClickModal" @touchmove="noop" />
-  <view v-if="!lazyRender || inited" :class="[
+  <view v-if="!lazyRender || inited" :class="cn([
     `pro-popup`, 'fixed max-h-full overflow-auto bg-white',
     {
       '-left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2': props.position === 'center',
@@ -12,7 +12,7 @@
     },
     customClass,
     classes
-  ]" :style="style" @transitionend="onTransitionEnd">
+  ])" :style="style" @transitionend="onTransitionEnd">
     <slot />
     <pro-icon v-if="closable" custom-class="pro-popup__close absolute top-2.5 right-2.5 -rotate-45 text-[#666] text-xl"
       name="add" @click="close" />
@@ -35,6 +35,7 @@ export default {
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { isObj, requestAnimationFrame } from '../common/util'
 import { popupProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(popupProps)
 const emit = defineEmits([

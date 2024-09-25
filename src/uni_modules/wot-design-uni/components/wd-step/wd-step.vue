@@ -40,7 +40,7 @@ export default {
 
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
-import { STEPS_KEY } from '../wd-steps/types'
+import { STEPS_KEY } from '../pro-steps/types'
 import { isDef, objToStyle } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'

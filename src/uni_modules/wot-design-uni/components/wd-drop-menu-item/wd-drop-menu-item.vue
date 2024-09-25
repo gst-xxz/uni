@@ -1,5 +1,6 @@
 <template>
-  <view v-if="showWrapper" :class="`wd-drop-item  ${customClass}`"
+  <view v-if="showWrapper"
+    :class="`wd-drop-item fixed right-0 left-0 overflow-hidden w-full z-[101] text-sm text-[#262626] ${customClass}`"
     :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
     <pro-popup v-model="showPop" :z-index="zIndex" :duration="duration" :position="position"
       custom-style="position: absolute; max-height: 80%;" modal-style="position: absolute;" :modal="modal"
@@ -7,13 +8,13 @@
       @after-enter="afterEnter" @before-leave="beforeLeave" @after-leave="afterLeave">
       <view v-if="options.length">
         <view v-for="(item, index) in options" :key="index" @click="choose(index)"
-          :class="`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`">
-          <view :class="`wd-drop-item__title ${customTitle}`">
+          :class="`wd-drop-item__option flex items-center justify-between ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'text-primary' : ''}`">
+          <view :class="`wd-drop-item__title block ${customTitle}`">
             <text>{{ item[labelKey] ? item[labelKey] : item }}</text>
-            <text v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</text>
+            <text v-if="item[tipKey]" class="wd-drop-item__tip inline-block ml-0.5">{{ item[tipKey] }}</text>
           </view>
           <pro-icon v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue" :name="iconName" size="20px"
-            :class="`wd-drop-item__icon ${customIcon}`" />
+            :class="`wd-drop-item__icon block ${customIcon}`" />
         </view>
       </view>
       <slot v-else />

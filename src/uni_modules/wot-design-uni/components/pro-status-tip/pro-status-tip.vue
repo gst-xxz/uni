@@ -1,14 +1,18 @@
 <template>
-  <view :class="`wd-status-tip  ${customClass}`" :style="customStyle">
-    <wd-img v-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image"
+  <view
+    :class="cn('w-full my-0 mx-auto box-border flex flex-col items-center py-[5px] px-2.5 text-black/45 text-sm', customClass)"
+    :style="customStyle">
+    <wd-img v-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="my-0 mx-auto w-40 h-40"
       :custom-style="imgStyle"></wd-img>
-    <view v-if="tip" class="wd-status-tip__text">{{ tip }}</view>
+    <view v-if="tip" class="text-black/45 text-sm leading-4 mt-5 mx-auto mb-0 text-center break-all">
+      {{ tip }}
+    </view>
   </view>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'wd-status-tip',
+  name: 'pro-status-tip',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -18,10 +22,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdImg from '../wd-img/wd-img.vue'
 import { computed, type CSSProperties } from 'vue'
 import { addUnit, isDef, isObj, objToStyle } from '../common/util'
 import { statusTipProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(statusTipProps)
 
@@ -76,6 +80,3 @@ const imgStyle = computed(() => {
   return `${objToStyle(style)}`
 })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

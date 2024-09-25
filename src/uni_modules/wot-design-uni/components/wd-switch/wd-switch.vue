@@ -1,6 +1,7 @@
 <template>
   <view :class="rootClass" :style="rootStyle" @click="switchValue">
-    <view class="wd-switch__circle" :style="circleStyle"></view>
+    <view class="wd-switch__circle absolute left-0.5 top-0.5 inline-block box-border bg-white" :style="circleStyle">
+    </view>
   </view>
 </template>
 <script lang="ts">
@@ -23,7 +24,7 @@ const props = defineProps(switchProps)
 const emit = defineEmits(['change', 'update:modelValue'])
 
 const rootClass = computed(() => {
-  return `wd-switch ${props.customClass} ${props.disabled ? 'is-disabled' : ''} ${props.modelValue === props.activeValue ? 'is-checked' : ''}`
+  return `wd-switch relative inline-block ${props.customClass} ${props.disabled ? 'is-disabled' : ''} ${props.modelValue === props.activeValue ? 'is-checked' : ''}`
 })
 
 const rootStyle = computed(() => {

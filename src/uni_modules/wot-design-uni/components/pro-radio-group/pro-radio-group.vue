@@ -1,13 +1,13 @@
 <template>
   <view
-    :class="`wd-radio-group text-[0] bg-white ${customClass} ${cell && shape === 'button' ? 'w-full h-auto overflow-hidden box-border pt-2 pr-[3px] pb-5 pl-[15px]' : ''}`"
+    :class="cn('pro-radio-group text-[0] bg-white', customClass, { 'w-full h-auto overflow-hidden box-border pt-2 pr-[3px] pb-5 pl-[15px]': cell && shape === 'button' })"
     :style="customStyle">
     <slot />
   </view>
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-radio-group',
+  name: 'pro-radio-group',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -20,11 +20,12 @@ export default {
 import { watch } from 'vue'
 import { useChildren } from '../composables/useChildren'
 import { RADIO_GROUP_KEY, radioGroupProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(radioGroupProps)
 const emit = defineEmits(['change', 'update:modelValue'])
 
-const { linkChildren, children } = useChildren(RADIO_GROUP_KEY)
+const { linkChildren } = useChildren(RADIO_GROUP_KEY)
 
 linkChildren({ props, updateValue })
 

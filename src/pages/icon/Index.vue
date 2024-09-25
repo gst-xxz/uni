@@ -11,7 +11,7 @@
             <view><pro-icon :name="icon" size="22px" custom-class="icon-item-class" /></view>
             <view class="icon-item-name">{{ icon }}</view>
           </view>
-          <wd-status-tip v-if="!showIcons.length" image="search" tip="当前无相关图标" />
+          <pro-status-tip v-if="!showIcons.length" image="search" tip="当前无相关图标" />
         </view>
       </view>
     </page-wraper>

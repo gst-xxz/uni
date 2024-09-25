@@ -4,7 +4,7 @@
 
     <view @click="closeOutside" class="wrapper">
       <demo-block title="位置">
-        <wd-radio-group v-model="placement" inline shape="dot">
+        <pro-radio-group v-model="placement" inline shape="dot">
           <wd-radio value="bottom" custom-class="custom-radio">bottom</wd-radio>
           <wd-radio value="bottom-start" custom-class="custom-radio">bottom-start</wd-radio>
           <wd-radio value="bottom-end" custom-class="custom-radio">bottom-end</wd-radio>
@@ -17,7 +17,7 @@
           <wd-radio value="right" custom-class="custom-radio">right</wd-radio>
           <wd-radio value="right-start" custom-class="custom-radio">right-start</wd-radio>
           <wd-radio value="right-end" custom-class="custom-radio">right-end</wd-radio>
-        </wd-radio-group>
+        </pro-radio-group>
       </demo-block>
       <demo-block custom-class="pop" title="基本用法">
         <view class="center">
@@ -40,7 +40,8 @@
 
       <demo-block custom-class="pop" title="列表展示">
         <view class="center list">
-          <wd-popover v-model="show3" mode="menu" :placement="placement" :content="menu" @menuclick="link" @change="handleChange3">
+          <wd-popover v-model="show3" mode="menu" :placement="placement" :content="menu" @menuclick="link"
+            @change="handleChange3">
             <wd-button>列表</wd-button>
           </wd-popover>
         </view>
@@ -109,18 +110,22 @@ function handleChange3() {
   text-align: center;
   padding-bottom: 20px;
 }
+
 :deep(.pop) {
   overflow: visible !important;
   padding: 10px;
 }
+
 :deep(.custom-radio) {
   height: 32px !important;
   line-height: 32px !important;
 }
+
 .wrapper {
   width: 100%;
   height: 100vh;
 }
+
 .pop-content {
   /* 必填 开始 */
   position: relative;

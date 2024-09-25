@@ -3,16 +3,11 @@
 
 
 @include b(sidebar-item) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 32rpx;
+  
   font-size: $-sidebar-font-size;
   color: $-sidebar-color;
   background: $-sidebar-bg;
   min-height: $-sidebar-item-height;
-  box-sizing: border-box;
   white-space: wrap;
   line-height: $-sidebar-item-line-height;
 
@@ -60,13 +55,5 @@
     }
   }
 
-  @include edeep(badge) {
-    z-index: 2;
-  }
-
-  @include edeep(icon) {
-    font-size: $-sidebar-icon-size;
-    margin-right: 2px;
-  }
 
 }

@@ -1,5 +1,5 @@
 <template>
-  <view :class="`pro-count-down text-sm text-gray-8 ${customClass}`" :style="customStyle">
+  <view :class="cn('pro-count-down text-sm text-gray-8', customClass)" :style="customStyle">
     <slot :current="current" v-if="$slots.default" />
     <block v-else>{{ timeText }}</block>
   </view>
@@ -18,6 +18,7 @@ import { watch, computed, onMounted } from 'vue'
 import { parseFormat } from './utils'
 import { useCountDown } from '../composables/useCountDown'
 import { countDownProps, type CountDownExpose } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(countDownProps)
 

@@ -4,15 +4,6 @@
 @import '../wd-table/index';
 
 @include b(table-col) {
-  .wd-table__cell {
-    width: 100%;
-  }
-
-  @include m(fixed) {
-    position: sticky;
-    z-index: 1;
-    left: 0;
-  }
 
   @include when(shadow) {
     &::after {

@@ -1,21 +1,18 @@
 <template>
-  <view :class="`wd-segmented ${customClass}`" :style="customStyle">
-    <view
-      :class="`wd-segmented__item is-${size} ${state.activeIndex === index ? 'is-active' : ''} ${
-        disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
-      }`"
-      @click="handleClick(option, index)"
-      v-for="(option, index) in options"
-      :key="index"
-    >
-      <view class="wd-segmented__item-label">
+  <view
+    :class="`wd-segmented relative flex items-stretch justify-start w-full rounded box-border p-1 bg-[#eeeeee] ${customClass}`"
+    :style="customStyle">
+    <view :class="`wd-segmented__item is-${size} ${state.activeIndex === index ? 'is-active' : ''} ${disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
+      }`" @click="handleClick(option, index)" v-for="(option, index) in options" :key="index">
+      <view class="overflow-hidden whitespace-nowrap text-ellipsis">
         <slot name="label" v-if="$slots.label" :option="isObj(option) ? option : { value: option }"></slot>
         <template v-else>
           {{ isObj(option) ? option.value : option }}
         </template>
       </view>
     </view>
-    <view :class="`wd-segmented__item--active ${activeDisabled ? 'is-disabled' : ''}`" :style="state.activeStyle"></view>
+    <view :class="`wd-segmented__item--active ${activeDisabled ? 'is-disabled' : ''}`" :style="state.activeStyle">
+    </view>
   </view>
 </template>
 

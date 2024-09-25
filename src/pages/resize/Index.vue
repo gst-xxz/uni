@@ -1,9 +1,9 @@
 <template>
   <page-wraper>
     <demo-block title="基础用法">
-      <wd-resize @resize="handleResize">
+      <pro-resize @resize="handleResize">
         <view :style="`background: #4d80f0; width: ${width};height: ${height}`"></view>
-      </wd-resize>
+      </pro-resize>
       <view class="tip-item">
         <view class="tip-label">width:</view>
         {{ lastWidth }}

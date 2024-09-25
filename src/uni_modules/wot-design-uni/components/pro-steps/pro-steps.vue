@@ -1,11 +1,11 @@
 <template>
-  <view :class="`wd-steps text-[0] ${customClass} ${vertical ? 'block' : ''}`">
+  <view :class="cn('text-[0]', customClass, { 'block': vertical })">
     <slot />
   </view>
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-steps',
+  name: 'pro-steps',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -16,6 +16,7 @@ export default {
 <script lang="ts" setup>
 import { useChildren } from '../composables/useChildren'
 import { STEPS_KEY, stepsProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(stepsProps)
 

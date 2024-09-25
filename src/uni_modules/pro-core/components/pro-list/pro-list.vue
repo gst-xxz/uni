@@ -3,7 +3,7 @@
     <slot name="item" :item="item" v-for="item in data" :key="item[keyField as 'id']" />
     <pro-loadmore :state="loadMoreState" v-if="showLoadMore" :finished-text="textMap.finished"
       :loading-text="textMap.loading" custom-class="mt-4" />
-    <wd-status-tip image="content" :tip="textMap.empty || '暂无数据'" v-if="status === 'noMore' && data.length === 0" />
+    <pro-status-tip image="content" :tip="textMap.empty || '暂无数据'" v-if="status === 'noMore' && data.length === 0" />
   </view>
 </template>
 

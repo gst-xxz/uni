@@ -17,6 +17,8 @@
     --overlay-bg: 0 0% 0% / 65%;
     --backtop-bg: 0 0% 88.24%;
 
+    /* f7f8fa */
+    --gray-1: 0 0% 96.8%;
     /* f2f3f5 */
     --gray-2: 0 0% 94.9%;
     --gray-8: 0 0% 19.8%;
@@ -87,4 +89,8 @@
     clear: both;
     content: '';
   }
+}
+
+.backface-visibility-hidden {
+  backface-visibility: hidden;
 }

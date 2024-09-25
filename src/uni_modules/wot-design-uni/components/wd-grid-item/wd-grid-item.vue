@@ -6,12 +6,12 @@
       <slot v-if="useSlot" />
       <block v-else>
         <view :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
-          <wd-badge custom-class="badge" v-bind="customBadgeProps">
+          <pro-badge custom-class="badge" v-bind="customBadgeProps">
             <template v-if="useIconSlot">
               <slot name="icon" />
             </template>
             <pro-icon v-else :name="icon" :size="iconSize" :custom-class="customIcon" />
-          </wd-badge>
+          </pro-badge>
         </view>
         <slot name="text" v-if="useTextSlot" />
         <view v-else class="wd-grid-item__text custom-text">{{ text }}</view>
@@ -32,13 +32,12 @@ export default {
 
 <script lang="ts" setup>
 
-import wdBadge from '../wd-badge/wd-badge.vue'
 import { onMounted, ref, watch, computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { GRID_KEY } from '../wd-grid/types'
 import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
 import { gridItemProps } from './types'
-import type { BadgeProps } from '../wd-badge/types'
+import type { BadgeProps } from '../pro-badge/types'
 
 const props = defineProps(gridItemProps)
 const emit = defineEmits(['itemclick'])

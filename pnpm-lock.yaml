@@ -50,6 +50,12 @@ dependencies:
   classnames:
     specifier: ^2.5.1
     version: 2.5.1
+  clsx:
+    specifier: ^2.1.1
+    version: 2.1.1
+  tailwind-merge:
+    specifier: ^2.5.2
+    version: 2.5.2
   vite-plugin-compression:
     specifier: ^0.5.1
     version: 0.5.1(vite@4.0.3)
@@ -4717,6 +4723,11 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
+  /clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -9300,6 +9311,10 @@ packages:
   /systemjs@6.15.1:
     resolution: {integrity: sha512-Nk8c4lXvMB98MtbmjX7JwJRgJOL8fluecYCfCeYBznwmpOs8Bf15hLM6z4z71EDAhQVrQrI+wt1aLWSXZq+hXA==}
     dev: true
+
+  /tailwind-merge@2.5.2:
+    resolution: {integrity: sha512-kjEBm+pvD+6eAwzJL2Bi+02/9LFLal1Gs61+QB7HvTfQQ0aXwC5LGT8PEt1gS0CWKktKe6ysPTAy3cBC5MeiIg==}
+    dev: false
 
   /tailwindcss-patch@4.0.0(tailwindcss@3.4.11):
     resolution: {integrity: sha512-51SVAKWECp+os7E+HKyb569ela+DdJfQrr/mf6XhqmtZ90iXzQLf2KX0Bj1MJDYnfLofTvfHGAT2chycvFiMTg==}
