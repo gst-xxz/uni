@@ -3,33 +3,33 @@
     <wd-message-box></wd-message-box>
     <view>
       <demo-block title="基本用法">
-        <wd-switch v-model="checked1" @change="handleChange1" />
+        <pro-switch v-model="checked1" @change="handleChange1" />
       </demo-block>
       <demo-block title="修改值 active-value 、 inactive-value">
         <view style="margin-bottom: 10px">{{ checked2 }}</view>
-        <wd-switch v-model="checked2" active-value="沃特" inactive-value="商家后台" @change="handleChange2" />
+        <pro-switch v-model="checked2" active-value="沃特" inactive-value="商家后台" @change="handleChange2" />
       </demo-block>
       <demo-block title="自定义颜色 active-color 、 inactive-color">
-        <wd-switch v-model="checked3" active-color="#13ce66" inactive-color="#f00" @change="handleChange3" />
+        <pro-switch v-model="checked3" active-color="#13ce66" inactive-color="#f00" @change="handleChange3" />
       </demo-block>
       <demo-block title="自定义大小">
-        <wd-switch v-model="checked4" :size="24" @change="handleChange4" />
+        <pro-switch v-model="checked4" :size="24" @change="handleChange4" />
       </demo-block>
       <demo-block title="选中禁用">
-        <wd-switch v-model="checked5" disabled />
+        <pro-switch v-model="checked5" disabled />
       </demo-block>
       <demo-block title="非选中禁用">
-        <wd-switch v-model="checked6" disabled />
+        <pro-switch v-model="checked6" disabled />
       </demo-block>
       <demo-block title="before-change 修改前钩子函数">
-        <wd-switch v-model="checked7" :before-change="beforeChange" @change="handleChange5" />
+        <pro-switch v-model="checked7" :before-change="beforeChange" @change="handleChange5" />
       </demo-block>
     </view>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { useMessage } from '@/uni_modules/wot-design-uni'
-import type { SwitchBeforeChange } from '@/uni_modules/wot-design-uni/components/wd-switch/types'
+import type { SwitchBeforeChange } from '@/uni_modules/wot-design-uni/components/pro-switch/typess'
 import { ref } from 'vue'
 
 const checked1 = ref<boolean>(true)
@@ -72,17 +72,20 @@ function handleChange5({ value }: any) {
 page {
   background-color: #ededed;
 }
+
 .row {
   margin: 10px 0;
   padding: 0 10px;
   background: rgb(255, 255, 255);
 }
+
 .desc {
   padding: 0 15px;
   font-size: 14px;
   height: 30px;
   line-height: 30px;
 }
+
 .code {
   color: rgb(0, 131, 255);
   white-space: nowrap;
@@ -93,10 +96,12 @@ page {
   margin: 0 2px;
   border-radius: 2px;
 }
+
 .center {
   text-align: center;
   padding-bottom: 10px;
 }
+
 .test {
   color: red;
 }

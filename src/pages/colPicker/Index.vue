@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <view style="margin: 20px 0">
       <pro-cell-group border>
         <wd-col-picker label="选择地址" v-model="value1" :columns="areaData1" :column-change="columnChange1"

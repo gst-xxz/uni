@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
 
     <view @click.stop="closeOutside">
       <demo-block transparent title="基本用法">

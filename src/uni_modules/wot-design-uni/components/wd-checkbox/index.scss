@@ -2,64 +2,7 @@
 @import "./../common/abstracts/variable.scss";
 
 @include b(checkbox) {
-  display: block;
-  margin-bottom: $-checkbox-margin;
-  font-size: 0;
   -webkit-tap-highlight-color: transparent;
-  line-height: 1.2;
-
-  @include when(last-child) {
-    margin-bottom: 0;
-  }
-
-  @include e(shape) {
-    position: relative;
-    display: inline-block;
-    width: $-checkbox-size;
-    height: $-checkbox-size;
-    border: 2px solid $-checkbox-border-color;
-    border-radius: 50%;
-    color: $-checkbox-check-color;
-    background: $-checkbox-bg;
-    vertical-align: middle;
-    transition: background 0.2s;
-    box-sizing: border-box;
-
-    @include when(square) {
-      border-radius: $-checkbox-square-radius;
-    }
-  }
-
-  @include e(input) {
-    position: absolute;
-    width: 0;
-    height: 0;
-    margin: 0;
-    opacity: 0;
-  }
-
-  @include edeep(btn-check) {
-    display: inline-block;
-    font-size: $-checkbox-icon-size;
-    margin-right: 4px;
-    vertical-align: middle;
-  }
-
-  @include e(txt) {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 20px;
-    @include lineEllipsis;
-  }
-
-  @include e(label) {
-    position: relative;
-    display: inline-block;
-    margin-left: $-checkbox-label-margin;
-    vertical-align: middle;
-    font-size: $-checkbox-label-fs;
-    color: $-checkbox-label-color;
-  }
 
   @include edeep(check) {
     color: $-checkbox-check-color;
@@ -85,16 +28,6 @@
   }
 
   @include when(button) {
-    display: inline-block;
-    margin-bottom: 0;
-    margin-right: $-checkbox-margin;
-    vertical-align: top;
-    font-size: $-checkbox-button-font-size;
-
-    @include when(last-child) {
-      margin-right: 0;
-    }
-
     .wd-checkbox__shape {
       width: 0;
       height: 0;
@@ -127,16 +60,6 @@
         border-color: $-checkbox-checked-color;
         border-color: currentColor;
       }
-    }
-  }
-
-  @include when(inline) {
-    display: inline-block;
-    margin-bottom: 0;
-    margin-right: $-checkbox-margin;
-
-    @include when(last-child) {
-      margin-right: 0;
     }
   }
 
@@ -177,20 +100,12 @@
 
   // 以下内容用于解决父子组件样式隔离的问题 —— START
   @include when(cell-box) {
-    padding: 13px 15px;
-    margin: 0;
-
     @include when(large) {
       padding: 14px 15px;
     }
   }
 
   @include when(button-box) {
-    display: inline-flex;
-    width: 33.3333%;
-    padding: 12px 12px 0 0;
-    box-sizing: border-box;
-
     .wd-checkbox__label {
       width: 100%;
     }

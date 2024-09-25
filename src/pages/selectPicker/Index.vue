@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <view style="margin: 20px 0">
       <pro-cell-group border>
         <wd-select-picker label="选择地址" v-model="value1" :columns="columns1" @confirm="handleConfirm1" />

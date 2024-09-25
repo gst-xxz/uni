@@ -1,5 +1,5 @@
 <template>
-  <wd-toast></wd-toast>
+  <pro-toast></pro-toast>
   <page-wraper>
     <wd-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop
       @click-left="handleClickLeft"></wd-navbar>

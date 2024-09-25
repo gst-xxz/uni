@@ -1,6 +1,6 @@
 <template>
   <view>
-    <wd-toast />
+    <pro-toast />
     <view class="page-wraper">
       <slot />
     </view>

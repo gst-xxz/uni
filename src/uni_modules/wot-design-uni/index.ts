@@ -1,5 +1,5 @@
 // Toast
-export { useToast } from './components/wd-toast'
+export { useToast } from './components/pro-toast'
 // Messageb
 export { useMessage } from './components/wd-message-box'
 

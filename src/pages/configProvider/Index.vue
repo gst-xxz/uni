@@ -1,7 +1,7 @@
 <template>
   <page-wraper show-dark-mode>
     <wd-message-box />
-    <wd-toast />
+    <pro-toast />
     <wd-action-sheet v-model="showAction" :actions="actions" />
 
     <form @submit="formSubmit">
@@ -36,7 +36,7 @@
           <wd-input-number v-model="count" name="count" @change="handleCount" />
         </wd-cell>
         <wd-cell title="这里显示的是多文字标题包含非常的文字" title-width="240px" center>
-          <wd-switch v-model="switchVal" name="switchVal" @change="handleSwitch" />
+          <pro-switch v-model="switchVal" name="switchVal" @change="handleSwitch" />
         </wd-cell>
         <wd-input label="歪比巴卜" label-width="100px" name="cardId" suffix-icon="camera" placeholder="请输入歪比巴卜" clearable
           v-model="cardId" @change="handleCardId" />

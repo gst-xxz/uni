@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
 
     <view @click="closeOutside" class="wrapper">
       <demo-block title="位置">

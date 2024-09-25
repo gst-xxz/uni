@@ -1,17 +1,13 @@
 <template>
   <view>
-    <wd-toast selector="wd-month" />
+    <pro-toast selector="wd-month" />
     <view class="month">
       <view class="wd-month">
         <view class="wd-month__title">{{ monthTitle(date) }}</view>
         <view class="wd-month__days">
-          <view
-            v-for="(item, index) in days"
-            :key="index"
+          <view v-for="(item, index) in days" :key="index"
             :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
-            :style="firstDayStyle(index, item.date, firstDayOfWeek)"
-            @click="handleDateClick(index)"
-          >
+            :style="firstDayStyle(index, item.date, firstDayOfWeek)" @click="handleDateClick(index)">
             <view class="wd-month__day-container">
               <view class="wd-month__day-top">{{ item.topInfo }}</view>
               <view class="wd-month__day-text">
@@ -37,7 +33,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdToast from '../../wd-toast/wd-toast.vue'
 import { computed, ref, watch } from 'vue'
 import {
   compareDate,
@@ -50,7 +45,7 @@ import {
   getMonthEndDay,
   getWeekRange
 } from '../utils'
-import { useToast } from '../../wd-toast'
+import { useToast } from '../../pro-toastt'
 import { deepClone, isArray, isFunction } from '../../common/util'
 import { useTranslate } from '../../composables/useTranslate'
 import type { CalendarDayItem, CalendarDayType, CalendarType } from '../types'

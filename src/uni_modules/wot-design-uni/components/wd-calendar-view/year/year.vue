@@ -1,5 +1,5 @@
 <template>
-  <wd-toast selector="wd-year" />
+  <pro-toast selector="wd-year" />
 
   <view class="wd-year year">
     <view class="wd-year__title">{{ yearTitle(date) }}</view>
@@ -25,11 +25,11 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdToast from '../../wd-toast/wd-toast.vue'
+import wdToast from '../../pro-toast/pro-toast.vue'
 import { computed, ref, watch } from 'vue'
 import { deepClone, isArray, isFunction } from '../../common/util'
 import { compareMonth, formatYearTitle, getDateByDefaultTime, getItemClass, getMonthByOffset, getMonthOffset } from '../utils'
-import { useToast } from '../../wd-toast'
+import { useToast } from '../../pro-toastt'
 import { useTranslate } from '../../composables/useTranslate'
 import { dayjs } from '../../common/dayjs'
 import { yearProps } from './types'

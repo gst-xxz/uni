@@ -2,7 +2,7 @@ import CreateToast from './createToast'
 import CreateNotify, { type NotifyInstance } from './createNotify'
 import CreateMessage from './createMessage'
 import CreateActionSheet, { type ActionSheetInstance } from './createActionSheet'
-import type { Toast } from '@/uni_modules/wot-design-uni/components/wd-toast/types'
+import type { Toast } from '@/uni_modules/wot-design-uni/components/pro-toast/typess'
 import type { Message } from '@/uni_modules/wot-design-uni/components/wd-message-box/types'
 
 class Pro {

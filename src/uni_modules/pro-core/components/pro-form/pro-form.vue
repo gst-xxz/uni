@@ -26,7 +26,7 @@
         </wd-cell>
 
         <wd-cell v-else-if="field.component === 'switch'" :label="field.label">
-          <wd-switch v-model="innerFormData[field.prop]" />
+          <pro-switch v-model="innerFormData[field.prop]" />
         </wd-cell>
 
         <wd-picker :label="field.label" :label-width="field.labelWidth" :prop="field.prop"

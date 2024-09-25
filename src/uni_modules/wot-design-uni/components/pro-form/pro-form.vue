@@ -1,7 +1,7 @@
 <template>
   <view :class="`${customClass}`" :style="customStyle">
     <slot></slot>
-    <wd-toast v-if="props.errorType === 'toast'" selector="wd-form-toast" />
+    <pro-toast v-if="props.errorType === 'toast'" selector="wd-form-toast" />
   </view>
 </template>
 
@@ -16,11 +16,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdToast from '../wd-toast/wd-toast.vue'
 import { reactive, watch } from 'vue'
 import { deepClone, getPropByPath, isDef, isPromise } from '../common/util'
 import { useChildren } from '../composables/useChildren'
-import { useToast } from '../wd-toast'
+import { useToast } from '../pro-toastt'
 import { type FormRules, FORM_KEY, type ErrorMessage, formProps, type FormExpose } from './types'
 
 const { show: showToast } = useToast('wd-form-toast')

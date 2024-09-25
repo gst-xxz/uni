@@ -1,6 +1,6 @@
 <template>
   <view :class="['min-h-full', customClass, theme === 'dark' ? 'dark' : '']">
-    <wd-toast />
+    <pro-toast />
     <slot />
     <pro-notify />
     <wd-message-box />

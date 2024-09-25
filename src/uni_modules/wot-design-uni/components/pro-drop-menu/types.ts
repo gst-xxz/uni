@@ -9,7 +9,7 @@ export type DropMenuProvide = {
   offset: Ref<number>
 }
 
-export const DROP_MENU_KEY: InjectionKey<DropMenuProvide> = Symbol('wd-drop-menu')
+export const DROP_MENU_KEY: InjectionKey<DropMenuProvide> = Symbol('pro-drop-menu')
 
 export const dropMenuProps = {
   ...baseProps,

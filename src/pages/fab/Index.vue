@@ -1,5 +1,5 @@
 <template>
-  <wd-toast />
+  <pro-toast />
   <view class="fab" @click="closeOutside">
     <page-wraper>
       <demo-block title="悬浮按钮主题色">
@@ -29,12 +29,12 @@
       </demo-block>
       <demo-block title="禁用">
         <view @click.stop="">
-          <wd-switch v-model="disabled" size="22px" />
+          <pro-switch v-model="disabled" size="22px" />
         </view>
       </demo-block>
       <demo-block title="可拖动">
         <view @click.stop="">
-          <wd-switch v-model="draggable" size="22px" />
+          <pro-switch v-model="draggable" size="22px" />
         </view>
       </demo-block>
 

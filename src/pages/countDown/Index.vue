@@ -33,7 +33,7 @@
         <wd-grid-item text="重置" icon="refresh" @itemclick="reset" />
       </wd-grid>
     </demo-block>
-    <wd-toast></wd-toast>
+    <pro-toast></pro-toast>
   </page-wraper>
 </template>
 <script lang="ts" setup>

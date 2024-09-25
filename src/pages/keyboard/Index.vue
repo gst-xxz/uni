@@ -1,5 +1,5 @@
 <template>
-  <wd-toast></wd-toast>
+  <pro-toast></pro-toast>
 
   <page-wraper>
     <demo-block title="基本用法" transparent>

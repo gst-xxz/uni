@@ -1,4 +1,4 @@
-import type { Toast, ToastOptions } from '@/uni_modules/wot-design-uni/components/wd-toast/types'
+import type { Toast, ToastOptions } from '@/uni_modules/wot-design-uni/components/pro-toast/typess'
 
 const defaultToast: Toast = {
   show(toastOptions: ToastOptions | string) {},

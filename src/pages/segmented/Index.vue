@@ -1,6 +1,6 @@
 <template>
   <view>
-    <wd-toast />
+    <pro-toast />
     <page-wraper>
       <demo-block title="大型分段器" transparent>
         <view class="section">

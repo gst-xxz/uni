@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <demo-block title="基本用法" transparent>
       <wd-tabs v-model="tab1" @change="handleChange">
         <block v-for="item in 4" :key="item">
@@ -125,6 +125,7 @@ function handleChange(event: any) {
   flex-direction: column;
   justify-content: space-around;
 }
+
 .large {
   line-height: 320px;
   text-align: center;

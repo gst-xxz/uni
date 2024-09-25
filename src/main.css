@@ -116,3 +116,14 @@
     opacity: 0;
   }
 }
+
+.webkit-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.after-content-empty {
+  &::after {
+    content: '';
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <view>
       <demo-block title="基本用法">
         <wd-button @click="showActions1">弹出菜单</wd-button>

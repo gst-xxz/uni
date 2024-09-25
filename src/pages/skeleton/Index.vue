@@ -11,11 +11,13 @@
     <demo-block title="单元格骨架屏">
       <view style="display: flex">
         <wd-skeleton :row-col="[{ size: '48px', type: 'circle' }]" />
-        <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }" :row-col="[{ width: '50%' }, { width: '100%' }]" />
+        <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }"
+          :row-col="[{ width: '50%' }, { width: '100%' }]" />
       </view>
       <view style="display: flex; margin-top: 20px">
         <wd-skeleton :row-col="[{ size: '48px', type: 'rect' }]" />
-        <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }" :row-col="[{ width: '50%' }, { width: '100%' }]" />
+        <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }"
+          :row-col="[{ width: '50%' }, { width: '100%' }]" />
       </view>
     </demo-block>
     <demo-block title="图片组合骨架屏">
@@ -33,7 +35,7 @@
     </demo-block>
     <demo-block title="插槽内容">
       <view style="margin-bottom: 10px">切换显示</view>
-      <wd-switch v-model="showContent" />
+      <pro-switch v-model="showContent" />
       <view style="height: 20px"></view>
       <wd-skeleton :row-col="grid" :loading="showContent">
         <wd-grid>

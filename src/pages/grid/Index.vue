@@ -1,7 +1,7 @@
 <template>
   <view>
     <page-wraper>
-      <wd-toast />
+      <pro-toast />
       <view class="grid">
         <demo-block title="基本用法" transparent>
           <wd-grid>

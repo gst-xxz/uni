@@ -2,7 +2,7 @@
   <view>
     <page-wraper>
       <wd-message-box />
-      <wd-toast />
+      <pro-toast />
       <pro-form ref="form" :model="model" :rules="rules">
         <pro-cell-group custom-class="group" title="基础信息" border>
           <wd-input label="优惠券名称" label-width="100px" :maxlength="20" show-word-limit prop="couponName" required
@@ -40,7 +40,7 @@
           </wd-cell>
           <wd-cell title="开启折扣" title-width="100px" prop="switchVal" center>
             <view style="text-align: left">
-              <wd-switch v-model="model.switchVal" />
+              <pro-switch v-model="model.switchVal" />
             </view>
           </wd-cell>
           <wd-input label="歪比巴卜" label-width="100px" prop="cardId" suffix-icon="camera" placeholder="请输入歪比巴卜" clearable

@@ -4,7 +4,7 @@
     <wd-privacy-popup></wd-privacy-popup>
     <!-- #endif -->
     <wd-message-box></wd-message-box>
-    <wd-toast></wd-toast>
+    <pro-toast></pro-toast>
     <demo-block title="基本用法">
       <wd-upload accept="image" v-model:file-list="fileList" image-mode="aspectFill" :action="action"></wd-upload>
     </demo-block>
@@ -12,23 +12,20 @@
       <wd-upload :file-list="fileList3" :limit="3" :action="action" @change="handleChange3"></wd-upload>
     </demo-block>
     <demo-block title="拦截预览图片操作">
-      <wd-upload :file-list="fileList4" :action="action" @change="handleChange4" :before-preview="beforePreview"></wd-upload>
+      <wd-upload :file-list="fileList4" :action="action" @change="handleChange4"
+        :before-preview="beforePreview"></wd-upload>
     </demo-block>
     <demo-block title="上传前置处理">
-      <wd-upload :file-list="fileList5" :action="action" @change="handleChange5" :before-upload="beforeUpload"></wd-upload>
+      <wd-upload :file-list="fileList5" :action="action" @change="handleChange5"
+        :before-upload="beforeUpload"></wd-upload>
     </demo-block>
     <demo-block title="移除图片前置处理">
-      <wd-upload :file-list="fileList6" :action="action" @change="handleChange6" :before-remove="beforeRemove"></wd-upload>
+      <wd-upload :file-list="fileList6" :action="action" @change="handleChange6"
+        :before-remove="beforeRemove"></wd-upload>
     </demo-block>
     <demo-block title="上传状态钩子">
-      <wd-upload
-        :file-list="fileList7"
-        :action="action"
-        @change="handleChange7"
-        @success="handleSuccess"
-        @fail="handleFail"
-        @progress="handleProgess"
-      ></wd-upload>
+      <wd-upload :file-list="fileList7" :action="action" @change="handleChange7" @success="handleSuccess"
+        @fail="handleFail" @progress="handleProgess"></wd-upload>
     </demo-block>
     <demo-block title="禁用">
       <wd-upload :file-list="fileList8" disabled :action="action" @change="handleChange8"></wd-upload>
@@ -39,7 +36,8 @@
       </wd-upload>
     </demo-block>
     <demo-block title="选择文件前置处理">
-      <wd-upload :file-list="fileList10" :action="action" @change="handleChange10" :before-choose="beforeChoose"></wd-upload>
+      <wd-upload :file-list="fileList10" :action="action" @change="handleChange10"
+        :before-choose="beforeChoose"></wd-upload>
     </demo-block>
 
     <!-- <demo-block title="上传至oss">
@@ -66,7 +64,8 @@
     <!-- #endif -->
 
     <demo-block title="手动触发上传">
-      <wd-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action" @change="handleChange14"></wd-upload>
+      <wd-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action"
+        @change="handleChange14"></wd-upload>
       <wd-button @click="upload14?.submit()">开始上传</wd-button>
     </demo-block>
 

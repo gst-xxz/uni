@@ -1,24 +1,26 @@
 <template>
-  <view :class="`wd-collapse ${viewmore ? 'is-viewmore' : ''} ${customClass}`" :style="customStyle">
+  <view :class="cn('bg-white', viewmore ? 'p-[15px]' : '', customClass)" :style="customStyle">
     <!-- 普通或手风琴 -->
     <block v-if="!viewmore">
       <slot></slot>
     </block>
     <!-- 查看更多模式 -->
     <view v-else>
-      <view :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
-        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`">
+      <view :class="cn('text-sm text-black/65', !modelValue ? 'text-sm overflow-hidden webkit-box' : '')"
+        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical;`">
         <slot></slot>
       </view>
-      <view class="wd-collapse__more" @click="handleMore">
+      <view class="inline-block mt-2 user-select-none text-sm text-primary" @click="handleMore">
         <!-- 自定义展开按钮 -->
         <view v-if="useMoreSlot" :class="customMoreSlotClass">
           <slot name="more"></slot>
         </view>
         <!-- 显示展开或折叠按钮 -->
         <block v-else>
-          <span class="wd-collapse__more-txt">{{ !modelValue ? translate('expand') : translate('retract') }}</span>
-          <view :class="`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`">
+          <span class="inline-block align-middle mr-1">
+            {{ !modelValue ? translate('expand') : translate('retract') }}</span>
+          <view
+            :class="cn('inline-block align-middle transition-[transform_0.1s] text-lg h-[18px] leading-[18px]', modelValue ? '-rotate-180' : '')">
             <pro-icon name="arrow-down"></pro-icon>
           </view>
         </block>
@@ -29,7 +31,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-collapse',
+  name: 'pro-collapse',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -45,6 +47,7 @@ import { COLLAPSE_KEY, collapseProps, type CollapseExpose, type CollapseToggleAl
 import { useChildren } from '../composables/useChildren'
 import { isArray, isDef } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(collapseProps)
 const emit = defineEmits(['change', 'update:modelValue'])
@@ -146,7 +149,3 @@ defineExpose<CollapseExpose>({
   toggleAll
 })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

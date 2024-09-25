@@ -3,15 +3,15 @@
     <wd-message-box></wd-message-box>
     <view class="demo-body" @click="closeOutside">
       <demo-block title="基本用法" transparent>
-        <wd-drop-menu>
-          <wd-drop-menu-item v-model="value1" :options="option1" @change="handleChange1" />
-          <wd-drop-menu-item v-model="value2" :options="option2" @change="handleChange2" />
-        </wd-drop-menu>
+        <pro-drop-menu>
+          <pro-drop-menu-item v-model="value1" :options="option1" @change="handleChange1" />
+          <pro-drop-menu-item v-model="value2" :options="option2" @change="handleChange2" />
+        </pro-drop-menu>
       </demo-block>
       <demo-block title="自定义菜单内容" transparent>
-        <wd-drop-menu>
-          <wd-drop-menu-item v-model="value3" :options="option1" @change="handleChange3" />
-          <wd-drop-menu-item ref="dropMenu" title="筛选" @opened="handleOpened">
+        <pro-drop-menu>
+          <pro-drop-menu-item v-model="value3" :options="option1" @change="handleChange3" />
+          <pro-drop-menu-item ref="dropMenu" title="筛选" @opened="handleOpened">
             <view>
               <wd-slider v-model="valuetest" ref="slider" />
               <wd-cell title="标题文字" value="内容" />
@@ -20,41 +20,41 @@
                 <wd-button block size="large" @click="confirm">主要按钮</wd-button>
               </view>
             </view>
-          </wd-drop-menu-item>
-        </wd-drop-menu>
+          </pro-drop-menu-item>
+        </pro-drop-menu>
       </demo-block>
       <demo-block title="自定义菜单选项" transparent>
         <view class="custom-menu">
-          <wd-drop-menu custom-style="flex: 1; min-width: 0">
-            <wd-drop-menu-item v-model="value4" :options="option1" @change="handleChange4" />
-          </wd-drop-menu>
+          <pro-drop-menu custom-style="flex: 1; min-width: 0">
+            <pro-drop-menu-item v-model="value4" :options="option1" @change="handleChange4" />
+          </pro-drop-menu>
           <view style="flex: 1">
             <wd-sort-button v-model="value5" title="上架时间" @change="handleChange5" />
           </view>
         </view>
       </demo-block>
       <demo-block title="自定义菜单图标" transparent>
-        <wd-drop-menu>
-          <wd-drop-menu-item title="地图" icon="location" icon-size="24px" />
-        </wd-drop-menu>
+        <pro-drop-menu>
+          <pro-drop-menu-item title="地图" icon="location" icon-size="24px" />
+        </pro-drop-menu>
       </demo-block>
       <demo-block title="异步打开/关闭" transparent>
-        <wd-drop-menu>
-          <wd-drop-menu-item v-model="value10" :options="option1" @change="handleChange1"
+        <pro-drop-menu>
+          <pro-drop-menu-item v-model="value10" :options="option1" @change="handleChange1"
             :before-toggle="handleBeforeToggle" />
-        </wd-drop-menu>
+        </pro-drop-menu>
       </demo-block>
       <demo-block title="向上弹出" transparent>
-        <wd-drop-menu direction="up">
-          <wd-drop-menu-item v-model="value6" :options="option1" @change="handleChange6" />
-          <wd-drop-menu-item v-model="value7" :options="option2" @change="handleChange7" />
-        </wd-drop-menu>
+        <pro-drop-menu direction="up">
+          <pro-drop-menu-item v-model="value6" :options="option1" @change="handleChange6" />
+          <pro-drop-menu-item v-model="value7" :options="option2" @change="handleChange7" />
+        </pro-drop-menu>
       </demo-block>
       <demo-block title="禁用" transparent>
-        <wd-drop-menu direction="up">
-          <wd-drop-menu-item v-model="value8" disabled :options="option1" @change="handleChange8" />
-          <wd-drop-menu-item v-model="value9" :options="option2" @change="handleChange9" />
-        </wd-drop-menu>
+        <pro-drop-menu direction="up">
+          <pro-drop-menu-item v-model="value8" disabled :options="option1" @change="handleChange8" />
+          <pro-drop-menu-item v-model="value9" :options="option2" @change="handleChange9" />
+        </pro-drop-menu>
       </demo-block>
     </view>
   </page-wraper>
@@ -64,7 +64,7 @@ import { ref } from 'vue'
 
 import { useMessage, useQueue } from '@/uni_modules/wot-design-uni'
 import type { SliderInstance } from '@/uni_modules/wot-design-uni/components/wd-slider/types'
-import type { DropMenuItemBeforeToggle } from '@/uni_modules/wot-design-uni/components/wd-drop-menu-item/types'
+import type { DropMenuItemBeforeToggle } from '@/uni_modules/wot-design-uni/components/pro-drop-menu-item/types'
 const { closeOutside } = useQueue()
 const messageBox = useMessage()
 

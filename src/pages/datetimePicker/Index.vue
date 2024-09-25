@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <demo-block transparent>
       <pro-cell-group border>
         <wd-datetime-picker label="日期选择" v-model="value1" @confirm="handleConfirm1" />

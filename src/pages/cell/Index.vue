@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <demo-block title="基本用法" transparent>
       <pro-cell-group>
         <wd-cell title="标题文字" value="内容" />
@@ -85,7 +85,7 @@
         </wd-cell>
         <wd-cell title="标题文字" center>
           <view class="custom-value" style="height: 32px">
-            <wd-switch v-model="switchValue" @change="handleSwitchChange" />
+            <pro-switch v-model="switchValue" @change="handleSwitchChange" />
           </view>
         </wd-cell>
         <wd-cell title="标题文字" is-link to="/pages/index/index">

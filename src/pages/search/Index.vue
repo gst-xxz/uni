@@ -1,6 +1,6 @@
 <template>
   <view @click="closeOutside">
-    <wd-toast />
+    <pro-toast />
     <page-wraper>
       <demo-block title="基本用法" transparent>
         <wd-search v-model="value1" @search="search" @change="change" @cancel="cancel" @clear="clear" />

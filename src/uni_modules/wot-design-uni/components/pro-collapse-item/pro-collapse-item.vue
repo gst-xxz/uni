@@ -1,13 +1,19 @@
 <template>
-  <view :class="`wd-collapse-item ${disabled ? 'is-disabled' : ''} is-border ${customClass}`" :style="customStyle">
-    <view :class="`wd-collapse-item__header  ${isFirst ? 'wd-collapse-item__header-first' : ''}`" @click="handleClick">
+  <view :class="cn('relative hairline--top', customClass)" :style="customStyle">
+    <view class="flex justify-between items-center relative overflow-hidden user-select-none py-[13px] px-[15px]"
+      @click="handleClick">
       <slot name="title" :expanded="expanded" :disabled="disabled" :isFirst="isFirst">
-        <text class="wd-collapse-item__title">{{ title }}</text>
-        <pro-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
+        <text :class="cn('text-black/85 font-medium text-base', { 'text-black/15': disabled })">{{ title }}</text>
+        <pro-icon name="arrow-down" :custom-class="cn(
+          `text-lg block text-[#d8d8d8] transition-[transform_0.3s]`,
+          { '-rotate-180': expanded },
+          { 'text-black/15': disabled }
+        )" />
       </slot>
     </view>
-    <view class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">
-      <view class="wd-collapse-item__body leading-[1.43]" :id="collapseId">
+    <view class="relative overflow-hidden will-change-[height]" :style="contentStyle"
+      @transitionend="handleTransitionEnd">
+      <view class="leading-[1.43] py-[14px] px-[25px] text-sm text-black/65" :id="collapseId">
         <slot />
       </view>
     </view>
@@ -15,7 +21,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-collapse-item',
+  name: 'pro-collapse-item',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -29,8 +35,9 @@ export default {
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties } from 'vue'
 import { addUnit, getRect, isArray, isDef, isPromise, objToStyle, requestAnimationFrame, uuid } from '../common/util'
 import { useParent } from '../composables/useParent'
-import { COLLAPSE_KEY } from '../wd-collapse/types'
+import { COLLAPSE_KEY } from '../pro-collapse/types'
 import { collapseItemProps, type CollapseItemExpose } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const collapseId = ref<string>(`collapseId${uuid()}`)
 
@@ -155,7 +162,3 @@ function getExpanded() {
 
 defineExpose<CollapseItemExpose>({ getExpanded })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

@@ -1,6 +1,6 @@
 <template>
   <view v-if="showWrapper"
-    :class="`wd-drop-item fixed right-0 left-0 overflow-hidden w-full z-[101] text-sm text-[#262626] ${customClass}`"
+    :class="cn(`fixed right-0 left-0 overflow-hidden w-full z-[101] text-sm text-[#262626] ${customClass}`)"
     :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
     <pro-popup v-model="showPop" :z-index="zIndex" :duration="duration" :position="position"
       custom-style="position: absolute; max-height: 80%;" modal-style="position: absolute;" :modal="modal"
@@ -8,13 +8,15 @@
       @after-enter="afterEnter" @before-leave="beforeLeave" @after-leave="afterLeave">
       <view v-if="options.length">
         <view v-for="(item, index) in options" :key="index" @click="choose(index)"
-          :class="`wd-drop-item__option flex items-center justify-between ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'text-primary' : ''}`">
-          <view :class="`wd-drop-item__title block ${customTitle}`">
+          :class="cn(`flex items-center justify-between h-12 leading-[48px] py-0 px-[15px] transition-[color_0.2s] ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'text-primary' : ''}`)">
+          <view :class="cn(`block ${customTitle}`)">
             <text>{{ item[labelKey] ? item[labelKey] : item }}</text>
-            <text v-if="item[tipKey]" class="wd-drop-item__tip inline-block ml-0.5">{{ item[tipKey] }}</text>
+            <text v-if="item[tipKey]" class="inline-block ml-0.5 text-black/45 text-xs">{{
+              item[tipKey]
+            }}</text>
           </view>
           <pro-icon v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue" :name="iconName" size="20px"
-            :class="`wd-drop-item__icon block ${customIcon}`" />
+            :class="cn(`block text-[20px]`, customIcon)" />
         </view>
       </view>
       <slot v-else />
@@ -23,7 +25,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-drop-menu-item',
+  name: 'pro-drop-menu-item',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -40,9 +42,10 @@ import { pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
 import type { PopupType } from '../pro-popup/types'
 import { useParent } from '../composables/useParent'
-import { DROP_MENU_KEY } from '../wd-drop-menu/types'
+import { DROP_MENU_KEY } from '../pro-drop-menu/types'
 import { isDef, isFunction } from '../common/util'
 import { dorpMenuItemProps, type DropMenuItemExpose } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(dorpMenuItemProps)
 const emit = defineEmits(['change', 'update:modelValue', 'open', 'opened', 'closed', 'close'])
@@ -77,7 +80,7 @@ watch(
   () => props.modelValue,
   (newValue) => {
     if (isDef(newValue) && typeof newValue !== 'number' && typeof newValue !== 'string') {
-      console.error('[wot-design] warning(wd-drop-menu-item): the type of value should be a number or a string.')
+      console.error('the type of value should be a number or a string.')
     }
   },
   {
@@ -192,7 +195,3 @@ function beforeLeave() {
 
 defineExpose<DropMenuItemExpose>({ getShowPop, open, close, toggle })
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

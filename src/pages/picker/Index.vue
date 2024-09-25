@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <demo-block transparent>
       <pro-cell-group border>
         <wd-picker label="单列选项" v-model="value0" :columns="columns0" />

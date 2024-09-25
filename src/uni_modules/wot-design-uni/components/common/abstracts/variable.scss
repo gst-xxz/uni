@@ -223,19 +223,15 @@ $-calendar-info-fs: var(--wot-calendar-info-fs, 10px) !default;
 $-checkbox-margin: var(--wot-checkbox-margin, 10px) !default; // 多个复选框距离
 $-checkbox-bg: var(--wot-checkbox-bg, $-color-white) !default; // 多个复选框距离
 $-checkbox-label-margin: var(--wot-checkbox-label-margin, 9px) !default; // 右侧文字与左侧图标距离
-$-checkbox-size: var(--wot-checkbox-size, 16px) !default; // 左侧图标尺寸
 $-checkbox-icon-size: var(--wot-checkbox-icon-size, 14px) !default; // 左侧图标尺寸
 $-checkbox-border-color: var(--wot-checkbox-border-color, #dcdcdc) !default; // 左侧图标边框颜色
 $-checkbox-check-color: var(--wot-checkbox-check-color, $-color-white) !default; // 左侧图标边框颜色
-$-checkbox-label-fs: var(--wot-checkbox-label-fs, 14px) !default; // 右侧文字字号
-$-checkbox-label-color: var(--wot-checkbox-label-color, rgba(0, 0, 0, 0.85)) !default; // 右侧文字颜色
 $-checkbox-checked-color: var(--wot-checkbox-checked-color, $-color-theme) !default; // 选中颜色
 
 $-checkbox-disabled-color: var(--wot-checkbox-disabled-color, rgba(0, 0, 0, 0.04)) !default; // 禁用背景颜色
 $-checkbox-disabled-label-color: var(--wot-checkbox-disabled-label-color, rgba(0, 0, 0, 0.25)) !default; // 禁用文字颜色
 $-checkbox-disabled-check-color: var(--wot-checkbox-disabled-check-color, rgba(0, 0, 0, 0.15)) !default; // 禁用图标颜色
 $-checkbox-disabled-check-bg: var(--wot-checkbox-disabled-check-bg, rgba(0, 0, 0, 0.15)) !default; // 禁用边框背景颜色
-$-checkbox-square-radius: var(--wot-checkbox-square-radius, 4px) !default; // 方型圆角大小
 
 $-checkbox-large-size: var(--wot-checkbox-large-size, 18px) !default; // 左侧图标尺寸
 $-checkbox-large-label-fs: var(--wot-checkbox-large-label-fs, 16px) !default; // 右侧文字字号
@@ -250,17 +246,6 @@ $-checkbox-button-disabled-border: var(--wot-checkbox-button-disabled-border, rg
 
 /* collapse */
 $-collapse-side-padding: var(--wot-collapse-side-padding, $-size-side-padding) !default; // 左右间距
-$-collapse-body-padding: var(--wot-collapse-body-padding, 14px 25px) !default; // body padding
-$-collapse-header-padding: var(--wot-collapse-header-padding, 13px $-size-side-padding) !default; // 头部padding
-$-collapse-title-color: var(--wot-collapse-title-color, rgba(0, 0, 0, 0.85)) !default; // 标题颜色
-$-collapse-title-fs: var(--wot-collapse-title-fs, 16px) !default; // 标题字号
-$-collapse-arrow-size: var(--wot-collapse-arrow-size, 18px) !default; // 箭头大小
-$-collapse-arrow-color: var(--wot-collapse-arrow-color, #d8d8d8) !default; // 箭头颜色
-$-collapse-body-fs: var(--wot-collapse-body-fs, 14px) !default; // 内容字号
-$-collapse-body-color: var(--wot-collapse-body-color, rgba(0, 0, 0, 0.65)) !default; // 内容颜色
-$-collapse-disabled-color: var(--wot-collapse-disabled-color, rgba(0, 0, 0, 0.15)) !default; // 禁用颜色
-$-collapse-retract-fs: var(--wot-collapse-retract-fs, 14px) !default; // 更多 字号
-$-collapse-more-color: var(--wot-collapse-more-color, $-color-theme) !default; // 更多 颜色
 
 /* divider */
 $-divider-padding: var(--wot-divider-padding, 0 $-size-side-padding) !default; // 两边间距
@@ -269,17 +254,9 @@ $-divider-line-color: var(--wot-divider-line-color, rgba(0, 0, 0, 0.15)) !defaul
 $-divider-fs: var(--wot-divider-fs, 14px) !default; // 字体大小
 
 /* drop-menu */
-$-drop-menu-height: var(--wot-drop-menu-height, 48px) !default; // 展示选中项的高度
 $-drop-menu-color: var(--wot-drop-menu-color, $-color-content) !default; // 展示选中项的颜色
-$-drop-menu-fs: var(--wot-drop-menu-fs, $-fs-content) !default; // 展示选中项的字号
-$-drop-menu-arrow-fs: var(--wot-drop-menu-arrow-fs, $-fs-content) !default; // 箭头图标大小
 
 $-drop-menu-side-padding: var(--wot-drop-menu-side-padding, $-size-side-padding) !default; // 两边留白间距
-$-drop-menu-disabled-color: var(--wot-drop-menu-disabled-color, rgba(0, 0, 0, 0.25)) !default; // 禁用颜色
-$-drop-menu-item-height: var(--wot-drop-menu-item-height, 48px) !default; // 选项高度
-$-drop-menu-item-color-tip: var(--wot-drop-menu-item-color-tip, rgba(0, 0, 0, 0.45)) !default; // 提示文字颜色
-$-drop-menu-item-fs-tip: var(--wot-drop-menu-item-fs-tip, $-fs-secondary) !default; // 提示文字字号
-$-drop-menu-option-check-size: var(--wot-drop-menu-option-check-size, 20px) !default; // check 图标大小
 $-drop-menu-line-color: var(--wot-drop-menu-line-color, $-color-theme) !default; // 下划线颜色
 $-drop-menu-line-height: var(--wot-drop-menu-line-height, 3px) !default; // 下划线高度
 
@@ -542,14 +519,7 @@ $-steps-dot-size: var(--wot-steps-dot-size, 7px) !default; // 点状大小
 $-steps-dot-active-size: var(--wot-steps-dot-active-size, 9px) !default; // 点状高亮大小
 
 /* switch */
-$-switch-size: var(--wot-switch-size, 28px) !default; // switch大小
-$-switch-width: var(--wot-switch-width, calc(1.8em + 4px)) !default; // 宽度
-$-switch-height: var(--wot-switch-height, calc(1em + 4px)) !default; // 高度
-$-switch-circle-size: var(--wot-switch-circle-size, 1em) !default; // 圆点大小
-$-switch-border-color: var(--wot-switch-border-color, #e5e5e5) !default; // 边框颜色选中状态背景颜色
-$-switch-active-color: var(--wot-switch-active-color, $-color-theme) !default; // 选中状态背景
 $-switch-active-shadow-color: var(--wot-switch-active-shadow-color, rgba(0, 83, 162, 0.5)) !default; // 选中状态shadow颜色
-$-switch-inactive-color: var(--wot-switch-inactive-color, #eaeaea) !default; // 非选中背景颜色
 $-switch-inactive-shadow-color: var(--wot-switch-inactive-shadow-color, rgba(155, 155, 155, 0.5)) !default; // 非选中状态shadow颜色
 
 /* tabs */
@@ -597,12 +567,6 @@ $-tag-mark-radius: var(--wot-tag-mark-radius, 6px 2px 6px 2px) !default; // mark
 $-tag-close-size: var(--wot-tag-close-size, 14px) !default; // 关闭按钮字号
 $-tag-close-color: var(--wot-tag-close-color, $-tag-info-color) !default; // 关闭按钮颜色
 $-tag-close-active-color: var(--wot-tag-close-active-color, rgba(0, 0, 0, 0.45)) !default; // 关闭按钮 active 颜色
-
-/* toast */
-$-toast-radius: var(--wot-toast-radius, 8px) !default; // 圆角大小
-$-toast-fs: var(--wot-toast-fs, $-fs-content) !default; // 字号
-$-toast-loading-padding: var(--wot-toast-loading-padding, 10px) !default; // loading 下的padding
-$-toast-box-shadow: var(--wot-toast-box-shadow, 0px 6px 16px 0px rgba(0, 0, 0, 0.08)) !default; // 外部阴影
 
 /* tooltip */
 $-tooltip-bg: var(--wot-tooltip-bg, rgba(38, 39, 40, 0.8)) !default; // 背景色
@@ -656,9 +620,7 @@ $-card-content-rectangle-margin: var(--wot-card-content-rectangle-margin, 14px 0
 
 /* upload */
 $-upload-size: var(--wot-upload-size, 80px) !default; // upload的外边框默认尺寸
-$-upload-evoke-icon-size: var(--wot-upload-evoke-icon-size, 32px) !default; // 唤起项的图标大小
 $-upload-evoke-bg: var(--wot-upload-evoke-bg, rgba(0, 0, 0, 0.04)) !default; // 唤起项的背景色
-$-upload-evoke-color: var(--wot-upload-evoke-color, rgba(0, 0, 0, 0.25)) !default; // 唤起项的图标颜色
 $-upload-evoke-disabled-color: var(--wot-upload-evoke-disabled-color, rgba(0, 0, 0, 0.09)) !default; // 唤起项禁用颜色
 $-upload-close-icon-size: var(--wot-upload-close-icon-size, 16px) !default; // 移除按钮尺寸
 $-upload-close-icon-color: var(--wot-upload-close-icon-color, rgba(0, 0, 0, 0.65)) !default; // 移除按钮颜色

@@ -56,7 +56,8 @@
         <slot></slot>
       </view>
       <!-- 唤起项 -->
-      <view v-else @click="handleChoose" :class="['wd-upload__evoke', disabled ? 'is-disabled' : '', customEvokeClass]">
+      <view v-else @click="handleChoose"
+        :class="['wd-upload__evoke relative inline-flex flex-col justify-center items-center w-10 h-10 text-[32px] bg-black/5 text-black/25 mb-3', disabled ? 'is-disabled' : '', customEvokeClass]">
         <!-- 唤起项图标 -->
         <pro-icon class="wd-upload__evoke-icon" name="fill-camera"></pro-icon>
         <!-- 有限制个数时确认是否展示限制个数 -->

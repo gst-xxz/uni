@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-toast />
+    <pro-toast />
     <view style="margin: 20px 0">
       <pro-cell-group border>
         <wd-calendar label="单个日期选择" v-model="value1" @confirm="handleConfirm1" />

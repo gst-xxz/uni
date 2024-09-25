@@ -62,7 +62,7 @@
       <wd-swiper :loop="isLoop" :autoplay="false" :list="swiperList" v-model:current="current8" />
       <pro-cell-group>
         <wd-cell title="loop">
-          <wd-switch v-model="isLoop" size="24px" />
+          <pro-switch v-model="isLoop" size="24px" />
         </wd-cell>
         <wd-cell title="current" :value="current8.toString()" />
       </pro-cell-group>

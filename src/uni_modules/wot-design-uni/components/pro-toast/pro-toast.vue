@@ -3,8 +3,14 @@
     custom-style="background-color: transparent;pointer-events: auto;"></pro-overlay>
   <pro-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter"
     @after-leave="handleAfterLeave">
-    <view :class="cn('wd-toast inline-block text-white box-border max-w-[300px] py-4 px-6 bg-black/65', customClass, `wd-toast--${position} ${(iconName !== 'loading' || msg) && (iconName || iconClass) ? 'min-h-[150px] inline-flex items-center' : ''
-      } ${iconName === 'loading' && !msg ? 'wd-toast--loading' : ''}`)">
+    <view :class="cn('rounded-lg inline-block text-white box-border max-w-[300px] py-4 px-6 bg-black/65 transition-all duration-200 text-sm shadow-[0px_6px_16px_0px_rgba(0,0,0,0.08)]', customClass,
+      {
+        'translate-y-[-40vh]': position === 'top',
+        'translate-y-[40vh]': position === 'bottom',
+        'translate-y-[-18.8vh]': position === 'middle',
+      },
+      `${(iconName !== 'loading' || msg) && (iconName || iconClass) ? 'min-h-[150px] inline-flex items-center' : ''
+      } ${iconName === 'loading' && !msg ? 'mb-4 inline-block min-w-[auto] p-2.5' : ''}`)">
       <!--iconName优先级更高-->
       <pro-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize"
         custom-class="inline-block mr-3 text-[32px]" />
@@ -24,7 +30,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-toast',
+  name: 'pro-toast',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -133,6 +139,3 @@ function reset(option: ToastOptions) {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>
