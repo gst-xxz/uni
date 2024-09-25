@@ -5,7 +5,7 @@
     <wd-action-sheet v-model="showAction" :actions="actions" />
 
     <form @submit="formSubmit">
-      <wd-cell-group custom-class="group" title="基础信息" border>
+      <pro-cell-group custom-class="group" title="基础信息" border>
         <wd-input label="优惠券名称" label-width="100px" :maxlength="20" show-word-limit name="couponName" required
           suffix-icon="warn-bold" clearable v-model="couponName" placeholder="请输入优惠券名称" @change="handleCouponName"
           @clicksuffixicon="handleIconClick" />
@@ -23,13 +23,13 @@
               placeholder="请输入金额" v-model="price" name="price" @change="handlePrice" />
           </view>
         </wd-cell>
-      </wd-cell-group>
-      <wd-cell-group custom-class="group" title="时间和地址" border>
+      </pro-cell-group>
+      <pro-cell-group custom-class="group" title="时间和地址" border>
         <wd-datetime-picker label="时间" label-width="100px" name="date" v-model="date" @confirm="handleDate" />
         <wd-col-picker label="地址" label-width="100px" name="address" v-model="address" :columns="area"
           :column-change="areaChange" @confirm="handleAddress" />
-      </wd-cell-group>
-      <wd-cell-group custom-class="group" title="其他信息" border>
+      </pro-cell-group>
+      <pro-cell-group custom-class="group" title="其他信息" border>
         <wd-input label="活动细则" label-width="100px" type="textarea" v-model="content" :maxlength="300" show-word-limit
           placeholder="请输入活动细则信息" clearable name="content" @change="handleContent" />
         <wd-cell title="发货数量" center>
@@ -42,7 +42,7 @@
           v-model="cardId" @change="handleCardId" />
         <wd-input label="玛卡巴卡" label-width="100px" name="phone" placeholder="请输入玛卡巴卡" clearable v-model="phone"
           @change="handlePhone" />
-      </wd-cell-group>
+      </pro-cell-group>
       <view class="tip">
         <wd-checkbox v-model="read" name="read" @change="handleRead" custom-label-class="label-class">
           已阅读并同意

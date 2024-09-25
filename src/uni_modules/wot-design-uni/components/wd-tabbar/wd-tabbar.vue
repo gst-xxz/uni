@@ -1,11 +1,8 @@
 <template>
-  <view :class="{ 'wd-tabbar__placeholder': fixed && placeholder && safeAreaInsetBottom && shape === 'round' }" :style="{ height: addUnit(height) }">
-    <view
-      :class="`wd-tabbar wd-tabbar--${shape} ${customClass} ${fixed ? 'is-fixed' : ''} ${safeAreaInsetBottom ? 'is-safe' : ''} ${
-        bordered ? 'is-border' : ''
-      }`"
-      :style="rootStyle"
-    >
+  <view :class="{ 'pb-safe': fixed && placeholder && safeAreaInsetBottom && shape === 'round' }"
+    :style="{ height: addUnit(height) }">
+    <view :class="`wd-tabbar flex items-center flex-nowrap relative bg-white wd-tabbar--${shape} ${customClass} ${fixed ? 'is-fixed' : ''} ${safeAreaInsetBottom ? 'is-safe' : ''} ${bordered ? 'is-border' : ''
+      }`" :style="rootStyle">
       <slot></slot>
     </view>
   </view>

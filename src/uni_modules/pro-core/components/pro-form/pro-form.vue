@@ -1,6 +1,6 @@
 <template>
-  <wd-form ref="form" :model="innerFormData">
-    <wd-cell-group border>
+  <pro-form ref="form" :model="innerFormData">
+    <pro-cell-group border>
       <template v-for="field in fields" :key="field.prop">
 
         <wd-calendar :label="field.label" :label-width="field.labelWidth" :prop="field.prop"
@@ -50,9 +50,9 @@
           :placeholder="field.placeholder" :rules="field.rules" :required="field.required"
           v-model="innerFormData[field.prop]" :customClass="fieldClass" v-else />
       </template>
-    </wd-cell-group>
+    </pro-cell-group>
     <wd-button type="primary" size="large" @click="handleSubmit" block>提交</wd-button>
-  </wd-form>
+  </pro-form>
 </template>
 
 <script>

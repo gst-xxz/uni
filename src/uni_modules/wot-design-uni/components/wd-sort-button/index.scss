@@ -3,7 +3,6 @@
 
 
 @include b(sort-button) {
-  display: inline-block;
   height: $-sort-button-height;
   line-height: $-sort-button-height;
 
@@ -29,20 +28,9 @@
     }
   }
 
-  @include e(wrapper) {
-    font-size: $-sort-button-fs;
-    color: $-sort-button-color;
-    word-break: break-all;
-    white-space: nowrap;
-  }
-
   @include e(left) {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
 
     @include when(active) {
-      font-weight: $-fw-medium;
 
       .wd-sort-button__right {
         justify-content: center;
@@ -52,12 +40,6 @@
   }
 
   @include e(right) {
-    display: inline-block;
-    min-width: 14px;
-    margin-left: 2px;
-    vertical-align: middle;
-    line-height: 1.1;
-
     @include when(active) {
 
       :deep(.wd-sort-button__icon-up),
@@ -65,17 +47,5 @@
         transform: scale(calc((10 / 14)));
       }
     }
-  }
-
-  @include edeep(icon-up) {
-    display: block !important;
-    line-height: 1.1;
-    transform: scale(calc((10 / 14))) translate(0, 7px);
-  }
-
-  @include edeep(icon-down) {
-    display: block !important;
-    line-height: 1.1;
-    transform: scale(calc((10 / 14))) translate(0, -7px);
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <view @click="handleClick" :class="`wd-sidebar-item flex items-center justify-center relative p-4 box-border ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
+  <view @click="handleClick" :class="`wd-sidebar-item flex items-center justify-center relative p-4 box-border ${active ? 'wd-sidebar-item--active font-semibold' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
     } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">

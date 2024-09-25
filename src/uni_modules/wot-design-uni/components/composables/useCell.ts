@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import { useParent } from './useParent'
-import { CELL_GROUP_KEY } from '../wd-cell-group/types'
+import { CELL_GROUP_KEY } from '../pro-cell-group/types'
 
 export function useCell() {
   const { parent: cellGroup, index } = useParent(CELL_GROUP_KEY)

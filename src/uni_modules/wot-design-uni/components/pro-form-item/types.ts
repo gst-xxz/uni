@@ -1,6 +1,6 @@
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeRequiredProp, makeStringProp } from '../common/props'
-import type { FormItemRule } from '../wd-form/types'
+import type { FormItemRule } from '../pro-form/types'
 
 export const formItemProps = {
   ...baseProps,

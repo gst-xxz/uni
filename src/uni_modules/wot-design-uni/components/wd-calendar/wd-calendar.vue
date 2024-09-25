@@ -5,54 +5,59 @@
       <view v-else :class="`wd-calendar__cell ${disabled ? 'is-disabled' : ''} ${readonly ? 'is-readonly' : ''} ${alignRight ? 'is-align-right' : ''} ${error ? 'is-error' : ''
         } ${size ? 'is-' + size : ''} ${center ? 'is-center' : ''}`">
         <view v-if="label || useLabelSlot"
-          :class="`wd-calendar__label ${isRequired ? 'is-required' : ''} ${customLabelClass}`"
+          :class="`wd-calendar__label relative box-border w-[33%] mr-[15px] text-black/85 ${isRequired ? 'is-required pl-3' : ''} ${customLabelClass}`"
           :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
-        <view class="wd-calendar__body">
-          <view class="wd-calendar__value-wraper">
+        <view class="flex-1">
+          <view class="flex">
             <view
-              :class="`wd-calendar__value ${ellipsis ? 'is-ellipsis' : ''} ${customValueClass} ${showValue ? '' : 'wd-calendar__value--placeholder'}`">
+              :class="`wd-calendar__value flex-1 mr-2.5 text-black/85 ${ellipsis ? 'overflow-hidden text-ellipsis whitespace-nowrap' : ''} ${customValueClass} ${showValue ? '' : 'text-[#bfbfbf]'}`">
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <pro-icon v-if="!disabled && !readonly" custom-class="wd-calendar__arrow" name="arrow" />
+            <pro-icon v-if="!disabled && !readonly" custom-class="block text-base text-black/25" name="arrow" />
           </view>
-          <view v-if="errorMessage" class="wd-calendar__error-message">{{ errorMessage }}</view>
+          <view v-if="errorMessage" class="text-left align-middle text-danger text-xs leading-6">{{ errorMessage }}
+          </view>
         </view>
       </view>
     </view>
     <wd-action-sheet v-model="pickerShow" :duration="250" :close-on-click-modal="closeOnClickModal"
       :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="close">
-      <view class="wd-calendar__header">
-        <view v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title">{{ title || translate('title')
+      <view class="relative overflow-hidden">
+        <view v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title text-center">{{ title ||
+          translate('title')
           }}</view>
-        <view v-if="showTypeSwitch" class="wd-calendar__tabs">
+        <view v-if="showTypeSwitch" class="w-[222px] mx-auto mt-2.5 mb-3">
           <wd-tabs ref="calendarTabs" v-model="currentTab" @change="handleTypeChange">
             <wd-tab :title="translate('day')" :name="translate('day')" />
             <wd-tab :title="translate('week')" :name="translate('week')" />
             <wd-tab :title="translate('month')" :name="translate('month')" />
           </wd-tabs>
         </view>
-        <view v-if="shortcuts.length > 0" class="wd-calendar__shortcuts">
-          <wd-tag v-for="(item, index) in shortcuts" :key="index" custom-class="wd-calendar__tag" type="primary" plain
-            round @click="handleShortcutClick(index)">
+        <view v-if="shortcuts.length > 0" class="py-4 px-0">
+          <wd-tag v-for="(item, index) in shortcuts" :key="index" custom-class="mr-2" type="primary" plain round
+            @click="handleShortcutClick(index)">
             {{ item.text }}
           </wd-tag>
         </view>
-        <pro-icon custom-class="wd-calendar__close" name="cross" @click="close" />
+        <pro-icon
+          custom-class="wd-calendar__close absolute top-[25px] right-[15px] leading-[1.1] text-black/65 text-base"
+          name="cross" @click="close" />
       </view>
       <view v-if="inited"
-        :class="`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'is-range' : ''} ${showConfirm ? 'is-show-confirm' : ''}`">
-        <view v-if="range(type)" :class="`wd-calendar__range-label ${type === 'monthrange' ? 'is-monthrange' : ''}`">
+        :class="`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'h-[384px]' : ''} ${showConfirm ? 'h-[394px]' : ''}`">
+        <view v-if="range(type)"
+          :class="`flex justify-center items-center text-sm ${type === 'monthrange' ? 'pb-2.5 shadow-[0px_4px_8px_0px_rgba(0,0,0,0.02)]' : ''}`">
           <view
-            :class="`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[0] ? 'is-placeholder' : ''}`"
+            :class="`flex-1 text-black/85 ${!calendarValue || !isArray(calendarValue) || !calendarValue[0] ? 'text-black/25' : ''}`"
             style="text-align: right">
             {{ rangeLabel[0] }}
           </view>
-          <view class="wd-calendar__range-sperator">/</view>
+          <view class="my-0 mx-6 text-black/25">/</view>
           <view
-            :class="`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[1] ? 'is-placeholder' : ''}`">
+            :class="`flex-1 text-black/85 ${!calendarValue || !isArray(calendarValue) || !calendarValue[1] ? 'text-black/25' : ''}`">
             {{ rangeLabel[1] }}
           </view>
         </view>
@@ -62,7 +67,7 @@
           :time-filter="timeFilter" :hide-second="hideSecond" :show-panel-title="!range(type)"
           :immediate-change="immediateChange" @change="handleChange" />
       </view>
-      <view v-if="showConfirm" class="wd-calendar__confirm">
+      <view v-if="showConfirm" class="pt-3 px-[25px] pb-[14px]">
         <wd-button block :disabled="confirmBtnDisabled" @click="handleConfirm">{{ confirmText || translate('confirm')
           }}</wd-button>
       </view>
@@ -91,7 +96,7 @@ import { dayjs } from '../common/dayjs'
 import { deepClone, isArray, isEqual, padZero, requestAnimationFrame } from '../common/util'
 import { getWeekNumber, isRange } from '../wd-calendar-view/utils'
 import { useCell } from '../composables/useCell'
-import { FORM_KEY, type FormItemRule } from '../wd-form/types'
+import { FORM_KEY, type FormItemRule } from '../pro-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { calendarProps, type CalendarExpose } from './types'

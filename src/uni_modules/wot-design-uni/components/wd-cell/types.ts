@@ -1,7 +1,7 @@
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeStringProp, makeNumericProp } from '../common/props'
 
-import { type FormItemRule } from '../wd-form/types'
+import { type FormItemRule } from '../pro-form/types'
 
 export const cellProps = {
   ...baseProps,
@@ -66,7 +66,7 @@ export const cellProps = {
    */
   prop: String,
   /**
-   * 表单验证规则，结合wd-form组件使用
+   * 表单验证规则，结合pro-form组件使用
    */
   rules: makeArrayProp<FormItemRule>(),
   /**

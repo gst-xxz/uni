@@ -3,13 +3,8 @@
 
 
 @include b(step) {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
 
   @include e(header) {
-    position: relative;
-    font-size: 0;
 
     @include when(dot) {
       .wd-step__line {

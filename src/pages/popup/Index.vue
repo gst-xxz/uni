@@ -3,46 +3,46 @@
   <view>
     <page-wraper>
       <demo-block title="基础用法" transparent>
-        <wd-cell-group>
+        <pro-cell-group>
           <wd-cell title="弹出层" is-link @click="handleClick1" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
       <demo-block title="弹出位置" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="顶部" is-link @click="handleClick2" />
           <wd-cell title="右侧" is-link @click="handleClick3" />
           <wd-cell title="底部" is-link @click="handleClick4" />
           <wd-cell title="左侧" is-link @click="handleClick5" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
       <demo-block title="关闭按钮" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="关闭按钮" is-link @click="handleClick6" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <demo-block title="锁定滚动" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="锁定滚动" is-link @click="handleClick10" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <demo-block title="禁用遮罩点击" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="禁用遮罩点击" is-link @click="handleClick7" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <demo-block title="禁用遮罩" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="禁用遮罩" is-link @click="handleClick8" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <demo-block title="开启底部安全区" transparent>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell title="开启底部安全区" is-link @click="handleClick9" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <pro-popup v-model="show1" custom-style="padding: 30px 40px;" @close="handleClose1"><text

@@ -2,13 +2,8 @@
 @import "./../common/abstracts/variable.scss";
 
 @include b(input-number) {
-  display: inline-block;
-  user-select: none;
-  line-height: 1.15;
 
   @include e(action) {
-    position: relative;
-    display: inline-block;
     width: $-input-number-btn-width;
     height: $-input-number-height;
     vertical-align: middle;
@@ -76,17 +71,6 @@
     transform: scaleY(0.5);
     transform-origin: left top;
     z-index: 0;
-  }
-
-  @include edeep(action-icon) {
-    position: absolute;
-    display: inline-block;
-    font-size: $-input-number-icon-size;
-    width: $-input-number-icon-size;
-    height: $-input-number-icon-size;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 
   @include when(disabled) {

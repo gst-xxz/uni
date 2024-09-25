@@ -1,13 +1,17 @@
 <template>
-  <view :class="`wd-tooltip ${customClass}`" :style="customStyle" id="tooltip" @click.stop="popover.noop">
+  <view :class="`wd-tooltip relative inline-block ${customClass}`" :style="customStyle" id="tooltip"
+    @click.stop="popover.noop">
     <!-- 用于为渲染获取宽高的元素 -->
-    <view class="wd-tooltip__pos wd-tooltip__hidden" id="pos">
+    <view
+      class="absolute min-w-[138px] min-h-9 text-center box-border z-[500] bg-[rgba(38,39,40,0.8)] text-white rounded-lg text-sm backdrop-blur-[10px] bg-clip-padding left-[-100vw] top-[-100vh] visibility-hidden"
+      id="pos">
       <view class="wd-tooltip__container custom-pop">
         <view v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</view>
       </view>
     </view>
-    <pro-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip"
-      name="fade" :duration="200">
+    <pro-transition
+      custom-class="absolute min-w-[138px] min-h-9 text-center box-border z-[500] bg-[rgba(38,39,40,0.8)] text-white rounded-lg text-sm backdrop-blur-[10px] bg-clip-padding"
+      :custom-style="popover.popStyle.value" :show="showTooltip" name="fade" :duration="200">
       <view class="wd-tooltip__container custom-pop">
         <view v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`"
           :style="popover.arrowStyle.value"></view>

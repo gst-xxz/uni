@@ -1,7 +1,7 @@
 <template>
-  <view v-if="currentStatus" :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
+  <view v-if="currentStatus" :class="`wd-step relative inline-block align-top ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
     }`" :style="rootStyle">
-    <view :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
+    <view :class="`wd-step__header relative text-[0]  ${dot ? 'is-dot' : ''}`">
       <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
         <view v-if="dot" class="wd-step__dot"></view>
         <slot v-else-if="$slots.icon" name="icon" />

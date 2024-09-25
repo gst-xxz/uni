@@ -37,14 +37,14 @@
         <pro-badge custom-class="badge" :modelValue="2" type="info">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
         </pro-badge>
-        <wd-cell-group border>
+        <pro-cell-group border>
           <wd-cell size="large" title="标题文字" value="内容" />
           <wd-cell title="标题文字" value="内容" size="large" icon="setting" is-link />
           <wd-cell size="large" title="标题文字" label="描述信息" value="内容" />
           <wd-cell size="large" title="标题文字" value="内容" />
           <wd-cell title="标题文字" value="内容" size="large" icon="setting" is-link />
           <wd-cell size="large" title="标题文字" label="描述信息" value="内容" />
-        </wd-cell-group>
+        </pro-cell-group>
       </demo-block>
 
       <demo-block title="展示效果">

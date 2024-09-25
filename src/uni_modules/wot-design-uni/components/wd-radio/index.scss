@@ -2,40 +2,14 @@
 @import "./../common/abstracts/variable.scss";
 
 @include b(radio) {
-  display: flex;
-  margin-top: $-radio-margin;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  line-height: 1.2;
-
   @include when(first) {
     margin-top: 0;
   }
   @include e(shape) {
-    position: relative;
-    display: inline-block;
     width: $-radio-size;
     height: $-radio-size;
     font-size: $-radio-size;
-    color: transparent;
-    display: none;
-    vertical-align: middle;
     transition: background 0.2s;
-  }
-  @include e(input) {
-    position: absolute;
-    width: 0;
-    height: 0;
-    margin: 0;
-    opacity: 0;
-  }
-  @include e(label) {
-    display: inline-block;
-    vertical-align: top;
-    font-size: $-radio-label-fs;
-    color: $-radio-label-color;
-    line-height: 20px;
   }
   @include when(checked) {
     .wd-radio__shape {

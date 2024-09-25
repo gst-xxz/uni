@@ -89,7 +89,7 @@
     </demo-block>
 
     <demo-block title="结合Cell使用" transparent>
-      <wd-cell-group border>
+      <pro-cell-group border>
         <pro-checkbox-group v-model="value10" size="large">
           <wd-cell title="点赞" center clickable @click="handleCheck1">
             <view @click.stop="noop">
@@ -107,7 +107,7 @@
             </view>
           </wd-cell>
         </pro-checkbox-group>
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
   </page-wraper>
 </template>

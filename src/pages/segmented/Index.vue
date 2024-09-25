@@ -4,36 +4,36 @@
     <page-wraper>
       <demo-block title="大型分段器" transparent>
         <view class="section">
-          <wd-segmented :options="list" v-model:value="current" size="large" @change="handleChange"></wd-segmented>
+          <pro-segmented :options="list" v-model:value="current" size="large" @change="handleChange"></pro-segmented>
         </view>
       </demo-block>
       <demo-block title="默认分段器" transparent>
         <view class="section">
-          <wd-segmented :options="list" v-model:value="current1"></wd-segmented>
+          <pro-segmented :options="list" v-model:value="current1"></pro-segmented>
         </view>
       </demo-block>
 
       <demo-block title="小型分段器" transparent>
         <view class="section">
-          <wd-segmented :options="list" v-model:value="current2" size="small"></wd-segmented>
+          <pro-segmented :options="list" v-model:value="current2" size="small"></pro-segmented>
         </view>
       </demo-block>
 
       <demo-block title="带振动效果的分段器" transparent>
         <view class="section">
-          <wd-segmented :options="list" v-model:value="current3" :vibrate-short="true"></wd-segmented>
+          <pro-segmented :options="list" v-model:value="current3" :vibrate-short="true"></pro-segmented>
         </view>
       </demo-block>
 
       <demo-block title="禁用分段器" transparent>
         <view class="section">
-          <wd-segmented :options="list" v-model:value="current5" disabled></wd-segmented>
+          <pro-segmented :options="list" v-model:value="current5" disabled></pro-segmented>
         </view>
       </demo-block>
 
       <demo-block title="自定义渲染分段器标签" transparent>
         <view class="section">
-          <wd-segmented :options="list1" v-model:value="current4" :vibrate-short="true" @change="handleChange">
+          <pro-segmented :options="list1" v-model:value="current4" :vibrate-short="true" @change="handleChange">
             <template #label="{ option }">
               <view class="section-slot">
                 <image style="border-radius: 50%; width: 32px; height: 32px" :src="option.payload.avatar" />
@@ -43,14 +43,14 @@
                 </view>
               </view>
             </template>
-          </wd-segmented>
+          </pro-segmented>
         </view>
       </demo-block>
     </page-wraper>
   </view>
 </template>
 <script lang="ts" setup>
-import type { SegmentedOption } from '@/uni_modules/wot-design-uni/components/wd-segmented/types'
+import type { SegmentedOption } from '@/uni_modules/wot-design-uni/components/pro-segmented/typess'
 import { ref } from 'vue'
 
 const list = ref<string[]>(['评论', '点赞', '贡献', '打赏'])
@@ -107,6 +107,7 @@ function handleChange(option: SegmentedOption) {
   width: 100%;
   padding: 0 24rpx;
   box-sizing: border-box;
+
   &-slot {
     padding: 4px;
   }

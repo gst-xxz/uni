@@ -1,13 +1,17 @@
 <template>
-  <view :class="`wd-sort-button ${line ? 'wd-sort-button--line' : ''} ${customClass}`" :style="customStyle"
+  <view :class="`wd-sort-button inline-block ${line ? 'wd-sort-button--line' : ''} ${customClass}`" :style="customStyle"
     @click="handleClick">
-    <view class="wd-sort-button__wrapper">
-      <view :class="`wd-sort-button__left ${modelValue !== 0 ? 'is-active' : ''}`">
+    <view class="wd-sort-button__wrapper break-all whitespace-nowrap text-sm text-[#262626]">
+      <view
+        :class="`wd-sort-button__left relative inline-block align-middle ${modelValue !== 0 ? 'is-active font-medium' : ''}`">
         {{ title }}
       </view>
-      <view :class="`wd-sort-button__right ${modelValue !== 0 ? 'is-active' : ''}`">
-        <pro-icon v-if="modelValue !== 1" name="arrow-up" custom-class="wd-sort-button__icon-up" />
-        <pro-icon v-if="modelValue !== -1" name="arrow-down" custom-class="wd-sort-button__icon-down" />
+      <view
+        :class="`wd-sort-button__right inline-block align-middle min-w-[14px] ml-[2px] leading-[1.1] ${modelValue !== 0 ? 'is-active' : ''}`">
+        <pro-icon v-if="modelValue !== 1" name="arrow-up"
+          custom-class="wd-sort-button__icon-up block leading-[1.1] transform-[scale(calc((10 / 14))_translate(0,7px))]" />
+        <pro-icon v-if="modelValue !== -1" name="arrow-down"
+          custom-class="wd-sort-button__icon-down block leading-[1.1] transform-[scale(calc((10 / 14))_translate(0,-7px))]" />
       </view>
     </view>
   </view>

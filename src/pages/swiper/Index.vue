@@ -60,12 +60,12 @@
 
     <demo-block title="属性控制切换">
       <wd-swiper :loop="isLoop" :autoplay="false" :list="swiperList" v-model:current="current8" />
-      <wd-cell-group>
+      <pro-cell-group>
         <wd-cell title="loop">
           <wd-switch v-model="isLoop" size="24px" />
         </wd-cell>
         <wd-cell title="current" :value="current8.toString()" />
-      </wd-cell-group>
+      </pro-cell-group>
       <view style="display: flex; justify-content: space-between">
         <wd-button @click="current8--">prev</wd-button>
 

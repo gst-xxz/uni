@@ -3,20 +3,21 @@
     custom-style="background-color: transparent;pointer-events: auto;"></pro-overlay>
   <pro-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter"
     @after-leave="handleAfterLeave">
-    <view :class="rootClass">
+    <view :class="cn('wd-toast inline-block text-white box-border max-w-[300px] py-4 px-6 bg-black/65', customClass, `wd-toast--${position} ${(iconName !== 'loading' || msg) && (iconName || iconClass) ? 'min-h-[150px] inline-flex items-center' : ''
+      } ${iconName === 'loading' && !msg ? 'wd-toast--loading' : ''}`)">
       <!--iconName优先级更高-->
       <pro-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize"
-        custom-class="wd-toast__icon" />
-      <view class="wd-toast__iconWrap wd-toast__icon"
+        custom-class="inline-block mr-3 text-[32px]" />
+      <view class="align-middle inline-block mr-3 text-[32px]"
         v-else-if="iconName === 'success' || iconName === 'warning' || iconName === 'info' || iconName === 'error'">
-        <view class="wd-toast__iconBox">
-          <pro-icon class="wd-toast__iconSvg" :name="iconName" :size="iconSize"></pro-icon>
+        <view class="block w-full h-full">
+          <pro-icon class="w-8 h-8 leading-8" :name="iconName" :size="iconSize"></pro-icon>
         </view>
       </view>
-      <pro-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix"
-        :name="iconClass"></pro-icon>
+      <pro-icon v-else-if="iconClass" custom-class="inline-block mr-3 text-[32px]" :size="iconSize"
+        :class-prefix="classPrefix" :name="iconClass"></pro-icon>
       <!--文本-->
-      <view v-if="msg" class="wd-toast__msg">{{ msg }}</view>
+      <view v-if="msg" class="text-left text-sm">{{ msg }}</view>
     </view>
   </pro-transition>
 </template>
@@ -38,6 +39,7 @@ import { computed, inject, ref, watch, type CSSProperties } from 'vue'
 import { defaultOptions, toastDefaultOptionKey, } from '.'
 import { toastProps, type ToastLoadingType, type ToastOptions } from './types'
 import { addUnit, isDef, isFunction, objToStyle } from '../common/util'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(toastProps)
 
@@ -90,8 +92,7 @@ const transitionStyle = computed(() => {
 })
 
 const rootClass = computed(() => {
-  return `wd-toast ${props.customClass} wd-toast--${position.value} ${(iconName.value !== 'loading' || msg.value) && (iconName.value || iconClass.value) ? 'wd-toast--with-icon' : ''
-    } ${iconName.value === 'loading' && !msg.value ? 'wd-toast--loading' : ''}`
+  return
 })
 
 function handleAfterEnter() {

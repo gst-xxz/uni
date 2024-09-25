@@ -1,12 +1,13 @@
 <template>
-  <view :class="`wd-radio ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${sizeValue ? 'is-' + sizeValue : ''
+  <view :class="`wd-radio flex items-center justify-between text-center line-height-[1.2] mt-2.5 ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${sizeValue ? 'is-' + sizeValue : ''
     } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${disabledValue ? 'is-disabled' : ''
     } ${customClass}`" :style="customStyle" @click="handleClick">
-    <view class="wd-radio__label" :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
+    <view class="wd-radio__label text-sm text-black/85 inline-block align-top" :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
       }`">
       <slot></slot>
     </view>
-    <view class="wd-radio__shape" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''">
+    <view class="wd-radio__shape relative text-transparent hidden align-middle"
+      :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''">
       <pro-icon v-if="shapeValue === 'check'" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''"
         name="check"></pro-icon>
     </view>

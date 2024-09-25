@@ -8,11 +8,11 @@
       <view class="content" :style="`transform: translateY(-${active * 100}%)`">
         <scroll-view v-for="(item, index) in categories" :key="index" class="category" scroll-y scroll-with-animation
           :show-scrollbar="false" :scroll-top="scrollTop" :throttle="false">
-          <wd-cell-group :title="item.title" border>
+          <pro-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">
               <pro-icon name="github-filled" size="24px"></pro-icon>
             </wd-cell>
-          </wd-cell-group>
+          </pro-cell-group>
         </scroll-view>
       </view>
     </view>

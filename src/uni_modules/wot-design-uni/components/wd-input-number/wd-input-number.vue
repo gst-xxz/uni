@@ -1,9 +1,11 @@
 <template>
   <view
-    :class="`wd-input-number ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`"
+    :class="`wd-input-number inline-block leading-[1.15] user-select-none ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`"
     :style="customStyle">
-    <view :class="`wd-input-number__action ${minDisabled || disableMinus ? 'is-disabled' : ''}`" @click="sub">
-      <pro-icon name="minus" custom-class="wd-input-number__action-icon"></pro-icon>
+    <view :class="`wd-input-number__action relative inline-block ${minDisabled || disableMinus ? 'is-disabled' : ''}`"
+      @click="sub">
+      <pro-icon name="minus"
+        custom-class="absolute inline-block left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm w-[14px] h-[14px]"></pro-icon>
     </view>
     <view v-if="!withoutInput" class="wd-input-number__inner" @click.stop="">
       <input class="wd-input-number__input" :style="`${inputWidth ? 'width: ' + inputWidth : ''}`" type="digit"
@@ -11,8 +13,10 @@
         @focus="handleFocus" @blur="handleBlur" />
       <view class="wd-input-number__input-border"></view>
     </view>
-    <view :class="`wd-input-number__action ${maxDisabled || disablePlus ? 'is-disabled' : ''}`" @click="add">
-      <pro-icon name="plus" custom-class="wd-input-number__action-icon"></pro-icon>
+    <view :class="`wd-input-number__action relative inline-block ${maxDisabled || disablePlus ? 'is-disabled' : ''}`"
+      @click="add">
+      <pro-icon name="plus"
+        custom-class="absolute inline-block left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm w-[14px] h-[14px]"></pro-icon>
     </view>
   </view>
 </template>

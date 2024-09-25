@@ -1,12 +1,12 @@
 <template>
-  <view :class="`wd-rate ${customClass}`" :style="customStyle">
+  <view :class="cn('pro-rate inline-block align-middle leading-[1]', customClass)" :style="customStyle">
     <view v-for="(rate, index) in rateList" :key="index" :data-index="index"
-      :style="{ 'margin-right': index == rateList.length - 1 ? 0 : space }" class="wd-rate__item"
+      :style="{ 'margin-right': index == rateList.length - 1 ? 0 : space }" class="relative inline-block"
       @click="changeRate(index)">
-      <view class="wd-rate__item-star" :style="{ width: size, height: size }">
+      <view class="inline-block align-top" :style="{ width: size, height: size }">
         <pro-icon :name="icon" :size="size" :custom-style="iconStyle" />
       </view>
-      <view class="wd-rate__item-star wd-rate__item-star--active" :style="{ width: rate, height: size }">
+      <view class="inline-block align-top absolute left-0 top-0 overflow-hidden" :style="{ width: rate, height: size }">
         <pro-icon :name="activeIcon" :size="size" :custom-style="iconActiveStyle" />
       </view>
     </view>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-rate',
+  name: 'pro-rate',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -27,6 +27,7 @@ export default {
 
 import { computed, ref, watch } from 'vue'
 import { rateProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(rateProps)
 const emit = defineEmits(['update:modelValue', 'change'])
@@ -75,7 +76,7 @@ function computeRateList() {
   // value和num都准备好才能计算
   if (modelValue === null || !num) return
   if (typeof modelValue !== 'number') {
-    console.error('[Wot Design] error(wd-rate): the value of wd-rate should be a number')
+    console.error('[Wot Design] error(pro-rate): the value of pro-rate should be a number')
     return
   }
   const tempRateList: string[] = []
@@ -118,6 +119,3 @@ function changeRate(index: number) {
   })
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

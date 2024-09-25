@@ -2,19 +2,22 @@
   <page-wraper>
     <wd-toast />
     <view style="margin: 20px 0">
-      <wd-cell-group border>
-        <wd-col-picker label="选择地址" v-model="value1" :columns="areaData1" :column-change="columnChange1" @confirm="handleValue" />
+      <pro-cell-group border>
+        <wd-col-picker label="选择地址" v-model="value1" :columns="areaData1" :column-change="columnChange1"
+          @confirm="handleValue" />
         <wd-col-picker label="初始选项" v-model="value2" :columns="areaData2" :column-change="columnChange" auto-complete />
         <wd-col-picker label="禁用" disabled v-model="value3" :columns="areaData3" :column-change="columnChange1" />
         <wd-col-picker label="只读" readonly v-model="value3" :columns="areaData3" :column-change="columnChange1" />
         <wd-col-picker label="禁用选项" v-model="value4" :columns="areaData4" :column-change="columnChange1" />
         <wd-col-picker label="选项提示信息" v-model="value5" :columns="areaData5" :column-change="columnChange1" />
-        <wd-col-picker label="展示格式化" v-model="value6" :columns="areaData3" :column-change="columnChange1" :display-format="displayFormat" />
+        <wd-col-picker label="展示格式化" v-model="value6" :columns="areaData3" :column-change="columnChange1"
+          :display-format="displayFormat" />
         <wd-col-picker label="标题" v-model="value7" title="选择地址" :columns="areaData1" :column-change="columnChange1" />
-        <wd-col-picker label="before-confirm" v-model="value8" :columns="areaData1" :column-change="columnChange1" :before-confirm="beforeConfirm" />
+        <wd-col-picker label="before-confirm" v-model="value8" :columns="areaData1" :column-change="columnChange1"
+          :before-confirm="beforeConfirm" />
         <wd-col-picker label="错误" error v-model="value9" :columns="areaData1" :column-change="columnChange1" />
         <wd-col-picker label="必填" required v-model="value10" :columns="areaData1" :column-change="columnChange1" />
-      </wd-cell-group>
+      </pro-cell-group>
     </view>
     <demo-block title="一般column-change是个异步获取数据的操作，触发column-change组件会有默认loading，数据响应后关闭loading" transparent>
       <wd-col-picker label="选择地址" v-model="value11" :columns="areaData1" :column-change="columnChange2" />
@@ -31,14 +34,8 @@
     <demo-block title="自定义选择器" transparent>
       <view style="margin-left: 15px">
         <view style="margin-bottom: 10px">当前选中项: {{ displayValue }}</view>
-        <wd-col-picker
-          v-model="value15"
-          use-default-slot
-          :columns="areaData1"
-          :column-change="columnChange1"
-          style="display: inline-block"
-          @confirm="handleConfirm"
-        >
+        <wd-col-picker v-model="value15" use-default-slot :columns="areaData1" :column-change="columnChange1"
+          style="display: inline-block" @confirm="handleConfirm">
           <wd-button>选择地址</wd-button>
         </wd-col-picker>
       </view>

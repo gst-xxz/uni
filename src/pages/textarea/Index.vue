@@ -26,7 +26,7 @@
     </demo-block>
 
     <demo-block title="cell 类型" transparent>
-      <wd-cell-group border>
+      <pro-cell-group border>
         <wd-textarea label="高度自适应" auto-height clearable v-model="value5" placeholder="请输入..." prefix-icon="location" />
         <wd-textarea label="清空按钮" clearable v-model="value4" placeholder="请输入..." required />
         <wd-textarea label="字数限制" :maxlength="240" clearable show-word-limit v-model="value6" placeholder="请输入..."
@@ -35,15 +35,15 @@
           placeholder="请输入..." required />
         <wd-textarea label="禁用" disabled clearable :maxlength="240" show-word-limit v-model="value13"
           placeholder="请输入..." required />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
 
     <demo-block title="大尺寸" transparent>
-      <wd-cell-group border>
+      <pro-cell-group border>
         <wd-textarea label="高度自适应" auto-height size="large" clearable v-model="value9" placeholder="请输入..." required />
         <wd-textarea label="字数限制" size="large" :maxlength="240" clearable show-word-limit v-model="value10"
           placeholder="请输入..." required />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
   </page-wraper>
 </template>

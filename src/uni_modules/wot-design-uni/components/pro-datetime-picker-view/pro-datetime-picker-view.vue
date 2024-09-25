@@ -8,7 +8,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-datetime-picker-view',
+  name: 'pro-datetime-picker-view',
   virtualHost: true,
   addGlobalClass: true,
   styleIsolation: 'shared'
@@ -16,7 +16,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch } from 'vue'
 import { debounce, isFunction, isDef, padZero, range, isArray } from '../common/util'
 import {

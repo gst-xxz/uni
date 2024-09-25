@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
 import type { ColumnItem, PickerViewColumnChange } from '../wd-picker-view/types'
-import type { FormItemRule } from '../wd-form/types'
+import type { FormItemRule } from '../pro-form/types'
 
 export const pickerProps = {
   ...baseProps,
@@ -141,7 +141,7 @@ export const pickerProps = {
    */
   prop: String,
   /**
-   * 表单验证规则，结合wd-form组件使用
+   * 表单验证规则，结合pro-form组件使用
    */
   rules: makeArrayProp<FormItemRule>(),
   /**

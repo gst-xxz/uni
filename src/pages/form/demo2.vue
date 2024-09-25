@@ -1,29 +1,13 @@
 <template>
   <page-wraper>
-    <wd-form ref="form" :model="model" :reset-on-change="false">
-      <wd-cell-group border>
-        <wd-input
-          label="用户名"
-          label-width="100px"
-          prop="name"
-          clearable
-          v-model="model.name"
-          placeholder="请输入用户名"
-          @blur="handleBlur('name')"
-          :rules="[{ required: true, message: '请填写用户名' }]"
-        />
-        <wd-input
-          label="玛卡巴卡单号"
-          prop="phoneNumber"
-          label-width="100px"
-          clearable
-          @blur="handleBlur('phoneNumber')"
-          v-model="model.phoneNumber"
-          placeholder="玛卡巴卡单号"
-          :rules="[{ required: true, message: '请填写玛卡巴卡单号' }]"
-        />
-      </wd-cell-group>
-    </wd-form>
+    <pro-form ref="form" :model="model" :reset-on-change="false">
+      <pro-cell-group border>
+        <wd-input label="用户名" label-width="100px" prop="name" clearable v-model="model.name" placeholder="请输入用户名"
+          @blur="handleBlur('name')" :rules="[{ required: true, message: '请填写用户名' }]" />
+        <wd-input label="玛卡巴卡单号" prop="phoneNumber" label-width="100px" clearable @blur="handleBlur('phoneNumber')"
+          v-model="model.phoneNumber" placeholder="玛卡巴卡单号" :rules="[{ required: true, message: '请填写玛卡巴卡单号' }]" />
+      </pro-cell-group>
+    </pro-form>
 
     <view class="footer">
       <wd-button type="primary" size="large" block @click="handleSubmit">提交</wd-button>
@@ -32,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { FormInstance } from '@/uni_modules/wot-design-uni/components/wd-form/types'
+import type { FormInstance } from '@/uni_modules/wot-design-uni/components/pro-form/types'
 import { reactive, ref } from 'vue'
 
 const model = reactive<{

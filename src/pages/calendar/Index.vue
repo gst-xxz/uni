@@ -2,7 +2,7 @@
   <page-wraper>
     <wd-toast />
     <view style="margin: 20px 0">
-      <wd-cell-group border>
+      <pro-cell-group border>
         <wd-calendar label="单个日期选择" v-model="value1" @confirm="handleConfirm1" />
         <wd-calendar label="多个日期选择" type="dates" v-model="value2" @confirm="handleConfirm2" />
         <wd-calendar label="日期范围选择" type="daterange" v-model="value3" />
@@ -15,25 +15,12 @@
         <wd-calendar label="日周月切换" :first-day-of-week="1" show-type-switch v-model="value10" />
         <wd-calendar label="快捷操作" v-model="value16" :show-confirm="false" />
         <wd-calendar label="日期格式化" type="daterange" v-model="value11" :formatter="formatter" />
-        <wd-calendar
-          label="快捷选项"
-          :shortcuts="shortcuts"
-          :on-shortcuts-click="onShortcutsClick"
-          type="daterange"
-          const
-          v-model="value12"
-          @confirm="handleConfirm3"
-        />
-        <wd-calendar
-          label="自定义展示"
-          type="daterange"
-          const
-          v-model="value13"
-          :display-format="displayFormat"
-          :inner-display-format="innerDisplayFormat"
-        />
+        <wd-calendar label="快捷选项" :shortcuts="shortcuts" :on-shortcuts-click="onShortcutsClick" type="daterange" const
+          v-model="value12" @confirm="handleConfirm3" />
+        <wd-calendar label="自定义展示" type="daterange" const v-model="value13" :display-format="displayFormat"
+          :inner-display-format="innerDisplayFormat" />
         <wd-calendar label="before-confirm" v-model="value14" :before-confirm="beforeConfirm" />
-      </wd-cell-group>
+      </pro-cell-group>
     </view>
 
     <demo-block transparent title="自定义选择器">

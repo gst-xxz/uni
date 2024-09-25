@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
-import type { DateTimeType, DatetimePickerViewFilter, DatetimePickerViewFormatter } from '../wd-datetime-picker-view/types'
-import type { FormItemRule } from '../wd-form/types'
+import type { DateTimeType, DatetimePickerViewFilter, DatetimePickerViewFormatter } from '../pro-datetime-picker-view/types'
+import type { FormItemRule } from '../pro-form/types'
 
 export const datetimePickerProps = {
   ...baseProps,
@@ -152,7 +152,7 @@ export const datetimePickerProps = {
    */
   prop: String,
   /**
-   * 表单验证规则，结合wd-form组件使用
+   * 表单验证规则，结合pro-form组件使用
    */
   rules: makeArrayProp<FormItemRule>(),
   /**

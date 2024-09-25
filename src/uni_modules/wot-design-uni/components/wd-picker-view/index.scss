@@ -4,9 +4,6 @@
 
 
 @include b(picker-view) {
-  position: relative;
-  padding: 10px 0;
-
   @include e(columns) {
     position: relative;
     display: flex;
@@ -16,35 +13,16 @@
   }
 
   @include edeep(mask) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+
     background: $-picker-mask;
     background-position: top, bottom;
     background-repeat: no-repeat;
-    z-index: 2;
     pointer-events: none;
     filter: blur(4px);
   }
 
-  @include e(loading) {
-    position: absolute;
-    display: flex;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    background: $-picker-loading-bg;
-  }
-
   @include edeep(roller) {
     background: rgba(245, 245, 245, 1);
-    z-index: 0;
 
     &::before,
     &::after {
@@ -54,16 +32,11 @@
 }
 
 @include b(picker-view-column) {
-  flex: 1;
   font-size: $-picker-column-fs;
   color: $-picker-column-color;
-  text-align: center;
   transition-timing-function: cubic-bezier(0.28, 0.8, 0.63, 1);
 
   @include e(item) {
-    padding: $-picker-column-padding;
-    @include lineEllipsis;
-
     @include m(disabled) {
       color: $-picker-column-disabled-color;
     }

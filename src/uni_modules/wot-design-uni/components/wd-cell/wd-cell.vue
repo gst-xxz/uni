@@ -1,8 +1,8 @@
 <template>
   <view
-    :class="['wd-cell', isBorder ? 'is-border' : '', size ? 'is-' + size : '', center ? 'is-center' : '', customClass]"
+    :class="['wd-cell relative', isBorder ? 'is-border' : '', size ? 'is-' + size : '', center ? 'is-center' : '', customClass]"
     :style="customStyle" :hover-class="isLink || clickable ? 'is-hover' : 'none'" hover-stay-time="70" @click="onClick">
-    <view :class="['wd-cell__wrapper', vertical ? 'is-vertical' : '']">
+    <view :class="['wd-cell__wrapper relative flex justify-between items-start', vertical ? 'is-vertical block' : '']">
       <view :class="['wd-cell__left', isRequired ? 'is-required' : '']"
         :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''">
         <!--左侧icon部位-->
@@ -55,7 +55,7 @@ export default {
 import { computed } from 'vue'
 import { useCell } from '../composables/useCell'
 import { useParent } from '../composables/useParent'
-import { FORM_KEY } from '../wd-form/types'
+import { FORM_KEY } from '../pro-form/types'
 import { cellProps } from './types'
 import { isDef } from '../common/util'
 

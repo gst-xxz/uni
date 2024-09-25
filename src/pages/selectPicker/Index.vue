@@ -2,23 +2,28 @@
   <page-wraper>
     <wd-toast />
     <view style="margin: 20px 0">
-      <wd-cell-group border>
+      <pro-cell-group border>
         <wd-select-picker label="选择地址" v-model="value1" :columns="columns1" @confirm="handleConfirm1" />
         <wd-select-picker label="类型切换" type="radio" v-model="value2" :columns="columns1" @confirm="handleConfirm2" />
         <wd-select-picker label="禁用" disabled v-model="value3" :columns="columns1" @confirm="handleConfirm3" />
         <wd-select-picker label="只读" readonly v-model="value4" :columns="columns1" @confirm="handleConfirm4" />
         <wd-select-picker label="禁用选项" v-model="value5" :columns="columns2" @confirm="handleConfirm5" />
         <wd-select-picker label="loading" loading v-model="value6" :columns="columns1" @confirm="handleConfirm6" />
-        <wd-select-picker label="选择器change" v-model="value6" :columns="columns1" @change="handleChange" @confirm="handleConfirm7" />
-        <wd-select-picker label="展示格式化" v-model="value8" :columns="columns1" @confirm="handleConfirm8" :display-format="displayFormat" />
-        <wd-select-picker label="before-confirm" v-model="value9" :columns="columns1" @confirm="handleConfirm9" :before-confirm="beforeConfirm" />
+        <wd-select-picker label="选择器change" v-model="value6" :columns="columns1" @change="handleChange"
+          @confirm="handleConfirm7" />
+        <wd-select-picker label="展示格式化" v-model="value8" :columns="columns1" @confirm="handleConfirm8"
+          :display-format="displayFormat" />
+        <wd-select-picker label="before-confirm" v-model="value9" :columns="columns1" @confirm="handleConfirm9"
+          :before-confirm="beforeConfirm" />
         <wd-select-picker label="标题" v-model="value10" title="多选" :columns="columns1" @confirm="handleConfirm10" />
         <wd-select-picker label="错误" error v-model="value11" :columns="columns1" @confirm="handleConfirm11" />
         <wd-select-picker label="必填" required v-model="value12" :columns="columns1" @confirm="handleConfirm12" />
         <wd-select-picker label="可搜索" filterable v-model="value13" :columns="columns1" @confirm="handleConfirm13" />
-        <wd-select-picker label="单选可搜索" filterable v-model="value18" type="radio" :columns="columns1" @confirm="handleConfirm13" />
-        <wd-select-picker label="自动完成" type="radio" :show-confirm="false" v-model="value19" :columns="columns1" @confirm="handleConfirm2" />
-      </wd-cell-group>
+        <wd-select-picker label="单选可搜索" filterable v-model="value18" type="radio" :columns="columns1"
+          @confirm="handleConfirm13" />
+        <wd-select-picker label="自动完成" type="radio" :show-confirm="false" v-model="value19" :columns="columns1"
+          @confirm="handleConfirm2" />
+      </pro-cell-group>
     </view>
     <demo-block title="label不传" transparent>
       <wd-select-picker v-model="value14" :columns="columns1" @confirm="handleConfirm14" />
@@ -32,7 +37,8 @@
     <demo-block title="自定义选择器" transparent>
       <view style="margin-left: 15px">
         <view style="margin-bottom: 10px">当前选中项: {{ customShow }}</view>
-        <wd-select-picker v-model="value17" use-default-slot :columns="columns1" @confirm="handleConfirm17" style="display: inline-block">
+        <wd-select-picker v-model="value17" use-default-slot :columns="columns1" @confirm="handleConfirm17"
+          style="display: inline-block">
           <wd-button>唤起多选</wd-button>
         </wd-select-picker>
       </view>
@@ -136,7 +142,7 @@ const toast = useToast()
 const displayFormat: SelectPickerDisplayFormat = (items, columns) => {
   let showValue = ''
   columns.forEach((column) => {
-    ;(items as (string | number | boolean)[]).forEach((item, index) => {
+    ; (items as (string | number | boolean)[]).forEach((item, index) => {
       if (column.value === item) {
         showValue += `${item}: ${column.label} ${index + 1 < (items as (string | number | boolean)[]).length ? '--' : ''} `
       }

@@ -52,7 +52,7 @@
 .hairline--top-bottom:after,
 .hairline--top:after,
 .hairline:after {
-  border: 0 solid #ebedf0;
+  border: 0 solid #e8e8e8;
   bottom: -50%;
   box-sizing: border-box;
   content: ' ';
@@ -93,4 +93,26 @@
 
 .backface-visibility-hidden {
   backface-visibility: hidden;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+@keyframes cursor-flicker {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

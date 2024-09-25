@@ -1,54 +1,25 @@
 <template>
-  <view :class="`wd-table ${border ? 'is-border' : ''} ${customClass}`" :style="tableStyle">
-    <scroll-view
-      :enable-flex="true"
-      :throttle="false"
-      :scrollLeft="reactiveState.scrollLeft"
-      :scroll-x="true"
-      class="wd-table__header"
-      @scroll="scroll"
-      v-if="showHeader"
-    >
-      <view id="table-header" class="wd-table__content" :style="realWidthStyle" style="position: sticky; top: 0; z-index: 2">
-        <view
-          :class="`wd-table__cell ${border ? 'is-border' : ''} ${column.fixed ? 'is-fixed' : ''} ${stripe ? 'is-stripe' : ''} is-${column.align} ${
-            getIsLastFixed(column) && reactiveState.scrollLeft ? 'is-shadow' : ''
-          }`"
-          :style="getCellStyle(index)"
-          v-for="(column, index) in children"
-          :key="index"
-        >
-          <wd-sort-button
-            v-model="column.$.exposed!.sortDirection.value"
-            allow-reset
-            :line="false"
-            :title="column.label"
-            @change="({ value }) => handleSortChange(value, index)"
-            v-if="column.sortable"
-          />
+  <view
+    :class="`wd-table relative w-full overflow-auto ${border ? 'is-border border border-solid border-[#ececec]' : ''} ${customClass}`"
+    :style="tableStyle">
+    <scroll-view :enable-flex="true" :throttle="false" :scrollLeft="reactiveState.scrollLeft" :scroll-x="true"
+      class="wd-table__header" @scroll="scroll" v-if="showHeader">
+      <view id="table-header" class="wd-table__content" :style="realWidthStyle"
+        style="position: sticky; top: 0; z-index: 2">
+        <view :class="`wd-table__cell ${border ? 'is-border' : ''} ${column.fixed ? 'is-fixed' : ''} ${stripe ? 'is-stripe' : ''} is-${column.align} ${getIsLastFixed(column) && reactiveState.scrollLeft ? 'is-shadow' : ''
+          }`" :style="getCellStyle(index)" v-for="(column, index) in children" :key="index">
+          <wd-sort-button v-model="column.$.exposed!.sortDirection.value" allow-reset :line="false"
+            :title="column.label" @change="({ value }) => handleSortChange(value, index)" v-if="column.sortable" />
           <text v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</text>
         </view>
       </view>
     </scroll-view>
-    <scroll-view
-      class="wd-table__body"
-      :style="bodyStyle"
-      :enable-flex="true"
-      :throttle="false"
-      :scroll-x="true"
-      @scroll="scroll"
-      :scrollLeft="reactiveState.scrollLeft"
-    >
+    <scroll-view class="wd-table__body" :style="bodyStyle" :enable-flex="true" :throttle="false" :scroll-x="true"
+      @scroll="scroll" :scrollLeft="reactiveState.scrollLeft">
       <view id="table-body" class="wd-table__content" :style="realWidthStyle">
-        <wd-table-col
-          v-if="index !== false"
-          :prop="indexColumn.prop"
-          :label="indexColumn.label"
-          :width="indexColumn.width"
-          :sortable="indexColumn.sortable"
-          :fixed="indexColumn.fixed"
-          :align="indexColumn.align"
-        >
+        <wd-table-col v-if="index !== false" :prop="indexColumn.prop" :label="indexColumn.label"
+          :width="indexColumn.width" :sortable="indexColumn.sortable" :fixed="indexColumn.fixed"
+          :align="indexColumn.align">
           <template #value="{ index }">
             <text>{{ index + 1 }}</text>
           </template>

@@ -1,14 +1,17 @@
 <template>
-  <view :class="`wd-picker-view ${customClass}`" :style="customStyle">
-    <view class="wd-picker-view__loading" v-if="loading">
+  <view :class="`wd-picker-view relative py-2.5 px-0 ${customClass}`" :style="customStyle">
+    <view class="absolute flex top-0 right-0 bottom-0 left-0 items-center justify-center z-[3] bg-white/80"
+      v-if="loading">
       <pro-loading :color="loadingColor" />
     </view>
     <view :style="`height: ${columnsHeight - 20}px;`">
-      <picker-view mask-class="wd-picker-view__mask" indicator-class="wd-picker-view__roller"
-        :indicator-style="`height: ${itemHeight}px;`" :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex"
-        :immediate-change="immediateChange" @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
-        <picker-view-column v-for="(col, colIndex) in formatColumns" :key="colIndex" class="wd-picker-view-column">
-          <view v-for="(row, rowIndex) in col" :key="rowIndex" :class="`wd-picker-view-column__item ${row['disabled'] ? 'wd-picker-view-column__item--disabled' : ''}  ${selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
+      <picker-view mask-class="wd-picker-view__mask absolute top-0 left-0 right-0 bottom-0 w-full h-full z-[2]"
+        indicator-class="wd-picker-view__roller z-[0]" :indicator-style="`height: ${itemHeight}px;`"
+        :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex" :immediate-change="immediateChange"
+        @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
+        <picker-view-column v-for="(col, colIndex) in formatColumns" :key="colIndex"
+          class="wd-picker-view-column flex-1 text-center">
+          <view v-for="(row, rowIndex) in col" :key="rowIndex" :class="`wd-picker-view-column__item py-0 px-[15px] text-ellipsis overflow-hidden whitespace-nowrap ${row['disabled'] ? 'text-black/25' : ''}  ${selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
             }`" :style="`line-height: ${itemHeight}px;`">
             {{ row[labelKey] }}
           </view>

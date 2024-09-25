@@ -2,7 +2,6 @@
 @import '../common/abstracts/_mixin.scss';
 
 @include b(cell) {
-  position: relative;
   padding-left: $-cell-padding;
   background-color: $-color-white;
   text-decoration: none;
@@ -17,14 +16,9 @@
   }
 
   @include e(wrapper) {
-    position: relative;
-    display: flex;
     padding: $-cell-wrapper-padding $-cell-padding $-cell-wrapper-padding 0;
-    justify-content: space-between;
-    align-items: flex-start;
 
     @include when(vertical) {
-      display: block;
 
       .wd-cell__right {
         margin-top: $-cell-vertical-top;

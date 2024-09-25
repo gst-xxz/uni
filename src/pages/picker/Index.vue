@@ -2,7 +2,7 @@
   <page-wraper>
     <wd-toast />
     <demo-block transparent>
-      <wd-cell-group border>
+      <pro-cell-group border>
         <wd-picker label="单列选项" v-model="value0" :columns="columns0" />
         <wd-picker label="禁用" disabled v-model="value1" :columns="columns1" />
         <wd-picker label="只读" readonly v-model="value2" :columns="columns2" />
@@ -14,7 +14,7 @@
         <wd-picker label="before-confirm" :columns="columns0" v-model="value7" :before-confirm="beforeConfirm" />
         <wd-picker label="错误" v-model="value10" error :columns="columns0" />
         <wd-picker label="必填" v-model="value11" :columns="columns0" required />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
     <demo-block title="label 不传" transparent>
       <wd-picker :columns="columns0" v-model="value12" />

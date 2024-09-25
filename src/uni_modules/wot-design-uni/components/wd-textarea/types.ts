@@ -1,6 +1,6 @@
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
-import type { FormItemRule } from '../wd-form/types'
+import type { FormItemRule } from '../pro-form/types'
 import type { InputClearTrigger } from '../wd-input/types'
 
 export type ConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'

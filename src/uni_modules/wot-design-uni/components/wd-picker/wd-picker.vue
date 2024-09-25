@@ -62,7 +62,7 @@ import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nex
 import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { type ColumnItem, formatArray, type PickerViewInstance } from '../wd-picker-view/types'
-import { FORM_KEY, type FormItemRule } from '../wd-form/types'
+import { FORM_KEY, type FormItemRule } from '../pro-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { pickerProps, type PickerExpose } from './types'

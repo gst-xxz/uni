@@ -7,11 +7,11 @@
       <scroll-view class="content" scroll-y scroll-with-animation :scroll-top="scrollTop" :throttle="false"
         @scroll="onScroll">
         <view v-for="(item, index) in categories" :key="index" class="category">
-          <wd-cell-group :title="item.title" border>
+          <pro-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">
               <pro-icon name="github-filled" size="24px"></pro-icon>
             </wd-cell>
-          </wd-cell-group>
+          </pro-cell-group>
         </view>
       </scroll-view>
     </view>

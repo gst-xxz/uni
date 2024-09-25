@@ -4,15 +4,7 @@
 
 
 @include b(table) {
-  position: relative;
-  width: 100%;
-  overflow: auto;
   background: $-table-bg;
-
-  @include when(border) {
-    border: 1px solid $-table-border-color;
-  }
-
 
   :deep() {
     .wd-table-col:last-child {

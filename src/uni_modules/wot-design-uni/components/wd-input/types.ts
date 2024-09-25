@@ -1,5 +1,5 @@
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
-import type { FormItemRule } from '../wd-form/types'
+import type { FormItemRule } from '../pro-form/types'
 
 export type InputClearTrigger = 'focus' | 'always'
 
@@ -155,7 +155,7 @@ export const inputProps = {
    */
   prop: String,
   /**
-   * 表单验证规则，结合wd-form组件使用
+   * 表单验证规则，结合pro-form组件使用
    */
   rules: makeArrayProp<FormItemRule>(),
   /**

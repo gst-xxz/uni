@@ -3,8 +3,8 @@
     <page-wraper>
       <wd-message-box />
       <wd-toast />
-      <wd-form ref="form" :model="model" :rules="rules">
-        <wd-cell-group custom-class="group" title="基础信息" border>
+      <pro-form ref="form" :model="model" :rules="rules">
+        <pro-cell-group custom-class="group" title="基础信息" border>
           <wd-input label="优惠券名称" label-width="100px" :maxlength="20" show-word-limit prop="couponName" required
             suffix-icon="warn-bold" clearable v-model="model.couponName" placeholder="请输入优惠券名称"
             @clicksuffixicon="handleIconClick" />
@@ -22,15 +22,15 @@
                 placeholder="请输入金额" v-model="model.price" />
             </view>
           </wd-cell>
-        </wd-cell-group>
-        <wd-cell-group custom-class="group" title="时间和地址" border>
+        </pro-cell-group>
+        <pro-cell-group custom-class="group" title="时间和地址" border>
           <wd-datetime-picker label="时间" label-width="100px" placeholder="请选择时间" prop="time" v-model="model.time" />
           <wd-calendar label="日期" label-width="100px" placeholder="请选择日期" prop="date" v-model="model.date" />
 
           <wd-col-picker label="地址" placeholder="请选择地址" label-width="100px" prop="address" v-model="model.address"
             :columns="area" :column-change="areaChange" />
-        </wd-cell-group>
-        <wd-cell-group custom-class="group" title="其他信息" border>
+        </pro-cell-group>
+        <pro-cell-group custom-class="group" title="其他信息" border>
           <wd-textarea label="活动细则" label-width="100px" type="textarea" v-model="model.content" :maxlength="300"
             show-word-limit placeholder="请输入活动细则信息" clearable prop="content" />
           <wd-cell title="发货数量" title-width="100px" prop="count">
@@ -51,7 +51,7 @@
             <wd-upload :file-list="model.fileList" action="https://ftf.jd.com/api/uploadImg"
               @change="handleFileChange"></wd-upload>
           </wd-cell>
-        </wd-cell-group>
+        </pro-cell-group>
         <view class="tip">
           <wd-checkbox v-model="model.read" prop="read" custom-label-class="label-class">
             已阅读并同意
@@ -61,7 +61,7 @@
         <view class="footer">
           <wd-button type="primary" size="large" @click="handleSubmit" block>提交</wd-button>
         </view>
-      </wd-form>
+      </pro-form>
     </page-wraper>
   </view>
 </template>
@@ -69,7 +69,7 @@
 import { useToast } from '@/uni_modules/wot-design-uni'
 import { isArray } from '@/uni_modules/wot-design-uni/components/common/util'
 import type { ColPickerColumnChange } from '@/uni_modules/wot-design-uni/components/wd-col-picker/types'
-import { type FormInstance, type FormRules } from '@/uni_modules/wot-design-uni/components/wd-form/types'
+import { type FormInstance, type FormRules } from '@/uni_modules/wot-design-uni/components/pro-form/types'
 import type { UploadFileItem } from '@/uni_modules/wot-design-uni/components/wd-upload/types'
 import { useColPickerData } from '@/hooks/useColPickerData'
 
@@ -386,4 +386,4 @@ function handleIconClick() {
   font-size: 12px !important;
 }
 </style>
-@/uni_modules/wot-design-uni/components/wd-form/type
+@/uni_modules/wot-design-uni/components/pro-form/type

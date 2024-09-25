@@ -112,8 +112,8 @@ import {
   type DatetimePickerViewInstance,
   type DatetimePickerViewColumnFormatter,
   type DatetimePickerViewColumnType
-} from '../wd-datetime-picker-view/types'
-import { FORM_KEY, type FormItemRule } from '../wd-form/types'
+} from '../pro-datetime-picker-view/types'
+import { FORM_KEY, type FormItemRule } from '../pro-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { datetimePickerProps, type DatetimePickerExpose } from './types'

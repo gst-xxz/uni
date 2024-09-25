@@ -1,29 +1,29 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法" transparent>
-      <wd-cell-group>
+      <pro-cell-group>
         <wd-cell title="基础用法" is-link @click="showBasicNotify" />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
     <demo-block title="通知类型" transparent>
-      <wd-cell-group>
+      <pro-cell-group>
         <wd-cell title="主要通知" is-link @click="showType('primary')" />
         <wd-cell title="成功通知" is-link @click="showType('success')" />
         <wd-cell title="危险通知" is-link @click="showType('danger')" />
         <wd-cell title="警告通知" is-link @click="showType('warning')" />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
     <demo-block title="自定义配置" transparent>
-      <wd-cell-group>
+      <pro-cell-group>
         <wd-cell title="自定义颜色" is-link @click="showCustomColor" />
         <wd-cell title="自定义位置" is-link @click="showCustomPosition" />
         <wd-cell title="自定义时长" is-link @click="showCustomDuration" />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
     <demo-block title="使用 Notify 组件" transparent>
-      <wd-cell-group>
+      <pro-cell-group>
         <wd-cell title="使用 Notify 组件" is-link @click="showNotifyComponent" />
-      </wd-cell-group>
+      </pro-cell-group>
     </demo-block>
     <pro-notify selector="visible" type="success" v-model:visible="visible">
       <pro-icon name="check-outline" size="inherit" color="inherit" />

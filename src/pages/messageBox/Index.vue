@@ -2,7 +2,7 @@
   <page-wraper>
     <wd-message-box></wd-message-box>
     <wd-message-box selector="wd-message-box-slot">
-      <wd-rate custom-class="custom-rate-class" v-model="rate" />
+      <pro-rate custom-class="custom-rate-class" v-model="rate" />
     </wd-message-box>
     <demo-block title="alert">
       <wd-button @click="alert">alert</wd-button>
@@ -97,7 +97,7 @@ function beforeConfirm() {
         }, 3000)
       }
     })
-    .then(() => {})
+    .then(() => { })
     .catch((error) => {
       console.log(error)
     })
