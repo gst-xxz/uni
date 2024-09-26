@@ -5,8 +5,6 @@
   @include e(cut) {
 
     @include m(body) {
-     
-
       // 节选框的窗体最外部边缘线
       &::before {
         content: "";

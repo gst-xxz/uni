@@ -105,11 +105,4 @@
       }
     }
   }
-
-  @include e(text) {
-    margin-top: 8px;
-    font-size: $-grid-item-fs;
-    line-height: $-grid-item-fs;
-    @include lineEllipsis;
-  }
 }

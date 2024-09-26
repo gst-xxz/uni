@@ -1,67 +1,79 @@
 <template>
-  <view :class="['wd-upload relative flex flex-wrap', customClass]" :style="customStyle">
+  <view :class="['relative flex flex-wrap', customClass]" :style="customStyle">
     <!-- 预览列表 -->
-    <view :class="['wd-upload__preview relative mr-3 mb-3 ml-0 mt-0', customPreviewClass]"
-      v-for="(file, index) in uploadFiles" :key="index">
+    <view :class="['relative mr-3 mb-3 ml-0 mt-0 w-20 h-20', customPreviewClass]" v-for="(file, index) in uploadFiles"
+      :key="index">
       <!-- 成功时展示图片 -->
-      <view class="wd-upload__status-content flex flex-col justify-center items-center w-full h-full">
-        <image v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture"
+      <view class="flex flex-col justify-center items-center w-full h-full">
+        <image v-if="isImage(file)" :src="file.url" :mode="imageMode" class="relative block w-full h-full"
           @click="onPreviewImage(file)" />
         <template v-else-if="isVideo(file)">
-          <view class="wd-upload__video" v-if="file.thumb" @click="onPreviewVideo(file)">
-            <image :src="file.thumb" :mode="imageMode" class="wd-upload__picture" />
-            <pro-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></pro-icon>
+          <view class="relative w-full h-full bg-white/5 flex flex-col items-center justify-center" v-if="file.thumb"
+            @click="onPreviewVideo(file)">
+            <image :src="file.thumb" :mode="imageMode" class="relative block w-full h-full" />
+            <pro-icon name="play-circle-filled"
+              custom-class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl before:bg-black/50 before:rounded-full"></pro-icon>
           </view>
-          <view v-else class="wd-upload__video" @click="onPreviewVideo(file)">
+          <view v-else class="" @click="onPreviewVideo(file)">
             <!-- #ifdef APP-PLUS || MP-DINGTALK -->
-            <pro-icon custom-class="wd-upload__video-icon" name="video"></pro-icon>
+            <pro-icon custom-class="text-[22px]" name="video"></pro-icon>
             <!-- #endif -->
             <!-- #ifndef APP-PLUS -->
             <!-- #ifndef MP-DINGTALK -->
             <video :src="file.url" :title="file.name || '视频' + index" object-fit="contain" :controls="false"
               :poster="file.thumb" :autoplay="false" :show-center-play-btn="false" :show-fullscreen-btn="false"
               :show-play-btn="false" :show-loading="false" :show-progress="false" :show-mute-btn="false"
-              :enable-progress-gesture="false" :enableNative="true" class="wd-upload__video"></video>
-            <pro-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></pro-icon>
+              :enable-progress-gesture="false" :enableNative="true" class=""></video>
+            <pro-icon name="play-circle-filled"
+              custom-class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl before:bg-black/50 before:rounded-full"></pro-icon>
             <!-- #endif -->
             <!-- #endif -->
           </view>
         </template>
 
-        <view v-else class="wd-upload__file" @click="onPreviewFile(file)">
-          <pro-icon name="file" custom-class="wd-upload__file-icon"></pro-icon>
-          <view class="wd-upload__file-name">{{ file.name || file.url }}</view>
+        <view v-else class="relative w-full h-full flex flex-col items-center justify-center bg-white/5"
+          @click="onPreviewFile(file)">
+          <pro-icon name="file" custom-class="text-[22px]"></pro-icon>
+          <view
+            class="w-full box-border py-0 px-1 text-center mt-2 text-xs text-[#595959] overflow-hidden text-ellipsis whitespace-nowrap">
+            {{ file.name || file.url }}
+          </view>
         </view>
       </view>
 
-      <view v-if="file[props.statusKey] !== 'success'" class="wd-upload__mask wd-upload__status-content">
+      <view v-if="file[props.statusKey] !== 'success'" class="absoulte top-0 left-0 bg-black/60">
         <!-- loading时展示loading图标和进度 -->
-        <view v-if="file[props.statusKey] === 'loading'" class="wd-upload__status-content">
+        <view v-if="file[props.statusKey] === 'loading'" class="">
           <pro-loading :type="loadingType" :size="loadingSize" :color="loadingColor" />
-          <text class="wd-upload__progress-txt">{{ file.percent }}%</text>
+          <text class="text-sm leading-[1] mt-[9px] text-white">{{ file.percent }}%</text>
         </view>
         <!-- 失败时展示失败图标以及失败信息 -->
-        <view v-if="file[props.statusKey] === 'fail'" class="wd-upload__status-content">
-          <pro-icon name="close-outline" custom-class="wd-upload__icon"></pro-icon>
-          <text class="wd-upload__progress-txt">{{ file.error || translate('error') }}</text>
+        <view v-if="file[props.statusKey] === 'fail'" class="">
+          <pro-icon name="close-outline" custom-class="text-white text-2xl"></pro-icon>
+          <text class="text-sm leading-[1] mt-[9px] text-white">{{ file.error ||
+            translate('error')
+            }}</text>
         </view>
       </view>
       <!-- 上传状态为上传中时不展示移除按钮 -->
       <pro-icon v-if="file[props.statusKey] !== 'loading' && !disabled" name="error-fill"
-        custom-class="wd-upload__close" @click="removeFile(index)"></pro-icon>
+        custom-class="upload__close absolute z-[1] w-4 h-4 -right-2 -top-2 text-base leading-[1] text-black/65"
+        @click="removeFile(index)"></pro-icon>
     </view>
 
     <block v-if="showUpload">
-      <view :class="['wd-upload__evoke-slot', customEvokeClass]" v-if="$slots.default" @click="handleChoose">
+      <view :class="[customEvokeClass]" v-if="$slots.default" @click="handleChoose">
         <slot></slot>
       </view>
       <!-- 唤起项 -->
       <view v-else @click="handleChoose"
-        :class="['wd-upload__evoke relative inline-flex flex-col justify-center items-center w-10 h-10 text-[32px] bg-black/5 text-black/25 mb-3', disabled ? 'is-disabled' : '', customEvokeClass]">
+        :class="['relative inline-flex flex-col justify-center items-center w-10 h-10 text-[32px] bg-black/5 text-black/25 mb-3', disabled ? 'is-disabled text-white/10' : '', customEvokeClass]">
         <!-- 唤起项图标 -->
-        <pro-icon class="wd-upload__evoke-icon" name="fill-camera"></pro-icon>
+        <pro-icon class="w-8 h-8" name="fill-camera"></pro-icon>
         <!-- 有限制个数时确认是否展示限制个数 -->
-        <view v-if="limit && showLimitNum" class="wd-upload__evoke-num">（{{ uploadFiles.length }}/{{ limit }}）</view>
+        <view v-if="limit && showLimitNum" class="text-sm leading-[1] mt-2">（{{ uploadFiles.length
+          }}/{{
+            limit }}）</view>
       </view>
     </block>
   </view>
@@ -101,7 +113,7 @@ import {
   type UploadMethod
 } from './types'
 import type { VideoPreviewInstance } from '../pro-video-preview/types'
-
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 const props = defineProps(uploadProps)
 
 const emit = defineEmits<{
@@ -667,6 +679,17 @@ function isImage(file: UploadFileItem) {
   return (file.name && isImageUrl(file.name)) || isImageUrl(file.url)
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
+<style scoped>
+.upload__close {
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $-color-white;
+    left: 0;
+    z-index: -1;
+  }
+}
 </style>

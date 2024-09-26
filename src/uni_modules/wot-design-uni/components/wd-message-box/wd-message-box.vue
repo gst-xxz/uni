@@ -1,24 +1,26 @@
 <template>
   <view>
     <pro-popup transition="zoom-in" v-model="show" :close-on-click-modal="closeOnClickModal" :lazy-render="lazyRender"
-      custom-class="wd-message-box" @click-modal="toggleModal('modal')" :z-index="zIndex" :duration="200">
-      <view :class="rootClass">
-        <view :class="bodyClass">
-          <view v-if="title" class="wd-message-box__title">
+      custom-class="wd-message-box overflow-hidden rounded-2xl" @click-modal="toggleModal('modal')" :z-index="zIndex"
+      :duration="200">
+      <view :class="`wd-message-box__container box-border w-[300px] ${customClass}`">
+        <view :class="`wd-message-box__body bg-white py-[25px] pr-6 pl-0 ${type === 'prompt' ? 'is-prompt' : ''}`">
+          <view v-if="title"
+            class="wd-message-box__title text-center text-base leading-5 text-black/85 font-medium py-[5px] pb-2.5">
             {{ title }}
           </view>
-          <view class="wd-message-box__content">
+          <view class="wd-message-box__content text-center overflow-auto leading-5">
             <block v-if="type === 'prompt'">
               <wd-input v-model="inputValue" :type="inputType" size="large" :placeholder="inputPlaceholder || '请输入'"
                 @input="inputValChange" />
-              <view v-if="showErr" class="wd-message-box__input-error">
+              <view v-if="showErr" class="wd-message-box__input-error min-h-[18px] mt-0.5 text-left text-danger">
                 {{ inputError || translate('inputNoValidate') }}
               </view>
             </block>
             <slot>{{ msg }}</slot>
           </view>
         </view>
-        <view :class="`wd-message-box__actions ${showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
+        <view :class="`wd-message-box__actions p-6 ${showCancelButton ? 'flex' : 'block'}`">
           <wd-button type="info" block v-if="showCancelButton" custom-style="margin-right: 16px;"
             @click="toggleModal('cancel')">
             {{ cancelButtonText || translate('cancel') }}
@@ -62,14 +64,6 @@ import { useTranslate } from '../composables/useTranslate'
 const props = defineProps(messageBoxProps)
 
 const { translate } = useTranslate('message-box')
-
-const rootClass = computed(() => {
-  return `wd-message-box__container ${props.customClass}`
-})
-
-const bodyClass = computed(() => {
-  return `wd-message-box__body ${!title.value ? 'is-no-title' : ''} ${type.value === 'prompt' ? 'is-prompt' : ''}`
-})
 
 const messageOptionKey = props.selector ? messageDefaultOptionKey + props.selector : messageDefaultOptionKey
 const messageOption = inject(messageOptionKey, ref<MessageOptions>(defaultOptions)) // message选项

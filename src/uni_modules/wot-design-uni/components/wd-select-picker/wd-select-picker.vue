@@ -10,8 +10,8 @@
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
-        <view class="wd-select-picker__body">
-          <view class="wd-select-picker__value-wraper">
+        <view class="wd-select-picker__body flex-1">
+          <view class="wd-select-picker__value-wraper flex">
             <view :class="`wd-select-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-select-picker__value--placeholder'
               }`">
               {{ showValue || placeholder || translate('placeholder') }}
@@ -19,7 +19,10 @@
             <pro-icon v-if="!disabled && !readonly" custom-class="wd-select-picker__arrow" name="arrow" />
           </view>
 
-          <view v-if="errorMessage" class="wd-select-picker__error-message">{{ errorMessage }}</view>
+          <view v-if="errorMessage"
+            class="wd-select-picker__error-message text-left align-middle text-danger text-xs leading-6">
+            {{ errorMessage }}
+          </view>
         </view>
       </view>
     </view>
@@ -40,7 +43,8 @@
               <wd-checkbox :modelValue="item[valueKey]" :disabled="item.disabled">
                 <block v-if="filterable && filterVal">
                   <block v-for="text in item[labelKey]" :key="text.label">
-                    <text v-if="text.type === 'active'" class="wd-select-picker__text-active">{{ text.label }}</text>
+                    <text v-if="text.type === 'active'" class="wd-select-picker__text-active text-primary">{{ text.label
+                      }}</text>
                     <block v-else>{{ text.label }}</block>
                   </block>
                 </block>
@@ -75,7 +79,7 @@
         </view>
       </scroll-view>
       <!-- 确认按钮 -->
-      <view v-if="showConfirm" class="wd-select-picker__footer">
+      <view v-if="showConfirm" class="wd-select-picker__footer py-6 px-[15px]">
         <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText ||
           translate('confirm') }}</wd-button>
       </view>

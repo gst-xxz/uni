@@ -6,35 +6,23 @@
       <view :class="`wd-slider__label-min ${customMinClass}`" v-if="!hideMinMax">
         {{ minValue }}
       </view>
-      <view class="wd-slider__bar-wrapper" :style="barWrapperStyle">
-        <view class="wd-slider__bar" :style="barCustomStyle"></view>
+      <view class="wd-slider__bar-wrapper flex-1 relative bg-[#e5e5e5]" :style="barWrapperStyle">
+        <view class="wd-slider__bar relative rounded-none h-[3px]" :style="barCustomStyle"></view>
         <!-- 左边 -->
-        <view
-          class="wd-slider__button-wrapper"
-          :style="buttonLeftStyle"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-          @touchcancel="onTouchEnd"
-        >
+        <view class="wd-slider__button-wrapper" :style="buttonLeftStyle" @touchstart="onTouchStart"
+          @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
           <view class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</view>
           <view class="wd-slider__button" />
         </view>
         <!-- 右边 -->
-        <view
-          v-if="showRight"
-          class="wd-slider__button-wrapper"
-          :style="buttonRightStyle"
-          @touchstart="onTouchStartRight"
-          @touchmove="onTouchMoveRight"
-          @touchend="onTouchEndRight"
-          @touchcancel="onTouchEndRight"
-        >
+        <view v-if="showRight" class="wd-slider__button-wrapper" :style="buttonRightStyle"
+          @touchstart="onTouchStartRight" @touchmove="onTouchMoveRight" @touchend="onTouchEndRight"
+          @touchcancel="onTouchEndRight">
           <view class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</view>
           <view class="wd-slider__button" />
         </view>
       </view>
-      <view :class="`wd-slider__label-max ${customMaxClass}`" v-if="!hideMinMax">
+      <view :class="`wd-slider__label-max ml-[23px] ${customMaxClass}`" v-if="!hideMinMax">
         {{ maxValue }}
       </view>
       <!-- #ifdef MP-DINGTALK -->
@@ -218,8 +206,8 @@ function onTouchStart(event: any) {
   startValue.value = !isArray(modelValue)
     ? format(modelValue)
     : leftBarPercent.value < rightBarPercent.value
-    ? format(modelValue[0])
-    : format(modelValue[1])
+      ? format(modelValue[0])
+      : format(modelValue[1])
   emit('dragstart', {
     value: currentValue.value
   })

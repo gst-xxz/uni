@@ -75,10 +75,6 @@ watch(
   { deep: true, immediate: true }
 )
 
-const rootClass = computed(() => {
-  return `wd-tag ${props.customClass} ${tagClass.value}`
-})
-
 const rootStyle = computed(() => {
   const rootStyle: Record<string, any> = {}
   if (!props.plain && props.bgColor) {

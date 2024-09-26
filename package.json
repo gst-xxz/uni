@@ -61,7 +61,6 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-3090920231225001",
     "@dcloudio/uni-mp-xhs": "3.0.0-3090920231225001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090920231225001",
-    "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.2",
     "vite-plugin-compression": "^0.5.1",

@@ -2,18 +2,8 @@
 @import '../common/abstracts/_mixin.scss';
 
 @include b(cell) {
-  padding-left: $-cell-padding;
-  background-color: $-color-white;
   text-decoration: none;
-  color: $-cell-title-color;
-  line-height: $-cell-line-height;
   -webkit-tap-highlight-color: transparent;
-
-  @include when(border) {
-    .wd-cell__wrapper {
-      @include halfPixelBorder('top');
-    }
-  }
 
   @include e(wrapper) {
     padding: $-cell-wrapper-padding $-cell-padding $-cell-wrapper-padding 0;
@@ -39,17 +29,8 @@
   }
 
   @include e(left) {
-    position: relative;
-    flex: 1;
-    display: flex;
-    text-align: left;
-    font-size: $-cell-title-fs;
-    box-sizing: border-box;
-    margin-right: $-cell-padding;
 
     @include when(required) {
-      padding-left: 12px;
-
       &::after {
         position: absolute;
         content: '*';
@@ -61,49 +42,22 @@
     }
   }
 
-  @include e(right) {
-    position: relative;
-    flex: 1;
-  }
-
   @include e(title) {
-    flex: 1;
-    width: 100%;
     font-size: $-cell-title-fs;
   }
 
   @include e(label) {
-    margin-top: 2px;
     font-size: $-cell-label-fs;
     color: $-cell-label-color;
     @include lineEllipsis;
   }
 
-  @include edeep(icon) {
-    display: block;
-    position: relative;
-    margin-right: $-cell-icon-right;
-    font-size: $-cell-icon-size;
-    height: $-cell-line-height;
-    line-height: $-cell-line-height;
-  }
-
-  @include e(body){
-    display: flex;
-  }
-
   @include e(value) {
-    position: relative;
-    flex: 1;
     font-size: $-cell-value-fs;
     color: $-cell-value-color;
-    text-align: right;
-    vertical-align: middle;
   }
 
   @include edeep(arrow-right) {
-    display: block;
-    margin-left: 8px;
     width: $-cell-arrow-size;
     font-size: $-cell-arrow-size;
     color: $-cell-arrow-color;
@@ -115,8 +69,6 @@
     color: $-form-item-error-message-color;
     font-size: $-form-item-error-message-font-size;
     line-height: $-form-item-error-message-line-height;
-    text-align: left;
-    vertical-align: middle;
   }
 
   @include when(link) {
@@ -143,12 +95,6 @@
 
     :deep(.wd-cell__icon) {
       font-size: $-cell-icon-size-large;
-    }
-  }
-
-  @include when(center) {
-    .wd-cell__wrapper {
-      align-items: center;
     }
   }
 }

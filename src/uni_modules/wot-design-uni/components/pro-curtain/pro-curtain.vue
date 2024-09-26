@@ -3,11 +3,20 @@
     <pro-popup v-model="show" transition="zoom-in" position="center" :close-on-click-modal="closeOnClickModal"
       :hide-when-close="hideWhenClose" @before-enter="beforeenter" @enter="enter" @after-enter="afterenter"
       @before-leave="beforeleave" @leave="leave" @after-leave="afterleave" @close="close" @click-modal="clickModal"
-      :custom-class="`wd-curtain ${customClass}`" :custom-style="customStyle">
-      <view class="wd-curtain__content">
-        <image :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr"
+      :custom-class="cn(`inline-block overflow-y-visible text-[0] bg-transparent rounded-3xl ${customClass}`)"
+      :custom-style="customStyle">
+      <view class="relative inline-block bg-transparent rounded-3xl">
+        <image :src="src" class="block w-auto h-auto rounded-3xl" :style="imgStyle" @click="clickImage" @error="imgErr"
           @load="imgLoad"></image>
-        <pro-icon name="cross" :custom-class="`wd-curtain__content-close ${closePosition}`" @click="close" />
+        <pro-icon name="cross" :custom-class="cn(
+          `absolute top-2.5 right-2.5 p-1.5 m-0 text-white text-2xl tap-transparent`, {
+          'my-0 mr-0 ml-[-18px] top-[-62px] right-unset left-1/2 bottom-unset': closePosition === 'top',
+          'm-0 top-[-62px] right-unset left-[-6px] bottom-unset': closePosition === 'top-left',
+          'm-0 top-[-62px] right-[-6px] left-unset bottom-unset': closePosition === 'top-right',
+          'm-0 ml-[-18px] top-unset right-unset left-1/2 bottom-[-62px]': closePosition === 'bottom',
+          'm-0 top-unset right-unset left-[-6px] bottom-[-62px]': closePosition === 'bottom-left',
+          'm-0 top-unset right-[-6px] left-unset bottom-[-62px]': closePosition === 'bottom-right'
+        })" @click="close" />
       </view>
     </pro-popup>
   </view>
@@ -15,7 +24,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-curtain',
+  name: 'pro-curtain',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -25,10 +34,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
 import { ref, watch } from 'vue'
 import { curtainProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(curtainProps)
 
@@ -147,7 +155,3 @@ function clickImage() {
   close()
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

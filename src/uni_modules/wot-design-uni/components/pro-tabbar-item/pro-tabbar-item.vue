@@ -1,14 +1,15 @@
 <template>
-  <view :class="`wd-tabbar-item ${customClass}`" :style="customStyle" @click="handleClick">
+  <view :class="cn('flex-1 text-center text-decoration-none h-full flex justify-center items-center', customClass)"
+    :style="customStyle" @click="handleClick">
     <pro-badge v-bind="customBadgeProps">
-      <view class="wd-tabbar-item__body">
+      <view class="flex items-center flex-col leading-[1] p-0 relative">
         <slot name="icon" :active="active"></slot>
         <template v-if="!$slots.icon && icon">
           <pro-icon :name="icon" :custom-style="textStyle"
-            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"></pro-icon>
+            :custom-class="cn('text-xl', active ? 'text-primary' : 'text-black')"></pro-icon>
         </template>
         <text v-if="title" :style="textStyle"
-          :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
+          :class="cn('text-[10px] leading-[initial]', active ? 'text-primary' : 'text-black')">
           {{ title }}
         </text>
       </view>
@@ -17,7 +18,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-tabbar-item',
+  name: 'pro-tabbar-item',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -32,6 +33,7 @@ import { useParent } from '../composables/useParent'
 import { TABBAR_KEY } from '../wd-tabbar/types'
 import { tabbarItemProps } from './types'
 import type { BadgeProps } from '../pro-badge/types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(tabbarItemProps)
 
@@ -90,6 +92,3 @@ function handleClick() {
   tabbar && tabbar.setChange({ name })
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

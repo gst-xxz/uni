@@ -1,6 +1,6 @@
 import { type ExtractPropTypes, type InjectionKey } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
-import type { TabbarItem } from '../wd-tabbar-item/types'
+import type { TabbarItem } from '../pro-tabbar-item/types'
 
 type TabbarShape = 'default' | 'round'
 

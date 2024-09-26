@@ -14,7 +14,10 @@
           </pro-badge>
         </view>
         <slot name="text" v-if="useTextSlot" />
-        <view v-else class="wd-grid-item__text custom-text">{{ text }}</view>
+        <view v-else
+          class="wd-grid-item__text mt-2 text-xs leading-3 overflow-hidden text-ellipsis whitespace-nowrap custom-text">
+          {{ text }}
+        </view>
       </block>
     </view>
   </view>

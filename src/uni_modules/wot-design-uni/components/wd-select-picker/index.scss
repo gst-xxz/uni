@@ -46,13 +46,7 @@
       }
     }
   }
-  @include e(error-message){
-    color: $-form-item-error-message-color;
-    font-size: $-form-item-error-message-font-size;
-    line-height: $-form-item-error-message-line-height;
-    text-align: left;
-    vertical-align: middle;
-  }
+
   @include e(label) {
     position: relative;
     width: $-input-cell-label-width;
@@ -74,9 +68,6 @@
       }
     }
   }
-  @include e(value-wraper) {
-    display: flex;
-  }
   @include e(value) {
     flex: 1;
     margin-right: 10px;
@@ -88,9 +79,6 @@
     @include m(placeholder) {
       color: $-input-placeholder-color;
     }
-  }
-  @include e(body) {
-    flex: 1;
   }
   @include edeep(arrow) {
     display: block;
@@ -131,12 +119,5 @@
     @include when(loading) {
       overflow: hidden;
     }
-  }
-  @include e(text-active) {
-    color: $-color-theme;
-  }
-
-  @include e(footer) {
-    padding: 24px 15px;
   }
 }

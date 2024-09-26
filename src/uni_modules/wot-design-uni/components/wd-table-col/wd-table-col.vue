@@ -1,9 +1,9 @@
 <template>
   <view
-    :class="`wd-table-col ${fixed ? 'sticky z-[1] left-0' : ''} ${isLastFixed && isDef(table) && table.scrollLeft ? 'is-shadow' : ''}`"
+    :class="cn('table-col', fixed ? 'sticky z-[1] left-0' : '', isLastFixed && isDef(table) && table.scrollLeft ? 'is-shadow' : '')"
     :style="columnStyle">
     <view
-      :class="`wd-table__cell w-full ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`"
+      :class="cn('table__cell w-full', stripe && isOdd(index) ? 'is-stripe' : '', border ? 'is-border' : '', `is-${align}`)"
       v-for="(row, index) in column" :key="index" :style="cellStyle" @click="handleRowClick(index)">
       <slot name="value" v-if="$slots.value" :row="getScope(index)" :index="index"></slot>
       <text :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`" v-else>{{ row }}</text>
@@ -27,6 +27,7 @@ import { addUnit, isDef, objToStyle, isOdd, isFunction } from '../common/util'
 import { tableColumnProps, type SortDirection } from './types'
 import { useParent } from '../composables/useParent'
 import { TABLE_KEY } from '../wd-table/types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(tableColumnProps)
 
@@ -139,6 +140,17 @@ function getScope(index: number) {
 defineExpose({ sortDirection: sortDirection })
 </script>
 
-<style lang="scss" scoped>
-@import './index.scss';
+<style lang="scss">
+.table-col.is-shadow {
+  &::after {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    right: -30rpx;
+    top: 0;
+    width: 30rpx;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.04) 100%);
+  }
+}
 </style>
