@@ -1,13 +1,17 @@
 <template>
-  <view :class="`wd-popover ${customClass}`" :style="customStyle" id="popover" @click.stop="popover.noop">
+  <view :class="`wd-popover relative inline-block ${customClass}`" :style="customStyle" id="popover"
+    @click.stop="popover.noop">
     <!-- 使用插槽时无法获取正确宽高 -->
-    <view class="wd-popover__pos wd-popover__hidden" id="pos">
-      <view :class="`wd-popover__container ${customPop}`">
-        <view v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
+    <view class="wd-popover__pos wd-popover__hidden -left-[100vw] visibility-hidden" id="pos">
+      <view :class="`wd-popover__container relative text-sm leading-[18px] ${customPop}`">
+        <view v-if="!useContentSlot && mode === 'normal'"
+          class="wd-popover__inner relative whitespace-nowrap p-[15px] leading-[18px] z-[500] bg-white rounded">
           {{ content }}
         </view>
-        <view v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'" class="wd-popover__menu">
-          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)">
+        <view v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'"
+          class="wd-popover__menu inline-block whitespace-nowrap relative py-0 px-[15px] z-[500] bg-white rounded">
+          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner relative flex items-center"
+            @click="menuClick(index)">
             <pro-icon v-if="item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
             <text>{{ item.content }}</text>
           </view>
@@ -16,19 +20,22 @@
     </view>
     <pro-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover"
       name="fade" :duration="200">
-      <view :class="`wd-popover__container ${customPop}`">
-        <view v-if="props.visibleArrow" :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
+      <view :class="`wd-popover__container relative text-sm leading-[18px] ${customPop}`">
+        <view v-if="props.visibleArrow"
+          :class="`wd-popover__arrow absolute w-0 h-0 ${popover.arrowClass.value} ${customArrow}`"
           :style="popover.arrowStyle.value"></view>
         <!-- 普通模式 -->
-        <view v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
+        <view v-if="!useContentSlot && mode === 'normal'"
+          class="wd-popover__inner relative whitespace-nowrap p-[15px] leading-[18px] z-[500] bg-white rounded">
           {{ content }}
         </view>
         <!-- 列表模式 -->
-        <view v-if="!useContentSlot && mode === 'menu'" class="wd-popover__menu">
-          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)"
-            :style="index === 0 ? 'border-top: none' : ''">
+        <view v-if="!useContentSlot && mode === 'menu'"
+          class="wd-popover__menu inline-block whitespace-nowrap relative py-0 px-[15px] z-[500] bg-white rounded">
+          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner relative flex items-center"
+            @click="menuClick(index)" :style="index === 0 ? 'border-top: none' : ''">
             <pro-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass"
-              custom-class="wd-popover__icon" />
+              custom-class="wd-popover__icon align-middle text-lg mr-[5px]" />
             <view style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content : '' }}
             </view>
           </view>
@@ -36,7 +43,9 @@
         <!-- 用户自定义样式 -->
         <slot name="content" v-else />
       </view>
-      <pro-icon v-if="showClose" name="close" custom-class="wd-popover__close-icon" @click="toggle"></pro-icon>
+      <pro-icon v-if="showClose" name="close"
+        custom-class="wd-popover__close-icon text-xs absolute -right-2 -top-2.5 transform scale-[0.5] p-2.5"
+        @click="toggle"></pro-icon>
     </pro-transition>
     <view @click="toggle" class="wd-popover__target" id="target">
       <slot />

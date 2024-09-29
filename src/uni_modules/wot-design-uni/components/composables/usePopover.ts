@@ -37,11 +37,11 @@ export function usePopover() {
     // 初始化 class
     if (visibleArrow) {
       const arrowClassArr = [
-        `wd-${selector}__arrow`,
-        placement === 'bottom' || placement === 'bottom-start' || placement === 'bottom-end' ? `wd-${selector}__arrow-up` : '',
-        placement === 'left' || placement === 'left-start' || placement === 'left-end' ? `wd-${selector}__arrow-right` : '',
-        placement === 'right' || placement === 'right-start' || placement === 'right-end' ? `wd-${selector}__arrow-left` : '',
-        placement === 'top' || placement === 'top-start' || placement === 'top-end' ? `wd-${selector}__arrow-down` : ''
+        `${selector}__arrow`,
+        placement === 'bottom' || placement === 'bottom-start' || placement === 'bottom-end' ? `${selector}__arrow-up` : '',
+        placement === 'left' || placement === 'left-start' || placement === 'left-end' ? `${selector}__arrow-right` : '',
+        placement === 'right' || placement === 'right-start' || placement === 'right-end' ? `${selector}__arrow-left` : '',
+        placement === 'top' || placement === 'top-start' || placement === 'top-end' ? `${selector}__arrow-down` : ''
       ]
       arrowClass.value = arrowClassArr.join(' ')
     }

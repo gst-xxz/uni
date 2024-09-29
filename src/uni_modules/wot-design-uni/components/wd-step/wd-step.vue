@@ -2,17 +2,19 @@
   <view v-if="currentStatus" :class="`wd-step relative inline-block align-top ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
     }`" :style="rootStyle">
     <view :class="`wd-step__header relative text-[0]  ${dot ? 'is-dot' : ''}`">
-      <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
+      <view
+        :class="`wd-step__icon inline-block relative bg-white z-[1] w-[22px] h-[22px] ${dot ? 'is-dot bg-transparent -ml-[1px]' : !!icon || $slots.icon ? 'is-icon text-center' : 'is-text'}`">
         <view v-if="dot" class="wd-step__dot"></view>
         <slot v-else-if="$slots.icon" name="icon" />
-        <pro-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
+        <pro-icon v-else-if="icon" custom-class="wd-step__icon-inner text-[22px]" :name="icon" />
         <view v-else class="wd-step__icon-outer">
           <pro-icon v-if="currentStatus === 'finished'" name="success" />
           <pro-icon v-else-if="currentStatus === 'error'" name="cross" />
           <text v-else>{{ index + 1 }}</text>
         </view>
       </view>
-      <view v-if="index < childrenLength - 1" class="wd-step__line"></view>
+      <view v-if="index < childrenLength - 1"
+        class="wd-step__line absolute w-full h-[1px] top-1/2 left-0 -translate-y-1/2"></view>
     </view>
     <view class="wd-step__content">
       <view :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">

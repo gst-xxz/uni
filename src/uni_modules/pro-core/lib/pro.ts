@@ -3,7 +3,7 @@ import CreateNotify, { type NotifyInstance } from './createNotify'
 import CreateMessage from './createMessage'
 import CreateActionSheet, { type ActionSheetInstance } from './createActionSheet'
 import type { Toast } from '@/uni_modules/wot-design-uni/components/pro-toast/typess'
-import type { Message } from '@/uni_modules/wot-design-uni/components/wd-message-box/types'
+import type { Message } from '@/uni_modules/wot-design-uni/components/pro-message-box/types'
 
 class Pro {
   public toast = new CreateToast()

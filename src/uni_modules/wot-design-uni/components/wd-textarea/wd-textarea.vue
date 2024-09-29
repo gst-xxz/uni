@@ -1,6 +1,21 @@
 <template>
-  <view :class="rootClass" :style="customStyle">
-    <view v-if="label || useLabelSlot" :class="labelClass" :style="labelStyle">
+  <view :class="cn(
+    'wd-textarea relative text-left bg-white',
+    {
+      'is-cell': label || useLabelSlot,
+      'is-center': center,
+      'is-border': cell.border,
+      ['is-' + size]: size,
+      'is-error': error,
+      'is-disabled': disabled,
+      'is-auto-height': autoHeight,
+      'is-not-empty': currentLength > 0,
+      'is-no-border': noBorder,
+    }, customClass
+  )" :style="customStyle">
+    <view v-if="label || useLabelSlot"
+      :class="cn(`wd-textarea__label relative flex flex-shrink-0 box-border ${props.customLabelClass} ${isRequired ? 'is-required pl-3' : ''}`)"
+      :style="labelStyle">
       <view v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
         <pro-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon"
           @click="onClickPrefixIcon" />
@@ -17,20 +32,22 @@
       :class="`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`">
       <textarea :class="`wd-textarea__inner ${customTextareaClass}`" v-model="inputValue" :show-count="false"
         :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused"
-        :auto-focus="autoFocus" :placeholder-style="placeholderStyle" :placeholder-class="inputPlaceholderClass"
-        :auto-height="autoHeight" :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor"
-        :show-confirm-bar="showConfirmBar" :selection-start="selectionStart" :selection-end="selectionEnd"
-        :adjust-position="adjustPosition" :hold-keyboard="holdKeyboard" :confirm-type="confirmType"
-        :confirm-hold="confirmHold" :disable-default-padding="disableDefaultPadding"
-        :ignoreCompositionEvent="ignoreCompositionEvent" @input="handleInput" @focus="handleFocus" @blur="handleBlur"
-        @confirm="handleConfirm" @linechange="handleLineChange" @keyboardheightchange="handleKeyboardheightchange" />
+        :auto-focus="autoFocus" :placeholder-style="placeholderStyle"
+        :placeholder-class="cn(`wd-textarea__placeholder ${props.placeholderClass}`)" :auto-height="autoHeight"
+        :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor" :show-confirm-bar="showConfirmBar"
+        :selection-start="selectionStart" :selection-end="selectionEnd" :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard" :confirm-type="confirmType" :confirm-hold="confirmHold"
+        :disable-default-padding="disableDefaultPadding" :ignoreCompositionEvent="ignoreCompositionEvent"
+        @input="handleInput" @focus="handleFocus" @blur="handleBlur" @confirm="handleConfirm"
+        @linechange="handleLineChange" @keyboardheightchange="handleKeyboardheightchange" />
       <view v-if="errorMessage" class="wd-textarea__error-message">{{ errorMessage }}</view>
 
       <view v-if="readonly" class="wd-textarea__readonly-mask" />
-      <view class="wd-textarea__suffix">
+      <view class="wd-textarea__suffix flex-shrink-0 leading-[initial]">
         <pro-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
         <view v-if="showWordCount" class="wd-textarea__count">
-          <text :class="countClass">
+          <text
+            :class="cn(`${currentLength > 0 ? 'wd-textarea__count-current' : ''} ${currentLength > props.maxlength ? 'is-error' : ''}`)">
             {{ currentLength }}
           </text>
           /{{ maxlength }}
@@ -60,6 +77,7 @@ import { FORM_KEY, type FormItemRule } from '../pro-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { textareaProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const { translate } = useTranslate('textarea')
 
@@ -152,24 +170,6 @@ const isRequired = computed(() => {
 // 当前文本域文字长度
 const currentLength = computed(() => {
   return String(formatValue(props.modelValue) || '').length
-})
-
-const rootClass = computed(() => {
-  return `wd-textarea   ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${cell.border.value ? 'is-border' : ''
-    } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''} ${props.autoHeight ? 'is-auto-height' : ''
-    } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
-})
-
-const labelClass = computed(() => {
-  return `wd-textarea__label ${props.customLabelClass} ${isRequired.value ? 'is-required' : ''}`
-})
-
-const inputPlaceholderClass = computed(() => {
-  return `wd-textarea__placeholder  ${props.placeholderClass}`
-})
-
-const countClass = computed(() => {
-  return `${currentLength.value > 0 ? 'wd-textarea__count-current' : ''} ${currentLength.value > props.maxlength ? 'is-error' : ''}`
 })
 
 const labelStyle = computed(() => {

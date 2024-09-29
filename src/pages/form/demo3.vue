@@ -1,7 +1,7 @@
 <template>
   <view>
     <page-wraper>
-      <wd-message-box />
+      <pro-message-box />
       <pro-toast />
       <pro-form ref="form" :model="model" :rules="rules">
         <pro-cell-group custom-class="group" title="基础信息" border>
@@ -48,8 +48,8 @@
           <wd-input label="玛卡巴卡" label-width="100px" prop="phone" placeholder="请输入玛卡巴卡" clearable
             v-model="model.phone" />
           <wd-cell title="活动图片" title-width="100px" prop="fileList">
-            <wd-upload :file-list="model.fileList" action="https://ftf.jd.com/api/uploadImg"
-              @change="handleFileChange"></wd-upload>
+            <pro-upload :file-list="model.fileList" action="https://ftf.jd.com/api/uploadImg"
+              @change="handleFileChange"></pro-upload>
           </wd-cell>
         </pro-cell-group>
         <view class="tip">
@@ -70,7 +70,7 @@ import { useToast } from '@/uni_modules/wot-design-uni'
 import { isArray } from '@/uni_modules/wot-design-uni/components/common/util'
 import type { ColPickerColumnChange } from '@/uni_modules/wot-design-uni/components/wd-col-picker/types'
 import { type FormInstance, type FormRules } from '@/uni_modules/wot-design-uni/components/pro-form/types'
-import type { UploadFileItem } from '@/uni_modules/wot-design-uni/components/wd-upload/types'
+import type { UploadFileItem } from '@/uni_modules/wot-design-uni/components/pro-upload/types'
 import { useColPickerData } from '@/hooks/useColPickerData'
 
 const { colPickerData, findChildrenByCode } = useColPickerData()

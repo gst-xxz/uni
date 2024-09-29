@@ -1,7 +1,7 @@
 // Toast
 export { useToast } from './components/pro-toast'
 // Messageb
-export { useMessage } from './components/wd-message-box'
+export { useMessage } from './components/pro-message-box'
 
 // useQueue
 export { useQueue } from './components/composables/useQueue'

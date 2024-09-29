@@ -23,7 +23,7 @@
         </view>
       </view>
     </view>
-    <wd-action-sheet v-model="pickerShow" :duration="250" :close-on-click-modal="closeOnClickModal"
+    <pro-action-sheet v-model="pickerShow" :duration="250" :close-on-click-modal="closeOnClickModal"
       :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="close">
       <view class="relative overflow-hidden">
         <view v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title text-center">{{ title ||
@@ -71,7 +71,7 @@
         <wd-button block :disabled="confirmBtnDisabled" @click="handleConfirm">{{ confirmText || translate('confirm')
           }}</wd-button>
       </view>
-    </wd-action-sheet>
+    </pro-action-sheet>
   </view>
 </template>
 
@@ -89,7 +89,6 @@ export default {
 <script lang="ts" setup>
 
 import wdCalendarView from '../wd-calendar-view/wd-calendar-view.vue'
-import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import wdButton from '../wd-button/wd-button.vue'
 import { ref, computed, watch } from 'vue'
 import { dayjs } from '../common/dayjs'

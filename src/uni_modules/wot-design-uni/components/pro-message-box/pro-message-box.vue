@@ -1,28 +1,25 @@
 <template>
   <view>
     <pro-popup transition="zoom-in" v-model="show" :close-on-click-modal="closeOnClickModal" :lazy-render="lazyRender"
-      custom-class="wd-message-box overflow-hidden rounded-2xl" @click-modal="toggleModal('modal')" :z-index="zIndex"
-      :duration="200">
-      <view :class="`wd-message-box__container box-border w-[300px] ${customClass}`">
-        <view :class="`wd-message-box__body bg-white py-[25px] pr-6 pl-0 ${type === 'prompt' ? 'is-prompt' : ''}`">
-          <view v-if="title"
-            class="wd-message-box__title text-center text-base leading-5 text-black/85 font-medium py-[5px] pb-2.5">
+      custom-class="overflow-hidden rounded-2xl" @click-modal="toggleModal('modal')" :z-index="zIndex" :duration="200">
+      <view :class="cn('box-border w-[300px]', customClass)">
+        <view :class="cn('bg-white py-[25px] pr-6 pl-0', type === 'prompt' ? 'is-prompt' : '')">
+          <view v-if="title" class="text-center text-base leading-5 text-black/85 font-medium py-[5px] pb-2.5">
             {{ title }}
           </view>
-          <view class="wd-message-box__content text-center overflow-auto leading-5">
+          <view class="message-box__content text-center overflow-auto leading-5 max-h-[264px] text-[#666] text-sm">
             <block v-if="type === 'prompt'">
               <wd-input v-model="inputValue" :type="inputType" size="large" :placeholder="inputPlaceholder || '请输入'"
                 @input="inputValChange" />
-              <view v-if="showErr" class="wd-message-box__input-error min-h-[18px] mt-0.5 text-left text-danger">
+              <view v-if="showErr" class="min-h-[18px] mt-0.5 text-left text-danger">
                 {{ inputError || translate('inputNoValidate') }}
               </view>
             </block>
             <slot>{{ msg }}</slot>
           </view>
         </view>
-        <view :class="`wd-message-box__actions p-6 ${showCancelButton ? 'flex' : 'block'}`">
-          <wd-button type="info" block v-if="showCancelButton" custom-style="margin-right: 16px;"
-            @click="toggleModal('cancel')">
+        <view :class="cn('p-6', showCancelButton ? 'flex' : 'block')">
+          <wd-button type="info" block v-if="showCancelButton" custom-class="mr-4" @click="toggleModal('cancel')">
             {{ cancelButtonText || translate('cancel') }}
           </wd-button>
           <wd-button block @click="toggleModal('confirm')">
@@ -35,7 +32,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-message-box',
+  name: 'pro-message-box',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -45,10 +42,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdButton from '../wd-button/wd-button.vue'
-import wdInput from '../wd-input/wd-input.vue'
-import { computed, inject, ref, watch } from 'vue'
+import { inject, ref, watch } from 'vue'
 import {
   messageBoxProps,
   type InputValidate,
@@ -60,6 +54,7 @@ import {
 import { defaultOptions, messageDefaultOptionKey } from '.'
 import { isDef, isFunction } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(messageBoxProps)
 
@@ -296,6 +291,35 @@ function reset(option: MessageOptions) {
 }
 </script>
 
-<style lang="scss" scoped>
-@import './index.scss';
+<style lang="scss">
+.zoomIn-enter-active,
+.zoomIn-leave-active {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  transition: all .2s;
+}
+
+.zoomIn-enter {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.7);
+  transition: all .2s ease-out;
+}
+
+.zoomIn-leave-to {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.9);
+  transition: all .2s ease-out;
+}
+
+.message-box__content {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: calc(4px / 2);
+  }
+}
 </style>

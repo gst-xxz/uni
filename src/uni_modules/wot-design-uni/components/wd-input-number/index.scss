@@ -6,10 +6,8 @@
   @include e(action) {
     width: $-input-number-btn-width;
     height: $-input-number-height;
-    vertical-align: middle;
     color: $-input-number-icon-color;
     -webkit-tap-highlight-color: transparent;
-    box-sizing: border-box;
 
     // 左右加减号的边框
     &::after {
@@ -36,24 +34,12 @@
     }
   }
 
-  @include e(inner) {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
   @include e(input) {
-    position: relative;
-    display: block;
+
     width: $-input-number-input-width;
     height: $-input-number-height;
-    padding: 0 2px;
-    box-sizing: border-box;
-    z-index: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    text-align: center;
+
+
     color: $-input-number-color;
     font-size: $-input-number-fs;
     -webkit-appearance: none;

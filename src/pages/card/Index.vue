@@ -2,13 +2,13 @@
   <page-wraper>
     <view>
       <demo-block title="基本使用" transparent>
-        <wd-card title="经营分析">
+        <pro-card title="经营分析">
           一般的，检举内容由承办的党的委员会或纪律检查委员会将处理意见或复议、复查结论同申诉人见面，听取其意见。复议、复查的结论和决定，应交给申诉人一份。
           <template #footer>
             <wd-button size="small" plain>查看详情</wd-button>
           </template>
-        </wd-card>
-        <wd-card title="新订单">
+        </pro-card>
+        <pro-card title="新订单">
           <view class="content">
             <image
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
@@ -23,10 +23,10 @@
           <template #footer>
             <wd-button size="small" plain>查看详情</wd-button>
           </template>
-        </wd-card>
+        </pro-card>
       </demo-block>
       <demo-block title="矩形卡片" transparent>
-        <wd-card title="2020-02-03服务到期" type="rectangle">
+        <pro-card title="2020-02-03服务到期" type="rectangle">
           <view style="height: 40px" class="content">
             <image
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
@@ -43,8 +43,8 @@
               <wd-button size="small">立即使用</wd-button>
             </view>
           </template>
-        </wd-card>
-        <wd-card type="rectangle">
+        </pro-card>
+        <pro-card type="rectangle">
           <template #title>
             <view class="title">
               <view>2020-02-03服务到期</view>
@@ -71,7 +71,7 @@
               <wd-button size="small">立即使用</wd-button>
             </view>
           </template>
-        </wd-card>
+        </pro-card>
       </demo-block>
     </view>
   </page-wraper>

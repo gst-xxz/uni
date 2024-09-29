@@ -3,11 +3,7 @@
 
 
 .wd-key-wrapper {
-  position: relative;
-  flex: 1;
   flex-basis: 33%;
-  box-sizing: border-box;
-  padding: 0 6px 6px 0;
 
   @include m(wider) {
     flex-basis: 66%;
@@ -15,9 +11,6 @@
 }
 
 @include b(key) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: $-number-keyboard-key-height;
   font-size: $-number-keyboard-key-font-size;
   line-height: 1.5;
@@ -26,15 +19,6 @@
 
   &:active {
     background-color: $-number-keyboard-key-active-color;
-  }
-
-  @include m(large) {
-    position: absolute;
-    top: 0;
-    right: 6px;
-    bottom: 6px;
-    left: 0;
-    height: auto;
   }
 
   @include m(delete, close) {
@@ -46,7 +30,6 @@
   }
 
   @include m(close) {
-    color: $-number-keyboard-button-text-color;
     background: $-number-keyboard-button-background;
 
     &:active {
@@ -54,13 +37,4 @@
       opacity: $-number-keyboard-button-active-opacity;
     }
   }
-
-  @include edeep(loading-icon) {
-    color: $-number-keyboard-button-text-color;
-  }
-
-  @include edeep(icon) {
-    font-size: $-number-keyboard-icon-size;
-  }
-
 }

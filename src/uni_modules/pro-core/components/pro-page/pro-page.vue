@@ -3,8 +3,8 @@
     <pro-toast />
     <slot />
     <pro-notify />
-    <wd-message-box />
-    <wd-action-sheet v-model="actionSheetData.modelValue" :actions="actionSheetData.actions"
+    <pro-message-box />
+    <pro-action-sheet v-model="actionSheetData.modelValue" :actions="actionSheetData.actions"
       :panels="actionSheetData.panels" :cancelText="actionSheetData.cancelText" @close="actionSheetData.onClose"
       @select="actionSheetData.onSelect" />
   </view>

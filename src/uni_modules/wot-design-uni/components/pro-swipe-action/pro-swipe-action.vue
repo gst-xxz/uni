@@ -1,17 +1,17 @@
 <template>
   <!--注意阻止横向滑动的穿透：横向移动时阻止冒泡-->
-  <view :class="`wd-swipe-action relative overflow-hidden ${customClass}`" :style="customStyle" @click.stop="onClick()"
+  <view :class="cn('relative overflow-hidden', customClass)" :style="customStyle" @click.stop="onClick()"
     @touchstart="startDrag" @touchmove="onDrag" @touchend="endDrag" @touchcancel="endDrag">
     <!--容器-->
-    <view class="wd-swipe-action__wrapper" :style="wrapperStyle">
+    <view class="" :style="wrapperStyle">
       <!--左侧操作-->
-      <view class="wd-swipe-action__left absolute top-0 left-0 h-full translate-x-[-100%]" @click="onClick('left')">
+      <view class="swipe-action__left absolute top-0 left-0 h-full translate-x-[-100%]" @click="onClick('left')">
         <slot name="left" />
       </view>
       <!--内容-->
       <slot />
       <!--右侧操作-->
-      <view class="wd-swipe-action__right absolute top-0 right-0 h-full translate-x-[100%]" @click="onClick('right')">
+      <view class="swipe-action__right absolute top-0 right-0 h-full translate-x-[100%]" @click="onClick('right')">
         <slot name="right" />
       </view>
     </view>
@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-swipe-action',
+  name: 'pro-swipe-action',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -34,6 +34,7 @@ import { type Queue, queueKey } from '../composables/useQueue'
 import { useTouch } from '../composables/useTouch'
 import { getRect } from '../common/util'
 import { swipeActionProps, type SwipeActionPosition, type SwipeActionReason, type SwipeActionStatus } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(swipeActionProps)
 const emit = defineEmits(['click', 'update:modelValue'])
@@ -118,10 +119,10 @@ function changeState(value: SwipeActionStatus, old?: SwipeActionStatus) {
  */
 function getWidths() {
   return Promise.all([
-    getRect('.wd-swipe-action__left', false, proxy).then((rect) => {
+    getRect('.swipe-action__left', false, proxy).then((rect) => {
       return rect.width ? rect.width : 0
     }),
-    getRect('.wd-swipe-action__right', false, proxy).then((rect) => {
+    getRect('.swipe-action__right', false, proxy).then((rect) => {
       return rect.width ? rect.width : 0
     })
   ])

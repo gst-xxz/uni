@@ -1,4 +1,4 @@
-import type { Message, MessageOptions } from '@/uni_modules/wot-design-uni/components/wd-message-box/types'
+import type { Message, MessageOptions } from '@/uni_modules/wot-design-uni/components/pro-message-box/types'
 
 const defaultMessage: Message = {
   show: () => {

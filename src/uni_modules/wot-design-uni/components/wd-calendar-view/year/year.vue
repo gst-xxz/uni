@@ -2,14 +2,21 @@
   <pro-toast selector="wd-year" />
 
   <view class="wd-year year">
-    <view class="wd-year__title">{{ yearTitle(date) }}</view>
-    <view class="wd-year__months">
+    <view class="wd-year__title flex items-center justify-center h-[45px] text-sm text-black/85">{{ yearTitle(date) }}
+    </view>
+    <view class="wd-year__months flex flex-wrap text-base text-black/85">
       <view v-for="(item, index) in months" :key="index"
-        :class="`wd-year__month ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
+        :class="cn(`wd-year__month relative w-1/4 h-16 leading-[1] text-center ${item.type ? itemClass(item.type, value!, type) : ''}`)"
         @click="handleDateClick(index)">
-        <view class="wd-year__month-top">{{ item.topInfo }}</view>
-        <view class="wd-year__month-text">{{ getMonthLabel(item.date) }}</view>
-        <view class="wd-year__month-bottom">{{ item.bottomInfo }}</view>
+        <view class="wd-year__month-top absolute top-2.5 left-0 right-0 text-center text-[10px] leading-[1.1]">
+          {{ item.topInfo }}
+        </view>
+        <view :class='cn("wd-year__month-text my-0 mx-auto text-center w-[50px]", {
+          "text-black/25": item.disabled
+        })'>{{ getMonthLabel(item.date) }}</view>
+        <view class="wd-year__month-bottom absolute bottom-2.5 left-0 right-0 text-center text-[10px] leading-[1.1]">
+          {{ item.bottomInfo }}
+        </view>
       </view>
     </view>
   </view>
@@ -25,15 +32,15 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdToast from '../../pro-toast/pro-toast.vue'
 import { computed, ref, watch } from 'vue'
 import { deepClone, isArray, isFunction } from '../../common/util'
 import { compareMonth, formatYearTitle, getDateByDefaultTime, getItemClass, getMonthByOffset, getMonthOffset } from '../utils'
-import { useToast } from '../../pro-toastt'
+import { useToast } from '../../pro-toast'
 import { useTranslate } from '../../composables/useTranslate'
 import { dayjs } from '../../common/dayjs'
 import { yearProps } from './types'
 import type { CalendarDayItem, CalendarDayType, CalendarType } from '../types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(yearProps)
 const emit = defineEmits(['change'])

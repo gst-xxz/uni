@@ -1,53 +1,53 @@
 <template>
   <pro-toast></pro-toast>
   <page-wraper>
-    <wd-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop
-      @click-left="handleClickLeft"></wd-navbar>
+    <pro-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop
+      @click-left="handleClickLeft"></pro-navbar>
 
     <demo-block title="基础用法" transparent>
-      <wd-navbar title="标题"></wd-navbar>
+      <pro-navbar title="标题"></pro-navbar>
     </demo-block>
 
     <demo-block title="返回上级" transparent>
-      <wd-navbar title="标题" left-text="返回" left-arrow @click-left="handleClickLeft"></wd-navbar>
+      <pro-navbar title="标题" left-text="返回" left-arrow @click-left="handleClickLeft"></pro-navbar>
     </demo-block>
 
     <demo-block title="右侧按钮" transparent>
-      <wd-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft"
-        @click-right="handleClickRight"></wd-navbar>
+      <pro-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft"
+        @click-right="handleClickRight"></pro-navbar>
     </demo-block>
 
     <demo-block title="使用插槽" transparent>
-      <wd-navbar title="标题" @click-left="handleClickLeft">
+      <pro-navbar title="标题" @click-left="handleClickLeft">
         <template #left>
-          <pro-icon name="arrow-left" size="24px" class="wd-navbar__arrow" />
+          <pro-icon name="arrow-left" size="24px" class="pro-navbar__arrow" />
         </template>
         <template #right>
           <pro-icon name="search" size="18" />
         </template>
-      </wd-navbar>
+      </pro-navbar>
     </demo-block>
 
     <demo-block title="禁用按钮" transparent>
-      <wd-navbar title="标题" left-text="返回" right-text="按钮" left-arrow left-disabled right-disabled></wd-navbar>
+      <pro-navbar title="标题" left-text="返回" right-text="按钮" left-arrow left-disabled right-disabled></pro-navbar>
     </demo-block>
 
     <demo-block title="胶囊样式" transparent>
-      <wd-navbar title="标题" left-text="返回" right-text="设置" left-arrow>
+      <pro-navbar title="标题" left-text="返回" right-text="设置" left-arrow>
         <template #capsule>
-          <wd-navbar-capsule @back="handleBack" @back-home="handleBackHome"></wd-navbar-capsule>
+          <pro-navbar-capsule @back="handleBack" @back-home="handleBackHome"></pro-navbar-capsule>
         </template>
-      </wd-navbar>
+      </pro-navbar>
     </demo-block>
 
     <demo-block title="带搜索栏" transparent>
-      <wd-navbar left-text="返回" right-text="设置" left-arrow>
+      <pro-navbar left-text="返回" right-text="设置" left-arrow>
         <template #title>
           <view class="search-box">
-            <wd-search v-model="keyword" hide-cancel placeholder-left></wd-search>
+            <pro-search v-model="keyword" hide-cancel placeholder-left></pro-search>
           </view>
         </template>
-      </wd-navbar>
+      </pro-navbar>
     </demo-block>
     <view style="height: 500rpx"></view>
   </page-wraper>

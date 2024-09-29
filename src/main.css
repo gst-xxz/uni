@@ -151,3 +151,12 @@
 .left-unset {
   left: unset;
 }
+
+.appearance-none {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.overflow-scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}

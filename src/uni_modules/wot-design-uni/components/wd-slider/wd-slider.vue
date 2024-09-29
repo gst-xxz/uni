@@ -159,7 +159,7 @@ watch(
 const { proxy } = getCurrentInstance() as any
 
 const rootClass = computed(() => {
-  const rootClass = `wd-slider ${!props.hideLabel ? 'wd-slider__has-label' : ''} ${props.disabled ? 'wd-slider--disabled' : ''} ${props.customClass}`
+  const rootClass = `wd-slider flex ${!props.hideLabel ? 'wd-slider__has-label' : ''} ${props.disabled ? 'wd-slider--disabled' : ''} ${props.customClass}`
   return rootClass
 })
 

@@ -1,7 +1,7 @@
 <template>
   <view class="circle">
     <page-wraper>
-      <wd-message-box></wd-message-box>
+      <pro-message-box></pro-message-box>
 
       <demo-block title="基础用法">
         <pro-circle custom-class="custom-circle" v-model="current" :text="current + '%'" />

@@ -91,9 +91,6 @@ $-size-side-padding: var(--wot-size-side-padding, 15px) !default; // 屏幕两�
 $-action-sheet-weight: var(--wot-action-sheet-weight, 500) !default; // 面板字重
 $-action-sheet-radius: var(--wot-action-sheet-radius, 16px) !default; // 面板圆角大小
 $-action-sheet-loading-size: var(--wot-action-sheet-loading-size, 20px) !default; // loading动画尺寸
-$-action-sheet-action-height: var(--wot-action-sheet-action-height, 48px) !default; // 单条菜单高度
-$-action-sheet-color: var(--wot-action-sheet-color, rgba(0, 0, 0, 0.85)) !default; // 选项名称颜色
-$-action-sheet-fs: var(--wot-action-sheet-fs, $-fs-title) !default; // 选项名称字号
 $-action-sheet-active-color: var(--wot-action-sheet-active-color, $-color-bg) !default; // 点击高亮颜色
 $-action-sheet-subname-fs: var(--wot-action-sheet-subname-fs, $-fs-secondary) !default; // 描述信息字号
 $-action-sheet-subname-color: var(--wot-action-sheet-subname-color, rgba(0, 0, 0, 0.45)) !default; // 描述信息颜色
@@ -203,15 +200,10 @@ $-cell-vertical-top: var(--wot-cell-vertical-top, 16px) !default; // 表单类�
 /* calendar */
 $-calendar-fs: var(--wot-calendar-fs, 16px) !default;
 $-calendar-panel-padding: var(--wot-calendar-panel-padding, 0 12px) !default;
-$-calendar-panel-title-fs: var(--wot-calendar-panel-title-fs, 14px) !default;
-$-calendar-panel-title-color: var(--wot-calendar-panel-title-color, rgba(0, 0, 0, 0.85)) !default;
 $-calendar-week-color: var(--wot-calendar-week-color, rgba(0, 0, 0, 0.85)) !default;
 $-calendar-week-height: var(--wot-calendar-week-height, 36px) !default;
 $-calendar-week-fs: var(--wot-calendar-week-fs, 12px) !default;
-$-calendar-day-fs: var(--wot-calendar-day-fs, 16px) !default;
 $-calendar-day-color: var(--wot-calendar-day-color, rgba(0, 0, 0, 0.85)) !default;
-$-calendar-day-fw: var(--wot-calendar-day-fw, 500) !default;
-$-calendar-day-height: var(--wot-calendar-day-height, 64px) !default;
 $-calendar-month-width: var(--wot-calendar-month-width, 50px) !default;
 $-calendar-active-color: var(--wot-calendar-active-color, $-color-theme) !default;
 $-calendar-disabled-color: var(--wot-calendar-disabled-color, rgba(0, 0, 0, 0.25)) !default;
@@ -327,9 +319,6 @@ $-textarea-icon-size-large: var(--wot-textarea-icon-size-large, 18px) !default; 
 $-message-box-radius: var(--wot-message-box-radius, 16px) !default; // 圆角大小
 $-message-box-padding: var(--wot-message-box-padding, 25px 24px 0) !default; // 主体内容padding
 $-message-box-title-fs: var(--wot-message-box-title-fs, 16px) !default; // 标题字号
-$-message-box-content-fs: var(--wot-message-box-content-fs, 14px) !default; // 内容字号
-$-message-box-content-color: var(--wot-message-box-content-color, #666666) !default; // 内容颜色
-$-message-box-content-max-height: var(--wot-message-box-content-max-height, 264px) !default; // 内容最大高度
 $-message-box-content-scrollbar-width: var(--wot-message-box-content-scrollbar-width, 4px) !default; // 内容滚动条宽度
 $-message-box-content-scrollbar-color: var(--wot-message-box-content-scrollbar-color, rgba(0, 0, 0, 0.1)) !default; // 内容滚动条颜色
 
@@ -498,7 +487,6 @@ $-sort-button-line-height: var(--wot-sort-button-line-height, 3px) !default; // 
 $-sort-button-line-color: var(--wot-sort-button-line-color, $-color-theme) !default; // 下划线颜色
 
 /* steps */
-$-steps-icon-size: var(--wot-steps-icon-size, 22px) !default; // 图标尺寸
 $-steps-inactive-color: var(--wot-steps-inactive-color, rgba(0, 0, 0, 0.25)) !default; // 等待状态文字颜色
 $-steps-finished-color: var(--wot-steps-finished-color, $-color-theme) !default; // 完成文字颜色
 $-steps-icon-text-fs: var(--wot-steps-icon-text-fs, $-fs-content) !default; // 数字图标文字字号
@@ -606,7 +594,6 @@ $-card-title-fs: var(--wot-card-title-fs, $-fs-title) !default; //  矩形卡片
 $-card-content-border-color: var(--wot-card-content-border-color, rgba(0, 0, 0, 0.09)) !default; // 内容边框
 $-card-rectangle-title-padding: var(--wot-card-rectangle-title-padding, 15px 15px 12px) !default; // 矩形卡片头部内边距
 $-card-rectangle-content-padding: var(--wot-card-rectangle-content-padding, 16px 0) !default; // 矩形卡片内容内边距
-$-card-rectangle-footer-padding: var(--wot-card-rectangle-footer-padding, 12px 0) !default; // 矩形卡片底部内边距
 $-card-content-color: var(--wot-card-content-color, rgba(0, 0, 0, 0.45)) !default; // 文本内容颜色
 $-card-content-line-height: var(--wot-card-content-line-height, 1.428) !default; // 文本内容行高
 $-card-content-margin: var(--wot-card-content-margin, 13px 0 12px) !default; // 内容外边距
@@ -739,7 +726,6 @@ $-number-keyboard-key-background: var(--wot-number-keyboard-key-background, $-co
 $-number-keyboard-key-border-radius: var(--wot-number-keyboard-key-border-radius, 8px) !default;
 $-number-keyboard-delete-font-size: var(--wot-number-keyboard-delete-font-size, 16px) !default;
 $-number-keyboard-key-active-color: var(--wot-number-keyboard-key-active-color, $-color-gray-3) !default;
-$-number-keyboard-button-text-color: var(--wot-number-keyboard-button-text-color, $-color-white) !default;
 $-number-keyboard-button-background: var(--wot-number-keyboard--button-background, $-color-theme) !default;
 $-number-keyboard-button-active-opacity: var(--wot-number-keyboard-button-active-opacity, 0.6) !default;
 $-number-keyboard-background: var(--wot-number-keyboard-background, $-color-gray-2) !default;

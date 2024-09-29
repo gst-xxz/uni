@@ -5,8 +5,6 @@
 
   @include e(btn) {
     @include m(prev, next) {
-      background: $-swiper-nav-btn-bg-color;
-
       &::after {
         position: absolute;
         left: 50%;

@@ -3,7 +3,7 @@
     <page-wraper>
       <view class="icon">
         <view style="position: sticky; top: 0; z-index: 2">
-          <wd-search hide-cancel placeholder="查找图标" light v-model="keyword" @search="handleSearch"
+          <pro-search hide-cancel placeholder="查找图标" light v-model="keyword" @search="handleSearch"
             @clear="handleClear" />
         </view>
         <view class="icon-list">

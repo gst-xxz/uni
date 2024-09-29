@@ -2,15 +2,17 @@
   <view
     :class="`wd-input-number inline-block leading-[1.15] user-select-none ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`"
     :style="customStyle">
-    <view :class="`wd-input-number__action relative inline-block ${minDisabled || disableMinus ? 'is-disabled' : ''}`"
+    <view
+      :class="`wd-input-number__action relative inline-block align-middle box-border ${minDisabled || disableMinus ? 'is-disabled' : ''}`"
       @click="sub">
       <pro-icon name="minus"
         custom-class="absolute inline-block left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm w-[14px] h-[14px]"></pro-icon>
     </view>
-    <view v-if="!withoutInput" class="wd-input-number__inner" @click.stop="">
-      <input class="wd-input-number__input" :style="`${inputWidth ? 'width: ' + inputWidth : ''}`" type="digit"
-        :disabled="disabled || disableInput" v-model="inputValue" :placeholder="placeholder" @input="handleInput"
-        @focus="handleFocus" @blur="handleBlur" />
+    <view v-if="!withoutInput" class="wd-input-number__inner relative inline-block align-middle" @click.stop="">
+      <input
+        class="wd-input-number__input relative block py-0 px-0.5 box-border z-[1] bg-transparent border-none outline-none text-center"
+        :style="`${inputWidth ? 'width: ' + inputWidth : ''}`" type="digit" :disabled="disabled || disableInput"
+        v-model="inputValue" :placeholder="placeholder" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
       <view class="wd-input-number__input-border"></view>
     </view>
     <view :class="`wd-input-number__action relative inline-block ${maxDisabled || disablePlus ? 'is-disabled' : ''}`"

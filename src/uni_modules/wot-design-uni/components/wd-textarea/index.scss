@@ -2,10 +2,7 @@
 @import "../common/abstracts/mixin";
 
 @include b(textarea) {
-  position: relative;
   -webkit-tap-highlight-color: transparent;
-  text-align: left;
-  background: $-textarea-bg;
   padding: $-textarea-cell-padding $-textarea-padding;
 
   &::after {
@@ -24,18 +21,12 @@
 
 
   @include e(label) {
-    position: relative;
-    display: flex;
     width: $-input-cell-label-width;
     color: $-cell-title-color;
     margin-right: $-cell-padding;
-    box-sizing: border-box;
     font-size: $-textarea-fs;
-    flex-shrink: 0;
 
     @include when(required) {
-      padding-left: 12px;
-
       &::after {
         position: absolute;
         left: 0;
@@ -62,11 +53,6 @@
     :deep(.wd-textarea__icon) {
       margin-left: 0;
     }
-  }
-
-  @include e(suffix) {
-    flex-shrink: 0;
-    line-height: initial;
   }
 
   @include e(value) {

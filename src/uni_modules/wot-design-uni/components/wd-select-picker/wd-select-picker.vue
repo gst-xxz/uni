@@ -26,10 +26,10 @@
         </view>
       </view>
     </view>
-    <wd-action-sheet v-model="pickerShow" :duration="250" :title="title || translate('title')"
+    <pro-action-sheet v-model="pickerShow" :duration="250" :title="title || translate('title')"
       :close-on-click-modal="closeOnClickModal" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
       @close="close" @opened="scrollIntoView ? setScrollIntoView() : ''" custom-header-class="wd-select-picker__header">
-      <wd-search v-if="filterable" v-model="filterVal"
+      <pro-search v-if="filterable" v-model="filterVal"
         :placeholder="filterPlaceholder || translate('filterPlaceholder')" hide-cancel placeholder-left
         @change="handleFilterChange" />
       <scroll-view
@@ -83,7 +83,7 @@
         <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText ||
           translate('confirm') }}</wd-button>
       </view>
-    </wd-action-sheet>
+    </pro-action-sheet>
   </view>
 </template>
 <script lang="ts">
@@ -98,7 +98,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import wdCheckbox from '../wd-checkbox/wd-checkbox.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
 import wdButton from '../wd-button/wd-button.vue'

@@ -1,9 +1,9 @@
 <template>
   <page-wraper>
-    <wd-message-box></wd-message-box>
-    <wd-message-box selector="wd-message-box-slot">
+    <pro-message-box></pro-message-box>
+    <pro-message-box selector="pro-message-box-slot">
       <pro-rate custom-class="custom-rate-class" v-model="rate" />
-    </wd-message-box>
+    </pro-message-box>
     <demo-block title="alert">
       <wd-button @click="alert">alert</wd-button>
     </demo-block>
@@ -24,7 +24,7 @@
       <wd-button @click="alertWithLongChar">alert</wd-button>
     </demo-block>
 
-    <demo-block title="使用wd-message-box组件，通过slot插入其他组件内容">
+    <demo-block title="使用pro-message-box组件，通过slot插入其他组件内容">
       <wd-button @click="withSlot">custom</wd-button>
     </demo-block>
 
@@ -41,7 +41,7 @@ const value1 = ref<string>('')
 
 const toast = useToast()
 const message = useMessage()
-const message1 = useMessage('wd-message-box-slot')
+const message1 = useMessage('pro-message-box-slot')
 
 function alert() {
   message.alert('操作成功')

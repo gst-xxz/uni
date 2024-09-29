@@ -4,29 +4,29 @@
     <view>
       <demo-block title="基本用法">
         <wd-button @click="showActions1">弹出菜单</wd-button>
-        <wd-action-sheet v-model="show" :actions="actions" />
+        <pro-action-sheet v-model="show" :actions="actions" />
       </demo-block>
       <demo-block title="选项状态">
         <wd-button @click="showActions2">弹出菜单</wd-button>
       </demo-block>
       <demo-block title="取消按钮">
         <wd-button @click="showActions3">弹出菜单</wd-button>
-        <wd-action-sheet v-model="show1" :actions="actions" cancel-text="取消" @close="close1" />
+        <pro-action-sheet v-model="show1" :actions="actions" cancel-text="取消" @close="close1" />
       </demo-block>
       <demo-block title="自定义面板单行">
         <wd-button @click="showActions4">弹出菜单</wd-button>
-        <wd-action-sheet v-model="show2" :panels="panels" cancel-text="取消" @close="close2" @select="select" />
+        <pro-action-sheet v-model="show2" :panels="panels" cancel-text="取消" @close="close2" @select="select" />
       </demo-block>
       <demo-block title="自定义面板多行">
         <wd-button @click="showActions5">弹出菜单</wd-button>
-        <wd-action-sheet v-model="show3" :panels="panels" cancel-text="取消" @close="close3" @select="select1" />
+        <pro-action-sheet v-model="show3" :panels="panels" cancel-text="取消" @close="close3" @select="select1" />
       </demo-block>
       <demo-block title="标题">
         <wd-button @click="showActions6">弹出菜单</wd-button>
       </demo-block>
-      <wd-action-sheet v-model="show4" title="标题" @close="close4" :cancelText="cancelText">
+      <pro-action-sheet v-model="show4" title="标题" @close="close4" :cancelText="cancelText">
         <view style="padding: 15px 15px 150px 15px">内容</view>
-      </wd-action-sheet>
+      </pro-action-sheet>
     </view>
   </page-wraper>
 </template>

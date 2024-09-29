@@ -1,6 +1,11 @@
 <template>
-  <view @click="handleClick" :class="`wd-sidebar-item flex items-center justify-center relative p-4 box-border ${active ? 'wd-sidebar-item--active font-semibold' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
-    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
+  <view @click="handleClick" :class="cn(`
+  wd-sidebar-item flex items-center justify-center relative p-4 box-border text-base 
+  ${active ? 'wd-sidebar-item--active font-semibold' : ''} 
+  ${prefix ? 'wd-sidebar-item--prefix' : ''}  
+  ${suffix ? 'wd-sidebar-item--suffix' : ''} 
+  ${disabled ? 'wd-sidebar-item--disabled cursor-not-allowed' : ''} 
+  ${customClass}`)" :style="customStyle">
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
       <pro-icon custom-class="mr-0.5 text-xl" :name="icon"></pro-icon>
@@ -29,6 +34,7 @@ import { SIDEBAR_KEY } from '../wd-sidebar/types'
 import { sidebarItemProps } from './types'
 import type { BadgeProps } from '../pro-badge/types'
 import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(sidebarItemProps)
 

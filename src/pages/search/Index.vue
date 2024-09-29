@@ -3,24 +3,24 @@
     <pro-toast />
     <page-wraper>
       <demo-block title="基本用法" transparent>
-        <wd-search v-model="value1" @search="search" @change="change" @cancel="cancel" @clear="clear" />
+        <pro-search v-model="value1" @search="search" @change="change" @cancel="cancel" @clear="clear" />
       </demo-block>
 
       <demo-block title="白色输入框" transparent>
-        <wd-search light />
+        <pro-search light />
       </demo-block>
 
       <demo-block title="搜索占位符居左" transparent>
-        <wd-search placeholder-left />
+        <pro-search placeholder-left />
       </demo-block>
 
       <demo-block title="禁用且隐藏取消按钮" transparent>
-        <wd-search disabled hide-cancel />
+        <pro-search disabled hide-cancel />
       </demo-block>
 
       <view style="margin: 15px 0; color: #666">
         <view style="padding: 0 15px; margin: 10px 0; font-size: 13px">自定义左侧插槽</view>
-        <wd-search v-model="value3">
+        <pro-search v-model="value3">
           <template #prefix>
             <wd-popover mode="menu" :content="menu" @menuclick="changeSearchType">
               <view class="search-type">
@@ -29,23 +29,23 @@
               </view>
             </wd-popover>
           </template>
-        </wd-search>
+        </pro-search>
       </view>
 
       <demo-block title="自定义右侧文案" transparent>
-        <wd-search placeholder="请输入订单号/订单名称" cancel-txt="搜索" />
+        <pro-search placeholder="请输入订单号/订单名称" cancel-txt="搜索" />
       </demo-block>
 
       <demo-block title="设置最大长度" transparent>
-        <wd-search v-model="value2" :maxlength="4" />
+        <pro-search v-model="value2" :maxlength="4" />
       </demo-block>
 
       <demo-block title="清空后自动聚焦" transparent>
-        <wd-search v-model="value4" focus-when-clear />
+        <pro-search v-model="value4" focus-when-clear />
       </demo-block>
 
       <demo-block title="自动聚焦" transparent>
-        <wd-search v-model="value5" focus />
+        <pro-search v-model="value5" focus />
       </demo-block>
     </page-wraper>
   </view>

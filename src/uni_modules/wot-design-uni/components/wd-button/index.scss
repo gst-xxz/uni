@@ -2,9 +2,7 @@
 @import './../common/abstracts/variable.scss';
 
 @include b(button) {
-  -webkit-appearance: none;
   transition: opacity 0.2s;
-  user-select: none;
 
   &::before {
     position: absolute;
@@ -30,37 +28,6 @@
     &:active::before {
       opacity: 0.15;
     }
-  }
-
-  @include when(disabled) {
-    opacity: $-button-disabled-opacity;
-  }
-
-  @include when(loading) {}
-
-  @include when(primary) {
-    background: $-button-primary-bg-color;
-    color: $-button-primary-color;
-  }
-
-  @include when(success) {
-    background: $-button-success-bg-color;
-    color: $-button-success-color;
-  }
-
-  @include when(info) {
-    background: $-button-info-bg-color;
-    color: $-button-info-color;
-  }
-
-  @include when(warning) {
-    background: $-button-warning-bg-color;
-    color: $-button-warning-color;
-  }
-
-  @include when(error) {
-    background: $-button-error-bg-color;
-    color: $-button-error-color;
   }
 
   @include when(small) {
@@ -157,17 +124,7 @@
     }
   }
 
-
-  @include when(round) {
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
   @include when(text) {
-    color: $-button-primary-bg-color;
-    min-width: 0;
-    padding: 4px 0;
-
     &::after {
       display: none;
     }
@@ -229,11 +186,6 @@
 
   }
 
-
-  @include when(block) {
-    display: flex;
-  }
-
   @include when(icon) {
     width: $-button-icon-size;
     height: $-button-icon-size;
@@ -256,22 +208,8 @@
   }
 
   @include edeep(icon) {
-    display: block;
-    margin-right: 6px;
     font-size: $-button-icon-fs;
-    vertical-align: middle;
   }
-
-  @include e(text) {
-    user-select: none;
-    white-space: nowrap;
-  }
-}
-
-// 微信2.8.0以上版本加了较高层级的默认样式，需要重置掉
-.wd-button {
-  min-height: auto;
-  width: auto;
 }
 
 @keyframes wd-rotate {
@@ -282,10 +220,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-.wd-button__loading {
-  margin-right: 2px;
-}
-.wd-button__loading-icon{
-  vertical-align: top;
 }

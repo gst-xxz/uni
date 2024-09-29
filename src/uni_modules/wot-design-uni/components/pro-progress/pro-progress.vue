@@ -1,18 +1,18 @@
 <template>
-  <view :class="`wd-progress w-full flex items-center pt-[9px] pb-2 px-0 h-[3px] ${customClass}`" :style="customStyle">
+  <view :class="cn('w-full flex items-center pt-[9px] pb-2 px-0 h-[3px] ', customClass)" :style="customStyle">
     <!--进度条-->
-    <view class="wd-progress__outer block relative flex-1 h-[3px] rounded-[1.5px] bg-[rgba(229,229,229,1)]">
-      <view :class="['wd-progress__inner block h-full rounded-[1.5px] absolute top-0 left-0 text-lg', {
+    <view class="block relative flex-1 h-[3px] rounded-[1.5px] bg-[rgba(229,229,229,1)]">
+      <view :class="cn('block h-full rounded-[1.5px] absolute top-0 left-0 text-lg bg-[linear-gradient(315deg,#517cf0_0%,#769ef5_100%)] transition-[width] ease-linear', {
         'bg-danger': status === 'danger',
         'bg-success': status === 'success'
-      }]" :style="rootStyle"></view>
+      })" :style="rootStyle"></view>
     </view>
     <!--文案、图标-->
     <view v-if="!hideText" class="w-[30px] ml-[9px] text-sm text-[#333]">
       {{ percentage }}%
     </view>
     <pro-icon v-else-if="status"
-      :custom-class="`w-[30px] ml-[9px] text-lg text-[#333] ${status === 'danger' ? 'text-danger' : ''} ${status === 'success' ? 'text-success' : ''}`"
+      :custom-class="cn(`w-[30px] ml-[9px] text-lg text-[#333] ${status === 'danger' ? 'text-danger' : ''} ${status === 'success' ? 'text-success' : ''}`)"
       :name="status == 'danger' ? 'close-outline' : 'check-outline'"
       :color="typeof color === 'string' ? color : ''"></pro-icon>
   </view>
@@ -20,7 +20,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-progress',
+  name: 'pro-progress',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -34,6 +34,7 @@ export default {
 import { computed, ref, watch } from 'vue'
 import { checkNumRange, isArray, objToStyle } from '../common/util'
 import { progressProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(progressProps)
 // 进度条展示的颜色
@@ -171,6 +172,3 @@ function controlProgress() {
     })
 }
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

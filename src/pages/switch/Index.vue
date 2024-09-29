@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-message-box></wd-message-box>
+    <pro-message-box></pro-message-box>
     <view>
       <demo-block title="基本用法">
         <pro-switch v-model="checked1" @change="handleChange1" />

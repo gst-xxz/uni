@@ -1,4 +1,4 @@
-import type { ActionSheetProps } from '@/uni_modules/wot-design-uni/components/wd-action-sheet/types'
+import type { ActionSheetProps } from '@/uni_modules/wot-design-uni/components/pro-action-sheet/types'
 
 export type ActionSheetInstance = (props: ActionSheetProps) => void
 

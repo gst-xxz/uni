@@ -3,7 +3,7 @@
     <view class="wd-skeleton__content" v-if="show">
       <view class="wd-skeleton__row flex justify-between items-center mb-4 only:mb-0 last:mb-0"
         v-for="(row, index) of parsedRowCols" :key="`row-${index}`">
-        <view v-for="(col, idx) of row" :key="`col-${idx}`" :class="col.class" :style="col.style" />
+        <view v-for="(col, idx) of row" :key="`col-${idx}`" :class="cn(col.class)" :style="col.style" />
       </view>
     </view>
     <view v-else>
@@ -26,6 +26,7 @@ import { ref, computed, watch } from 'vue'
 import type { SkeletonRowCol, SkeletonRowColObj } from './types'
 import { skeletonProps } from './types'
 import { isNumber, addUnit } from '../common/util'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const themeMap = {
   avatar: [{ type: 'circle', height: '64px', width: '64px' }],

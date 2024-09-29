@@ -1,8 +1,8 @@
 <template>
   <page-wraper show-dark-mode>
-    <wd-message-box />
+    <pro-message-box />
     <pro-toast />
-    <wd-action-sheet v-model="showAction" :actions="actions" />
+    <pro-action-sheet v-model="showAction" :actions="actions" />
 
     <form @submit="formSubmit">
       <pro-cell-group custom-class="group" title="基础信息" border>

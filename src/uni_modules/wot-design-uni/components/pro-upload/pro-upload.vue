@@ -1,7 +1,7 @@
 <template>
-  <view :class="['relative flex flex-wrap', customClass]" :style="customStyle">
+  <view :class="cn('relative flex flex-wrap', customClass)" :style="customStyle">
     <!-- 预览列表 -->
-    <view :class="['relative mr-3 mb-3 ml-0 mt-0 w-20 h-20', customPreviewClass]" v-for="(file, index) in uploadFiles"
+    <view :class="cn('relative mr-3 mb-3 ml-0 mt-0 w-20 h-20', customPreviewClass)" v-for="(file, index) in uploadFiles"
       :key="index">
       <!-- 成功时展示图片 -->
       <view class="flex flex-col justify-center items-center w-full h-full">
@@ -67,13 +67,13 @@
       </view>
       <!-- 唤起项 -->
       <view v-else @click="handleChoose"
-        :class="['relative inline-flex flex-col justify-center items-center w-10 h-10 text-[32px] bg-black/5 text-black/25 mb-3', disabled ? 'is-disabled text-white/10' : '', customEvokeClass]">
+        :class="cn('relative inline-flex flex-col justify-center items-center w-10 h-10 text-[32px] bg-black/5 text-black/25 mb-3', disabled ? 'is-disabled text-white/10' : '', customEvokeClass)">
         <!-- 唤起项图标 -->
         <pro-icon class="w-8 h-8" name="fill-camera"></pro-icon>
         <!-- 有限制个数时确认是否展示限制个数 -->
-        <view v-if="limit && showLimitNum" class="text-sm leading-[1] mt-2">（{{ uploadFiles.length
-          }}/{{
-            limit }}）</view>
+        <view v-if="limit && showLimitNum" class="text-sm leading-[1] mt-2">
+          （{{ uploadFiles.length }}/{{ limit }}）
+        </view>
       </view>
     </block>
   </view>
@@ -82,7 +82,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-upload',
+  name: 'pro-upload',
   options: {
     addGlobalClass: true,
     virtualHost: true,
@@ -92,9 +92,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdVideoPreview from '../wd-video-preview/wd-video-preview.vue'
-
 import { computed, ref, watch } from 'vue'
 import { context, getType, isEqual, isImageUrl, isVideoUrl, isFunction, isDef } from '../common/util'
 import { chooseFile } from './utils'
@@ -687,7 +684,7 @@ function isImage(file: UploadFileItem) {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: $-color-white;
+    background-color: #fff;
     left: 0;
     z-index: -1;
   }

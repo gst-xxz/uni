@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-message-box></wd-message-box>
+    <pro-message-box></pro-message-box>
     <view class="demo-body" @click="closeOutside">
       <demo-block title="基本用法" transparent>
         <pro-drop-menu>
@@ -29,7 +29,7 @@
             <pro-drop-menu-item v-model="value4" :options="option1" @change="handleChange4" />
           </pro-drop-menu>
           <view style="flex: 1">
-            <wd-sort-button v-model="value5" title="上架时间" @change="handleChange5" />
+            <pro-sort-button v-model="value5" title="上架时间" @change="handleChange5" />
           </view>
         </view>
       </demo-block>

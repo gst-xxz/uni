@@ -3,19 +3,6 @@
 
 
 @include b(grid-item) {
-  height: 100%;
-  font-size: $-grid-item-fs;
-  box-sizing: border-box;
-
-  position: relative;
-  float: left;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-
   @include when(border) {
     &::before {
       content: "";
@@ -66,19 +53,10 @@
       display: none;
     }
   }
-  @include e(wrapper) {
-    display: inline-block;
-    margin: 0 auto;
-  }
 
   @include e(content) {
-    height: 100%;
     padding: $-grid-item-padding;
     background-color: $-grid-item-bg;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
     @include when(square) {
       box-sizing: border-box;

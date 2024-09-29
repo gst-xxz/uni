@@ -1,11 +1,14 @@
 <template>
-  <view :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click"
-    :style="`${style};${customStyle}`">
-    <view :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`"
+  <view
+    :class="`wd-grid-item h-full box-border text-xs relative float-left flex flex-col justify-center text-center overflow-hidden ${border && !gutter ? itemClass : ''} ${customClass}`"
+    @click="click" :style="`${style};${customStyle}`">
+    <view
+      :class="`wd-grid-item__content h-full relative flex flex-col justify-center ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`"
       :style="gutterContentStyle">
       <slot v-if="useSlot" />
       <block v-else>
-        <view :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
+        <view :style="'width:' + iconSize + '; height: ' + iconSize"
+          class="wd-grid-item__wrapper inline-block my-0 mx-auto">
           <pro-badge custom-class="badge" v-bind="customBadgeProps">
             <template v-if="useIconSlot">
               <slot name="icon" />

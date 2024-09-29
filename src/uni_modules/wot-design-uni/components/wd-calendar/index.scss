@@ -79,7 +79,7 @@
   }
 
   @include e(title) {
-    color: $-action-sheet-color;
+    color: rgba(0, 0, 0, 0.85);
     height: $-action-sheet-title-height;
     line-height: $-action-sheet-title-height;
     font-size: $-action-sheet-title-fs;

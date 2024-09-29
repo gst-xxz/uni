@@ -4,12 +4,10 @@
 
 @include b(sidebar-item) {
   
-  font-size: 16px;
   color: $-font-gray-1;
   background: $-sidebar-bg;
   min-height: 56px;
   white-space: wrap;
-  line-height: 24px;
 
   &:active {
     background-color: $-sidebar-hover-bg;
@@ -47,7 +45,6 @@
 
   @include m(disabled) {
     color: $-sidebar-disabled-color;
-    cursor: not-allowed;
 
     &:active {
       background-color: $-sidebar-bg;

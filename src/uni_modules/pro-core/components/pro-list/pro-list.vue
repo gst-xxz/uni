@@ -37,7 +37,7 @@ export default {
     // 是否分页
     isPage: { type: Boolean, default: true },
     // 加载更多文字
-    textMap: { type: Object, default: () => ({ loading: '加载中...', finished: '没有更多了', empty: '暂无数据' }) }
+    textMap: { type: Object, default: () => ({ loading: '加载中...', finished: '没有更多了', empty: '暂无数据' }) },
   },
   data() {
     return {

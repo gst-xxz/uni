@@ -2,35 +2,7 @@
 @import '../../common/abstracts/mixin';
 
 @include b(month) {
-  @include e(title) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    font-size: $-calendar-panel-title-fs;
-    color: $-calendar-panel-title-color;
-  }
-
-  @include e(days) {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: $-calendar-day-fs;
-    color: $-calendar-day-color;
-  }
-
   @include e(day) {
-    position: relative;
-    width: 14.285%;
-    height: $-calendar-day-height;
-    line-height: $-calendar-day-height;
-    text-align: center;
-
-    @include when(disabled) {
-      .wd-month__day-text {
-        color: $-calendar-disabled-color;
-      }
-    }
-
     @include when(current) {
       color: $-calendar-active-color;
     }
@@ -53,7 +25,7 @@
       &::after {
         position: absolute;
         content: '';
-        height: $-calendar-day-height;
+        height: 64px;
         top: 0;
         right: 0;
         left: 50%;
@@ -76,7 +48,7 @@
       &::after {
         position: absolute;
         content: '';
-        height: $-calendar-day-height;
+        height: 64px;
         top: 0;
         left: 0;
         right: 50%;
@@ -98,34 +70,5 @@
         border-radius: $-calendar-active-border;
       }
     }
-  }
-
-  @include e(day-container) {
-    position: relative;
-    z-index: 2;
-  }
-
-  @include e(day-text) {
-    font-weight: $-calendar-day-fw;
-  }
-
-  @include e(day-top) {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    right: 0;
-    line-height: 1.1;
-    font-size: $-calendar-info-fs;
-    text-align: center;
-  }
-
-  @include e(day-bottom) {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    line-height: 1.1;
-    font-size: $-calendar-info-fs;
-    text-align: center;
   }
 }

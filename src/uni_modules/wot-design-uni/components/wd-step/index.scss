@@ -13,48 +13,31 @@
     }
   }
   @include e(icon) {
-    display: inline-block;
-    position: relative;
-    width: $-steps-icon-size;
-    height: $-steps-icon-size;
-    background: #fff;
-    z-index: 1;
-
     @include when(icon) {
       width: $-steps-is-icon-width;
-      text-align: center;
     }
     @include when(dot) {
       width: $-steps-dot-size;
       height: $-steps-dot-size;
       border: 1px solid transparent;
-      margin-left: -1px;
       border-radius: 50%;
-      background: transparent;
     }
   }
   @include edeep(icon-inner) {
-    font-size: $-steps-icon-size;
     color: $-steps-inactive-color;
   }
   @include e(icon-outer) {
-    width: calc($-steps-icon-size - 2px);
-    height: calc($-steps-icon-size - 2px);
+    width: calc(22px - 2px);
+    height: calc(22px - 2px);
     border: 1px solid $-steps-inactive-color;
     color: $-steps-inactive-color;
     text-align: center;
-    line-height: calc($-steps-icon-size - 2px);
+    line-height: calc(22px - 2px);
     border-radius: 50%;
     font-size: $-steps-icon-text-fs;
   }
   @include e(line) {
-    position: absolute;
-    width: 100%;
-    height: 1px;
     background: $-steps-line-color;
-    transform: scaleY(0.5);
-    top: 50%;
-    left: 0;
   }
   @include e(dot) {
     position: relative;

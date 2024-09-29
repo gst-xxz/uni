@@ -4,63 +4,63 @@
     <view style="overflow: hidden" @click.stop="closeOutside">
       <demo-block title="基本用法">
         <view class="top">
-          <wd-tooltip placement="bottom-start" content="bottom-start 提示文字" @change="handleChange1">
+          <pro-tooltip placement="bottom-start" content="bottom-start 提示文字" @change="handleChange1">
             <wd-button :round="false">bottom-start</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="bottom" content="bottom 提示文字" @change="handleChange2">
+          </pro-tooltip>
+          <pro-tooltip placement="bottom" content="bottom 提示文字" @change="handleChange2">
             <wd-button :round="false">bottom</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="bottom-end" content="bottom-end 提示文字" @change="handleChange3">
+          </pro-tooltip>
+          <pro-tooltip placement="bottom-end" content="bottom-end 提示文字" @change="handleChange3">
             <wd-button :round="false">bottom-end</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
         <view class="left">
-          <wd-tooltip placement="right-start" content="right-start 提示文字" @change="handleChange4">
+          <pro-tooltip placement="right-start" content="right-start 提示文字" @change="handleChange4">
             <wd-button :round="false">right-start</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="right" content="right 提示文字" customStyle="margin: 20px 0" @change="handleChange5">
+          </pro-tooltip>
+          <pro-tooltip placement="right" content="right 提示文字" customStyle="margin: 20px 0" @change="handleChange5">
             <wd-button :round="false">right</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="right-end" content="right-end 提示文字" @change="handleChange6">
+          </pro-tooltip>
+          <pro-tooltip placement="right-end" content="right-end 提示文字" @change="handleChange6">
             <wd-button :round="false">right-end</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
         <view class="right">
-          <wd-tooltip placement="left-start" content="left-start 提示文字" @change="handleChange7">
+          <pro-tooltip placement="left-start" content="left-start 提示文字" @change="handleChange7">
             <wd-button :round="false">
               left-start
               <pro-icon name="setting" />
             </wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="left" content="left 提示文字" customStyle="margin: 20px 0" @change="handleChange8">
+          </pro-tooltip>
+          <pro-tooltip placement="left" content="left 提示文字" customStyle="margin: 20px 0" @change="handleChange8">
             <wd-button :round="false">left</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="left-end" content="left-end 提示文字" @change="handleChange9">
+          </pro-tooltip>
+          <pro-tooltip placement="left-end" content="left-end 提示文字" @change="handleChange9">
             <wd-button :round="false">left-end</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
         <view class="bottom">
-          <wd-tooltip placement="top-start" content="top-start 提示文字" @change="handleChange10">
+          <pro-tooltip placement="top-start" content="top-start 提示文字" @change="handleChange10">
             <wd-button :round="false">top-start</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="top" content="top 提示文字" @change="handleChange11">
+          </pro-tooltip>
+          <pro-tooltip placement="top" content="top 提示文字" @change="handleChange11">
             <wd-button :round="false">top</wd-button>
-          </wd-tooltip>
-          <wd-tooltip placement="top-end" content="top-end 提示文字" @change="handleChange12">
+          </pro-tooltip>
+          <pro-tooltip placement="top-end" content="top-end 提示文字" @change="handleChange12">
             <wd-button :round="false">top-end</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
       <demo-block title="显示关闭按钮">
         <view class="demo-left">
-          <wd-tooltip content="显示关闭按钮" placement="right" show-close @change="handleChange13">
+          <pro-tooltip content="显示关闭按钮" placement="right" show-close @change="handleChange13">
             <wd-button :round="false">显示关闭按钮</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
       <demo-block title="多行文本">
         <view class="demo-left lines-demo">
-          <wd-tooltip placement="right" use-content-slot @change="handleChange14">
+          <pro-tooltip placement="right" use-content-slot @change="handleChange14">
             <wd-button :round="false">多行文本</wd-button>
             <template #content>
               <view class="lines-content">
@@ -69,7 +69,7 @@
                 <view>多行文本3</view>
               </view>
             </template>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
       <demo-block title="控制显隐">
@@ -77,23 +77,23 @@
           <wd-button plain size="small" class="button-control">{{ show15 ? '关闭' : '打开' }}</wd-button>
         </view>
         <view class="demo-left demo-control">
-          <wd-tooltip placement="top" content="控制显隐" v-model="show15">
+          <pro-tooltip placement="top" content="控制显隐" v-model="show15">
             <wd-button :round="false">top</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
       <demo-block title="绑定change事件">
         <view class="demo-left">
-          <wd-tooltip placement="right-end" :content="content" @open="onShow" @close="onHide" @change="handleChange16">
+          <pro-tooltip placement="right-end" :content="content" @open="onShow" @close="onHide" @change="handleChange16">
             <wd-button :round="false">事件</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
       <demo-block title="禁用">
         <view class="demo-left">
-          <wd-tooltip placement="right-end" content="禁用" disabled @change="handleChange17">
+          <pro-tooltip placement="right-end" content="禁用" disabled @change="handleChange17">
             <wd-button :round="false">禁用</wd-button>
-          </wd-tooltip>
+          </pro-tooltip>
         </view>
       </demo-block>
     </view>

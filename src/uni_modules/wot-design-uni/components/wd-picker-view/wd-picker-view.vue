@@ -10,7 +10,7 @@
         :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex" :immediate-change="immediateChange"
         @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
         <picker-view-column v-for="(col, colIndex) in formatColumns" :key="colIndex"
-          class="wd-picker-view-column flex-1 text-center">
+          class="wd-picker-view-column flex-1 text-center relative flex overflow-hidden items-center">
           <view v-for="(row, rowIndex) in col" :key="rowIndex" :class="`wd-picker-view-column__item py-0 px-[15px] text-ellipsis overflow-hidden whitespace-nowrap ${row['disabled'] ? 'text-black/25' : ''}  ${selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
             }`" :style="`line-height: ${itemHeight}px;`">
             {{ row[labelKey] }}

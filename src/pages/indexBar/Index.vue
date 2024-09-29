@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <wd-search hide-cancel placeholder="我要去哪里？" v-model="keyword" @search="handleSearch" @clear="handleClear" />
+    <pro-search hide-cancel placeholder="我要去哪里？" v-model="keyword" @search="handleSearch" @clear="handleClear" />
     <view class="wraper">
       <pro-index-anchor sticky v-if="showList.length">
         <view v-for="item in showList" :key="item.index">

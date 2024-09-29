@@ -8,7 +8,7 @@
         style="position: sticky; top: 0; z-index: 2">
         <view :class="`wd-table__cell ${border ? 'is-border' : ''} ${column.fixed ? 'is-fixed' : ''} ${stripe ? 'is-stripe' : ''} is-${column.align} ${getIsLastFixed(column) && reactiveState.scrollLeft ? 'is-shadow' : ''
           }`" :style="getCellStyle(index)" v-for="(column, index) in children" :key="index">
-          <wd-sort-button v-model="column.$.exposed!.sortDirection.value" allow-reset :line="false"
+          <pro-sort-button v-model="column.$.exposed!.sortDirection.value" allow-reset :line="false"
             :title="column.label" @change="({ value }) => handleSortChange(value, index)" v-if="column.sortable" />
           <text v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</text>
         </view>
@@ -43,7 +43,6 @@ export default {
 
 <script lang="ts" setup>
 import wdTableCol from '../wd-table-col/wd-table-col.vue'
-import wdSortButton from '../wd-sort-button/wd-sort-button.vue'
 import { type CSSProperties, computed, reactive, ref } from 'vue'
 import { addUnit, debounce, isDef, isObj, objToStyle, uuid } from '../common/util'
 import type { SortDirection, TableColumn, TableColumnInstance, TableColumnProps } from '../wd-table-col/types'

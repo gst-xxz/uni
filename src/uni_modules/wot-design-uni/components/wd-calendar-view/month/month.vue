@@ -3,17 +3,22 @@
     <pro-toast selector="wd-month" />
     <view class="month">
       <view class="wd-month">
-        <view class="wd-month__title">{{ monthTitle(date) }}</view>
-        <view class="wd-month__days">
+        <view class="wd-month__title flex items-center justify-center h-[45px] text-sm text-black/85">{{
+          monthTitle(date) }}</view>
+        <view class="wd-month__days flex flex-wrap text-base text-black/85">
           <view v-for="(item, index) in days" :key="index"
-            :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
+            :class="`wd-month__day relative w-[14.285%] h-16 leading-[1] text-center ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
             :style="firstDayStyle(index, item.date, firstDayOfWeek)" @click="handleDateClick(index)">
-            <view class="wd-month__day-container">
-              <view class="wd-month__day-top">{{ item.topInfo }}</view>
-              <view class="wd-month__day-text">
+            <view class="wd-month__day-container relative z-[2] font-medium">
+              <view class="wd-month__day-top absolute top-2.5 left-0 right-0 leading-[1.1] text-center text-[10px]">{{
+                item.topInfo
+                }}</view>
+              <view :class="cn('wd-month__day-text', { 'text-black/25': item.disabled })">
                 {{ item.text }}
               </view>
-              <view class="wd-month__day-bottom">{{ item.bottomInfo }}</view>
+              <view
+                class="wd-month__day-bottom absolute bottom-2.5 left-0 right-0 leading-[1.1] text-center text-[10px]">{{
+                  item.bottomInfo }}</view>
             </view>
           </view>
         </view>
@@ -45,11 +50,12 @@ import {
   getMonthEndDay,
   getWeekRange
 } from '../utils'
-import { useToast } from '../../pro-toastt'
+import { useToast } from '../../pro-toast'
 import { deepClone, isArray, isFunction } from '../../common/util'
 import { useTranslate } from '../../composables/useTranslate'
 import type { CalendarDayItem, CalendarDayType, CalendarType } from '../types'
 import { monthProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(monthProps)
 const emit = defineEmits(['change'])
