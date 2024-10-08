@@ -17,11 +17,12 @@
       :class="cn(`wd-textarea__label relative flex flex-shrink-0 box-border ${props.customLabelClass} ${isRequired ? 'is-required pl-3' : ''}`)"
       :style="labelStyle">
       <view v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
-        <pro-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon"
+        <pro-icon v-if="prefixIcon && !usePrefixSlot"
+          custom-class="wd-textarea__icon ml-2 bg-white text-base bg-[#bfbfbf]" :name="prefixIcon"
           @click="onClickPrefixIcon" />
         <slot v-else name="prefix"></slot>
       </view>
-      <view class="wd-textarea__label-inner">
+      <view class="wd-textarea__label-inner inline-block text-sm leading-6">
         <text v-if="label">{{ label }}</text>
         <slot v-else name="label"></slot>
       </view>
@@ -29,10 +30,10 @@
 
     <!-- 文本域 -->
     <view
-      :class="`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`">
-      <textarea :class="`wd-textarea__inner ${customTextareaClass}`" v-model="inputValue" :show-count="false"
-        :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused"
-        :auto-focus="autoFocus" :placeholder-style="placeholderStyle"
+      :class="`wd-textarea__value relative p-0 text-[0] box-border bg-white ${showClear ? 'is-suffix pr-6' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit pb-9' : ''}`">
+      <textarea :class="`wd-textarea__inner p-0 w-full text-sm leading-6 ${customTextareaClass}`" v-model="inputValue"
+        :show-count="false" :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength"
+        :focus="focused" :auto-focus="autoFocus" :placeholder-style="placeholderStyle"
         :placeholder-class="cn(`wd-textarea__placeholder ${props.placeholderClass}`)" :auto-height="autoHeight"
         :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor" :show-confirm-bar="showConfirmBar"
         :selection-start="selectionStart" :selection-end="selectionEnd" :adjust-position="adjustPosition"
@@ -43,9 +44,10 @@
       <view v-if="errorMessage" class="wd-textarea__error-message">{{ errorMessage }}</view>
 
       <view v-if="readonly" class="wd-textarea__readonly-mask" />
-      <view class="wd-textarea__suffix flex-shrink-0 leading-[initial]">
+      <view class="wd-textarea__suffix flex-shrink-0 leading-[initial] absolute right-0 top-0 bottom-0 z-[1]">
         <pro-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
-        <view v-if="showWordCount" class="wd-textarea__count">
+        <view v-if="showWordCount"
+          class="wd-textarea__count absolute bottom-2 right-0 bg-white inline-flex text-sm text-[#bfbfbf]">
           <text
             :class="cn(`${currentLength > 0 ? 'wd-textarea__count-current' : ''} ${currentLength > props.maxlength ? 'is-error' : ''}`)">
             {{ currentLength }}

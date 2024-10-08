@@ -11,24 +11,24 @@
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
-        <view class="wd-picker__body">
-          <view class="wd-picker__value-wraper">
-            <view :class="`wd-picker__value ${customValueClass}`">
+        <view class="wd-picker__body flex-1">
+          <view class="wd-picker__value-wraper flex">
+            <view :class="`wd-picker__value flex-1 mr-2.5 text-black/85 ${customValueClass}`">
               <template v-if="region">
                 <view v-if="isArray(showValue)">
-                  <text :class="showValue[0] ? '' : 'wd-picker__placeholder'">
+                  <text :class="showValue[0] ? '' : 'wd-picker__placeholder text-[#bfbfbf]'">
                     {{ showValue[0] ? showValue[0] : placeholder || translate('placeholder') }}
                   </text>
                   {{ translate('to') }}
-                  <text :class="showValue[1] ? '' : 'wd-picker__placeholder'">
+                  <text :class="showValue[1] ? '' : 'wd-picker__placeholder text-[#bfbfbf]'">
                     {{ showValue[1] ? showValue[1] : placeholder || translate('placeholder') }}
                   </text>
                 </view>
-                <view v-else class="wd-picker__placeholder">
+                <view v-else class="wd-picker__placeholder text-[#bfbfbf]">
                   {{ placeholder || translate('placeholder') }}
                 </view>
               </template>
-              <view v-else :class="showValue ? '' : 'wd-picker__placeholder'">
+              <view v-else :class="showValue ? '' : 'wd-picker__placeholder text-[#bfbfbf]'">
                 {{ showValue ? showValue : placeholder || translate('placeholder') }}
               </view>
             </view>
@@ -43,31 +43,42 @@
       :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="onCancel" custom-class="wd-picker__popup">
       <view class="wd-picker__wraper">
         <!--toolBar-->
-        <view class="wd-picker__toolbar" @touchmove="noop">
+        <view
+          class="wd-picker__toolbar relative flex justify-between items-center box-border text-base leading-4 h-[54px]"
+          @touchmove="noop">
           <!--取消按钮-->
-          <view class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
+          <view
+            class="wd-picker__action block border-none outline-none text-base bg-transparent pt-6 px-[15px] pb-[14px] wd-picker__action--cancel text-[#666666]"
+            @click="onCancel">
             {{ cancelButtonText || translate('cancel') }}
           </view>
           <!--标题-->
-          <view v-if="title" class="wd-picker__title">{{ title }}</view>
+          <!-- float: 1 -->
+          <view v-if="title" class="wd-picker__title block float-[1] text-black/85">{{ title }}</view>
           <!--确定按钮-->
-          <view :class="`wd-picker__action ${loading || isLoading ? 'is-loading' : ''}`" @click="onConfirm">
+          <view
+            :class="`wd-picker__action block border-none outline-none text-base bg-transparent pt-6 px-[15px] pb-[14px] text-primary ${loading || isLoading ? 'is-loading' : ''}`"
+            @click="onConfirm">
             {{ confirmButtonText || translate('confirm') }}
           </view>
         </view>
         <!-- 区域选择tab展示 -->
-        <view v-if="region" class="wd-picker__region-tabs">
-          <view :class="`wd-picker__region ${showStart ? 'is-active' : ''} `" @click="tabChange">
+        <view v-if="region" class="wd-picker__region-tabs flex">
+          <view
+            :class="`wd-picker__region w-1/2 inline-block text-center py-[14px] px-0 text-sm leading-4 text-black/45 transition-[all_0.15s_ease-out] ${showStart ? 'is-active text-white bg-primary' : ''} `"
+            @click="tabChange">
             <view>{{ translate('start') }}</view>
-            <view class="wd-picker__region-time">{{ showTabLabel[0] }}</view>
+            <view class="wd-picker__region-time text-base mt-0.5">{{ showTabLabel[0] }}</view>
           </view>
-          <view :class="`wd-picker__region ${showStart ? '' : 'is-active'}`" @click="tabChange">
+          <view
+            :class="`wd-picker__region  w-1/2 inline-block text-center py-[14px] px-0 text-sm leading-4 text-black/45 transition-[all_0.15s_ease-out] ${showStart ? '' : 'is-active text-white bg-primary'}`"
+            @click="tabChange">
             <view>{{ translate('end') }}</view>
-            <view class="wd-picker__region-time">{{ showTabLabel[1] }}</view>
+            <view class="wd-picker__region-time text-base mt-0.5">{{ showTabLabel[1] }}</view>
           </view>
         </view>
         <!--datetimePickerView-->
-        <view :class="showStart ? 'wd-picker__show' : 'wd-picker__hidden'">
+        <view :class="showStart ? 'wd-picker__show visible h-auto' : 'wd-picker__hidden invisible overflow-hidden h-0'">
           <wd-datetime-picker-view :custom-class="customViewClass" ref="datetimePickerView" :type="type"
             v-model="innerValue" :loading="loading || isLoading" :loading-color="loadingColor"
             :columns-height="columnsHeight" :value-key="valueKey" :label-key="labelKey" :formatter="formatter"
@@ -76,7 +87,7 @@
             :min-minute="minMinute" :start-symbol="true" :immediate-change="immediateChange" @change="onChangeStart"
             @pickstart="onPickStart" @pickend="onPickEnd" />
         </view>
-        <view :class="showStart ? 'wd-picker__hidden' : 'wd-picker__show'">
+        <view :class="showStart ? 'wd-picker__hidden invisible overflow-hidden h-0' : 'wd-picker__show visible h-auto'">
           <wd-datetime-picker-view :custom-class="customViewClass" ref="datetimePickerView1" :type="type"
             v-model="endInnerValue" :loading="loading || isLoading" :loading-color="loadingColor"
             :columns-height="columnsHeight" :value-key="valueKey" :label-key="labelKey" :formatter="formatter"

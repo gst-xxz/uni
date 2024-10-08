@@ -4,14 +4,6 @@
 
 @include b(step) {
 
-  @include e(header) {
-
-    @include when(dot) {
-      .wd-step__line {
-        margin-top: -1px;
-      }
-    }
-  }
   @include e(icon) {
     @include when(icon) {
       width: $-steps-is-icon-width;

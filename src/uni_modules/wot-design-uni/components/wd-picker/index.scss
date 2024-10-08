@@ -42,7 +42,7 @@
     color: $-cell-title-color;
     font-size: $-cell-title-fs;
     overflow: hidden;
-    line-height: $-cell-line-height;
+    line-height: 24px;
 
     @include when(disabled) {
       .wd-picker__value {
@@ -94,7 +94,7 @@
   @include e(value) {
     flex: 1;
     margin-right: 10px;
-    color: $-cell-value-color;
+    color: rgba(0, 0, 0, 0.85);
     
     @include when(ellipsis) {
       @include lineEllipsis;
@@ -106,14 +106,14 @@
   }
 
   @include e(placeholder) {
-    color: $-input-placeholder-color;
+    color: #bfbfbf;
   }
 
   @include edeep(arrow) {
     display: block;
     font-size: $-cell-icon-size;
     color: $-cell-arrow-color;
-    line-height: $-cell-line-height;
+    line-height: 24px;
   }
 
   @include e(wraper) {
@@ -123,9 +123,9 @@
   @include e(toolbar) {
     position: relative;
     display: flex;
-    font-size: $-picker-toolbar-fs;
-    height: $-picker-toolbar-height;
-    line-height: $-picker-action-height;
+    font-size: 16px;
+    height: 54px;
+    line-height: 16px;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
@@ -135,13 +135,13 @@
     display: block;
     border: none;
     outline: none;
-    font-size: $-picker-toolbar-fs;
+    font-size: 16px;
     color: $-picker-toolbar-finish-color;
     background: transparent;
     padding: 24px 15px 14px 15px;
 
     @include m(cancel) {
-      color: $-picker-toolbar-cancel-color;
+      color: #666666;
     }
 
     @include when(loading) {

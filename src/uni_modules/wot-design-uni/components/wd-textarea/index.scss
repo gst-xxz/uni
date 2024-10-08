@@ -24,7 +24,7 @@
     width: $-input-cell-label-width;
     color: $-cell-title-color;
     margin-right: $-cell-padding;
-    font-size: $-textarea-fs;
+    font-size: 14px;
 
     @include when(required) {
       &::after {
@@ -39,15 +39,9 @@
     }
   }
 
-  @include e(label-inner) {
-    display: inline-block;
-    line-height: $-cell-line-height;
-    font-size: $-textarea-fs;
-  }
-
   @include e(prefix) {
-    margin-right: $-textarea-icon-margin;
-    font-size: $-textarea-fs;
+    margin-right: 8px;
+    font-size: 14px;
     line-height: initial;
 
     :deep(.wd-textarea__icon) {
@@ -55,28 +49,8 @@
     }
   }
 
-  @include e(value) {
-    position: relative;
-    padding: 0;
-    font-size: 0;
-    background: $-textarea-bg;
-    box-sizing: border-box;
-
-    @include when(show-limit) {
-      padding-bottom: 36px;
-    }
-
-    @include when(suffix) {
-      padding-right: calc($-textarea-icon-size + 8px);
-    }
-  }
-
 
   @include e(inner) {
-    padding: 0;
-    width: 100%;
-    font-size: $-textarea-fs;
-    line-height: $-cell-line-height;
     color: $-textarea-color;
     outline: none;
     background: none;
@@ -86,45 +60,19 @@
     min-height: 24px;
 
     &::-webkit-input-placeholder {
-      color: $-input-placeholder-color;
+      color: #bfbfbf;
     }
   }
 
-  @include e(suffix) {
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-
-  @include edeep(icon) {
-    margin-left: $-textarea-icon-margin;
-    font-size: $-textarea-icon-size;
-    color: $-textarea-icon-color;
-    background: $-textarea-bg;
-  }
-
   @include edeep(clear) {
-    margin-left: $-textarea-icon-margin;
+    margin-left: 8px;
     font-size: $-textarea-icon-size;
     color: $-textarea-clear-color;
     vertical-align: middle;
-    background: $-textarea-bg;
-    line-height: $-cell-line-height;
+    background: #fff;
+    line-height: 24px;
   }
 
-
-  @include e(count) {
-    position: absolute;
-    bottom: 8px;
-    right: 0;
-    font-size: $-textarea-count-fs;
-    color: $-textarea-count-color;
-    background: $-textarea-bg;
-    line-height: 20px;
-    display: inline-flex;
-  }
 
   @include e(count-current) {
     color: $-textarea-count-current-color;
@@ -135,7 +83,7 @@
   }
 
   @include e(placeholder) {
-    color: $-input-placeholder-color;
+    color: #bfbfbf;
 
     &.is-error {
       color: $-input-error-color;
@@ -202,7 +150,7 @@
 
   @include when(cell) {
     display: flex;
-    line-height: $-cell-line-height;
+    line-height: 24px;
 
     &.is-error::after {
       background: $-textarea-cell-border-color;

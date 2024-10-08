@@ -13,8 +13,9 @@
           <text v-else>{{ index + 1 }}</text>
         </view>
       </view>
-      <view v-if="index < childrenLength - 1"
-        class="wd-step__line absolute w-full h-[1px] top-1/2 left-0 -translate-y-1/2"></view>
+      <view v-if="index < childrenLength - 1" :class="cn('wd-step__line absolute w-full h-[1px] top-1/2 left-0 -translate-y-1/2', {
+        '-mt-[1px]': dot
+      })"></view>
     </view>
     <view class="wd-step__content">
       <view :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
@@ -47,6 +48,7 @@ import { isDef, objToStyle } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'
 import type { CSSProperties } from 'vue'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(stepProps)
 

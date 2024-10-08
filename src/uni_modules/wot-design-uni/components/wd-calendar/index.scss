@@ -19,7 +19,7 @@
     color: $-cell-title-color;
     font-size: $-cell-title-fs;
     overflow: hidden;
-    line-height: $-cell-line-height;
+    line-height: 24px;
   }
 
   @include e(cell) {

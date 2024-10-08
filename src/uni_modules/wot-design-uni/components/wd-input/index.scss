@@ -56,7 +56,7 @@
   @include e(label-inner) {
     display: inline-block;
     font-size: $-input-fs;
-    line-height: $-cell-line-height;
+    line-height: 24px;
   }
 
   @include e(body) {
@@ -205,7 +205,7 @@
     box-sizing: border-box;
 
     &::-webkit-input-placeholder {
-      color: $-input-placeholder-color;
+      color: #bfbfbf;
     }
 
     @include when(align-right) {
@@ -257,7 +257,7 @@
 
 
   @include e(placeholder) {
-    color: $-input-placeholder-color;
+    color: #bfbfbf;
 
     &.is-error {
       color: $-input-error-color;

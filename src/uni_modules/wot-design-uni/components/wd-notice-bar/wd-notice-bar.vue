@@ -1,7 +1,8 @@
 <template>
-  <view v-if="show" :class="`wd-notice-bar flex items-center relative box-border ${customClass} ${noticeBarClass}`"
+  <view v-if="show"
+    :class="`wd-notice-bar flex items-center relative box-border py-[9px] pr-5 pl-[15px] text-xs rounded-lg ${customClass} ${noticeBarClass}`"
     :style="rootStyle">
-    <pro-icon v-if="prefix" custom-class="wd-notice-bar__prefix pr-1" :name="prefix"></pro-icon>
+    <pro-icon v-if="prefix" custom-class="wd-notice-bar__prefix pr-1 text-lg" :name="prefix"></pro-icon>
     <slot v-else name="prefix"></slot>
     <view class="wd-notice-bar__wrap relative flex-1 overflow-hidden h-[18px] leading-[18px]">
       <view class="wd-notice-bar__content absolute whitespace-nowrap" :style="animation" @transitionend="animationEnd"
@@ -13,7 +14,8 @@
         <slot v-else>{{ currentText }}</slot>
       </view>
     </view>
-    <pro-icon v-if="closable" custom-class="wd-notice-bar__suffix text-center inline-block absolute right-0 top-0 p-0"
+    <pro-icon v-if="closable"
+      custom-class="wd-notice-bar__suffix text-center inline-block absolute right-0 top-0 p-0 text-lg bg-black/15 text-white  rounded-[0_8px_0_4px]"
       name="close-bold" @click="handleClose"></pro-icon>
     <slot v-else name="suffix"></slot>
   </view>
@@ -68,6 +70,15 @@ const noticeBarClass = computed(() => {
 
   let noticeBarClasses: string[] = []
   type && noticeBarClasses.push(`is-${type}`)
+  if (type === 'warning') {
+    noticeBarClasses.push('bg-[#fff6c8] text-warning')
+  }
+  if (type === 'danger') {
+    noticeBarClasses.push('bg-[#feeced] text-danger')
+  }
+  if (type === 'info') {
+    noticeBarClasses.push('bg-[#f4f9ff] text-primary')
+  }
 
   if (isHorizontal.value) {
     !wrapable && !scrollable && noticeBarClasses.push('wd-notice-bar--ellipse')

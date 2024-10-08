@@ -2,32 +2,35 @@
   <pro-popup v-model="show" position="bottom" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
     :modal-style="modal ? '' : 'opacity: 0;'" :modal="hideOnClickOutside" :lockScroll="lockScroll"
     @click-modal="handleClose">
-    <view :class="`wd-keyboard ${customClass}`" :style="customStyle">
-      <view class="wd-keyboard__header" v-if="showTitle">
+    <view :class="`w-full user-select-none text-black bg-gray-2 ${customClass}`" :style="customStyle">
+      <view class="relative flex items-center justify-center box-border pt-1.5 h-[34px] text-[#646566] text-base"
+        v-if="showTitle">
         <slot name="title">
-          <text class="wd-keyboard__title">{{ title }}</text>
+          <text class="inline-block font-normal">{{ title }}</text>
         </slot>
-        <view class="wd-keyboard__close" hover-class="wd-keyboard__close--hover" v-if="showClose" @click="handleClose">
+        <view
+          class="absolute flex items-center right-0 h-full bg-transparent border-none py-0 px-1.5 text-primary text-sm"
+          hover-class="opacity-60" v-if="showClose" @click="handleClose">
           <text>{{ closeText }}</text>
         </view>
       </view>
       <template v-if="mode !== 'car'">
-        <view class="wd-keyboard__body">
-          <view class="wd-keyboard__keys">
-            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
-              @press="handlePress"></wd-key>
+        <view class="flex pt-1.5 pr-0 pb-0 pl-1.5">
+          <view class="flex flex-[3] flex-wrap">
+            <pro-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
+              @press="handlePress"></pro-key>
           </view>
-          <view class="wd-keyboard__sidebar" v-if="mode === 'custom'">
-            <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
-            <wd-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></wd-key>
+          <view class="flex flex-1 flex-col" v-if="mode === 'custom'">
+            <pro-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></pro-key>
+            <pro-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></pro-key>
           </view>
         </view>
       </template>
       <template v-if="mode === 'car'">
-        <view class="wd-keyboard-car__body">
-          <view class="wd-keyboard-car__keys">
-            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
-              @press="handlePress"></wd-key>
+        <view class="flex pt-1.5 pr-0 pb-0 pl-1.5">
+          <view class="flex flex-[10] flex-wrap">
+            <pro-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
+              @press="handlePress"></pro-key>
           </view>
         </view>
       </template>
@@ -36,7 +39,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-keyboard',
+  name: 'pro-keyboard',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -48,7 +51,7 @@ export default {
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 
-import WdKey from './key/index.vue'
+import ProKey from './key/index.vue'
 import { keyboardProps, type Key } from './types'
 import type { NumberKeyType } from './key/types'
 import { CAR_KEYBOARD_AREAS, CAR_KEYBOARD_KEYS } from './constants'
@@ -168,7 +171,3 @@ const handlePress = (text: string, type: NumberKeyType) => {
   }
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

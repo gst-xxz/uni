@@ -2,32 +2,6 @@
 @import '../common/abstracts/mixin';
 
 @include b(notice-bar) {
-  padding: $-notice-bar-padding;
-  font-size: $-notice-bar-fs;
-  border-radius: $-notice-bar-border-radius;
-
-  @include when(warning) {
-    background: $-notice-bar-warning-bg;
-    color: $-notice-bar-warning-color;
-  }
-  @include when(info) {
-    background: $-notice-bar-info-bg;
-    color: $-notice-bar-info-color;
-  }
-  @include when(danger) {
-    background: $-notice-bar-danger-bg;
-    color: $-notice-bar-danger-color;
-  }
-  @include edeep(prefix) {
-    font-size: $-notice-bar-prefix-size;
-  }
-
-  @include edeep(suffix) {
-    font-size: $-notice-bar-close-size;
-    background-color: $-notice-bar-close-bg;
-    color: $-notice-bar-close-color;
-    border-radius: 0px 8px 0px 4px;
-  }
   @include e(content) {
     @include m(play) {
       animation: notice-bar-play linear both;

@@ -1,6 +1,6 @@
 <template>
   <view @click="handleClick" :class="cn(`
-  wd-sidebar-item flex items-center justify-center relative p-4 box-border text-base 
+  wd-sidebar-item flex items-center justify-center relative p-4 box-border text-base whitespace-nowrap min-h-[56px] text-gray-1
   ${active ? 'wd-sidebar-item--active font-semibold' : ''} 
   ${prefix ? 'wd-sidebar-item--prefix' : ''}  
   ${suffix ? 'wd-sidebar-item--suffix' : ''} 

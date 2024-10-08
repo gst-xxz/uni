@@ -1,19 +1,20 @@
 <template>
-  <view :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart"
-    @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view :class="keyClass">
-      <pro-loading custom-class="wd-key__loading-icon" v-if="props.loading" />
+  <view :class="`relative flex-1 basis-1/3 box-border pt-0 pr-1.5 pb-1.5 pl-0 ${wider ? 'basis-2/3' : ''}`"
+    @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <view :class="`flex items-center justify-center active:bg-[#ebedf0] bg-white h-12 text-[28px] leading-[1.5] rounded-lg ${large ? 'absolute top-0 right-1.5 bottom-1.5 left-0 h-auto' : ''} ${type === 'delete' ? 'text-base' : ''} ${type === 'close' ? 'text-white bg-primary active:opacity-60 text-base' : ''
+      }`">
+      <pro-loading custom-class="text-white" v-if="props.loading" />
       <template v-if="type === 'delete'">
         <template v-if="text">
           {{ text }}
         </template>
-        <pro-icon v-else custom-class="wd-key__icon" name="keyboard-delete" size="22px"></pro-icon>
+        <pro-icon v-else custom-class="text-[22px]" name="keyboard-delete" size="22px"></pro-icon>
       </template>
       <template v-else-if="type === 'extra'">
         <template v-if="text">
           {{ text }}
         </template>
-        <pro-icon v-else custom-class="wd-key__icon" name="keyboard-collapse" size="22px"></pro-icon>
+        <pro-icon v-else custom-class="text-[22px]" name="keyboard-collapse" size="22px"></pro-icon>
       </template>
       <template v-else>{{ text }}</template>
     </view>
@@ -21,7 +22,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-key',
+  name: 'pro-key',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -31,7 +32,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useTouch } from '../../composables/useTouch'
 import { keyProps } from './types'
 
@@ -40,11 +41,6 @@ const emit = defineEmits(['press'])
 
 const touch = useTouch()
 const active = ref<boolean>(false)
-
-const keyClass = computed(() => {
-  return `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${props.type === 'close' ? 'wd-key--close' : ''
-    }`
-})
 
 function onTouchStart(event: TouchEvent) {
   touch.touchStart(event)

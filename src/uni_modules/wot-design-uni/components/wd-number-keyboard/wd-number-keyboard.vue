@@ -2,22 +2,27 @@
   <pro-popup v-model="show" position="bottom" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
     :modal-style="modal ? '' : 'opacity: 0;'" :modal="hideOnClickOutside" :lockScroll="lockScroll"
     @click-modal="handleClose">
-    <view :class="`wd-number-keyboard ${customClass}`" :style="customStyle">
-      <view class="wd-number-keyboard__header" v-if="showTitle">
+    <view :class="`wd-number-keyboard w-full user-select-none text-black bg-[#f2f3f5] ${customClass}`"
+      :style="customStyle">
+      <view
+        class="wd-number-keyboard__header relative flex items-center justify-center h-[34px] box-border pt-1.5 text-[#646566] text-[16px] text-base"
+        v-if="showTitle">
         <slot name="title">
-          <text class="wd-number-keyboard__title">{{ title }}</text>
+          <text class="wd-number-keyboard__title inline-block font-normal">{{ title }}</text>
         </slot>
-        <view class="wd-number-keyboard__close" hover-class="wd-number-keyboard__close--hover" v-if="showClose"
-          @click="handleClose">
+        <view
+          class="wd-number-keyboard__close flex items-center absolute right-0 h-full bg-transparent border-none py-0 px-4 text-primary text-sm"
+          hover-class="wd-number-keyboard__close--hover opacity-60" v-if="showClose" @click="handleClose">
           <text>{{ closeText }}</text>
         </view>
       </view>
-      <view class="wd-number-keyboard__body">
-        <view class="wd-number-keyboard__keys">
+      <view class="wd-number-keyboard__body flex p-0 pt-1.5 pl-1.5">
+        <!--  flex: 3; -->
+        <view class="wd-number-keyboard__keys flex flex-wrap flex-[3]">
           <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
             @press="handlePress"></wd-key>
         </view>
-        <view class="wd-number-keyboard__sidebar" v-if="mode === 'custom'">
+        <view class="wd-number-keyboard__sidebar flex flex-1 flex-col" v-if="mode === 'custom'">
           <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
           <wd-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></wd-key>
         </view>
@@ -135,7 +140,3 @@ const handlePress = (text: string, type: NumberKeyType) => {
   }
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

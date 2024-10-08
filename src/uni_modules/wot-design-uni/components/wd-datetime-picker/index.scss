@@ -48,7 +48,7 @@
     color: $-cell-title-color;
     font-size: $-cell-title-fs;
     overflow: hidden;
-    line-height: $-cell-line-height;
+    line-height: 24px;
 
     @include when(disabled) {
       .wd-picker__value {
@@ -93,102 +93,18 @@
     }
   }
 
-  @include e(value-wraper) {
-    display: flex;
-  }
-
   @include e(value) {
-    flex: 1;
-    margin-right: 10px;
-    color: $-cell-value-color;
     
     @include when(ellipsis) {
       @include lineEllipsis;
     }
   }
 
-  @include e(body) {
-    flex: 1;
-  }
-
-  @include e(placeholder) {
-    color: $-input-placeholder-color;
-  }
-
   @include edeep(arrow) {
     display: block;
     font-size: $-cell-icon-size;
     color: $-cell-arrow-color;
-    line-height: $-cell-line-height;
+    line-height: 24px;
   }
 
-  @include e(toolbar) {
-    position: relative;
-    display: flex;
-    font-size: $-picker-toolbar-fs;
-    height: $-picker-toolbar-height;
-    line-height: $-picker-action-height;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-  }
-
-  @include e(action) {
-    display: block;
-    border: none;
-    outline: none;
-    font-size: $-picker-toolbar-fs;
-    color: $-picker-toolbar-finish-color;
-    background: transparent;
-    padding: 24px 15px 14px 15px;
-
-    @include m(cancel) {
-      color: $-picker-toolbar-cancel-color;
-    }
-
-    @include when(loading) {
-      color: $-picker-loading-button-color;
-    }
-  }
-  @include e(title) {
-    display: block;
-    float: 1;
-    color: $-picker-toolbar-title-color;
-  }
-
-  @include e(region-tabs) {
-    display: flex;
-  }
-
-  @include e(region) {
-    width: 50%;
-    display: inline-block;
-    color: $-picker-region-color;
-    text-align: center;
-    padding: 14px 0;
-    font-size: $-picker-region-fs;
-    line-height: 16px;
-    transition: all 0.15s ease-out;
-
-    @include when(active) {
-      background: $-picker-region-bg-active-color;
-      color: $-color-white;
-    }
-  }
-
-  @include e(region-time) {
-    font-size: 16px;
-    margin-top: 2px;
-  }
-
-  @include e(hidden) {
-    visibility: hidden;
-    overflow: hidden;
-    height: 0;
-  }
-
-  @include e(show) {
-    visibility: visible;
-    height: auto;
-  }
 }

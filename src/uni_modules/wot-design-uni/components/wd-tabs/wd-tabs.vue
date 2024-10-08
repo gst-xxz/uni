@@ -6,18 +6,19 @@
         :style="customStyle">
         <pro-sticky :offset-top="offsetTop">
           <!--头部导航容器-->
-          <view class="wd-tabs__nav wd-tabs__nav--sticky">
-            <view class="wd-tabs__nav--wrap">
+          <view class="wd-tabs__nav wd-tabs__nav--sticky relative left-0 right-0 h-[42px] bg-white w-screen">
+            <view class="wd-tabs__nav--wrap h-full overflow-hidden">
               <scroll-view :scroll-x="slidableNum < items.length" scroll-with-animation :scroll-left="state.scrollLeft">
-                <view class="wd-tabs__nav-container">
+                <view class="wd-tabs__nav-container relative flex user-select-none">
                   <!--nav列表-->
                   <view @click="handleSelect(index)" v-for="(item, index) in items" :key="index"
-                    :class="`wd-tabs__nav-item  ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
+                    :class="`wd-tabs__nav-item flex-1 min-w-0 text-center h-[42px] leading-[42px] ${state.activeIndex === index ? 'is-active font-semibold' : ''} ${item.disabled ? 'is-disabled text-black/25' : ''}`"
                     :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                     {{ item.title }}
                   </view>
                   <!--下划线-->
-                  <view class="wd-tabs__line" :style="state.lineStyle"></view>
+                  <view class="wd-tabs__line absolute bottom-1 left-0 z-[1] bg-primary h-[3px] w-[19px] rounded-[1.5px]"
+                    :style="state.lineStyle"></view>
                 </view>
               </scroll-view>
             </view>
@@ -34,8 +35,8 @@
               </view>
               <view :class="`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`"
                 :style="state.mapShow ? '' : 'display:none'">
-                <view class="wd-tabs__map-nav-item" v-for="(item, index) in items" :key="index"
-                  @click="handleSelect(index)">
+                <view class="wd-tabs__map-nav-item flex-1 min-w-0 text-center h-[42px] leading-[42px]"
+                  v-for="(item, index) in items" :key="index" @click="handleSelect(index)">
                   <view
                     :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`"
                     :style="state.activeIndex === index
@@ -55,9 +56,10 @@
         </pro-sticky>
 
         <!--标签页-->
-        <view class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
-          @touchcancel="onTouchEnd">
-          <view :class="['wd-tabs__body', animated ? 'is-animated' : '']" :style="bodyStyle">
+        <view class="wd-tabs__container overflow-hidden" @touchstart="onTouchStart" @touchmove="onTouchMove"
+          @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+          <view :class="['wd-tabs__body relative w-full h-full', animated ? 'is-animated flex transition-[left]' : '']"
+            :style="bodyStyle">
             <slot />
           </view>
         </view>
@@ -75,18 +77,19 @@
       :class="`wd-tabs relative bg-white w-full ${customClass} ${slidableNum < items.length ? 'is-slide' : ''} ${mapNum < items.length && mapNum !== 0 ? 'absolute top-0 left-0 right-0 z-[1]' : ''}`"
       :style="customStyle">
       <!--头部导航容器-->
-      <view class="wd-tabs__nav">
-        <view class="wd-tabs__nav--wrap">
+      <view class="wd-tabs__nav relative w-full left-0 right-0 h-[42px] bg-white">
+        <view class="wd-tabs__nav--wrap h-full overflow-hidden">
           <scroll-view :scroll-x="slidableNum < items.length" scroll-with-animation :scroll-left="state.scrollLeft">
-            <view class="wd-tabs__nav-container">
+            <view class="wd-tabs__nav-container relative flex user-select-none">
               <!--nav列表-->
               <view v-for="(item, index) in items" @click="handleSelect(index)" :key="index"
-                :class="`wd-tabs__nav-item ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
+                :class="`wd-tabs__nav-item flex-1 min-w-0 text-center h-[42px] leading-[42px] ${state.activeIndex === index ? 'is-active font-semibold' : ''} ${item.disabled ? 'is-disabled text-black/25' : ''}`"
                 :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                 {{ item.title }}
               </view>
               <!--下划线-->
-              <view class="wd-tabs__line" :style="state.lineStyle"></view>
+              <view class="wd-tabs__line absolute bottom-1 left-0 z-[1] bg-primary h-[3px] w-[19px] rounded-[1.5px]"
+                :style="state.lineStyle"></view>
             </view>
           </scroll-view>
         </view>
@@ -140,8 +143,6 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
-import wdSticky from '../pro-sticky/pro-sticky.vue'
 
 import { computed, getCurrentInstance, onMounted, watch, nextTick, reactive, type CSSProperties } from 'vue'
 import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, objToStyle } from '../common/util'
