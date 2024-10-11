@@ -1,18 +1,20 @@
 <template>
-  <view :class="`wd-picker-view relative py-2.5 px-0 ${customClass}`" :style="customStyle">
+  <view :class="cn(`relative py-2.5 px-0`, customClass)" :style="customStyle">
     <view class="absolute flex top-0 right-0 bottom-0 left-0 items-center justify-center z-[3] bg-white/80"
       v-if="loading">
       <pro-loading :color="loadingColor" />
     </view>
-    <view :style="`height: ${columnsHeight - 20}px;`">
-      <picker-view mask-class="wd-picker-view__mask absolute top-0 left-0 right-0 bottom-0 w-full h-full z-[2]"
-        indicator-class="wd-picker-view__roller z-[0]" :indicator-style="`height: ${itemHeight}px;`"
-        :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex" :immediate-change="immediateChange"
-        @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
+    <view :style="`height: ${columnsHeight - 20}px;`" class="">
+      <picker-view
+        mask-class="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-[2] bg-[linear-gradient(180deg,hsla(0,0%,100%,0.9),hsla(0,0%,100%,0.25))] bg-no-repeat bg-[top,bottom] pointer-events-none blur-sm"
+        indicator-class="z-[0] bg-[rgba(245,245,245,1)] after:hidden before:hidden"
+        :indicator-style="`height: ${itemHeight}px;`" :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex"
+        :immediate-change="immediateChange" @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
         <picker-view-column v-for="(col, colIndex) in formatColumns" :key="colIndex"
-          class="wd-picker-view-column flex-1 text-center relative flex overflow-hidden items-center">
-          <view v-for="(row, rowIndex) in col" :key="rowIndex" :class="`wd-picker-view-column__item py-0 px-[15px] text-ellipsis overflow-hidden whitespace-nowrap ${row['disabled'] ? 'text-black/25' : ''}  ${selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
-            }`" :style="`line-height: ${itemHeight}px;`">
+          class="flex-1 text-center relative flex overflow-hidden items-center text-base text-black/85 transition-[cubic-bezier(0.28,0.8,0.63,1)]">
+          <view v-for="(row, rowIndex) in col" :key="rowIndex"
+            :class="cn(`py-0 px-[15px] text-ellipsis overflow-hidden whitespace-nowrap`, { 'text-black/25': row['disabled'], '': selectedIndex[colIndex] == rowIndex })"
+            :style="`line-height: ${itemHeight}px;`">
             {{ row[labelKey] }}
           </view>
         </picker-view-column>
@@ -23,7 +25,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-picker-view',
+  name: 'pro-picker-view',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -35,6 +37,7 @@ export default {
 import { getCurrentInstance, ref, watch, nextTick } from 'vue'
 import { deepClone, getType, isArray, isDef, isEqual, range } from '../common/util'
 import { formatArray, pickerViewProps, type ColumnItem, type PickerViewExpose } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(pickerViewProps)
 const emit = defineEmits(['change', 'pickstart', 'pickend', 'update:modelValue'])
@@ -344,6 +347,3 @@ defineExpose<PickerViewExpose>({
   resetColumns
 })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>

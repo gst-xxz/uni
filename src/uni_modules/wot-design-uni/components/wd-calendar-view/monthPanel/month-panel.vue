@@ -6,45 +6,23 @@
     <view class="wd-month-panel__weeks">
       <view v-for="item in 7" :key="item" class="wd-month-panel__week">{{ weekLabel(item + firstDayOfWeek) }}</view>
     </view>
-    <scroll-view
-      :class="`wd-month-panel__container ${!!timeType ? 'wd-month-panel__container--time' : ''}`"
-      :style="`height: ${scrollHeight}px`"
-      scroll-y
-      @scroll="monthScroll"
-      :scroll-top="scrollTop"
-    >
+    <scroll-view :class="`wd-month-panel__container ${!!timeType ? 'wd-month-panel__container--time' : ''}`"
+      :style="`height: ${scrollHeight}px`" scroll-y @scroll="monthScroll" :scroll-top="scrollTop">
       <view v-for="(item, index) in months" :key="index" :id="`month${index}`">
-        <month
-          :type="type"
-          :date="item.date"
-          :value="value"
-          :min-date="minDate"
-          :max-date="maxDate"
-          :first-day-of-week="firstDayOfWeek"
-          :formatter="formatter"
-          :max-range="maxRange"
-          :range-prompt="rangePrompt"
-          :allow-same-day="allowSameDay"
-          :default-time="defaultTime"
-          @change="handleDateChange"
-        />
+        <month :type="type" :date="item.date" :value="value" :min-date="minDate" :max-date="maxDate"
+          :first-day-of-week="firstDayOfWeek" :formatter="formatter" :max-range="maxRange" :range-prompt="rangePrompt"
+          :allow-same-day="allowSameDay" :default-time="defaultTime" @change="handleDateChange" />
       </view>
     </scroll-view>
     <view v-if="timeType" class="wd-month-panel__time">
       <view v-if="type === 'datetimerange'" class="wd-month-panel__time-label">
-        <view class="wd-month-panel__time-text">{{ timeType === 'start' ? translate('startTime') : translate('endTime') }}</view>
+        <view class="wd-month-panel__time-text">{{ timeType === 'start' ? translate('startTime') : translate('endTime')
+          }}</view>
       </view>
       <view class="wd-month-panel__time-picker">
-        <wd-picker-view
-          v-if="timeData.length"
-          v-model="timeValue"
-          :columns="timeData"
-          :columns-height="125"
-          :immediate-change="immediateChange"
-          @change="handleTimeChange"
-          @pickstart="handlePickStart"
-          @pickend="handlePickEnd"
-        />
+        <pro-picker-view v-if="timeData.length" v-model="timeValue" :columns="timeData" :columns-height="125"
+          :immediate-change="immediateChange" @change="handleTimeChange" @pickstart="handlePickStart"
+          @pickend="handlePickEnd" />
       </view>
     </view>
   </view>
@@ -61,7 +39,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPickerView from '../../wd-picker-view/wd-picker-view.vue'
+import wdPickerView from '../../pro-picker-view/pro-picker-view.vue'
 import { computed, ref, watch, onMounted } from 'vue'
 import { debounce, isArray, isEqual, isNumber, requestAnimationFrame } from '../../common/util'
 import { compareMonth, formatMonthTitle, getMonthEndDay, getMonths, getTimeData, getWeekLabel } from '../utils'

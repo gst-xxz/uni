@@ -16,27 +16,27 @@
       </pro-cell-group>
     </demo-block>
 
-    <wd-number-keyboard v-model:visible="visible1" @input="onInput" @delete="onDelete"></wd-number-keyboard>
-    <wd-number-keyboard v-model:visible="visible2" mode="custom" extra-key="." close-text="完成" @input="onInput"
-      @delete="onDelete"></wd-number-keyboard>
-    <wd-number-keyboard v-model:visible="visible3" extra-key="X" close-text="完成" @input="onInput" @delete="onDelete" />
-    <wd-number-keyboard v-model:visible="visible4" title="输入密码" extra-key="." close-text="完成" @input="onInput"
-      @delete="onDelete"></wd-number-keyboard>
-    <wd-number-keyboard v-model:visible="visible9" extra-key="." close-text="完成" @input="onInput" @delete="onDelete">
+    <pro-number-keyboard v-model:visible="visible1" @input="onInput" @delete="onDelete"></pro-number-keyboard>
+    <pro-number-keyboard v-model:visible="visible2" mode="custom" extra-key="." close-text="完成" @input="onInput"
+      @delete="onDelete"></pro-number-keyboard>
+    <pro-number-keyboard v-model:visible="visible3" extra-key="X" close-text="完成" @input="onInput" @delete="onDelete" />
+    <pro-number-keyboard v-model:visible="visible4" title="输入密码" extra-key="." close-text="完成" @input="onInput"
+      @delete="onDelete"></pro-number-keyboard>
+    <pro-number-keyboard v-model:visible="visible9" extra-key="." close-text="完成" @input="onInput" @delete="onDelete">
       <template #title>
         <text style="color: red">自定义标题</text>
       </template>
-    </wd-number-keyboard>
+    </pro-number-keyboard>
 
-    <wd-number-keyboard v-model:visible="visible5" mode="custom" :extra-key="['00', '.']" close-text="完成"
+    <pro-number-keyboard v-model:visible="visible5" mode="custom" :extra-key="['00', '.']" close-text="完成"
       @input="onInput" @delete="onDelete" />
 
-    <wd-number-keyboard v-model:visible="visible6" random-key-order @input="onInput" @delete="onDelete" />
+    <pro-number-keyboard v-model:visible="visible6" random-key-order @input="onInput" @delete="onDelete" />
 
-    <wd-number-keyboard v-model="value1" :maxlength="6" v-model:visible="visible7" title="键盘标题" extra-key="."
-      close-text="完成" @input="onInput" @delete="onDelete"></wd-number-keyboard>
+    <pro-number-keyboard v-model="value1" :maxlength="6" v-model:visible="visible7" title="键盘标题" extra-key="."
+      close-text="完成" @input="onInput" @delete="onDelete"></pro-number-keyboard>
 
-    <wd-number-keyboard :modal="true" v-model:visible="visible8" @input="onInput" @delete="onDelete" />
+    <pro-number-keyboard :modal="true" v-model:visible="visible8" @input="onInput" @delete="onDelete" />
   </page-wraper>
 </template>
 <script lang="ts" setup>

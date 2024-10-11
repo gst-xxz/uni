@@ -1,9 +1,9 @@
 <template>
   <view>
-    <wd-picker-view ref="datePickerview" :custom-class="customClass" :custom-style="customStyle"
+    <pro-picker-view ref="datePickerview" :custom-class="customClass" :custom-style="customStyle"
       :immediate-change="immediateChange" v-model="pickerValue" :columns="columns" :columns-height="columnsHeight"
       :columnChange="columnChange" :loading="loading" :loading-color="loadingColor" @change="onChange"
-      @pickstart="onPickStart" @pickend="onPickEnd"></wd-picker-view>
+      @pickstart="onPickStart" @pickend="onPickEnd"></pro-picker-view>
   </view>
 </template>
 <script lang="ts">
@@ -25,7 +25,7 @@ import {
   type DatetimePickerViewOption,
   type DatetimePickerViewExpose
 } from './types'
-import type { PickerViewInstance } from '../wd-picker-view/types'
+import type { PickerViewInstance } from '../pro-picker-view/types'
 
 // 本地时间戳
 /** @description 判断时间戳是否合法 */

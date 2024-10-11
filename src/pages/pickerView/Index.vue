@@ -1,32 +1,33 @@
 <template>
   <page-wraper>
     <demo-block :title="`基本用法，数值: ${value1}`">
-      <wd-picker-view v-model="value1" :columns="columns1" @change="(e) => onChange(1, e)" />
+      <pro-picker-view v-model="value1" :columns="columns1" @change="(e) => onChange(1, e)" />
     </demo-block>
 
     <demo-block :title="`禁用选项，数值: ${value2}`">
-      <wd-picker-view v-model="value2" :columns="columns2" @change="(e) => onChange(2, e)" />
+      <pro-picker-view v-model="value2" :columns="columns2" @change="(e) => onChange(2, e)" />
     </demo-block>
 
     <demo-block :title="`立即触发 change，数值: ${value6}`">
-      <wd-picker-view v-model="value6" :immediate-change="true" :columns="columns2" @change="(e) => onChange(2, e)" />
+      <pro-picker-view v-model="value6" :immediate-change="true" :columns="columns2" @change="(e) => onChange(2, e)" />
     </demo-block>
 
     <demo-block :title="`加载中，数值: ${value3}`">
-      <wd-picker-view v-model="value3" :columns="columns3" loading @change="(e) => onChange(3, e)" />
+      <pro-picker-view v-model="value3" :columns="columns3" loading @change="(e) => onChange(3, e)" />
     </demo-block>
 
     <demo-block :title="`多列，数值: [${value4}]`">
-      <wd-picker-view v-model="value4" :columns="columns4" @change="(e) => onChange(4, e)" />
+      <pro-picker-view v-model="value4" :columns="columns4" @change="(e) => onChange(4, e)" />
     </demo-block>
 
     <demo-block :title="`多级联动，数值: [${value5}]`">
-      <wd-picker-view v-model="value5" :columns="columns5" :column-change="onChangeDistrict" @change="(e) => onChange(5, e)" />
+      <pro-picker-view v-model="value5" :columns="columns5" :column-change="onChangeDistrict"
+        @change="(e) => onChange(5, e)" />
     </demo-block>
   </page-wraper>
 </template>
 <script lang="ts" setup>
-import type { PickerViewColumnChange } from '@/uni_modules/wot-design-uni/components/wd-picker-view/types'
+import type { PickerViewColumnChange } from '@/uni_modules/wot-design-uni/components/pro-picker-view/types'
 import { ref } from 'vue'
 
 const district: Record<string, Array<{ label: string; value: string }>> = {

@@ -2,29 +2,27 @@
   <pro-popup v-model="show" position="bottom" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
     :modal-style="modal ? '' : 'opacity: 0;'" :modal="hideOnClickOutside" :lockScroll="lockScroll"
     @click-modal="handleClose">
-    <view :class="`wd-number-keyboard w-full user-select-none text-black bg-[#f2f3f5] ${customClass}`"
-      :style="customStyle">
+    <view :class="cn(`w-full user-select-none text-black bg-[#f2f3f5] ${customClass}`)" :style="customStyle">
       <view
-        class="wd-number-keyboard__header relative flex items-center justify-center h-[34px] box-border pt-1.5 text-[#646566] text-[16px] text-base"
+        class="relative flex items-center justify-center h-[34px] box-border pt-1.5 text-[#646566] text-[16px] text-base"
         v-if="showTitle">
         <slot name="title">
-          <text class="wd-number-keyboard__title inline-block font-normal">{{ title }}</text>
+          <text class="inline-block font-normal">{{ title }}</text>
         </slot>
         <view
-          class="wd-number-keyboard__close flex items-center absolute right-0 h-full bg-transparent border-none py-0 px-4 text-primary text-sm"
-          hover-class="wd-number-keyboard__close--hover opacity-60" v-if="showClose" @click="handleClose">
+          class="flex items-center absolute right-0 h-full bg-transparent border-none py-0 px-4 text-primary text-sm"
+          hover-class="opacity-60" v-if="showClose" @click="handleClose">
           <text>{{ closeText }}</text>
         </view>
       </view>
-      <view class="wd-number-keyboard__body flex p-0 pt-1.5 pl-1.5">
-        <!--  flex: 3; -->
-        <view class="wd-number-keyboard__keys flex flex-wrap flex-[3]">
-          <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
-            @press="handlePress"></wd-key>
+      <view class="flex p-0 pt-1.5 pl-1.5">
+        <view class="flex flex-wrap flex-[3]">
+          <pro-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
+            @press="handlePress"></pro-key>
         </view>
-        <view class="wd-number-keyboard__sidebar flex flex-1 flex-col" v-if="mode === 'custom'">
-          <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
-          <wd-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></wd-key>
+        <view class="flex flex-1 flex-col" v-if="mode === 'custom'">
+          <pro-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></pro-key>
+          <pro-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></pro-key>
         </view>
       </view>
     </view>
@@ -32,7 +30,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'wd-number-keyboard',
+  name: 'pro-number-keyboard',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -44,9 +42,10 @@ export default {
 <script lang="ts" setup>
 
 import { computed, ref, watch } from 'vue'
-import WdKey from './key/index.vue'
+import ProKey from './key/index.vue'
 import { numberKeyboardProps, type Key } from './types'
 import type { NumberKeyType } from './key/types'
+import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(numberKeyboardProps)
 const emit = defineEmits(['update:visible', 'input', 'close', 'delete', 'update:modelValue'])

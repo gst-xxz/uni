@@ -117,6 +117,5 @@
   ],
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --fix --ext .js,.vue,.ts src"
-  },
-  "packageManager": "pnpm@9.2.0"
+  }
 }

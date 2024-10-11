@@ -10,19 +10,19 @@
         : 'margin-bottom: var(--window-bottom);'
         } ${customStyle}`">
         <view v-if="title"
-          :class="`relative text-center text-black/85 h-16 leading-[1] text-base font-medium ${customHeaderClass}`">
+          :class="`relative text-center text-black/85 h-16 leading-[64px] text-base font-medium ${customHeaderClass}`">
           {{ title }}
           <pro-icon custom-class="absolute leading-[1.1] top-[25px] right-[15px] text-black/65 text-base" name="cross"
             @click="close" />
         </view>
         <view class="py-2 px-0 max-h-[50vh] overflow-y-auto overflow-scrolling-touch" v-if="actions && actions.length">
           <button v-for="(action, rowIndex) in actions" :key="rowIndex" :class="cn(
-            `relative block w-full text-center border-none outline-none h-12 leading-[1] text-black/85 text-base text-white after:hidden`,
+            `relative block w-full text-center border-none outline-none h-12 text-base leading-[48px] text-black/85 after:hidden bg-transparent`,
             action.disabled ? 'cursor-not-allowed text-black/25' : '',
             action.loading ? 'flex items-center justify-center leading-[initial]' : '',
-            !action.disabled && !action.loading ? 'bg-[#f5f5f5]' : '')" :style="`color: ${action.color}`"
+            action.disabled && action.loading ? 'bg-[#f5f5f5]' : '')" :style="`color: ${action.color}`"
             @click="select(rowIndex, 'action')">
-            <pro-loading custom-class="`w-5 h-5" v-if="action.loading" />
+            <pro-loading custom-class="w-5 h-5" v-if="action.loading" />
             <view v-else class="inline-block">{{ action.name }}</view>
             <view v-if="!action.loading && action.subname" class="inline-block ml-1 text-xs text-black/45">{{
               action.subname }}</view>

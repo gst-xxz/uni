@@ -1,27 +1,28 @@
 <template>
-  <view :class="`wd-pager ${customClass}`" :style="customStyle" v-if="!(hideIfOnePage && totalPageNum === 1)">
-    <view class="wd-pager__content">
+  <view :class="cn('user-select-none bg-white', customClass)" :style="customStyle"
+    v-if="!(hideIfOnePage && totalPageNum === 1)">
+    <view class="flex justify-start items-center pt-2.5 px-[15px]">
       <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1"
-        custom-class="wd-pager__nav" @click="sub">
+        custom-class="min-w-[60px]" @click="sub">
         <text v-if="!showIcon">{{ prevText || translate('prev') }}</text>
         <pro-icon v-else
-          :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
+          :custom-class="cn('inline-block text-sm', { 'text-black/15': modelValue <= 1, 'text-black/65': modelValue > 1 })"
           name="arrow-left"></pro-icon>
       </wd-button>
-      <view class="wd-pager__size">
-        <text class="wd-pager__current">{{ modelValue }}</text>
-        <text class="wd-pager__separator">/</text>
+      <view class="flex-1 text-center text-xs">
+        <text class="text-primary">{{ modelValue }}</text>
+        <text class="pt-0 px-1">/</text>
         <text>{{ totalPageNum }}</text>
       </view>
       <wd-button :plain="modelValue < totalPageNum" type="info" size="small" :disabled="modelValue >= totalPageNum"
-        custom-class="wd-pager__nav" @click="add">
+        custom-class="min-w-[60px]" @click="add">
         <text v-if="!showIcon">{{ nextText || translate('next') }}</text>
         <pro-icon v-else
-          :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
+          :custom-class="cn('text-sm', { 'text-black/15': modelValue >= totalPageNum, 'text-black/65': modelValue < totalPageNum })"
           name="arrow"></pro-icon>
       </wd-button>
     </view>
-    <view class="wd-pager__message" v-if="showMessage">
+    <view class="text-center text-black/65 text-xs pt-[1px] px-0 pb-4" v-if="showMessage">
       <text>{{ translate('page', modelValue) }}，</text>
       <text v-if="total">{{ translate('total', total) }}，</text>
       <text>{{ translate('size', pageSize) }}</text>
@@ -31,7 +32,7 @@
 
 <script lang="ts">
 export default {
-  name: 'wd-pagination',
+  name: 'pro-pagination',
   options: {
     virtualHost: true,
     addGlobalClass: true,
@@ -41,11 +42,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdButton from '../wd-button/wd-button.vue'
 import { ref, watch } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { paginationProps } from './types'
+import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const { translate } = useTranslate('pagination')
 
@@ -97,7 +97,3 @@ function updateTotalPage() {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import './index.scss';
-</style>
