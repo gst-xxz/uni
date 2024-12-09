@@ -16,24 +16,34 @@
       </demo-block>
       <demo-block title="Zoom 动画">
         <wd-button @click="zoomIn">zoom-in</wd-button>
+        <wd-button @click="zoomOut">zoom-out</wd-button>
       </demo-block>
       <demo-block title="自定义动画">
         <wd-button @click="custom">custom</wd-button>
       </demo-block>
 
-      <pro-transition :show="show" :name="name" custom-class="block" />
+      <wd-transition :show="show" :name="name" custom-class="block" />
 
-      <pro-transition :show="customShow" name="" :duration="{ enter: 700, leave: 1000 }" enter-class="custom-enter"
-        enter-active-class="custom-enter-active" enter-to-class="custom-enter-to" leave-class="custom-leave"
-        leave-active-class="custom-leave-active" leave-to-class="custom-leave-to" custom-class="block" />
+      <wd-transition
+        :show="customShow"
+        :duration="{ enter: 700, leave: 1000 }"
+        enter-class="custom-enter"
+        enter-active-class="custom-enter-active"
+        enter-to-class="custom-enter-to"
+        leave-class="custom-leave"
+        leave-active-class="custom-leave-active"
+        leave-to-class="custom-leave-to"
+        custom-class="block"
+      />
     </page-wraper>
   </view>
 </template>
 <script lang="ts" setup>
+import type { TransitionName } from '@/uni_modules/wot-design-uni/components/wd-transition/types'
 import { ref } from 'vue'
 
 const show = ref<boolean>(false)
-const name = ref<any>('')
+const name = ref<TransitionName>()
 const customShow = ref<boolean>(false)
 function fade() {
   transition('fade')
@@ -65,13 +75,16 @@ function slideRight() {
 function zoomIn() {
   transition('zoom-in')
 }
+function zoomOut() {
+  transition('zoom-out')
+}
 function custom() {
   customShow.value = true
   setTimeout(() => {
     customShow.value = false
   }, 1200)
 }
-function transition(transition: string) {
+function transition(transition: TransitionName) {
   name.value = transition
   show.value = true
   setTimeout(() => {
@@ -83,7 +96,6 @@ function transition(transition: string) {
 :deep(button) {
   margin: 0 10px 10px 0;
 }
-
 :deep(.block) {
   position: fixed;
   left: 50%;
@@ -98,12 +110,10 @@ function transition(transition: string) {
 :deep(.custom-leave-active) {
   transition-property: background, transform;
 }
-
 :deep(.custom-enter) {
   transform: translate3d(-100px, -100px, 0) rotate(-180deg);
   background: #ff0000;
 }
-
 :deep(.custom-leave-to) {
   transform: translate3d(100px, 100px, 0) rotate(180deg);
   background: #ff0000;

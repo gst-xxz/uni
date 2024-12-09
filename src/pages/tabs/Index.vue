@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <pro-toast />
+    <wd-toast />
     <demo-block title="基本用法" transparent>
       <wd-tabs v-model="tab1" @change="handleChange">
         <block v-for="item in 4" :key="item">
@@ -18,6 +18,24 @@
         <block v-for="item in tabs" :key="item">
           <wd-tab :title="`${item}`" :name="item">
             <view class="content">内容{{ tab }}</view>
+          </wd-tab>
+        </block>
+      </wd-tabs>
+    </demo-block>
+
+    <demo-block title="使用徽标" transparent>
+      <wd-tabs v-model="tabWithBadge" @change="handleChange">
+        <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`" :badge-props="item.badgeProps">
+          <view class="content">{{ item.title }}徽标</view>
+        </wd-tab>
+      </wd-tabs>
+    </demo-block>
+
+    <demo-block title="自动调整底部条宽度" transparent>
+      <wd-tabs v-model="autoLineWidthTab" @change="handleChange" auto-line-width>
+        <block v-for="item in autoLineWidthTabs" :key="item">
+          <wd-tab :title="`${item}`" :name="item">
+            <view class="content">内容{{ autoLineWidthTab }}</view>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -74,10 +92,20 @@
     </demo-block>
 
     <demo-block title="数量大于6时可滚动" transparent>
-      <wd-tabs v-model="tab6" lazy-render @change="handleChange">
+      <wd-tabs v-model="tab6" @change="handleChange">
         <block v-for="item in 7" :key="item">
           <wd-tab :title="`标签${item}`">
             <view class="content">内容{{ tab6 + 1 }}</view>
+          </wd-tab>
+        </block>
+      </wd-tabs>
+    </demo-block>
+
+    <demo-block title="左对齐超出即可滚动" transparent>
+      <wd-tabs v-model="tab9" slidable="always" @change="handleChange">
+        <block v-for="item in 5" :key="item">
+          <wd-tab :title="`超大标签${item}`">
+            <view class="content">内容{{ tab9 + 1 }}</view>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -92,13 +120,60 @@
         </block>
       </wd-tabs>
     </demo-block>
+
+    <demo-block title="在弹出框中使用" transparent>
+      <view class="section">
+        <wd-button @click="handleOpenClick">打开弹窗</wd-button>
+      </view>
+    </demo-block>
+
+    <wd-popup v-model="showPopup" position="bottom" safe-area-inset-bottom @after-enter="handlePopupShow" closable custom-style="padding: 0 24rpx;">
+      <view class="title">在弹出框中使用</view>
+      <wd-tabs v-model="tab10" ref="tabsRef">
+        <wd-tab v-for="item in tabs" :key="item" :title="`${item}`" :name="item">
+          <view class="content">内容{{ tab10 }}</view>
+        </wd-tab>
+      </wd-tabs>
+    </wd-popup>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
+import type { TabsInstance } from '@/uni_modules/wot-design-uni/components/wd-tabs/types'
 import { ref } from 'vue'
 const tabs = ref(['这', '是', '一', '个', '例子'])
 const tab = ref('一')
+
+const tabWithBadge = ref(0)
+
+const tabsWithBadge = ref([
+  {
+    title: '普通数值',
+    badgeProps: {
+      modelValue: 10,
+      right: '-8px'
+    }
+  },
+  {
+    title: '最大值',
+    badgeProps: {
+      modelValue: 100,
+      max: 99,
+      right: '-8px'
+    }
+  },
+  {
+    title: '点状',
+    badgeProps: {
+      isDot: true,
+      right: '-8px',
+      showZero: true
+    }
+  }
+])
+
+const autoLineWidthTabs = ref(['Wot', 'Design', 'Uni'])
+const autoLineWidthTab = ref('Design')
 
 const tab1 = ref<number>(0)
 const tab2 = ref<number>(0)
@@ -108,6 +183,9 @@ const tab5 = ref<number>(0)
 const tab6 = ref<number>(0)
 const tab7 = ref<number>(0)
 const tab8 = ref<number>(0)
+const tab9 = ref<number>(0)
+const tab10 = ref<number>(3)
+
 const toast = useToast()
 function handleClick({ index, name }: any) {
   console.log('event', { index, name })
@@ -115,6 +193,22 @@ function handleClick({ index, name }: any) {
 }
 function handleChange(event: any) {
   console.log('change', event)
+}
+
+const showPopup = ref(false) // 控制popup显示
+const tabsRef = ref<TabsInstance>() // 获取分段器实例
+
+/**
+ * 点击按钮打开popup
+ */
+function handleOpenClick() {
+  showPopup.value = true
+}
+/**
+ * popup打开后更新分段器样式
+ */
+function handlePopupShow() {
+  tabsRef.value?.updateLineStyle(false)
 }
 </script>
 <style lang="scss" scoped>
@@ -125,9 +219,15 @@ function handleChange(event: any) {
   flex-direction: column;
   justify-content: space-around;
 }
-
 .large {
   line-height: 320px;
   text-align: center;
+}
+.title {
+  display: flex;
+  font-size: 32rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 0;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <page-wraper>
-    <pro-toast />
+    <wd-toast />
 
     <view @click.stop="closeOutside">
       <demo-block transparent title="基本用法">
-        <pro-swipe-action>
+        <wd-swipe-action>
           <wd-cell title="标题文字" value="内容" />
           <template #right>
             <view class="action">
@@ -13,11 +13,11 @@
               <view class="button" style="background: #4d80f0" @click="handleAction('操作3')">操作3</view>
             </view>
           </template>
-        </pro-swipe-action>
+        </wd-swipe-action>
       </demo-block>
 
       <demo-block transparent title="左右滑动">
-        <pro-swipe-action>
+        <wd-swipe-action>
           <template #left>
             <view class="action">
               <view class="button" style="background: #fa4350">操作1</view>
@@ -35,11 +35,11 @@
               <view class="button" style="background: #4d80f0">操作6</view>
             </view>
           </template>
-        </pro-swipe-action>
+        </wd-swipe-action>
       </demo-block>
 
       <demo-block transparent title="切换按钮">
-        <pro-swipe-action v-model="value" :before-close="beforeClose">
+        <wd-swipe-action v-model="value" :before-close="beforeClose">
           <template #left>
             <view class="action">
               <view class="button" style="background: #fa4350">操作1</view>
@@ -57,7 +57,7 @@
               <view class="button" style="background: #4d80f0">操作6</view>
             </view>
           </template>
-        </pro-swipe-action>
+        </wd-swipe-action>
       </demo-block>
       <view class="button-group">
         <view @click.stop="noop">
@@ -72,7 +72,7 @@
       </view>
 
       <demo-block transparent title="点击事件">
-        <pro-swipe-action @click="handleClick">
+        <wd-swipe-action @click="handleClick">
           <wd-cell title="标题文字" value="内容" />
 
           <template #right>
@@ -82,11 +82,11 @@
               <view class="button" style="background: #4d80f0">操作3</view>
             </view>
           </template>
-        </pro-swipe-action>
+        </wd-swipe-action>
       </demo-block>
 
       <demo-block transparent title="禁用滑动按钮">
-        <pro-swipe-action disabled>
+        <wd-swipe-action disabled>
           <wd-cell title="标题文字" value="内容" />
 
           <template #right>
@@ -96,14 +96,14 @@
               <view class="button" style="background: #4d80f0">操作3</view>
             </view>
           </template>
-        </pro-swipe-action>
+        </wd-swipe-action>
       </demo-block>
     </view>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { useToast, useQueue } from '@/uni_modules/wot-design-uni'
-import type { SwipeActionBeforeClose, SwipeActionStatus } from '@/uni_modules/wot-design-uni/components/pro-swipe-action/types'
+import type { SwipeActionBeforeClose, SwipeActionStatus } from '@/uni_modules/wot-design-uni/components/wd-swipe-action/types'
 
 const { closeOutside } = useQueue()
 
@@ -129,13 +129,17 @@ function handleAction(action: string) {
   toast.show(`点击了${action}`)
 }
 
-function noop() { }
+function noop() {}
 </script>
 <style lang="scss" scoped>
+.wot-theme-dark {
+  .button-group {
+    background: $-dark-background2;
+  }
+}
 .action {
   height: 100%;
 }
-
 .button {
   display: inline-block;
   padding: 0 15px;
@@ -143,7 +147,6 @@ function noop() { }
   color: white;
   line-height: 46px;
 }
-
 .button-group {
   padding: 10px;
   background: white;

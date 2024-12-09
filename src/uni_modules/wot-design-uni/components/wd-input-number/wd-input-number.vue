@@ -1,24 +1,25 @@
 <template>
-  <view
-    :class="`wd-input-number inline-block leading-[1.15] user-select-none ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`"
-    :style="customStyle">
-    <view
-      :class="`wd-input-number__action relative inline-block align-middle box-border ${minDisabled || disableMinus ? 'is-disabled' : ''}`"
-      @click="sub">
-      <pro-icon name="minus"
-        custom-class="absolute inline-block left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm w-[14px] h-[14px]"></pro-icon>
+  <view :class="`wd-input-number ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`" :style="customStyle">
+    <view :class="`wd-input-number__action ${minDisabled || disableMinus ? 'is-disabled' : ''}`" @click="sub">
+      <wd-icon name="decrease" custom-class="wd-input-number__action-icon"></wd-icon>
     </view>
-    <view v-if="!withoutInput" class="wd-input-number__inner relative inline-block align-middle" @click.stop="">
+    <view v-if="!withoutInput" class="wd-input-number__inner" @click.stop="">
       <input
-        class="wd-input-number__input relative block py-0 px-0.5 box-border z-[1] bg-transparent border-none outline-none text-center"
-        :style="`${inputWidth ? 'width: ' + inputWidth : ''}`" type="digit" :disabled="disabled || disableInput"
-        v-model="inputValue" :placeholder="placeholder" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
+        class="wd-input-number__input"
+        :style="`${inputWidth ? 'width: ' + inputWidth : ''}`"
+        type="digit"
+        :disabled="disabled || disableInput"
+        v-model="inputValue"
+        :placeholder="placeholder"
+        :adjust-position="adjustPosition"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
       <view class="wd-input-number__input-border"></view>
     </view>
-    <view :class="`wd-input-number__action relative inline-block ${maxDisabled || disablePlus ? 'is-disabled' : ''}`"
-      @click="add">
-      <pro-icon name="plus"
-        custom-class="absolute inline-block left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm w-[14px] h-[14px]"></pro-icon>
+    <view :class="`wd-input-number__action ${maxDisabled || disablePlus ? 'is-disabled' : ''}`" @click="add">
+      <wd-icon name="add" custom-class="wd-input-number__action-icon"></wd-icon>
     </view>
   </view>
 </template>
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { ref, watch } from 'vue'
 import { debounce, isDef, isEqual } from '../common/util'
 import { inputNumberProps } from './types'
@@ -186,21 +187,27 @@ function formatValue(value: string | number) {
     return ''
   }
 
-  value = Number(value)
+  let formatValue = Number(value)
 
-  if (isNaN(value)) {
+  if (isNaN(formatValue)) {
     value = props.min
   }
 
   if (props.stepStrictly) {
-    value = toStrictlyStep(value)
+    formatValue = toStrictlyStep(value)
   }
 
   if (props.precision !== undefined) {
-    value = value.toFixed(props.precision)
+    formatValue = Number(formatValue.toFixed(props.precision))
+  }
+  if (formatValue > props.max) {
+    formatValue = props.max
+  }
+  if (formatValue < props.min) {
+    formatValue = props.min
   }
 
-  return Number(value)
+  return formatValue
 }
 </script>
 

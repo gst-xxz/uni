@@ -10,13 +10,13 @@
         <wd-button type="primary" @click="show1 = true">嵌入内容</wd-button>
       </demo-block>
     </page-wraper>
-    <pro-overlay :show="show" @click="show = false" />
+    <wd-overlay :show="show" @click="show = false" />
 
-    <pro-overlay :show="show1" @click="show1 = false">
+    <wd-overlay :show="show1" @click="show1 = false">
       <view class="wrapper">
         <view class="block" @click.stop="" />
       </view>
-    </pro-overlay>
+    </wd-overlay>
   </view>
 </template>
 <script lang="ts" setup>
@@ -26,6 +26,9 @@ const show = ref<boolean>(false)
 const show1 = ref<boolean>(false)
 </script>
 <style lang="scss" scoped>
+.wot-theme-dark {
+}
+
 .wrapper {
   display: flex;
   align-items: center;

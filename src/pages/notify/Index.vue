@@ -1,39 +1,39 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法" transparent>
-      <pro-cell-group>
+      <wd-cell-group>
         <wd-cell title="基础用法" is-link @click="showBasicNotify" />
-      </pro-cell-group>
+      </wd-cell-group>
     </demo-block>
     <demo-block title="通知类型" transparent>
-      <pro-cell-group>
+      <wd-cell-group>
         <wd-cell title="主要通知" is-link @click="showType('primary')" />
         <wd-cell title="成功通知" is-link @click="showType('success')" />
         <wd-cell title="危险通知" is-link @click="showType('danger')" />
         <wd-cell title="警告通知" is-link @click="showType('warning')" />
-      </pro-cell-group>
+      </wd-cell-group>
     </demo-block>
     <demo-block title="自定义配置" transparent>
-      <pro-cell-group>
+      <wd-cell-group>
         <wd-cell title="自定义颜色" is-link @click="showCustomColor" />
         <wd-cell title="自定义位置" is-link @click="showCustomPosition" />
         <wd-cell title="自定义时长" is-link @click="showCustomDuration" />
-      </pro-cell-group>
+      </wd-cell-group>
     </demo-block>
     <demo-block title="使用 Notify 组件" transparent>
-      <pro-cell-group>
+      <wd-cell-group>
         <wd-cell title="使用 Notify 组件" is-link @click="showNotifyComponent" />
-      </pro-cell-group>
+      </wd-cell-group>
     </demo-block>
-    <pro-notify selector="visible" type="success" v-model:visible="visible">
-      <pro-icon name="check-outline" size="inherit" color="inherit" />
+    <wd-notify selector="visible" type="success" v-model:visible="visible">
+      <wd-icon name="check-outline" size="inherit" color="inherit" />
       成功通知
-    </pro-notify>
+    </wd-notify>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { NotifyType } from '@/uni_modules/wot-design-uni/components/pro-notify/types'
+import type { NotifyType } from '@/uni_modules/wot-design-uni/components/wd-notify/types'
 import { useNotify } from '@/uni_modules/wot-design-uni'
 
 let timer: ReturnType<typeof setTimeout>

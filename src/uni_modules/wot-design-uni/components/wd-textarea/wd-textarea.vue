@@ -1,55 +1,56 @@
 <template>
-  <view :class="cn(
-    'wd-textarea relative text-left bg-white',
-    {
-      'is-cell': label || useLabelSlot,
-      'is-center': center,
-      'is-border': cell.border,
-      ['is-' + size]: size,
-      'is-error': error,
-      'is-disabled': disabled,
-      'is-auto-height': autoHeight,
-      'is-not-empty': currentLength > 0,
-      'is-no-border': noBorder,
-    }, customClass
-  )" :style="customStyle">
-    <view v-if="label || useLabelSlot"
-      :class="cn(`wd-textarea__label relative flex flex-shrink-0 box-border ${props.customLabelClass} ${isRequired ? 'is-required pl-3' : ''}`)"
-      :style="labelStyle">
+  <view :class="rootClass" :style="customStyle">
+    <view v-if="label || useLabelSlot" :class="labelClass" :style="labelStyle">
       <view v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
-        <pro-icon v-if="prefixIcon && !usePrefixSlot"
-          custom-class="wd-textarea__icon ml-2 bg-white text-base bg-[#bfbfbf]" :name="prefixIcon"
-          @click="onClickPrefixIcon" />
+        <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
         <slot v-else name="prefix"></slot>
       </view>
-      <view class="wd-textarea__label-inner inline-block text-sm leading-6">
+      <view class="wd-textarea__label-inner">
         <text v-if="label">{{ label }}</text>
         <slot v-else name="label"></slot>
       </view>
     </view>
 
     <!-- 文本域 -->
-    <view
-      :class="`wd-textarea__value relative p-0 text-[0] box-border bg-white ${showClear ? 'is-suffix pr-6' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit pb-9' : ''}`">
-      <textarea :class="`wd-textarea__inner p-0 w-full text-sm leading-6 ${customTextareaClass}`" v-model="inputValue"
-        :show-count="false" :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength"
-        :focus="focused" :auto-focus="autoFocus" :placeholder-style="placeholderStyle"
-        :placeholder-class="cn(`wd-textarea__placeholder ${props.placeholderClass}`)" :auto-height="autoHeight"
-        :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor" :show-confirm-bar="showConfirmBar"
-        :selection-start="selectionStart" :selection-end="selectionEnd" :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard" :confirm-type="confirmType" :confirm-hold="confirmHold"
-        :disable-default-padding="disableDefaultPadding" :ignoreCompositionEvent="ignoreCompositionEvent"
-        @input="handleInput" @focus="handleFocus" @blur="handleBlur" @confirm="handleConfirm"
-        @linechange="handleLineChange" @keyboardheightchange="handleKeyboardheightchange" />
+    <view :class="`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`">
+      <textarea
+        :class="`wd-textarea__inner ${customTextareaClass}`"
+        v-model="inputValue"
+        :show-count="false"
+        :placeholder="placeholderValue"
+        :disabled="disabled || readonly"
+        :maxlength="maxlength"
+        :focus="focused"
+        :auto-focus="autoFocus"
+        :placeholder-style="placeholderStyle"
+        :placeholder-class="inputPlaceholderClass"
+        :auto-height="autoHeight"
+        :cursor-spacing="cursorSpacing"
+        :fixed="fixed"
+        :cursor="cursor"
+        :show-confirm-bar="showConfirmBar"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :disable-default-padding="disableDefaultPadding"
+        :ignoreCompositionEvent="ignoreCompositionEvent"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @confirm="handleConfirm"
+        @linechange="handleLineChange"
+        @keyboardheightchange="handleKeyboardheightchange"
+      />
       <view v-if="errorMessage" class="wd-textarea__error-message">{{ errorMessage }}</view>
 
       <view v-if="readonly" class="wd-textarea__readonly-mask" />
-      <view class="wd-textarea__suffix flex-shrink-0 leading-[initial] absolute right-0 top-0 bottom-0 z-[1]">
-        <pro-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
-        <view v-if="showWordCount"
-          class="wd-textarea__count absolute bottom-2 right-0 bg-white inline-flex text-sm text-[#bfbfbf]">
-          <text
-            :class="cn(`${currentLength > 0 ? 'wd-textarea__count-current' : ''} ${currentLength > props.maxlength ? 'is-error' : ''}`)">
+      <view class="wd-textarea__suffix">
+        <wd-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
+        <view v-if="showWordCount" class="wd-textarea__count">
+          <text :class="countClass">
             {{ currentLength }}
           </text>
           /{{ maxlength }}
@@ -71,15 +72,14 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed, onBeforeMount, ref, watch } from 'vue'
-import { objToStyle, requestAnimationFrame, isDef, pause } from '../common/util'
+import { objToStyle, isDef, pause } from '../common/util'
 import { useCell } from '../composables/useCell'
-import { FORM_KEY, type FormItemRule } from '../pro-form/types'
+import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { textareaProps } from './types'
-import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const { translate } = useTranslate('textarea')
 
@@ -105,7 +105,7 @@ const placeholderValue = computed(() => {
 const clearing = ref<boolean>(false)
 const focused = ref<boolean>(false) // 控制聚焦
 const focusing = ref<boolean>(false) // 当前是否激活状态
-const inputValue = ref<string | number>('') // 输入框的值
+const inputValue = ref<string>('') // 输入框的值
 const cell = useCell()
 
 watch(
@@ -174,12 +174,32 @@ const currentLength = computed(() => {
   return String(formatValue(props.modelValue) || '').length
 })
 
+const rootClass = computed(() => {
+  return `wd-textarea   ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${
+    cell.border.value ? 'is-border' : ''
+  } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''} ${
+    props.autoHeight ? 'is-auto-height' : ''
+  } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
+})
+
+const labelClass = computed(() => {
+  return `wd-textarea__label ${props.customLabelClass} ${isRequired.value ? 'is-required' : ''}`
+})
+
+const inputPlaceholderClass = computed(() => {
+  return `wd-textarea__placeholder  ${props.placeholderClass}`
+})
+
+const countClass = computed(() => {
+  return `${currentLength.value > 0 ? 'wd-textarea__count-current' : ''} ${currentLength.value > props.maxlength ? 'is-error' : ''}`
+})
+
 const labelStyle = computed(() => {
   return props.labelWidth
     ? objToStyle({
-      'min-width': props.labelWidth,
-      'max-width': props.labelWidth
-    })
+        'min-width': props.labelWidth,
+        'max-width': props.labelWidth
+      })
     : ''
 })
 
@@ -198,27 +218,26 @@ function formatValue(value: string | number) {
   if (showWordLimit && maxlength !== -1 && String(value).length > maxlength) {
     return value.toString().substring(0, maxlength)
   }
-  return value
+  return `${value}`
 }
 
-function handleClear() {
+async function handleClear() {
   clearing.value = true
   focusing.value = false
   inputValue.value = ''
   if (props.focusWhenClear) {
     focused.value = false
   }
-  requestAnimationFrame(() => {
-    if (props.focusWhenClear) {
-      focused.value = true
-      focusing.value = true
-    }
-    emit('change', {
-      value: ''
-    })
-    emit('update:modelValue', inputValue.value)
-    emit('clear')
+  await pause()
+  if (props.focusWhenClear) {
+    focused.value = true
+    focusing.value = true
+  }
+  emit('change', {
+    value: ''
   })
+  emit('update:modelValue', inputValue.value)
+  emit('clear')
 }
 async function handleBlur({ detail }: any) {
   // 等待150毫秒，clear执行完毕

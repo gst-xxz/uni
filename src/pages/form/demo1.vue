@@ -1,12 +1,27 @@
 <template>
   <page-wraper>
-    <pro-form ref="form" :model="model">
-      <pro-cell-group border>
-        <wd-input label="用户名" label-width="100px" prop="name" clearable v-model="model.name" placeholder="请输入用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]" />
-        <wd-input v-for="(item, index) in model.phoneNumbers" :key="item.key" :label="'玛卡巴卡单号' + index"
-          :prop="'phoneNumbers.' + index + '.value'" label-width="100px" clearable v-model="item.value"
-          placeholder="玛卡巴卡单号" :rules="[{ required: true, message: '请填写玛卡巴卡单号' + index }]" />
+    <wd-form ref="form" :model="model">
+      <wd-cell-group border>
+        <wd-input
+          label="歪比巴卜名"
+          label-width="100px"
+          prop="name"
+          clearable
+          v-model="model.name"
+          placeholder="请输入歪比巴卜"
+          :rules="[{ required: true, message: '请填写歪比巴卜' }]"
+        />
+        <wd-input
+          v-for="(item, index) in model.phoneNumbers"
+          :key="item.key"
+          :label="'玛卡巴卡单号' + index"
+          :prop="'phoneNumbers.' + index + '.value'"
+          label-width="100px"
+          clearable
+          v-model="item.value"
+          placeholder="玛卡巴卡单号"
+          :rules="[{ required: true, message: '请填写玛卡巴卡单号' + index }]"
+        />
 
         <wd-cell title-width="0px">
           <view class="footer">
@@ -16,13 +31,13 @@
             <wd-button type="primary" size="small" @click="submit">提交</wd-button>
           </view>
         </wd-cell>
-      </pro-cell-group>
-    </pro-form>
+      </wd-cell-group>
+    </wd-form>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { FormInstance } from '@/uni_modules/wot-design-uni/components/pro-form/types'
+import type { FormInstance } from '@/uni_modules/wot-design-uni/components/wd-form/types'
 import { reactive, ref } from 'vue'
 
 interface PhoneItem {
@@ -72,7 +87,6 @@ const submit = () => {
 <style lang="scss" scoped>
 .footer {
   text-align: left;
-
   :deep(.wd-button) {
     &:not(:last-child) {
       margin-right: 12px;

@@ -1,14 +1,13 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法" transparent>
-      <pro-pagination v-model="page1" :total="total1" @change="handleChange1"></pro-pagination>
+      <wd-pagination v-model="page1" :total="total1" @change="handleChange1"></wd-pagination>
     </demo-block>
     <demo-block title="Icon图标" transparent>
-      <pro-pagination v-model="page2" :total="total2" show-icon @change="handleChange2"></pro-pagination>
+      <wd-pagination v-model="page2" :total="total2" show-icon @change="handleChange2"></wd-pagination>
     </demo-block>
     <demo-block title="文字提示" transparent>
-      <pro-pagination v-model="page3" :total="total3" :page-size="pageSize3" @change="handleChange3" show-icon
-        show-message></pro-pagination>
+      <wd-pagination v-model="page3" :total="total3" :page-size="pageSize3" @change="handleChange3" show-icon show-message></wd-pagination>
     </demo-block>
   </page-wraper>
 </template>

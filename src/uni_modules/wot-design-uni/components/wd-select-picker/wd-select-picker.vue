@@ -2,49 +2,72 @@
   <view :class="`wd-select-picker ${cell.border.value ? 'is-border' : ''} ${customClass}`" :style="customStyle">
     <view class="wd-select-picker__field" @click="open">
       <slot v-if="useDefaultSlot"></slot>
-      <view v-else :class="`wd-select-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${error && 'is-error'
-        } ${size && 'is-' + size}`">
-        <view v-if="label || useLabelSlot"
+      <view
+        v-else
+        :class="`wd-select-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
+          error && 'is-error'
+        } ${size && 'is-' + size}`"
+      >
+        <view
+          v-if="label || useLabelSlot"
           :class="`wd-select-picker__label ${isRequired && 'is-required'} ${customLabelClass}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
+        >
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
         </view>
-        <view class="wd-select-picker__body flex-1">
-          <view class="wd-select-picker__value-wraper flex">
-            <view :class="`wd-select-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-select-picker__value--placeholder'
-              }`">
+        <view class="wd-select-picker__body">
+          <view class="wd-select-picker__value-wraper">
+            <view
+              :class="`wd-select-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${
+                showValue ? '' : 'wd-select-picker__value--placeholder'
+              }`"
+            >
               {{ showValue || placeholder || translate('placeholder') }}
             </view>
-            <pro-icon v-if="!disabled && !readonly" custom-class="wd-select-picker__arrow" name="arrow" />
+            <wd-icon v-if="showArrow" custom-class="wd-select-picker__arrow" name="arrow-right" />
+            <view v-else-if="showClear" @click.stop="handleClear">
+              <wd-icon custom-class="wd-select-picker__clear" name="error-fill" />
+            </view>
           </view>
 
-          <view v-if="errorMessage"
-            class="wd-select-picker__error-message text-left align-middle text-danger text-xs leading-6">
-            {{ errorMessage }}
-          </view>
+          <view v-if="errorMessage" class="wd-select-picker__error-message">{{ errorMessage }}</view>
         </view>
       </view>
     </view>
-    <pro-action-sheet v-model="pickerShow" :duration="250" :title="title || translate('title')"
-      :close-on-click-modal="closeOnClickModal" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
-      @close="close" @opened="scrollIntoView ? setScrollIntoView() : ''" custom-header-class="wd-select-picker__header">
-      <pro-search v-if="filterable" v-model="filterVal"
-        :placeholder="filterPlaceholder || translate('filterPlaceholder')" hide-cancel placeholder-left
-        @change="handleFilterChange" />
+    <wd-action-sheet
+      v-model="pickerShow"
+      :duration="250"
+      :title="title || translate('title')"
+      :close-on-click-modal="closeOnClickModal"
+      :z-index="zIndex"
+      :safe-area-inset-bottom="safeAreaInsetBottom"
+      @close="close"
+      @opened="scrollIntoView ? setScrollIntoView() : ''"
+      custom-header-class="wd-select-picker__header"
+    >
+      <wd-search
+        v-if="filterable"
+        v-model="filterVal"
+        :placeholder="filterPlaceholder || translate('filterPlaceholder')"
+        hide-cancel
+        placeholder-left
+        @change="handleFilterChange"
+      />
       <scroll-view
         :class="`wd-select-picker__wrapper ${filterable ? 'is-filterable' : ''} ${loading ? 'is-loading' : ''} ${customContentClass}`"
-        :scroll-y="!loading" :scroll-top="scrollTop" :scroll-with-animation="true">
+        :scroll-y="!loading"
+        :scroll-top="scrollTop"
+        :scroll-with-animation="true"
+      >
         <!-- 多选 -->
-        <view v-if="type === 'checkbox' && isArray(selectList)" id="pro-checkbox-group">
-          <pro-checkbox-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor" :min="min"
-            :max="max" @change="handleChange">
+        <view v-if="type === 'checkbox' && isArray(selectList)" id="wd-checkbox-group">
+          <wd-checkbox-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor" :min="min" :max="max" @change="handleChange">
             <view v-for="item in filterColumns" :key="item[valueKey]" :id="'check' + item[valueKey]">
               <wd-checkbox :modelValue="item[valueKey]" :disabled="item.disabled">
                 <block v-if="filterable && filterVal">
                   <block v-for="text in item[labelKey]" :key="text.label">
-                    <text v-if="text.type === 'active'" class="wd-select-picker__text-active text-primary">{{ text.label
-                      }}</text>
+                    <text v-if="text.type === 'active'" class="wd-select-picker__text-active">{{ text.label }}</text>
                     <block v-else>{{ text.label }}</block>
                   </block>
                 </block>
@@ -53,18 +76,16 @@
                 </block>
               </wd-checkbox>
             </view>
-          </pro-checkbox-group>
+          </wd-checkbox-group>
         </view>
         <!-- 单选 -->
-        <view v-if="type === 'radio' && !isArray(selectList)" id="pro-radio-group">
-          <pro-radio-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor"
-            @change="handleChange">
+        <view v-if="type === 'radio' && !isArray(selectList)" id="wd-radio-group">
+          <wd-radio-group v-model="selectList" cell :size="selectSize" :checked-color="checkedColor" @change="handleChange">
             <view v-for="(item, index) in filterColumns" :key="index" :id="'radio' + item[valueKey]">
               <wd-radio :value="item[valueKey]" :disabled="item.disabled">
                 <block v-if="filterable && filterVal">
                   <block v-for="text in item[labelKey]" :key="text.label">
-                    <text :clsss="`${text.type === 'active' ? 'wd-select-picker__text-active' : ''}`">{{ text.label
-                      }}</text>
+                    <text :class="`${text.type === 'active' ? 'wd-select-picker__text-active' : ''}`">{{ text.label }}</text>
                   </block>
                 </block>
                 <block v-else>
@@ -72,18 +93,17 @@
                 </block>
               </wd-radio>
             </view>
-          </pro-radio-group>
+          </wd-radio-group>
         </view>
         <view v-if="loading" class="wd-select-picker__loading" @touchmove="noop">
-          <pro-loading :color="loadingColor" />
+          <wd-loading :color="loadingColor" />
         </view>
       </scroll-view>
       <!-- 确认按钮 -->
-      <view v-if="showConfirm" class="wd-select-picker__footer py-6 px-[15px]">
-        <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText ||
-          translate('confirm') }}</wd-button>
+      <view v-if="showConfirm" class="wd-select-picker__footer">
+        <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText || translate('confirm') }}</wd-button>
       </view>
-    </pro-action-sheet>
+    </wd-action-sheet>
   </view>
 </template>
 <script lang="ts">
@@ -98,22 +118,26 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
 import wdCheckbox from '../wd-checkbox/wd-checkbox.vue'
+import wdCheckboxGroup from '../wd-checkbox-group/wd-checkbox-group.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
+import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
 import wdButton from '../wd-button/wd-button.vue'
+import wdLoading from '../wd-loading/wd-loading.vue'
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'
 import { useCell } from '../composables/useCell'
-import { getRect, isArray, isDef, isFunction, requestAnimationFrame } from '../common/util'
+import { getRect, isArray, isDef, isFunction, pause } from '../common/util'
 import { useParent } from '../composables/useParent'
-import { FORM_KEY, type FormItemRule } from '../pro-form/types'
+import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useTranslate } from '../composables/useTranslate'
 import { selectPickerProps, type SelectPickerExpose } from './types'
 
 const { translate } = useTranslate('select-picker')
 
 const props = defineProps(selectPickerProps)
-const emit = defineEmits(['change', 'cancel', 'confirm', 'update:modelValue', 'open', 'close'])
+const emit = defineEmits(['change', 'cancel', 'confirm', 'clear', 'update:modelValue', 'open', 'close'])
 
 const pickerShow = ref<boolean>(false)
 const selectList = ref<Array<number | boolean | string> | number | boolean | string>([])
@@ -121,7 +145,7 @@ const isConfirm = ref<boolean>(false)
 const lastSelectList = ref<Array<number | boolean | string> | number | boolean | string>([])
 const filterVal = ref<string>('')
 const filterColumns = ref<Array<Record<string, any>>>([])
-const scrollTop = ref<number | null>(0) // 滚动位置
+const scrollTop = ref<number>(0) // 滚动位置
 const cell = useCell()
 
 const showValue = computed(() => {
@@ -237,49 +261,42 @@ onBeforeMount(() => {
 
 const { proxy } = getCurrentInstance() as any
 
-function setScrollIntoView() {
+async function setScrollIntoView() {
   let wraperSelector: string = ''
-  let selectorPromise: Promise<UniApp.NodeInfo | UniApp.NodeInfo[]>[] = []
+  let selectorPromise: Promise<UniApp.NodeInfo>[] = []
   if (isDef(selectList.value) && selectList.value !== '' && !isArray(selectList.value)) {
-    wraperSelector = '#pro-radio-group'
+    wraperSelector = '#wd-radio-group'
     selectorPromise = [getRect(`#radio${selectList.value}`, false, proxy)]
   } else if (isArray(selectList.value) && selectList.value.length > 0) {
     selectList.value.forEach((value) => {
       selectorPromise.push(getRect(`#check${value}`, false, proxy))
     })
-    wraperSelector = '#pro-checkbox-group'
+    wraperSelector = '#wd-checkbox-group'
   }
   if (wraperSelector) {
-    requestAnimationFrame().then(() => {
-      requestAnimationFrame().then(() => {
-        Promise.all([getRect('.wd-select-picker__wrapper', false, proxy), getRect(wraperSelector, false, proxy), ...selectorPromise])
-          .then((res: any[]) => {
-            if (isDef(res) && isArray(res)) {
-              const scrollView = res[0]
-              const wraper = res[1]
-              const target = res.slice(2) || []
-              if (isDef(wraper) && isDef(scrollView)) {
-                const index = target.findIndex((item) => {
-                  return item.top >= scrollView.top && item.bottom <= scrollView.bottom
-                })
-                if (index < 0) {
-                  scrollTop.value = -1
-                  nextTick(() => {
-                    scrollTop.value = Math.max(0, target[0].top - wraper.top - scrollView.height / 2)
-                  })
-                }
-              }
-            }
+    await pause(2000 / 30)
+    Promise.all([getRect('.wd-select-picker__wrapper', false, proxy), getRect(wraperSelector, false, proxy), ...selectorPromise]).then((res) => {
+      if (isDef(res) && isArray(res)) {
+        const scrollView = res[0]
+        const wraper = res[1]
+        const target = res.slice(2) || []
+        if (isDef(wraper) && isDef(scrollView)) {
+          const index = target.findIndex((item) => {
+            return item.bottom! > scrollView.top! && item.top! < scrollView.bottom!
           })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
+          if (index < 0) {
+            scrollTop.value = -1
+            nextTick(() => {
+              scrollTop.value = Math.max(0, target[0].top! - wraper.top! - scrollView.height! / 2)
+            })
+          }
+        }
+      }
     })
   }
 }
 
-function noop() { }
+function noop() {}
 
 function getSelectedItem(value: string | number | boolean) {
   const { valueKey, labelKey, columns } = props
@@ -407,6 +424,21 @@ function formatFilterColumns(columns: Record<string, any>[], filterVal: string) 
 
 const showConfirm = computed(() => {
   return (props.type === 'radio' && props.showConfirm) || props.type === 'checkbox'
+})
+
+// 是否展示清除按钮
+const showClear = computed(() => {
+  return props.clearable && !props.disabled && !props.readonly && showValue.value.length
+})
+
+function handleClear() {
+  emit('update:modelValue', props.type === 'checkbox' ? [] : '')
+  emit('clear')
+}
+
+// 是否展示箭头
+const showArrow = computed(() => {
+  return !props.disabled && !props.readonly && !showClear.value
 })
 
 defineExpose<SelectPickerExpose>({

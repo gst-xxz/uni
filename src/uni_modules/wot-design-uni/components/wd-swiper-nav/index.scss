@@ -5,6 +5,14 @@
 
   @include e(btn) {
     @include m(prev, next) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $-swiper-nav-btn-size;
+      height: $-swiper-nav-btn-size;
+      border-radius: 50%;
+      background: $-swiper-nav-btn-bg-color;
+
       &::after {
         position: absolute;
         left: 50%;
@@ -19,6 +27,7 @@
     }
 
     @include m(prev) {
+      left: 30rpx;
 
       &::after {
         margin-left: 4rpx;
@@ -28,6 +37,7 @@
     }
 
     @include m(next) {
+      right: 30rpx;
 
       &::after {
         margin-left: -4rpx;

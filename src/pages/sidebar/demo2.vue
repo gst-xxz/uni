@@ -1,18 +1,41 @@
+<!--
+ * @Author: weisheng
+ * @Date: 2023-11-05 12:09:52
+ * @LastEditTime: 2024-03-17 20:15:39
+ * @LastEditors: weisheng
+ * @Description: 
+ * @FilePath: /wot-design-uni/src/pages/sidebar/demo2.vue
+ * 记得注释
+-->
 <template>
   <page-wraper>
     <view class="wraper">
       <wd-sidebar v-model="active" @change="handleChange">
-        <wd-sidebar-item v-for="(item, index) in categories" :key="index" :value="index" :label="item.label"
-          :icon="item.icon" :disabled="item.disabled" />
+        <wd-sidebar-item
+          v-for="(item, index) in categories"
+          :key="index"
+          :value="index"
+          :label="item.label"
+          :icon="item.icon"
+          :disabled="item.disabled"
+        />
       </wd-sidebar>
       <view class="content" :style="`transform: translateY(-${active * 100}%)`">
-        <scroll-view v-for="(item, index) in categories" :key="index" class="category" scroll-y scroll-with-animation
-          :show-scrollbar="false" :scroll-top="scrollTop" :throttle="false">
-          <pro-cell-group :title="item.title" border>
+        <scroll-view
+          v-for="(item, index) in categories"
+          :key="index"
+          class="category"
+          scroll-y
+          scroll-with-animation
+          :show-scrollbar="false"
+          :scroll-top="scrollTop"
+          :throttle="false"
+        >
+          <wd-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">
-              <pro-icon name="github-filled" size="24px"></pro-icon>
+              <wd-icon name="github-filled" size="24px"></wd-icon>
             </wd-cell>
-          </pro-cell-group>
+          </wd-cell-group>
         </scroll-view>
       </view>
     </view>
@@ -92,13 +115,11 @@ function handleChange({ value }: any) {
   height: calc(100vh - var(--window-top) - env(safe-area-inset-bottom));
   overflow: hidden;
 }
-
 .content {
   flex: 1;
   background: #fff;
   transition: transform 0.3s ease;
 }
-
 .category {
   box-sizing: border-box;
   height: 100%;

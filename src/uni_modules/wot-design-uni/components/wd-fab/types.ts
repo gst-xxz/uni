@@ -31,11 +31,11 @@ export const fabProps = {
   /**
    * 悬浮按钮未展开时的图标
    */
-  inactiveIcon: makeStringProp('plus'),
+  inactiveIcon: makeStringProp('add'),
   /**
    * 悬浮按钮展开时的图标
    */
-  activeIcon: makeStringProp('cross'),
+  activeIcon: makeStringProp('close'),
   /**
    * 自定义悬浮按钮层级
    */
@@ -47,7 +47,11 @@ export const fabProps = {
   gap: {
     type: Object as PropType<FabGap>,
     default: () => ({})
-  }
+  },
+  /**
+   * 用于控制点击时是否展开菜单
+   */
+  expandable: makeBooleanProp(true)
 }
 
 export type FabProps = ExtractPropTypes<typeof fabProps>

@@ -1,47 +1,90 @@
 <template>
   <page-wraper>
     <demo-block title="基础表单" transparent>
-      <pro-form ref="form1" :model="model1">
-        <pro-cell-group border>
-          <wd-input label="用户名" label-width="100px" prop="value1" clearable v-model="model1.value1" placeholder="请输入用户名"
-            :rules="[{ required: true, message: '请填写用户名' }]" />
-          <wd-input label="密码" label-width="100px" prop="value2" show-password clearable v-model="model1.value2"
-            placeholder="请输入密码" :rules="[{ required: true, message: '请填写密码' }]" />
-        </pro-cell-group>
+      <wd-form ref="form1" :model="model1">
+        <wd-cell-group border>
+          <wd-input
+            label="歪比巴卜"
+            label-width="100px"
+            prop="value1"
+            clearable
+            v-model="model1.value1"
+            placeholder="请输入歪比巴卜"
+            :rules="[{ required: true, message: '请填写歪比巴卜' }]"
+          />
+          <wd-input
+            label="沙卡拉卡"
+            label-width="100px"
+            prop="value2"
+            show-password
+            clearable
+            v-model="model1.value2"
+            placeholder="请输入沙卡拉卡"
+            :rules="[{ required: true, message: '请填写沙卡拉卡' }]"
+          />
+        </wd-cell-group>
         <view class="footer">
           <wd-button type="primary" size="large" @click="handleSubmit1" block>提交</wd-button>
         </view>
-      </pro-form>
+      </wd-form>
     </demo-block>
 
     <demo-block title="校验规则" transparent>
-      <pro-form ref="form2" :model="model2">
-        <pro-cell-group border>
-          <wd-input label="校验" label-width="100px" prop="value1" clearable v-model="model2.value1" placeholder="正则校验"
-            :rules="[{ required: false, pattern: /\d{6}/, message: '请输入6位字符' }]" />
-          <wd-input label="校验" label-width="100px" prop="value2" clearable v-model="model2.value2" placeholder="函数校验"
+      <wd-form ref="form2" :model="model2">
+        <wd-cell-group border>
+          <wd-input
+            label="校验"
+            label-width="100px"
+            prop="value1"
+            clearable
+            v-model="model2.value1"
+            placeholder="正则校验"
+            :rules="[{ required: false, pattern: /\d{6}/, message: '请输入6位字符' }]"
+          />
+          <wd-input
+            label="校验"
+            label-width="100px"
+            prop="value2"
+            clearable
+            v-model="model2.value2"
+            placeholder="函数校验"
             :rules="[
               {
                 required: false,
                 validator: validatorMessage,
                 message: '请输入正确的玛卡巴卡'
               }
-            ]" />
-          <wd-input label="校验" label-width="100px" prop="value3" clearable v-model="model2.value3"
-            placeholder="校验函数返回错误提示" :rules="[
+            ]"
+          />
+          <wd-input
+            label="校验"
+            label-width="100px"
+            prop="value3"
+            clearable
+            v-model="model2.value3"
+            placeholder="校验函数返回错误提示"
+            :rules="[
               {
                 required: false,
                 message: '请输入内容',
                 validator: validator
               }
-            ]" />
-          <wd-input label="校验" label-width="100px" prop="value4" clearable v-model="model2.value4" placeholder="异步函数校验"
-            :rules="[{ required: false, validator: asyncValidator, message: '请输入1234' }]" />
-        </pro-cell-group>
+            ]"
+          />
+          <wd-input
+            label="校验"
+            label-width="100px"
+            prop="value4"
+            clearable
+            v-model="model2.value4"
+            placeholder="异步函数校验"
+            :rules="[{ required: false, validator: asyncValidator, message: '请输入1234' }]"
+          />
+        </wd-cell-group>
         <view class="footer">
           <wd-button type="primary" size="large" @click="handleSubmit2" block>提交</wd-button>
         </view>
-      </pro-form>
+      </wd-form>
     </demo-block>
 
     <demo-block title="动态表单" transparent>
@@ -71,7 +114,7 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { FormInstance } from '@/uni_modules/wot-design-uni/components/pro-form/types'
+import type { FormInstance } from '@/uni_modules/wot-design-uni/components/wd-form/types'
 import { reactive, ref } from 'vue'
 
 const model1 = reactive<{
@@ -106,7 +149,7 @@ const validator = (val: any) => {
   if (String(val).length >= 4) {
     return Promise.resolve()
   } else {
-    return Promise.reject('长度不得小于4')
+    return Promise.reject(new Error('长度不得小于4'))
   }
 }
 
@@ -173,7 +216,6 @@ function handleClick4() {
   box-sizing: border-box;
   padding: 0 24rpx;
 }
-
 .footer {
   padding: 16px;
 }

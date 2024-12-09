@@ -1,21 +1,23 @@
 <template>
-  <view v-if="currentStatus" :class="`wd-step relative inline-block align-top ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
-    }`" :style="rootStyle">
-    <view :class="`wd-step__header relative text-[0]  ${dot ? 'is-dot' : ''}`">
-      <view
-        :class="`wd-step__icon inline-block relative bg-white z-[1] w-[22px] h-[22px] ${dot ? 'is-dot bg-transparent -ml-[1px]' : !!icon || $slots.icon ? 'is-icon text-center' : 'is-text'}`">
+  <view
+    v-if="currentStatus"
+    :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${
+      vertical ? 'is-vertical' : ''
+    }`"
+    :style="rootStyle"
+  >
+    <view :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
+      <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
         <view v-if="dot" class="wd-step__dot"></view>
         <slot v-else-if="$slots.icon" name="icon" />
-        <pro-icon v-else-if="icon" custom-class="wd-step__icon-inner text-[22px]" :name="icon" />
+        <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
         <view v-else class="wd-step__icon-outer">
-          <pro-icon v-if="currentStatus === 'finished'" name="success" />
-          <pro-icon v-else-if="currentStatus === 'error'" name="cross" />
+          <wd-icon v-if="currentStatus === 'finished'" name="check-bold" />
+          <wd-icon v-else-if="currentStatus === 'error'" name="close-bold" />
           <text v-else>{{ index + 1 }}</text>
         </view>
       </view>
-      <view v-if="index < childrenLength - 1" :class="cn('wd-step__line absolute w-full h-[1px] top-1/2 left-0 -translate-y-1/2', {
-        '-mt-[1px]': dot
-      })"></view>
+      <view v-if="index < childrenLength - 1" class="wd-step__line"></view>
     </view>
     <view class="wd-step__content">
       <view :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
@@ -40,15 +42,14 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
-import { STEPS_KEY } from '../pro-steps/types'
+import { STEPS_KEY } from '../wd-steps/types'
 import { isDef, objToStyle } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'
 import type { CSSProperties } from 'vue'
-import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(stepProps)
 

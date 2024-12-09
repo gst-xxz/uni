@@ -1,26 +1,18 @@
 <template>
-  <view
-    :class="`wd-grid-item h-full box-border text-xs relative float-left flex flex-col justify-center text-center overflow-hidden ${border && !gutter ? itemClass : ''} ${customClass}`"
-    @click="click" :style="`${style};${customStyle}`">
-    <view
-      :class="`wd-grid-item__content h-full relative flex flex-col justify-center ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`"
-      :style="gutterContentStyle">
+  <view :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click" :style="`${style};${customStyle}`">
+    <view :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`" :style="gutterContentStyle">
       <slot v-if="useSlot" />
       <block v-else>
-        <view :style="'width:' + iconSize + '; height: ' + iconSize"
-          class="wd-grid-item__wrapper inline-block my-0 mx-auto">
-          <pro-badge custom-class="badge" v-bind="customBadgeProps">
+        <view :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
+          <wd-badge custom-class="badge" v-bind="customBadgeProps">
             <template v-if="useIconSlot">
               <slot name="icon" />
             </template>
-            <pro-icon v-else :name="icon" :size="iconSize" :custom-class="customIcon" />
-          </pro-badge>
+            <wd-icon v-else :name="icon" :size="iconSize" :custom-class="customIcon" />
+          </wd-badge>
         </view>
         <slot name="text" v-if="useTextSlot" />
-        <view v-else
-          class="wd-grid-item__text mt-2 text-xs leading-3 overflow-hidden text-ellipsis whitespace-nowrap custom-text">
-          {{ text }}
-        </view>
+        <view v-else class="wd-grid-item__text custom-text">{{ text }}</view>
       </block>
     </view>
   </view>
@@ -37,13 +29,14 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
+import wdBadge from '../wd-badge/wd-badge.vue'
 import { onMounted, ref, watch, computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { GRID_KEY } from '../wd-grid/types'
 import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
 import { gridItemProps } from './types'
-import type { BadgeProps } from '../pro-badge/types'
+import type { BadgeProps } from '../wd-badge/types'
 
 const props = defineProps(gridItemProps)
 const emit = defineEmits(['itemclick'])

@@ -1,53 +1,73 @@
 <template>
-  <view :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`" :style="customStyle">
+  <view
+    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
+      alignRight ? 'is-align-right' : ''
+    } ${error ? 'is-error' : ''} ${customClass}`"
+    :style="customStyle"
+  >
     <view class="wd-picker__field" @click="showPopup">
       <slot v-if="useDefaultSlot"></slot>
-      <view v-else :class="`wd-picker__cell`">
-        <view v-if="label || useLabelSlot"
+      <view v-else class="wd-picker__cell">
+        <view
+          v-if="label || useLabelSlot"
           :class="`wd-picker__label ${customLabelClass}  ${isRequired ? 'is-required' : ''}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
+        >
           <template v-if="label">{{ label }}</template>
           <slot v-else name="label"></slot>
         </view>
-        <view class="wd-picker__body flex-1">
-          <view class="wd-picker__value-wraper flex pb-[var(--window-bottom)]">
-            <view
-              :class="`wd-picker__value flex-1 mr-2.5 text-black/85 ${ellipsis && 'is-ellipsis overflow-hidden text-ellipsis whitespace-nowrap'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder text-[#bfbfbf]'}`">
+        <view class="wd-picker__body">
+          <view class="wd-picker__value-wraper">
+            <view :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </view>
-            <pro-icon v-if="!disabled && !readonly"
-              custom-class="wd-picker__arrow block text-base leading-6 text-black/25" name="arrow" />
+            <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow-right" />
+            <view v-else-if="showClear" @click.stop="handleClear">
+              <wd-icon custom-class="wd-picker__clear" name="error-fill" />
+            </view>
           </view>
           <view v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</view>
         </view>
       </view>
     </view>
-    <pro-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
-      :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom" @close="onCancel"
-      custom-class="wd-picker__popup rounded-[16px_16px_0_0]">
-      <view class="wd-picker__wraper pb-[var(--window-bottom)]">
-        <view
-          class="wd-picker__toolbar relative flex text-base h-[54px] leading-4 justify-between items-center box-border"
-          @touchmove="noop">
-          <view
-            class="wd-picker__action block border-none outline-none text-base bg-transparent pt-6 px-[15px] pb-[14px] text-primary wd-picker__action--cancel text-[#666]"
-            @click="onCancel">
+    <wd-popup
+      v-model="popupShow"
+      position="bottom"
+      :hide-when-close="false"
+      :close-on-click-modal="closeOnClickModal"
+      :z-index="zIndex"
+      :safe-area-inset-bottom="safeAreaInsetBottom"
+      @close="onCancel"
+      custom-class="wd-picker__popup"
+    >
+      <view class="wd-picker__wraper">
+        <view class="wd-picker__toolbar" @touchmove="noop">
+          <view class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
             {{ cancelButtonText || translate('cancel') }}
           </view>
-          <view v-if="title" class="wd-picker__title block pt-2.5 text-black/85 font-medium">{{ title }}</view>
-          <view
-            :class="`wd-picker__action block border-none outline-none text-base bg-transparent pt-6 px-[15px] pb-[14px] text-primary ${isLoading ? 'is-loading text-black/25' : ''}`"
-            @click="onConfirm">
+          <view v-if="title" class="wd-picker__title">{{ title }}</view>
+          <view :class="`wd-picker__action ${isLoading ? 'is-loading' : ''}`" @click="onConfirm">
             {{ confirmButtonText || translate('done') }}
           </view>
         </view>
-        <pro-picker-view ref="pickerViewWd" :custom-class="customViewClass" v-model="pickerValue"
-          :columns="displayColumns" :loading="isLoading" :loading-color="loadingColor" :columns-height="columnsHeight"
-          :value-key="valueKey" :label-key="labelKey" :immediate-change="immediateChange" @change="pickerViewChange"
-          @pickstart="onPickStart" @pickend="onPickEnd" :column-change="columnChange" />
+        <wd-picker-view
+          ref="pickerViewWd"
+          :custom-class="customViewClass"
+          v-model="pickerValue"
+          :columns="displayColumns"
+          :loading="isLoading"
+          :loading-color="loadingColor"
+          :columns-height="columnsHeight"
+          :value-key="valueKey"
+          :label-key="labelKey"
+          :immediate-change="immediateChange"
+          @change="pickerViewChange"
+          @pickstart="onPickStart"
+          @pickend="onPickEnd"
+          :column-change="columnChange"
+        />
       </view>
-    </pro-popup>
+    </wd-popup>
   </view>
 </template>
 
@@ -63,18 +83,21 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import wdIcon from '../wd-icon/wd-icon.vue'
+import wdPopup from '../wd-popup/wd-popup.vue'
+import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'
 import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
 import { useCell } from '../composables/useCell'
-import { type ColumnItem, formatArray, type PickerViewInstance } from '../pro-picker-view/types'
-import { FORM_KEY, type FormItemRule } from '../pro-form/types'
+import { type ColumnItem, formatArray, type PickerViewInstance } from '../wd-picker-view/types'
+import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
 import { useTranslate } from '../composables/useTranslate'
 import { pickerProps, type PickerExpose } from './types'
 const { translate } = useTranslate('picker')
 
 const props = defineProps(pickerProps)
-const emit = defineEmits(['confirm', 'open', 'cancel', 'update:modelValue'])
+const emit = defineEmits(['confirm', 'open', 'cancel', 'clear', 'update:modelValue'])
 
 const pickerViewWd = ref<PickerViewInstance | null>(null)
 const cell = useCell()
@@ -343,7 +366,7 @@ function setShowValue(items: ColumnItem | ColumnItem[]) {
   const { valueKey, labelKey } = props
   showValue.value = (props.displayFormat || defaultDisplayFormat)(items, { valueKey, labelKey })
 }
-function noop() { }
+function noop() {}
 function onPickStart() {
   isPicking.value = true
 }
@@ -363,6 +386,22 @@ function onPickEnd() {
 function setLoading(loading: boolean) {
   innerLoading.value = loading
 }
+
+// 是否展示清除按钮
+const showClear = computed(() => {
+  return props.clearable && !props.disabled && !props.readonly && showValue.value.length
+})
+
+function handleClear() {
+  const clearValue = isArray(pickerValue.value) ? [] : ''
+  emit('update:modelValue', clearValue)
+  emit('clear')
+}
+
+// 是否展示箭头
+const showArrow = computed(() => {
+  return !props.disabled && !props.readonly && !showClear.value
+})
 
 defineExpose<PickerExpose>({
   close,

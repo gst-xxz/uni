@@ -1,35 +1,100 @@
 @import '../common/abstracts/variable';
 @import '../common/abstracts/mixin';
 
+.wot-theme-dark {
+  @include b(step) {
+    @include e(icon) {
+      background: $-dark-background2;
+    }
+
+    @include e(content){
+      color: $-dark-color3;
+    }
+
+    @include e(line) {
+      background: $-dark-color-gray;
+    }
+
+    @include e(dot) {
+      background: $-dark-color-gray;
+    }
+
+    @include e(description) {
+      color: $-dark-color3;
+    }
+
+    @include when(wait) {
+      .wd-step__description {
+        color: $-dark-color-gray;
+      }
+    }
+
+    :deep(.wd-step__icon-outer),:deep(.wd-step__icon-inner){
+      color: $-dark-color3; 
+      border-color: $-dark-color-gray;
+    }
+  }
+}
+
 
 @include b(step) {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
 
+  @include e(header) {
+    position: relative;
+    font-size: 0;
+
+    @include when(dot) {
+      .wd-step__line {
+        margin-top: -1px;
+      }
+    }
+  }
   @include e(icon) {
+    display: inline-block;
+    position: relative;
+    width: $-steps-icon-size;
+    height: $-steps-icon-size;
+    background: #fff;
+    z-index: 1;
+
     @include when(icon) {
       width: $-steps-is-icon-width;
+      text-align: center;
     }
     @include when(dot) {
       width: $-steps-dot-size;
       height: $-steps-dot-size;
       border: 1px solid transparent;
+      margin-left: -1px;
       border-radius: 50%;
+      background: transparent;
     }
   }
   @include edeep(icon-inner) {
+    font-size: $-steps-icon-size;
     color: $-steps-inactive-color;
   }
   @include e(icon-outer) {
-    width: calc(22px - 2px);
-    height: calc(22px - 2px);
+    width: calc($-steps-icon-size - 2px);
+    height: calc($-steps-icon-size - 2px);
     border: 1px solid $-steps-inactive-color;
     color: $-steps-inactive-color;
     text-align: center;
-    line-height: calc(22px - 2px);
+    line-height: calc($-steps-icon-size - 2px);
     border-radius: 50%;
     font-size: $-steps-icon-text-fs;
   }
   @include e(line) {
+    position: absolute;
+    width: 100%;
+    height: 1px;
     background: $-steps-line-color;
+    transform: scaleY(0.5);
+    top: 50%;
+    left: 0;
   }
   @include e(dot) {
     position: relative;

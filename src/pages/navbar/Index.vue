@@ -1,53 +1,60 @@
+<!--
+ * @Author: weisheng
+ * @Date: 2023-10-17 17:20:31
+ * @LastEditTime: 2024-10-12 12:47:30
+ * @LastEditors: weisheng
+ * @Description: 
+ * @FilePath: \wot-design-uni\src\pages\navbar\Index.vue
+ * 记得注释
+-->
 <template>
-  <pro-toast></pro-toast>
+  <wd-toast></wd-toast>
   <page-wraper>
-    <pro-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop
-      @click-left="handleClickLeft"></pro-navbar>
+    <wd-navbar fixed placeholder title="Navbar 导航条" left-arrow safeAreaInsetTop @click-left="handleClickLeft"></wd-navbar>
 
     <demo-block title="基础用法" transparent>
-      <pro-navbar title="标题"></pro-navbar>
+      <wd-navbar title="标题"></wd-navbar>
     </demo-block>
 
     <demo-block title="返回上级" transparent>
-      <pro-navbar title="标题" left-text="返回" left-arrow @click-left="handleClickLeft"></pro-navbar>
+      <wd-navbar title="标题" left-text="返回" left-arrow @click-left="handleClickLeft"></wd-navbar>
     </demo-block>
 
     <demo-block title="右侧按钮" transparent>
-      <pro-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft"
-        @click-right="handleClickRight"></pro-navbar>
+      <wd-navbar title="标题" left-text="返回" left-arrow right-text="按钮" @click-left="handleClickLeft" @click-right="handleClickRight"></wd-navbar>
     </demo-block>
 
     <demo-block title="使用插槽" transparent>
-      <pro-navbar title="标题" @click-left="handleClickLeft">
+      <wd-navbar title="标题" @click-left="handleClickLeft">
         <template #left>
-          <pro-icon name="arrow-left" size="24px" class="pro-navbar__arrow" />
+          <wd-icon name="arrow-left" size="24px" class="wd-navbar__arrow" />
         </template>
         <template #right>
-          <pro-icon name="search" size="18" />
+          <wd-icon name="search" size="18" />
         </template>
-      </pro-navbar>
+      </wd-navbar>
     </demo-block>
 
     <demo-block title="禁用按钮" transparent>
-      <pro-navbar title="标题" left-text="返回" right-text="按钮" left-arrow left-disabled right-disabled></pro-navbar>
+      <wd-navbar title="标题" left-text="返回" right-text="按钮" left-arrow left-disabled right-disabled></wd-navbar>
     </demo-block>
 
     <demo-block title="胶囊样式" transparent>
-      <pro-navbar title="标题" left-text="返回" right-text="设置" left-arrow>
+      <wd-navbar title="标题" left-text="返回" right-text="设置" left-arrow>
         <template #capsule>
-          <pro-navbar-capsule @back="handleBack" @back-home="handleBackHome"></pro-navbar-capsule>
+          <wd-navbar-capsule @back="handleBack" @back-home="handleBackHome"></wd-navbar-capsule>
         </template>
-      </pro-navbar>
+      </wd-navbar>
     </demo-block>
 
     <demo-block title="带搜索栏" transparent>
-      <pro-navbar left-text="返回" right-text="设置" left-arrow>
+      <wd-navbar left-text="返回" right-text="设置" left-arrow>
         <template #title>
           <view class="search-box">
-            <pro-search v-model="keyword" hide-cancel placeholder-left></pro-search>
+            <wd-search v-model="keyword" hide-cancel placeholder-left></wd-search>
           </view>
         </template>
-      </pro-navbar>
+      </wd-navbar>
     </demo-block>
     <view style="height: 500rpx"></view>
   </page-wraper>
@@ -82,5 +89,10 @@ function handleBackHome() {
   align-items: center;
   --wot-search-padding: 0;
   --wot-search-side-padding: 0;
+  :deep() {
+    .wd-search {
+      background: transparent;
+    }
+  }
 }
 </style>

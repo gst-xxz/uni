@@ -7,14 +7,24 @@
       <wd-checkbox shape="square" size="large" v-model="isStyle">自定义样式</wd-checkbox>
       <wd-checkbox shape="square" size="large" v-model="isDuration">自定义返回顶部滚动时间</wd-checkbox>
     </demo-block>
-    <pro-backtop v-if="isCustomIcon" :scrollTop="scrollTop" :shape="isSquare ? 'square' : undefined"
-      :top="isTop ? 600 : undefined" :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
-      :duration="isDuration ? 1000 : undefined">
-      <text :style="`color: ${isStyle ? 'white' : '#333'};`">TOP</text>
-    </pro-backtop>
-    <pro-backtop v-else :scrollTop="scrollTop" :shape="isSquare ? 'square' : undefined" :top="isTop ? 600 : undefined"
+    <wd-backtop
+      v-if="isCustomIcon"
+      :scrollTop="scrollTop"
+      :shape="isSquare ? 'square' : undefined"
+      :top="isTop ? 600 : undefined"
       :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
-      :duration="isDuration ? 1000 : undefined"></pro-backtop>
+      :duration="isDuration ? 1000 : undefined"
+    >
+      <text :style="`color: ${isStyle ? 'white' : '#333'};`">TOP</text>
+    </wd-backtop>
+    <wd-backtop
+      v-else
+      :scrollTop="scrollTop"
+      :shape="isSquare ? 'square' : undefined"
+      :top="isTop ? 600 : undefined"
+      :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
+      :duration="isDuration ? 1000 : undefined"
+    ></wd-backtop>
     <view style="height: 2000px; color: red"></view>
   </page-wraper>
 </template>

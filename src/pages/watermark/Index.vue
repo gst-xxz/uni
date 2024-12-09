@@ -1,6 +1,5 @@
 <template>
-  <pro-watermark :image="image" :width="130" :height="140" :image-width="38" content="wot-design-uni" :image-height="38"
-    :opacity="0.5"></pro-watermark>
+  <wd-watermark :image="image" :width="130" :height="140" :image-width="38" content="wot-design-uni" :image-height="38" :opacity="0.5"></wd-watermark>
   <view>
     <page-wraper>
       <demo-block title="基础用法">
@@ -9,58 +8,63 @@
       </demo-block>
 
       <demo-block title="展示效果">
-        <pro-badge custom-class="badge" :modelValue="200" :max="99">
+        <wd-badge custom-class="badge" :modelValue="200" :max="99">
           <wd-button :round="false" type="info" size="small">评论</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="200" :max="10">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="200" :max="10">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
+        </wd-badge>
       </demo-block>
       <demo-block title="局部水印">
-        <pro-watermark :opacity="0.8" image="https://wot-design-uni.cn/wot-design.png" :image-width="38"
-          :image-height="38" :full-screen="false"></pro-watermark>
-        <pro-badge custom-class="badge" :modelValue="12">
+        <wd-watermark
+          :opacity="0.8"
+          image="https://wot-design-uni.cn/wot-design.png"
+          :image-width="38"
+          :image-height="38"
+          :full-screen="false"
+        ></wd-watermark>
+        <wd-badge custom-class="badge" :modelValue="12">
           <wd-button :round="false" type="info" size="small">评论</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="3" bg-color="pink">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="3" bg-color="pink">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="1" type="primary">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="1" type="primary">
           <wd-button :round="false" type="info" size="small">评论</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="2" type="warning">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="2" type="warning">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="1" type="success">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="1" type="success">
           <wd-button :round="false" type="info" size="small">评论</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" :modelValue="2" type="info">
+        </wd-badge>
+        <wd-badge custom-class="badge" :modelValue="2" type="info">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
-        <pro-cell-group border>
+        </wd-badge>
+        <wd-cell-group border>
           <wd-cell size="large" title="标题文字" value="内容" />
           <wd-cell title="标题文字" value="内容" size="large" icon="setting" is-link />
           <wd-cell size="large" title="标题文字" label="描述信息" value="内容" />
           <wd-cell size="large" title="标题文字" value="内容" />
           <wd-cell title="标题文字" value="内容" size="large" icon="setting" is-link />
           <wd-cell size="large" title="标题文字" label="描述信息" value="内容" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
       <demo-block title="展示效果">
-        <pro-badge custom-class="badge" modelValue="new">
+        <wd-badge custom-class="badge" modelValue="new">
           <wd-button :round="false" type="info" size="small">评论</wd-button>
-        </pro-badge>
-        <pro-badge custom-class="badge" modelValue="hot">
+        </wd-badge>
+        <wd-badge custom-class="badge" modelValue="hot">
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
+        </wd-badge>
       </demo-block>
 
       <demo-block title="展示效果">
-        <pro-badge custom-class="badge" is-dot>数据查询</pro-badge>
-        <pro-badge custom-class="badge" is-dot>
+        <wd-badge custom-class="badge" is-dot>数据查询</wd-badge>
+        <wd-badge custom-class="badge" is-dot>
           <wd-button :round="false" type="info" size="small">回复</wd-button>
-        </pro-badge>
+        </wd-badge>
       </demo-block>
     </page-wraper>
   </view>

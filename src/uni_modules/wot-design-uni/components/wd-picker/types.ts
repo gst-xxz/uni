@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
-import type { ColumnItem, PickerViewColumnChange } from '../pro-picker-view/types'
-import type { FormItemRule } from '../pro-form/types'
+import type { ColumnItem, PickerViewColumnChange } from '../wd-picker-view/types'
+import type { FormItemRule } from '../wd-form/types'
 
 export const pickerProps = {
   ...baseProps,
@@ -141,13 +141,17 @@ export const pickerProps = {
    */
   prop: String,
   /**
-   * 表单验证规则，结合pro-form组件使用
+   * 表单验证规则，结合wd-form组件使用
    */
   rules: makeArrayProp<FormItemRule>(),
   /**
    * 是否在手指松开时立即触发 change 事件。若不开启则会在滚动动画结束后触发 change 事件，1.2.25版本起提供，仅微信小程序和支付宝小程序支持。
    */
-  immediateChange: makeBooleanProp(false)
+  immediateChange: makeBooleanProp(false),
+  /**
+   * 显示清空按钮
+   */
+  clearable: makeBooleanProp(false)
 }
 
 export type PickerProps = ExtractPropTypes<typeof pickerProps>

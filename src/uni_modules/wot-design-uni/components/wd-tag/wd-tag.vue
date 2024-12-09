@@ -1,21 +1,29 @@
 <template>
-  <view :class="[`wd-tag`, customClass, tagClass]" :style="rootStyle" @click="handleClick">
+  <view :class="rootClass" :style="rootStyle" @click="handleClick">
     <view v-if="useIconSlot" class="wd-tag__icon">
       <slot name="icon" />
     </view>
-    <pro-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon" />
+    <wd-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon" />
     <view class="wd-tag__text" :style="textStyle">
       <slot />
     </view>
     <view class="wd-tag__close" v-if="closable && round" @click.stop="handleClose">
-      <pro-icon name="cross" />
+      <wd-icon name="error-fill" />
     </view>
-    <input v-if="dynamicInput && dynamic" class="wd-tag__add-text" :placeholder="translate('placeholder')" type="text"
-      focus="true" v-model="dynamicValue" @blur="handleBlur" @confirm="handleConfirm" />
+    <input
+      v-if="dynamicInput && dynamic"
+      class="wd-tag__add-text"
+      :placeholder="translate('placeholder')"
+      type="text"
+      :focus="true"
+      v-model="dynamicValue"
+      @blur="handleBlur"
+      @confirm="handleConfirm"
+    />
     <view v-else-if="dynamic" class="wd-tag__text" :style="textStyle" @click.stop="handleAdd">
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
-        <pro-icon name="plus" custom-class="wd-tag__add wd-tag__icon" />
+        <wd-icon name="add" custom-class="wd-tag__add wd-tag__icon" />
         <text>{{ translate('add') }}</text>
       </template>
     </view>
@@ -33,6 +41,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { objToStyle } from '../common/util'
 import { computed, ref, watch } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
@@ -74,6 +83,10 @@ watch(
   },
   { deep: true, immediate: true }
 )
+
+const rootClass = computed(() => {
+  return `wd-tag ${props.customClass} ${tagClass.value}`
+})
 
 const rootStyle = computed(() => {
   const rootStyle: Record<string, any> = {}

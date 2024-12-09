@@ -1,6 +1,6 @@
 import type { ExtractPropTypes, PropType } from 'vue'
-import { baseProps, makeBooleanProp, makeStringProp } from '../common/props'
-import type { BadgeProps, BadgeType } from '../pro-badge/types'
+import { baseProps, makeBooleanProp, makeStringProp, numericProp } from '../common/props'
+import type { BadgeProps, BadgeType } from '../wd-badge/types'
 
 export type LinkType = 'navigateTo' | 'switchTab' | 'reLaunch' | 'redirectTo'
 
@@ -15,7 +15,7 @@ export const gridItemProps = {
    */
   customIcon: makeStringProp(''),
   /**
-   * 图标名称，可选值见 pro-icon 组件
+   * 图标名称，可选值见 wd-icon 组件
    */
   icon: makeStringProp(''),
   /**
@@ -60,7 +60,7 @@ export const gridItemProps = {
   /**
    * 图标右上角 badge 显示值
    */
-  value: Number,
+  value: numericProp,
   /**
    * 图标右上角 badge 最大值，超过最大值会显示 '{max}+'，要求 value 是 Number 类型
    */

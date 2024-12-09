@@ -1,38 +1,84 @@
 <template>
   <view>
     <page-wraper>
-      <pro-message-box />
-      <pro-toast />
-      <pro-form ref="form" :model="model" :rules="rules">
-        <pro-cell-group custom-class="group" title="基础信息" border>
-          <wd-input label="优惠券名称" label-width="100px" :maxlength="20" show-word-limit prop="couponName" required
-            suffix-icon="warn-bold" clearable v-model="model.couponName" placeholder="请输入优惠券名称"
-            @clicksuffixicon="handleIconClick" />
-          <wd-select-picker label="推广平台" label-width="100px" prop="platform" v-model="model.platform"
-            :columns="platformList" placeholder="请选择推广平台" />
-          <wd-picker label="优惠方式" placeholder="请选择优惠方式" label-width="100px" prop="promotion" v-model="model.promotion"
-            :columns="promotionlist" />
+      <wd-message-box />
+      <wd-toast />
+      <wd-form ref="form" :model="model" :rules="rules">
+        <wd-cell-group custom-class="group" title="基础信息" border>
+          <wd-input
+            label="优惠券名称"
+            label-width="100px"
+            :maxlength="20"
+            show-word-limit
+            prop="couponName"
+            required
+            suffix-icon="warn-bold"
+            clearable
+            v-model="model.couponName"
+            placeholder="请输入优惠券名称"
+            @clicksuffixicon="handleIconClick"
+          />
+          <wd-select-picker
+            label="推广平台"
+            label-width="100px"
+            prop="platform"
+            v-model="model.platform"
+            :columns="platformList"
+            placeholder="请选择推广平台"
+          />
+          <wd-picker
+            label="优惠方式"
+            placeholder="请选择优惠方式"
+            label-width="100px"
+            prop="promotion"
+            v-model="model.promotion"
+            :columns="promotionlist"
+          />
           <wd-cell prop="threshold" title="券面额" required title-width="100px" custom-value-class="cell-left">
             <view style="text-align: left">
               <view class="inline-txt" style="margin-left: 0">满</view>
-              <wd-input no-border custom-style="display: inline-block; width: 70px; vertical-align: middle"
-                placeholder="请输入金额" v-model="model.threshold" />
+              <wd-input
+                no-border
+                custom-style="display: inline-block; width: 70px; vertical-align: middle"
+                placeholder="请输入金额"
+                v-model="model.threshold"
+              />
               <view class="inline-txt">减</view>
-              <wd-input no-border custom-style="display: inline-block; width: 70px; vertical-align: middle"
-                placeholder="请输入金额" v-model="model.price" />
+              <wd-input
+                no-border
+                custom-style="display: inline-block; width: 70px; vertical-align: middle"
+                placeholder="请输入金额"
+                v-model="model.price"
+              />
             </view>
           </wd-cell>
-        </pro-cell-group>
-        <pro-cell-group custom-class="group" title="时间和地址" border>
+        </wd-cell-group>
+        <wd-cell-group custom-class="group" title="时间和地址" border>
           <wd-datetime-picker label="时间" label-width="100px" placeholder="请选择时间" prop="time" v-model="model.time" />
           <wd-calendar label="日期" label-width="100px" placeholder="请选择日期" prop="date" v-model="model.date" />
 
-          <wd-col-picker label="地址" placeholder="请选择地址" label-width="100px" prop="address" v-model="model.address"
-            :columns="area" :column-change="areaChange" />
-        </pro-cell-group>
-        <pro-cell-group custom-class="group" title="其他信息" border>
-          <wd-textarea label="活动细则" label-width="100px" type="textarea" v-model="model.content" :maxlength="300"
-            show-word-limit placeholder="请输入活动细则信息" clearable prop="content" />
+          <wd-col-picker
+            label="地址"
+            placeholder="请选择地址"
+            label-width="100px"
+            prop="address"
+            v-model="model.address"
+            :columns="area"
+            :column-change="areaChange"
+          />
+        </wd-cell-group>
+        <wd-cell-group custom-class="group" title="其他信息" border>
+          <wd-textarea
+            label="活动细则"
+            label-width="100px"
+            type="textarea"
+            v-model="model.content"
+            :maxlength="300"
+            show-word-limit
+            placeholder="请输入活动细则信息"
+            clearable
+            prop="content"
+          />
           <wd-cell title="发货数量" title-width="100px" prop="count">
             <view style="text-align: left">
               <wd-input-number v-model="model.count" />
@@ -40,18 +86,23 @@
           </wd-cell>
           <wd-cell title="开启折扣" title-width="100px" prop="switchVal" center>
             <view style="text-align: left">
-              <pro-switch v-model="model.switchVal" />
+              <wd-switch v-model="model.switchVal" />
             </view>
           </wd-cell>
-          <wd-input label="歪比巴卜" label-width="100px" prop="cardId" suffix-icon="camera" placeholder="请输入歪比巴卜" clearable
-            v-model="model.cardId" />
-          <wd-input label="玛卡巴卡" label-width="100px" prop="phone" placeholder="请输入玛卡巴卡" clearable
-            v-model="model.phone" />
+          <wd-input
+            label="歪比巴卜"
+            label-width="100px"
+            prop="cardId"
+            suffix-icon="camera"
+            placeholder="请输入歪比巴卜"
+            clearable
+            v-model="model.cardId"
+          />
+          <wd-input label="玛卡巴卡" label-width="100px" prop="phone" placeholder="请输入玛卡巴卡" clearable v-model="model.phone" />
           <wd-cell title="活动图片" title-width="100px" prop="fileList">
-            <pro-upload :file-list="model.fileList" action="https://ftf.jd.com/api/uploadImg"
-              @change="handleFileChange"></pro-upload>
+            <wd-upload :file-list="model.fileList" action="https://ftf.jd.com/api/uploadImg" @change="handleFileChange"></wd-upload>
           </wd-cell>
-        </pro-cell-group>
+        </wd-cell-group>
         <view class="tip">
           <wd-checkbox v-model="model.read" prop="read" custom-label-class="label-class">
             已阅读并同意
@@ -61,7 +112,7 @@
         <view class="footer">
           <wd-button type="primary" size="large" @click="handleSubmit" block>提交</wd-button>
         </view>
-      </pro-form>
+      </wd-form>
     </page-wraper>
   </view>
 </template>
@@ -69,8 +120,8 @@
 import { useToast } from '@/uni_modules/wot-design-uni'
 import { isArray } from '@/uni_modules/wot-design-uni/components/common/util'
 import type { ColPickerColumnChange } from '@/uni_modules/wot-design-uni/components/wd-col-picker/types'
-import { type FormInstance, type FormRules } from '@/uni_modules/wot-design-uni/components/pro-form/types'
-import type { UploadFileItem } from '@/uni_modules/wot-design-uni/components/pro-upload/types'
+import { type FormInstance, type FormRules } from '@/uni_modules/wot-design-uni/components/wd-form/types'
+import type { UploadFileItem } from '@/uni_modules/wot-design-uni/components/wd-upload/types'
 import { useColPickerData } from '@/hooks/useColPickerData'
 
 const { colPickerData, findChildrenByCode } = useColPickerData()
@@ -359,6 +410,11 @@ function handleIconClick() {
 }
 </script>
 <style lang="scss" scoped>
+.wot-theme-dark {
+  .inline-txt {
+    color: $-dark-color3;
+  }
+}
 .inline-txt {
   display: inline-block;
   font-size: 14px;
@@ -366,24 +422,20 @@ function handleIconClick() {
   color: rgba(0, 0, 0, 0.45);
   vertical-align: middle;
 }
-
 :deep(.group) {
   margin-top: 12px;
 }
-
 .tip {
   margin: 10px 15px 21px;
   color: #999;
   font-size: 12px;
 }
-
 .footer {
   padding: 0 25px 21px;
 }
-
 :deep(.label-class) {
   color: #999 !important;
   font-size: 12px !important;
 }
 </style>
-@/uni_modules/wot-design-uni/components/pro-form/type
+@/uni_modules/wot-design-uni/components/wd-form/type

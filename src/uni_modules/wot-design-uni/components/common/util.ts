@@ -443,7 +443,7 @@ export const requestAnimationFrame = (cb = () => {}) => {
  * @param ms 延迟时间
  * @returns
  */
-export const pause = (ms: number) => {
+export const pause = (ms: number = 1000 / 30) => {
   return new AbortablePromise((resolve) => {
     const timer = setTimeout(() => {
       clearTimeout(timer)
@@ -695,7 +695,13 @@ export function isImageUrl(url: string): boolean {
 /**
  * 判断环境是否是H5
  */
-export const isH5 = process.env.UNI_PLATFORM === 'h5'
+export const isH5 = (() => {
+  let isH5 = false
+  // #ifdef H5
+  isH5 = true
+  // #endif
+  return isH5
+})()
 
 /**
  * 剔除对象中的某些属性
@@ -719,4 +725,15 @@ export function omitBy<O extends Record<string, any>>(obj: O, predicate: (value:
  */
 export function easingFn(t: number = 0, b: number = 0, c: number = 0, d: number = 0): number {
   return (c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023 + b
+}
+
+/**
+ * 从数组中寻找最接近目标值的元素
+ *
+ * @param arr 数组
+ * @param target 目标值
+ * @returns 最接近目标值的元素
+ */
+export function closest(arr: number[], target: number) {
+  return arr.reduce((prev, curr) => (Math.abs(curr - target) < Math.abs(prev - target) ? curr : prev))
 }

@@ -1,13 +1,45 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
+.wot-theme-dark {
+  @include b(input-number) {
+    @include e(action) {
+      color: $-dark-color;
+      @include when(disabled) {
+        color: $-dark-color-gray;
+      }
+    }
+
+    @include e(input) {
+      color: $-dark-color;
+    }
+
+    @include when(disabled) {
+      .wd-input-number__input {
+        color: $-dark-color-gray;
+      }
+      .wd-input-number__sub,
+      .wd-input-number__add {
+        color: $-dark-color-gray;
+      }
+    }
+  }
+}
+
 @include b(input-number) {
+  display: inline-block;
+  user-select: none;
+  line-height: 1.15;
 
   @include e(action) {
+    position: relative;
+    display: inline-block;
     width: $-input-number-btn-width;
     height: $-input-number-height;
+    vertical-align: middle;
     color: $-input-number-icon-color;
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
 
     // 左右加减号的边框
     &::after {
@@ -34,12 +66,24 @@
     }
   }
 
-  @include e(input) {
+  @include e(inner) {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
+  @include e(input) {
+    position: relative;
+    display: block;
     width: $-input-number-input-width;
     height: $-input-number-height;
-
-
+    padding: 0 2px;
+    box-sizing: border-box;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
     color: $-input-number-color;
     font-size: $-input-number-fs;
     -webkit-appearance: none;
@@ -57,6 +101,17 @@
     transform: scaleY(0.5);
     transform-origin: left top;
     z-index: 0;
+  }
+
+  @include edeep(action-icon) {
+    position: absolute;
+    display: inline-block;
+    font-size: $-input-number-icon-size;
+    width: $-input-number-icon-size;
+    height: $-input-number-icon-size;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   @include when(disabled) {

@@ -35,7 +35,7 @@ function showToast() {
   toast.show('提示信息')
 }
 function showSuccessToast() {
-  toast.success({ msg: '操作成功' })
+  toast.success('操作成功')
 }
 function showErrorToast() {
   toast.error('错误提示错误提示')
@@ -74,7 +74,7 @@ function showLoadingToast() {
 function showLoadingToast2() {
   toast.loading({
     msg: '3s后调用close关闭',
-    loadingType: 'spinner',
+    loadingType: 'ring',
     loadingColor: '#fff'
   })
   setTimeout(() => {
@@ -94,7 +94,7 @@ function showInnerIconToast() {
 
 function showCustomIconToast() {
   toast.show({
-    iconClass: '',
+    iconClass: 'kehuishouwu',
     classPrefix: 'fish',
     msg: '使用自定义图标'
   })

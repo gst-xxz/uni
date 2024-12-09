@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
-import type { FormItemRule } from '../pro-form/types'
+import type { FormItemRule } from '../wd-form/types'
 
 export type SelectPickerType = 'checkbox' | 'radio'
 
@@ -74,7 +74,7 @@ export const selectPickerProps = {
   scrollIntoView: makeBooleanProp(true),
   /** 表单域 `model` 字段名，在使用表单校验功能的情况下，该属性是必填的 */
   prop: String,
-  /** 表单验证规则，结合`pro-form`组件使用 */
+  /** 表单验证规则，结合`wd-form`组件使用 */
   rules: makeArrayProp<FormItemRule>(),
   /** 自定义内容样式类 */
   customContentClass: makeStringProp(''),
@@ -83,7 +83,11 @@ export const selectPickerProps = {
   /** 自定义值样式类 */
   customValueClass: makeStringProp(''),
   /** 是否显示确认按钮（radio类型生效），默认值为：true */
-  showConfirm: makeBooleanProp(true)
+  showConfirm: makeBooleanProp(true),
+  /**
+   * 显示清空按钮
+   */
+  clearable: makeBooleanProp(false)
 }
 export type SelectPickerProps = ExtractPropTypes<typeof selectPickerProps>
 

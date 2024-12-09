@@ -9,35 +9,35 @@
         2、单选框基本使用未对高度进行扩充，
         <text style="color: #f0883a">一般情况建议使用表单--单选组。</text>
       </view>
-      <pro-radio-group v-model="value0" @change="change">
+      <wd-radio-group v-model="value0" @change="change">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="修改形状--button">
-      <pro-radio-group shape="button" v-model="value1" @change="change">
+      <wd-radio-group shape="button" v-model="value1" @change="change">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="修改形状--dot">
-      <pro-radio-group shape="dot" v-model="value2" @change="change">
+      <wd-radio-group shape="dot" v-model="value2" @change="change">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="表单---单选组" transparent>
-      <pro-radio-group cell v-model="value3" @change="change">
+      <wd-radio-group cell v-model="value3" @change="change">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="表单--单选按钮组" transparent>
-      <pro-radio-group v-model="value4" cell shape="button">
+      <wd-radio-group v-model="value4" cell shape="button">
         <wd-radio :value="1">选项一</wd-radio>
         <wd-radio :value="2">选项二</wd-radio>
         <wd-radio :value="3">选项三</wd-radio>
@@ -45,73 +45,78 @@
         <wd-radio :value="5">选项五</wd-radio>
         <wd-radio :value="6">选项六</wd-radio>
         <wd-radio :value="7">选项七</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="同行展示">
-      <pro-radio-group v-model="value5" inline>
+      <wd-radio-group v-model="value5" inline>
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
-      <view class="divider"></view>
-      <pro-radio-group v-model="value6" inline shape="dot">
+      </wd-radio-group>
+      <wd-divider dashed></wd-divider>
+      <wd-radio-group v-model="value6" inline shape="dot">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
+      <wd-divider dashed></wd-divider>
+      <wd-radio-group v-model="value13" inline shape="dot" icon-placement="right">
+        <wd-radio :value="1">单选框1</wd-radio>
+        <wd-radio :value="2">单选框2</wd-radio>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="修改选中颜色">
-      <pro-radio-group v-model="value7" @change="change" checked-color="#fa4350">
+      <wd-radio-group v-model="value7" @change="change" checked-color="#fa4350">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
 
-      <pro-radio-group shape="dot" v-model="value12" @change="change" checked-color="#fa4350">
+      <wd-radio-group shape="dot" v-model="value12" @change="change" checked-color="#fa4350">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="禁用">
-      <pro-radio-group v-model="value1" disabled shape="dot">
+      <wd-radio-group v-model="value1" disabled shape="dot">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
       <view class="divider"></view>
-      <pro-radio-group v-model="value1" disabled>
+      <wd-radio-group v-model="value1" disabled>
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
       <view class="divider"></view>
-      <pro-radio-group v-model="value1" disabled shape="button">
+      <wd-radio-group v-model="value1" disabled shape="button">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="大尺寸">
-      <pro-radio-group v-model="value8" size="large">
+      <wd-radio-group v-model="value8" size="large">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
       <view class="divider"></view>
-      <pro-radio-group v-model="value9" size="large" shape="dot">
+      <wd-radio-group v-model="value9" size="large" shape="dot">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
       <view class="divider"></view>
-      <pro-radio-group v-model="value10" size="large" inline custom-class="group">
+      <wd-radio-group v-model="value10" size="large" inline custom-class="group">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
 
     <demo-block title="radio的props比radioGroup的优先级高">
-      <pro-radio-group hape="button" disabled checked-color="#fa4350" v-model="value11" @change="change">
+      <wd-radio-group hape="button" disabled checked-color="#fa4350" v-model="value11" @change="change">
         <wd-radio :value="1" checked-color="#000" :disabled="false">选项1</wd-radio>
         <wd-radio :value="2" :disabled="false">选项2</wd-radio>
         <wd-radio :value="3">选项3</wd-radio>
-      </pro-radio-group>
+      </wd-radio-group>
     </demo-block>
   </page-wraper>
 </template>
@@ -132,6 +137,7 @@ const value9 = ref<number>(1)
 const value10 = ref<number>(1)
 const value11 = ref<number>(1)
 const value12 = ref<number>(1)
+const value13 = ref<number>(1)
 
 function change(e: any) {
   console.log(e)

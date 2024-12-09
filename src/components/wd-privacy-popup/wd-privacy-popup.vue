@@ -1,6 +1,6 @@
 <template>
   <view>
-    <pro-popup v-model="showPopup" :close-on-click-modal="false" custom-class="wd-privacy-popup" @close="handleClose">
+    <wd-popup v-model="showPopup" :close-on-click-modal="false" custom-class="wd-privacy-popup" @close="handleClose">
       <view class="wd-privacy-popup__header">
         <!--标题-->
         <view class="wd-picker__title">{{ title }}</view>
@@ -11,16 +11,21 @@
         <text>{{ subDesc }}</text>
       </view>
       <view class="wd-privacy-popup__footer">
-        <wd-button custom-class="wd-privacy-popup__footer-disagree " size="medium" round plain buttonId="disagree-btn"
-          @click="handleDisagree">
+        <wd-button custom-class="wd-privacy-popup__footer-disagree " size="medium" round plain buttonId="disagree-btn" @click="handleDisagree">
           拒绝
         </wd-button>
-        <wd-button class="wd-privacy-popup__footer-agree" round size="medium" buttonId="agree-btn"
-          open-type="agreePrivacyAuthorization" @agreeprivacyauthorization="handleAgree">
+        <wd-button
+          class="wd-privacy-popup__footer-agree"
+          round
+          size="medium"
+          buttonId="agree-btn"
+          open-type="agreePrivacyAuthorization"
+          @agreeprivacyauthorization="handleAgree"
+        >
           同意
         </wd-button>
       </view>
-    </pro-popup>
+    </wd-popup>
   </view>
 </template>
 
@@ -64,8 +69,8 @@ const privacyHandler = (resolve: any) => {
 
 onBeforeMount(() => {
   // 注册监听
-  if ((wx as any).onNeedPrivacyAuthorization) {
-    ; (wx as any).onNeedPrivacyAuthorization((resolve: any) => {
+  if (wx.onNeedPrivacyAuthorization) {
+    wx.onNeedPrivacyAuthorization((resolve: any) => {
       if (typeof privacyHandler === 'function') {
         privacyHandler(resolve)
       }
@@ -105,7 +110,7 @@ function handleDisagree() {
  * 打开隐私协议
  */
 function openPrivacyContract() {
-  ; (wx as any).openPrivacyContract({
+  ;(wx as any).openPrivacyContract({
     success: (res: any) => {
       console.log('openPrivacyContract success')
     },

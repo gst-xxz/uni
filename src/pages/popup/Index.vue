@@ -3,65 +3,75 @@
   <view>
     <page-wraper>
       <demo-block title="基础用法" transparent>
-        <pro-cell-group>
+        <wd-cell-group>
           <wd-cell title="弹出层" is-link @click="handleClick1" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
       <demo-block title="弹出位置" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="顶部" is-link @click="handleClick2" />
           <wd-cell title="右侧" is-link @click="handleClick3" />
           <wd-cell title="底部" is-link @click="handleClick4" />
           <wd-cell title="左侧" is-link @click="handleClick5" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
       <demo-block title="关闭按钮" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="关闭按钮" is-link @click="handleClick6" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
       <demo-block title="锁定滚动" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="锁定滚动" is-link @click="handleClick10" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
       <demo-block title="禁用遮罩点击" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="禁用遮罩点击" is-link @click="handleClick7" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
       <demo-block title="禁用遮罩" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="禁用遮罩" is-link @click="handleClick8" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
       <demo-block title="开启底部安全区" transparent>
-        <pro-cell-group border>
+        <wd-cell-group border>
           <wd-cell title="开启底部安全区" is-link @click="handleClick9" />
-        </pro-cell-group>
+        </wd-cell-group>
       </demo-block>
 
-      <pro-popup v-model="show1" custom-style="padding: 30px 40px;" @close="handleClose1"><text
-          class="custom-txt">内容</text></pro-popup>
-      <pro-popup v-model="show2" position="top" custom-style="height: 200px;" @close="handleClose2"></pro-popup>
-      <pro-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></pro-popup>
-      <pro-popup v-model="show4" position="bottom" custom-style="height: 200px;" @close="handleClose4"></pro-popup>
-      <pro-popup v-model="show5" position="left" custom-style="width: 200px;" @close="handleClose5"></pro-popup>
-      <pro-popup v-model="show6" position="bottom" closable custom-style="height: 200px;"
-        @close="handleClose6"></pro-popup>
-      <pro-popup v-model="show7" position="bottom" :close-on-click-modal="false" closable custom-style="height: 200px;"
-        @close="handleClose7"></pro-popup>
+      <wd-popup v-model="show1" @close="handleClose1" custom-style="border-radius:32rpx;">
+        <text class="custom-txt">弹弹弹</text>
+      </wd-popup>
+      <wd-popup v-model="show2" position="top" custom-style="height: 200px;" @close="handleClose2"></wd-popup>
+      <wd-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></wd-popup>
+      <wd-popup v-model="show4" position="bottom" custom-style="height: 200px;" @close="handleClose4"></wd-popup>
+      <wd-popup v-model="show5" position="left" custom-style="width: 200px;" @close="handleClose5"></wd-popup>
+      <wd-popup v-model="show6" position="bottom" closable custom-style="height: 200px;" @close="handleClose6"></wd-popup>
+      <wd-popup
+        v-model="show7"
+        position="bottom"
+        :close-on-click-modal="false"
+        closable
+        custom-style="height: 200px;"
+        @close="handleClose7"
+      ></wd-popup>
 
-      <pro-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;"
-        @close="handleClose8"></pro-popup>
-      <pro-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;"
-        @close="handleClose9"></pro-popup>
-      <pro-popup v-model="show10" lock-scroll position="bottom" :safe-area-inset-bottom="true"
-        custom-style="height: 200px;" @close="handleClose10"></pro-popup>
+      <wd-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;" @close="handleClose8"></wd-popup>
+      <wd-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;" @close="handleClose9"></wd-popup>
+      <wd-popup
+        v-model="show10"
+        lock-scroll
+        position="bottom"
+        :safe-area-inset-bottom="true"
+        custom-style="height: 200px;"
+        @close="handleClose10"
+      ></wd-popup>
     </page-wraper>
   </view>
 </template>
@@ -152,7 +162,20 @@ function handleClose10() {
 }
 </script>
 <style lang="scss" scoped>
+.wot-theme-dark {
+  .custom-txt {
+    color: $-dark-color;
+  }
+}
+
 .custom-txt {
   color: black;
+  width: 400rpx;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+  border-radius: 32rpx;
 }
 </style>

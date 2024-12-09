@@ -1,6 +1,6 @@
 import { type ExtractPropTypes, type InjectionKey } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
-import type { TabbarItem } from '../pro-tabbar-item/types'
+import type { TabbarItem } from '../wd-tabbar-item/types'
 
 type TabbarShape = 'default' | 'round'
 
@@ -45,7 +45,7 @@ export const tabbarProps = {
    */
   bordered: makeBooleanProp(true),
   /**
-   * 是否设置底部安全距禿（iPhone X 类型的机型）
+   * 是否设置底部安全距离（iPhone X 类型的机型）
    */
   safeAreaInsetBottom: makeBooleanProp(false),
   /**

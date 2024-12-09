@@ -2,9 +2,73 @@
 @import "./../common/abstracts/variable.scss";
 
 
+.wot-theme-dark {
+  @include b(picker) {
+    @include when(border) {
+      .wd-picker__cell {
+        @include halfPixelBorder('top', $-cell-padding, $-dark-border-color);
+      }
+    }
+
+    @include e(title) {
+      color: $-dark-color;
+    }
+
+    @include e(label) {
+      color: $-dark-color;
+    }
+    @include e(value) {
+      color: $-dark-color;
+    }
+
+    @include e(placeholder) {
+      color: $-dark-color-gray;
+    }
+
+    :deep(.wd-picker__arrow),
+    :deep(.wd-picker__clear) {
+      color: $-dark-color;
+    }
+
+    @include e(cell) {
+      background-color: $-dark-background2;
+      color: $-dark-color;
+      @include when(disabled) {
+        .wd-picker__value {
+          color: $-dark-color3;
+        }
+        .wd-picker__placeholder {
+          color: $-dark-color-gray;
+        }
+      }
+    }
+
+    @include when(disabled) {
+      .wd-picker__value {
+        color: $-dark-color3;
+      }
+
+      .wd-picker__placeholder {
+        color: $-dark-color-gray;
+      }
+    }
+
+    @include e(action) {
+      @include m(cancel) {
+        color: $-dark-color;
+      }
+      @include when(loading) {
+        color: $-dark-color3;
+      }
+    }
+  }
+}
+
 
 @include b(picker) {
-
+  @include edeep(popup) {
+    border-radius: 16px 16px 0px 0px;
+  }
 
   @include when(border) {
     .wd-picker__cell {
@@ -15,7 +79,8 @@
     .wd-picker__cell {
       font-size: $-cell-title-fs-large;
     }
-    :deep(.wd-picker__arrow) {
+    :deep(.wd-picker__arrow),
+    :deep(.wd-picker__clear) {
       font-size: $-cell-icon-size-large;
     }
   }
@@ -40,7 +105,7 @@
     color: $-cell-title-color;
     font-size: $-cell-title-fs;
     overflow: hidden;
-    line-height: 24px;
+    line-height: $-cell-line-height;
 
     @include when(disabled) {
       .wd-picker__value {
@@ -85,9 +150,75 @@
     }
   }
 
+  @include e(value-wraper) {
+    display: flex;
+  }
 
+  @include e(value) {
+    flex: 1;
+    margin-right: 10px;
+    color: $-cell-value-color;
+    
+    @include when(ellipsis) {
+      @include lineEllipsis;
+    }
+  }
 
+  @include e(body) {
+    flex: 1;
+  }
 
+  @include e(placeholder) {
+    color: $-input-placeholder-color;
+  }
 
+  @include edeep(arrow,clear) {
+    display: block;
+    font-size: $-cell-icon-size;
+    color: $-cell-arrow-color;
+    line-height: $-cell-line-height;
+  }
 
+  @include edeep(clear){
+    color: $-cell-clear-color;
+  }
+
+  @include e(wraper) {
+    padding-bottom: var(--window-bottom);
+  }
+
+  @include e(toolbar) {
+    position: relative;
+    display: flex;
+    font-size: $-picker-toolbar-fs;
+    height: $-picker-toolbar-height;
+    line-height: $-picker-action-height;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  @include e(action) {
+    display: block;
+    border: none;
+    outline: none;
+    font-size: $-picker-toolbar-fs;
+    color: $-picker-toolbar-finish-color;
+    background: transparent;
+    padding: 24px 15px 14px 15px;
+
+    @include m(cancel) {
+      color: $-picker-toolbar-cancel-color;
+    }
+
+    @include when(loading) {
+      color: $-picker-loading-button-color;
+    }
+  }
+  @include e(title) {
+    display: block;
+    padding-top: 10px;
+    color: $-picker-toolbar-title-color;
+    font-weight: $-action-sheet-weight;
+  }
 }

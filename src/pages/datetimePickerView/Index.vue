@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <pro-toast />
+    <wd-toast />
     <demo-block title="日期选择" transparent>
       <wd-datetime-picker-view v-model="value1" @change="onChange1" />
     </demo-block>
@@ -32,7 +32,7 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { DatetimePickerViewFilter, DatetimePickerViewFormatter } from '@/uni_modules/wot-design-uni/components/pro-datetime-picker-view/types'
+import type { DatetimePickerViewFilter, DatetimePickerViewFormatter } from '@/uni_modules/wot-design-uni/components/wd-datetime-picker-view/types'
 import { ref } from 'vue'
 
 const value1 = ref<string>('')

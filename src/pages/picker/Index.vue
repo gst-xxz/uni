@@ -1,8 +1,8 @@
 <template>
   <page-wraper>
-    <pro-toast />
+    <wd-toast />
     <demo-block transparent>
-      <pro-cell-group border>
+      <wd-cell-group border>
         <wd-picker label="单列选项" v-model="value0" :columns="columns0" />
         <wd-picker label="禁用" disabled v-model="value1" :columns="columns1" />
         <wd-picker label="只读" readonly v-model="value2" :columns="columns2" />
@@ -14,7 +14,8 @@
         <wd-picker label="before-confirm" :columns="columns0" v-model="value7" :before-confirm="beforeConfirm" />
         <wd-picker label="错误" v-model="value10" error :columns="columns0" />
         <wd-picker label="必填" v-model="value11" :columns="columns0" required />
-      </pro-cell-group>
+        <wd-picker label="可清空" :clearable="true" v-model="value15" :columns="columns5" :column-change="onChangeDistrict" />
+      </wd-cell-group>
     </demo-block>
     <demo-block title="label 不传" transparent>
       <wd-picker :columns="columns0" v-model="value12" />
@@ -40,7 +41,7 @@
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
-import type { ColumnItem, PickerViewColumnChange } from '@/uni_modules/wot-design-uni/components/pro-picker-view/types'
+import type { ColumnItem, PickerViewColumnChange } from '@/uni_modules/wot-design-uni/components/wd-picker-view/types'
 import type { PickerBeforeConfirm, PickerDisplayFormat } from '@/uni_modules/wot-design-uni/components/wd-picker/types'
 import { ref } from 'vue'
 
@@ -105,6 +106,7 @@ const columns4 = ref([
 ])
 
 const value5 = ref(['110000', '110100', '110102'])
+const value15 = ref(['110000', '110100', '110102'])
 const columns5 = ref([district[0], district[district[0][0].value], district[district[district[0][0].value][0].value]])
 
 const value6 = ref(['中南大学', '软件工程'])
@@ -163,6 +165,14 @@ function handleConfirm({ value }: any) {
 }
 </script>
 <style lang="scss" scoped>
+.wot-theme-dark {
+  .default-slot {
+    background: $-dark-background2;
+  }
+  .default-slot-txt {
+    color: $-dark-color3;
+  }
+}
 .default-slot {
   background: #fff;
   padding: 15px;

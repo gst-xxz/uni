@@ -1,15 +1,98 @@
 @import "./../common/abstracts/_mixin.scss";
 @import "./../common/abstracts/variable.scss";
 
+.wot-theme-dark {
+  @include b(radio) {
+    @include e(shape) {
+      background: transparent;
+    }
+    @include e(label) {
+      color: $-dark-color;
+    }
+    @include when(button) {
+      .wd-radio__label {
+        background-color: $-dark-background;
+      }
+      @include when(checked) {
+        .wd-radio__label {
+          background-color: $-dark-background2;
+        }
+      }
+    }
+
+    @include when(disabled) {
+      .wd-radio__label {
+        color: $-dark-color-gray;
+      }
+      @include when(checked) {
+        .wd-radio__label {
+          color: $-dark-color-gray;
+        }
+      }
+  
+      @include when(button) {
+        .wd-radio__label {
+          border-color: #c8c9cc;
+          background: #3a3a3c;
+          color: $-dark-color-gray;
+        }
+        @include when(checked) {
+          .wd-radio__label {
+            border-color: #c8c9cc;
+            background: #3a3a3c;
+            color: #c8c9cc;
+          }
+        }
+      }
+  
+      @include when(dot) {
+        .wd-radio__shape {
+          border-color: #c8c9cc;
+          background: #3a3a3c;
+          &::before {
+            background-color: #c8c9cc;
+          }
+        }
+      }
+    }
+  }
+}
+
 @include b(radio) {
+  display: flex;
+  margin-top: $-radio-margin;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2;
+
   @include when(first) {
     margin-top: 0;
   }
   @include e(shape) {
+    position: relative;
+    display: inline-block;
     width: $-radio-size;
     height: $-radio-size;
     font-size: $-radio-size;
+    color: transparent;
+    display: none;
+    vertical-align: middle;
     transition: background 0.2s;
+  }
+  @include e(input) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+  }
+  @include e(label) {
+    display: inline-block;
+    vertical-align: top;
+    font-size: $-radio-label-fs;
+    color: $-radio-label-color;
+    line-height: 20px;
   }
   @include when(checked) {
     .wd-radio__shape {
@@ -25,7 +108,7 @@
 
   @include when(dot) {
     .wd-radio__shape {
-      border: 1px solid $-radio-dot-border-color;
+      border: 2px solid $-radio-dot-border-color;
       border-radius: 50%;
       position: relative;
       display: inline-block;
@@ -89,6 +172,10 @@
     }
   }
 
+  &.icon-placement-left {
+    flex-direction: row-reverse;
+  }
+
   @include when(inline) {
     display: inline-block;
     margin-top: 0;
@@ -116,6 +203,14 @@
         .wd-radio__shape {
           margin-top: 0;
         }
+      }
+    }
+
+    &.icon-placement-right {
+      .wd-radio__shape {
+        margin-right: 0;
+        margin-left: 4px;
+        float: right;
       }
     }
   }

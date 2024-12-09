@@ -1,24 +1,25 @@
 <template>
   <view>
-    <pro-toast selector="wd-month" />
+    <wd-toast selector="wd-month" />
     <view class="month">
       <view class="wd-month">
-        <view class="wd-month__title flex items-center justify-center h-[45px] text-sm text-black/85">{{
-          monthTitle(date) }}</view>
-        <view class="wd-month__days flex flex-wrap text-base text-black/85">
-          <view v-for="(item, index) in days" :key="index"
-            :class="`wd-month__day relative w-[14.285%] h-16 leading-[1] text-center ${item.disabled ? 'is-disabled' : ''} ${item.type ? itemClass(item.type, value!, type) : ''}`"
-            :style="firstDayStyle(index, item.date, firstDayOfWeek)" @click="handleDateClick(index)">
-            <view class="wd-month__day-container relative z-[2] font-medium">
-              <view class="wd-month__day-top absolute top-2.5 left-0 right-0 leading-[1.1] text-center text-[10px]">{{
-                item.topInfo
-                }}</view>
-              <view :class="cn('wd-month__day-text', { 'text-black/25': item.disabled })">
+        <view class="wd-month__title" v-if="showTitle">{{ monthTitle(date) }}</view>
+        <view class="wd-month__days">
+          <view
+            v-for="(item, index) in days"
+            :key="index"
+            :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${
+              item.type ? dayTypeClass(item.type) : ''
+            }`"
+            :style="index === 0 ? firstDayStyle : ''"
+            @click="handleDateClick(index)"
+          >
+            <view class="wd-month__day-container">
+              <view class="wd-month__day-top">{{ item.topInfo }}</view>
+              <view class="wd-month__day-text">
                 {{ item.text }}
               </view>
-              <view
-                class="wd-month__day-bottom absolute bottom-2.5 left-0 right-0 leading-[1.1] text-center text-[10px]">{{
-                  item.bottomInfo }}</view>
+              <view class="wd-month__day-bottom">{{ item.bottomInfo }}</view>
             </view>
           </view>
         </view>
@@ -38,24 +39,25 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import wdToast from '../../wd-toast/wd-toast.vue'
+import { computed, ref, watch, type CSSProperties } from 'vue'
 import {
   compareDate,
   formatMonthTitle,
   getDateByDefaultTime,
   getDayByOffset,
   getDayOffset,
-  getFirstDayStyle,
   getItemClass,
   getMonthEndDay,
+  getNextDay,
+  getPrevDay,
   getWeekRange
 } from '../utils'
-import { useToast } from '../../pro-toast'
-import { deepClone, isArray, isFunction } from '../../common/util'
+import { useToast } from '../../wd-toast'
+import { deepClone, isArray, isFunction, objToStyle } from '../../common/util'
 import { useTranslate } from '../../composables/useTranslate'
-import type { CalendarDayItem, CalendarDayType, CalendarType } from '../types'
+import type { CalendarDayItem, CalendarDayType } from '../types'
 import { monthProps } from './types'
-import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(monthProps)
 const emit = defineEmits(['change'])
@@ -66,9 +68,15 @@ const days = ref<Array<CalendarDayItem>>([])
 
 const toast = useToast('wd-month')
 
-const itemClass = computed(() => {
-  return (monthType: CalendarDayType, value: number | (number | null)[], type: CalendarType) => {
-    return getItemClass(monthType, value, type)
+const offset = computed(() => {
+  const firstDayOfWeek = props.firstDayOfWeek >= 7 ? props.firstDayOfWeek % 7 : props.firstDayOfWeek
+  const offset = (7 + new Date(props.date).getDay() - firstDayOfWeek) % 7
+  return offset
+})
+
+const dayTypeClass = computed(() => {
+  return (monthType: CalendarDayType) => {
+    return getItemClass(monthType, props.value, props.type)
   }
 })
 
@@ -77,12 +85,21 @@ const monthTitle = computed(() => {
     return formatMonthTitle(date)
   }
 })
+
 const firstDayStyle = computed(() => {
-  return (index: number, date: number, firstDayOfWeek: number) => {
-    return getFirstDayStyle(index, date, firstDayOfWeek)
-  }
+  const dayStyle: CSSProperties = {}
+  dayStyle.marginLeft = `${(100 / 7) * offset.value}%`
+  return objToStyle(dayStyle)
 })
 
+const isLastRow = (date: number) => {
+  const currentDate = new Date(date)
+  const currentDay = currentDate.getDate()
+  const daysInMonth = getMonthEndDay(currentDate.getFullYear(), currentDate.getMonth() + 1)
+  const totalDaysShown = offset.value + daysInMonth
+  const totalRows = Math.ceil(totalDaysShown / 7)
+  return Math.ceil((offset.value + currentDay) / 7) === totalRows
+}
 watch(
   [() => props.type, () => props.date, () => props.value, () => props.minDate, () => props.maxDate, () => props.formatter],
   () => {
@@ -142,17 +159,29 @@ function getDateType(date: number): CalendarDayType {
 }
 
 function getDatesType(date: number): CalendarDayType {
-  if (!isArray(props.value)) return ''
-
+  const { value } = props
   let type: CalendarDayType = ''
-  props.value.some((item) => {
-    if (compareDate(date, item) === 0) {
-      type = 'selected'
-      return true
-    }
 
-    return false
-  })
+  if (!isArray(value)) return type
+  const isSelected = (day: number) => {
+    return value.some((item) => compareDate(day, item) === 0)
+  }
+
+  if (isSelected(date)) {
+    const prevDay = getPrevDay(date)
+    const nextDay = getNextDay(date)
+    const prevSelected = isSelected(prevDay)
+    const nextSelected = isSelected(nextDay)
+    if (prevSelected && nextSelected) {
+      type = 'multiple-middle'
+    } else if (prevSelected) {
+      type = 'end'
+    } else if (nextSelected) {
+      type = 'start'
+    } else {
+      type = 'multiple-selected'
+    }
+  }
 
   return type
 }
@@ -252,16 +281,12 @@ function handleDateChange(date: CalendarDayItem) {
 }
 function handleDatesChange(date: CalendarDayItem) {
   if (date.disabled) return
-  const value = deepClone(isArray(props.value) ? props.value : [])
-  if (date.type !== 'selected') {
-    value.push(getDate(date.date))
-  } else {
-    value.splice(value.indexOf(date.date), 1)
-  }
-  emit('change', {
-    value
-  })
+  const currentValue = deepClone(isArray(props.value) ? props.value : [])
+  const dateIndex = currentValue.findIndex((item) => item && compareDate(item, date.date) === 0)
+  const value = dateIndex === -1 ? [...currentValue, getDate(date.date)] : currentValue.filter((_, index) => index !== dateIndex)
+  emit('change', { value })
 }
+
 function handleDateRangeChange(date: CalendarDayItem) {
   if (date.disabled) return
 
@@ -346,7 +371,8 @@ function getFormatterDate(date: number, day: string | number, type?: CalendarDay
     topInfo: '',
     bottomInfo: '',
     type,
-    disabled: compareDate(date, props.minDate) === -1 || compareDate(date, props.maxDate) === 1
+    disabled: compareDate(date, props.minDate) === -1 || compareDate(date, props.maxDate) === 1,
+    isLastRow: isLastRow(date)
   }
   if (props.formatter) {
     if (isFunction(props.formatter)) {

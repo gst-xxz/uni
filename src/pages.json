@@ -11,20 +11,6 @@
       }
     },
     {
-      "path": "pages/pro-list/Index",
-      "name": "pro-list",
-      "style": {
-        "navigationBarTitleText": "ProList 列表"
-      }
-    },
-    {
-      "path": "pages/pro-form/Index",
-      "name": "pro-form",
-      "style": {
-        "navigationBarTitleText": "ProForm 表单"
-      }
-    },
-    {
       "path": "pages/button/Index",
       "name": "button",
       "style": {
@@ -83,6 +69,16 @@
           "allowsBounceVertical": "NO"
         },
         "navigationBarTitleText": "Slider 滑块"
+      }
+    },
+    {
+      "path": "pages/layout/Index",
+      "name": "layout",
+      "style": {
+        "mp-alipay": {
+          "allowsBounceVertical": "NO"
+        },
+        "navigationBarTitleText": "Layout 布局"
       }
     },
     {
@@ -736,7 +732,16 @@
         "navigationBarTitleText": "Fab 悬浮按钮"
       }
     },
-    
+    {
+      "path": "pages/text/Index",
+      "name": "text",
+      "style": {
+        "mp-alipay": {
+          "allowsBounceVertical": "NO"
+        },
+        "navigationBarTitleText": "Text 文本"
+      }
+    },
     {
       "path": "pages/countDown/Index",
       "name": "countDown",
@@ -778,6 +783,16 @@
       }
     },
     {
+      "path": "pages/gap/Index",
+      "name": "gap",
+      "style": {
+        "mp-alipay": {
+          "allowsBounceVertical": "NO"
+        },
+        "navigationBarTitleText": "Gap 间隔槽"
+      }
+    },
+    {
       "path": "pages/passwordInput/Index",
       "name": "passwordInput",
       "style": {
@@ -806,16 +821,36 @@
         },
         "navigationBarTitleText": "IndexBar 索引栏"
       }
+    },
+    {
+      "path": "pages/floatingPanel/Index",
+      "name": "floatingPanel",
+      "style": {
+        "mp-alipay": {
+          "allowsBounceVertical": "NO"
+        },
+        "navigationBarTitleText": "floatingPanel 浮动面板"
+      }
     }
   ],
+  // "tabBar": {
+  //   "color": "#7a7e83",
+  //   "selectedColor": "#1C64FD",
+  //   "backgroundColor": "#ffffff",
+  //   "list": [ ]
+  // },
   "globalStyle": {
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
     "navigationBarTitleText": "Wot Design Uni",
-    "backgroundColor": "#F8F8F8",
-    "backgroundTextStyle": "light",
-    "backgroundColorTop": "#f8f9fa",
-    "backgroundColorBottom": "#f8f9fa",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "backgroundColorTop": "@bgColorTop",
+    "backgroundColorBottom": "@bgColorBottom",
     "navigationStyle": "default"
+
+    // "navigationBarTextStyle": "black",
+    // "navigationBarBackgroundColor": "#FFF",
+    // "backgroundColor": "#F8F8F8"
   }
 }

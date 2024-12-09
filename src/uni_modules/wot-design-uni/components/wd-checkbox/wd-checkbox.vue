@@ -1,36 +1,30 @@
 <template>
-  <view :class="cn('wd-checkbox block text-[0] leading-[1.2] mb-2.5', {
-    'is-cell-box py-[13px] px-[15px] m-0': innerCell,
-    'is-button-box inline-flex w-1/3 pt-3 pr-3 pb-0 pl-0 box-border': innerShape === 'button',
-    'is-checked': isChecked,
-    'is-first-child': isFirst,
-    'is-last-child mb-0': isLast,
-    'is-inline inline-block mb-0 mr-2.5': innerInline,
-    'mr-0': (innerInline || innerShape === 'button') && isLast,
-    'is-button inline-block mb-0 align-top mr-2.5 text-sm': innerShape === 'button',
-    'is-disabled': innerDisabled,
-    [`is-${innerSize}`]: innerSize,
-  })" :style="customStyle" @click="toggle">
+  <view
+    :class="`wd-checkbox ${innerCell ? 'is-cell-box' : ''} ${innerShape === 'button' ? 'is-button-box' : ''} ${isChecked ? 'is-checked' : ''} ${
+      isFirst ? 'is-first-child' : ''
+    } ${isLast ? 'is-last-child' : ''} ${innerInline ? 'is-inline' : ''} ${innerShape === 'button' ? 'is-button' : ''} ${
+      innerDisabled ? 'is-disabled' : ''
+    } ${innerSize ? 'is-' + innerSize : ''} ${customClass}`"
+    :style="customStyle"
+    @click="toggle"
+  >
     <!--shape为button时，移除wd-checkbox__shape，只保留wd-checkbox__label-->
-    <view v-if="innerShape !== 'button'" :class="cn(
-      'wd-checkbox__shape relative inline-block rounded-full align-middle box-border bg-white transition-[background_0.2s] w-4 h-4 text-white border-2 border-solid border-[#dcdcdc]',
-      innerShape === 'square' ? 'rounded' : '',
-      customShapeClass
-    )" :style="isChecked && !innerDisabled && innerCheckedColor ? 'color :' + innerCheckedColor : ''">
-      <pro-icon custom-class="wd-checkbox__check" name="success" />
+    <view
+      v-if="innerShape !== 'button'"
+      :class="`wd-checkbox__shape ${innerShape === 'square' ? 'is-square' : ''} ${customShapeClass}`"
+      :style="isChecked && !innerDisabled && innerCheckedColor ? 'color :' + innerCheckedColor : ''"
+    >
+      <wd-icon custom-class="wd-checkbox__check" name="check-bold" />
     </view>
     <!--shape为button时只保留wd-checkbox__label-->
-    <view :class="cn(
-      'wd-checkbox__label relative inline-block align-middle ml-[9px] text-sm text-black/85',
-      customLabelClass
-    )"
-      :style="isChecked && innerShape === 'button' && !innerDisabled && innerCheckedColor ? 'color:' + innerCheckedColor : ''">
+    <view
+      :class="`wd-checkbox__label ${customLabelClass}`"
+      :style="isChecked && innerShape === 'button' && !innerDisabled && innerCheckedColor ? 'color:' + innerCheckedColor : ''"
+    >
       <!--button选中时展示的icon-->
-      <pro-icon v-if="innerShape === 'button' && isChecked"
-        custom-class="wd-checkbox__btn-check inline-block align-middle mr-1 text-sm" name="success" />
+      <wd-icon v-if="innerShape === 'button' && isChecked" custom-class="wd-checkbox__btn-check" name="check-bold" />
       <!--文案-->
-      <view class="wd-checkbox__txt inline-block align-middle leading-5 overflow-hidden text-ellipsis whitespace-nowrap"
-        :style="maxWidth ? 'max-width:' + maxWidth : ''">
+      <view class="wd-checkbox__txt" :style="maxWidth ? 'max-width:' + maxWidth : ''">
         <slot></slot>
       </view>
     </view>
@@ -49,13 +43,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed, getCurrentInstance, onBeforeMount, watch } from 'vue'
 import { useParent } from '../composables/useParent'
-import { CHECKBOX_GROUP_KEY } from '../pro-checkbox-group/types'
+import { CHECKBOX_GROUP_KEY } from '../wd-checkbox-group/types'
 import { getPropByPath, isDef } from '../common/util'
 import { checkboxProps, type CheckboxExpose } from './types'
-import { cn } from '@/uni_modules/pro-core/lib/utils';
 
 const props = defineProps(checkboxProps)
 const emit = defineEmits(['change', 'update:modelValue'])

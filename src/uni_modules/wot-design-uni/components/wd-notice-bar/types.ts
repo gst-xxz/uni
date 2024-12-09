@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
 
 export type NoticeBarType = 'warning' | 'info' | 'danger' | ''
@@ -40,10 +40,7 @@ export const noticeBarProps = {
   /**
    * 设置左侧图标，使用 icon 章节中的图标名
    */
-  prefix: {
-    type: String,
-    default: 'volume-o'
-  },
+  prefix: String,
   /**
    * 文字、图标颜色
    */
@@ -57,3 +54,14 @@ export const noticeBarProps = {
    */
   direction: makeStringProp<NoticeBarScrollDirection>('horizontal')
 }
+
+export type NoticeBarProps = ExtractPropTypes<typeof noticeBarProps>
+
+export type NoticeBarExpose = {
+  /**
+   * 重置NoticeBar动画
+   */
+  reset: () => void
+}
+
+export type NoticeBarInstance = ComponentPublicInstance<NoticeBarProps, NoticeBarExpose>

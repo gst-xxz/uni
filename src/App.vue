@@ -1,7 +1,35 @@
+<!--
+ * @Author: weisheng
+ * @Date: 2024-10-12 13:07:08
+ * @LastEditTime: 2024-11-08 13:14:48
+ * @LastEditors: weisheng
+ * @Description: 
+ * @FilePath: \wot-design-uni\src\App.vue
+ * 记得注释
+-->
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import { onLaunch, onShow, onHide, onThemeChange } from '@dcloudio/uni-app'
+import { useDark } from './store'
+const darkMode = useDark()
 
-onLaunch((ctx) => {
+onThemeChange((option) => {
+  darkMode.setDark(option.theme === 'dark')
+})
+
+onLaunch(() => {
+  const systemInfo = uni.getSystemInfoSync()
+  darkMode.setDark(systemInfo.theme === 'dark')
+
+  // #ifdef H5
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== parent) return
+    // 处理收到的消息
+    if (typeof event.data === 'boolean') {
+      darkMode.setDark(event.data)
+    }
+  })
+  // #endif
   console.log('App Launch')
 })
 onShow(() => {
@@ -12,6 +40,8 @@ onHide(() => {
 })
 </script>
 <style lang="scss">
+@import '@/iconfont/index.css';
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -23,9 +53,7 @@ page {
   font-family: San Francisco, Rotobo, arial, PingFang SC, Noto SansCJK, Microsoft Yahei, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-uni-page-body {
-  height: 100%;
+  font-size: 13px;
+  background: #f8f9fa;
 }
 </style>

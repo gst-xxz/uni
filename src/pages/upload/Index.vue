@@ -3,81 +3,100 @@
     <!-- #ifdef MP-WEIXIN -->
     <wd-privacy-popup></wd-privacy-popup>
     <!-- #endif -->
-    <pro-message-box></pro-message-box>
-    <pro-toast></pro-toast>
+    <wd-message-box></wd-message-box>
+    <wd-toast></wd-toast>
     <demo-block title="基本用法">
-      <pro-upload accept="image" v-model:file-list="fileList" image-mode="aspectFill" :action="action"></pro-upload>
+      <wd-upload accept="image" v-model:file-list="fileList" image-mode="aspectFill" :action="action"></wd-upload>
     </demo-block>
     <demo-block title="最大上传数限制">
-      <pro-upload :file-list="fileList3" :limit="3" :action="action" @change="handleChange3"></pro-upload>
+      <wd-upload :file-list="fileList3" :limit="3" :action="action" @change="handleChange3"></wd-upload>
+    </demo-block>
+    <demo-block title="覆盖上传">
+      <!-- #ifdef MP-WEIXIN || H5  -->
+      <wd-upload accept="all" reupload v-model:file-list="fileList17" image-mode="aspectFill" :action="action"></wd-upload>
+      <!-- #endif -->
+      <!-- #ifndef MP-WEIXIN -->
+      <!-- #ifndef H5 -->
+      <wd-upload accept="image" reupload v-model:file-list="fileList17" image-mode="aspectFill" :action="action"></wd-upload>
+      <!-- #endif -->
+      <!-- #endif -->
     </demo-block>
     <demo-block title="拦截预览图片操作">
-      <pro-upload :file-list="fileList4" :action="action" @change="handleChange4"
-        :before-preview="beforePreview"></pro-upload>
+      <wd-upload :file-list="fileList4" :action="action" @change="handleChange4" :before-preview="beforePreview"></wd-upload>
     </demo-block>
     <demo-block title="上传前置处理">
-      <pro-upload :file-list="fileList5" :action="action" @change="handleChange5"
-        :before-upload="beforeUpload"></pro-upload>
+      <wd-upload :file-list="fileList5" :action="action" @change="handleChange5" :before-upload="beforeUpload"></wd-upload>
     </demo-block>
     <demo-block title="移除图片前置处理">
-      <pro-upload :file-list="fileList6" :action="action" @change="handleChange6"
-        :before-remove="beforeRemove"></pro-upload>
+      <wd-upload :file-list="fileList6" :action="action" @change="handleChange6" :before-remove="beforeRemove"></wd-upload>
     </demo-block>
     <demo-block title="上传状态钩子">
-      <pro-upload :file-list="fileList7" :action="action" @change="handleChange7" @success="handleSuccess"
-        @fail="handleFail" @progress="handleProgess"></pro-upload>
+      <wd-upload
+        :file-list="fileList7"
+        :action="action"
+        @change="handleChange7"
+        @success="handleSuccess"
+        @fail="handleFail"
+        @progress="handleProgess"
+      ></wd-upload>
     </demo-block>
     <demo-block title="禁用">
-      <pro-upload :file-list="fileList8" disabled :action="action" @change="handleChange8"></pro-upload>
+      <wd-upload :file-list="fileList8" disabled :action="action" @change="handleChange8"></wd-upload>
     </demo-block>
     <demo-block title="自定义唤起上传样式并限制上传5张">
-      <pro-upload :file-list="fileList9" :action="action" @change="handleChange9" :limit="5">
+      <wd-upload :file-list="fileList9" :action="action" @change="handleChange9" :limit="5">
         <wd-button>自定义唤起样式</wd-button>
-      </pro-upload>
+      </wd-upload>
     </demo-block>
     <demo-block title="选择文件前置处理">
-      <pro-upload :file-list="fileList10" :action="action" @change="handleChange10"
-        :before-choose="beforeChoose"></pro-upload>
+      <wd-upload :file-list="fileList10" :action="action" @change="handleChange10" :before-choose="beforeChoose"></wd-upload>
     </demo-block>
 
     <!-- <demo-block title="上传至oss">
-      <pro-upload :file-list="fileList11" action="https://xxx.aliyuncs.com" :build-form-data="buildFormData" @change="handleChange11"></pro-upload>
+      <wd-upload :file-list="fileList11" action="https://xxx.aliyuncs.com" :build-form-data="buildFormData" @change="handleChange11"></wd-upload>
     </demo-block> -->
 
     <demo-block title="上传视频">
-      <pro-upload accept="video" multiple :file-list="fileList1" :action="action" @change="handleChange1"></pro-upload>
+      <wd-upload accept="video" multiple :file-list="fileList1" :action="action" @change="handleChange1"></wd-upload>
     </demo-block>
 
     <!-- #ifdef MP-WEIXIN -->
     <demo-block title="上传视频和图片">
-      <pro-upload accept="media" multiple :file-list="fileList11" :action="action"
-        @change="handleChange11"></pro-upload>
+      <wd-upload accept="media" multiple :file-list="fileList11" :action="action" @change="handleChange11"></wd-upload>
     </demo-block>
     <demo-block title="仅上传文件">
-      <pro-upload accept="file" multiple :file-list="fileList12" :action="action" @change="handleChange12"></pro-upload>
+      <wd-upload accept="file" multiple :file-list="fileList12" :action="action" @change="handleChange12"></wd-upload>
     </demo-block>
     <!-- #endif -->
 
     <!-- #ifdef MP-WEIXIN || H5  -->
     <demo-block title="上传视频图片和文件">
-      <pro-upload accept="all" multiple :file-list="fileList13" :action="action" @change="handleChange13"></pro-upload>
+      <wd-upload accept="all" multiple :file-list="fileList13" :action="action" @change="handleChange13"></wd-upload>
     </demo-block>
     <!-- #endif -->
 
     <demo-block title="手动触发上传">
-      <pro-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action"
-        @change="handleChange14"></pro-upload>
+      <wd-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action" @change="handleChange14"></wd-upload>
       <wd-button @click="upload14?.submit()">开始上传</wd-button>
     </demo-block>
 
     <demo-block title="自定义上传方法">
-      <pro-upload v-model:file-list="fileList15" :upload-method="customUpload"></pro-upload>
+      <wd-upload v-model:file-list="fileList15" :upload-method="customUpload"></wd-upload>
+    </demo-block>
+
+    <demo-block title="自定义预览样式">
+      <wd-upload v-model:file-list="fileList16" accept="image" image-mode="aspectFill" :action="action">
+        <template #preview-cover="{ file, index }">
+          <!-- 小程序拿不到文件 -->
+          <view class="preview-cover">{{ file.name || `文件${index}` }}</view>
+        </template>
+      </wd-upload>
     </demo-block>
   </page-wraper>
 </template>
 <script lang="ts" setup>
 import { useToast, useMessage } from '@/uni_modules/wot-design-uni'
-import type { UploadFile, UploadInstance, UploadMethod } from '@/uni_modules/wot-design-uni/components/pro-upload/types'
+import type { UploadFile, UploadInstance, UploadMethod } from '@/uni_modules/wot-design-uni/components/wd-upload/types'
 import { ref } from 'vue'
 
 const action: string = 'https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload'
@@ -106,6 +125,17 @@ const fileList12 = ref<UploadFile[]>([])
 const fileList13 = ref<UploadFile[]>([])
 const fileList14 = ref<UploadFile[]>([])
 const fileList15 = ref<UploadFile[]>([])
+const fileList16 = ref<UploadFile[]>([
+  {
+    url: 'https://registry.npmmirror.com/wot-design-uni-assets/*/files/panda.jpg',
+    name: 'panda'
+  }
+])
+const fileList17 = ref<UploadFile[]>([
+  {
+    url: 'https://registry.npmmirror.com/wot-design-uni-assets/*/files/panda.jpg'
+  }
+])
 
 const upload14 = ref<UploadInstance>()
 
@@ -126,7 +156,7 @@ const beforeChoose = ({ file, resolve }: any) => {
     })
 }
 
-const beforePreview = ({ resolve }: any) => {
+const beforePreview = ({ resolve, file }: any) => {
   messageBox
     .confirm({
       msg: '是否预览图片',
@@ -292,4 +322,9 @@ const customUpload: UploadMethod = (file, formData, options) => {
   })
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.preview-cover {
+  margin-top: 10rpx;
+  text-align: center;
+}
+</style>

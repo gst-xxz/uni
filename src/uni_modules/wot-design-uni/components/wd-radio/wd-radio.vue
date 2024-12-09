@@ -1,15 +1,23 @@
 <template>
-  <view :class="`wd-radio flex items-center justify-between text-center line-height-[1.2] mt-2.5 ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${sizeValue ? 'is-' + sizeValue : ''
-    } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${disabledValue ? 'is-disabled' : ''
-    } ${customClass}`" :style="customStyle" @click="handleClick">
-    <view class="wd-radio__label text-sm text-black/85 inline-block align-top" :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
-      }`">
+  <view
+    :class="`wd-radio ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${
+      sizeValue ? 'is-' + sizeValue : ''
+    } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${
+      disabledValue ? 'is-disabled' : ''
+    } icon-placement-${iconPlacement} ${customClass}`"
+    :style="customStyle"
+    @click="handleClick"
+  >
+    <view
+      class="wd-radio__label"
+      :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${
+        isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
+      }`"
+    >
       <slot></slot>
     </view>
-    <view class="wd-radio__shape relative text-transparent hidden align-middle"
-      :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''">
-      <pro-icon v-if="shapeValue === 'check'" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''"
-        name="check"></pro-icon>
+    <view class="wd-radio__shape" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''">
+      <wd-icon v-if="shapeValue === 'check'" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''" name="check"></wd-icon>
     </view>
   </view>
 </template>
@@ -24,11 +32,11 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed, watch } from 'vue'
 import { useParent } from '../composables/useParent'
-import { RADIO_GROUP_KEY } from '../pro-radio-group/types'
-import { radioProps } from './types'
+import { RADIO_GROUP_KEY } from '../wd-radio-group/types'
+import { radioProps, type RadioIconPlacement } from './types'
 import { getPropByPath, isDef } from '../common/util'
 
 const props = defineProps(radioProps)
@@ -79,6 +87,14 @@ const cellValue = computed(() => {
   }
 })
 
+const iconPlacement = computed<RadioIconPlacement>(() => {
+  if (isDef(props.iconPlacement)) {
+    return props.iconPlacement
+  } else {
+    return getPropByPath(radioGroup, 'props.iconPlacement')
+  }
+})
+
 watch(
   () => props.shape,
   (newValue) => {
@@ -92,7 +108,7 @@ watch(
  */
 function handleClick() {
   const { value } = props
-  if (!disabledValue.value && radioGroup && !isDef(value)) {
+  if (!disabledValue.value && radioGroup && isDef(value)) {
     radioGroup.updateValue(value)
   }
 }

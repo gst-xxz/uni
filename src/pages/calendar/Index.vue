@@ -1,8 +1,8 @@
 <template>
   <page-wraper>
-    <pro-toast />
+    <wd-toast />
     <view style="margin: 20px 0">
-      <pro-cell-group border>
+      <wd-cell-group border>
         <wd-calendar label="单个日期选择" v-model="value1" @confirm="handleConfirm1" />
         <wd-calendar label="多个日期选择" type="dates" v-model="value2" @confirm="handleConfirm2" />
         <wd-calendar label="日期范围选择" type="daterange" v-model="value3" />
@@ -15,12 +15,25 @@
         <wd-calendar label="日周月切换" :first-day-of-week="1" show-type-switch v-model="value10" />
         <wd-calendar label="快捷操作" v-model="value16" :show-confirm="false" />
         <wd-calendar label="日期格式化" type="daterange" v-model="value11" :formatter="formatter" />
-        <wd-calendar label="快捷选项" :shortcuts="shortcuts" :on-shortcuts-click="onShortcutsClick" type="daterange" const
-          v-model="value12" @confirm="handleConfirm3" />
-        <wd-calendar label="自定义展示" type="daterange" const v-model="value13" :display-format="displayFormat"
-          :inner-display-format="innerDisplayFormat" />
+        <wd-calendar
+          label="快捷选项"
+          :shortcuts="shortcuts"
+          :on-shortcuts-click="onShortcutsClick"
+          type="daterange"
+          const
+          v-model="value12"
+          @confirm="handleConfirm3"
+        />
+        <wd-calendar
+          label="自定义展示"
+          type="daterange"
+          const
+          v-model="value13"
+          :display-format="displayFormat"
+          :inner-display-format="innerDisplayFormat"
+        />
         <wd-calendar label="before-confirm" v-model="value14" :before-confirm="beforeConfirm" />
-      </pro-cell-group>
+      </wd-cell-group>
     </view>
 
     <demo-block transparent title="自定义选择器">
@@ -31,13 +44,18 @@
         </wd-calendar>
       </view>
     </demo-block>
+    <demo-block title="组件实例事件">
+      <wd-button @click="openCalendar">打开日历</wd-button>
+      <wd-calendar ref="calendarRef" v-model="value17" :with-cell="false" @confirm="handleConfirm5" />
+    </demo-block>
   </page-wraper>
+  <wd-message-box />
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
 import { dayjs } from '@/uni_modules/wot-design-uni'
 import type { CalendarDayItem, CalendarFormatter } from '@/uni_modules/wot-design-uni/components/wd-calendar-view/types'
-import type { CalendarOnShortcutsClickOption } from '@/uni_modules/wot-design-uni/components/wd-calendar/types'
+import type { CalendarInstance, CalendarOnShortcutsClickOption } from '@/uni_modules/wot-design-uni/components/wd-calendar/types'
 import { ref } from 'vue'
 
 const minDate = ref<number>(new Date(new Date().getFullYear() - 20, new Date().getMonth() - 6, new Date().getDate()).getTime())
@@ -58,6 +76,13 @@ const value13 = ref<number[]>([Date.now() - 24 * 60 * 60 * 1000 * 3, Date.now()]
 const value14 = ref<number | null>(null)
 const value15 = ref<number | null>(null)
 const value16 = ref<number>(Date.now())
+const value17 = ref<number>(Date.now())
+
+const calendarRef = ref<CalendarInstance>()
+
+function openCalendar() {
+  calendarRef.value?.open()
+}
 
 const formatValue = ref<string>('')
 const formatter: CalendarFormatter = (day: CalendarDayItem) => {
@@ -151,6 +176,10 @@ function handleConfirm3({ value }: any) {
 function handleConfirm4({ value }: any) {
   console.log(new Date(value).toString())
   formatValue.value = new Date(value).toString()
+}
+
+function handleConfirm5({ value }: any) {
+  toast.success('已选择' + dayjs(value).format('YYYY年MM月DD日'))
 }
 </script>
 <style lang="scss" scoped></style>

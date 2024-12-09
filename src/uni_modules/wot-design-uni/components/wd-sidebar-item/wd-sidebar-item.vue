@@ -1,18 +1,18 @@
 <template>
-  <view @click="handleClick" :class="cn(`
-  wd-sidebar-item flex items-center justify-center relative p-4 box-border text-base whitespace-nowrap min-h-[56px] text-gray-1
-  ${active ? 'wd-sidebar-item--active font-semibold' : ''} 
-  ${prefix ? 'wd-sidebar-item--prefix' : ''}  
-  ${suffix ? 'wd-sidebar-item--suffix' : ''} 
-  ${disabled ? 'wd-sidebar-item--disabled cursor-not-allowed' : ''} 
-  ${customClass}`)" :style="customStyle">
+  <view
+    @click="handleClick"
+    :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${
+      suffix ? 'wd-sidebar-item--suffix' : ''
+    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`"
+    :style="customStyle"
+  >
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
-      <pro-icon custom-class="mr-0.5 text-xl" :name="icon"></pro-icon>
+      <wd-icon custom-class="wd-sidebar-item__icon" :name="icon"></wd-icon>
     </template>
-    <pro-badge v-bind="customBadgeProps" custom-class="z-[2]">
+    <wd-badge v-bind="customBadgeProps" custom-class="wd-sidebar-item__badge">
       {{ label }}
-    </pro-badge>
+    </wd-badge>
   </view>
 </template>
 
@@ -28,13 +28,14 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import wdIcon from '../wd-icon/wd-icon.vue'
+import wdBadge from '../wd-badge/wd-badge.vue'
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { SIDEBAR_KEY } from '../wd-sidebar/types'
 import { sidebarItemProps } from './types'
-import type { BadgeProps } from '../pro-badge/types'
+import type { BadgeProps } from '../wd-badge/types'
 import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
-import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(sidebarItemProps)
 

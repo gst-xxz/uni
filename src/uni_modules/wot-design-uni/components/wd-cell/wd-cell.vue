@@ -1,47 +1,44 @@
 <template>
   <view
-    :class="cn('wd-cell relative pl-[15px] bg-white text-black/85 leading-6', size ? 'is-' + size : '', customClass)"
-    :style="customStyle" :hover-class="cn(isLink || clickable ? 'is-hover' : 'none')" hover-stay-time="70"
-    @click="onClick">
-    <view :class="cn(
-      'wd-cell__wrapper relative flex justify-between items-start',
-      {
-        'is-vertical block': vertical,
-        'items-center': center,
-        'hairline--top': isBorder
-      })">
+    :class="['wd-cell', isBorder ? 'is-border' : '', size ? 'is-' + size : '', center ? 'is-center' : '', customClass]"
+    :style="customStyle"
+    :hover-class="isLink || clickable ? 'is-hover' : 'none'"
+    :hover-stay-time="70"
+    @click="onClick"
+  >
+    <view :class="['wd-cell__wrapper', vertical ? 'is-vertical' : '']">
       <view
-        :class="cn('wd-cell__left relative flex flex-1 text-left box-border text-sm mr-[15px]', isRequired ? 'is-required pr-3' : '')"
-        :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''">
+        :class="['wd-cell__left', isRequired ? 'is-required' : '']"
+        :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''"
+      >
         <!--左侧icon部位-->
-        <pro-icon v-if="icon" :name="icon"
-          :custom-class="cn('wd-cell__icon block relative mr-1 text-base leading-6 h-6', customIconClass)"></pro-icon>
+        <wd-icon v-if="icon" :name="icon" :custom-class="`wd-cell__icon  ${customIconClass}`"></wd-icon>
         <slot v-else name="icon" />
 
-        <view class="wd-cell__title flex-1 w-full">
+        <view class="wd-cell__title">
           <!--title BEGIN-->
           <view v-if="title" :class="customTitleClass">{{ title }}</view>
           <slot v-else name="title"></slot>
           <!--title END-->
 
           <!--label BEGIN-->
-          <view v-if="label" :class="cn('wd-cell__label mt-0.5', customLabelClass)">{{ label }}</view>
+          <view v-if="label" :class="`wd-cell__label ${customLabelClass}`">{{ label }}</view>
           <slot v-else name="label" />
           <!--label END-->
         </view>
       </view>
       <!--right content BEGIN-->
-      <view class="wd-cell__right flex-1 relative">
-        <view class="wd-cell__body flex">
+      <view class="wd-cell__right">
+        <view class="wd-cell__body">
           <!--文案内容-->
-          <view :class="cn('wd-cell__value relative flex-1 text-right align-middle', customValueClass)">
+          <view :class="`wd-cell__value ${customValueClass}`">
             <slot>{{ value }}</slot>
           </view>
           <!--箭头-->
-          <pro-icon v-if="isLink" custom-class="wd-cell__arrow-right block ml-2" name="arrow" />
+          <wd-icon v-if="isLink" custom-class="wd-cell__arrow-right" name="arrow-right" />
           <slot v-else name="right-icon" />
         </view>
-        <view v-if="errorMessage" class="wd-cell__error-message text-left align-middle">{{ errorMessage }}</view>
+        <view v-if="errorMessage" class="wd-cell__error-message">{{ errorMessage }}</view>
       </view>
       <!--right content END-->
     </view>
@@ -60,14 +57,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
+import wdIcon from '../wd-icon/wd-icon.vue'
 import { computed } from 'vue'
 import { useCell } from '../composables/useCell'
 import { useParent } from '../composables/useParent'
-import { FORM_KEY } from '../pro-form/types'
+import { FORM_KEY } from '../wd-form/types'
 import { cellProps } from './types'
 import { isDef } from '../common/util'
-import { cn } from '@/uni_modules/pro-core/lib/utils'
 
 const props = defineProps(cellProps)
 const emit = defineEmits(['click'])
@@ -75,7 +71,7 @@ const emit = defineEmits(['click'])
 const cell = useCell()
 
 const isBorder = computed(() => {
-  return isDef(cell.border.value) ? cell.border.value : props.border
+  return Boolean(isDef(props.border) ? props.border : cell.border.value)
 })
 
 const { parent: form } = useParent(FORM_KEY)
