@@ -25,7 +25,7 @@ import { ref } from 'vue'
 const show = ref<boolean>(false)
 const show1 = ref<boolean>(false)
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {}
 
 .wrapper {

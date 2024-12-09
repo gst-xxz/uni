@@ -87,7 +87,7 @@ onMounted(() => {
   // #endif
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .page-wraper {
     background: #000;

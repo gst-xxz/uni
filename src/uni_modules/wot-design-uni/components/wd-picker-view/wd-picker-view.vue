@@ -342,6 +342,6 @@ defineExpose<PickerViewExpose>({
   resetColumns
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

@@ -43,6 +43,6 @@ function onTouchStart(event: Event) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

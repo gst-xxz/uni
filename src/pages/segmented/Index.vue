@@ -124,7 +124,7 @@ function handlePopupShow() {
   segmentedRef.value?.updateActiveStyle()
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .section {
   width: 100%;
   padding: 0 24rpx;

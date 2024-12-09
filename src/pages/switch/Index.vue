@@ -68,7 +68,7 @@ function handleChange5({ value }: any) {
   console.log(value)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 page {
   background-color: #ededed;
 }

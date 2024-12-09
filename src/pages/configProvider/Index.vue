@@ -216,7 +216,7 @@ function handleDate({ value }: any) {
   console.log(value)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .inline-txt {
     color: $-dark-color;

@@ -109,6 +109,6 @@ function close() {
 }
 function noop() { }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

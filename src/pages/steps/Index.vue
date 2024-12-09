@@ -63,4 +63,4 @@ function nextStep() {
   active.value = active.value + 1
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

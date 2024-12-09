@@ -89,7 +89,7 @@ function handleClick(result: { text: string; index: number }) {
   console.log(result)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.prefix) {
   font-size: 18px;
   padding-right: 4px;

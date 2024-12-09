@@ -129,6 +129,6 @@ function scrollToBottom({ lastWidth, lastHeight }: { lastWidth: number; lastHeig
   shrinkScrollLeft.value = 3 * width.value + lastWidth
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

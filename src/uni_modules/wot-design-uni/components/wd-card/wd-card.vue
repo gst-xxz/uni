@@ -32,6 +32,6 @@ import { cardProps } from './types'
 defineProps(cardProps)
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

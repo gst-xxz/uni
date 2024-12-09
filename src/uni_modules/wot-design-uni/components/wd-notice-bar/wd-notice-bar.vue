@@ -261,6 +261,6 @@ function handleClick() {
 defineExpose<NoticeBarExpose>({ reset })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

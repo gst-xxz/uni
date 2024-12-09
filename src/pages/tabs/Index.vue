@@ -213,7 +213,7 @@ function handlePopupShow() {
   tabsRef.value?.updateLineStyle(false)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .content {
   height: 120px;
   text-align: center;

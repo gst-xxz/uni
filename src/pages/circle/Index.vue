@@ -58,7 +58,7 @@ function alert() {
   message.alert('操作成功')
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .circle {
   :deep(.custom-circle) {
     margin-left: 24rpx;

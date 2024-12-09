@@ -66,7 +66,7 @@ const modes: ImageMode[] = [
 ]
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .col {
   display: inline-block;
   width: 33.333%;

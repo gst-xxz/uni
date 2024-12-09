@@ -147,7 +147,7 @@ function change(e: any) {
   console.log(e)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .divider {
   margin-top: 10px;
   margin-bottom: 10px;

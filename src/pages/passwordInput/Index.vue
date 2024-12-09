@@ -55,7 +55,7 @@ watch(value5, (newVal) => {
   }
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .password-input {
   padding-bottom: 240px;
 }

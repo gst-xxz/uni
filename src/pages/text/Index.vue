@@ -86,4 +86,4 @@ function clickTest() {
   console.log(1)
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

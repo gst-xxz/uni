@@ -84,7 +84,7 @@ function handleChange({ value }: any) {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wraper {
   display: flex;
   height: calc(100vh - var(--window-top));

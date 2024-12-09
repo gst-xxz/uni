@@ -358,7 +358,7 @@ function handleIconClick() {
   toast.info('优惠券提示信息')
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .inline-txt {
     color: $-dark-color3;

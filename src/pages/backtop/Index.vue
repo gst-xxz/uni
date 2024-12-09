@@ -34,4 +34,4 @@ const isTop = ref(false)
 const isStyle = ref(false)
 const isDuration = ref(false)
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

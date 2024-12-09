@@ -62,7 +62,7 @@ const value13 = ref<string>('禁用禁用禁用')
 const value14 = ref<string>('')
 const value15 = ref<string>('')
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .custom-txt {
     color: $-dark-color;

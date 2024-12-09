@@ -37,6 +37,6 @@ const rowStyle = computed(() => {
   return `${objToStyle(style)}${props.customStyle}`
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

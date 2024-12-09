@@ -40,6 +40,6 @@ const { linkChildren } = useChildren(CELL_GROUP_KEY)
 linkChildren({ props })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

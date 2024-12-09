@@ -92,7 +92,7 @@ function handleCustomClick() {
   showToast('分享给朋友')
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .fab {
   position: relative;
   height: 100%;

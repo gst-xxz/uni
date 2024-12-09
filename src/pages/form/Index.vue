@@ -167,7 +167,7 @@ function handleClick4() {
   uni.navigateTo({ url: '/pages/form/demo4' })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .demo-button {
   width: 100%;
   box-sizing: border-box;

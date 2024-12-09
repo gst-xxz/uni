@@ -169,4 +169,4 @@ function handleConfirm5({ value }: any) {
   toast.success('已选择' + dayjs(value).format('YYYY年MM月DD日'))
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

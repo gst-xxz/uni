@@ -158,7 +158,7 @@ function handleChange1(e: any) {
   console.log(e)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .group {
   display: block;
   margin-top: 10px;

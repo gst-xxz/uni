@@ -77,7 +77,7 @@ function handleChange9({ value }: any) {
   console.log(value)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .flex {
   display: flex;
   justify-content: space-between;

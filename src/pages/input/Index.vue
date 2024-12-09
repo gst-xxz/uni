@@ -111,7 +111,7 @@ function handleInput(event: any) {
   console.log(event)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .custom-txt {
     color: $-dark-color;

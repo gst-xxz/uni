@@ -85,7 +85,7 @@ function handleResize(detail: Record<string, string | number>) {
   sizeLeft.value = left as string
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .tip-item {
     color: $-dark-color;

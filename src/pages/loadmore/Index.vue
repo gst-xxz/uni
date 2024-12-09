@@ -39,7 +39,7 @@ function loadmore() {
   }, 200)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .list-item {
     background: $-dark-background2;

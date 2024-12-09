@@ -97,7 +97,7 @@ function handleChange1({ value }: { value: string }) {
   show(`选中标签:${value}`)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.page-wraper) {
   background: #f6f6f6;
 }

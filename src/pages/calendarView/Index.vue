@@ -121,4 +121,4 @@ function handleChange3({ value }: any) {
   value3.value = value
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

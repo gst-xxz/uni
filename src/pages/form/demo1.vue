@@ -69,7 +69,7 @@ const submit = () => {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .footer {
   text-align: left;
 

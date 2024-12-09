@@ -93,7 +93,7 @@ function changeSearchType({ item, index }: any) {
   // })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .search-type {
     color: #f5f5f5;

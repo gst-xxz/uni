@@ -27,6 +27,6 @@ function handleNav(dir: 'prev' | 'next') {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

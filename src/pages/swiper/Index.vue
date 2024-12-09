@@ -139,7 +139,7 @@ function onChange(e: any) {
   console.log(e)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .card-swiper {
   --wot-swiper-radius: 0;
   --wot-swiper-item-padding: 0 24rpx;

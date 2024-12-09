@@ -273,7 +273,7 @@ function handleRowClick({ rowIndex }: any) {
   console.log(rowIndex)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .custom-class {
   height: 80rpx;
   width: 220rpx;

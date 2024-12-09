@@ -105,7 +105,7 @@ function handleChange3() {
   // show3.value = event.detail.show
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .center {
   text-align: center;
   padding-bottom: 20px;

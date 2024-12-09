@@ -210,4 +210,4 @@ function handleValue({ value }: any) {
   console.log(value)
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

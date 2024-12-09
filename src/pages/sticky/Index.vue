@@ -72,7 +72,7 @@ onShow(() => {
   setTimeout(display, 5000)
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .custom-container {
     background: $-dark-background2;

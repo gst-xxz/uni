@@ -165,7 +165,7 @@ function handleConfirm({ value }: any) {
   value8.value = value
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .default-slot {
     background: $-dark-background2;

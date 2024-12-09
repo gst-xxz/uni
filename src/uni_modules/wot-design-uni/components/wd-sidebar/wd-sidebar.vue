@@ -59,6 +59,6 @@ function updateValue(value: number | string, label: string) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

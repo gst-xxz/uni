@@ -77,7 +77,7 @@
   </page-wraper>
 </template>
 <script lang="ts" setup></script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .title-tip {
     color: rgba(232, 230, 227, 0.8);

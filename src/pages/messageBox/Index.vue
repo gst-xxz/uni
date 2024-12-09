@@ -144,7 +144,7 @@ function withSlot() {
     })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .page-message-box {
   :deep() {
     .custom-shadow {

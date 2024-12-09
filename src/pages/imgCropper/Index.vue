@@ -48,7 +48,7 @@ function handleCancel(event: any) {
   console.log('取消', event)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   :deep(.profile-img) {
     border: 1px solid $-dark-border-color;

@@ -377,6 +377,6 @@ function getFormatterDate(date: number, day: string | number, type?: CalendarDay
   return dayObj
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

@@ -77,7 +77,7 @@ function doSetImage(show: boolean) {
   showImage.value = show
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.badge) {
   margin: 0 30px 20px 0;
   display: inline-block;

@@ -161,4 +161,4 @@ function handleConfirm16({ value }: any) {
 /** picker触发cancel事件，同步触发cancel事件 */
 function onCancel() {}
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

@@ -112,4 +112,4 @@ const onChangeDistrict: PickerViewColumnChange = (picker, value, columnIndex, re
   resolve()
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

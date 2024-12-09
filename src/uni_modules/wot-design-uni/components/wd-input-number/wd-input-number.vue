@@ -205,6 +205,6 @@ function formatValue(value: string | number) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

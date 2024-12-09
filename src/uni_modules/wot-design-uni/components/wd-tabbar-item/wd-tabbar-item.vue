@@ -92,6 +92,6 @@ function handleClick() {
   tabbar && tabbar.setChange({ name })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

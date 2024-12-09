@@ -100,7 +100,7 @@ function showCustomIconToast() {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(button) {
   margin: 0 10px 10px 0;
 }

@@ -224,4 +224,4 @@ function handleConfirm17({ value, selectedItems }: any) {
     .join(', ')
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

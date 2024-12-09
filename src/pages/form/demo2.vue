@@ -47,7 +47,7 @@ function handleSubmit() {
     })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .footer {
   padding: 12px;
 }

@@ -152,7 +152,7 @@ function handleClose10() {
   show10.value = false
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .custom-txt {
     color: $-dark-color;

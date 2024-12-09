@@ -193,6 +193,6 @@ function beforeLeave() {
 defineExpose<DropMenuItemExpose>({ getShowPop, open, close, toggle })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

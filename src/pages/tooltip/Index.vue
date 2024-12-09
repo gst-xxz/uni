@@ -188,7 +188,7 @@ function handleChange17(event: any) {
   console.log(event)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .position-wrap {
   position: relative;
 }

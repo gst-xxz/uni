@@ -151,7 +151,7 @@ function click() {
   toast.show('成功跳转')
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .grid {
     :deep(.custom-item) {

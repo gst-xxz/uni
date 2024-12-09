@@ -31,7 +31,7 @@ function handleChange3({ value }: any) {
   console.log(value)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .button-block {
   margin-right: 0;
 }

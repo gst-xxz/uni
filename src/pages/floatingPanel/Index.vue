@@ -52,7 +52,7 @@ onLoad(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .inner-content {
   padding: 1rem;
   text-align: center;

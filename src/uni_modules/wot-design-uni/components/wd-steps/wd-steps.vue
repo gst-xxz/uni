@@ -23,6 +23,6 @@ const { linkChildren } = useChildren(STEPS_KEY)
 
 linkChildren({ props })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

@@ -686,6 +686,6 @@ function isImage(file: UploadFileItem) {
   return (file.name && isImageUrl(file.name)) || isImageUrl(file.url)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

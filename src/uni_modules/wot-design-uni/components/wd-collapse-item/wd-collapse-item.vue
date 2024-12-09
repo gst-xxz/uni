@@ -162,6 +162,6 @@ function getExpanded() {
 defineExpose<CollapseItemExpose>({ getExpanded, updateExpand })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

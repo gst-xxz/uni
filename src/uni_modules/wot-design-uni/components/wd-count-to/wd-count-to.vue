@@ -122,6 +122,6 @@ function formatNumber(num: any): string {
 defineExpose<CountDownExpose>({ start, reset: resetTime, pause })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

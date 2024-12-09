@@ -84,7 +84,7 @@ function transition(transition: TransitionName) {
   }, 500)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(button) {
   margin: 0 10px 10px 0;
 }

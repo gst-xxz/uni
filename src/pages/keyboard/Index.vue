@@ -68,4 +68,4 @@ function showKeyBoard(index: number) {
 const onInput = (value: string) => showToast(`${value}`)
 const onDelete = () => showToast('删除')
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

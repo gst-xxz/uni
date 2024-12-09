@@ -57,7 +57,7 @@ const reset = () => {
 }
 const onFinish = () => showToast('倒计时结束')
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .custom-count-down {
   display: inline-block;
   width: 22px;

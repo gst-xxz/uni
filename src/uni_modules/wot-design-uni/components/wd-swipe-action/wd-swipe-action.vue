@@ -282,6 +282,6 @@ function close(reason: SwipeActionReason, position?: SwipeActionPosition) {
 
 defineExpose({ close })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

@@ -193,7 +193,7 @@ function beforeExpend(name: string) {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .collapse {
   .header {
     display: flex;

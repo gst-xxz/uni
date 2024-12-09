@@ -131,7 +131,7 @@ function handleAction(action: string) {
 
 function noop() { }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .button-group {
     background: $-dark-background2;

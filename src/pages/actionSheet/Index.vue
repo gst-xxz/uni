@@ -198,4 +198,4 @@ function select1({ item, rowIndex, colIndex }: { item: any; rowIndex: number; co
   toast.show(`当前选中项: ${item.title}, 行下标: ${rowIndex}, 列下标: ${colIndex}`)
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

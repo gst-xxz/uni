@@ -400,7 +400,7 @@ function kindToggle(id: string) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
 
   .page__hd,

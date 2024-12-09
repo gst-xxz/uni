@@ -89,4 +89,4 @@ function onChange7({ value }: any) {
   console.log(new Date(value).getFullYear())
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

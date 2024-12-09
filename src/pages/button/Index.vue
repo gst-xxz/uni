@@ -131,7 +131,7 @@ function handleGetuserinfo(event: any) {
   console.log(event)
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .page-button {
   :deep(button) {
     margin: 0 10px 10px 0;

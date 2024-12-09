@@ -138,6 +138,6 @@ function getScope(index: number) {
 defineExpose({ sortDirection: sortDirection })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

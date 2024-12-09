@@ -76,7 +76,7 @@ function handleBackHome() {
   uni.reLaunch({ url: '/pages/index/Index' })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .search-box {
   display: flex;
   height: 100%;

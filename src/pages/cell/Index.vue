@@ -127,7 +127,7 @@ function showToast() {
   toast.show('点击')
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .cell-icon {
   display: block;
   box-sizing: border-box;

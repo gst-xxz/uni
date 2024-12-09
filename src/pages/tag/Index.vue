@@ -138,7 +138,7 @@ function handleConfirm({ value }: any) {
   dynamicTags.value = [...dynamicTags.value, value]
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.space) {
   margin: 0 10px 10px;
 }

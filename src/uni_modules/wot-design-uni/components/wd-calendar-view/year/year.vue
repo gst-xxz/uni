@@ -191,6 +191,6 @@ function getFormatterDate(date: number, month: number, type?: CalendarDayType) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

@@ -323,7 +323,7 @@ const customUpload: UploadMethod = (file, formData, options) => {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .preview-cover {
   margin-top: 10rpx;
   text-align: center;

@@ -62,7 +62,7 @@
   </div>
 </template>
 <script setup lang="ts"></script>
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.badge) {
   margin: 0 30px 20px 0;
   display: inline-block;

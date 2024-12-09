@@ -48,7 +48,7 @@ function setStyle() {
   style.value = `margin: 0 ${props.hor}px;padding:${props.ver}px 0;`
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .is-white {
     background: $-dark-background2;

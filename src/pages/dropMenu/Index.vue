@@ -146,7 +146,7 @@ const handleBeforeToggle: DropMenuItemBeforeToggle = ({ status, resolve }) => {
     })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .wot-theme-dark {
   .custom-menu {
     background: $-dark-background2;

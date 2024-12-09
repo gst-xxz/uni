@@ -69,7 +69,7 @@ function handleClick3() {
   uni.navigateTo({ url: '/pages/sidebar/demo3' })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .demo-button {
   width: 100%;
   box-sizing: border-box;

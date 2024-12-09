@@ -46,6 +46,6 @@ function updateValue(value: string | number | boolean) {
   })
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>
