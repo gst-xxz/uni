@@ -27,7 +27,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { ref, watch, nextTick, computed, getCurrentInstance, type CSSProperties, onMounted, onActivated, onDeactivated, reactive } from 'vue'
 import { getRect, isArray, isDef, objToStyle } from '../common/util'
 import { type NoticeBarExpose, noticeBarProps } from './types'

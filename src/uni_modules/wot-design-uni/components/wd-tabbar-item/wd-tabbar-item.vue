@@ -27,7 +27,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import wdBadge from '../wd-badge/wd-badge.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { type CSSProperties, computed } from 'vue'
 import { deepAssign, isDef, isUndefined, objToStyle, omitBy } from '../common/util'
 import { useParent } from '../composables/useParent'

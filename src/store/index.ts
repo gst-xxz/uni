@@ -13,13 +13,6 @@ function setDark(dark: boolean) {
 }
 
 export function useDark() {
-  // #ifdef H5
-  process.env.NODE_ENV === 'development'
-    ? setDark(Boolean(uni.getStorageSync('isDark')))
-    : setDark(localStorage.getItem('vitepress-theme-appearance') === 'dark')
-  // #endif
-  // #ifndef H5
   setDark(Boolean(uni.getStorageSync('isDark')))
-  // #endif
   return { isDark, setDark }
 }

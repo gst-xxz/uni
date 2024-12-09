@@ -34,7 +34,7 @@ export default {
 
 <script lang="ts" setup>
 import wdPopup from '../wd-popup/wd-popup.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue'
 import { pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'

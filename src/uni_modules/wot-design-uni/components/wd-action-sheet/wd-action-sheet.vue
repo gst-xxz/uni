@@ -53,7 +53,7 @@ export default {
 
 <script lang="ts" setup>
 import wdPopup from '../wd-popup/wd-popup.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdLoading from '../wd-loading/wd-loading.vue'
 import { watch, ref } from 'vue'
 import { actionSheetProps, type Panel } from './types'

@@ -81,11 +81,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import wdCalendarView from '../wd-calendar-view/wd-calendar-view.vue'
-import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
-import wdButton from '../wd-button/wd-button.vue'
 import { ref, computed, watch } from 'vue'
+
+
 import { dayjs } from '../common/dayjs'
 import { deepClone, isArray, isEqual, padZero, pause } from '../common/util'
 import { getWeekNumber, isRange } from '../wd-calendar-view/utils'

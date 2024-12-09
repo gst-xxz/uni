@@ -21,7 +21,7 @@ export default {
 
 <script lang="ts" setup>
 import wdTransition from '../wd-transition/wd-transition.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed } from 'vue'
 import { backtopProps } from './types'
 

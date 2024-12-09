@@ -82,7 +82,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdVideoPreview from '../wd-video-preview/wd-video-preview.vue'
 import wdLoading from '../wd-loading/wd-loading.vue'
 

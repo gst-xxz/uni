@@ -24,7 +24,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import wdOverlay from '../wd-overlay/wd-overlay.vue'
 import wdTransition from '../wd-transition/wd-transition.vue'
 import { computed, onBeforeMount, ref } from 'vue'

@@ -27,7 +27,7 @@ export default {
 <script lang="ts" setup>
 import wdDivider from '../wd-divider/wd-divider.vue'
 import wdLoading from '../wd-loading/wd-loading.vue'
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'

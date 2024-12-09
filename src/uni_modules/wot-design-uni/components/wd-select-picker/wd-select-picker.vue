@@ -98,12 +98,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdActionSheet from '../wd-action-sheet/wd-action-sheet.vue'
+
 import wdCheckbox from '../wd-checkbox/wd-checkbox.vue'
 import wdCheckboxGroup from '../wd-checkbox-group/wd-checkbox-group.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
 import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
-import wdButton from '../wd-button/wd-button.vue'
+
 import wdLoading from '../wd-loading/wd-loading.vue'
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'

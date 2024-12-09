@@ -44,9 +44,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
-import { computed, watch } from 'vue'
-import { ref } from 'vue'
+
+import { computed, watch, ref } from 'vue'
 import base64 from '../common/base64'
 import { buttonProps } from './types'
 

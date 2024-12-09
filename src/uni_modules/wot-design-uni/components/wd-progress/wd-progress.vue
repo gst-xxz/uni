@@ -22,7 +22,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdIcon from '../wd-icon/wd-icon.vue'
+
 import { computed, ref, watch } from 'vue'
 import { isArray, isDef, isObj, objToStyle, pause } from '../common/util'
 import { progressProps, type ProgressColor } from './types'
