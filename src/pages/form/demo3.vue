@@ -55,7 +55,7 @@
         <div class="tip">
           <wd-checkbox v-model="model.read" prop="read" custom-label-class="label-class">
             已阅读并同意
-            <text style="color: #4d80f0">《巴拉巴拉吧啦协议》</text>
+            <span style="color: #4d80f0">《巴拉巴拉吧啦协议》</span>
           </wd-checkbox>
         </div>
         <div class="footer">

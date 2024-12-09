@@ -8,7 +8,7 @@
             }`" :style="getCellStyle(index)" v-for="(column, index) in children" :key="index">
             <wd-sort-button v-model="column.$.exposed!.sortDirection.value" allow-reset :line="false"
               :title="column.label" @change="({ value }) => handleSortChange(value, index)" v-if="column.sortable" />
-            <text v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</text>
+            <span v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</span>
           </div>
         </div>
       </scroll-view>
@@ -19,7 +19,7 @@
             :width="indexColumn.width" :sortable="indexColumn.sortable" :fixed="indexColumn.fixed"
             :align="indexColumn.align">
             <template #value="{ index }">
-              <text>{{ index + 1 }}</text>
+              <span>{{ index + 1 }}</span>
             </template>
           </wd-table-col>
           <slot></slot>
@@ -37,7 +37,7 @@
               } ${getIsLastFixed(column) && state.scrollLeft ? 'is-shadow' : ''}`" :style="getCellStyle(index)">
               <wd-sort-button v-if="column.sortable" v-model="column.$.exposed!.sortDirection.value" allow-reset
                 :line="false" :title="column.label" @change="({ value }) => handleSortChange(value, index)" />
-              <text v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</text>
+              <span v-else :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`">{{ column.label }}</span>
             </div>
           </div>
 
@@ -47,7 +47,7 @@
               :width="indexColumn.width" :sortable="indexColumn.sortable" :fixed="indexColumn.fixed"
               :align="indexColumn.align">
               <template #value="{ index }">
-                <text>{{ index + 1 }}</text>
+                <span>{{ index + 1 }}</span>
               </template>
             </wd-table-col>
             <slot></slot>

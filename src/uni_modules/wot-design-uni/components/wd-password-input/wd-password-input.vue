@@ -9,7 +9,7 @@
           <div :style="{ visibility: mask && modelValue[index] ? 'visible' : 'hidden' }"
             class="wd-password-input__mask">
           </div>
-          <text v-if="!mask && modelValue[index]">{{ modelValue[index] }}</text>
+          <span v-if="!mask && modelValue[index]">{{ modelValue[index] }}</span>
         </div>
       </div>
     </div>

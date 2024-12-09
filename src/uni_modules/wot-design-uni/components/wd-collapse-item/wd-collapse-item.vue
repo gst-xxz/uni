@@ -3,7 +3,7 @@
     <div :class="`wd-collapse-item__header ${expanded ? 'is-expanded' : ''} ${isFirst ? 'wd-collapse-item__header-first' : ''} ${$slots.title ? 'is-custom' : ''
       }`" @click="handleClick">
       <slot name="title" :expanded="expanded" :disabled="disabled" :isFirst="isFirst">
-        <text class="wd-collapse-item__title">{{ title }}</text>
+        <span class="wd-collapse-item__title">{{ title }}</span>
         <wd-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
       </slot>
     </div>

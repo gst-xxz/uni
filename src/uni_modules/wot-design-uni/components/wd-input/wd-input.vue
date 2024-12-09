@@ -23,9 +23,9 @@
           showWordCount ? 'wd-input__inner--count' : '',
           alignRight ? 'is-align-right' : '',
           customInputClass
-        ]" :type="type" :password="showPassword && !isPwdVisible" v-model="inputValue"
-          :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused"
-          :confirm-type="confirmType" :confirm-hold="confirmHold" :cursor="cursor" :cursor-spacing="cursorSpacing"
+        ]" :type="type" :password="showPassword && !isPwdVisible" v-model="inputValue" :placeholder="placeholderValue"
+          :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused" :confirm-type="confirmType"
+          :confirm-hold="confirmHold" :cursor="cursor" :cursor-spacing="cursorSpacing"
           :placeholder-style="placeholderStyle" :selection-start="selectionStart" :selection-end="selectionEnd"
           :adjust-position="adjustPosition" :hold-keyboard="holdKeyboard" :always-embed="alwaysEmbed"
           :placeholder-class="inputPlaceholderClass" :ignoreCompositionEvent="ignoreCompositionEvent"
@@ -37,12 +37,12 @@
           <wd-icon v-if="showPassword" custom-class="wd-input__icon" :name="isPwdVisible ? 'view' : 'eye-close'"
             @click="togglePwdVisible" />
           <div v-if="showWordCount" class="wd-input__count">
-            <text :class="[
+            <span :class="[
               inputValue && String(inputValue).length > 0 ? 'wd-input__count-current' : '',
               String(inputValue).length > maxlength! ? 'is-error' : ''
             ]">
               {{ String(inputValue).length }}
-            </text>
+            </span>
             /{{ maxlength }}
           </div>
           <wd-icon v-if="suffixIcon" custom-class="wd-input__icon" :name="suffixIcon" @click="onClickSuffixIcon" />

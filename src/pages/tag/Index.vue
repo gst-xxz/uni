@@ -55,7 +55,7 @@
         <div>
           <wd-tag custom-class="space" icon="clock" mark>标签</wd-tag>
           <wd-tag custom-class="space" mark use-icon-slot>
-            <text>插槽</text>
+            <span>插槽</span>
             <template #icon>
               <wd-icon name="dong" />
             </template>
@@ -88,7 +88,7 @@
           <wd-tag custom-class="space" round dynamic @confirm="handleConfirm">
             <template #add>
               <wd-icon name="pin" size="12px"></wd-icon>
-              <text style="margin-left: 4px">自定义</text>
+              <span style="margin-left: 4px">自定义</span>
             </template>
           </wd-tag>
         </div>

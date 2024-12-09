@@ -15,8 +15,8 @@
           :class="`wd-swiper__video ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
           @play="handleVideoPaly" @pause="handleVideoPause" :enable-progress-gesture="false" loop muted
           :autoplay="autoplayVideo" objectFit="cover" @click="handleClick(index, item)" />
-        <text v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`"
-          :style="customTextStyle">{{ item[textKey] }}</text>
+        <span v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`"
+          :style="customTextStyle">{{ item[textKey] }}</span>
       </swiper-item>
     </swiper>
 

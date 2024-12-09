@@ -12,9 +12,9 @@
       <slot></slot>
     </div>
 
-    <text v-else class="wd-circle__text">
+    <span v-else class="wd-circle__text">
       {{ text }}
-    </text>
+    </span>
   </div>
 </template>
 <script lang="ts">

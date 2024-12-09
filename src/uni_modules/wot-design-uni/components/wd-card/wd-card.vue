@@ -2,7 +2,7 @@
   <div :class="['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass]" :style="customStyle">
     <div :class="['wd-card__title-content', customTitleClass]">
       <div class="wd-card__title">
-        <text v-if="title">{{ title }}</text>
+        <span v-if="title">{{ title }}</span>
         <slot v-else name="title"></slot>
       </div>
     </div>

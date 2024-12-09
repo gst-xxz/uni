@@ -57,8 +57,8 @@
         <wd-table-col prop="grade" label="分数" fixed sortable align="center">
           <template #value="{ row }">
             <div class="custom-class">
-              <text>{{ row.grade }}</text>
-              <text>同比{{ row.compare }}</text>
+              <span>{{ row.grade }}</span>
+              <span>同比{{ row.compare }}</span>
             </div>
           </template>
         </wd-table-col>

@@ -5,7 +5,7 @@
       <div class="wd-search__field">
         <div v-if="!placeholderLeft" :style="coverStyle" class="wd-search__cover" @click="closeCover">
           <wd-icon name="search" custom-class="wd-search__search-icon"></wd-icon>
-          <text class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</text>
+          <span class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</span>
         </div>
         <wd-icon v-if="showInput || str || placeholderLeft" name="search"
           custom-class="wd-search__search-left-icon"></wd-icon>

@@ -26,8 +26,8 @@
           <wd-collapse-item name="item1">
             <template #title="{ expanded }">
               <div class="header">
-                <text style="color: red">通过 slot 自定义标题</text>
-                <text>{{ expanded ? '我展开了' : '我已收起' }}</text>
+                <span style="color: red">通过 slot 自定义标题</span>
+                <span>{{ expanded ? '我展开了' : '我已收起' }}</span>
               </div>
             </template>
             {{ desc7 }}
@@ -35,9 +35,9 @@
           <wd-collapse-item name="item2" disabled>
             <template #title="{ expanded, disabled }">
               <div class="header">
-                <text v-if="disabled">被禁用</text>
-                <text style="color: red" v-else>通过 slot 自定义 title</text>
-                <text>{{ expanded ? '我展开了' : '我已收起' }}</text>
+                <span v-if="disabled">被禁用</span>
+                <span style="color: red" v-else>通过 slot 自定义 title</span>
+                <span>{{ expanded ? '我展开了' : '我已收起' }}</span>
               </div>
             </template>
             {{ desc7 }}

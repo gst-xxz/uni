@@ -43,8 +43,8 @@
               <wd-checkbox :modelValue="item[valueKey]" :disabled="item.disabled">
                 <block v-if="filterable && filterVal">
                   <block v-for="text in item[labelKey]" :key="text.label">
-                    <text v-if="text.type === 'active'" class="wd-select-picker__text-active">{{
-                      text.label }}</text>
+                    <span v-if="text.type === 'active'" class="wd-select-picker__text-active">{{
+                      text.label }}</span>
                     <block v-else>{{ text.label }}</block>
                   </block>
                 </block>
@@ -63,8 +63,8 @@
               <wd-radio :value="item[valueKey]" :disabled="item.disabled">
                 <block v-if="filterable && filterVal">
                   <block v-for="text in item[labelKey]" :key="text.label">
-                    <text :class="`${text.type === 'active' ? 'wd-select-picker__text-active' : ''}`">{{
-                      text.label }}</text>
+                    <span :class="`${text.type === 'active' ? 'wd-select-picker__text-active' : ''}`">{{
+                      text.label }}</span>
                   </block>
                 </block>
                 <block v-else>

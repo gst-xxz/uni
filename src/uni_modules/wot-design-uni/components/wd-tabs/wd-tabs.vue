@@ -13,9 +13,9 @@
                     :class="`wd-tabs__nav-item  ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
                     :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                     <wd-badge v-if="item.badgeProps" v-bind="item.badgeProps">
-                      <text class="wd-tabs__nav-item-text">{{ item.title }}</text>
+                      <span class="wd-tabs__nav-item-text">{{ item.title }}</span>
                     </wd-badge>
-                    <text v-else class="wd-tabs__nav-item-text">{{ item.title }}</text>
+                    <span v-else class="wd-tabs__nav-item-text">{{ item.title }}</span>
 
                     <div class="wd-tabs__line wd-tabs__line--inner"
                       v-if="state.activeIndex === index && state.useInnerLine">
@@ -83,9 +83,9 @@
                 :class="`wd-tabs__nav-item ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
                 :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
                 <wd-badge custom-class="wd-tabs__nav-item-badge" v-if="item.badgeProps" v-bind="item.badgeProps">
-                  <text class="wd-tabs__nav-item-text">{{ item.title }}</text>
+                  <span class="wd-tabs__nav-item-text">{{ item.title }}</span>
                 </wd-badge>
-                <text v-else class="wd-tabs__nav-item-text">{{ item.title }}</text>
+                <span v-else class="wd-tabs__nav-item-text">{{ item.title }}</span>
                 <div class="wd-tabs__line wd-tabs__line--inner"
                   v-if="state.activeIndex === index && state.useInnerLine">
                 </div>

@@ -24,7 +24,7 @@
           <template #prefix>
             <wd-popover mode="menu" :content="menu" @menuclick="changeSearchType">
               <div class="search-type">
-                <text>{{ searchType }}</text>
+                <span>{{ searchType }}</span>
                 <wd-icon class="icon-arrow" name="fill-arrow-down"></wd-icon>
               </div>
             </wd-popover>

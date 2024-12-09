@@ -16,13 +16,13 @@
             <div :class="`wd-picker__value ${customValueClass}`">
               <template v-if="region">
                 <div v-if="isArray(showValue)">
-                  <text :class="showValue[0] ? '' : 'wd-picker__placeholder'">
+                  <span :class="showValue[0] ? '' : 'wd-picker__placeholder'">
                     {{ showValue[0] ? showValue[0] : placeholder || translate('placeholder') }}
-                  </text>
+                  </span>
                   {{ translate('to') }}
-                  <text :class="showValue[1] ? '' : 'wd-picker__placeholder'">
+                  <span :class="showValue[1] ? '' : 'wd-picker__placeholder'">
                     {{ showValue[1] ? showValue[1] : placeholder || translate('placeholder') }}
-                  </text>
+                  </span>
                 </div>
                 <div v-else class="wd-picker__placeholder">
                   {{ placeholder || translate('placeholder') }}

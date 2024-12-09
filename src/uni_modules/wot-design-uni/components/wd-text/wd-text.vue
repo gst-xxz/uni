@@ -1,9 +1,9 @@
 <template>
-  <text @click="handleClick" :class="rootClass" :style="rootStyle">
+  <span @click="handleClick" :class="rootClass" :style="rootStyle">
     <slot v-if="$slots.prefix || prefix" name="prefix">{{ prefix }}</slot>
-    <text>{{ formattedText }}</text>
+    <span>{{ formattedText }}</span>
     <slot v-if="$slots.suffix || suffix" name="suffix">{{ suffix }}</slot>
-  </text>
+  </span>
 </template>
 
 <script lang="ts">

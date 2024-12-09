@@ -46,7 +46,7 @@
       </demo-block>
 
       <wd-popup v-model="show1" @close="handleClose1" custom-style="border-radius:32rpx;">
-        <text class="custom-txt">弹弹弹</text>
+        <span class="custom-txt">弹弹弹</span>
       </wd-popup>
       <wd-popup v-model="show2" position="top" custom-style="height: 200px;" @close="handleClose2"></wd-popup>
       <wd-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></wd-popup>

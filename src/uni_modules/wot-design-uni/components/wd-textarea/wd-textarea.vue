@@ -7,7 +7,7 @@
         <slot v-else name="prefix"></slot>
       </div>
       <div class="wd-textarea__label-inner">
-        <text v-if="label">{{ label }}</text>
+        <span v-if="label">{{ label }}</span>
         <slot v-else name="label"></slot>
       </div>
     </div>
@@ -15,7 +15,7 @@
     <!-- 文本域 -->
     <div
       :class="`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`">
-      <textarea :class="`wd-textarea__inner ${customTextareaClass}`" v-model="inputValue" :show-count="false"
+      <spanarea :class="`wd-textarea__inner ${customTextareaClass}`" v-model="inputValue" :show-count="false"
         :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused"
         :auto-focus="autoFocus" :placeholder-style="placeholderStyle" :placeholder-class="inputPlaceholderClass"
         :auto-height="autoHeight" :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor"
@@ -30,9 +30,9 @@
       <div class="wd-textarea__suffix">
         <wd-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
         <div v-if="showWordCount" class="wd-textarea__count">
-          <text :class="countClass">
+          <span :class="countClass">
             {{ currentLength }}
-          </text>
+          </span>
           /{{ maxlength }}
         </div>
       </div>

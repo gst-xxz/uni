@@ -57,7 +57,7 @@
         <br />
         <wd-text text="12345678901" mode="phone" format type="primary">
           <template #prefix>
-            <text>Prefix</text>
+            <span>Prefix</span>
           </template>
           <template #suffix>Suffix</template>
         </wd-text>

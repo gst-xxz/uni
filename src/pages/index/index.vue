@@ -7,7 +7,7 @@
           </div>
           <div class="inline">
             Wot Design Uni
-            <text class="version">@{{ packageConfig.version }}</text>
+            <span class="version">@{{ packageConfig.version }}</span>
           </div>
         </div>
         <div class="page__desc">Wot Design Uni 是一个基于Vue3+TS开发的uni-app组件库，提供70+高质量组件，支持暗黑模式、国际化和自定义主题。</div>

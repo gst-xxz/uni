@@ -5,11 +5,11 @@
     <div :class="`wd-number-keyboard ${customClass}`" :style="customStyle">
       <div class="wd-number-keyboard__header" v-if="showTitle">
         <slot name="title">
-          <text class="wd-number-keyboard__title">{{ title }}</text>
+          <span class="wd-number-keyboard__title">{{ title }}</span>
         </slot>
         <div class="wd-number-keyboard__close" hover-class="wd-number-keyboard__close--hover" v-if="showClose"
           @click="handleClose">
-          <text>{{ closeText }}</text>
+          <span>{{ closeText }}</span>
         </div>
       </div>
       <div class="wd-number-keyboard__body">

@@ -5,10 +5,10 @@
     <div :class="`wd-keyboard ${customClass}`" :style="customStyle">
       <div class="wd-keyboard__header" v-if="showTitle">
         <slot name="title">
-          <text class="wd-keyboard__title">{{ title }}</text>
+          <span class="wd-keyboard__title">{{ title }}</span>
         </slot>
         <div class="wd-keyboard__close" hover-class="wd-keyboard__close--hover" v-if="showClose" @click="handleClose">
-          <text>{{ closeText }}</text>
+          <span>{{ closeText }}</span>
         </div>
       </div>
       <template v-if="mode !== 'car'">

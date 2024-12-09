@@ -10,7 +10,7 @@
     <wd-backtop v-if="isCustomIcon" :scrollTop="scrollTop" :shape="isSquare ? 'square' : undefined"
       :top="isTop ? 600 : undefined" :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
       :duration="isDuration ? 1000 : undefined">
-      <text :style="`color: ${isStyle ? 'white' : '#333'};`">TOP</text>
+      <span :style="`color: ${isStyle ? 'white' : '#333'};`">TOP</span>
     </wd-backtop>
     <wd-backtop v-else :scrollTop="scrollTop" :shape="isSquare ? 'square' : undefined" :top="isTop ? 600 : undefined"
       :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"

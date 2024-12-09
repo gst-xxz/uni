@@ -6,9 +6,9 @@
         <div class="wd-picker__title">{{ title }}</div>
       </div>
       <div class="wd-privacy-popup__container">
-        <text>{{ desc }}</text>
-        <text class="wd-privacy-popup__container-protocol" @click="openPrivacyContract">{{ protocol }}</text>
-        <text>{{ subDesc }}</text>
+        <span>{{ desc }}</span>
+        <span class="wd-privacy-popup__container-protocol" @click="openPrivacyContract">{{ protocol }}</span>
+        <span>{{ subDesc }}</span>
       </div>
       <div class="wd-privacy-popup__footer">
         <wd-button custom-class="wd-privacy-popup__footer-disagree " size="medium" round plain buttonId="disagree-btn"

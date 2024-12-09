@@ -16,7 +16,7 @@
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
         <wd-icon name="add" custom-class="wd-tag__add wd-tag__icon" />
-        <text>{{ translate('add') }}</text>
+        <span>{{ translate('add') }}</span>
       </template>
     </div>
   </div>

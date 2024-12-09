@@ -3,12 +3,12 @@
     <div v-if="title || value || useSlot" class="wd-cell-group__title">
       <!--左侧标题-->
       <div class="wd-cell-group__left">
-        <text v-if="title">{{ title }}</text>
+        <span v-if="title">{{ title }}</span>
         <slot v-else name="title"></slot>
       </div>
       <!--右侧标题-->
       <div class="wd-cell-group__right">
-        <text v-if="value">{{ value }}</text>
+        <span v-if="value">{{ value }}</span>
         <slot v-else name="value"></slot>
       </div>
     </div>

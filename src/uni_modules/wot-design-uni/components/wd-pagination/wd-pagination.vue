@@ -3,28 +3,28 @@
     <div class="wd-pager__content">
       <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1"
         custom-class="wd-pager__nav" @click="sub">
-        <text v-if="!showIcon">{{ prevText || translate('prev') }}</text>
+        <span v-if="!showIcon">{{ prevText || translate('prev') }}</span>
         <wd-icon v-else
           :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
           name="arrow-right"></wd-icon>
       </wd-button>
       <div class="wd-pager__size">
-        <text class="wd-pager__current">{{ modelValue }}</text>
-        <text class="wd-pager__separator">/</text>
-        <text>{{ totalPageNum }}</text>
+        <span class="wd-pager__current">{{ modelValue }}</span>
+        <span class="wd-pager__separator">/</span>
+        <span>{{ totalPageNum }}</span>
       </div>
       <wd-button :plain="modelValue < totalPageNum" type="info" size="small" :disabled="modelValue >= totalPageNum"
         custom-class="wd-pager__nav" @click="add">
-        <text v-if="!showIcon">{{ nextText || translate('next') }}</text>
+        <span v-if="!showIcon">{{ nextText || translate('next') }}</span>
         <wd-icon v-else
           :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
           name="arrow-right"></wd-icon>
       </wd-button>
     </div>
     <div class="wd-pager__message" v-if="showMessage">
-      <text>{{ translate('page', modelValue) }}，</text>
-      <text v-if="total">{{ translate('total', total) }}，</text>
-      <text>{{ translate('size', pageSize) }}</text>
+      <span>{{ translate('page', modelValue) }}，</span>
+      <span v-if="total">{{ translate('total', total) }}，</span>
+      <span>{{ translate('size', pageSize) }}</span>
     </div>
   </div>
 </template>

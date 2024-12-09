@@ -31,7 +31,7 @@
       <div class="default-slot">
         <div class="default-slot-txt">
           选中值：
-          <text style="color: #34d19d">{{ value8 }}</text>
+          <span style="color: #34d19d">{{ value8 }}</span>
         </div>
         <wd-picker :columns="columns0" v-model="value8" use-default-slot @confirm="handleConfirm">
           <wd-button>插槽唤起</wd-button>

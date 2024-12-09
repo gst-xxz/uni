@@ -5,7 +5,7 @@
     <div :class="`wd-table__cell ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`"
       v-for="(row, index) in column" :key="index" :style="cellStyle" @click="handleRowClick(index)">
       <slot name="value" v-if="$slots.value" :row="getScope(index)" :index="index"></slot>
-      <text :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`" v-else>{{ row }}</text>
+      <span :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`" v-else>{{ row }}</span>
     </div>
   </div>
 </template>

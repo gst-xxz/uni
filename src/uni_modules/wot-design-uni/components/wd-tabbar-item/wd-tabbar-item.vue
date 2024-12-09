@@ -7,10 +7,10 @@
           <wd-icon :name="icon" :custom-style="textStyle"
             :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"></wd-icon>
         </template>
-        <text v-if="title" :style="textStyle"
+        <span v-if="title" :style="textStyle"
           :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
           {{ title }}
-        </text>
+        </span>
       </div>
     </wd-badge>
   </div>

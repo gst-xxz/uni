@@ -10,7 +10,7 @@
         <div v-else class="wd-step__icon-outer">
           <wd-icon v-if="currentStatus === 'finished'" name="check-bold" />
           <wd-icon v-else-if="currentStatus === 'error'" name="close-bold" />
-          <text v-else>{{ index + 1 }}</text>
+          <span v-else>{{ index + 1 }}</span>
         </div>
       </div>
       <div v-if="index < childrenLength - 1" class="wd-step__line">
@@ -19,11 +19,11 @@
     <div class="wd-step__content">
       <div :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
         <slot v-if="$slots.title" name="title" />
-        <text v-else>{{ currentTitle }}</text>
+        <span v-else>{{ currentTitle }}</span>
       </div>
       <div v-if="$slots.description || description" class="wd-step__description">
         <slot v-if="$slots.description" name="description" />
-        <text v-else>{{ description }}</text>
+        <span v-else>{{ description }}</span>
       </div>
     </div>
   </div>

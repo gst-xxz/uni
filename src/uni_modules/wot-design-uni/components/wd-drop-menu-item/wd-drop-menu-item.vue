@@ -10,8 +10,8 @@
         <div v-for="(item, index) in options" :key="index" @click="choose(index)"
           :class="`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`">
           <div :class="`wd-drop-item__title ${customTitle}`">
-            <text>{{ item[labelKey] ? item[labelKey] : item }}</text>
-            <text v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</text>
+            <span>{{ item[labelKey] ? item[labelKey] : item }}</span>
+            <span v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</span>
           </div>
           <wd-icon v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue" :name="iconName" size="20px"
             :class="`wd-drop-item__icon ${customIcon}`" />

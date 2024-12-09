@@ -37,12 +37,12 @@
         <!-- loading时展示loading图标和进度 -->
         <div v-if="file[props.statusKey] === 'loading'" class="wd-upload__status-content">
           <wd-loading :type="loadingType" :size="loadingSize" :color="loadingColor" />
-          <text class="wd-upload__progress-txt">{{ file.percent }}%</text>
+          <span class="wd-upload__progress-txt">{{ file.percent }}%</span>
         </div>
         <!-- 失败时展示失败图标以及失败信息 -->
         <div v-if="file[props.statusKey] === 'fail'" class="wd-upload__status-content">
           <wd-icon name="close-outline" custom-class="wd-upload__icon"></wd-icon>
-          <text class="wd-upload__progress-txt">{{ file.error || translate('error') }}</text>
+          <span class="wd-upload__progress-txt">{{ file.error || translate('error') }}</span>
         </div>
       </div>
       <!-- 上传状态为上传中时不展示移除按钮 -->

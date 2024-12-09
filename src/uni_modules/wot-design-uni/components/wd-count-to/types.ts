@@ -16,7 +16,7 @@ export const countToProps = {
    * 可选值：'default' /'primary' / 'error' / 'warning' / 'success'
    * 默认值：'default'
    */
-  type: makeStringProp<TextType>('default'),
+  type: makeStringProp<spanType>('default'),
   /**
    * 起始值
    * 类型：number

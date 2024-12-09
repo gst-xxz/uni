@@ -9,7 +9,7 @@
         <div v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'" class="wd-popover__menu">
           <div v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)">
             <wd-icon v-if="item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
-            <text>{{ item.content }}</text>
+            <span>{{ item.content }}</span>
           </div>
         </div>
       </div>
