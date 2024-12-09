@@ -1,6 +1,6 @@
 <template>
   <wd-toast />
-  <view class="fab" @click="closeOutside">
+  <div class="fab" @click="closeOutside">
     <page-wraper>
       <demo-block title="悬浮按钮主题色">
         <wd-radio-group v-model="type" inline shape="dot">
@@ -28,37 +28,29 @@
         </wd-radio-group>
       </demo-block>
       <demo-block title="禁用">
-        <view @click.stop="">
+        <div @click.stop="">
           <wd-switch v-model="disabled" size="22px" />
-        </view>
+        </div>
       </demo-block>
       <demo-block title="可拖动">
-        <view @click.stop="">
+        <div @click.stop="">
           <wd-switch v-model="draggable" size="22px" />
-        </view>
+        </div>
       </demo-block>
 
       <demo-block title="切换展示">
-        <view @click.stop="">
+        <div @click.stop="">
           <wd-button type="primary" @click="active = !active" round>切换</wd-button>
-        </view>
+        </div>
       </demo-block>
 
       <demo-block title="自定义触发器">
-        <view @click.stop="">
+        <div @click.stop="">
           <wd-switch v-model="useTriggerSlot" size="22px" />
-        </view>
+        </div>
       </demo-block>
-      <wd-fab
-        v-if="!useTriggerSlot"
-        v-model:active="active"
-        :disabled="disabled"
-        :type="type"
-        :position="position"
-        :direction="direction"
-        :draggable="draggable"
-        @click="showToast('我被点了')"
-      >
+      <wd-fab v-if="!useTriggerSlot" v-model:active="active" :disabled="disabled" :type="type" :position="position"
+        :direction="direction" :draggable="draggable" @click="showToast('我被点了')">
         <wd-button @click="showToast('一键三连')" :disabled="disabled" custom-class="custom-button" type="primary" round>
           <wd-icon name="github-filled" size="22px"></wd-icon>
         </wd-button>
@@ -80,7 +72,7 @@
         </template>
       </wd-fab>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useQueue, useToast } from '@/uni_modules/wot-design-uni'
@@ -108,6 +100,7 @@ function handleCustomClick() {
   min-height: 100vh;
   box-sizing: border-box;
   padding-bottom: 88rpx;
+
   :deep(.custom-button) {
     min-width: auto !important;
     box-sizing: border-box;

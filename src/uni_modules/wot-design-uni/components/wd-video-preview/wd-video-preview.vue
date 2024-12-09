@@ -1,20 +1,12 @@
 <template>
-  <view :class="`wd-video-preview ${customClass}`" :style="customStyle" v-if="showPopup" @click="close">
-    <view class="wd-video-preview__video" @click.stop="">
-      <video
-        class="wd-video-preview__video"
-        v-if="previdewVideo.url"
-        :controls="true"
-        :poster="previdewVideo.poster"
-        :title="previdewVideo.title"
-        play-btn-position="center"
-        :enableNative="true"
-        :src="previdewVideo.url"
-        :enable-progress-gesture="false"
-      ></video>
-    </view>
+  <div :class="`wd-video-preview ${customClass}`" :style="customStyle" v-if="showPopup" @click="close">
+    <div class="wd-video-preview__video" @click.stop="">
+      <video class="wd-video-preview__video" v-if="previdewVideo.url" :controls="true" :poster="previdewVideo.poster"
+        :title="previdewVideo.title" play-btn-position="center" :enableNative="true" :src="previdewVideo.url"
+        :enable-progress-gesture="false"></video>
+    </div>
     <wd-icon name="close" :custom-class="`wd-video-preview__close`" @click="close" />
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

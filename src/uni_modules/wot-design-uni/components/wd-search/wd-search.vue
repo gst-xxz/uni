@@ -1,38 +1,29 @@
 <template>
-  <view :class="rootClass" :style="customStyle">
-    <view class="wd-search__block">
+  <div :class="rootClass" :style="customStyle">
+    <div class="wd-search__block">
       <slot name="prefix"></slot>
-      <view class="wd-search__field">
-        <view v-if="!placeholderLeft" :style="coverStyle" class="wd-search__cover" @click="closeCover">
+      <div class="wd-search__field">
+        <div v-if="!placeholderLeft" :style="coverStyle" class="wd-search__cover" @click="closeCover">
           <wd-icon name="search" custom-class="wd-search__search-icon"></wd-icon>
           <text class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</text>
-        </view>
-        <wd-icon v-if="showInput || str || placeholderLeft" name="search" custom-class="wd-search__search-left-icon"></wd-icon>
-        <input
-          v-if="showInput || str || placeholderLeft"
-          :placeholder="placeholder || translate('search')"
-          placeholder-class="wd-search__placeholder-txt"
-          confirm-type="search"
-          v-model="str"
-          class="wd-search__input"
-          @focus="searchFocus"
-          @input="inputValue"
-          @blur="searchBlur"
-          @confirm="search"
-          :disabled="disabled"
-          :maxlength="maxlength"
-          :focus="isFocused"
-        />
-        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="error-fill" @click="clearSearch" />
-      </view>
-    </view>
+        </div>
+        <wd-icon v-if="showInput || str || placeholderLeft" name="search"
+          custom-class="wd-search__search-left-icon"></wd-icon>
+        <input v-if="showInput || str || placeholderLeft" :placeholder="placeholder || translate('search')"
+          placeholder-class="wd-search__placeholder-txt" confirm-type="search" v-model="str" class="wd-search__input"
+          @focus="searchFocus" @input="inputValue" @blur="searchBlur" @confirm="search" :disabled="disabled"
+          :maxlength="maxlength" :focus="isFocused" />
+        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="error-fill"
+          @click="clearSearch" />
+      </div>
+    </div>
 
     <slot v-if="!hideCancel" name="suffix">
-      <view class="wd-search__cancel" @click="handleCancel">
+      <div class="wd-search__cancel" @click="handleCancel">
         {{ cancelTxt || translate('cancel') }}
-      </view>
+      </div>
     </slot>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,25 +1,21 @@
 <template>
-  <view class="collapse">
+  <div class="collapse">
     <page-wraper>
       <demo-block title="toggleAll">
         <wd-button custom-class="custom-button" type="info" @click="collapse?.toggleAll()">全部切换</wd-button>
         <wd-button custom-class="custom-button" type="success" @click="collapse?.toggleAll(true)">全部展开</wd-button>
         <wd-button custom-class="custom-button" type="primary" @click="collapse?.toggleAll(false)">全部收起</wd-button>
-        <wd-button custom-class="custom-button" type="warning" @click="collapse?.toggleAll({ skipDisabled: true })">全部切换跳过禁用</wd-button>
-        <wd-button custom-class="custom-button" type="error" @click="collapse?.toggleAll({ expanded: true, skipDisabled: true })">
+        <wd-button custom-class="custom-button" type="warning"
+          @click="collapse?.toggleAll({ skipDisabled: true })">全部切换跳过禁用</wd-button>
+        <wd-button custom-class="custom-button" type="error"
+          @click="collapse?.toggleAll({ expanded: true, skipDisabled: true })">
           全部选中跳过禁用
         </wd-button>
       </demo-block>
       <demo-block title="基础用法" transparent>
         <wd-collapse ref="collapse" v-model="value1" @change="handleChange1">
-          <wd-collapse-item
-            :disabled="item.disabled"
-            v-for="(item, index) in itemList"
-            :before-expend="index === 2 ? beforeExpend : undefined"
-            :key="index"
-            :title="item.title"
-            :name="item.name"
-          >
+          <wd-collapse-item :disabled="item.disabled" v-for="(item, index) in itemList"
+            :before-expend="index === 2 ? beforeExpend : undefined" :key="index" :title="item.title" :name="item.name">
             {{ item.body }}
           </wd-collapse-item>
         </wd-collapse>
@@ -29,20 +25,20 @@
         <wd-collapse v-model="value7">
           <wd-collapse-item name="item1">
             <template #title="{ expanded }">
-              <view class="header">
+              <div class="header">
                 <text style="color: red">通过 slot 自定义标题</text>
                 <text>{{ expanded ? '我展开了' : '我已收起' }}</text>
-              </view>
+              </div>
             </template>
             {{ desc7 }}
           </wd-collapse-item>
           <wd-collapse-item name="item2" disabled>
             <template #title="{ expanded, disabled }">
-              <view class="header">
+              <div class="header">
                 <text v-if="disabled">被禁用</text>
                 <text style="color: red" v-else>通过 slot 自定义 title</text>
                 <text>{{ expanded ? '我展开了' : '我已收起' }}</text>
-              </view>
+              </div>
             </template>
             {{ desc7 }}
           </wd-collapse-item>
@@ -70,15 +66,11 @@
 
       <demo-block title="嵌套" transparent>
         <wd-collapse v-model="collapseRoot" @change="handleChange1">
-          <wd-collapse-item custom-body-style="padding:0 0 0 14px" v-for="item in 5" :key="item" :title="`标签${item}`" :name="`${item}`">
+          <wd-collapse-item custom-body-style="padding:0 0 0 14px" v-for="item in 5" :key="item" :title="`标签${item}`"
+            :name="`${item}`">
             <wd-collapse v-model="collapseList[item - 1]">
-              <wd-collapse-item
-                :custom-class="index === 0 ? 'no-border' : ''"
-                v-for="(item, index) in itemList"
-                :key="index"
-                :title="item.title"
-                :name="item.name"
-              >
+              <wd-collapse-item :custom-class="index === 0 ? 'no-border' : ''" v-for="(item, index) in itemList"
+                :key="index" :title="item.title" :name="item.name">
                 {{ item.body }}
               </wd-collapse-item>
             </wd-collapse>
@@ -100,12 +92,12 @@
         <wd-collapse viewmore v-model="value6" @change="handleChange6" use-more-slot custom-more-slot-class="more-slot">
           具名插槽：这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。这是一条简单的示例文字。
           <template #more>
-            <view>显示全部</view>
+            <div>显示全部</div>
           </template>
         </wd-collapse>
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'
@@ -217,6 +209,7 @@ function beforeExpend(name: string) {
     margin-right: 16px;
     margin-bottom: 16px;
   }
+
   :deep() {
     .no-border {
       &::after {

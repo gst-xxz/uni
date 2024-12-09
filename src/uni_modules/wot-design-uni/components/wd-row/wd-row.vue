@@ -1,8 +1,8 @@
 <template>
-  <view :class="`wd-row ${customClass}`" :style="rowStyle">
+  <div :class="`wd-row ${customClass}`" :style="rowStyle">
     <!-- 每一行 -->
     <slot />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

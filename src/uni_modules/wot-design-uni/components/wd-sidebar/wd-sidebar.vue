@@ -1,8 +1,9 @@
 <template>
-  <view :class="`wd-sidebar ${customClass}`" :style="customStyle">
+  <div :class="`wd-sidebar ${customClass}`" :style="customStyle">
     <slot></slot>
-    <view class="wd-sidebar__padding"></view>
-  </view>
+    <div class="wd-sidebar__padding">
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -2,44 +2,45 @@
   <page-wraper>
     <demo-block title="基础用法">
       <wd-resize @resize="handleResize">
-        <view :style="`background: #4d80f0; width: ${width};height: ${height}`"></view>
+        <div :style="`background: #4d80f0; width: ${width};height: ${height}`">
+        </div>
       </wd-resize>
-      <view class="tip-item">
-        <view class="tip-label">width:</view>
+      <div class="tip-item">
+        <div class="tip-label">width:</div>
         {{ lastWidth }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeWidth }}
-      </view>
-      <view class="tip-item">
-        <view class="tip-label">height:</view>
+      </div>
+      <div class="tip-item">
+        <div class="tip-label">height:</div>
         {{ lastHeight }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeHeight }}
-      </view>
-      <view class="tip-item">
-        <view class="tip-label">top:</view>
+      </div>
+      <div class="tip-item">
+        <div class="tip-label">top:</div>
         {{ lastTop }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeTop }}
-      </view>
-      <view class="tip-item">
-        <view class="tip-label">right:</view>
+      </div>
+      <div class="tip-item">
+        <div class="tip-label">right:</div>
         {{ lastRight }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeRight }}
-      </view>
-      <view class="tip-item">
-        <view class="tip-label">bottom:</view>
+      </div>
+      <div class="tip-item">
+        <div class="tip-label">bottom:</div>
         {{ lastBottom }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeBottom }}
-      </view>
-      <view class="tip-item">
-        <view class="tip-label">left:</view>
+      </div>
+      <div class="tip-item">
+        <div class="tip-label">left:</div>
         {{ lastLeft }}
         <wd-icon name="arrow-thin-up" custom-class="icon"></wd-icon>
         {{ sizeLeft }}
-      </view>
+      </div>
     </demo-block>
   </page-wraper>
 </template>
@@ -90,15 +91,18 @@ function handleResize(detail: Record<string, string | number>) {
     color: $-dark-color;
   }
 }
+
 .tip-item {
   margin-top: 15px;
   color: rgba(0, 0, 0, 0.45);
   font-size: 12px;
 }
+
 .tip-label {
   display: inline-block;
   width: 70px;
 }
+
 :deep(.icon) {
   margin: 0 4px;
   transform: rotate(90deg);

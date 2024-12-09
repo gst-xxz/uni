@@ -1,26 +1,24 @@
 <template>
-  <view class="wd-index-bar" :id="indexBarId">
+  <div class="wd-index-bar" :id="indexBarId">
     <!-- #ifdef MP-DINGTALK -->
-    <view class="wd-index-bar" :id="indexBarId">
+    <div class="wd-index-bar" :id="indexBarId">
       <!-- #endif -->
-      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content" @scroll="hanleScroll">
+      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content"
+        @scroll="hanleScroll">
         <slot></slot>
       </scroll-view>
-      <view
-        class="wd-index-bar__sidebar"
-        @touchstart.stop.prevent="handleTouchStart"
-        @touchmove.stop.prevent="handleTouchMove"
-        @touchend.stop.prevent="handleTouchEnd"
-        @touchcancel.stop.prevent="handleTouchEnd"
-      >
-        <view class="wd-index-bar__index" :class="{ 'is-active': item.index === state.activeIndex }" v-for="item in children" :key="item.index">
+      <div class="wd-index-bar__sidebar" @touchstart.stop.prevent="handleTouchStart"
+        @touchmove.stop.prevent="handleTouchMove" @touchend.stop.prevent="handleTouchEnd"
+        @touchcancel.stop.prevent="handleTouchEnd">
+        <div class="wd-index-bar__index" :class="{ 'is-active': item.index === state.activeIndex }"
+          v-for="item in children" :key="item.index">
           {{ item.index }}
-        </view>
-      </view>
+        </div>
+      </div>
       <!-- #ifdef MP-DINGTALK -->
-    </view>
+    </div>
     <!-- #endif -->
-  </view>
+  </div>
 </template>
 
 <script setup lang="ts">

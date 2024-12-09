@@ -1,31 +1,24 @@
 <template>
-  <view>
+  <div>
     <wd-toast selector="wd-month" />
-    <view class="month">
-      <view class="wd-month">
-        <view class="wd-month__title" v-if="showTitle">{{ monthTitle(date) }}</view>
-        <view class="wd-month__days">
-          <view
-            v-for="(item, index) in days"
-            :key="index"
-            :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${
-              item.type ? dayTypeClass(item.type) : ''
-            }`"
-            :style="index === 0 ? firstDayStyle : ''"
-            @click="handleDateClick(index)"
-          >
-            <view class="wd-month__day-container">
-              <view class="wd-month__day-top">{{ item.topInfo }}</view>
-              <view class="wd-month__day-text">
+    <div class="month">
+      <div class="wd-month">
+        <div class="wd-month__title" v-if="showTitle">{{ monthTitle(date) }}</div>
+        <div class="wd-month__days">
+          <div v-for="(item, index) in days" :key="index" :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${item.type ? dayTypeClass(item.type) : ''
+            }`" :style="index === 0 ? firstDayStyle : ''" @click="handleDateClick(index)">
+            <div class="wd-month__day-container">
+              <div class="wd-month__day-top">{{ item.topInfo }}</div>
+              <div class="wd-month__day-text">
                 {{ item.text }}
-              </view>
-              <view class="wd-month__day-bottom">{{ item.bottomInfo }}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
+              </div>
+              <div class="wd-month__day-bottom">{{ item.bottomInfo }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

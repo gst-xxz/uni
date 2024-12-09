@@ -1,6 +1,7 @@
 <template>
-  <view :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-    <view :class="keyClass">
+  <div :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart"
+    @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <div :class="keyClass">
       <wd-loading custom-class="wd-key__loading-icon" v-if="props.loading" />
       <template v-if="type === 'delete'">
         <template v-if="text">
@@ -15,8 +16,8 @@
         <wd-icon v-else custom-class="wd-key__icon" name="keyboard-collapse" size="22px"></wd-icon>
       </template>
       <template v-else>{{ text }}</template>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {
@@ -41,9 +42,8 @@ const touch = useTouch()
 const active = ref<boolean>(false)
 
 const keyClass = computed(() => {
-  return `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${
-    props.type === 'close' ? 'wd-key--close' : ''
-  }`
+  return `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${props.type === 'close' ? 'wd-key--close' : ''
+    }`
 })
 
 function onTouchStart(event: TouchEvent) {

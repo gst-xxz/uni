@@ -1,69 +1,33 @@
 <template>
-  <view :class="`wd-swiper ${customClass}`" :style="customStyle">
-    <swiper
-      :adjust-height="adjustHeight"
-      :adjust-vertical-height="adjustVerticalHeight"
-      class="wd-swiper__track"
-      :autoplay="autoplay && !videoPlaying"
-      :current="navCurrent"
-      :interval="interval"
-      :duration="duration"
-      :circular="loop"
-      :vertical="direction == 'vertical'"
-      :easing-function="easingFunction"
-      :previous-margin="addUnit(previousMargin)"
-      :next-margin="addUnit(nextMargin)"
-      :snap-to-edge="snapToEdge"
-      :display-multiple-items="displayMultipleItems"
-      :style="{ height: addUnit(height) }"
-      @change="handleChange"
-      @animationfinish="handleAnimationfinish"
-    >
+  <div :class="`wd-swiper ${customClass}`" :style="customStyle">
+    <swiper :adjust-height="adjustHeight" :adjust-vertical-height="adjustVerticalHeight" class="wd-swiper__track"
+      :autoplay="autoplay && !videoPlaying" :current="navCurrent" :interval="interval" :duration="duration"
+      :circular="loop" :vertical="direction == 'vertical'" :easing-function="easingFunction"
+      :previous-margin="addUnit(previousMargin)" :next-margin="addUnit(nextMargin)" :snap-to-edge="snapToEdge"
+      :display-multiple-items="displayMultipleItems" :style="{ height: addUnit(height) }" @change="handleChange"
+      @animationfinish="handleAnimationfinish">
       <swiper-item v-for="(item, index) in list" :key="index" class="wd-swiper__item">
-        <image
-          v-if="isImage(item)"
-          :src="isObj(item) ? item[valueKey] : item"
+        <image v-if="isImage(item)" :src="isObj(item) ? item[valueKey] : item"
           :class="`wd-swiper__image ${customImageClass} ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
-          :style="{ height: addUnit(height) }"
-          :mode="imageMode"
-          @click="handleClick(index, item)"
-        />
-        <video
-          v-else-if="isVideo(item)"
-          :id="`video-${index}-${uid}`"
-          :style="{ height: addUnit(height) }"
-          :src="isObj(item) ? item[valueKey] : item"
-          :poster="isObj(item) ? item.poster : ''"
+          :style="{ height: addUnit(height) }" :mode="imageMode" @click="handleClick(index, item)" />
+        <video v-else-if="isVideo(item)" :id="`video-${index}-${uid}`" :style="{ height: addUnit(height) }"
+          :src="isObj(item) ? item[valueKey] : item" :poster="isObj(item) ? item.poster : ''"
           :class="`wd-swiper__video ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
-          @play="handleVideoPaly"
-          @pause="handleVideoPause"
-          :enable-progress-gesture="false"
-          loop
-          muted
-          :autoplay="autoplayVideo"
-          objectFit="cover"
-          @click="handleClick(index, item)"
-        />
-        <text v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`" :style="customTextStyle">{{ item[textKey] }}</text>
+          @play="handleVideoPaly" @pause="handleVideoPause" :enable-progress-gesture="false" loop muted
+          :autoplay="autoplayVideo" objectFit="cover" @click="handleClick(index, item)" />
+        <text v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`"
+          :style="customTextStyle">{{ item[textKey] }}</text>
       </swiper-item>
     </swiper>
 
     <template v-if="indicator">
       <slot name="indicator" :current="currentValue" :total="list.length"></slot>
-      <wd-swiper-nav
-        v-if="!$slots.indicator"
-        :custom-class="customIndicatorClass"
-        :type="swiperIndicator.type"
-        :current="swiperIndicator.current"
-        :total="swiperIndicator.total"
-        :direction="swiperIndicator.direction"
-        :indicator-position="swiperIndicator.indicatorPosition"
-        :min-show-num="swiperIndicator.minShowNum"
-        :show-controls="swiperIndicator.showControls"
-        @change="handleIndicatorChange"
-      />
+      <wd-swiper-nav v-if="!$slots.indicator" :custom-class="customIndicatorClass" :type="swiperIndicator.type"
+        :current="swiperIndicator.current" :total="swiperIndicator.total" :direction="swiperIndicator.direction"
+        :indicator-position="swiperIndicator.indicatorPosition" :min-show-num="swiperIndicator.minShowNum"
+        :show-controls="swiperIndicator.showControls" @change="handleIndicatorChange" />
     </template>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

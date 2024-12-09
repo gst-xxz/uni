@@ -1,9 +1,10 @@
 <template>
-  <view :class="`wd-loading ${props.customClass}`" :style="rootStyle">
-    <view class="wd-loading__body">
-      <view class="wd-loading__svg" :style="`background-image: url(${svg});`"></view>
-    </view>
-  </view>
+  <div :class="`wd-loading ${props.customClass}`" :style="rootStyle">
+    <div class="wd-loading__body">
+      <div class="wd-loading__svg" :style="`background-image: url(${svg});`">
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

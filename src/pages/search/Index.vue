@@ -1,5 +1,5 @@
 <template>
-  <view @click="closeOutside">
+  <div @click="closeOutside">
     <wd-toast />
     <page-wraper>
       <demo-block title="基本用法" transparent>
@@ -18,19 +18,19 @@
         <wd-search disabled hide-cancel />
       </demo-block>
 
-      <view style="margin: 15px 0; color: #666">
-        <view style="padding: 0 15px; margin: 10px 0; font-size: 13px">自定义左侧插槽</view>
+      <div style="margin: 15px 0; color: #666">
+        <div style="padding: 0 15px; margin: 10px 0; font-size: 13px">自定义左侧插槽</div>
         <wd-search v-model="value3">
           <template #prefix>
             <wd-popover mode="menu" :content="menu" @menuclick="changeSearchType">
-              <view class="search-type">
+              <div class="search-type">
                 <text>{{ searchType }}</text>
                 <wd-icon class="icon-arrow" name="fill-arrow-down"></wd-icon>
-              </view>
+              </div>
             </wd-popover>
           </template>
         </wd-search>
-      </view>
+      </div>
 
       <demo-block title="自定义右侧文案" transparent>
         <wd-search placeholder="请输入订单号/订单名称" cancel-txt="搜索" />
@@ -48,7 +48,7 @@
         <wd-search v-model="value5" focus />
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -115,6 +115,7 @@ function changeSearchType({ item, index }: any) {
   padding: 0 8px 0 16px;
   color: rgba(0, 0, 0, 0.45);
 }
+
 .search-type::after {
   position: absolute;
   content: '';
@@ -125,6 +126,7 @@ function changeSearchType({ item, index }: any) {
   background: rgba(0, 0, 0, 0.25);
   transform: scaleX(0.5);
 }
+
 .search-type .icon-arrow {
   margin-left: 4px;
   display: inline-block;
@@ -132,6 +134,7 @@ function changeSearchType({ item, index }: any) {
   vertical-align: middle;
   color: rgba(0, 0, 0, 0.65);
 }
+
 .overflowauto {
   overflow: normal;
 }

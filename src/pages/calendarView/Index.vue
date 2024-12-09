@@ -1,28 +1,28 @@
 <template>
   <page-wraper>
     <demo-block title="单个日期选择" :hor="0">
-      <view style="margin: 0 15px 10px">
-        <view style="margin-bottom: 10px; font-size: 13px">切换类型：</view>
+      <div style="margin: 0 15px 10px">
+        <div style="margin-bottom: 10px; font-size: 13px">切换类型：</div>
         <wd-radio-group v-model="type1" shape="button">
           <wd-radio value="date">date</wd-radio>
           <wd-radio value="week">week</wd-radio>
           <wd-radio value="month">month</wd-radio>
         </wd-radio-group>
-      </view>
+      </div>
       <wd-calendar-view :type="type1" v-model="value1" @change="handleChange1"></wd-calendar-view>
     </demo-block>
     <demo-block title="多个日期选择" :hor="0">
       <wd-calendar-view type="dates" v-model="value2" @change="handleChange2"></wd-calendar-view>
     </demo-block>
     <demo-block title="日期范围选择" :hor="0">
-      <view style="margin: 0 24rpx 20rpx">
-        <view style="margin-bottom: 20rpx; font-size: 26rpx">切换类型：</view>
+      <div style="margin: 0 24rpx 20rpx">
+        <div style="margin-bottom: 20rpx; font-size: 26rpx">切换类型：</div>
         <wd-radio-group v-model="type2" shape="button" @change="handleTypeChange2">
           <wd-radio value="daterange">daterange</wd-radio>
           <wd-radio value="weekrange">weekrange</wd-radio>
           <wd-radio value="monthrange">monthrange</wd-radio>
         </wd-radio-group>
-      </view>
+      </div>
       <wd-calendar-view :type="type2" allow-same-day v-model="value3" @change="handleChange3"></wd-calendar-view>
     </demo-block>
     <demo-block title="时间类型" :hor="0">

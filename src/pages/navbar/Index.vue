@@ -43,13 +43,14 @@
     <demo-block title="带搜索栏" transparent>
       <wd-navbar left-text="返回" right-text="设置" left-arrow>
         <template #title>
-          <view class="search-box">
+          <div class="search-box">
             <wd-search v-model="keyword" hide-cancel placeholder-left></wd-search>
-          </view>
+          </div>
         </template>
       </wd-navbar>
     </demo-block>
-    <view style="height: 500rpx"></view>
+    <div style="height: 500rpx">
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

@@ -1,5 +1,5 @@
 <template>
-  <view :class="['wd-loadmore', customClass]" :style="customStyle" @click="reload">
+  <div :class="['wd-loadmore', customClass]" :style="customStyle" @click="reload">
     <wd-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</wd-divider>
     <block v-if="state === 'error'">
       <text class="wd-loadmore__text">{{ errorText || translate('error') }}</text>
@@ -10,7 +10,7 @@
       <wd-loading v-bind="customLoadingProps" />
       <text class="wd-loadmore__text">{{ loadingText || translate('loading') }}</text>
     </block>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

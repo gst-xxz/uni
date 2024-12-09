@@ -1,35 +1,32 @@
 <template>
-  <view
-    v-if="currentStatus"
-    :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${
-      vertical ? 'is-vertical' : ''
-    }`"
-    :style="rootStyle"
-  >
-    <view :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
-      <view :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
-        <view v-if="dot" class="wd-step__dot"></view>
+  <div v-if="currentStatus" :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${vertical ? 'is-vertical' : ''
+    }`" :style="rootStyle">
+    <div :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
+      <div :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
+        <div v-if="dot" class="wd-step__dot">
+        </div>
         <slot v-else-if="$slots.icon" name="icon" />
         <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
-        <view v-else class="wd-step__icon-outer">
+        <div v-else class="wd-step__icon-outer">
           <wd-icon v-if="currentStatus === 'finished'" name="check-bold" />
           <wd-icon v-else-if="currentStatus === 'error'" name="close-bold" />
           <text v-else>{{ index + 1 }}</text>
-        </view>
-      </view>
-      <view v-if="index < childrenLength - 1" class="wd-step__line"></view>
-    </view>
-    <view class="wd-step__content">
-      <view :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
+        </div>
+      </div>
+      <div v-if="index < childrenLength - 1" class="wd-step__line">
+      </div>
+    </div>
+    <div class="wd-step__content">
+      <div :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
         <slot v-if="$slots.title" name="title" />
         <text v-else>{{ currentTitle }}</text>
-      </view>
-      <view v-if="$slots.description || description" class="wd-step__description">
+      </div>
+      <div v-if="$slots.description || description" class="wd-step__description">
         <slot v-if="$slots.description" name="description" />
         <text v-else>{{ description }}</text>
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

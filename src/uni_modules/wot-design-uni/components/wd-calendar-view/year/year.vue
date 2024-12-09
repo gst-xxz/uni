@@ -1,23 +1,17 @@
 <template>
   <wd-toast selector="wd-year" />
 
-  <view class="wd-year year">
-    <view class="wd-year__title" v-if="showTitle">{{ yearTitle(date) }}</view>
-    <view class="wd-year__months">
-      <view
-        v-for="(item, index) in months"
-        :key="index"
-        :class="`wd-year__month ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${
-          item.type ? monthTypeClass(item.type) : ''
-        }`"
-        @click="handleDateClick(index)"
-      >
-        <view class="wd-year__month-top">{{ item.topInfo }}</view>
-        <view class="wd-year__month-text">{{ getMonthLabel(item.date) }}</view>
-        <view class="wd-year__month-bottom">{{ item.bottomInfo }}</view>
-      </view>
-    </view>
-  </view>
+  <div class="wd-year year">
+    <div class="wd-year__title" v-if="showTitle">{{ yearTitle(date) }}</div>
+    <div class="wd-year__months">
+      <div v-for="(item, index) in months" :key="index" :class="`wd-year__month ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${item.type ? monthTypeClass(item.type) : ''
+        }`" @click="handleDateClick(index)">
+        <div class="wd-year__month-top">{{ item.topInfo }}</div>
+        <div class="wd-year__month-text">{{ getMonthLabel(item.date) }}</div>
+        <div class="wd-year__month-bottom">{{ item.bottomInfo }}</div>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

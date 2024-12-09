@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <view class="password-input">
+    <div class="password-input">
       <demo-block title="基本用法" transparent>
         <wd-password-input v-model="value1" :focused="visible1" @focus="showKeyBoard(1)" />
         <wd-number-keyboard v-model:visible="visible1" v-model="value1" :maxlength="6"></wd-number-keyboard>
@@ -18,10 +18,11 @@
         <wd-number-keyboard v-model:visible="visible4" v-model="value4" :maxlength="6"></wd-number-keyboard>
       </demo-block>
       <demo-block title="提示信息" transparent>
-        <wd-password-input v-model="value5" info="密码为 6 位数字" :error-info="errorInfo" :focused="visible5" @focus="showKeyBoard(5)" />
+        <wd-password-input v-model="value5" info="密码为 6 位数字" :error-info="errorInfo" :focused="visible5"
+          @focus="showKeyBoard(5)" />
         <wd-number-keyboard v-model:visible="visible5" v-model="value5" :maxlength="6"></wd-number-keyboard>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

@@ -1,8 +1,9 @@
 <template>
-  <view :class="rootClass">
+  <div :class="rootClass">
     <!-- 前缀插槽 -->
     <slot name="prefix">
-      <wd-text :type="props.type" :color="props.color" :size="`${props.fontSize * 0.7}px`" :text="props.prefix"></wd-text>
+      <wd-text :type="props.type" :color="props.color" :size="`${props.fontSize * 0.7}px`"
+        :text="props.prefix"></wd-text>
     </slot>
     <!-- 默认文本插槽 -->
     <slot>
@@ -10,9 +11,10 @@
     </slot>
     <!-- 后缀插槽 -->
     <slot name="suffix">
-      <wd-text :type="props.type" :color="props.color" :size="`${props.fontSize * 0.7}px`" :text="props.suffix"></wd-text>
+      <wd-text :type="props.type" :color="props.color" :size="`${props.fontSize * 0.7}px`"
+        :text="props.suffix"></wd-text>
     </slot>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

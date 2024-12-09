@@ -1,26 +1,17 @@
 <template>
-  <view
-    :class="`wd-floating-panel ${customClass} ${safeAreaInsetBottom ? 'is-safe' : ''}`"
-    :style="rootStyle"
-    @touchstart.passive="handleTouchStart"
-    @touchmove.passive="handleTouchMove"
-    @touchend="handleTouchEnd"
-    @touchcancel="handleTouchEnd"
-  >
-    <view :class="`wd-floating-panel__header`">
-      <view :class="`wd-floating-panel__header-bar`"></view>
-    </view>
+  <div :class="`wd-floating-panel ${customClass} ${safeAreaInsetBottom ? 'is-safe' : ''}`" :style="rootStyle"
+    @touchstart.passive="handleTouchStart" @touchmove.passive="handleTouchMove" @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd">
+    <div :class="`wd-floating-panel__header`">
+      <div :class="`wd-floating-panel__header-bar`">
+      </div>
+    </div>
 
-    <scroll-view
-      :class="`wd-floating-panel__content`"
-      data-id="content"
-      :show-scrollbar="showScrollbar"
-      scroll-y
-      @touchmove.stop.prevent="handleTouchMove"
-    >
+    <scroll-view :class="`wd-floating-panel__content`" data-id="content" :show-scrollbar="showScrollbar" scroll-y
+      @touchmove.stop.prevent="handleTouchMove">
       <slot />
     </scroll-view>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

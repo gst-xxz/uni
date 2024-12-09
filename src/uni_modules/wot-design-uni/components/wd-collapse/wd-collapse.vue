@@ -1,32 +1,30 @@
 <template>
-  <view :class="`wd-collapse ${viewmore ? 'is-viewmore' : ''} ${customClass}`" :style="customStyle">
+  <div :class="`wd-collapse ${viewmore ? 'is-viewmore' : ''} ${customClass}`" :style="customStyle">
     <!-- 普通或手风琴 -->
     <block v-if="!viewmore">
       <slot></slot>
     </block>
     <!-- 查看更多模式 -->
-    <view v-else>
-      <view
-        :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
-        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`"
-      >
+    <div v-else>
+      <div :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
+        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`">
         <slot></slot>
-      </view>
-      <view class="wd-collapse__more" @click="handleMore">
+      </div>
+      <div class="wd-collapse__more" @click="handleMore">
         <!-- 自定义展开按钮 -->
-        <view v-if="useMoreSlot" :class="customMoreSlotClass">
+        <div v-if="useMoreSlot" :class="customMoreSlotClass">
           <slot name="more"></slot>
-        </view>
+        </div>
         <!-- 显示展开或折叠按钮 -->
         <block v-else>
           <span class="wd-collapse__more-txt">{{ !modelValue ? translate('expand') : translate('retract') }}</span>
-          <view :class="`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`">
+          <div :class="`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`">
             <wd-icon name="arrow-down"></wd-icon>
-          </view>
+          </div>
         </block>
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

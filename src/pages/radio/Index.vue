@@ -1,14 +1,14 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法">
-      <view>
+      <div>
         1、内容项在3项以内，且有比较重要的信息备选（如付款类型选择等）可考虑采用圆形组件。因为会跟圆形复选框容易混淆，且会造成当前表单页页面结构不统一，
         <text style="color: #f0883a">一般情况不建议使用点状单选。</text>
-      </view>
-      <view style="margin-bottom: 10px">
+      </div>
+      <div style="margin-bottom: 10px">
         2、单选框基本使用未对高度进行扩充，
         <text style="color: #f0883a">一般情况建议使用表单--单选组。</text>
-      </view>
+      </div>
       <wd-radio-group v-model="value0" @change="change">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
@@ -82,12 +82,14 @@
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
       </wd-radio-group>
-      <view class="divider"></view>
+      <div class="divider">
+      </div>
       <wd-radio-group v-model="value1" disabled>
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
       </wd-radio-group>
-      <view class="divider"></view>
+      <div class="divider">
+      </div>
       <wd-radio-group v-model="value1" disabled shape="button">
         <wd-radio :value="1">选项1</wd-radio>
         <wd-radio :value="2">选项2</wd-radio>
@@ -99,12 +101,14 @@
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
       </wd-radio-group>
-      <view class="divider"></view>
+      <div class="divider">
+      </div>
       <wd-radio-group v-model="value9" size="large" shape="dot">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>
       </wd-radio-group>
-      <view class="divider"></view>
+      <div class="divider">
+      </div>
       <wd-radio-group v-model="value10" size="large" inline custom-class="group">
         <wd-radio :value="1">单选框1</wd-radio>
         <wd-radio :value="2">单选框2</wd-radio>

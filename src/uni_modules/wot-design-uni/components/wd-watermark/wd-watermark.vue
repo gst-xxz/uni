@@ -1,9 +1,9 @@
 <template>
-  <view :class="rootClass" :style="rootStyle">
+  <div :class="rootClass" :style="rootStyle">
     <canvas v-if="!canvasOffScreenable && showCanvas" type="2d"
       :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }" :canvas-id="canvasId"
       :id="canvasId" />
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

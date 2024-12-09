@@ -4,16 +4,16 @@
       <wd-button @click="handleClick1">关闭按钮在内部</wd-button>
     </demo-block>
     <demo-block title="修改按钮位置">
-      <view>
+      <div>
         <wd-button @click="handleClick2">左上</wd-button>
         <wd-button @click="handleClick3">顶部</wd-button>
         <wd-button @click="handleClick4">右上</wd-button>
-      </view>
-      <view>
+      </div>
+      <div>
         <wd-button @click="handleClick5">左下</wd-button>
         <wd-button @click="handleClick6">底部</wd-button>
         <wd-button @click="handleClick7">右下</wd-button>
-      </view>
+      </div>
     </demo-block>
     <demo-block title="点击遮罩关闭">
       <wd-button @click="handleClick8">点击遮罩关闭</wd-button>
@@ -24,24 +24,23 @@
     </demo-block>
 
     <wd-curtain :value="value1" :src="img" :to="link" @close="handleClose1" :width="280"></wd-curtain>
-    <wd-curtain :value="value2" :src="img" :to="link" close-position="top-left" :width="200" @close="handleClose2"></wd-curtain>
-    <wd-curtain :value="value3" :src="img" :to="link" close-position="top" :width="200" @close="handleClose3"></wd-curtain>
-    <wd-curtain :value="value4" :src="img" :to="link" close-position="top-right" :width="240" @close="handleClose4"></wd-curtain>
-    <wd-curtain :value="value5" :src="img" :to="link" close-position="bottom-left" :width="240" @close="handleClose5"></wd-curtain>
-    <wd-curtain :value="value6" :src="img" :to="link" close-position="bottom" :width="240" @close="handleClose6"></wd-curtain>
-    <wd-curtain :value="value7" :src="img" :to="link" close-position="bottom-right" :width="240" @close="handleClose7"></wd-curtain>
-    <wd-curtain
-      :value="value8"
-      :src="img"
-      :to="link"
-      close-position="bottom-right"
-      :width="240"
-      @close="handleClose8"
-      :close-on-click-modal="true"
-    ></wd-curtain>
+    <wd-curtain :value="value2" :src="img" :to="link" close-position="top-left" :width="200"
+      @close="handleClose2"></wd-curtain>
+    <wd-curtain :value="value3" :src="img" :to="link" close-position="top" :width="200"
+      @close="handleClose3"></wd-curtain>
+    <wd-curtain :value="value4" :src="img" :to="link" close-position="top-right" :width="240"
+      @close="handleClose4"></wd-curtain>
+    <wd-curtain :value="value5" :src="img" :to="link" close-position="bottom-left" :width="240"
+      @close="handleClose5"></wd-curtain>
+    <wd-curtain :value="value6" :src="img" :to="link" close-position="bottom" :width="240"
+      @close="handleClose6"></wd-curtain>
+    <wd-curtain :value="value7" :src="img" :to="link" close-position="bottom-right" :width="240"
+      @close="handleClose7"></wd-curtain>
+    <wd-curtain :value="value8" :src="img" :to="link" close-position="bottom-right" :width="240" @close="handleClose8"
+      :close-on-click-modal="true"></wd-curtain>
     <wd-curtain :value="value9" :src="img" @close="handleClose9" :width="280">
       <template #close>
-        <view class="custom-close" @click="handleClose9">关闭</view>
+        <div class="custom-close" @click="handleClose9">关闭</div>
       </template>
     </wd-curtain>
   </page-wraper>
@@ -126,6 +125,7 @@ function clickImg() {
 :deep(button) {
   margin: 0 10px 10px 0;
 }
+
 .custom-close {
   position: absolute;
   top: 10px;

@@ -13,32 +13,31 @@
     </demo-block>
     <demo-block title="覆盖上传">
       <!-- #ifdef MP-WEIXIN || H5  -->
-      <wd-upload accept="all" reupload v-model:file-list="fileList17" image-mode="aspectFill" :action="action"></wd-upload>
+      <wd-upload accept="all" reupload v-model:file-list="fileList17" image-mode="aspectFill"
+        :action="action"></wd-upload>
       <!-- #endif -->
       <!-- #ifndef MP-WEIXIN -->
       <!-- #ifndef H5 -->
-      <wd-upload accept="image" reupload v-model:file-list="fileList17" image-mode="aspectFill" :action="action"></wd-upload>
+      <wd-upload accept="image" reupload v-model:file-list="fileList17" image-mode="aspectFill"
+        :action="action"></wd-upload>
       <!-- #endif -->
       <!-- #endif -->
     </demo-block>
     <demo-block title="拦截预览图片操作">
-      <wd-upload :file-list="fileList4" :action="action" @change="handleChange4" :before-preview="beforePreview"></wd-upload>
+      <wd-upload :file-list="fileList4" :action="action" @change="handleChange4"
+        :before-preview="beforePreview"></wd-upload>
     </demo-block>
     <demo-block title="上传前置处理">
-      <wd-upload :file-list="fileList5" :action="action" @change="handleChange5" :before-upload="beforeUpload"></wd-upload>
+      <wd-upload :file-list="fileList5" :action="action" @change="handleChange5"
+        :before-upload="beforeUpload"></wd-upload>
     </demo-block>
     <demo-block title="移除图片前置处理">
-      <wd-upload :file-list="fileList6" :action="action" @change="handleChange6" :before-remove="beforeRemove"></wd-upload>
+      <wd-upload :file-list="fileList6" :action="action" @change="handleChange6"
+        :before-remove="beforeRemove"></wd-upload>
     </demo-block>
     <demo-block title="上传状态钩子">
-      <wd-upload
-        :file-list="fileList7"
-        :action="action"
-        @change="handleChange7"
-        @success="handleSuccess"
-        @fail="handleFail"
-        @progress="handleProgess"
-      ></wd-upload>
+      <wd-upload :file-list="fileList7" :action="action" @change="handleChange7" @success="handleSuccess"
+        @fail="handleFail" @progress="handleProgess"></wd-upload>
     </demo-block>
     <demo-block title="禁用">
       <wd-upload :file-list="fileList8" disabled :action="action" @change="handleChange8"></wd-upload>
@@ -49,7 +48,8 @@
       </wd-upload>
     </demo-block>
     <demo-block title="选择文件前置处理">
-      <wd-upload :file-list="fileList10" :action="action" @change="handleChange10" :before-choose="beforeChoose"></wd-upload>
+      <wd-upload :file-list="fileList10" :action="action" @change="handleChange10"
+        :before-choose="beforeChoose"></wd-upload>
     </demo-block>
 
     <!-- <demo-block title="上传至oss">
@@ -76,7 +76,8 @@
     <!-- #endif -->
 
     <demo-block title="手动触发上传">
-      <wd-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action" @change="handleChange14"></wd-upload>
+      <wd-upload ref="upload14" :auto-upload="false" :file-list="fileList14" :action="action"
+        @change="handleChange14"></wd-upload>
       <wd-button @click="upload14?.submit()">开始上传</wd-button>
     </demo-block>
 
@@ -88,7 +89,7 @@
       <wd-upload v-model:file-list="fileList16" accept="image" image-mode="aspectFill" :action="action">
         <template #preview-cover="{ file, index }">
           <!-- 小程序拿不到文件 -->
-          <view class="preview-cover">{{ file.name || `文件${index}` }}</view>
+          <div class="preview-cover">{{ file.name || `文件${index}` }}</div>
         </template>
       </wd-upload>
     </demo-block>

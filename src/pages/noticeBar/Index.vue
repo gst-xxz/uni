@@ -1,22 +1,14 @@
 <template>
   <page-wraper>
-    <view>
+    <div>
       <demo-block title="基本用法">
         <wd-notice-bar text="这是一条消息提示信息这是一条消息提示信息这是一条消息提示信息" prefix="warn-bold" />
       </demo-block>
 
       <demo-block title="类型修改">
-        <wd-notice-bar
-          type="danger"
-          text="当前网络不可用，请检查你的网络设置。当前网络不可用，请检查你的网络设置。"
-          prefix="wifi-error"
-          custom-class="space"
-        />
-        <wd-notice-bar
-          type="info"
-          text="pc-win沃特已登录，可在“设备管理”中查看详情。pc-win沃特已登录，可在“设备管理”中查看详情。"
-          prefix="check-outline"
-        />
+        <wd-notice-bar type="danger" text="当前网络不可用，请检查你的网络设置。当前网络不可用，请检查你的网络设置。" prefix="wifi-error"
+          custom-class="space" />
+        <wd-notice-bar type="info" text="pc-win沃特已登录，可在“设备管理”中查看详情。pc-win沃特已登录，可在“设备管理”中查看详情。" prefix="check-outline" />
       </demo-block>
 
       <demo-block title="禁止滚动">
@@ -40,20 +32,13 @@
       </demo-block>
 
       <demo-block title="多行展示">
-        <wd-notice-bar
-          text="这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息"
-          wrapable
-          :scrollable="false"
-        />
+        <wd-notice-bar text="这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息" wrapable
+          :scrollable="false" />
       </demo-block>
 
       <demo-block title="自定义颜色">
-        <wd-notice-bar
-          text="这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息"
-          prefix="check-outline"
-          color="#34D19D"
-          background-color="#f0f9eb"
-        ></wd-notice-bar>
+        <wd-notice-bar text="这是一条消息提示信息，这是一条消息提示信息，这是一条消息提示信息" prefix="check-outline" color="#34D19D"
+          background-color="#f0f9eb"></wd-notice-bar>
       </demo-block>
 
       <demo-block title="多文本轮播">
@@ -61,16 +46,19 @@
       </demo-block>
 
       <demo-block title="垂直滚动">
-        <wd-notice-bar @click="handleClick" prefix="warn-bold" direction="vertical" :text="textArray" :delay="3" custom-class="space" />
-        <wd-notice-bar @click="handleClick" prefix="warn-bold" direction="vertical" text="只有一条消息不会滚动" :delay="3" custom-class="space" />
+        <wd-notice-bar @click="handleClick" prefix="warn-bold" direction="vertical" :text="textArray" :delay="3"
+          custom-class="space" />
+        <wd-notice-bar @click="handleClick" prefix="warn-bold" direction="vertical" text="只有一条消息不会滚动" :delay="3"
+          custom-class="space" />
       </demo-block>
 
       <demo-block title="重置播放动画">
-        <wd-notice-bar ref="notice" prefix="warn-bold" direction="vertical" :text="textArray" :delay="3" custom-class="space" />
+        <wd-notice-bar ref="notice" prefix="warn-bold" direction="vertical" :text="textArray" :delay="3"
+          custom-class="space" />
 
         <wd-button @click="handleReset">重置播放动画</wd-button>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

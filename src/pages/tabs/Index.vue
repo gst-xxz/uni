@@ -5,10 +5,10 @@
       <wd-tabs v-model="tab1" @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">
+            <div class="content">
               内容{{ tab1 + 1 }}
-              <view><wd-button @click="tab1 < 3 ? tab1++ : (tab1 = 0)">下一个</wd-button></view>
-            </view>
+              <div><wd-button @click="tab1 < 3 ? tab1++ : (tab1 = 0)">下一个</wd-button></div>
+            </div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -17,7 +17,7 @@
       <wd-tabs v-model="tab" @change="handleChange">
         <block v-for="item in tabs" :key="item">
           <wd-tab :title="`${item}`" :name="item">
-            <view class="content">内容{{ tab }}</view>
+            <div class="content">内容{{ tab }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -25,8 +25,9 @@
 
     <demo-block title="使用徽标" transparent>
       <wd-tabs v-model="tabWithBadge" @change="handleChange">
-        <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`" :badge-props="item.badgeProps">
-          <view class="content">{{ item.title }}徽标</view>
+        <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`"
+          :badge-props="item.badgeProps">
+          <div class="content">{{ item.title }}徽标</div>
         </wd-tab>
       </wd-tabs>
     </demo-block>
@@ -35,7 +36,7 @@
       <wd-tabs v-model="autoLineWidthTab" @change="handleChange" auto-line-width>
         <block v-for="item in autoLineWidthTabs" :key="item">
           <wd-tab :title="`${item}`" :name="item">
-            <view class="content">内容{{ autoLineWidthTab }}</view>
+            <div class="content">内容{{ autoLineWidthTab }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -45,7 +46,7 @@
       <wd-tabs v-model="tab2" sticky @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">内容{{ tab2 + 1 }}</view>
+            <div class="content">内容{{ tab2 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -55,7 +56,7 @@
       <wd-tabs v-model="tab3" @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`" :disabled="item === 1">
-            <view class="content">内容{{ tab3 + 1 }}</view>
+            <div class="content">内容{{ tab3 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -65,7 +66,7 @@
       <wd-tabs v-model="tab4" @click="handleClick" @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">内容{{ tab4 + 1 }}</view>
+            <div class="content">内容{{ tab4 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -75,7 +76,7 @@
       <wd-tabs v-model="tab8" animated @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">内容{{ tab8 + 1 }}</view>
+            <div class="content">内容{{ tab8 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -85,7 +86,7 @@
       <wd-tabs v-model="tab5" swipeable animated @change="handleChange">
         <block v-for="item in 4" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">内容{{ tab5 + 1 }}</view>
+            <div class="content">内容{{ tab5 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -95,7 +96,7 @@
       <wd-tabs v-model="tab6" @change="handleChange">
         <block v-for="item in 7" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="content">内容{{ tab6 + 1 }}</view>
+            <div class="content">内容{{ tab6 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -105,7 +106,7 @@
       <wd-tabs v-model="tab9" slidable="always" @change="handleChange">
         <block v-for="item in 5" :key="item">
           <wd-tab :title="`超大标签${item}`">
-            <view class="content">内容{{ tab9 + 1 }}</view>
+            <div class="content">内容{{ tab9 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
@@ -115,23 +116,24 @@
       <wd-tabs v-model="tab7" @change="handleChange">
         <block v-for="item in 11" :key="item">
           <wd-tab :title="`标签${item}`">
-            <view class="large">内容{{ tab7 + 1 }}</view>
+            <div class="large">内容{{ tab7 + 1 }}</div>
           </wd-tab>
         </block>
       </wd-tabs>
     </demo-block>
 
     <demo-block title="在弹出框中使用" transparent>
-      <view class="section">
+      <div class="section">
         <wd-button @click="handleOpenClick">打开弹窗</wd-button>
-      </view>
+      </div>
     </demo-block>
 
-    <wd-popup v-model="showPopup" position="bottom" safe-area-inset-bottom @after-enter="handlePopupShow" closable custom-style="padding: 0 24rpx;">
-      <view class="title">在弹出框中使用</view>
+    <wd-popup v-model="showPopup" position="bottom" safe-area-inset-bottom @after-enter="handlePopupShow" closable
+      custom-style="padding: 0 24rpx;">
+      <div class="title">在弹出框中使用</div>
       <wd-tabs v-model="tab10" ref="tabsRef">
         <wd-tab v-for="item in tabs" :key="item" :title="`${item}`" :name="item">
-          <view class="content">内容{{ tab10 }}</view>
+          <div class="content">内容{{ tab10 }}</div>
         </wd-tab>
       </wd-tabs>
     </wd-popup>
@@ -219,10 +221,12 @@ function handlePopupShow() {
   flex-direction: column;
   justify-content: space-around;
 }
+
 .large {
   line-height: 320px;
   text-align: center;
 }
+
 .title {
   display: flex;
   font-size: 32rpx;

@@ -1,7 +1,8 @@
 <template>
-  <view v-if="!lazyRender || inited" :class="rootClass" :style="style" @transitionend="onTransitionEnd" @click="handleClick">
+  <div v-if="!lazyRender || inited" :class="rootClass" :style="style" @transitionend="onTransitionEnd"
+    @click="handleClick">
     <slot />
-  </view>
+  </div>
 </template>
 
 <script lang="ts">
@@ -73,9 +74,8 @@ const enterLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 const leaveLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 
 const style = computed(() => {
-  return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${
-    display.value || !props.destroy ? '' : 'display: none;'
-  }${props.customStyle}`
+  return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${display.value || !props.destroy ? '' : 'display: none;'
+    }${props.customStyle}`
 })
 
 const rootClass = computed(() => {

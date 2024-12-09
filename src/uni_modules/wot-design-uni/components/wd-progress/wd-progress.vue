@@ -1,16 +1,13 @@
 <template>
-  <view :class="`wd-progress ${customClass}`" :style="customStyle">
-    <view class="wd-progress__outer">
-      <view :class="`wd-progress__inner ${innerClass}`" :style="rootStyle"></view>
-    </view>
-    <view v-if="!hideText" class="wd-progress__label">{{ percentage }}%</view>
-    <wd-icon
-      v-else-if="status"
-      :custom-class="`wd-progress__label wd-progress__icon ${innerClass}`"
-      :name="iconName"
-      :color="typeof color === 'string' ? color : ''"
-    ></wd-icon>
-  </view>
+  <div :class="`wd-progress ${customClass}`" :style="customStyle">
+    <div class="wd-progress__outer">
+      <div :class="`wd-progress__inner ${innerClass}`" :style="rootStyle">
+      </div>
+    </div>
+    <div v-if="!hideText" class="wd-progress__label">{{ percentage }}%</div>
+    <wd-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${innerClass}`" :name="iconName"
+      :color="typeof color === 'string' ? color : ''"></wd-icon>
+  </div>
 </template>
 
 <script lang="ts">
@@ -171,9 +168,9 @@ function createPartList(colorArray: string[] | ProgressColor[]) {
   return isProgressColorArray(colorArray)
     ? colorArray.sort((a, b) => a.percentage - b.percentage)
     : colorArray.map((item, index) => ({
-        color: item,
-        percentage: (index + 1) * partNum
-      }))
+      color: item,
+      percentage: (index + 1) * partNum
+    }))
 }
 
 function update(targetPercent: number, color: string) {

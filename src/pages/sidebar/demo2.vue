@@ -1,11 +1,11 @@
 <template>
   <page-wraper>
-    <view class="wraper">
+    <div class="wraper">
       <wd-sidebar v-model="active" @change="handleChange">
         <wd-sidebar-item v-for="(item, index) in categories" :key="index" :value="index" :label="item.label"
           :icon="item.icon" :disabled="item.disabled" />
       </wd-sidebar>
-      <view class="content" :style="`transform: translateY(-${active * 100}%)`">
+      <div class="content" :style="`transform: translateY(-${active * 100}%)`">
         <scroll-view v-for="(item, index) in categories" :key="index" class="category" scroll-y scroll-with-animation
           :show-scrollbar="false" :scroll-top="scrollTop" :throttle="false">
           <wd-cell-group :title="item.title" border>
@@ -14,8 +14,8 @@
             </wd-cell>
           </wd-cell-group>
         </scroll-view>
-      </view>
-    </view>
+      </div>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

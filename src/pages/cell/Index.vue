@@ -13,7 +13,8 @@
         <wd-cell title="标题文字" value="内容" icon="setting" />
         <wd-cell title="标题文字" value="内容">
           <template #icon>
-            <view class="cell-icon"></view>
+            <div class="cell-icon">
+            </div>
           </template>
         </wd-cell>
       </wd-cell-group>
@@ -85,19 +86,19 @@
           <wd-button custom-class="custom-value" size="small" plain>按钮</wd-button>
         </wd-cell>
         <wd-cell title="标题文字" center>
-          <view class="custom-value" style="height: 32px">
+          <div class="custom-value" style="height: 32px">
             <wd-switch v-model="switchValue" @change="handleSwitchChange" />
-          </view>
+          </div>
         </wd-cell>
         <wd-cell title="标题文字" is-link to="/pages/index/index">
-          <view class="custom-text">订购</view>
+          <div class="custom-text">订购</div>
         </wd-cell>
         <wd-cell>
           <template #title>
-            <view>
-              <view style="display: inline-block">标题文字</view>
-              <view class="end-time">25天后到期</view>
-            </view>
+            <div>
+              <div style="display: inline-block">标题文字</div>
+              <div class="end-time">25天后到期</div>
+            </div>
           </template>
         </wd-cell>
       </wd-cell-group>
@@ -136,6 +137,7 @@ function showToast() {
   background: url('https://img10.360buyimg.com/jmadvertisement/jfs/t1/71075/7/3762/1820/5d1f26d1E0d600b9e/a264c901943080ac.png') no-repeat;
   background-size: cover;
 }
+
 .custom-value {
   position: absolute;
   top: 50%;
@@ -143,9 +145,11 @@ function showToast() {
   transform: translate(0, -50%);
   white-space: nowrap;
 }
+
 .custom-text {
   color: #f0883a;
 }
+
 .end-time {
   display: inline-block;
   margin-left: 8px;

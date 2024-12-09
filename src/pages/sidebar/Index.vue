@@ -1,7 +1,7 @@
 <template>
   <page-wraper>
     <demo-block title="基础用法" transparent>
-      <view style="display: flex; justify-content: space-around">
+      <div style="display: flex; justify-content: space-around">
         <wd-sidebar v-model="active1">
           <wd-sidebar-item :value="0" label="标签名称" />
           <wd-sidebar-item :value="1" label="标签名称" />
@@ -18,25 +18,25 @@
           <wd-sidebar-item :value="1" label="标签名称" disabled />
           <wd-sidebar-item :value="2" label="标签名称" />
         </wd-sidebar>
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="锚点用法示例" transparent>
-      <view class="demo-button">
+      <div class="demo-button">
         <wd-button @click="handleClick1" :round="false" block size="large">锚点用法</wd-button>
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="切换页面用法示例" transparent>
-      <view class="demo-button">
+      <div class="demo-button">
         <wd-button @click="handleClick2" :round="false" block size="large">切换页面</wd-button>
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="自定义图标示例" transparent>
-      <view class="demo-button">
+      <div class="demo-button">
         <wd-button @click="handleClick3" :round="false" block size="large">自定义图标</wd-button>
-      </view>
+      </div>
     </demo-block>
   </page-wraper>
 </template>

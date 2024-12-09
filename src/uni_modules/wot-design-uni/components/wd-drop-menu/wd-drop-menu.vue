@@ -1,26 +1,22 @@
 <template>
-  <view :style="customStyle" :class="`wd-drop-menu ${customClass}`" @click.stop="noop" :id="dropMenuId">
+  <div :style="customStyle" :class="`wd-drop-menu ${customClass}`" @click.stop="noop" :id="dropMenuId">
     <!-- #ifdef MP-DINGTALK -->
-    <view :id="dropMenuId">
+    <div :id="dropMenuId">
       <!-- #endif -->
-      <view class="wd-drop-menu__list">
-        <view
-          v-for="(child, index) in children"
-          :key="index"
-          @click="toggle(child)"
-          :class="`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`"
-        >
-          <view class="wd-drop-menu__item-title">
-            <view class="wd-drop-menu__item-title-text">{{ getDisplayTitle(child) }}</view>
+      <div class="wd-drop-menu__list">
+        <div v-for="(child, index) in children" :key="index" @click="toggle(child)"
+          :class="`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`">
+          <div class="wd-drop-menu__item-title">
+            <div class="wd-drop-menu__item-title-text">{{ getDisplayTitle(child) }}</div>
             <wd-icon :name="child.icon" :size="child.iconSize" custom-class="wd-drop-menu__arrow" />
-          </view>
-        </view>
-      </view>
+          </div>
+        </div>
+      </div>
       <slot />
       <!-- #ifdef MP-DINGTALK -->
-    </view>
+    </div>
     <!-- #endif -->
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

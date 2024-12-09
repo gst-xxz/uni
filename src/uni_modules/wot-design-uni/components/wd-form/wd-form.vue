@@ -1,8 +1,8 @@
 <template>
-  <view :class="`wd-form ${customClass}`" :style="customStyle">
+  <div :class="`wd-form ${customClass}`" :style="customStyle">
     <slot></slot>
     <wd-toast v-if="props.errorType === 'toast'" selector="wd-form-toast" />
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

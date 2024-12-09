@@ -1,5 +1,5 @@
 <template>
-  <view class="circle">
+  <div class="circle">
     <page-wraper>
       <wd-message-box></wd-message-box>
 
@@ -16,7 +16,7 @@
 
       <demo-block title="使用slot">
         <wd-circle custom-class="custom-circle" v-model="current" :stroke-width="6">
-          <view style="color: red">{{ current }}%</view>
+          <div style="color: red">{{ current }}%</div>
         </wd-circle>
       </demo-block>
 
@@ -28,7 +28,7 @@
         <wd-button @click="alert">alert</wd-button>
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useMessage } from '@/uni_modules/wot-design-uni'

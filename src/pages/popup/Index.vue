@@ -1,6 +1,6 @@
 <template>
   <page-meta :page-style="`overflow:${show10 ? 'hidden' : 'visible'};`"></page-meta>
-  <view>
+  <div>
     <page-wraper>
       <demo-block title="基础用法" transparent>
         <wd-cell-group>
@@ -52,28 +52,19 @@
       <wd-popup v-model="show3" position="right" custom-style="width: 200px;" @close="handleClose3"></wd-popup>
       <wd-popup v-model="show4" position="bottom" custom-style="height: 200px;" @close="handleClose4"></wd-popup>
       <wd-popup v-model="show5" position="left" custom-style="width: 200px;" @close="handleClose5"></wd-popup>
-      <wd-popup v-model="show6" position="bottom" closable custom-style="height: 200px;" @close="handleClose6"></wd-popup>
-      <wd-popup
-        v-model="show7"
-        position="bottom"
-        :close-on-click-modal="false"
-        closable
-        custom-style="height: 200px;"
-        @close="handleClose7"
-      ></wd-popup>
+      <wd-popup v-model="show6" position="bottom" closable custom-style="height: 200px;"
+        @close="handleClose6"></wd-popup>
+      <wd-popup v-model="show7" position="bottom" :close-on-click-modal="false" closable custom-style="height: 200px;"
+        @close="handleClose7"></wd-popup>
 
-      <wd-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;" @close="handleClose8"></wd-popup>
-      <wd-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;" @close="handleClose9"></wd-popup>
-      <wd-popup
-        v-model="show10"
-        lock-scroll
-        position="bottom"
-        :safe-area-inset-bottom="true"
-        custom-style="height: 200px;"
-        @close="handleClose10"
-      ></wd-popup>
+      <wd-popup v-model="show8" position="bottom" :modal="false" closable custom-style="height: 200px;"
+        @close="handleClose8"></wd-popup>
+      <wd-popup v-model="show9" position="bottom" :safe-area-inset-bottom="true" custom-style="height: 200px;"
+        @close="handleClose9"></wd-popup>
+      <wd-popup v-model="show10" lock-scroll position="bottom" :safe-area-inset-bottom="true"
+        custom-style="height: 200px;" @close="handleClose10"></wd-popup>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

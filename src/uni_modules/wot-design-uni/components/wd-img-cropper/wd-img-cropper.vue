@@ -1,68 +1,66 @@
 <template>
   <!-- 绘制的图片canvas -->
-  <view v-if="modelValue" :class="`wd-img-cropper ${customClass}`" :style="customStyle" @touchmove="preventTouchMove">
+  <div v-if="modelValue" :class="`wd-img-cropper ${customClass}`" :style="customStyle" @touchmove="preventTouchMove">
     <!-- 展示在用户面前的裁剪框 -->
-    <view class="wd-img-cropper__wrapper">
+    <div class="wd-img-cropper__wrapper">
       <!-- 画出裁剪框 -->
-      <view class="wd-img-cropper__cut">
+      <div class="wd-img-cropper__cut">
         <!-- 上方阴影块 -->
-        <view :class="`wd-img-cropper__cut--top ${IS_TOUCH_END ? '' : 'is-hightlight'}`" :style="`height: ${cutTop}px;`"></view>
-        <view class="wd-img-cropper__cut--middle">
+        <div :class="`wd-img-cropper__cut--top ${IS_TOUCH_END ? '' : 'is-hightlight'}`" :style="`height: ${cutTop}px;`">
+        </div>
+        <div class="wd-img-cropper__cut--middle">
           <!-- 左侧阴影块 -->
-          <view
-            :class="`wd-img-cropper__cut--left ${IS_TOUCH_END ? '' : 'is-hightlight'}`"
-            :style="`width: ${cutLeft}px; height: ${cutWidth}px;`"
-          ></view>
+          <div :class="`wd-img-cropper__cut--left ${IS_TOUCH_END ? '' : 'is-hightlight'}`"
+            :style="`width: ${cutLeft}px; height: ${cutWidth}px;`">
+          </div>
           <!-- 裁剪框 -->
-          <view class="wd-img-cropper__cut--body" :style="`width: ${cutWidth}px; height: ${cutHeight}px;`">
+          <div class="wd-img-cropper__cut--body" :style="`width: ${cutWidth}px; height: ${cutHeight}px;`">
             <!-- 内部网格线 -->
-            <view class="is-gridlines-x"></view>
-            <view class="is-gridlines-y"></view>
+            <div class="is-gridlines-x">
+            </div>
+            <div class="is-gridlines-y">
+            </div>
             <!-- 裁剪窗体四个对角 -->
-            <view class="is-left-top"></view>
-            <view class="is-left-bottom"></view>
-            <view class="is-right-top"></view>
-            <view class="is-right-bottom"></view>
-          </view>
+            <div class="is-left-top">
+            </div>
+            <div class="is-left-bottom">
+            </div>
+            <div class="is-right-top">
+            </div>
+            <div class="is-right-bottom">
+            </div>
+          </div>
           <!-- 右侧阴影块 -->
-          <view :class="`wd-img-cropper__cut--right ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></view>
-        </view>
+          <div :class="`wd-img-cropper__cut--right ${IS_TOUCH_END ? '' : 'is-hightlight'}`">
+          </div>
+        </div>
 
         <!-- 底部阴影块 -->
-        <view :class="`wd-img-cropper__cut--bottom ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></view>
-      </view>
+        <div :class="`wd-img-cropper__cut--bottom ${IS_TOUCH_END ? '' : 'is-hightlight'}`">
+        </div>
+      </div>
       <!-- 展示的传过来的图片: 控制图片的旋转角度(rotate)、缩放程度(imgScale)、移动位置(translate) -->
-      <image
-        :prop="isAnimation"
-        :change:prop="animation ? animation.setAnimation : ''"
-        class="wd-img-cropper__img"
-        :src="imgSrc"
-        :style="imageStyle"
-        :lazy-load="false"
-        @touchstart="handleImgTouchStart"
-        @touchmove="handleImgTouchMove"
-        @touchend="handleImgTouchEnd"
-        @error="handleImgLoadError"
-        @load="handleImgLoaded"
-      />
-    </view>
+      <image :prop="isAnimation" :change:prop="animation ? animation.setAnimation : ''" class="wd-img-cropper__img"
+        :src="imgSrc" :style="imageStyle" :lazy-load="false" @touchstart="handleImgTouchStart"
+        @touchmove="handleImgTouchMove" @touchend="handleImgTouchEnd" @error="handleImgLoadError"
+        @load="handleImgLoaded" />
+    </div>
     <!-- 绘制的图片canvas -->
-    <canvas
-      canvas-id="wd-img-cropper-canvas"
-      id="wd-img-cropper-canvas"
-      class="wd-img-cropper__canvas"
+    <canvas canvas-id="wd-img-cropper-canvas" id="wd-img-cropper-canvas" class="wd-img-cropper__canvas"
       :disable-scroll="true"
-      :style="`width: ${Number(canvasWidth) * canvasScale}px; height: ${Number(canvasHeight) * canvasScale}px;`"
-    />
+      :style="`width: ${Number(canvasWidth) * canvasScale}px; height: ${Number(canvasHeight) * canvasScale}px;`" />
     <!-- 下方按钮 -->
-    <view class="wd-img-cropper__footer">
-      <wd-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="rotate" @click="handleRotate"></wd-icon>
-      <view class="wd-img-cropper__footer--button">
-        <view class="is-cancel" @click="handleCancel">{{ cancelButtonText || translate('cancel') }}</view>
-        <wd-button size="small" :custom-style="buttonStyle" @click="handleConfirm">{{ confirmButtonText || translate('confirm') }}</wd-button>
-      </view>
-    </view>
-  </view>
+    <div class="wd-img-cropper__footer">
+      <wd-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="rotate"
+        @click="handleRotate"></wd-icon>
+      <div class="wd-img-cropper__footer--button">
+        <div class="is-cancel" @click="handleCancel">{{ cancelButtonText ||
+          translate('cancel') }}</div>
+        <wd-button size="small" :custom-style="buttonStyle" @click="handleConfirm">{{
+          confirmButtonText || translate('confirm') }}</wd-button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -245,9 +243,8 @@ const imageStyle = computed(() => {
   const style: Record<string, string | number> = {
     width: picWidth.value ? addUnit(picWidth.value) : 'auto',
     height: picHeight.value ? addUnit(picHeight.value) : 'auto',
-    transform: `translate(${addUnit(imgLeft.value - picWidth.value / 2)}, ${addUnit(imgTop.value - picHeight.value / 2)}) scale(${
-      imgScale.value
-    }) rotate(${imgAngle.value}deg)`,
+    transform: `translate(${addUnit(imgLeft.value - picWidth.value / 2)}, ${addUnit(imgTop.value - picHeight.value / 2)}) scale(${imgScale.value
+      }) rotate(${imgAngle.value}deg)`,
     'transition-duration': (isAnimation.value ? 0.4 : 0) + 's'
   }
   return objToStyle(style)
@@ -602,7 +599,7 @@ function draw() {
   canvasWidth.value = cutWidth.value
   draw()
 }
-function preventTouchMove() {}
+function preventTouchMove() { }
 
 defineExpose<ImgCropperExpose>({
   revertIsAnimation,

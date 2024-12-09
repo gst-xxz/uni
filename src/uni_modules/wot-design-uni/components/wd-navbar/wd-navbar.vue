@@ -1,34 +1,38 @@
 <template>
-  <view :style="{ height: addUnit(height) }">
-    <view :class="`wd-navbar ${customClass} ${fixed ? 'is-fixed' : ''} ${bordered ? 'is-border' : ''}`" :style="rootStyle">
-      <view class="wd-navbar__content">
-        <view class="wd-navbar__capsule" v-if="$slots.capsule">
+  <div :style="{ height: addUnit(height) }">
+    <div :class="`wd-navbar ${customClass} ${fixed ? 'is-fixed' : ''} ${bordered ? 'is-border' : ''}`"
+      :style="rootStyle">
+      <div class="wd-navbar__content">
+        <div class="wd-navbar__capsule" v-if="$slots.capsule">
           <slot name="capsule" />
-        </view>
+        </div>
 
-        <view :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft" v-else-if="!$slots.left">
+        <div :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft"
+          v-else-if="!$slots.left">
           <wd-icon v-if="leftArrow" name="arrow-left" custom-class="wd-navbar__arrow" />
-          <view v-if="leftText" class="wd-navbar__text">{{ leftText }}</view>
-        </view>
+          <div v-if="leftText" class="wd-navbar__text">{{ leftText }}</div>
+        </div>
 
-        <view v-else :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft">
+        <div v-else :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft">
           <slot name="left" />
-        </view>
+        </div>
 
-        <view class="wd-navbar__title">
+        <div class="wd-navbar__title">
           <slot name="title" />
           <block v-if="!$slots.title && title">{{ title }}</block>
-        </view>
-        <view :class="`wd-navbar__right ${rightDisabled ? 'is-disabled' : ''}`" @click="handleClickRight" v-if="$slots.right || rightText">
+        </div>
+        <div :class="`wd-navbar__right ${rightDisabled ? 'is-disabled' : ''}`" @click="handleClickRight"
+          v-if="$slots.right || rightText">
           <slot name="right" />
 
-          <view v-if="!$slots.right && rightText" class="wd-navbar__text" hover-class="wd-navbar__text--hover" :hover-stay-time="70">
+          <div v-if="!$slots.right && rightText" class="wd-navbar__text" hover-class="wd-navbar__text--hover"
+            :hover-stay-time="70">
             {{ rightText }}
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

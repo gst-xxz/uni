@@ -1,18 +1,18 @@
 <template>
-  <view :class="['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass]" :style="customStyle">
-    <view :class="['wd-card__title-content', customTitleClass]">
-      <view class="wd-card__title">
+  <div :class="['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass]" :style="customStyle">
+    <div :class="['wd-card__title-content', customTitleClass]">
+      <div class="wd-card__title">
         <text v-if="title">{{ title }}</text>
         <slot v-else name="title"></slot>
-      </view>
-    </view>
-    <view :class="`wd-card__content ${customContentClass}`">
+      </div>
+    </div>
+    <div :class="`wd-card__content ${customContentClass}`">
       <slot></slot>
-    </view>
-    <view :class="`wd-card__footer ${customFooterClass}`">
+    </div>
+    <div :class="`wd-card__footer ${customFooterClass}`">
       <slot name="footer"></slot>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

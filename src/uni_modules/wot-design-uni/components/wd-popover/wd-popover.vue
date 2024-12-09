@@ -1,52 +1,48 @@
 <template>
-  <view :class="`wd-popover ${customClass}`" :style="customStyle" id="popover" @click.stop="popover.noop">
+  <div :class="`wd-popover ${customClass}`" :style="customStyle" id="popover" @click.stop="popover.noop">
     <!-- 使用插槽时无法获取正确宽高 -->
-    <view class="wd-popover__pos wd-popover__hidden" id="pos">
-      <view :class="`wd-popover__container ${customPop}`">
-        <view v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
+    <div class="wd-popover__pos wd-popover__hidden" id="pos">
+      <div :class="`wd-popover__container ${customPop}`">
+        <div v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
           {{ content }}
-        </view>
-        <view v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'" class="wd-popover__menu">
-          <view v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)">
+        </div>
+        <div v-if="!useContentSlot && mode === 'menu' && typeof content === 'object'" class="wd-popover__menu">
+          <div v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)">
             <wd-icon v-if="item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
             <text>{{ item.content }}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <wd-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover" name="fade" :duration="200">
-      <view :class="`wd-popover__container ${customPop}`">
-        <view
-          v-if="props.visibleArrow"
-          :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
-          :style="popover.arrowStyle.value"
-        ></view>
+          </div>
+        </div>
+      </div>
+    </div>
+    <wd-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover" name="fade"
+      :duration="200">
+      <div :class="`wd-popover__container ${customPop}`">
+        <div v-if="props.visibleArrow" :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
+          :style="popover.arrowStyle.value">
+        </div>
         <!-- 普通模式 -->
-        <view v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
+        <div v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
           {{ content }}
-        </view>
+        </div>
         <!-- 列表模式 -->
-        <view v-if="!useContentSlot && mode === 'menu'" class="wd-popover__menu">
-          <view
-            v-for="(item, index) in content"
-            :key="index"
-            class="wd-popover__menu-inner"
-            @click="menuClick(index)"
-            :style="index === 0 ? 'border-top: none' : ''"
-          >
-            <wd-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
-            <view style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content : '' }}</view>
-          </view>
-        </view>
+        <div v-if="!useContentSlot && mode === 'menu'" class="wd-popover__menu">
+          <div v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)"
+            :style="index === 0 ? 'border-top: none' : ''">
+            <wd-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass"
+              custom-class="wd-popover__icon" />
+            <div style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content
+              : '' }}</div>
+          </div>
+        </div>
         <!-- 用户自定义样式 -->
         <slot name="content" v-else />
-      </view>
+      </div>
       <wd-icon v-if="showClose" name="close" custom-class="wd-popover__close-icon" @click="toggle"></wd-icon>
     </wd-transition>
-    <view @click="toggle" class="wd-popover__target" id="target">
+    <div @click="toggle" class="wd-popover__target" id="target">
       <slot />
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

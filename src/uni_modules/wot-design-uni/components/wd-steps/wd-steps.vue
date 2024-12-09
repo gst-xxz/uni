@@ -1,7 +1,7 @@
 <template>
-  <view :class="`wd-steps ${customClass} ${vertical ? 'is-vertical' : ''}`">
+  <div :class="`wd-steps ${customClass} ${vertical ? 'is-vertical' : ''}`">
     <slot />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

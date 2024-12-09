@@ -17,14 +17,14 @@
     </demo-block>
 
     <demo-block title="禁用状态">
-      <view style="margin-bottom: 10px">
+      <div style="margin-bottom: 10px">
         <wd-checkbox-group v-model="value1" disabled>
           <wd-checkbox :modelValue="1">沃特</wd-checkbox>
           <wd-checkbox :modelValue="2" :disabled="false">商家后台</wd-checkbox>
           <wd-checkbox :modelValue="3" shape="square">沃特</wd-checkbox>
           <wd-checkbox :modelValue="4" shape="square">商家后台</wd-checkbox>
         </wd-checkbox-group>
-      </view>
+      </div>
       <wd-checkbox-group v-model="value2" disabled>
         <wd-checkbox :modelValue="1" shape="button">沃特</wd-checkbox>
         <wd-checkbox :modelValue="2" shape="button">商家后台</wd-checkbox>
@@ -92,19 +92,19 @@
       <wd-cell-group border>
         <wd-checkbox-group v-model="value10" size="large">
           <wd-cell title="点赞" center clickable @click="handleCheck1">
-            <view @click.stop="noop">
+            <div @click.stop="noop">
               <wd-checkbox model-value="1" ref="checkBox1" custom-style="margin:0;"></wd-checkbox>
-            </view>
+            </div>
           </wd-cell>
           <wd-cell title="投币" center clickable @click="handleCheck2">
-            <view @click.stop="noop">
+            <div @click.stop="noop">
               <wd-checkbox model-value="2" ref="checkBox2" custom-style="margin:0;"></wd-checkbox>
-            </view>
+            </div>
           </wd-cell>
           <wd-cell title="一键三连" center clickable @click="handleCheck3">
-            <view @click.stop="noop">
+            <div @click.stop="noop">
               <wd-checkbox model-value="3" ref="checkBox3" custom-style="margin:0;"></wd-checkbox>
-            </view>
+            </div>
           </wd-cell>
         </wd-checkbox-group>
       </wd-cell-group>
@@ -130,7 +130,7 @@ function handleCheck3() {
   checkBox3.value && checkBox3.value.toggle()
 }
 
-function noop() {}
+function noop() { }
 
 const check1 = ref<boolean>(true)
 const check2 = ref<boolean>(true)

@@ -29,7 +29,7 @@
     </demo-block>
 
     <demo-block title="垂直分割线" transparent>
-      <view class="content">
+      <div class="content">
         文本
         <wd-divider vertical />
         文本
@@ -39,7 +39,7 @@
         文本
         <wd-divider vertical color="#1989fa" />
         文本
-      </view>
+      </div>
     </demo-block>
   </page-wraper>
 </template>

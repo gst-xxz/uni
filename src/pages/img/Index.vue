@@ -9,33 +9,33 @@
     <demo-block title="插槽用法">
       <wd-img :width="100" :height="100" src="https://www.123.com/a.jpg">
         <template #error>
-          <view class="error-wrap">加载失败</view>
+          <div class="error-wrap">加载失败</div>
         </template>
         <template #loading>
-          <view class="loading-wrap">
+          <div class="loading-wrap">
             <wd-loading />
-          </view>
+          </div>
         </template>
       </wd-img>
     </demo-block>
 
     <demo-block title="填充">
-      <view class="col" v-for="(mode, index) in modes" :key="index">
+      <div class="col" v-for="(mode, index) in modes" :key="index">
         <wd-img width="100%" height="27vw" :src="joy" :mode="mode" />
-        <view class="center">{{ mode }}</view>
-      </view>
+        <div class="center">{{ mode }}</div>
+      </div>
     </demo-block>
     <demo-block title="圆形">
-      <view class="col" v-for="(mode, index) in modes" :key="index">
+      <div class="col" v-for="(mode, index) in modes" :key="index">
         <wd-img round width="100%" height="27vw" :src="joy" :mode="mode" />
-        <view class="center">{{ mode }}</view>
-      </view>
+        <div class="center">{{ mode }}</div>
+      </div>
     </demo-block>
     <demo-block title="圆角">
-      <view class="col" v-for="(mode, index) in modes" :key="index">
+      <div class="col" v-for="(mode, index) in modes" :key="index">
         <wd-img width="100%" height="27vw" :radius="5" :src="joy" :mode="mode" />
-        <view class="center">{{ mode }}</view>
-      </view>
+        <div class="center">{{ mode }}</div>
+      </div>
     </demo-block>
 
     <demo-block title="可预览">

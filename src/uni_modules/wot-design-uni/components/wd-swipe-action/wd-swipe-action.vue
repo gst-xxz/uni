@@ -1,28 +1,21 @@
 <template>
   <!--注意阻止横向滑动的穿透：横向移动时阻止冒泡-->
-  <view
-    :class="`wd-swipe-action ${customClass}`"
-    :style="customStyle"
-    @click.stop="onClick()"
-    @touchstart="startDrag"
-    @touchmove="onDrag"
-    @touchend="endDrag"
-    @touchcancel="endDrag"
-  >
+  <div :class="`wd-swipe-action ${customClass}`" :style="customStyle" @click.stop="onClick()" @touchstart="startDrag"
+    @touchmove="onDrag" @touchend="endDrag" @touchcancel="endDrag">
     <!--容器-->
-    <view class="wd-swipe-action__wrapper" :style="wrapperStyle">
+    <div class="wd-swipe-action__wrapper" :style="wrapperStyle">
       <!--左侧操作-->
-      <view class="wd-swipe-action__left" @click="onClick('left')">
+      <div class="wd-swipe-action__left" @click="onClick('left')">
         <slot name="left" />
-      </view>
+      </div>
       <!--内容-->
       <slot />
       <!--右侧操作-->
-      <view class="wd-swipe-action__right" @click="onClick('right')">
+      <div class="wd-swipe-action__right" @click="onClick('right')">
         <slot name="right" />
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

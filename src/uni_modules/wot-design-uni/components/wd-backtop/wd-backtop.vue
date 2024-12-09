@@ -1,13 +1,10 @@
 <template>
   <wd-transition :show="show" name="fade">
-    <view
-      :class="`wd-backtop ${customClass} is-${shape}`"
-      :style="`z-index: ${zIndex}; bottom: ${bottom}px; right: ${right}px; ${customStyle}`"
-      @click="handleBacktop"
-    >
+    <div :class="`wd-backtop ${customClass} is-${shape}`"
+      :style="`z-index: ${zIndex}; bottom: ${bottom}px; right: ${right}px; ${customStyle}`" @click="handleBacktop">
       <slot v-if="$slots.default"></slot>
       <wd-icon v-else custom-class="wd-backtop__backicon" name="backtop" :custom-style="iconStyle" />
-    </view>
+    </div>
   </wd-transition>
 </template>
 

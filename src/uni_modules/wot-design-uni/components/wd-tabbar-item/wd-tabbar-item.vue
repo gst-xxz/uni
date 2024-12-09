@@ -1,21 +1,19 @@
 <template>
-  <view :class="`wd-tabbar-item ${customClass}`" :style="customStyle" @click="handleClick">
+  <div :class="`wd-tabbar-item ${customClass}`" :style="customStyle" @click="handleClick">
     <wd-badge v-bind="customBadgeProps">
-      <view class="wd-tabbar-item__body">
+      <div class="wd-tabbar-item__body">
         <slot name="icon" :active="active"></slot>
         <template v-if="!$slots.icon && icon">
-          <wd-icon
-            :name="icon"
-            :custom-style="textStyle"
-            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"
-          ></wd-icon>
+          <wd-icon :name="icon" :custom-style="textStyle"
+            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"></wd-icon>
         </template>
-        <text v-if="title" :style="textStyle" :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
+        <text v-if="title" :style="textStyle"
+          :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
           {{ title }}
         </text>
-      </view>
+      </div>
     </wd-badge>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

@@ -2,32 +2,16 @@
   <page-wraper>
     <wd-form ref="form" :model="model" :reset-on-change="false">
       <wd-cell-group border>
-        <wd-input
-          label="歪比巴卜"
-          label-width="100px"
-          prop="name"
-          clearable
-          v-model="model.name"
-          placeholder="请输入歪比巴卜"
-          @blur="handleBlur('name')"
-          :rules="[{ required: true, message: '请填写歪比巴卜' }]"
-        />
-        <wd-input
-          label="玛卡巴卡单号"
-          prop="phoneNumber"
-          label-width="100px"
-          clearable
-          @blur="handleBlur('phoneNumber')"
-          v-model="model.phoneNumber"
-          placeholder="玛卡巴卡单号"
-          :rules="[{ required: true, message: '请填写玛卡巴卡单号' }]"
-        />
+        <wd-input label="歪比巴卜" label-width="100px" prop="name" clearable v-model="model.name" placeholder="请输入歪比巴卜"
+          @blur="handleBlur('name')" :rules="[{ required: true, message: '请填写歪比巴卜' }]" />
+        <wd-input label="玛卡巴卡单号" prop="phoneNumber" label-width="100px" clearable @blur="handleBlur('phoneNumber')"
+          v-model="model.phoneNumber" placeholder="玛卡巴卡单号" :rules="[{ required: true, message: '请填写玛卡巴卡单号' }]" />
       </wd-cell-group>
     </wd-form>
 
-    <view class="footer">
+    <div class="footer">
       <wd-button type="primary" size="large" block @click="handleSubmit">提交</wd-button>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

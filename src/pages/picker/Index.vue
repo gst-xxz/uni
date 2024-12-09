@@ -14,7 +14,8 @@
         <wd-picker label="before-confirm" :columns="columns0" v-model="value7" :before-confirm="beforeConfirm" />
         <wd-picker label="错误" v-model="value10" error :columns="columns0" />
         <wd-picker label="必填" v-model="value11" :columns="columns0" required />
-        <wd-picker label="可清空" :clearable="true" v-model="value15" :columns="columns5" :column-change="onChangeDistrict" />
+        <wd-picker label="可清空" :clearable="true" v-model="value15" :columns="columns5"
+          :column-change="onChangeDistrict" />
       </wd-cell-group>
     </demo-block>
     <demo-block title="label 不传" transparent>
@@ -27,15 +28,15 @@
       <wd-picker label="单列选项" v-model="value14" align-right :columns="columns0" />
     </demo-block>
     <demo-block title="默认插槽" transparent>
-      <view class="default-slot">
-        <view class="default-slot-txt">
+      <div class="default-slot">
+        <div class="default-slot-txt">
           选中值：
           <text style="color: #34d19d">{{ value8 }}</text>
-        </view>
+        </div>
         <wd-picker :columns="columns0" v-model="value8" use-default-slot @confirm="handleConfirm">
           <wd-button>插槽唤起</wd-button>
         </wd-picker>
-      </view>
+      </div>
     </demo-block>
   </page-wraper>
 </template>
@@ -169,10 +170,12 @@ function handleConfirm({ value }: any) {
   .default-slot {
     background: $-dark-background2;
   }
+
   .default-slot-txt {
     color: $-dark-color3;
   }
 }
+
 .default-slot {
   background: #fff;
   padding: 15px;

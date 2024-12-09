@@ -1,22 +1,18 @@
 <template>
-  <view :class="`wd-collapse-item ${disabled ? 'is-disabled' : ''} is-border ${customClass}`" :style="customStyle">
-    <view
-      :class="`wd-collapse-item__header ${expanded ? 'is-expanded' : ''} ${isFirst ? 'wd-collapse-item__header-first' : ''} ${
-        $slots.title ? 'is-custom' : ''
-      }`"
-      @click="handleClick"
-    >
+  <div :class="`wd-collapse-item ${disabled ? 'is-disabled' : ''} is-border ${customClass}`" :style="customStyle">
+    <div :class="`wd-collapse-item__header ${expanded ? 'is-expanded' : ''} ${isFirst ? 'wd-collapse-item__header-first' : ''} ${$slots.title ? 'is-custom' : ''
+      }`" @click="handleClick">
       <slot name="title" :expanded="expanded" :disabled="disabled" :isFirst="isFirst">
         <text class="wd-collapse-item__title">{{ title }}</text>
         <wd-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
       </slot>
-    </view>
-    <view class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">
-      <view class="wd-collapse-item__body" :class="customBodyClass" :style="customBodyStyle" :id="collapseId">
+    </div>
+    <div class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">
+      <div class="wd-collapse-item__body" :class="customBodyClass" :style="customBodyStyle" :id="collapseId">
         <slot />
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

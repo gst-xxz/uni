@@ -1,46 +1,35 @@
 <template>
-  <view :class="rootClass" :style="customStyle" :id="sliderId">
+  <div :class="rootClass" :style="customStyle" :id="sliderId">
     <!-- #ifdef MP-DINGTALK -->
-    <view :id="sliderId" style="flex: 1" :class="rootClass">
+    <div :id="sliderId" style="flex: 1" :class="rootClass">
       <!-- #endif -->
-      <view :class="`wd-slider__label-min ${customMinClass}`" v-if="!hideMinMax">
+      <div :class="`wd-slider__label-min ${customMinClass}`" v-if="!hideMinMax">
         {{ minValue }}
-      </view>
-      <view class="wd-slider__bar-wrapper" :style="barWrapperStyle">
-        <view class="wd-slider__bar" :style="barCustomStyle"></view>
+      </div>
+      <div class="wd-slider__bar-wrapper" :style="barWrapperStyle">
+        <div class="wd-slider__bar" :style="barCustomStyle">
+        </div>
         <!-- 左边 -->
-        <view
-          class="wd-slider__button-wrapper"
-          :style="buttonLeftStyle"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-          @touchcancel="onTouchEnd"
-        >
-          <view class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</view>
-          <view class="wd-slider__button" />
-        </view>
+        <div class="wd-slider__button-wrapper" :style="buttonLeftStyle" @touchstart="onTouchStart"
+          @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+          <div class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</div>
+          <div class="wd-slider__button" />
+        </div>
         <!-- 右边 -->
-        <view
-          v-if="showRight"
-          class="wd-slider__button-wrapper"
-          :style="buttonRightStyle"
-          @touchstart="onTouchStartRight"
-          @touchmove="onTouchMoveRight"
-          @touchend="onTouchEndRight"
-          @touchcancel="onTouchEndRight"
-        >
-          <view class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</view>
-          <view class="wd-slider__button" />
-        </view>
-      </view>
-      <view :class="`wd-slider__label-max ${customMaxClass}`" v-if="!hideMinMax">
+        <div v-if="showRight" class="wd-slider__button-wrapper" :style="buttonRightStyle"
+          @touchstart="onTouchStartRight" @touchmove="onTouchMoveRight" @touchend="onTouchEndRight"
+          @touchcancel="onTouchEndRight">
+          <div class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</div>
+          <div class="wd-slider__button" />
+        </div>
+      </div>
+      <div :class="`wd-slider__label-max ${customMaxClass}`" v-if="!hideMinMax">
         {{ maxValue }}
-      </view>
+      </div>
       <!-- #ifdef MP-DINGTALK -->
-    </view>
+    </div>
     <!-- #endif -->
-  </view>
+  </div>
 </template>
 
 <script lang="ts">
@@ -218,8 +207,8 @@ function onTouchStart(event: any) {
   startValue.value = !isArray(modelValue)
     ? format(modelValue)
     : leftBarPercent.value < rightBarPercent.value
-    ? format(modelValue[0])
-    : format(modelValue[1])
+      ? format(modelValue[0])
+      : format(modelValue[1])
   emit('dragstart', {
     value: currentValue.value
   })

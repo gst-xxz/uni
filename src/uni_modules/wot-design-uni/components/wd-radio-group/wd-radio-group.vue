@@ -1,7 +1,7 @@
 <template>
-  <view :class="`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`" :style="customStyle">
+  <div :class="`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`" :style="customStyle">
     <slot />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

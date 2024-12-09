@@ -1,9 +1,9 @@
 <template>
-  <view :class="`wd-tab ${customClass}`" :style="customStyle">
-    <view :class="['wd-tab__body', { 'wd-tab__body--inactive': !active }]" v-if="shouldBeRender" :style="tabBodyStyle">
+  <div :class="`wd-tab ${customClass}`" :style="customStyle">
+    <div :class="['wd-tab__body', { 'wd-tab__body--inactive': !active }]" v-if="shouldBeRender" :style="tabBodyStyle">
       <slot />
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

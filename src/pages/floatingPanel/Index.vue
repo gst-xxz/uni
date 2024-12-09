@@ -1,6 +1,6 @@
 <template>
   <wd-toast></wd-toast>
-  <view class="floating-panel">
+  <div class="floating-panel">
     <page-wraper>
       <wd-tabs v-model="tab">
         <wd-tab :title="`基础用法`">
@@ -11,18 +11,19 @@
           </wd-floating-panel>
         </wd-tab>
         <wd-tab :title="`自定义锚点`">
-          <wd-floating-panel v-model:height="height" :anchors="anchors" safeAreaInsetBottom @heightChange="handleHeightChange">
-            <view class="inner-content">自定义锚点 {{ anchors.map(addUnit) }} - {{ addUnit(height.toFixed(0)) }}</view>
+          <wd-floating-panel v-model:height="height" :anchors="anchors" safeAreaInsetBottom
+            @heightChange="handleHeightChange">
+            <div class="inner-content">自定义锚点 {{ anchors.map(addUnit) }} - {{ addUnit(height.toFixed(0)) }}</div>
           </wd-floating-panel>
         </wd-tab>
         <wd-tab :title="`仅头部拖拽`">
           <wd-floating-panel :contentDraggable="false">
-            <view class="inner-content">内容区不可以拖拽</view>
+            <div class="inner-content">内容区不可以拖拽</div>
           </wd-floating-panel>
         </wd-tab>
       </wd-tabs>
     </page-wraper>
-  </view>
+  </div>
 </template>
 
 <script setup lang="ts">

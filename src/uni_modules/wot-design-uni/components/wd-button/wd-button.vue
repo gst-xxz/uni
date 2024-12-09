@@ -1,50 +1,34 @@
 <template>
-  <button
-    :id="buttonId"
-    :hover-class="`${disabled || loading ? '' : 'wd-button--active'}`"
-    :style="customStyle"
-    :class="[
-      'wd-button',
-      'is-' + type,
-      'is-' + size,
-      round ? 'is-round' : '',
-      hairline ? 'is-hairline' : '',
-      plain ? 'is-plain' : '',
-      disabled ? 'is-disabled' : '',
-      block ? 'is-block' : '',
-      loading ? 'is-loading' : '',
-      customClass
-    ]"
-    :hover-start-time="hoverStartTime"
-    :hover-stay-time="hoverStayTime"
-    :open-type="disabled || loading ? undefined : openType"
-    :send-message-title="sendMessageTitle"
-    :send-message-path="sendMessagePath"
-    :send-message-img="sendMessageImg"
-    :app-parameter="appParameter"
-    :show-message-card="showMessageCard"
-    :session-from="sessionFrom"
-    :lang="lang"
-    :hover-stop-propagation="hoverStopPropagation"
-    :scope="scope"
-    @click="handleClick"
-    @getAuthorize="handleGetAuthorize"
-    @getuserinfo="handleGetuserinfo"
-    @contact="handleConcat"
-    @getphonenumber="handleGetphonenumber"
-    @error="handleError"
-    @launchapp="handleLaunchapp"
-    @opensetting="handleOpensetting"
-    @chooseavatar="handleChooseavatar"
-    @agreeprivacyauthorization="handleAgreePrivacyAuthorization"
-  >
-    <view class="wd-button__content">
-      <view v-if="loading" class="wd-button__loading">
-        <view class="wd-button__loading-svg" :style="loadingStyle"></view>
-      </view>
+  <button :id="buttonId" :hover-class="`${disabled || loading ? '' : 'wd-button--active'}`" :style="customStyle" :class="[
+    'wd-button',
+    'is-' + type,
+    'is-' + size,
+    round ? 'is-round' : '',
+    hairline ? 'is-hairline' : '',
+    plain ? 'is-plain' : '',
+    disabled ? 'is-disabled' : '',
+    block ? 'is-block' : '',
+    loading ? 'is-loading' : '',
+    customClass
+  ]" :hover-start-time="hoverStartTime" :hover-stay-time="hoverStayTime"
+    :open-type="disabled || loading ? undefined : openType" :send-message-title="sendMessageTitle"
+    :send-message-path="sendMessagePath" :send-message-img="sendMessageImg" :app-parameter="appParameter"
+    :show-message-card="showMessageCard" :session-from="sessionFrom" :lang="lang"
+    :hover-stop-propagation="hoverStopPropagation" :scope="scope" @click="handleClick"
+    @getAuthorize="handleGetAuthorize" @getuserinfo="handleGetuserinfo" @contact="handleConcat"
+    @getphonenumber="handleGetphonenumber" @error="handleError" @launchapp="handleLaunchapp"
+    @opensetting="handleOpensetting" @chooseavatar="handleChooseavatar"
+    @agreeprivacyauthorization="handleAgreePrivacyAuthorization">
+    <div class="wd-button__content">
+      <div v-if="loading" class="wd-button__loading">
+        <div class="wd-button__loading-svg" :style="loadingStyle">
+        </div>
+      </div>
       <wd-icon v-else-if="icon" custom-class="wd-button__icon" :name="icon" :classPrefix="classPrefix"></wd-icon>
-      <view class="wd-button__text"><slot /></view>
-    </view>
+      <div class="wd-button__text">
+        <slot />
+      </div>
+    </div>
   </button>
 </template>
 
@@ -67,13 +51,10 @@ import base64 from '../common/base64'
 import { buttonProps } from './types'
 
 const loadingIcon = (color = '#4D80F0', reverse = true) => {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><defs><linearGradient x1="100%" y1="0%" x2="0%" y2="0%" id="a"><stop stop-color="${
-    reverse ? color : '#fff'
-  }" offset="0%" stop-opacity="0"/><stop stop-color="${
-    reverse ? color : '#fff'
-  }" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M21 1c11.046 0 20 8.954 20 20s-8.954 20-20 20S1 32.046 1 21 9.954 1 21 1zm0 7C13.82 8 8 13.82 8 21s5.82 13 13 13 13-5.82 13-13S28.18 8 21 8z" fill="${
-    reverse ? '#fff' : color
-  }"/><path d="M4.599 21c0 9.044 7.332 16.376 16.376 16.376 9.045 0 16.376-7.332 16.376-16.376" stroke="url(#a)" stroke-width="3.5" stroke-linecap="round"/></g></svg>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><defs><linearGradient x1="100%" y1="0%" x2="0%" y2="0%" id="a"><stop stop-color="${reverse ? color : '#fff'
+    }" offset="0%" stop-opacity="0"/><stop stop-color="${reverse ? color : '#fff'
+    }" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M21 1c11.046 0 20 8.954 20 20s-8.954 20-20 20S1 32.046 1 21 9.954 1 21 1zm0 7C13.82 8 8 13.82 8 21s5.82 13 13 13 13-5.82 13-13S28.18 8 21 8z" fill="${reverse ? '#fff' : color
+    }"/><path d="M4.599 21c0 9.044 7.332 16.376 16.376 16.376 9.045 0 16.376-7.332 16.376-16.376" stroke="url(#a)" stroke-width="3.5" stroke-linecap="round"/></g></svg>`
 }
 const props = defineProps(buttonProps)
 const emit = defineEmits([

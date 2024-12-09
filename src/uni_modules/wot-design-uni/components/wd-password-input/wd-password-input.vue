@@ -1,23 +1,22 @@
 <template>
-  <view :class="`wd-password-input ${customClass}`" :style="customStyle">
-    <view @touchstart="onTouchStart" class="wd-password-input__security">
-      <view
-        v-for="(_, index) in length"
-        :key="index"
-        :class="`wd-password-input__item ${gutter ? '' : 'is-border'}`"
-        :style="{ marginLeft: index !== 0 && gutter ? addUnit(gutter) : 0 }"
-      >
-        <view v-if="focused && index === modelValue.length" class="wd-password-input__cursor"></view>
-        <view v-else :class="`wd-password-input__value`">
-          <view :style="{ visibility: mask && modelValue[index] ? 'visible' : 'hidden' }" class="wd-password-input__mask"></view>
+  <div :class="`wd-password-input ${customClass}`" :style="customStyle">
+    <div @touchstart="onTouchStart" class="wd-password-input__security">
+      <div v-for="(_, index) in length" :key="index" :class="`wd-password-input__item ${gutter ? '' : 'is-border'}`"
+        :style="{ marginLeft: index !== 0 && gutter ? addUnit(gutter) : 0 }">
+        <div v-if="focused && index === modelValue.length" class="wd-password-input__cursor">
+        </div>
+        <div v-else :class="`wd-password-input__value`">
+          <div :style="{ visibility: mask && modelValue[index] ? 'visible' : 'hidden' }"
+            class="wd-password-input__mask">
+          </div>
           <text v-if="!mask && modelValue[index]">{{ modelValue[index] }}</text>
-        </view>
-      </view>
-    </view>
-    <view v-if="info || errorInfo" :class="`wd-password-input__info ${errorInfo ? 'is-error' : ''}`">
+        </div>
+      </div>
+    </div>
+    <div v-if="info || errorInfo" :class="`wd-password-input__info ${errorInfo ? 'is-error' : ''}`">
       {{ errorInfo || info }}
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

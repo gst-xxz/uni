@@ -1,21 +1,21 @@
 <template>
-  <view :class="['wd-cell-group', border ? 'is-border' : '', customClass]" :style="customStyle">
-    <view v-if="title || value || useSlot" class="wd-cell-group__title">
+  <div :class="['wd-cell-group', border ? 'is-border' : '', customClass]" :style="customStyle">
+    <div v-if="title || value || useSlot" class="wd-cell-group__title">
       <!--左侧标题-->
-      <view class="wd-cell-group__left">
+      <div class="wd-cell-group__left">
         <text v-if="title">{{ title }}</text>
         <slot v-else name="title"></slot>
-      </view>
+      </div>
       <!--右侧标题-->
-      <view class="wd-cell-group__right">
+      <div class="wd-cell-group__right">
         <text v-if="value">{{ value }}</text>
         <slot v-else name="value"></slot>
-      </view>
-    </view>
-    <view class="wd-cell-group__body">
+      </div>
+    </div>
+    <div class="wd-cell-group__body">
       <slot></slot>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

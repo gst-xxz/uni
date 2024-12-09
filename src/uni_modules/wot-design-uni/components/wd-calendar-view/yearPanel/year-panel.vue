@@ -1,25 +1,15 @@
 <template>
-  <view class="wd-year-panel">
-    <view v-if="showPanelTitle" class="wd-year-panel__title">{{ title }}</view>
-    <scroll-view class="wd-year-panel__container" :style="`height: ${scrollHeight}px`" scroll-y @scroll="yearScroll" :scroll-top="scrollTop">
-      <view v-for="(item, index) in years" :key="index" :id="`year${index}`">
-        <year
-          :type="type"
-          :date="item.date"
-          :value="value"
-          :min-date="minDate"
-          :max-date="maxDate"
-          :max-range="maxRange"
-          :formatter="formatter"
-          :range-prompt="rangePrompt"
-          :allow-same-day="allowSameDay"
-          :default-time="defaultTime"
-          :showTitle="index !== 0"
-          @change="handleDateChange"
-        />
-      </view>
+  <div class="wd-year-panel">
+    <div v-if="showPanelTitle" class="wd-year-panel__title">{{ title }}</div>
+    <scroll-view class="wd-year-panel__container" :style="`height: ${scrollHeight}px`" scroll-y @scroll="yearScroll"
+      :scroll-top="scrollTop">
+      <div v-for="(item, index) in years" :key="index" :id="`year${index}`">
+        <year :type="type" :date="item.date" :value="value" :min-date="minDate" :max-date="maxDate"
+          :max-range="maxRange" :formatter="formatter" :range-prompt="rangePrompt" :allow-same-day="allowSameDay"
+          :default-time="defaultTime" :showTitle="index !== 0" @change="handleDateChange" />
+      </div>
     </scroll-view>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

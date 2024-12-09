@@ -1,12 +1,12 @@
 <template>
   <page-wraper>
     <wd-message-box></wd-message-box>
-    <view>
+    <div>
       <demo-block title="基本用法">
         <wd-switch v-model="checked1" @change="handleChange1" />
       </demo-block>
       <demo-block title="修改值 active-value 、 inactive-value">
-        <view style="margin-bottom: 10px">{{ checked2 }}</view>
+        <div style="margin-bottom: 10px">{{ checked2 }}</div>
         <wd-switch v-model="checked2" active-value="沃特" inactive-value="商家后台" @change="handleChange2" />
       </demo-block>
       <demo-block title="自定义颜色 active-color 、 inactive-color">
@@ -24,7 +24,7 @@
       <demo-block title="before-change 修改前钩子函数">
         <wd-switch v-model="checked7" :before-change="beforeChange" @change="handleChange5" />
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>
@@ -72,17 +72,20 @@ function handleChange5({ value }: any) {
 page {
   background-color: #ededed;
 }
+
 .row {
   margin: 10px 0;
   padding: 0 10px;
   background: rgb(255, 255, 255);
 }
+
 .desc {
   padding: 0 15px;
   font-size: 14px;
   height: 30px;
   line-height: 30px;
 }
+
 .code {
   color: rgb(0, 131, 255);
   white-space: nowrap;
@@ -93,10 +96,12 @@ page {
   margin: 0 2px;
   border-radius: 2px;
 }
+
 .center {
   text-align: center;
   padding-bottom: 10px;
 }
+
 .test {
   color: red;
 }

@@ -1,7 +1,7 @@
 <template>
-  <view @click="handleClick" :class="rootClass" :style="rootStyle">
+  <div @click="handleClick" :class="rootClass" :style="rootStyle">
     <image v-if="isImage" class="wd-icon__image" :src="name"></image>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

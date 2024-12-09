@@ -1,11 +1,11 @@
 <template>
-  <view style="position: relative">
-    <view :class="`wd-sticky-box ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
+  <div style="position: relative">
+    <div :class="`wd-sticky-box ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
       <wd-resize @resize="handleResize">
         <slot />
       </wd-resize>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

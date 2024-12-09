@@ -22,7 +22,8 @@
     </demo-block>
 
     <demo-block title="不展示表头">
-      <wd-table :data="dataList" @sort-method="handleSort" :height="400" :show-header="false" @row-click="handleRowClick">
+      <wd-table :data="dataList" @sort-method="handleSort" :height="400" :show-header="false"
+        @row-click="handleRowClick">
         <wd-table-col prop="name" label="姓名" align="center" width="50%"></wd-table-col>
         <wd-table-col prop="grade" label="分数" align="center" width="50%"></wd-table-col>
       </wd-table>
@@ -55,10 +56,10 @@
         <wd-table-col prop="name" label="姓名" fixed sortable align="center"></wd-table-col>
         <wd-table-col prop="grade" label="分数" fixed sortable align="center">
           <template #value="{ row }">
-            <view class="custom-class">
+            <div class="custom-class">
               <text>{{ row.grade }}</text>
               <text>同比{{ row.compare }}</text>
-            </view>
+            </div>
           </template>
         </wd-table-col>
         <wd-table-col prop="hobby" label="一言以蔽之" sortable :width="160"></wd-table-col>
@@ -78,7 +79,8 @@
         <wd-table-col prop="major" label="专业"></wd-table-col>
         <wd-table-col prop="gender" label="性别"></wd-table-col>
       </wd-table>
-      <wd-pagination custom-style="border: 1px solid #ececec;border-top:none" v-model="page" :total="total"></wd-pagination>
+      <wd-pagination custom-style="border: 1px solid #ececec;border-top:none" v-model="page"
+        :total="total"></wd-pagination>
     </demo-block>
   </page-wraper>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <view class="page-message-box">
+  <div class="page-message-box">
     <page-wraper>
       <wd-message-box></wd-message-box>
       <wd-message-box selector="wd-message-box-slot">
@@ -37,7 +37,7 @@
         <wd-button @click="withButtonProps">withButtonProps</wd-button>
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useMessage, useToast } from '@/uni_modules/wot-design-uni'
@@ -103,7 +103,7 @@ function beforeConfirm() {
         }, 3000)
       }
     })
-    .then(() => {})
+    .then(() => { })
     .catch((error) => {
       console.log(error)
     })
@@ -125,7 +125,7 @@ function withButtonProps() {
         customClass: 'custom-shadow'
       }
     })
-    .then(() => {})
+    .then(() => { })
     .catch((error) => {
       console.log(error)
     })

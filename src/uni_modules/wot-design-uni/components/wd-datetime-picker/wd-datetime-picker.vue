@@ -1,27 +1,21 @@
 <template>
-  <view
-    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
-      alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`"
-    :style="customStyle"
-  >
+  <div :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${alignRight ? 'is-align-right' : ''
+    } ${error ? 'is-error' : ''} ${customClass}`" :style="customStyle">
     <!--文案-->
-    <view class="wd-picker__field" @click="showPopup">
+    <div class="wd-picker__field" @click="showPopup">
       <slot v-if="useDefaultSlot"></slot>
-      <view v-else :class="['wd-picker__cell', customCellClass]">
-        <view
-          v-if="label || useLabelSlot"
+      <div v-else :class="['wd-picker__cell', customCellClass]">
+        <div v-if="label || useLabelSlot"
           :class="`wd-picker__label ${customLabelClass} ${isRequired ? 'is-required' : ''}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
-        >
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
           <block v-if="label">{{ label }}</block>
           <slot v-else name="label"></slot>
-        </view>
-        <view class="wd-picker__body">
-          <view class="wd-picker__value-wraper">
-            <view :class="`wd-picker__value ${customValueClass}`">
+        </div>
+        <div class="wd-picker__body">
+          <div class="wd-picker__value-wraper">
+            <div :class="`wd-picker__value ${customValueClass}`">
               <template v-if="region">
-                <view v-if="isArray(showValue)">
+                <div v-if="isArray(showValue)">
                   <text :class="showValue[0] ? '' : 'wd-picker__placeholder'">
                     {{ showValue[0] ? showValue[0] : placeholder || translate('placeholder') }}
                   </text>
@@ -29,115 +23,71 @@
                   <text :class="showValue[1] ? '' : 'wd-picker__placeholder'">
                     {{ showValue[1] ? showValue[1] : placeholder || translate('placeholder') }}
                   </text>
-                </view>
-                <view v-else class="wd-picker__placeholder">
+                </div>
+                <div v-else class="wd-picker__placeholder">
                   {{ placeholder || translate('placeholder') }}
-                </view>
+                </div>
               </template>
-              <view v-else :class="showValue ? '' : 'wd-picker__placeholder'">
+              <div v-else :class="showValue ? '' : 'wd-picker__placeholder'">
                 {{ showValue ? showValue : placeholder || translate('placeholder') }}
-              </view>
-            </view>
+              </div>
+            </div>
             <wd-icon v-if="!disabled && !readonly" custom-class="wd-picker__arrow" name="arrow-right" />
-          </view>
-          <view v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</view>
-        </view>
-      </view>
-    </view>
+          </div>
+          <div v-if="errorMessage" class="wd-picker__error-message">{{ errorMessage }}</div>
+        </div>
+      </div>
+    </div>
     <!--弹出层，picker-view 在隐藏时修改值，会触发多次change事件，从而导致所有列选中第一项，因此picker在关闭时不隐藏 -->
-    <wd-popup
-      v-model="popupShow"
-      position="bottom"
-      :hide-when-close="false"
-      :close-on-click-modal="closeOnClickModal"
-      :safe-area-inset-bottom="safeAreaInsetBottom"
-      :z-index="zIndex"
-      @close="onCancel"
-      custom-class="wd-picker__popup"
-    >
-      <view class="wd-picker__wraper">
+    <wd-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
+      :safe-area-inset-bottom="safeAreaInsetBottom" :z-index="zIndex" @close="onCancel" custom-class="wd-picker__popup">
+      <div class="wd-picker__wraper">
         <!--toolBar-->
-        <view class="wd-picker__toolbar" @touchmove="noop">
+        <div class="wd-picker__toolbar" @touchmove="noop">
           <!--取消按钮-->
-          <view class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
+          <div class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
             {{ cancelButtonText || translate('cancel') }}
-          </view>
+          </div>
           <!--标题-->
-          <view v-if="title" class="wd-picker__title">{{ title }}</view>
+          <div v-if="title" class="wd-picker__title">{{ title }}</div>
           <!--确定按钮-->
-          <view :class="`wd-picker__action ${loading || isLoading ? 'is-loading' : ''}`" @click="onConfirm">
+          <div :class="`wd-picker__action ${loading || isLoading ? 'is-loading' : ''}`" @click="onConfirm">
             {{ confirmButtonText || translate('confirm') }}
-          </view>
-        </view>
+          </div>
+        </div>
         <!-- 区域选择tab展示 -->
-        <view v-if="region" class="wd-picker__region-tabs">
-          <view :class="`wd-picker__region ${showStart ? 'is-active' : ''} `" @click="tabChange">
-            <view>{{ translate('start') }}</view>
-            <view class="wd-picker__region-time">{{ showTabLabel[0] }}</view>
-          </view>
-          <view :class="`wd-picker__region ${showStart ? '' : 'is-active'}`" @click="tabChange">
-            <view>{{ translate('end') }}</view>
-            <view class="wd-picker__region-time">{{ showTabLabel[1] }}</view>
-          </view>
-        </view>
+        <div v-if="region" class="wd-picker__region-tabs">
+          <div :class="`wd-picker__region ${showStart ? 'is-active' : ''} `" @click="tabChange">
+            <div>{{ translate('start') }}</div>
+            <div class="wd-picker__region-time">{{ showTabLabel[0] }}</div>
+          </div>
+          <div :class="`wd-picker__region ${showStart ? '' : 'is-active'}`" @click="tabChange">
+            <div>{{ translate('end') }}</div>
+            <div class="wd-picker__region-time">{{ showTabLabel[1] }}</div>
+          </div>
+        </div>
         <!--datetimePickerView-->
-        <view :class="showStart ? 'wd-picker__show' : 'wd-picker__hidden'">
-          <wd-datetime-picker-view
-            :custom-class="customViewClass"
-            ref="datetimePickerView"
-            :type="type"
-            v-model="innerValue"
-            :loading="loading || isLoading"
-            :loading-color="loadingColor"
-            :columns-height="columnsHeight"
-            :value-key="valueKey"
-            :label-key="labelKey"
-            :formatter="formatter"
-            :filter="filter"
-            :column-formatter="isArray(modelValue) ? customColumnFormatter : undefined"
-            :max-hour="maxHour"
-            :min-hour="minHour"
-            :max-date="maxDate"
-            :min-date="minDate"
-            :max-minute="maxMinute"
-            :min-minute="minMinute"
-            :start-symbol="true"
-            :immediate-change="immediateChange"
-            @change="onChangeStart"
-            @pickstart="onPickStart"
-            @pickend="onPickEnd"
-          />
-        </view>
-        <view :class="showStart ? 'wd-picker__hidden' : 'wd-picker__show'">
-          <wd-datetime-picker-view
-            :custom-class="customViewClass"
-            ref="datetimePickerView1"
-            :type="type"
-            v-model="endInnerValue"
-            :loading="loading || isLoading"
-            :loading-color="loadingColor"
-            :columns-height="columnsHeight"
-            :value-key="valueKey"
-            :label-key="labelKey"
-            :formatter="formatter"
-            :filter="filter"
-            :column-formatter="isArray(modelValue) ? customColumnFormatter : undefined"
-            :max-hour="maxHour"
-            :min-hour="minHour"
-            :max-date="maxDate"
-            :min-date="minDate"
-            :max-minute="maxMinute"
-            :min-minute="minMinute"
-            :start-symbol="false"
-            :immediate-change="immediateChange"
-            @change="onChangeEnd"
-            @pickstart="onPickStart"
-            @pickend="onPickEnd"
-          />
-        </view>
-      </view>
+        <div :class="showStart ? 'wd-picker__show' : 'wd-picker__hidden'">
+          <wd-datetime-picker-view :custom-class="customViewClass" ref="datetimePickerView" :type="type"
+            v-model="innerValue" :loading="loading || isLoading" :loading-color="loadingColor"
+            :columns-height="columnsHeight" :value-key="valueKey" :label-key="labelKey" :formatter="formatter"
+            :filter="filter" :column-formatter="isArray(modelValue) ? customColumnFormatter : undefined"
+            :max-hour="maxHour" :min-hour="minHour" :max-date="maxDate" :min-date="minDate" :max-minute="maxMinute"
+            :min-minute="minMinute" :start-symbol="true" :immediate-change="immediateChange" @change="onChangeStart"
+            @pickstart="onPickStart" @pickend="onPickEnd" />
+        </div>
+        <div :class="showStart ? 'wd-picker__hidden' : 'wd-picker__show'">
+          <wd-datetime-picker-view :custom-class="customViewClass" ref="datetimePickerView1" :type="type"
+            v-model="endInnerValue" :loading="loading || isLoading" :loading-color="loadingColor"
+            :columns-height="columnsHeight" :value-key="valueKey" :label-key="labelKey" :formatter="formatter"
+            :filter="filter" :column-formatter="isArray(modelValue) ? customColumnFormatter : undefined"
+            :max-hour="maxHour" :min-hour="minHour" :max-date="maxDate" :min-date="minDate" :max-minute="maxMinute"
+            :min-minute="minMinute" :start-symbol="false" :immediate-change="immediateChange" @change="onChangeEnd"
+            @pickstart="onPickStart" @pickend="onPickEnd" />
+        </div>
+      </div>
     </wd-popup>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">
@@ -389,7 +339,7 @@ function getSelects(picker: 'before' | 'after') {
   return selects
 }
 
-function noop() {}
+function noop() { }
 
 function getDefaultInnerValue(isRegion?: boolean, isEnd?: boolean): string | number {
   const { modelValue: value, defaultValue, maxDate, minDate, type } = props
@@ -588,9 +538,9 @@ function setShowValue(tab: boolean = false, isConfirm: boolean = false, beforeMo
     showValue.value = tab
       ? showValue.value
       : [
-          (props.modelValue as (string | number)[])[0] || isConfirm ? defaultDisplayFormat(items as Record<string, any>[]) : '',
-          (props.modelValue as (string | number)[])[1] || isConfirm ? defaultDisplayFormat(endItems as Record<string, any>[]) : ''
-        ]
+        (props.modelValue as (string | number)[])[0] || isConfirm ? defaultDisplayFormat(items as Record<string, any>[]) : '',
+        (props.modelValue as (string | number)[])[1] || isConfirm ? defaultDisplayFormat(endItems as Record<string, any>[]) : ''
+      ]
     showTabLabel.value = [defaultDisplayFormat(items as Record<string, any>[], true), defaultDisplayFormat(endItems as Record<string, any>[], true)]
   } else {
     const items = beforeMount

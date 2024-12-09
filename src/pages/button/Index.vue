@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <view class="page-button">
+    <div class="page-button">
       <demo-block title="基本用法">
         <wd-button>主要按钮</wd-button>
         <wd-button type="success">成功按钮</wd-button>
@@ -81,38 +81,38 @@
         <wd-button type="info" block size="large">信息按钮</wd-button>
       </demo-block>
       <demo-block title="常用按钮：圆角或圆角+幽灵">
-        <view>
+        <div>
           <wd-button disabled>主操作</wd-button>
           <wd-button size="small" disabled>主操作</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button>主操作</wd-button>
           <wd-button size="small">主操作</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button type="info" disabled>次操作</wd-button>
           <wd-button type="info" size="small" disabled>次操作</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button type="info">次操作</wd-button>
           <wd-button type="info" size="small">次操作</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button plain disabled>幽灵按钮</wd-button>
           <wd-button size="small" plain disabled>幽灵按钮</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button plain>幽灵按钮</wd-button>
           <wd-button size="small" plain>幽灵按钮</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button type="info" plain disabled>次操作</wd-button>
           <wd-button type="info" size="small" plain disabled>次操作</wd-button>
-        </view>
-        <view>
+        </div>
+        <div>
           <wd-button type="info" plain>次操作</wd-button>
           <wd-button type="info" size="small" plain>次操作</wd-button>
-        </view>
+        </div>
       </demo-block>
 
       <demo-block title="自定义样式-Material Design 3 风格 box-shadow">
@@ -122,7 +122,7 @@
         <wd-button type="warning" custom-class="custom-shadow">警告按钮</wd-button>
         <wd-button type="error" custom-class="custom-shadow">危险按钮</wd-button>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>
@@ -142,6 +142,7 @@ function handleGetuserinfo(event: any) {
       box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
     }
   }
+
   .button-block {
     margin-right: 0;
   }

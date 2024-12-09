@@ -1,21 +1,23 @@
 <template>
-  <view :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click" :style="`${style};${customStyle}`">
-    <view :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`" :style="gutterContentStyle">
+  <div :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click"
+    :style="`${style};${customStyle}`">
+    <div :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`"
+      :style="gutterContentStyle">
       <slot v-if="useSlot" />
       <block v-else>
-        <view :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
+        <div :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
           <wd-badge custom-class="badge" v-bind="customBadgeProps">
             <template v-if="useIconSlot">
               <slot name="icon" />
             </template>
             <wd-icon v-else :name="icon" :size="iconSize" :custom-class="customIcon" />
           </wd-badge>
-        </view>
+        </div>
         <slot name="text" v-if="useTextSlot" />
-        <view v-else class="wd-grid-item__text custom-text">{{ text }}</view>
+        <div v-else class="wd-grid-item__text custom-text">{{ text }}</div>
       </block>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

@@ -1,29 +1,29 @@
 <template>
   <page-wraper>
     <demo-block title="基本用法（适用于按钮加载状态和页面轻提示）">
-      <view class="flex">
+      <div class="flex">
         <wd-loading custom-class="loading" />
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="outline 类型（适用于通用模块加载）">
-      <view class="flex">
+      <div class="flex">
         <wd-loading type="outline" custom-class="loading" />
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="修改颜色">
-      <view class="flex">
+      <div class="flex">
         <wd-loading custom-class="loading" color="#fa34aa" />
-      </view>
+      </div>
     </demo-block>
 
     <demo-block title="修改指示器大小">
-      <view class="flex">
+      <div class="flex">
         <wd-loading custom-class="loading" :size="20" />
         <wd-loading custom-class="loading" :size="30" />
         <wd-loading custom-class="loading" size="50px" />
-      </view>
+      </div>
     </demo-block>
   </page-wraper>
 </template>
@@ -33,6 +33,7 @@
   display: flex;
   align-items: center;
 }
+
 :deep(.loading) {
   margin-right: 20px;
 }

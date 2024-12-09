@@ -1,10 +1,10 @@
 <template>
-  <view :class="`wd-status-tip  ${customClass}`" :style="customStyle">
+  <div :class="`wd-status-tip  ${customClass}`" :style="customStyle">
     <slot name="image" v-if="$slots.image"></slot>
     <wd-img v-else-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image"
       :custom-style="imgStyle"></wd-img>
-    <view v-if="tip" class="wd-status-tip__text">{{ tip }}</view>
-  </view>
+    <div v-if="tip" class="wd-status-tip__text">{{ tip }}</div>
+  </div>
 </template>
 
 <script lang="ts">

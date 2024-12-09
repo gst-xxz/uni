@@ -1,7 +1,8 @@
 <template>
-  <view :class="rootClass" :style="rootStyle" @click="switchValue">
-    <view class="wd-switch__circle" :style="circleStyle"></view>
-  </view>
+  <div :class="rootClass" :style="rootStyle" @click="switchValue">
+    <div class="wd-switch__circle" :style="circleStyle">
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

@@ -1,7 +1,7 @@
 <template>
   <page-wraper>
     <wd-toast />
-    <view>
+    <div>
       <demo-block title="基本用法">
         <wd-button @click="showActions1">弹出菜单</wd-button>
         <wd-action-sheet v-model="show" :actions="actions" />
@@ -25,9 +25,9 @@
         <wd-button @click="showActions6">弹出菜单</wd-button>
       </demo-block>
       <wd-action-sheet v-model="show4" title="标题" @close="close4" :cancelText="cancelText">
-        <view style="padding: 15px 15px 150px 15px">内容</view>
+        <div style="padding: 15px 15px 150px 15px">内容</div>
       </wd-action-sheet>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

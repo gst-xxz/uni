@@ -1,7 +1,7 @@
 <template>
   <page-wraper>
     <wd-message-box></wd-message-box>
-    <view class="demo-body" @click="closeOutside">
+    <div class="demo-body" @click="closeOutside">
       <demo-block title="基本用法" transparent>
         <wd-drop-menu>
           <wd-drop-menu-item v-model="value1" :options="option1" @change="handleChange1" />
@@ -12,26 +12,26 @@
         <wd-drop-menu>
           <wd-drop-menu-item v-model="value3" :options="option1" @change="handleChange3" />
           <wd-drop-menu-item ref="dropMenu" title="筛选" @opened="handleOpened">
-            <view>
+            <div>
               <wd-slider v-model="valuetest" ref="slider" />
               <wd-cell title="标题文字" value="内容" />
               <wd-cell title="标题文字" label="描述信息" value="内容" />
-              <view style="padding: 0 10px 20px; box-sizing: border-box">
+              <div style="padding: 0 10px 20px; box-sizing: border-box">
                 <wd-button block size="large" @click="confirm">主要按钮</wd-button>
-              </view>
-            </view>
+              </div>
+            </div>
           </wd-drop-menu-item>
         </wd-drop-menu>
       </demo-block>
       <demo-block title="自定义菜单选项" transparent>
-        <view class="custom-menu">
+        <div class="custom-menu">
           <wd-drop-menu custom-style="flex: 1; min-width: 0">
             <wd-drop-menu-item v-model="value4" :options="option1" @change="handleChange4" />
           </wd-drop-menu>
-          <view style="flex: 1">
+          <div style="flex: 1">
             <wd-sort-button v-model="value5" title="上架时间" @change="handleChange5" />
-          </view>
-        </view>
+          </div>
+        </div>
       </demo-block>
       <demo-block title="自定义菜单图标" transparent>
         <wd-drop-menu>
@@ -40,7 +40,8 @@
       </demo-block>
       <demo-block title="异步打开/关闭" transparent>
         <wd-drop-menu>
-          <wd-drop-menu-item v-model="value10" :options="option1" @change="handleChange1" :before-toggle="handleBeforeToggle" />
+          <wd-drop-menu-item v-model="value10" :options="option1" @change="handleChange1"
+            :before-toggle="handleBeforeToggle" />
         </wd-drop-menu>
       </demo-block>
       <demo-block title="向上弹出" transparent>
@@ -55,7 +56,7 @@
           <wd-drop-menu-item v-model="value9" :options="option2" @change="handleChange9" />
         </wd-drop-menu>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>
@@ -151,6 +152,7 @@ const handleBeforeToggle: DropMenuItemBeforeToggle = ({ status, resolve }) => {
     background: $-dark-background2;
   }
 }
+
 .demo-body {
   height: 100vh;
 }

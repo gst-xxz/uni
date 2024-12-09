@@ -1,35 +1,21 @@
 <template>
-  <view :class="`wd-picker-view ${customClass}`" :style="customStyle">
-    <view class="wd-picker-view__loading" v-if="loading">
+  <div :class="`wd-picker-view ${customClass}`" :style="customStyle">
+    <div class="wd-picker-view__loading" v-if="loading">
       <wd-loading :color="loadingColor" />
-    </view>
-    <view :style="`height: ${columnsHeight - 20}px;`">
-      <picker-view
-        mask-class="wd-picker-view__mask"
-        indicator-class="wd-picker-view__roller"
-        :indicator-style="`height: ${itemHeight}px;`"
-        :style="`height: ${columnsHeight - 20}px;`"
-        :value="selectedIndex"
-        :immediate-change="immediateChange"
-        @change="onChange"
-        @pickstart="onPickStart"
-        @pickend="onPickEnd"
-      >
+    </div>
+    <div :style="`height: ${columnsHeight - 20}px;`">
+      <picker-view mask-class="wd-picker-view__mask" indicator-class="wd-picker-view__roller"
+        :indicator-style="`height: ${itemHeight}px;`" :style="`height: ${columnsHeight - 20}px;`" :value="selectedIndex"
+        :immediate-change="immediateChange" @change="onChange" @pickstart="onPickStart" @pickend="onPickEnd">
         <picker-view-column v-for="(col, colIndex) in formatColumns" :key="colIndex" class="wd-picker-view-column">
-          <view
-            v-for="(row, rowIndex) in col"
-            :key="rowIndex"
-            :class="`wd-picker-view-column__item ${row['disabled'] ? 'wd-picker-view-column__item--disabled' : ''}  ${
-              selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
-            }`"
-            :style="`line-height: ${itemHeight}px;`"
-          >
+          <div v-for="(row, rowIndex) in col" :key="rowIndex" :class="`wd-picker-view-column__item ${row['disabled'] ? 'wd-picker-view-column__item--disabled' : ''}  ${selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
+            }`" :style="`line-height: ${itemHeight}px;`">
             {{ row[labelKey] }}
-          </view>
+          </div>
         </picker-view-column>
       </picker-view>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -176,7 +162,7 @@ function onChange({ detail: { value } }: { detail: { value: number[] } }) {
     if (props.columnChange) {
       // columnsChange 可能有异步操作，需要添加 resolve 进行回调通知，形参小于4个则为同步
       if (props.columnChange.length < 4) {
-        props.columnChange(proxy.$.exposed, getSelects(), index || 0, () => {})
+        props.columnChange(proxy.$.exposed, getSelects(), index || 0, () => { })
         handleChange(index || 0)
       } else {
         props.columnChange(proxy.$.exposed, getSelects(), index || 0, () => {

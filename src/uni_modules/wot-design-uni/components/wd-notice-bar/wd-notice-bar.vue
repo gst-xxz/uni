@@ -1,19 +1,19 @@
 <template>
-  <view v-if="show" :class="`wd-notice-bar ${customClass} ${noticeBarClass}`" :style="rootStyle">
+  <div v-if="show" :class="`wd-notice-bar ${customClass} ${noticeBarClass}`" :style="rootStyle">
     <wd-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></wd-icon>
     <slot v-else name="prefix"></slot>
-    <view class="wd-notice-bar__wrap">
-      <view class="wd-notice-bar__content" :style="animation" @transitionend="animationEnd" @click="handleClick">
+    <div class="wd-notice-bar__wrap">
+      <div class="wd-notice-bar__content" :style="animation" @transitionend="animationEnd" @click="handleClick">
         <template v-if="isVertical">
-          <view v-for="item in textArray" :key="item">{{ item }}</view>
-          <view v-if="textArray.length > 1">{{ textArray[0] }}</view>
+          <div v-for="item in textArray" :key="item">{{ item }}</div>
+          <div v-if="textArray.length > 1">{{ textArray[0] }}</div>
         </template>
         <slot v-else>{{ currentText }}</slot>
-      </view>
-    </view>
+      </div>
+    </div>
     <wd-icon v-if="closable" custom-class="wd-notice-bar__suffix" name="close-bold" @click="handleClose"></wd-icon>
     <slot v-else name="suffix"></slot>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {
@@ -248,13 +248,13 @@ function animationEnd() {
 function handleClick() {
   const result = isArray(props.text)
     ? {
-        index: currentIndex.value,
-        text: props.text[currentIndex.value]
-      }
+      index: currentIndex.value,
+      text: props.text[currentIndex.value]
+    }
     : {
-        index: 0,
-        text: props.text
-      }
+      index: 0,
+      text: props.text
+    }
   emit('click', result)
 }
 

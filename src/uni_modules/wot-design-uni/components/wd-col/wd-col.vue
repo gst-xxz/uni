@@ -1,9 +1,8 @@
 <template>
-  <view :class="['wd-col', span && 'wd-col__' + span, offset && 'wd-col__offset-' + offset, customClass]"
-    :style="style">
+  <div :class="['wd-col', span && 'wd-col__' + span, offset && 'wd-col__offset-' + offset, customClass]" :style="style">
     <!-- 每一列 -->
     <slot />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

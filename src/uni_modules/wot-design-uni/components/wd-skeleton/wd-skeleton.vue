@@ -1,14 +1,14 @@
 <template>
-  <view :class="`wd-skeleton ${customClass}`" :style="customStyle">
-    <view class="wd-skeleton__content" v-if="show">
-      <view class="wd-skeleton__row" v-for="(row, index) of parsedRowCols" :key="`row-${index}`">
-        <view v-for="(col, idx) of row" :key="`col-${idx}`" :class="col.class" :style="col.style" />
-      </view>
-    </view>
-    <view v-else>
+  <div :class="`wd-skeleton ${customClass}`" :style="customStyle">
+    <div class="wd-skeleton__content" v-if="show">
+      <div class="wd-skeleton__row" v-for="(row, index) of parsedRowCols" :key="`row-${index}`">
+        <div v-for="(col, idx) of row" :key="`col-${idx}`" :class="col.class" :style="col.style" />
+      </div>
+    </div>
+    <div v-else>
       <slot />
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

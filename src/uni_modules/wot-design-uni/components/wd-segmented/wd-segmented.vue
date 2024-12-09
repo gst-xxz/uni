@@ -1,22 +1,17 @@
 <template>
-  <view :class="`wd-segmented ${customClass}`" :style="customStyle">
-    <view
-      :class="`wd-segmented__item is-${size} ${state.activeIndex === index ? 'is-active' : ''} ${
-        disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
-      }`"
-      @click="handleClick(option, index)"
-      v-for="(option, index) in options"
-      :key="index"
-    >
-      <view class="wd-segmented__item-label">
+  <div :class="`wd-segmented ${customClass}`" :style="customStyle">
+    <div :class="`wd-segmented__item is-${size} ${state.activeIndex === index ? 'is-active' : ''} ${disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
+      }`" @click="handleClick(option, index)" v-for="(option, index) in options" :key="index">
+      <div class="wd-segmented__item-label">
         <slot name="label" v-if="$slots.label" :option="isObj(option) ? option : { value: option }"></slot>
         <template v-else>
           {{ isObj(option) ? option.value : option }}
         </template>
-      </view>
-    </view>
-    <view :class="`wd-segmented__item--active ${activeDisabled ? 'is-disabled' : ''}`" :style="state.activeStyle"></view>
-  </view>
+      </div>
+    </div>
+    <div :class="`wd-segmented__item--active ${activeDisabled ? 'is-disabled' : ''}`" :style="state.activeStyle">
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

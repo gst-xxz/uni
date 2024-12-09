@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <div>
     <page-wraper>
       <demo-block title="展示消息数量">
         <wd-badge custom-class="badge" :modelValue="12">
@@ -59,7 +59,7 @@
         </wd-badge>
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script setup lang="ts"></script>
 <style lang="scss" scoped>

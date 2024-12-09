@@ -1,54 +1,32 @@
 <template>
-  <view class="wd-month-panel">
-    <view v-if="showPanelTitle" class="wd-month-panel__title">
+  <div class="wd-month-panel">
+    <div v-if="showPanelTitle" class="wd-month-panel__title">
       {{ title }}
-    </view>
-    <view class="wd-month-panel__weeks">
-      <view v-for="item in 7" :key="item" class="wd-month-panel__week">{{ weekLabel(item + firstDayOfWeek) }}</view>
-    </view>
-    <scroll-view
-      :class="`wd-month-panel__container ${!!timeType ? 'wd-month-panel__container--time' : ''}`"
-      :style="`height: ${scrollHeight}px`"
-      scroll-y
-      @scroll="monthScroll"
-      :scroll-top="scrollTop"
-    >
-      <view v-for="(item, index) in months" :key="index" :id="`month${index}`">
-        <month
-          :type="type"
-          :date="item.date"
-          :value="value"
-          :min-date="minDate"
-          :max-date="maxDate"
-          :first-day-of-week="firstDayOfWeek"
-          :formatter="formatter"
-          :max-range="maxRange"
-          :range-prompt="rangePrompt"
-          :allow-same-day="allowSameDay"
-          :default-time="defaultTime"
-          :showTitle="index !== 0"
-          @change="handleDateChange"
-        />
-      </view>
+    </div>
+    <div class="wd-month-panel__weeks">
+      <div v-for="item in 7" :key="item" class="wd-month-panel__week">{{ weekLabel(item + firstDayOfWeek) }}</div>
+    </div>
+    <scroll-view :class="`wd-month-panel__container ${!!timeType ? 'wd-month-panel__container--time' : ''}`"
+      :style="`height: ${scrollHeight}px`" scroll-y @scroll="monthScroll" :scroll-top="scrollTop">
+      <div v-for="(item, index) in months" :key="index" :id="`month${index}`">
+        <month :type="type" :date="item.date" :value="value" :min-date="minDate" :max-date="maxDate"
+          :first-day-of-week="firstDayOfWeek" :formatter="formatter" :max-range="maxRange" :range-prompt="rangePrompt"
+          :allow-same-day="allowSameDay" :default-time="defaultTime" :showTitle="index !== 0"
+          @change="handleDateChange" />
+      </div>
     </scroll-view>
-    <view v-if="timeType" class="wd-month-panel__time">
-      <view v-if="type === 'datetimerange'" class="wd-month-panel__time-label">
-        <view class="wd-month-panel__time-text">{{ timeType === 'start' ? translate('startTime') : translate('endTime') }}</view>
-      </view>
-      <view class="wd-month-panel__time-picker">
-        <wd-picker-view
-          v-if="timeData.length"
-          v-model="timeValue"
-          :columns="timeData"
-          :columns-height="125"
-          :immediate-change="immediateChange"
-          @change="handleTimeChange"
-          @pickstart="handlePickStart"
-          @pickend="handlePickEnd"
-        />
-      </view>
-    </view>
-  </view>
+    <div v-if="timeType" class="wd-month-panel__time">
+      <div v-if="type === 'datetimerange'" class="wd-month-panel__time-label">
+        <div class="wd-month-panel__time-text">{{ timeType === 'start' ? translate('startTime') :
+          translate('endTime') }}</div>
+      </div>
+      <div class="wd-month-panel__time-picker">
+        <wd-picker-view v-if="timeData.length" v-model="timeValue" :columns="timeData" :columns-height="125"
+          :immediate-change="immediateChange" @change="handleTimeChange" @pickstart="handlePickStart"
+          @pickend="handlePickEnd" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

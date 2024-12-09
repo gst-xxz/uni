@@ -1,20 +1,21 @@
 <template>
-  <view>
+  <div>
     <page-wraper>
-      <view class="icon">
-        <view style="position: sticky; top: 0; z-index: 2">
-          <wd-search hide-cancel placeholder="查找图标" light v-model="keyword" @search="handleSearch" @clear="handleClear" />
-        </view>
-        <view class="icon-list">
-          <view v-for="(icon, index) in showIcons" :key="index" class="icon-item" @click="handleClick(icon)">
-            <view><wd-icon :name="icon" size="22px" custom-class="icon-item-class" /></view>
-            <view class="icon-item-name">{{ icon }}</view>
-          </view>
+      <div class="icon">
+        <div style="position: sticky; top: 0; z-index: 2">
+          <wd-search hide-cancel placeholder="查找图标" light v-model="keyword" @search="handleSearch"
+            @clear="handleClear" />
+        </div>
+        <div class="icon-list">
+          <div v-for="(icon, index) in showIcons" :key="index" class="icon-item" @click="handleClick(icon)">
+            <div><wd-icon :name="icon" size="22px" custom-class="icon-item-class" /></div>
+            <div class="icon-item-name">{{ icon }}</div>
+          </div>
           <wd-status-tip v-if="!showIcons.length" image="search" tip="当前无相关图标" />
-        </view>
-      </view>
+        </div>
+      </div>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
@@ -358,10 +359,12 @@ $-light-color: #999;
 .wot-theme-dark {
   .icon-list {
     background: $-dark-background2;
+
     :deep(.icon-item-class) {
       color: $-dark-color;
     }
   }
+
   .icon-item-name {
     color: $-dark-color3;
   }
@@ -383,6 +386,7 @@ $-light-color: #999;
   flex-wrap: wrap;
   background: #fff;
 }
+
 .icon-item {
   width: 25%;
   padding: 15px 0;

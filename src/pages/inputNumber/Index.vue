@@ -16,10 +16,10 @@
       <wd-input-number v-model="value10" @change="handleChange4" disable-input />
     </demo-block>
     <demo-block title="无输入框">
-      <view class="flex">
-        <view>数量：{{ value5 }}</view>
+      <div class="flex">
+        <div>数量：{{ value5 }}</div>
         <wd-input-number v-model="value5" @change="handleChange5" without-input />
-      </view>
+      </div>
     </demo-block>
     <demo-block title="设置小数精度">
       <wd-input-number v-model="value6" @change="handleChange6" :precision="2" :step="0.1" />

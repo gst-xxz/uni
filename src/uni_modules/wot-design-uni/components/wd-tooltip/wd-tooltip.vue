@@ -1,25 +1,28 @@
 <template>
-  <view :class="`wd-tooltip ${customClass}`" :style="customStyle" id="tooltip" @click.stop="popover.noop">
+  <div :class="`wd-tooltip ${customClass}`" :style="customStyle" id="tooltip" @click.stop="popover.noop">
     <!-- 用于为渲染获取宽高的元素 -->
-    <view class="wd-tooltip__pos wd-tooltip__hidden" id="pos">
-      <view class="wd-tooltip__container custom-pop">
-        <view v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</view>
-      </view>
-    </view>
-    <wd-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip" name="fade" :duration="200">
-      <view class="wd-tooltip__container custom-pop">
-        <view v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`" :style="popover.arrowStyle.value"></view>
+    <div class="wd-tooltip__pos wd-tooltip__hidden" id="pos">
+      <div class="wd-tooltip__container custom-pop">
+        <div v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</div>
+      </div>
+    </div>
+    <wd-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip" name="fade"
+      :duration="200">
+      <div class="wd-tooltip__container custom-pop">
+        <div v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`"
+          :style="popover.arrowStyle.value">
+        </div>
         <!-- 普通模式 -->
-        <view v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</view>
+        <div v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</div>
         <!-- 用户自定义样式 -->
         <slot name="content" v-else />
-      </view>
+      </div>
       <wd-icon v-if="showClose" name="close" custom-class="wd-tooltip__close-icon" @click="toggle"></wd-icon>
     </wd-transition>
-    <view @click="toggle" class="wd-tooltip__target" id="target">
+    <div @click="toggle" class="wd-tooltip__target" id="target">
       <slot />
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

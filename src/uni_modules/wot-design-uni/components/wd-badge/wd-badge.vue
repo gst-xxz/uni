@@ -1,14 +1,12 @@
 <template>
-  <view :class="['wd-badge', customClass]" :style="customStyle">
+  <div :class="['wd-badge', customClass]" :style="customStyle">
     <slot></slot>
-    <view
-      v-if="shouldShowBadge"
+    <div v-if="shouldShowBadge"
       :class="['wd-badge__content', 'is-fixed', type ? 'wd-badge__content--' + type : '', isDot ? 'is-dot' : '']"
-      :style="contentStyle"
-    >
+      :style="contentStyle">
       {{ content }}
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

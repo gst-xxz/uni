@@ -1,21 +1,21 @@
 <template>
   <page-wraper>
-    <view class="wraper">
+    <div class="wraper">
       <wd-sidebar v-model="active" @change="handleChange">
         <wd-sidebar-item v-for="(item, index) in categories" :key="index" :value="index" :label="item.label"
           :icon="item.icon" />
       </wd-sidebar>
       <scroll-view class="content" scroll-y scroll-with-animation :scroll-top="scrollTop" :throttle="false"
         @scroll="onScroll">
-        <view v-for="(item, index) in categories" :key="index" class="category">
+        <div v-for="(item, index) in categories" :key="index" class="category">
           <wd-cell-group :title="item.title" border>
             <wd-cell v-for="(cell, index) in item.items" :key="index" :title="cell.title" :label="cell.label">
               <wd-icon name="github-filled" size="24px"></wd-icon>
             </wd-cell>
           </wd-cell-group>
-        </view>
+        </div>
       </scroll-view>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

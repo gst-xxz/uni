@@ -2,7 +2,7 @@
   <wd-cell custom-class="wd-form-item" :required="required" :title="label" :center="center" :border="border"
     :title-width="labelWidth" :is-link="isLink">
     <slot></slot>
-    <view v-if="errorMessage" class="wd-form-item__error-message">{{ errorMessage }}</view>
+    <div v-if="errorMessage" class="wd-form-item__error-message">{{ errorMessage }}</div>
   </wd-cell>
 </template>
 <script lang="ts">

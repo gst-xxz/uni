@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <div>
     <page-wraper>
       <demo-block title="Fade 动画">
         <wd-button @click="fade">fade</wd-button>
@@ -24,19 +24,11 @@
 
       <wd-transition :show="show" :name="name" custom-class="block" />
 
-      <wd-transition
-        :show="customShow"
-        :duration="{ enter: 700, leave: 1000 }"
-        enter-class="custom-enter"
-        enter-active-class="custom-enter-active"
-        enter-to-class="custom-enter-to"
-        leave-class="custom-leave"
-        leave-active-class="custom-leave-active"
-        leave-to-class="custom-leave-to"
-        custom-class="block"
-      />
+      <wd-transition :show="customShow" :duration="{ enter: 700, leave: 1000 }" enter-class="custom-enter"
+        enter-active-class="custom-enter-active" enter-to-class="custom-enter-to" leave-class="custom-leave"
+        leave-active-class="custom-leave-active" leave-to-class="custom-leave-to" custom-class="block" />
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import type { TransitionName } from '@/uni_modules/wot-design-uni/components/wd-transition/types'
@@ -96,6 +88,7 @@ function transition(transition: TransitionName) {
 :deep(button) {
   margin: 0 10px 10px 0;
 }
+
 :deep(.block) {
   position: fixed;
   left: 50%;
@@ -110,10 +103,12 @@ function transition(transition: TransitionName) {
 :deep(.custom-leave-active) {
   transition-property: background, transform;
 }
+
 :deep(.custom-enter) {
   transform: translate3d(-100px, -100px, 0) rotate(-180deg);
   background: #ff0000;
 }
+
 :deep(.custom-leave-to) {
   transform: translate3d(100px, 100px, 0) rotate(180deg);
   background: #ff0000;

@@ -1,8 +1,8 @@
 <template>
-  <view :class="`wd-count-down ${customClass}`" :style="customStyle">
+  <div :class="`wd-count-down ${customClass}`" :style="customStyle">
     <slot :current="current" v-if="$slots.default" />
     <block v-else>{{ timeText }}</block>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

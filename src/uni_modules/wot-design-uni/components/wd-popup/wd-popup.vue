@@ -1,34 +1,15 @@
 <template>
-  <view class="wd-popup-wrapper">
-    <wd-overlay
-      v-if="modal"
-      :show="modelValue"
-      :z-index="zIndex"
-      :lock-scroll="lockScroll"
-      :duration="duration"
-      :custom-style="modalStyle"
-      @click="handleClickModal"
-      @touchmove="noop"
-    />
-    <wd-transition
-      :lazy-render="lazyRender"
-      :custom-class="rootClass"
-      :custom-style="style"
-      :duration="duration"
-      :show="modelValue"
-      :name="transitionName"
-      :destroy="hideWhenClose"
-      @before-enter="emit('before-enter')"
-      @enter="emit('enter')"
-      @after-enter="emit('after-enter')"
-      @before-leave="emit('before-leave')"
-      @leave="emit('leave')"
-      @after-leave="emit('after-leave')"
-    >
+  <div class="wd-popup-wrapper">
+    <wd-overlay v-if="modal" :show="modelValue" :z-index="zIndex" :lock-scroll="lockScroll" :duration="duration"
+      :custom-style="modalStyle" @click="handleClickModal" @touchmove="noop" />
+    <wd-transition :lazy-render="lazyRender" :custom-class="rootClass" :custom-style="style" :duration="duration"
+      :show="modelValue" :name="transitionName" :destroy="hideWhenClose" @before-enter="emit('before-enter')"
+      @enter="emit('enter')" @after-enter="emit('after-enter')" @before-leave="emit('before-leave')"
+      @leave="emit('leave')" @after-leave="emit('after-leave')">
       <slot />
       <wd-icon v-if="closable" custom-class="wd-popup__close" name="add" @click="close" />
     </wd-transition>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">
@@ -126,7 +107,7 @@ function close() {
   emit('close')
   emit('update:modelValue', false)
 }
-function noop() {}
+function noop() { }
 </script>
 <style lang="scss" scoped>
 @import './index.scss';

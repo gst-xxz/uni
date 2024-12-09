@@ -1,11 +1,6 @@
 <template>
-  <view
-    @click="handleClick"
-    :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${
-      suffix ? 'wd-sidebar-item--suffix' : ''
-    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`"
-    :style="customStyle"
-  >
+  <div @click="handleClick" :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
+    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
       <wd-icon custom-class="wd-sidebar-item__icon" :name="icon"></wd-icon>
@@ -13,7 +8,7 @@
     <wd-badge v-bind="customBadgeProps" custom-class="wd-sidebar-item__badge">
       {{ label }}
     </wd-badge>
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

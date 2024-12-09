@@ -2,7 +2,7 @@
   <page-wraper>
     <wd-toast />
 
-    <view @click="closeOutside" class="wrapper">
+    <div @click="closeOutside" class="wrapper">
       <demo-block title="位置">
         <wd-radio-group v-model="placement" inline shape="dot">
           <wd-radio value="bottom" custom-class="custom-radio">bottom</wd-radio>
@@ -20,32 +20,33 @@
         </wd-radio-group>
       </demo-block>
       <demo-block custom-class="pop" title="基本用法">
-        <view class="center">
+        <div class="center">
           <wd-popover id="pop1" content="这是一段内容。" :placement="placement" v-model="show1" @change="handleChange1">
             <wd-button data-id="pop1">点击展示</wd-button>
           </wd-popover>
-        </view>
+        </div>
       </demo-block>
 
       <demo-block custom-class="pop" title="嵌套信息">
-        <view class="center list">
+        <div class="center list">
           <wd-popover v-model="show2" use-content-slot :placement="placement" @change="handleChange2">
             <template #content>
-              <view class="pop-content">这是一段自定义样式的内容。</view>
+              <div class="pop-content">这是一段自定义样式的内容。</div>
             </template>
             <wd-button>点击展示</wd-button>
           </wd-popover>
-        </view>
+        </div>
       </demo-block>
 
       <demo-block custom-class="pop" title="列表展示">
-        <view class="center list">
-          <wd-popover v-model="show3" mode="menu" :placement="placement" :content="menu" @menuclick="link" @change="handleChange3">
+        <div class="center list">
+          <wd-popover v-model="show3" mode="menu" :placement="placement" :content="menu" @menuclick="link"
+            @change="handleChange3">
             <wd-button>列表</wd-button>
           </wd-popover>
-        </view>
+        </div>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>
@@ -109,18 +110,22 @@ function handleChange3() {
   text-align: center;
   padding-bottom: 20px;
 }
+
 :deep(.pop) {
   overflow: visible !important;
   padding: 10px;
 }
+
 :deep(.custom-radio) {
   height: 32px !important;
   line-height: 32px !important;
 }
+
 .wrapper {
   width: 100%;
   height: 100vh;
 }
+
 .pop-content {
   /* 必填 开始 */
   position: relative;

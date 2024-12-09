@@ -1,19 +1,13 @@
 <template>
-  <view
+  <div
     :class="`wd-table-col ${fixed ? 'wd-table-col--fixed' : ''} ${isLastFixed && isDef(table) && table.state.scrollLeft ? 'is-shadow' : ''}`"
-    :style="columnStyle"
-  >
-    <view
-      :class="`wd-table__cell ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`"
-      v-for="(row, index) in column"
-      :key="index"
-      :style="cellStyle"
-      @click="handleRowClick(index)"
-    >
+    :style="columnStyle">
+    <div :class="`wd-table__cell ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`"
+      v-for="(row, index) in column" :key="index" :style="cellStyle" @click="handleRowClick(index)">
       <slot name="value" v-if="$slots.value" :row="getScope(index)" :index="index"></slot>
       <text :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`" v-else>{{ row }}</text>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

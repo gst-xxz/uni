@@ -1,60 +1,60 @@
 <template>
   <page-wraper>
-    <view style="height: 250vh">
-      <view class="demo-block">
-        <view class="demo-title">基本用法</view>
-        <view class="demo-container">
+    <div style="height: 250vh">
+      <div class="demo-block">
+        <div class="demo-title">基本用法</div>
+        <div class="demo-container">
           <wd-sticky custom-style="margin-left: 20px">
             <wd-button type="success">基础用法</wd-button>
           </wd-sticky>
-        </view>
-      </view>
+        </div>
+      </div>
 
-      <view class="demo-block">
-        <view class="demo-title">吸顶距离</view>
-        <view class="demo-container">
+      <div class="demo-block">
+        <div class="demo-title">吸顶距离</div>
+        <div class="demo-container">
           <wd-sticky :offset-top="50" custom-style="margin-left: 120px">
             <wd-button>吸顶距离</wd-button>
           </wd-sticky>
-        </view>
-      </view>
+        </div>
+      </div>
 
-      <view class="demo-block">
-        <view class="demo-title">相对容器</view>
-        <view class="demo-container">
+      <div class="demo-block">
+        <div class="demo-title">相对容器</div>
+        <div class="demo-container">
           <wd-sticky-box>
-            <view class="custom-container">
+            <div class="custom-container">
               <wd-sticky custom-style="margin-left: 220px">
                 <wd-button type="warning">相对容器</wd-button>
               </wd-sticky>
-            </view>
+            </div>
           </wd-sticky-box>
-        </view>
-      </view>
+        </div>
+      </div>
 
-      <view class="demo-block">
-        <view class="demo-title">动态插入</view>
-        <view class="demo-container">
+      <div class="demo-block">
+        <div class="demo-title">动态插入</div>
+        <div class="demo-container">
           <wd-button type="info" plain @click="insert">点击插入</wd-button>
           <wd-sticky custom-style="margin-left: 220px">
             <wd-button type="error" v-if="show">动态生成</wd-button>
           </wd-sticky>
-        </view>
-      </view>
+        </div>
+      </div>
 
-      <view class="demo-block">
-        <view class="demo-title">相对容器+吸顶距离</view>
-        <view class="demo-container">
+      <div class="demo-block">
+        <div class="demo-title">相对容器+吸顶距离</div>
+        <div class="demo-container">
           <wd-sticky-box>
-            <view class="custom-container">
+            <div class="custom-container">
               <wd-sticky :offset-top="150">
                 <wd-button type="warning">相对容器+吸顶距离</wd-button>
               </wd-sticky>
-            </view>
+            </div>
           </wd-sticky-box>
-        </view>
-      </view>
-    </view>
+        </div>
+      </div>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup>

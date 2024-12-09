@@ -1,14 +1,15 @@
 <template>
   <!-- #ifdef MP-DINGTALK -->
-  <view :class="`wd-index-anchor-ding ${isSticky ? 'is-sticky' : ''}`">
+  <div :class="`wd-index-anchor-ding ${isSticky ? 'is-sticky' : ''}`">
     <!-- #endif -->
-    <view :class="`wd-index-anchor ${isSticky ? 'is-sticky' : ''} ${customClass}`" :style="customStyle" :id="indexAnchorId">
+    <div :class="`wd-index-anchor ${isSticky ? 'is-sticky' : ''} ${customClass}`" :style="customStyle"
+      :id="indexAnchorId">
       <slot>
         {{ index }}
       </slot>
-    </view>
+    </div>
     <!-- #ifdef MP-DINGTALK -->
-  </view>
+  </div>
   <!-- #endif -->
 </template>
 

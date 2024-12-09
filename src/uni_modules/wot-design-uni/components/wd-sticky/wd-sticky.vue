@@ -1,13 +1,13 @@
 <template>
-  <view :style="`${rootStyle};display: inline-block;`">
-    <view :class="`wd-sticky ${customClass}`" :style="stickyStyle" :id="styckyId">
-      <view class="wd-sticky__container" :style="containerStyle">
+  <div :style="`${rootStyle};display: inline-block;`">
+    <div :class="`wd-sticky ${customClass}`" :style="stickyStyle" :id="styckyId">
+      <div class="wd-sticky__container" :style="containerStyle">
         <wd-resize @resize="handleResize" custom-style="display: inline-block;">
           <slot />
         </wd-resize>
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

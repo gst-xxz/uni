@@ -1,48 +1,43 @@
 <template>
-  <view
+  <div
     :class="['wd-cell', isBorder ? 'is-border' : '', size ? 'is-' + size : '', center ? 'is-center' : '', customClass]"
-    :style="customStyle"
-    :hover-class="isLink || clickable ? 'is-hover' : 'none'"
-    :hover-stay-time="70"
-    @click="onClick"
-  >
-    <view :class="['wd-cell__wrapper', vertical ? 'is-vertical' : '']">
-      <view
-        :class="['wd-cell__left', isRequired ? 'is-required' : '']"
-        :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''"
-      >
+    :style="customStyle" :hover-class="isLink || clickable ? 'is-hover' : 'none'" :hover-stay-time="70"
+    @click="onClick">
+    <div :class="['wd-cell__wrapper', vertical ? 'is-vertical' : '']">
+      <div :class="['wd-cell__left', isRequired ? 'is-required' : '']"
+        :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''">
         <!--左侧icon部位-->
         <wd-icon v-if="icon" :name="icon" :custom-class="`wd-cell__icon  ${customIconClass}`"></wd-icon>
         <slot v-else name="icon" />
 
-        <view class="wd-cell__title">
+        <div class="wd-cell__title">
           <!--title BEGIN-->
-          <view v-if="title" :class="customTitleClass">{{ title }}</view>
+          <div v-if="title" :class="customTitleClass">{{ title }}</div>
           <slot v-else name="title"></slot>
           <!--title END-->
 
           <!--label BEGIN-->
-          <view v-if="label" :class="`wd-cell__label ${customLabelClass}`">{{ label }}</view>
+          <div v-if="label" :class="`wd-cell__label ${customLabelClass}`">{{ label }}</div>
           <slot v-else name="label" />
           <!--label END-->
-        </view>
-      </view>
+        </div>
+      </div>
       <!--right content BEGIN-->
-      <view class="wd-cell__right">
-        <view class="wd-cell__body">
+      <div class="wd-cell__right">
+        <div class="wd-cell__body">
           <!--文案内容-->
-          <view :class="`wd-cell__value ${customValueClass}`">
+          <div :class="`wd-cell__value ${customValueClass}`">
             <slot>{{ value }}</slot>
-          </view>
+          </div>
           <!--箭头-->
           <wd-icon v-if="isLink" custom-class="wd-cell__arrow-right" name="arrow-right" />
           <slot v-else name="right-icon" />
-        </view>
-        <view v-if="errorMessage" class="wd-cell__error-message">{{ errorMessage }}</view>
-      </view>
+        </div>
+        <div v-if="errorMessage" class="wd-cell__error-message">{{ errorMessage }}</div>
+      </div>
       <!--right content END-->
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

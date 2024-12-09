@@ -1,7 +1,8 @@
 <template>
-  <view :class="`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`" :style="customStyle">
+  <div :class="`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`"
+    :style="customStyle">
     <slot />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

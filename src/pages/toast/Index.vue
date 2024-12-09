@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <div>
     <page-wraper>
       <demo-block title="基本用法">
         <wd-button @click="showToast">toast</wd-button>
@@ -24,7 +24,7 @@
         <wd-button @click="showLoadingToast2">ring类型loading</wd-button>
       </demo-block>
     </page-wraper>
-  </view>
+  </div>
 </template>
 <script lang="ts" setup>
 import { useToast } from '@/uni_modules/wot-design-uni'

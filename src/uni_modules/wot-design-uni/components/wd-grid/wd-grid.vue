@@ -1,8 +1,8 @@
 <template>
-  <view :class="`wd-grid ${customClass}`" :style="rootStyle">
+  <div :class="`wd-grid ${customClass}`" :style="rootStyle">
     <!-- 默认插入的 item -->
     <slot />
-  </view>
+  </div>
 </template>
 
 <script lang="ts">

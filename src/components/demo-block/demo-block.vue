@@ -1,10 +1,10 @@
 <template>
-  <view :class="['demo-block', transparent ? '' : 'is-white', customClass]">
-    <view class="demo-title">{{ title }}</view>
-    <view class="demo-container" :style="transparent ? '' : style">
+  <div :class="['demo-block', transparent ? '' : 'is-white', customClass]">
+    <div class="demo-title">{{ title }}</div>
+    <div class="demo-container" :style="transparent ? '' : style">
       <slot />
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 <script lang="ts">
 export default {

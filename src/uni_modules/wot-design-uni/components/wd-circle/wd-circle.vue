@@ -1,5 +1,5 @@
 <template>
-  <view :class="`wd-circle ${customClass}`" :style="customStyle">
+  <div :class="`wd-circle ${customClass}`" :style="customStyle">
     <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
     <!-- #endif -->
@@ -7,15 +7,15 @@
     <canvas :width="canvasSize" :height="canvasSize" :style="canvasStyle" :id="canvasId" :canvas-id="canvasId"></canvas>
     <!-- #endif -->
 
-    <view v-if="!text" class="wd-circle__text">
+    <div v-if="!text" class="wd-circle__text">
       <!-- 自定义提示内容 -->
       <slot></slot>
-    </view>
+    </div>
 
     <text v-else class="wd-circle__text">
       {{ text }}
     </text>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

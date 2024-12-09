@@ -1,5 +1,6 @@
 <template>
-  <view :class="`wd-gap ${safeAreaBottom ? 'wd-gap--safe' : ''} ${customClass}`" :style="rootStyle"></view>
+  <div :class="`wd-gap ${safeAreaBottom ? 'wd-gap--safe' : ''} ${customClass}`" :style="rootStyle">
+  </div>
 </template>
 
 <script lang="ts">

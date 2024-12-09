@@ -1,6 +1,6 @@
 <template>
   <page-wraper>
-    <view>
+    <div>
       <demo-block title="基本使用" transparent>
         <wd-gap bg-color="#FFFFFF"></wd-gap>
       </demo-block>
@@ -16,7 +16,7 @@
       <demo-block custom-class="custom-safe-area-bottom" title="底部安全区" transparent>
         <wd-gap bg-color="#FFFFFF" safe-area-bottom height="120rpx"></wd-gap>
       </demo-block>
-    </view>
+    </div>
   </page-wraper>
 </template>
 <script lang="ts" setup></script>
@@ -27,6 +27,7 @@
   left: 0;
   right: 0;
 }
+
 :deep(.custom-gap) {
   padding-bottom: 120rpx;
   background: #34d19d !important;

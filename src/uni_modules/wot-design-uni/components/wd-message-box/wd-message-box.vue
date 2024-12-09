@@ -1,47 +1,36 @@
 <template>
-  <view>
-    <wd-popup
-      transition="zoom-in"
-      v-model="messageState.show"
-      :close-on-click-modal="messageState.closeOnClickModal"
-      :lazy-render="messageState.lazyRender"
-      custom-class="wd-message-box"
-      @click-modal="toggleModal('modal')"
-      :z-index="messageState.zIndex"
-      :duration="200"
-    >
-      <view :class="rootClass">
-        <view :class="bodyClass">
-          <view v-if="messageState.title" class="wd-message-box__title">
+  <div>
+    <wd-popup transition="zoom-in" v-model="messageState.show" :close-on-click-modal="messageState.closeOnClickModal"
+      :lazy-render="messageState.lazyRender" custom-class="wd-message-box" @click-modal="toggleModal('modal')"
+      :z-index="messageState.zIndex" :duration="200">
+      <div :class="rootClass">
+        <div :class="bodyClass">
+          <div v-if="messageState.title" class="wd-message-box__title">
             {{ messageState.title }}
-          </view>
-          <view class="wd-message-box__content">
+          </div>
+          <div class="wd-message-box__content">
             <block v-if="messageState.type === 'prompt'">
-              <wd-input
-                v-model="messageState.inputValue"
-                :type="messageState.inputType"
-                :size="messageState.inputSize"
-                :placeholder="messageState.inputPlaceholder"
-                @input="inputValChange"
-              />
-              <view v-if="messageState.showErr" class="wd-message-box__input-error">
+              <wd-input v-model="messageState.inputValue" :type="messageState.inputType" :size="messageState.inputSize"
+                :placeholder="messageState.inputPlaceholder" @input="inputValChange" />
+              <div v-if="messageState.showErr" class="wd-message-box__input-error">
                 {{ messageState.inputError || translate('inputNoValidate') }}
-              </view>
+              </div>
             </block>
             <slot>{{ messageState.msg }}</slot>
-          </view>
-        </view>
-        <view :class="`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
+          </div>
+        </div>
+        <div
+          :class="`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
           <wd-button v-bind="customCancelProps" v-if="messageState.showCancelButton" @click="toggleModal('cancel')">
             {{ messageState.cancelButtonText || translate('cancel') }}
           </wd-button>
           <wd-button v-bind="customConfirmProps" @click="toggleModal('confirm')">
             {{ messageState.confirmButtonText || translate('confirm') }}
           </wd-button>
-        </view>
-      </view>
+        </div>
+      </div>
     </wd-popup>
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {

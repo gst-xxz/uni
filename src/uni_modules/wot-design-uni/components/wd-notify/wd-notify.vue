@@ -1,17 +1,10 @@
 <template>
-  <wd-popup
-    v-model="state.visible"
-    :custom-style="customStyle"
-    :position="state.position"
-    :z-index="state.zIndex"
-    :duration="250"
-    :modal="false"
-    @leave="onClosed"
-    @enter="onOpened"
-  >
-    <view class="wd-notify" :class="[`wd-notify--${state.type}`]" :style="{ color: state.color, background: state.background }" @click="onClick">
+  <wd-popup v-model="state.visible" :custom-style="customStyle" :position="state.position" :z-index="state.zIndex"
+    :duration="250" :modal="false" @leave="onClosed" @enter="onOpened">
+    <div class="wd-notify" :class="[`wd-notify--${state.type}`]"
+      :style="{ color: state.color, background: state.background }" @click="onClick">
       <slot>{{ state.message }}</slot>
-    </view>
+    </div>
   </wd-popup>
 </template>
 <script lang="ts">

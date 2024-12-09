@@ -20,9 +20,9 @@
         <wd-step title="步骤2" description="登录账号并绑定手机" />
         <wd-step title="步骤3" description="完善个人信息" />
       </wd-steps>
-      <view style="margin-top: 15px; text-align: center">
+      <div style="margin-top: 15px; text-align: center">
         <wd-button size="small" @click="nextStep">下一步</wd-button>
-      </view>
+      </div>
     </demo-block>
     <demo-block title="修改图标">
       <wd-steps :active="1" align-center>

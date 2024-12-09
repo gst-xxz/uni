@@ -1,8 +1,8 @@
 <template>
-  <view class="wd-navbar-capsule">
+  <div class="wd-navbar-capsule">
     <wd-icon @click="handleBack" name="chevron-left" custom-class="wd-navbar-capsule__icon" />
     <wd-icon @click="handleBackHome" name="home" custom-class="wd-navbar-capsule__icon" />
-  </view>
+  </div>
 </template>
 <script lang="ts">
 export default {
