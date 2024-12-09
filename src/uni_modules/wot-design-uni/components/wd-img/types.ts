@@ -29,7 +29,7 @@ export const imgProps = {
   /**
    * 填充模式：'top left' / 'top right' / 'bottom left' / 'bottom right' / 'right' / 'left' / 'center' / 'bottom' / 'top' / 'heightFix' / 'widthFix' / 'aspectFill' / 'aspectFit' / 'scaleToFill'
    */
-  mode: makeStringProp<imgMode>('scaleToFill'),
+  mode: makeStringProp<ImageMode>('scaleToFill'),
   /**
    * 是否懒加载
    */

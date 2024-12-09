@@ -1,5 +1,7 @@
+import './uni_modules/wot-design-uni/components/common/styles/common.css';
 
 import { createSSRApp } from 'vue'
+
 import App from './App.vue'
 // #ifdef H5
 import '@vant/touch-emulator'

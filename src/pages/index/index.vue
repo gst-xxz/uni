@@ -5,7 +5,7 @@
         <div class="page__title">
           <div class="logo">
           </div>
-          <div class="inline">
+          <div class="inline text-red-500">
             Wot Design Uni
             <span class="version">@{{ packageConfig.version }}</span>
           </div>
