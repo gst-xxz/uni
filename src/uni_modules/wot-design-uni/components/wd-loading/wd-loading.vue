@@ -19,8 +19,6 @@ export default {
   name: 'wd-loading',
   options: {
     virtualHost: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared'
   }
 }
 </script>
@@ -28,19 +26,18 @@ export default {
 <script lang="ts" setup>
 
 import { computed } from 'vue';
-import { cn } from '../common/util';
+import { addUnit, cn } from '../common/util';
 import { loadingProps } from './types';
 
 const props = defineProps(loadingProps)
 
 const size = computed(() => {
-  return typeof props.size === 'string' ? props.size : `${props.size}px`
+  return addUnit(props.size)
 })
 
 const array12 = computed(() => {
   return new Array(12).fill(0)
 })
-
 
 </script>
 <style>

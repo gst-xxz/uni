@@ -155,7 +155,7 @@ export const swiperProps = {
    * 类型：string
    * 默认值：'aspectFill'
    */
-  imageMode: makeStringProp<imgMode>('aspectFill'),
+  imageMode: makeStringProp<ImageMode>('aspectFill'),
   /**
    * 选项对象中，value 对应的 key
    */

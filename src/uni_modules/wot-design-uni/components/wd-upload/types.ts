@@ -250,7 +250,7 @@ export const uploadProps = {
    * 类型：string
    * 默认值：'ring'
    */
-  loadingType: makeStringProp<LoadingType>('ring'),
+  loadingType: makeStringProp<LoadingType>('circular'),
   /**
    * 加载中图标颜色
    * 类型：string
@@ -297,7 +297,7 @@ export const uploadProps = {
   /**
    * 预览图片的mode属性
    */
-  imageMode: makeStringProp<imgMode>('aspectFit'),
+  imageMode: makeStringProp<ImageMode>('aspectFit'),
   /**
    * 接口响应的成功状态（statusCode）值
    */

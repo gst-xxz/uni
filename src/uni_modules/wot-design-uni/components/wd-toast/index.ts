@@ -11,7 +11,7 @@ const toastDefaultOptionKey = '__TOAST_OPTION__'
 export const defaultOptions: ToastOptions = {
   msg: '',
   duration: 2000,
-  loadingType: 'outline',
+  loadingType: 'circular',
   loadingColor: '#4D80F0',
   iconColor: '#4D80F0',
   position: 'middle',
