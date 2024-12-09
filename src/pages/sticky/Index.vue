@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-06-13 11:47:12
- * @LastEditTime: 2024-02-26 14:42:16
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \wot-design-uni\src\pages\sticky\Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <view style="height: 250vh">
@@ -87,6 +78,7 @@ onShow(() => {
     background: $-dark-background2;
   }
 }
+
 .demo-block {
   padding: 15px 0;
   color: #666;
@@ -97,9 +89,11 @@ onShow(() => {
   width: 100vw;
   background-color: #ffffff;
 }
+
 .is-white {
   background: #fff;
 }
+
 .demo-title {
   padding: 0 15px;
   margin: 10px 0;

@@ -1,12 +1,4 @@
-/*
- * @Author: weisheng
- * @Date: 2024-09-01 15:42:04
- * @LastEditTime: 2024-11-06 23:50:08
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-transition\types.ts
- * 记得注释
- */
+
 import type { ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp } from '../common/props'
 

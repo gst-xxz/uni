@@ -1,12 +1,4 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-15 11:36:12
- * @LastEditTime: 2024-11-20 20:29:03
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-badge/types.ts
- * 记得注释
- */
+
 import type { ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp, numericProp } from '../common/props'
 

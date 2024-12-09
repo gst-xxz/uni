@@ -1,22 +1,6 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-12-14 11:21:58
- * @LastEditTime: 2024-03-15 21:29:33
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: /wot-design-uni/src/uni_modules/wot-design-uni/components/wd-form-item/wd-form-item.vue
- * 记得注释
--->
 <template>
-  <wd-cell
-    custom-class="wd-form-item"
-    :required="required"
-    :title="label"
-    :center="center"
-    :border="border"
-    :title-width="labelWidth"
-    :is-link="isLink"
-  >
+  <wd-cell custom-class="wd-form-item" :required="required" :title="label" :center="center" :border="border"
+    :title-width="labelWidth" :is-link="isLink">
     <slot></slot>
     <view v-if="errorMessage" class="wd-form-item__error-message">{{ errorMessage }}</view>
   </wd-cell>

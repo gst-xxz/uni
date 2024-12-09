@@ -1,12 +1,4 @@
-/*
- * @Author: weisheng
- * @Date: 2024-03-15 11:36:12
- * @LastEditTime: 2024-11-04 21:33:52
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-button\types.ts
- * 记得注释
- */
+
 import type { ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp } from '../common/props'
 

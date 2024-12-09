@@ -1,12 +1,4 @@
-/*
- * @Author: weisheng
- * @Date: 2024-09-01 15:42:04
- * @LastEditTime: 2024-09-21 15:36:09
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\uni_modules\wot-design-uni\components\wd-search\types.ts
- * 记得注释
- */
+
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
 
 export const searchProps = {

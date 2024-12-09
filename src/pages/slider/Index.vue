@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2023-10-10 17:02:32
- * @LastEditTime: 2023-10-10 18:08:19
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-design-uni\src\pages\slider\Index.vue
- * 记得注释
--->
 <template>
   <page-wraper>
     <demo-block title="基础用法">
