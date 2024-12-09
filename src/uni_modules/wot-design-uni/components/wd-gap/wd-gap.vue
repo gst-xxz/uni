@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-gap ${safeAreaBottom ? 'wd-gap--safe' : ''} ${customClass}`" :style="rootStyle">
+  <div :class="cn(`wd-gap ${safeAreaBottom ? 'wd-gap--safe pb-safe' : ''}`, customClass)" :style="rootStyle">
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 
 <script setup lang="ts">
 import { type CSSProperties, computed } from 'vue'
-import { addUnit, isDef, objToStyle } from '../common/util'
+import { addUnit, isDef, objToStyle, cn } from '../common/util'
 import { gapProps } from './types'
 
 const props = defineProps(gapProps)
@@ -32,6 +32,3 @@ const rootStyle = computed(() => {
   return `${objToStyle(rootStyle)};${props.customStyle}`
 })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

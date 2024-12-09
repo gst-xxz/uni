@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-grid ${customClass}`" :style="rootStyle">
+  <div :class="cn(`wd-grid relative box-border overflow-hidden h-auto`, customClass)" :style="rootStyle">
     <!-- 默认插入的 item -->
     <slot />
   </div>
@@ -20,7 +20,7 @@ export default {
 import { computed, watch } from 'vue'
 import { useChildren } from '../composables/useChildren'
 import { GRID_KEY, gridProps } from './types'
-import { debounce } from '../common/util'
+import { cn, debounce } from '../common/util'
 const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20))
 
 const props = defineProps(gridProps)
@@ -100,7 +100,3 @@ function init() {
   })
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

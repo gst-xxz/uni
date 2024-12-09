@@ -17,7 +17,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdToast from '../wd-toast/wd-toast.vue'
 import { reactive, watch } from 'vue'
 import { deepClone, getPropByPath, isDef, isPromise } from '../common/util'
 import { useChildren } from '../composables/useChildren'
@@ -182,7 +181,3 @@ function reset() {
 
 defineExpose<FormExpose>({ validate, reset })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

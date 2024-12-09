@@ -1,5 +1,7 @@
 <template>
-  <div :class="rootClass" :style="rootStyle">
+  <div
+    :class="cn('wd-watermark absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat', fullScreen ? 'is-fullscreen fixed' : '', customClass)"
+    :style="rootStyle">
     <canvas v-if="!canvasOffScreenable && showCanvas" type="2d"
       :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }" :canvas-id="canvasId"
       :id="canvasId" />
@@ -19,7 +21,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, onMounted, ref, watch, nextTick } from 'vue'
-import { addUnit, buildUrlWithParams, isBase64Image, objToStyle, uuid } from '../common/util'
+import { addUnit, buildUrlWithParams, cn, isBase64Image, objToStyle, uuid } from '../common/util'
 import { watermarkProps } from './types'
 
 const props = defineProps(watermarkProps)
@@ -39,17 +41,6 @@ const pixelRatio = ref<number>(uni.getSystemInfoSync().pixelRatio) // 像素比
 const canvasHeight = ref<number>((props.height + props.gutterY) * pixelRatio.value) // canvas画布高度
 const canvasWidth = ref<number>((props.width + props.gutterX) * pixelRatio.value) // canvas画布宽度
 const showCanvas = ref<boolean>(true) // 是否展示canvas
-
-/**
- * 水印css类
- */
-const rootClass = computed(() => {
-  let classess: string = 'wd-watermark'
-  if (props.fullScreen) {
-    classess = `${classess} is-fullscreen`
-  }
-  return `${classess} ${props.customClass}`
-})
 
 /**
  * 水印样式
@@ -476,7 +467,3 @@ function drawImageOnScreen(
   })
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

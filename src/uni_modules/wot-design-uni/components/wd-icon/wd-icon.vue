@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" :class="cn(customClass)" :style="rootStyle">
+  <div @click="handleClick" :class="customClass" :style="rootStyle">
     <span :class="cn('iconfont', `icon-${name}`)"></span>
   </div>
 </template>

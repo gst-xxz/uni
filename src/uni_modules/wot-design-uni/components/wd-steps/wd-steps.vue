@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-steps ${customClass} ${vertical ? 'is-vertical' : ''}`">
+  <div :class="cn(`wd-steps text-[0] ${customClass} ${vertical ? 'is-vertical block' : ''}`)">
     <slot />
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
+import { cn } from '../common/util';
 import { useChildren } from '../composables/useChildren'
 import { STEPS_KEY, stepsProps } from './types'
 
@@ -23,6 +24,3 @@ const { linkChildren } = useChildren(STEPS_KEY)
 
 linkChildren({ props })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

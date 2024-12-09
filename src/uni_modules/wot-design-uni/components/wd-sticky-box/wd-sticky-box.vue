@@ -1,6 +1,6 @@
 <template>
   <div style="position: relative">
-    <div :class="`wd-sticky-box ${props.customClass}`" :style="customStyle" :id="styckyBoxId">
+    <div :class="cn('wd-sticky-box relative', customClass)" :style="customStyle" :id="styckyBoxId">
       <wd-resize @resize="handleResize">
         <slot />
       </wd-resize>
@@ -20,14 +20,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdResize from '../wd-resize/wd-resize.vue'
 import { getCurrentInstance, onBeforeMount, reactive, ref } from 'vue'
-import { getRect, uuid } from '../common/util'
+import { cn, getRect, uuid } from '../common/util'
 import { baseProps } from '../common/props'
 import { STICKY_BOX_KEY } from './types'
 import { useChildren } from '../composables/useChildren'
 
-const props = defineProps(baseProps)
+defineProps(baseProps)
 
 const styckyBoxId = ref<string>(`wd-sticky-box${uuid()}`)
 
@@ -150,6 +149,3 @@ function handleRelativeTo(exposed: any, { boundingClientRect }: any) {
   }
 }
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

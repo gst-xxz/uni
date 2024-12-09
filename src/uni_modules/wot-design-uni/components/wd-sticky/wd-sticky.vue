@@ -1,7 +1,7 @@
 <template>
-  <div :style="`${rootStyle};display: inline-block;`">
-    <div :class="`wd-sticky ${customClass}`" :style="stickyStyle" :id="styckyId">
-      <div class="wd-sticky__container" :style="containerStyle">
+  <div :style="rootStyle" class="inline-block">
+    <div :class="cn(`wd-sticky inline-block`, customClass)" :style="stickyStyle" :id="styckyId">
+      <div class="wd-sticky__container inline-block" :style="containerStyle">
         <wd-resize @resize="handleResize" custom-style="display: inline-block;">
           <slot />
         </wd-resize>
@@ -22,9 +22,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdResize from '../wd-resize/wd-resize.vue'
+
 import { computed, getCurrentInstance, reactive, ref, type CSSProperties } from 'vue'
-import { addUnit, getRect, objToStyle, pause, uuid } from '../common/util'
+import { addUnit, cn, getRect, objToStyle, pause, uuid } from '../common/util'
 import { stickyProps } from './types'
 import { useParent } from '../composables/useParent'
 import { STICKY_BOX_KEY } from '../wd-sticky-box/types'
@@ -185,6 +185,3 @@ defineExpose({
   offsetTop: props.offsetTop
 })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>
