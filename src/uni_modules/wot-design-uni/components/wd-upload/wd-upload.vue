@@ -4,11 +4,11 @@
     <div :class="['wd-upload__preview', customPreviewClass]" v-for="(file, index) in uploadFiles" :key="index">
       <!-- 成功时展示图片 -->
       <div class="wd-upload__status-content">
-        <image v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture"
+        <img v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture"
           @click="onPreviewImage(file)" />
         <template v-else-if="isVideo(file)">
           <div class="wd-upload__video" v-if="file.thumb" @click="onPreviewVideo(file)">
-            <image :src="file.thumb" :mode="imageMode" class="wd-upload__picture" />
+            <img :src="file.thumb" :mode="imageMode" class="wd-upload__picture" />
             <wd-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></wd-icon>
           </div>
           <div v-else class="wd-upload__video" @click="onPreviewVideo(file)">

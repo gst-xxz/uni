@@ -45,7 +45,7 @@ export const statusTipProps = {
    * 类型：string
    * 默认值：'aspectFill'
    */
-  imageMode: makeStringProp<ImageMode>('aspectFill'),
+  imageMode: makeStringProp<imgMode>('aspectFill'),
   /**
    * 图片路径前缀，指向图片所在目录，用于拼接图片 URL。推荐将图片放到自己的服务器上，并设置此属性。
    * 类型: string

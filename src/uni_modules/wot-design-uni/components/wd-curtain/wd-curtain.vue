@@ -5,8 +5,8 @@
       @after-enter="afterenter" @before-leave="beforeleave" @leave="leave" @after-leave="afterleave" @close="close"
       @click-modal="clickModal" :custom-class="`wd-curtain ${customClass}`" :custom-style="customStyle">
       <div class="wd-curtain__content">
-        <image :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr"
-          @load="imgLoad"></image>
+        <img :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr"
+          @load="imgLoad"></img>
         <slot name="close">
           <wd-icon name="close-outline" :custom-class="`wd-curtain__content-close ${closePosition} ${customCloseClass}`"
             :custom-style="customCloseStyle" @click="close" />

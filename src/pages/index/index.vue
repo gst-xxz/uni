@@ -17,7 +17,7 @@
           <div class="kind-list__item">
             <div :id="item.id" class="wd-flex kind-list__item-hd" @click="kindToggle(item.id)">
               <div class="wd-flex__item title">{{ item.name }}</div>
-              <image class="kind-list__img" :src="item.icon"></image>
+              <img class="kind-list__img" :src="item.icon"></img>
             </div>
             <div :class="['kind-list__item-bd', item.open ? 'kind-list__item-bd_show' : '']">
               <div :class="['wd-cells', item.open ? 'wd-cells_show' : '']">

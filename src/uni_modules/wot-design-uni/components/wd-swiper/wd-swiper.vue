@@ -7,7 +7,7 @@
       :display-multiple-items="displayMultipleItems" :style="{ height: addUnit(height) }" @change="handleChange"
       @animationfinish="handleAnimationfinish">
       <swiper-item v-for="(item, index) in list" :key="index" class="wd-swiper__item">
-        <image v-if="isImage(item)" :src="isObj(item) ? item[valueKey] : item"
+        <img v-if="isImage(item)" :src="isObj(item) ? item[valueKey] : item"
           :class="`wd-swiper__image ${customImageClass} ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
           :style="{ height: addUnit(height) }" :mode="imageMode" @click="handleClick(index, item)" />
         <video v-else-if="isVideo(item)" :id="`video-${index}-${uid}`" :style="{ height: addUnit(height) }"

@@ -1,6 +1,6 @@
 <template>
   <div @click="handleClick" :class="rootClass" :style="rootStyle">
-    <image v-if="isImage" class="wd-icon__image" :src="name"></image>
+    <img v-if="isImage" class="wd-icon__image" :src="name"></img>
   </div>
 </template>
 

@@ -27,7 +27,7 @@
             <div class="wd-action-sheet__panels-content">
               <div v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel"
                 @click="select(rowIndex, 'panels', colIndex)">
-                <image class="wd-action-sheet__panel-img" :src="(col as any).iconUrl" />
+                <img class="wd-action-sheet__panel-img" :src="(col as any).iconUrl" />
                 <div class="wd-action-sheet__panel-title">{{ (col as any).title }}</div>
               </div>
             </div>

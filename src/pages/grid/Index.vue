@@ -42,13 +42,13 @@
         <demo-block title="内容插槽" transparent>
           <wd-grid>
             <wd-grid-item use-slot>
-              <image class="img" :src="joy" />
+              <img class="img" :src="joy" />
             </wd-grid-item>
             <wd-grid-item use-slot>
-              <image class="img" :src="joy" />
+              <img class="img" :src="joy" />
             </wd-grid-item>
             <wd-grid-item use-slot>
-              <image class="img" :src="joy" />
+              <img class="img" :src="joy" />
             </wd-grid-item>
           </wd-grid>
         </demo-block>
@@ -56,17 +56,17 @@
           <wd-grid>
             <wd-grid-item use-icon-slot text="文字" icon-size="36px">
               <template #icon>
-                <image class="slot-img" :src="img" />
+                <img class="slot-img" :src="img" />
               </template>
             </wd-grid-item>
             <wd-grid-item use-icon-slot text="文字" icon-size="36px">
               <template #icon>
-                <image class="slot-img" :src="img" />
+                <img class="slot-img" :src="img" />
               </template>
             </wd-grid-item>
             <wd-grid-item use-icon-slot text="文字" icon-size="36px">
               <template #icon>
-                <image class="slot-img" :src="img" />
+                <img class="slot-img" :src="img" />
               </template>
             </wd-grid-item>
           </wd-grid>

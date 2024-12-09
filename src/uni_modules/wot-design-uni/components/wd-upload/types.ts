@@ -297,7 +297,7 @@ export const uploadProps = {
   /**
    * 预览图片的mode属性
    */
-  imageMode: makeStringProp<ImageMode>('aspectFit'),
+  imageMode: makeStringProp<imgMode>('aspectFit'),
   /**
    * 接口响应的成功状态（statusCode）值
    */

@@ -10,7 +10,7 @@
         </wd-card>
         <wd-card title="新订单">
           <div class="content">
-            <image
+            <img
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
               alt="joy" style="width: 70px; height: 70px; border-radius: 4px; margin-right: 12px" />
             <div>
@@ -28,7 +28,7 @@
       <demo-block title="矩形卡片" transparent>
         <wd-card title="2020-02-03服务到期" type="rectangle">
           <div style="height: 40px" class="content">
-            <image
+            <img
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
               width="40" height="40" alt="joy"
               style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px" />
@@ -56,7 +56,7 @@
           </template>
 
           <div style="height: 40px" class="content">
-            <image
+            <img
               src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
               width="40" height="40" alt="joy"
               style="width: 40px; height: 40px; border-radius: 4px; margin-right: 12px" />

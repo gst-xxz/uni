@@ -40,7 +40,7 @@
         </div>
       </div>
       <!-- 展示的传过来的图片: 控制图片的旋转角度(rotate)、缩放程度(imgScale)、移动位置(translate) -->
-      <image :prop="isAnimation" :change:prop="animation ? animation.setAnimation : ''" class="wd-img-cropper__img"
+      <img :prop="isAnimation" :change:prop="animation ? animation.setAnimation : ''" class="wd-img-cropper__img"
         :src="imgSrc" :style="imageStyle" :lazy-load="false" @touchstart="handleImgTouchStart"
         @touchmove="handleImgTouchMove" @touchend="handleImgTouchEnd" @error="handleImgLoadError"
         @load="handleImgLoaded" />

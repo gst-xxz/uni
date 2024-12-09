@@ -1,6 +1,6 @@
 <template>
   <div :class="rootClass" @click="handleClick" :style="rootStyle">
-    <image :class="`wd-img__image ${customImage}`" :style="status !== 'success' ? 'width: 0;height: 0;' : ''" :src="src"
+    <img :class="`wd-img__image ${customImage}`" :style="status !== 'success' ? 'width: 0;height: 0;' : ''" :src="src"
       :mode="mode" :show-menu-by-longpress="showMenuByLongpress" :lazy-load="lazyLoad" @load="handleLoad"
       @error="handleError" />
     <slot v-if="status === 'loading'" name="loading"></slot>
