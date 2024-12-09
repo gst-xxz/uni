@@ -37,7 +37,7 @@ export default {
 
 import wdLoading from '../wd-loading/wd-loading.vue'
 import wdOverlay from '../wd-overlay/wd-overlay.vue'
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 
 import { computed, inject, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import base64 from '../common/base64'

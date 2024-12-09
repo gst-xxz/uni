@@ -46,7 +46,7 @@ export const fabProps = {
   draggable: makeBooleanProp(false),
   gap: {
     type: Object as PropType<FabGap>,
-    default: () => ({})
+    default: () => ({} as FabGap)
   },
   /**
    * 用于控制点击时是否展开菜单

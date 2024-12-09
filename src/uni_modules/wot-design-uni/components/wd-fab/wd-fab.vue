@@ -29,15 +29,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
-import wdTransition from '../wd-transition/wd-transition.vue'
-import { type CSSProperties, computed, ref, watch, inject, getCurrentInstance, onBeforeUnmount, onMounted, nextTick } from 'vue'
+import { reactive } from 'vue'
+import { type CSSProperties, computed, ref, watch, inject, getCurrentInstance, onBeforeUnmount, onMounted } from 'vue'
 import { getRect, isDef, isH5, objToStyle } from '../common/util'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { fabProps, type FabExpose } from './types'
-import { reactive } from 'vue'
 import { useRaf } from '../composables/useRaf'
 
 const props = defineProps(fabProps)

@@ -1,13 +1,7 @@
 <template>
-  <wd-transition
-    :show="show"
-    name="fade"
-    custom-class="wd-overlay"
-    :duration="duration"
-    :custom-style="`z-index: ${zIndex}; ${customStyle}`"
-    @click="handleClick"
-    @touchmove.stop.prevent="lockScroll ? noop : ''"
-  >
+  <wd-transition :show="show" name="fade" custom-class="wd-overlay" :duration="duration"
+    :custom-style="`z-index: ${zIndex}; ${customStyle}`" @click="handleClick"
+    @touchmove.stop.prevent="lockScroll ? noop : ''">
     <slot></slot>
   </wd-transition>
 </template>
@@ -23,7 +17,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 import { overlayProps } from './types'
 // #ifdef H5
 import useLockScroll from '../composables/useLockScroll'
@@ -37,7 +31,7 @@ function handleClick() {
   emit('click')
 }
 
-function noop() {}
+function noop() { }
 
 // #ifdef H5
 useLockScroll(() => props.show && props.lockScroll)

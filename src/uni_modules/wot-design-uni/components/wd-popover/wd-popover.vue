@@ -58,7 +58,7 @@ export default {
 
 <script lang="ts" setup>
 
-import wdTransition from '../wd-transition/wd-transition.vue'
+
 import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { usePopover } from '../composables/usePopover'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
