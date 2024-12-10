@@ -23,7 +23,7 @@
             >
               {{ showValue || placeholder || translate('placeholder') }}
             </div>
-            <wd-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow-right" />
+            <wd-icon v-if="!disabled && !readonly" custom-class="wd-col-picker__arrow" name="arrow" />
           </div>
           <div v-if="errorMessage" class="wd-col-picker__error-message">{{ errorMessage }}</div>
         </div>

@@ -40,9 +40,9 @@
     @chooseavatar="handleChooseavatar"
     @agreeprivacyauthorization="handleAgreePrivacyAuthorization"
   >
-    <div class="wd-button__content">
-      <div v-if="loading" class="wd-button__loading">
-        <div class="wd-button__loading-svg" :style="loadingStyle"></div>
+    <div class="wd-button__content inline-flex items-center">
+      <div v-if="loading" class="wd-button__loading inline-block">
+        <wd-loading :size="loadingSize" customClass="!inline-block align-middle" />
       </div>
       <wd-icon v-else-if="icon" custom-class="wd-button__icon" :name="icon" :classPrefix="classPrefix"></wd-icon>
       <div class="wd-button__text">
@@ -64,20 +64,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, watch, ref } from 'vue'
-import base64 from '../common/base64'
+import { computed, ref } from 'vue'
 import { buttonProps } from './types'
 import { cn } from '../common/util'
 
-const loadingIcon = (color = '#4D80F0', reverse = true) => {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><defs><linearGradient x1="100%" y1="0%" x2="0%" y2="0%" id="a"><stop stop-color="${
-    reverse ? color : '#fff'
-  }" offset="0%" stop-opacity="0"/><stop stop-color="${
-    reverse ? color : '#fff'
-  }" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M21 1c11.046 0 20 8.954 20 20s-8.954 20-20 20S1 32.046 1 21 9.954 1 21 1zm0 7C13.82 8 8 13.82 8 21s5.82 13 13 13 13-5.82 13-13S28.18 8 21 8z" fill="${
-    reverse ? '#fff' : color
-  }"/><path d="M4.599 21c0 9.044 7.332 16.376 16.376 16.376 9.045 0 16.376-7.332 16.376-16.376" stroke="url(#a)" stroke-width="3.5" stroke-linecap="round"/></g></svg>`
-}
 const props = defineProps(buttonProps)
 const emit = defineEmits([
   'click',
@@ -93,19 +83,16 @@ const emit = defineEmits([
 
 const hoverStartTime = ref<number>(20)
 const hoverStayTime = ref<number>(70)
-const loadingIconSvg = ref<string>('')
 
-const loadingStyle = computed(() => {
-  return `background-image: url(${loadingIconSvg.value});`
+const loadingSize = computed(() => {
+  if (props.size === 'large') {
+    return '24px'
+  }
+  if (props.size === 'medium') {
+    return '18px'
+  }
+  return '14px'
 })
-
-watch(
-  () => props.loading,
-  () => {
-    buildLoadingSvg()
-  },
-  { deep: true, immediate: true }
-)
 
 function handleClick(event: any) {
   if (!props.disabled && !props.loading) {
@@ -155,35 +142,6 @@ function handleChooseavatar(event: any) {
 
 function handleAgreePrivacyAuthorization(event: any) {
   emit('agreeprivacyauthorization', event.detail)
-}
-function buildLoadingSvg() {
-  const { loadingColor, type, plain } = props
-  let color = loadingColor
-  if (!color) {
-    switch (type) {
-      case 'primary':
-        color = '#4D80F0'
-        break
-      case 'success':
-        color = '#34d19d'
-        break
-      case 'info':
-        color = '#333'
-        break
-      case 'warning':
-        color = '#f0883a'
-        break
-      case 'error':
-        color = '#fa4350'
-        break
-      case 'default':
-        color = '#333'
-        break
-    }
-  }
-
-  const svg = loadingIcon(color, !plain)
-  loadingIconSvg.value = `"data:image/svg+xml;base64,${base64(svg)}"`
 }
 </script>
 
@@ -268,17 +226,10 @@ function buildLoadingSvg() {
 
 .wd-button__loading {
   margin-right: 5px;
-  -webkit-animation: wd-rotate-5cd5873a 0.8s linear infinite;
+  /* -webkit-animation: wd-rotate-5cd5873a 0.8s linear infinite;
   animation: wd-rotate-5cd5873a 0.8s linear infinite;
   -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-}
-
-.wd-button__loading-svg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  animation-duration: 2s; */
 }
 
 .wd-button.is-primary {
@@ -314,11 +265,6 @@ function buildLoadingSvg() {
   font-weight: 400;
 }
 
-.wd-button.is-small .wd-button__loading {
-  width: var(--wot-button-small-loading, 14px);
-  height: var(--wot-button-small-loading, 14px);
-}
-
 .wd-button.is-medium {
   height: var(--wot-button-medium-height, 36px);
   padding: var(--wot-button-medium-padding, 0 16px);
@@ -340,11 +286,6 @@ function buildLoadingSvg() {
   min-width: 0;
 }
 
-.wd-button.is-medium .wd-button__loading {
-  width: var(--wot-button-medium-loading, 18px);
-  height: var(--wot-button-medium-loading, 18px);
-}
-
 .wd-button.is-large {
   height: var(--wot-button-large-height, 44px);
   padding: var(--wot-button-large-padding, 0 36px);
@@ -354,11 +295,6 @@ function buildLoadingSvg() {
 
 .wd-button.is-large:after {
   border-radius: var(--wot-button-large-radius, 8px);
-}
-
-.wd-button.is-large .wd-button__loading {
-  width: var(--wot-button-large-loading, 24px);
-  height: var(--wot-button-large-loading, 24px);
 }
 
 .wd-button.is-round {

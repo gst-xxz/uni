@@ -12,7 +12,8 @@
     <canvas
       v-if="!canvasOffScreenable && showCanvas"
       type="2d"
-      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }"
+      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px' }"
+      class="invisible"
       :canvas-id="canvasId"
       :id="canvasId"
     />

@@ -43,7 +43,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdOverlay from '../wd-overlay/wd-overlay.vue'
+
 
 import { computed, onBeforeMount, ref } from 'vue'
 import { popupProps } from './types'

@@ -25,9 +25,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdDivider from '../wd-divider/wd-divider.vue'
-
-
 import { computed, ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'

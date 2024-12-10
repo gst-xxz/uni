@@ -33,6 +33,7 @@ import { nextTick, reactive, ref } from 'vue'
 import { videoPreviewProps, type PreviewVideo, type VideoPreviewExpose } from './types'
 import useLockScroll from '../composables/useLockScroll'
 import { cn } from '../common/util'
+
 defineProps(videoPreviewProps)
 
 const showPopup = ref<boolean>(false)

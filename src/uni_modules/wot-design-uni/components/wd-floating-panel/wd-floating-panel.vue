@@ -1,14 +1,23 @@
 <template>
-  <div :class="`wd-floating-panel ${customClass} ${safeAreaInsetBottom ? 'is-safe' : ''}`" :style="rootStyle"
-    @touchstart.passive="handleTouchStart" @touchmove.passive="handleTouchMove" @touchend="handleTouchEnd"
-    @touchcancel="handleTouchEnd">
+  <div
+    :class="cn(`wd-floating-panel`, customClass, safeAreaInsetBottom ? 'is-safe pb-safe' : '')"
+    :style="rootStyle"
+    @touchstart.passive="handleTouchStart"
+    @touchmove.passive="handleTouchMove"
+    @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd"
+  >
     <div :class="`wd-floating-panel__header`">
-      <div :class="`wd-floating-panel__header-bar`">
-      </div>
+      <div :class="`wd-floating-panel__header-bar`"></div>
     </div>
 
-    <scroll-view :class="`wd-floating-panel__content`" data-id="content" :show-scrollbar="showScrollbar" scroll-y
-      @touchmove.stop.prevent="handleTouchMove">
+    <scroll-view
+      :class="`wd-floating-panel__content`"
+      data-id="content"
+      :show-scrollbar="showScrollbar"
+      scroll-y
+      @touchmove.stop.prevent="handleTouchMove"
+    >
       <slot />
     </scroll-view>
   </div>
@@ -28,7 +37,7 @@ export default {
 <script lang="ts" setup>
 import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import { floatingPanelProps } from './type'
-import { addUnit, closest, objToStyle } from '../common/util'
+import { addUnit, closest, cn, objToStyle } from '../common/util'
 import { useTouch } from '../composables/useTouch'
 
 const touch = useTouch()

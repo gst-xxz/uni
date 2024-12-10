@@ -21,7 +21,7 @@
             <div :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </div>
-            <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow-right" />
+            <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow" />
             <div v-else-if="showClear" @click.stop="handleClear">
               <wd-icon custom-class="wd-picker__clear" name="error-fill" />
             </div>

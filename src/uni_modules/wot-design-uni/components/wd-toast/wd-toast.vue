@@ -9,7 +9,7 @@
         v-else-if="iconName === 'success' || iconName === 'warning' || iconName === 'info' || iconName === 'error'"
       >
         <div class="wd-toast__iconBox">
-          <div class="wd-toast__iconSvg" :style="svgStyle"></div>
+          <wd-icon :name="iconName" custom-class="wd-toast__icon" :size="iconSize" />
         </div>
       </div>
       <wd-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix" :name="iconClass"></wd-icon>
@@ -31,11 +31,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdOverlay from '../wd-overlay/wd-overlay.vue'
-
-import { computed, inject, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
-import base64 from '../common/base64'
-import { defaultOptions, getToastOptionKey, toastIcon } from '.'
+import { computed, inject, ref, watch, type CSSProperties } from 'vue'
+import { defaultOptions, getToastOptionKey } from '.'
 import { toastProps, type ToastLoadingType, type ToastOptions } from './types'
 import { addUnit, isDef, isFunction, objToStyle } from '../common/util'
 
@@ -49,7 +46,6 @@ const loadingType = ref<ToastLoadingType>('circular')
 const loadingColor = ref<string>('#4D80F0')
 const iconSize = ref<string>() // 图标大小
 const loadingSize = ref<string>() // loading大小
-const svgStr = ref<string>('') // 图标
 const cover = ref<boolean>(false) // 是否存在遮罩层
 const classPrefix = ref<string>('wd-icon') // 图标前缀
 const iconClass = ref<string>('') // 图标类名
@@ -66,18 +62,6 @@ watch(
   () => toastOption.value,
   (newVal: ToastOptions) => {
     reset(newVal)
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-// 监听options变化展示
-watch(
-  () => iconName.value,
-  () => {
-    buildSvg()
   },
   {
     deep: true,
@@ -107,21 +91,6 @@ const rootClass = computed(() => {
   } ${iconName.value === 'loading' && !msg.value ? 'wd-toast--loading' : ''}`
 })
 
-const svgStyle = computed(() => {
-  const style: CSSProperties = {
-    backgroundImage: `url(${svgStr.value})`
-  }
-  if (isDef(iconSize.value)) {
-    style.width = iconSize.value
-    style.height = iconSize.value
-  }
-  return objToStyle(style)
-})
-
-onBeforeMount(() => {
-  buildSvg()
-})
-
 function handleAfterEnter() {
   if (isFunction(opened)) {
     opened()
@@ -132,13 +101,6 @@ function handleAfterLeave() {
   if (isFunction(closed)) {
     closed()
   }
-}
-
-function buildSvg() {
-  if (iconName.value !== 'success' && iconName.value !== 'warning' && iconName.value !== 'info' && iconName.value !== 'error') return
-  const iconSvg = toastIcon[iconName.value]()
-  const iconSvgStr = `"data:image/svg+xml;base64,${base64(iconSvg)}"`
-  svgStr.value = iconSvgStr
 }
 
 /**

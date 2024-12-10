@@ -6,7 +6,7 @@
         <wd-icon
           v-else
           :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow-right"
+          name="arrow-left"
         ></wd-icon>
       </wd-button>
       <div class="wd-pager__size">
@@ -26,7 +26,7 @@
         <wd-icon
           v-else
           :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
-          name="arrow-right"
+          name="arrow"
         ></wd-icon>
       </wd-button>
     </div>

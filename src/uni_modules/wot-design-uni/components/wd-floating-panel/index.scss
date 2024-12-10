@@ -25,10 +25,6 @@
   background-color: $-floating-panel-bg;
   touch-action: none;
   will-change: transform;
-  @include when(safe) {
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
 
   &::after {
     position: absolute;
