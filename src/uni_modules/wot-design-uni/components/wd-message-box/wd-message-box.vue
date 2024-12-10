@@ -1,8 +1,15 @@
 <template>
   <div>
-    <wd-popup transition="zoom-in" v-model="messageState.show" :close-on-click-modal="messageState.closeOnClickModal"
-      :lazy-render="messageState.lazyRender" custom-class="wd-message-box" @click-modal="toggleModal('modal')"
-      :z-index="messageState.zIndex" :duration="200">
+    <wd-popup
+      transition="zoom-in"
+      v-model="messageState.show"
+      :close-on-click-modal="messageState.closeOnClickModal"
+      :lazy-render="messageState.lazyRender"
+      custom-class="wd-message-box"
+      @click-modal="toggleModal('modal')"
+      :z-index="messageState.zIndex"
+      :duration="200"
+    >
       <div :class="rootClass">
         <div :class="bodyClass">
           <div v-if="messageState.title" class="wd-message-box__title">
@@ -10,8 +17,13 @@
           </div>
           <div class="wd-message-box__content">
             <block v-if="messageState.type === 'prompt'">
-              <wd-input v-model="messageState.inputValue" :type="messageState.inputType" :size="messageState.inputSize"
-                :placeholder="messageState.inputPlaceholder" @input="inputValChange" />
+              <wd-input
+                v-model="messageState.inputValue"
+                :type="messageState.inputType"
+                :size="messageState.inputSize"
+                :placeholder="messageState.inputPlaceholder"
+                @input="inputValChange"
+              />
               <div v-if="messageState.showErr" class="wd-message-box__input-error">
                 {{ messageState.inputError || translate('inputNoValidate') }}
               </div>
@@ -19,8 +31,7 @@
             <slot>{{ messageState.msg }}</slot>
           </div>
         </div>
-        <div
-          :class="`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
+        <div :class="`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
           <wd-button v-bind="customCancelProps" v-if="messageState.showCancelButton" @click="toggleModal('cancel')">
             {{ messageState.cancelButtonText || translate('cancel') }}
           </wd-button>
@@ -44,9 +55,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
-
-import wdInput from '../wd-input/wd-input.vue'
 import { computed, inject, reactive, ref, watch } from 'vue'
 import { messageBoxProps, type MessageOptionsWithCallBack, type MessageResult } from './types'
 import { defaultOptions, getMessageDefaultOptionKey } from '.'

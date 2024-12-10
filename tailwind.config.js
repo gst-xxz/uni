@@ -1,7 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: 'hsl(var(--theme))',
+        success: 'hsl(var(--success))',
+        warning: 'hsl(var(--warning))',
+        danger: 'hsl(var(--danger))',
+        info: 'hsl(var(--info))'
+      }
+    }
   },
   plugins: [],
   content: ['./public/index.html', './src/**/*.{html,js,ts,jsx,tsx,vue}'],
@@ -12,4 +20,3 @@ module.exports = {
     preflight: false
   }
 }
-

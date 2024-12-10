@@ -16,7 +16,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 const emit = defineEmits(['back', 'back-home'])
 
 function handleBack() {

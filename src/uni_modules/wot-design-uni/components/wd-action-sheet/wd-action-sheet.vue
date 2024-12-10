@@ -1,32 +1,56 @@
 <template>
   <div>
-    <wd-popup custom-class="wd-action-sheet__popup"
+    <wd-popup
+      custom-class="wd-action-sheet__popup"
       :custom-style="`${(actions && actions.length) || (panels && panels.length) ? 'background: transparent;' : ''}`"
-      v-model="showPopup" :duration="duration" position="bottom" :close-on-click-modal="closeOnClickModal"
-      :safe-area-inset-bottom="safeAreaInsetBottom" :lazy-render="lazyRender" @enter="handleOpen" @close="close"
-      @after-enter="handleOpened" @after-leave="handleClosed" @click-modal="handleClickModal" :z-index="zIndex">
-      <div :class="`wd-action-sheet ${customClass}`" :style="`${(actions && actions.length) || (panels && panels.length)
-        ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
-        : 'margin-bottom: var(--window-bottom);'
-        } ${customStyle}`">
-        <div v-if="title" :class="`wd-action-sheet__header ${customHeaderClass}`">
+      v-model="showPopup"
+      :duration="duration"
+      position="bottom"
+      :close-on-click-modal="closeOnClickModal"
+      :safe-area-inset-bottom="safeAreaInsetBottom"
+      :lazy-render="lazyRender"
+      @enter="handleOpen"
+      @close="close"
+      @after-enter="handleOpened"
+      @after-leave="handleClosed"
+      @click-modal="handleClickModal"
+      :z-index="zIndex"
+    >
+      <div
+        :class="cn(`wd-action-sheet`, customClass)"
+        :style="`${
+          (actions && actions.length) || (panels && panels.length)
+            ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
+            : 'margin-bottom: var(--window-bottom);'
+        } ${customStyle}`"
+      >
+        <div v-if="title" :class="cn(`wd-action-sheet__header`, customHeaderClass)">
           {{ title }}
           <wd-icon custom-class="wd-action-sheet__close" name="add" @click="close" />
         </div>
         <div class="wd-action-sheet__actions" v-if="actions && actions.length">
-          <button v-for="(action, rowIndex) in actions" :key="rowIndex" :class="`wd-action-sheet__action ${action.disabled ? 'wd-action-sheet__action--disabled' : ''}  ${action.loading ? 'wd-action-sheet__action--loading' : ''
-            }`" :style="`color: ${action.color}`" @click="select(rowIndex, 'action')">
+          <button
+            v-for="(action, rowIndex) in actions"
+            :key="rowIndex"
+            :class="
+              cn(
+                'wd-action-sheet__action',
+                action.disabled ? 'wd-action-sheet__action--disabled' : '',
+                action.loading ? 'wd-action-sheet__action--loading' : ''
+              )
+            "
+            :style="`color: ${action.color}`"
+            @click="select(rowIndex, 'action')"
+          >
             <wd-loading custom-class="`wd-action-sheet__action-loading" v-if="action.loading" />
             <div v-else class="wd-action-sheet__name">{{ action.name }}</div>
-            <div v-if="!action.loading && action.subname" class="wd-action-sheet__subname">{{ action.subname }}
-            </div>
+            <div v-if="!action.loading && action.subname" class="wd-action-sheet__subname">{{ action.subname }}</div>
           </button>
         </div>
         <div v-if="formatPanels && formatPanels.length">
           <div v-for="(panel, rowIndex) in formatPanels" :key="rowIndex" class="wd-action-sheet__panels">
             <div class="wd-action-sheet__panels-content">
-              <div v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel"
-                @click="select(rowIndex, 'panels', colIndex)">
+              <div v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel" @click="select(rowIndex, 'panels', colIndex)">
                 <img class="wd-action-sheet__panel-img" :src="(col as any).iconUrl" />
                 <div class="wd-action-sheet__panel-title">{{ (col as any).title }}</div>
               </div>
@@ -34,8 +58,7 @@
           </div>
         </div>
         <slot />
-        <button v-if="cancelText" class="wd-action-sheet__cancel" @click="handleCancel">{{ cancelText
-          }}</button>
+        <button v-if="cancelText" class="wd-action-sheet__cancel" @click="handleCancel">{{ cancelText }}</button>
       </div>
     </wd-popup>
   </div>
@@ -52,12 +75,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
-
-import wdLoading from '../wd-loading/wd-loading.vue'
 import { watch, ref } from 'vue'
 import { actionSheetProps, type Panel } from './types'
-import { isArray } from '../common/util'
+import { cn, isArray } from '../common/util'
 
 const props = defineProps(actionSheetProps)
 const emit = defineEmits(['select', 'click-modal', 'cancel', 'closed', 'close', 'open', 'opened', 'update:modelValue'])

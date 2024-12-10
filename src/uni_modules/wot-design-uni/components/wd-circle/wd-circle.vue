@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-circle ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-circle`, customClass)" :style="customStyle">
     <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
     <!-- #endif -->
@@ -29,7 +29,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onBeforeMount, onMounted, onUnmounted, ref, watch } from 'vue'
-import { addUnit, isObj, objToStyle, uuid } from '../common/util'
+import { addUnit, cn, isObj, objToStyle, uuid } from '../common/util'
 import { circleProps } from './types'
 // #ifdef MP-WEIXIN
 import { canvas2dAdapter } from '../common/canvasHelper'

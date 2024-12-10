@@ -33,7 +33,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 
 import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue'
 import { pushToQueue, removeFromQueue } from '../common/clickoutside'

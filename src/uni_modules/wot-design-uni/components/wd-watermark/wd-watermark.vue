@@ -1,10 +1,21 @@
 <template>
   <div
-    :class="cn('wd-watermark absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat', fullScreen ? 'is-fullscreen fixed' : '', customClass)"
-    :style="rootStyle">
-    <canvas v-if="!canvasOffScreenable && showCanvas" type="2d"
-      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }" :canvas-id="canvasId"
-      :id="canvasId" />
+    :class="
+      cn(
+        'wd-watermark absolute z-[1100] opacity-50 left-0 right-0 top-0 bottom-0 pointer-events-none bg-repeat',
+        fullScreen ? 'is-fullscreen fixed' : '',
+        customClass
+      )
+    "
+    :style="rootStyle"
+  >
+    <canvas
+      v-if="!canvasOffScreenable && showCanvas"
+      type="2d"
+      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px', visibility: 'hidden' }"
+      :canvas-id="canvasId"
+      :id="canvasId"
+    />
   </div>
 </template>
 
@@ -347,14 +358,14 @@ function drawTextOnScreen(ctx: UniApp.CanvasContext, content: string, contentWid
   ctx.fillText(content, 0, 0)
   ctx.restore()
   ctx.draw()
-    // #ifdef MP-DINGTALK
-    // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
-    ; (ctx as any).toTempFilePath({
-      success(res: any) {
-        showCanvas.value = false
-        waterMarkUrl.value = res.filePath
-      }
-    })
+  // #ifdef MP-DINGTALK
+  // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
+  ;(ctx as any).toTempFilePath({
+    success(res: any) {
+      showCanvas.value = false
+      waterMarkUrl.value = res.filePath
+    }
+  })
   // #endif
   // #ifndef MP-DINGTALK
   uni.canvasToTempFilePath({
@@ -448,7 +459,7 @@ function drawImageOnScreen(
   ctx.draw(false, () => {
     // #ifdef MP-DINGTALK
     // 钉钉小程序的canvasToTempFilePath接口与其他平台不一样
-    ; (ctx as any).toTempFilePath({
+    ;(ctx as any).toTempFilePath({
       success(res: any) {
         showCanvas.value = false
         waterMarkUrl.value = res.filePath

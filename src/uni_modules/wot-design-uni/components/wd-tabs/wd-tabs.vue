@@ -2,54 +2,55 @@
   <template v-if="sticky">
     <wd-sticky-box>
       <div
-        :class="`wd-tabs ${customClass} ${innerSlidable ? 'is-slide' : ''} ${mapNum < children.length && mapNum !== 0 ? 'is-map' : ''}`"
-        :style="customStyle">
+        :class="cn(`wd-tabs ${customClass} ${innerSlidable ? 'is-slide' : ''} ${mapNum < children.length && mapNum !== 0 ? 'is-map' : ''}`)"
+        :style="customStyle"
+      >
         <wd-sticky :offset-top="offsetTop">
           <div class="wd-tabs__nav wd-tabs__nav--sticky">
             <div class="wd-tabs__nav--wrap">
               <scroll-view :scroll-x="innerSlidable" scroll-with-animation :scroll-left="state.scrollLeft">
                 <div class="wd-tabs__nav-container">
-                  <div @click="handleSelect(index)" v-for="(item, index) in children" :key="index"
-                    :class="`wd-tabs__nav-item  ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
-                    :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
+                  <div
+                    @click="handleSelect(index)"
+                    v-for="(item, index) in children"
+                    :key="index"
+                    :class="cn(`wd-tabs__nav-item  ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`)"
+                    :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''"
+                  >
                     <wd-badge v-if="item.badgeProps" v-bind="item.badgeProps">
                       <span class="wd-tabs__nav-item-text">{{ item.title }}</span>
                     </wd-badge>
                     <span v-else class="wd-tabs__nav-item-text">{{ item.title }}</span>
 
-                    <div class="wd-tabs__line wd-tabs__line--inner"
-                      v-if="state.activeIndex === index && state.useInnerLine">
-                    </div>
+                    <div class="wd-tabs__line wd-tabs__line--inner" v-if="state.activeIndex === index && state.useInnerLine"></div>
                   </div>
-                  <div class="wd-tabs__line" :style="state.lineStyle">
-                  </div>
+                  <div class="wd-tabs__line" :style="state.lineStyle"></div>
                 </div>
               </scroll-view>
             </div>
             <div class="wd-tabs__map" v-if="mapNum < children.length && mapNum !== 0">
-              <div :class="`wd-tabs__map-btn  ${state.animating ? 'is-open' : ''}`" @click="toggleMap">
-                <div :class="`wd-tabs__map-arrow  ${state.animating ? 'is-open' : ''}`">
+              <div :class="cn(`wd-tabs__map-btn  ${state.animating ? 'is-open' : ''}`)" @click="toggleMap">
+                <div :class="cn(`wd-tabs__map-arrow  ${state.animating ? 'is-open' : ''}`)">
                   <wd-icon name="arrow-down" />
                 </div>
               </div>
-              <div class="wd-tabs__map-header"
-                :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
+              <div class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
                 {{ mapTitle || translate('all') }}
               </div>
-              <div :class="`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`"
-                :style="state.mapShow ? '' : 'display:none'">
-                <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index"
-                  @click="handleSelect(index)">
+              <div :class="cn(`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`)" :style="state.mapShow ? '' : 'display:none'">
+                <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index" @click="handleSelect(index)">
                   <div
-                    :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`"
-                    :style="state.activeIndex === index
-                      ? color
-                        ? 'color:' + color + ';border-color:' + color
-                        : ''
-                      : inactiveColor
+                    :class="cn(`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`)"
+                    :style="
+                      state.activeIndex === index
+                        ? color
+                          ? 'color:' + color + ';border-color:' + color
+                          : ''
+                        : inactiveColor
                         ? 'color:' + inactiveColor
                         : ''
-                      ">
+                    "
+                  >
                     {{ item.title }}
                   </div>
                 </div>
@@ -58,59 +59,52 @@
           </div>
         </wd-sticky>
 
-        <div class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
-          @touchcancel="onTouchEnd">
-          <div :class="['wd-tabs__body', animated ? 'is-animated' : '']" :style="bodyStyle">
+        <div class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+          <div :class="cn(['wd-tabs__body', animated ? 'is-animated' : ''])" :style="bodyStyle">
             <slot />
           </div>
         </div>
 
-        <div class="wd-tabs__mask"
-          :style="`${state.mapShow ? '' : 'display:none;'} ${state.animating ? 'opacity:1;' : ''}`" @click="toggleMap">
-        </div>
+        <div class="wd-tabs__mask" :style="`${state.mapShow ? '' : 'display:none;'} ${state.animating ? 'opacity:1;' : ''}`" @click="toggleMap"></div>
       </div>
     </wd-sticky-box>
   </template>
 
   <template v-else>
-    <div
-      :class="`wd-tabs ${customClass} ${innerSlidable ? 'is-slide' : ''} ${mapNum < children.length && mapNum !== 0 ? 'is-map' : ''}`">
+    <div :class="cn(`wd-tabs ${customClass} ${innerSlidable ? 'is-slide' : ''} ${mapNum < children.length && mapNum !== 0 ? 'is-map' : ''}`)">
       <div class="wd-tabs__nav">
         <div class="wd-tabs__nav--wrap">
           <scroll-view :scroll-x="innerSlidable" scroll-with-animation :scroll-left="state.scrollLeft">
             <div class="wd-tabs__nav-container">
-              <div v-for="(item, index) in children" @click="handleSelect(index)" :key="index"
-                :class="`wd-tabs__nav-item ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`"
-                :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''">
+              <div
+                v-for="(item, index) in children"
+                @click="handleSelect(index)"
+                :key="index"
+                :class="cn(`wd-tabs__nav-item ${state.activeIndex === index ? 'is-active' : ''} ${item.disabled ? 'is-disabled' : ''}`)"
+                :style="state.activeIndex === index ? (color ? 'color:' + color : '') : inactiveColor ? 'color:' + inactiveColor : ''"
+              >
                 <wd-badge custom-class="wd-tabs__nav-item-badge" v-if="item.badgeProps" v-bind="item.badgeProps">
                   <span class="wd-tabs__nav-item-text">{{ item.title }}</span>
                 </wd-badge>
                 <span v-else class="wd-tabs__nav-item-text">{{ item.title }}</span>
-                <div class="wd-tabs__line wd-tabs__line--inner"
-                  v-if="state.activeIndex === index && state.useInnerLine">
-                </div>
+                <div class="wd-tabs__line wd-tabs__line--inner" v-if="state.activeIndex === index && state.useInnerLine"></div>
               </div>
-              <div class="wd-tabs__line" :style="state.lineStyle">
-              </div>
+              <div class="wd-tabs__line" :style="state.lineStyle"></div>
             </div>
           </scroll-view>
         </div>
         <div class="wd-tabs__map" v-if="mapNum < children.length && mapNum !== 0">
           <div class="wd-tabs__map-btn" @click="toggleMap">
-            <div :class="`wd-tabs__map-arrow ${state.animating ? 'is-open' : ''}`">
+            <div :class="cn(`wd-tabs__map-arrow ${state.animating ? 'is-open' : ''}`)">
               <wd-icon name="arrow-down" />
             </div>
           </div>
-          <div class="wd-tabs__map-header"
-            :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
+          <div class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
             {{ translate('all') }}
           </div>
-          <div :class="`wd-tabs__map-body ${state.animating ? 'is-open' : ''}`"
-            :style="state.mapShow ? '' : 'display:none'">
-            <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index"
-              @click="handleSelect(index)">
-              <div
-                :class="`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`">
+          <div :class="cn(`wd-tabs__map-body ${state.animating ? 'is-open' : ''}`)" :style="state.mapShow ? '' : 'display:none'">
+            <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index" @click="handleSelect(index)">
+              <div :class="cn(`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`)">
                 {{ item.title }}
               </div>
             </div>
@@ -118,16 +112,13 @@
         </div>
       </div>
 
-      <div class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
-        @touchcancel="onTouchEnd">
-        <div :class="['wd-tabs__body', animated ? 'is-animated' : '']" :style="bodyStyle">
+      <div class="wd-tabs__container" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+        <div :class="cn(['wd-tabs__body', animated ? 'is-animated' : ''])" :style="bodyStyle">
           <slot />
         </div>
       </div>
 
-      <div class="wd-tabs__mask"
-        :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1' : ''}`" @click="toggleMap">
-      </div>
+      <div class="wd-tabs__mask" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1' : ''}`" @click="toggleMap"></div>
     </div>
   </template>
 </template>
@@ -142,11 +133,10 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
 import wdSticky from '../wd-sticky/wd-sticky.vue'
 import wdStickyBox from '../wd-sticky-box/wd-sticky-box.vue'
 import { computed, getCurrentInstance, onMounted, watch, nextTick, reactive, type CSSProperties, type ComponentInstance } from 'vue'
-import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, objToStyle } from '../common/util'
+import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, objToStyle, cn } from '../common/util'
 import { useTouch } from '../composables/useTouch'
 import { TABS_KEY, tabsProps, type TabsExpose } from './types'
 import { useChildren } from '../composables/useChildren'

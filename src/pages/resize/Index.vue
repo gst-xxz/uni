@@ -2,8 +2,7 @@
   <page-wraper>
     <demo-block title="基础用法">
       <wd-resize @resize="handleResize">
-        <div :style="`background: #4d80f0; width: ${width};height: ${height}`">
-        </div>
+        <div :style="`background: #4d80f0; width: ${width};height: ${height}`"></div>
       </wd-resize>
       <div class="tip-item">
         <div class="tip-label">width:</div>

@@ -2,8 +2,7 @@
   <div :class="rootClass" :style="customStyle" @click="handleClick">
     <div v-if="label || useLabelSlot" :class="labelClass" :style="labelStyle">
       <div v-if="prefixIcon || usePrefixSlot" class="wd-input__prefix">
-        <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-input__icon" :name="prefixIcon"
-          @click="onClickPrefixIcon" />
+        <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-input__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
         <slot v-else name="prefix"></slot>
       </div>
       <div class="wd-input__label-inner">
@@ -17,30 +16,50 @@
           <wd-icon v-if="prefixIcon" custom-class="wd-input__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
           <slot name="prefix"></slot>
         </div>
-        <input :class="[
-          'wd-input__inner',
-          prefixIcon ? 'wd-input__inner--prefix' : '',
-          showWordCount ? 'wd-input__inner--count' : '',
-          alignRight ? 'is-align-right' : '',
-          customInputClass
-        ]" :type="type" :password="showPassword && !isPwdVisible" v-model="inputValue" :placeholder="placeholderValue"
-          :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused" :confirm-type="confirmType"
-          :confirm-hold="confirmHold" :cursor="cursor" :cursor-spacing="cursorSpacing"
-          :placeholder-style="placeholderStyle" :selection-start="selectionStart" :selection-end="selectionEnd"
-          :adjust-position="adjustPosition" :hold-keyboard="holdKeyboard" :always-embed="alwaysEmbed"
-          :placeholder-class="inputPlaceholderClass" :ignoreCompositionEvent="ignoreCompositionEvent"
-          @input="handleInput" @focus="handleFocus" @blur="handleBlur" @confirm="handleConfirm"
-          @keyboardheightchange="handleKeyboardheightchange" />
+        <input
+          :class="[
+            'wd-input__inner',
+            prefixIcon ? 'wd-input__inner--prefix' : '',
+            showWordCount ? 'wd-input__inner--count' : '',
+            alignRight ? 'is-align-right' : '',
+            customInputClass
+          ]"
+          :type="type"
+          :password="showPassword && !isPwdVisible"
+          v-model="inputValue"
+          :placeholder="placeholderValue"
+          :disabled="disabled || readonly"
+          :maxlength="maxlength"
+          :focus="focused"
+          :confirm-type="confirmType"
+          :confirm-hold="confirmHold"
+          :cursor="cursor"
+          :cursor-spacing="cursorSpacing"
+          :placeholder-style="placeholderStyle"
+          :selection-start="selectionStart"
+          :selection-end="selectionEnd"
+          :adjust-position="adjustPosition"
+          :hold-keyboard="holdKeyboard"
+          :always-embed="alwaysEmbed"
+          :placeholder-class="inputPlaceholderClass"
+          :ignoreCompositionEvent="ignoreCompositionEvent"
+          @input="handleInput"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @confirm="handleConfirm"
+          @keyboardheightchange="handleKeyboardheightchange"
+        />
         <div v-if="readonly" class="wd-input__readonly-mask" />
         <div v-if="showClear || showPassword || suffixIcon || showWordCount || $slots.suffix" class="wd-input__suffix">
           <wd-icon v-if="showClear" custom-class="wd-input__clear" name="error-fill" @click="handleClear" />
-          <wd-icon v-if="showPassword" custom-class="wd-input__icon" :name="isPwdVisible ? 'view' : 'eye-close'"
-            @click="togglePwdVisible" />
+          <wd-icon v-if="showPassword" custom-class="wd-input__icon" :name="isPwdVisible ? 'view' : 'eye-close'" @click="togglePwdVisible" />
           <div v-if="showWordCount" class="wd-input__count">
-            <span :class="[
+            <span
+              :class="[
               inputValue && String(inputValue).length > 0 ? 'wd-input__count-current' : '',
               String(inputValue).length > maxlength! ? 'is-error' : ''
-            ]">
+            ]"
+            >
               {{ String(inputValue).length }}
             </span>
             /{{ maxlength }}
@@ -66,7 +85,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { isDef, objToStyle, pause } from '../common/util'
 import { useCell } from '../composables/useCell'
@@ -166,9 +184,11 @@ const isRequired = computed(() => {
 })
 
 const rootClass = computed(() => {
-  return `wd-input  ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${cell.border.value ? 'is-border' : ''
-    } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''}  ${inputValue.value && String(inputValue.value).length > 0 ? 'is-not-empty' : ''
-    }  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
+  return `wd-input  ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${
+    cell.border.value ? 'is-border' : ''
+  } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''}  ${
+    inputValue.value && String(inputValue.value).length > 0 ? 'is-not-empty' : ''
+  }  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
 })
 
 const labelClass = computed(() => {
@@ -182,9 +202,9 @@ const inputPlaceholderClass = computed(() => {
 const labelStyle = computed(() => {
   return props.labelWidth
     ? objToStyle({
-      'min-width': props.labelWidth,
-      'max-width': props.labelWidth
-    })
+        'min-width': props.labelWidth,
+        'max-width': props.labelWidth
+      })
     : ''
 })
 

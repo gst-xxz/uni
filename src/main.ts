@@ -1,4 +1,4 @@
-import './uni_modules/wot-design-uni/components/common/styles/common.css';
+import './uni_modules/wot-design-uni/components/common/styles/common.css'
 
 import { createSSRApp } from 'vue'
 

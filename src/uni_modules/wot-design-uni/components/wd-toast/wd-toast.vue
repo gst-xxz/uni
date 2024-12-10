@@ -1,21 +1,18 @@
 <template>
-  <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show"
-    custom-style="background-color: transparent;pointer-events: auto;"></wd-overlay>
-  <wd-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter"
-    @after-leave="handleAfterLeave">
+  <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show" custom-style="background-color: transparent;pointer-events: auto;"></wd-overlay>
+  <wd-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter" @after-leave="handleAfterLeave">
     <div :class="rootClass">
       <!--iconName优先级更高-->
-      <wd-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize"
-        custom-class="wd-toast__icon" />
-      <div class="wd-toast__iconWrap wd-toast__icon"
-        v-else-if="iconName === 'success' || iconName === 'warning' || iconName === 'info' || iconName === 'error'">
+      <wd-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize" custom-class="wd-toast__icon" />
+      <div
+        class="wd-toast__iconWrap wd-toast__icon"
+        v-else-if="iconName === 'success' || iconName === 'warning' || iconName === 'info' || iconName === 'error'"
+      >
         <div class="wd-toast__iconBox">
-          <div class="wd-toast__iconSvg" :style="svgStyle">
-          </div>
+          <div class="wd-toast__iconSvg" :style="svgStyle"></div>
         </div>
       </div>
-      <wd-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix"
-        :name="iconClass"></wd-icon>
+      <wd-icon v-else-if="iconClass" custom-class="wd-toast__icon" :size="iconSize" :class-prefix="classPrefix" :name="iconClass"></wd-icon>
       <!--文本-->
       <div v-if="msg" class="wd-toast__msg">{{ msg }}</div>
     </div>
@@ -34,10 +31,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdLoading from '../wd-loading/wd-loading.vue'
 import wdOverlay from '../wd-overlay/wd-overlay.vue'
-
 
 import { computed, inject, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import base64 from '../common/base64'
@@ -51,7 +45,7 @@ const msg = ref<string>('') // 消息内容
 const position = ref<string>('middle')
 const show = ref<boolean>(false)
 const zIndex = ref<number>(100)
-const loadingType = ref<ToastLoadingType>('outline')
+const loadingType = ref<ToastLoadingType>('circular')
 const loadingColor = ref<string>('#4D80F0')
 const iconSize = ref<string>() // 图标大小
 const loadingSize = ref<string>() // loading大小
@@ -108,8 +102,9 @@ const transitionStyle = computed(() => {
 })
 
 const rootClass = computed(() => {
-  return `wd-toast ${props.customClass} wd-toast--${position.value} ${(iconName.value !== 'loading' || msg.value) && (iconName.value || iconClass.value) ? 'wd-toast--with-icon' : ''
-    } ${iconName.value === 'loading' && !msg.value ? 'wd-toast--loading' : ''}`
+  return `wd-toast ${props.customClass} wd-toast--${position.value} ${
+    (iconName.value !== 'loading' || msg.value) && (iconName.value || iconClass.value) ? 'wd-toast--with-icon' : ''
+  } ${iconName.value === 'loading' && !msg.value ? 'wd-toast--loading' : ''}`
 })
 
 const svgStyle = computed(() => {
@@ -160,7 +155,7 @@ function reset(option: ToastOptions) {
       msg.value = isDef(option.msg!) ? option.msg! : ''
       position.value = isDef(option.position!) ? option.position! : 'middle'
       zIndex.value = isDef(option.zIndex!) ? option.zIndex! : 100
-      loadingType.value = isDef(option.loadingType!) ? option.loadingType! : 'outline'
+      loadingType.value = isDef(option.loadingType!) ? option.loadingType! : 'circular'
       loadingColor.value = isDef(option.loadingColor!) ? option.loadingColor! : '#4D80F0'
       iconSize.value = isDef(option.iconSize) ? addUnit(option.iconSize) : option.iconSize
       loadingSize.value = isDef(option.loadingSize) ? addUnit(option.loadingSize) : option.loadingSize

@@ -1,15 +1,15 @@
 <template>
-  <div :class="['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass]" :style="customStyle">
-    <div :class="['wd-card__title-content', customTitleClass]">
+  <div :class="cn(['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass])" :style="customStyle">
+    <div :class="cn(['wd-card__title-content', customTitleClass])">
       <div class="wd-card__title">
         <span v-if="title">{{ title }}</span>
         <slot v-else name="title"></slot>
       </div>
     </div>
-    <div :class="`wd-card__content ${customContentClass}`">
+    <div :class="cn(`wd-card__content ${customContentClass}`)">
       <slot></slot>
     </div>
-    <div :class="`wd-card__footer ${customFooterClass}`">
+    <div :class="cn(`wd-card__footer ${customFooterClass}`)">
       <slot name="footer"></slot>
     </div>
   </div>
@@ -27,6 +27,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { cn } from '../common/util'
 import { cardProps } from './types'
 
 defineProps(cardProps)

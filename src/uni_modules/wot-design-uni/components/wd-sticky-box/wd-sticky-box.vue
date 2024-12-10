@@ -1,5 +1,5 @@
 <template>
-  <div style="position: relative">
+  <div class="relative">
     <div :class="cn('wd-sticky-box relative', customClass)" :style="customStyle" :id="styckyBoxId">
       <wd-resize @resize="handleResize">
         <slot />

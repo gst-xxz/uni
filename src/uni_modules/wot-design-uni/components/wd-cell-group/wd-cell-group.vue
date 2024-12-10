@@ -1,5 +1,5 @@
 <template>
-  <div :class="['wd-cell-group', border ? 'is-border' : '', customClass]" :style="customStyle">
+  <div :class="cn(['wd-cell-group', border ? 'is-border' : '', customClass])" :style="customStyle">
     <div v-if="title || value || useSlot" class="wd-cell-group__title">
       <!--左侧标题-->
       <div class="wd-cell-group__left">
@@ -30,6 +30,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { cn } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { CELL_GROUP_KEY, cellGroupProps } from './types'
 

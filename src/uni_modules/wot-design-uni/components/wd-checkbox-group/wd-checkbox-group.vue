@@ -1,6 +1,5 @@
 <template>
-  <div :class="`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`"
-    :style="customStyle">
+  <div :class="cn(`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`)" :style="customStyle">
     <slot />
   </div>
 </template>
@@ -17,7 +16,7 @@ export default {
 
 <script lang="ts" setup>
 import { watch } from 'vue'
-import { checkNumRange, deepClone } from '../common/util'
+import { checkNumRange, cn, deepClone } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { CHECKBOX_GROUP_KEY, checkboxGroupProps } from './types'
 

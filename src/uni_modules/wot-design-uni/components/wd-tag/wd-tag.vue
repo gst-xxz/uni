@@ -10,8 +10,16 @@
     <div class="wd-tag__close" v-if="closable && round" @click.stop="handleClose">
       <wd-icon name="error-fill" />
     </div>
-    <input v-if="dynamicInput && dynamic" class="wd-tag__add-text" :placeholder="translate('placeholder')" type="text"
-      :focus="true" v-model="dynamicValue" @blur="handleBlur" @confirm="handleConfirm" />
+    <input
+      v-if="dynamicInput && dynamic"
+      class="wd-tag__add-text"
+      :placeholder="translate('placeholder')"
+      type="text"
+      :focus="true"
+      v-model="dynamicValue"
+      @blur="handleBlur"
+      @confirm="handleConfirm"
+    />
     <div v-else-if="dynamic" class="wd-tag__text" :style="textStyle" @click.stop="handleAdd">
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
@@ -33,7 +41,6 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
 import { objToStyle } from '../common/util'
 import { computed, ref, watch } from 'vue'
 import { useTranslate } from '../composables/useTranslate'

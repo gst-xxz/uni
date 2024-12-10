@@ -1,19 +1,24 @@
 <template>
-  <div :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`" :style="customStyle">
+  <div
+    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
+      alignRight ? 'is-align-right' : ''
+    } ${error ? 'is-error' : ''} ${customClass}`"
+    :style="customStyle"
+  >
     <div class="wd-picker__field" @click="showPopup">
       <slot v-if="useDefaultSlot"></slot>
       <div v-else class="wd-picker__cell">
-        <div v-if="label || useLabelSlot"
+        <div
+          v-if="label || useLabelSlot"
           :class="`wd-picker__label ${customLabelClass}  ${isRequired ? 'is-required' : ''}`"
-          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''">
+          :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
+        >
           <template v-if="label">{{ label }}</template>
           <slot v-else name="label"></slot>
         </div>
         <div class="wd-picker__body">
           <div class="wd-picker__value-wraper">
-            <div
-              :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
+            <div :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </div>
             <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow-right" />
@@ -25,8 +30,16 @@
         </div>
       </div>
     </div>
-    <wd-popup v-model="popupShow" position="bottom" :hide-when-close="false" :close-on-click-modal="closeOnClickModal"
-      :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom" @close="onCancel" custom-class="wd-picker__popup">
+    <wd-popup
+      v-model="popupShow"
+      position="bottom"
+      :hide-when-close="false"
+      :close-on-click-modal="closeOnClickModal"
+      :z-index="zIndex"
+      :safe-area-inset-bottom="safeAreaInsetBottom"
+      @close="onCancel"
+      custom-class="wd-picker__popup"
+    >
       <div class="wd-picker__wraper">
         <div class="wd-picker__toolbar" @touchmove="noop">
           <div class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
@@ -37,10 +50,22 @@
             {{ confirmButtonText || translate('done') }}
           </div>
         </div>
-        <wd-picker-view ref="pickerViewWd" :custom-class="customViewClass" v-model="pickerValue"
-          :columns="displayColumns" :loading="isLoading" :loading-color="loadingColor" :columns-height="columnsHeight"
-          :value-key="valueKey" :label-key="labelKey" :immediate-change="immediateChange" @change="pickerViewChange"
-          @pickstart="onPickStart" @pickend="onPickEnd" :column-change="columnChange" />
+        <wd-picker-view
+          ref="pickerViewWd"
+          :custom-class="customViewClass"
+          v-model="pickerValue"
+          :columns="displayColumns"
+          :loading="isLoading"
+          :loading-color="loadingColor"
+          :columns-height="columnsHeight"
+          :value-key="valueKey"
+          :label-key="labelKey"
+          :immediate-change="immediateChange"
+          @change="pickerViewChange"
+          @pickstart="onPickStart"
+          @pickend="onPickEnd"
+          :column-change="columnChange"
+        />
       </div>
     </wd-popup>
   </div>
@@ -58,8 +83,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-import wdPopup from '../wd-popup/wd-popup.vue'
 import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'
 import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
@@ -341,7 +364,7 @@ function setShowValue(items: ColumnItem | ColumnItem[]) {
   const { valueKey, labelKey } = props
   showValue.value = (props.displayFormat || defaultDisplayFormat)(items, { valueKey, labelKey })
 }
-function noop() { }
+function noop() {}
 function onPickStart() {
   isPicking.value = true
 }

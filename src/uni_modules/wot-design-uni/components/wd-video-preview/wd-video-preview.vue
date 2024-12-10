@@ -1,9 +1,17 @@
 <template>
-  <div :class="`wd-video-preview ${customClass}`" :style="customStyle" v-if="showPopup" @click="close">
+  <div :class="cn(`wd-video-preview`, customClass)" :style="customStyle" v-if="showPopup" @click="close">
     <div class="wd-video-preview__video" @click.stop="">
-      <video class="wd-video-preview__video" v-if="previdewVideo.url" :controls="true" :poster="previdewVideo.poster"
-        :title="previdewVideo.title" play-btn-position="center" :enableNative="true" :src="previdewVideo.url"
-        :enable-progress-gesture="false"></video>
+      <video
+        class="wd-video-preview__video"
+        v-if="previdewVideo.url"
+        :controls="true"
+        :poster="previdewVideo.poster"
+        :title="previdewVideo.title"
+        play-btn-position="center"
+        :enableNative="true"
+        :src="previdewVideo.url"
+        :enable-progress-gesture="false"
+      ></video>
     </div>
     <wd-icon name="close" :custom-class="`wd-video-preview__close`" @click="close" />
   </div>
@@ -21,10 +29,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { nextTick, reactive, ref } from 'vue'
 import { videoPreviewProps, type PreviewVideo, type VideoPreviewExpose } from './types'
 import useLockScroll from '../composables/useLockScroll'
+import { cn } from '../common/util'
 defineProps(videoPreviewProps)
 
 const showPopup = ref<boolean>(false)

@@ -5,8 +5,15 @@
       <div class="wd-month">
         <div class="wd-month__title" v-if="showTitle">{{ monthTitle(date) }}</div>
         <div class="wd-month__days">
-          <div v-for="(item, index) in days" :key="index" :class="`wd-month__day ${item.disabled ? 'is-disabled' : ''} ${item.isLastRow ? 'is-last-row' : ''} ${item.type ? dayTypeClass(item.type) : ''
-            }`" :style="index === 0 ? firstDayStyle : ''" @click="handleDateClick(index)">
+          <div
+            v-for="(item, index) in days"
+            :key="index"
+            :class="
+              cn('wd-month__day', item.disabled ? 'is-disabled' : '', item.isLastRow ? 'is-last-row' : '', item.type ? dayTypeClass(item.type) : '')
+            "
+            :style="index === 0 ? firstDayStyle : ''"
+            @click="handleDateClick(index)"
+          >
             <div class="wd-month__day-container">
               <div class="wd-month__day-top">{{ item.topInfo }}</div>
               <div class="wd-month__day-text">
@@ -47,7 +54,7 @@ import {
   getWeekRange
 } from '../utils'
 import { useToast } from '../../wd-toast'
-import { deepClone, isArray, isFunction, objToStyle } from '../../common/util'
+import { cn, deepClone, isArray, isFunction, objToStyle } from '../../common/util'
 import { useTranslate } from '../../composables/useTranslate'
 import type { CalendarDayItem, CalendarDayType } from '../types'
 import { monthProps } from './types'

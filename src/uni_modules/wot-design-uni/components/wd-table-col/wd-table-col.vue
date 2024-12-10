@@ -1,11 +1,17 @@
 <template>
   <div
-    :class="`wd-table-col ${fixed ? 'wd-table-col--fixed' : ''} ${isLastFixed && isDef(table) && table.state.scrollLeft ? 'is-shadow' : ''}`"
-    :style="columnStyle">
-    <div :class="`wd-table__cell ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`"
-      v-for="(row, index) in column" :key="index" :style="cellStyle" @click="handleRowClick(index)">
+    :class="cn(`wd-table-col ${fixed ? 'wd-table-col--fixed' : ''} ${isLastFixed && isDef(table) && table.state.scrollLeft ? 'is-shadow' : ''}`)"
+    :style="columnStyle"
+  >
+    <div
+      :class="cn(`wd-table__cell ${stripe && isOdd(index) ? 'is-stripe' : ''} ${border ? 'is-border' : ''} is-${align}`)"
+      v-for="(row, index) in column"
+      :key="index"
+      :style="cellStyle"
+      @click="handleRowClick(index)"
+    >
       <slot name="value" v-if="$slots.value" :row="getScope(index)" :index="index"></slot>
-      <span :class="`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`" v-else>{{ row }}</span>
+      <span :class="cn(`wd-table__value ${ellipsis ? 'is-ellipsis' : ''}`)" v-else>{{ row }}</span>
     </div>
   </div>
 </template>
@@ -22,7 +28,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { type CSSProperties, computed, ref } from 'vue'
-import { addUnit, isDef, objToStyle, isOdd, isFunction } from '../common/util'
+import { addUnit, isDef, objToStyle, isOdd, isFunction, cn } from '../common/util'
 import { tableColumnProps, type SortDirection } from './types'
 import { useParent } from '../composables/useParent'
 import { TABLE_KEY } from '../wd-table/types'

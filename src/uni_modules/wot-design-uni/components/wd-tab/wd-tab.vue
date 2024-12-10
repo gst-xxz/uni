@@ -1,6 +1,6 @@
 <template>
-  <div :class="`wd-tab ${customClass}`" :style="customStyle">
-    <div :class="['wd-tab__body', { 'wd-tab__body--inactive': !active }]" v-if="shouldBeRender" :style="tabBodyStyle">
+  <div :class="cn(`wd-tab ${customClass}`)" :style="customStyle">
+    <div :class="cn(['wd-tab__body', { 'wd-tab__body--inactive': !active }])" v-if="shouldBeRender" :style="tabBodyStyle">
       <slot />
     </div>
   </div>
@@ -17,7 +17,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { getCurrentInstance, ref, watch, type CSSProperties } from 'vue'
-import { isDef, isNumber, isString, objToStyle } from '../common/util'
+import { cn, isDef, isNumber, isString, objToStyle } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { TABS_KEY } from '../wd-tabs/types'
 import { computed } from 'vue'

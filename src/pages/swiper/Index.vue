@@ -1,84 +1,168 @@
 <template>
   <page-wraper>
     <demo-block title="点状指示器">
-      <wd-swiper :list="swiperList" autoplay v-model:current="current" :indicator="{ type: 'dots' }"
-        @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="swiperList"
+        autoplay
+        v-model:current="current"
+        :indicator="{ type: 'dots' }"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="点条状指示器">
-      <wd-swiper :list="swiperList" autoplay v-model:current="current1" :indicator="{ type: 'dots-bar' }"
-        @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="swiperList"
+        autoplay
+        v-model:current="current1"
+        :indicator="{ type: 'dots-bar' }"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="数字指示器">
-      <wd-swiper :list="swiperList" autoplay v-model:current="current2" :indicator="{ type: 'fraction' }"
-        indicator-position="bottom-right" @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="swiperList"
+        autoplay
+        v-model:current="current2"
+        :indicator="{ type: 'fraction' }"
+        indicator-position="bottom-right"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <!-- #ifdef MP-WEIXIN || H5 || MP-DINGTALK -->
     <demo-block title="视频轮播">
-      <wd-swiper :list="videoList" autoplay :indicator="{ type: 'fraction' }" indicator-position="top-right"
-        @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="videoList"
+        autoplay
+        :indicator="{ type: 'fraction' }"
+        indicator-position="top-right"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="手动播放视频">
-      <wd-swiper :list="videoList" autoplay :autoplayVideo="false" :indicator="{ type: 'fraction' }"
-        indicator-position="top-right" @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="videoList"
+        autoplay
+        :autoplayVideo="false"
+        :indicator="{ type: 'fraction' }"
+        indicator-position="top-right"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="播放视频时停止轮播">
-      <wd-swiper :list="videoList" autoplay stopAutoplayWhenVideoPlay :autoplayVideo="false"
-        :indicator="{ type: 'fraction' }" indicator-position="top-right" @click="handleClick"
-        @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="videoList"
+        autoplay
+        stopAutoplayWhenVideoPlay
+        :autoplayVideo="false"
+        :indicator="{ type: 'fraction' }"
+        indicator-position="top-right"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
     <!-- #endif -->
 
     <demo-block title="手动切换">
-      <wd-swiper :list="swiperList" :autoplay="false" v-model:current="current3" :indicator="{ showControls: true }"
-        :loop="false" @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="swiperList"
+        :autoplay="false"
+        v-model:current="current3"
+        :indicator="{ showControls: true }"
+        :loop="false"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="卡片样式">
       <div class="card-swiper">
-        <wd-swiper autoplay v-model:current="current4" custom-indicator-class="custom-indicator-class"
-          custom-image-class="custom-image" custom-next-image-class="custom-image-prev"
-          custom-prev-image-class="custom-image-prev" :indicator="{ type: 'dots' }" :list="swiperList"
-          previousMargin="24px" nextMargin="24px"></wd-swiper>
+        <wd-swiper
+          autoplay
+          v-model:current="current4"
+          custom-indicator-class="custom-indicator-class"
+          custom-image-class="custom-image"
+          custom-next-image-class="custom-image-prev"
+          custom-prev-image-class="custom-image-prev"
+          :indicator="{ type: 'dots' }"
+          :list="swiperList"
+          previousMargin="24px"
+          nextMargin="24px"
+        ></wd-swiper>
       </div>
     </demo-block>
 
     <demo-block title="同时展示2个滑块">
       <div class="card-swiper">
-        <wd-swiper autoplay v-model:current="current5" :display-multiple-items="2"
-          custom-indicator-class="custom-indicator-class" custom-image-class="custom-image"
-          custom-next-image-class="custom-image-prev" custom-prev-image-class="custom-image-prev"
-          :indicator="{ type: 'dots' }" :list="swiperList" previousMargin="24px" nextMargin="24px"></wd-swiper>
+        <wd-swiper
+          autoplay
+          v-model:current="current5"
+          :display-multiple-items="2"
+          custom-indicator-class="custom-indicator-class"
+          custom-image-class="custom-image"
+          custom-next-image-class="custom-image-prev"
+          custom-prev-image-class="custom-image-prev"
+          :indicator="{ type: 'dots' }"
+          :list="swiperList"
+          previousMargin="24px"
+          nextMargin="24px"
+        ></wd-swiper>
       </div>
     </demo-block>
 
     <demo-block title="垂直方向">
-      <wd-swiper :list="swiperList" direction="vertical" indicator-position="right" autoplay v-model:current="current6"
-        :indicator="{ type: 'dots-bar' }" @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        :list="swiperList"
+        direction="vertical"
+        indicator-position="right"
+        autoplay
+        v-model:current="current6"
+        :indicator="{ type: 'dots-bar' }"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="自定义指示器">
-      <wd-swiper :list="swiperList" direction="vertical" indicator-position="right" autoplay v-model:current="current7"
-        @click="handleClick" @change="onChange">
+      <wd-swiper
+        :list="swiperList"
+        direction="vertical"
+        indicator-position="right"
+        autoplay
+        v-model:current="current7"
+        @click="handleClick"
+        @change="onChange"
+      >
         <template #indicator="{ current, total }">
-          <div class="custom-indicator" style="position: absolute; bottom: 24rpx; right: 24rpx">{{ current + 1 }}/{{
-            total }}</div>
+          <div class="custom-indicator" style="position: absolute; bottom: 24rpx; right: 24rpx">{{ current + 1 }}/{{ total }}</div>
         </template>
       </wd-swiper>
     </demo-block>
 
     <demo-block title="指定valueKey和textKey">
-      <wd-swiper value-key="url" text-key="title" :list="customSwiperList" autoplay v-model:current="current9"
-        @click="handleClick" @change="onChange"></wd-swiper>
+      <wd-swiper
+        value-key="url"
+        text-key="title"
+        :list="customSwiperList"
+        autoplay
+        v-model:current="current9"
+        @click="handleClick"
+        @change="onChange"
+      ></wd-swiper>
     </demo-block>
 
     <demo-block title="属性控制切换">
       <wd-swiper :loop="isLoop" :autoplay="false" :list="swiperList" v-model:current="current8" />
-      <wd-gap />
+      <div class="h-4"></div>
       <wd-cell-group>
         <wd-cell title="loop">
           <wd-switch v-model="isLoop" size="24px" />

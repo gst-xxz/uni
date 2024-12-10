@@ -1,9 +1,11 @@
 <template>
-  <div :class="['wd-badge', customClass]" :style="customStyle">
+  <div :class="cn(['wd-badge', customClass])" :style="customStyle">
     <slot></slot>
-    <div v-if="shouldShowBadge"
-      :class="['wd-badge__content', 'is-fixed', type ? 'wd-badge__content--' + type : '', isDot ? 'is-dot' : '']"
-      :style="contentStyle">
+    <div
+      v-if="shouldShowBadge"
+      :class="cn(['wd-badge__content', 'is-fixed', type ? 'wd-badge__content--' + type : '', isDot ? 'is-dot' : ''])"
+      :style="contentStyle"
+    >
       {{ content }}
     </div>
   </div>
@@ -21,7 +23,7 @@ export default {
 <script lang="ts" setup>
 import { computed, type CSSProperties } from 'vue'
 import { badgeProps } from './types'
-import { addUnit, isDef, isNumber, objToStyle } from '../common/util'
+import { addUnit, cn, isDef, isNumber, objToStyle } from '../common/util'
 
 const props = defineProps(badgeProps)
 const content = computed(() => {

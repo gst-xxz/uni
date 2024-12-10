@@ -104,7 +104,7 @@ import wdCheckboxGroup from '../wd-checkbox-group/wd-checkbox-group.vue'
 import wdRadio from '../wd-radio/wd-radio.vue'
 import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
 
-import wdLoading from '../wd-loading/wd-loading.vue'
+
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'
 import { useCell } from '../composables/useCell'

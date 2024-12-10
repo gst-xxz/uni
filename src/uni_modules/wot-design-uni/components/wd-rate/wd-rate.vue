@@ -1,8 +1,13 @@
 <template>
   <div :class="`wd-rate ${customClass}`" :style="customStyle">
-    <div v-for="(rate, index) in rateList" :key="index" :data-index="index"
-      :style="{ 'margin-right': index == rateList.length - 1 ? 0 : space }" class="wd-rate__item"
-      @click="changeRate(index)">
+    <div
+      v-for="(rate, index) in rateList"
+      :key="index"
+      :data-index="index"
+      :style="{ 'margin-right': index == rateList.length - 1 ? 0 : space }"
+      class="wd-rate__item"
+      @click="changeRate(index)"
+    >
       <div class="wd-rate__item-star" :style="{ width: size, height: size }">
         <wd-icon :name="icon" :size="size" :custom-style="iconStyle" />
       </div>
@@ -24,7 +29,6 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
 import { computed, ref, watch } from 'vue'
 import { rateProps } from './types'
 

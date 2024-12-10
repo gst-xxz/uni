@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, ExtractPropTypes } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
-import type { TextType } from '../wd-text/types'
 
+type TextType = 'default' | 'primary' | 'error' | 'warning' | 'success'
 export const countToProps = {
   ...baseProps,
 
@@ -16,7 +16,7 @@ export const countToProps = {
    * 可选值：'default' /'primary' / 'error' / 'warning' / 'success'
    * 默认值：'default'
    */
-  type: makeStringProp<spanType>('default'),
+  type: makeStringProp<TextType>('default'),
   /**
    * 起始值
    * 类型：number

@@ -2,7 +2,7 @@
   <div :style="rootStyle" class="inline-block">
     <div :class="cn(`wd-sticky inline-block`, customClass)" :style="stickyStyle" :id="styckyId">
       <div class="wd-sticky__container inline-block" :style="containerStyle">
-        <wd-resize @resize="handleResize" custom-style="display: inline-block;">
+        <wd-resize @resize="handleResize" customClass="inline-block;">
           <slot />
         </wd-resize>
       </div>
@@ -22,7 +22,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { computed, getCurrentInstance, reactive, ref, type CSSProperties } from 'vue'
 import { addUnit, cn, getRect, objToStyle, pause, uuid } from '../common/util'
 import { stickyProps } from './types'

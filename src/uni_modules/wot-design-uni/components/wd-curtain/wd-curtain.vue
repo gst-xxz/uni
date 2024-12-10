@@ -29,7 +29,7 @@ export default {
 
 <script lang="ts" setup>
 
-import wdPopup from '../wd-popup/wd-popup.vue'
+
 import { computed, ref, watch } from 'vue'
 import { curtainProps } from './types'
 

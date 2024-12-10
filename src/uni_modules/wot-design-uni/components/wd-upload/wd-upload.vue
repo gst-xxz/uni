@@ -1,11 +1,10 @@
 <template>
-  <div :class="['wd-upload', customClass]" :style="customStyle">
+  <div :class="cn('wd-upload', customClass)" :style="customStyle">
     <!-- 预览列表 -->
-    <div :class="['wd-upload__preview', customPreviewClass]" v-for="(file, index) in uploadFiles" :key="index">
+    <div :class="cn('wd-upload__preview', customPreviewClass)" v-for="(file, index) in uploadFiles" :key="index">
       <!-- 成功时展示图片 -->
       <div class="wd-upload__status-content">
-        <img v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture"
-          @click="onPreviewImage(file)" />
+        <img v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture" @click="onPreviewImage(file)" />
         <template v-else-if="isVideo(file)">
           <div class="wd-upload__video" v-if="file.thumb" @click="onPreviewVideo(file)">
             <img :src="file.thumb" :mode="imageMode" class="wd-upload__picture" />
@@ -17,10 +16,23 @@
             <!-- #endif -->
             <!-- #ifndef APP-PLUS -->
             <!-- #ifndef MP-DINGTALK -->
-            <video :src="file.url" :title="file.name || '视频' + index" object-fit="contain" :controls="false"
-              :poster="file.thumb" :autoplay="false" :show-center-play-btn="false" :show-fullscreen-btn="false"
-              :show-play-btn="false" :show-loading="false" :show-progress="false" :show-mute-btn="false"
-              :enable-progress-gesture="false" :enableNative="true" class="wd-upload__video"></video>
+            <video
+              :src="file.url"
+              :title="file.name || '视频' + index"
+              object-fit="contain"
+              :controls="false"
+              :poster="file.thumb"
+              :autoplay="false"
+              :show-center-play-btn="false"
+              :show-fullscreen-btn="false"
+              :show-play-btn="false"
+              :show-loading="false"
+              :show-progress="false"
+              :show-mute-btn="false"
+              :enable-progress-gesture="false"
+              :enableNative="true"
+              class="wd-upload__video"
+            ></video>
             <wd-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></wd-icon>
             <!-- #endif -->
             <!-- #endif -->
@@ -46,24 +58,26 @@
         </div>
       </div>
       <!-- 上传状态为上传中时不展示移除按钮 -->
-      <wd-icon v-if="file[props.statusKey] !== 'loading' && !disabled" name="error-fill" custom-class="wd-upload__close"
-        @click="removeFile(index)"></wd-icon>
+      <wd-icon
+        v-if="file[props.statusKey] !== 'loading' && !disabled"
+        name="error-fill"
+        custom-class="wd-upload__close"
+        @click="removeFile(index)"
+      ></wd-icon>
       <!-- 自定义预览样式 -->
       <slot name="preview-cover" v-if="$slots['preview-cover']" :file="file" :index="index"></slot>
     </div>
 
     <block v-if="showUpload">
-      <div :class="['wd-upload__evoke-slot', customEvokeClass]" v-if="$slots.default" @click="handleChoose">
+      <div :class="cn(['wd-upload__evoke-slot', customEvokeClass])" v-if="$slots.default" @click="handleChoose">
         <slot></slot>
       </div>
       <!-- 唤起项 -->
-      <div v-else @click="handleChoose" :class="['wd-upload__evoke', disabled ? 'is-disabled' : '', customEvokeClass]">
+      <div v-else @click="handleChoose" :class="cn(['wd-upload__evoke', disabled ? 'is-disabled' : '', customEvokeClass])">
         <!-- 唤起项图标 -->
         <wd-icon class="wd-upload__evoke-icon" name="fill-camera"></wd-icon>
         <!-- 有限制个数时确认是否展示限制个数 -->
-        <div v-if="limit && showLimitNum" class="wd-upload__evoke-num">（{{ uploadFiles.length }}/{{
-          limit }}）
-        </div>
+        <div v-if="limit && showLimitNum" class="wd-upload__evoke-num">（{{ uploadFiles.length }}/{{ limit }}）</div>
       </div>
     </block>
   </div>
@@ -82,12 +96,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import wdVideoPreview from '../wd-video-preview/wd-video-preview.vue'
-import wdLoading from '../wd-loading/wd-loading.vue'
 
 import { computed, ref, watch } from 'vue'
-import { context, getType, isEqual, isImageUrl, isVideoUrl, isFunction, isDef, deepClone } from '../common/util'
+import { context, getType, isEqual, isImageUrl, isVideoUrl, isFunction, isDef, deepClone, cn } from '../common/util'
 import { chooseFile } from './utils'
 import { useTranslate } from '../composables/useTranslate'
 import {

@@ -1,14 +1,43 @@
 <template>
-  <div :class="`wd-calendar-view ${customClass}`">
-    <year-panel v-if="type === 'month' || type === 'monthrange'" ref="yearPanelRef" :type="type" :value="modelValue"
-      :min-date="minDate" :max-date="maxDate" :formatter="formatter" :max-range="maxRange" :range-prompt="rangePrompt"
-      :allow-same-day="allowSameDay" :show-panel-title="showPanelTitle" :default-time="formatDefauleTime"
-      :panel-height="panelHeight" @change="handleChange" />
-    <month-panel v-else ref="monthPanelRef" :type="type" :value="modelValue" :min-date="minDate" :max-date="maxDate"
-      :first-day-of-week="firstDayOfWeek" :formatter="formatter" :max-range="maxRange" :range-prompt="rangePrompt"
-      :allow-same-day="allowSameDay" :show-panel-title="showPanelTitle" :default-time="formatDefauleTime"
-      :panel-height="panelHeight" :immediate-change="immediateChange" :time-filter="timeFilter"
-      :hide-second="hideSecond" @change="handleChange" @pickstart="handlePickStart" @pickend="handlePickEnd" />
+  <div :class="cn(`wd-calendar-view`, customClass)">
+    <year-panel
+      v-if="type === 'month' || type === 'monthrange'"
+      ref="yearPanelRef"
+      :type="type"
+      :value="modelValue"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :formatter="formatter"
+      :max-range="maxRange"
+      :range-prompt="rangePrompt"
+      :allow-same-day="allowSameDay"
+      :show-panel-title="showPanelTitle"
+      :default-time="formatDefauleTime"
+      :panel-height="panelHeight"
+      @change="handleChange"
+    />
+    <month-panel
+      v-else
+      ref="monthPanelRef"
+      :type="type"
+      :value="modelValue"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :first-day-of-week="firstDayOfWeek"
+      :formatter="formatter"
+      :max-range="maxRange"
+      :range-prompt="rangePrompt"
+      :allow-same-day="allowSameDay"
+      :show-panel-title="showPanelTitle"
+      :default-time="formatDefauleTime"
+      :panel-height="panelHeight"
+      :immediate-change="immediateChange"
+      :time-filter="timeFilter"
+      :hide-second="hideSecond"
+      @change="handleChange"
+      @pickstart="handlePickStart"
+      @pickend="handlePickEnd"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -28,6 +57,7 @@ import { getDefaultTime } from './utils'
 import yearPanel from './yearPanel/year-panel.vue'
 import MonthPanel from './monthPanel/month-panel.vue'
 import { calendarViewProps, type CalendarViewExpose } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(calendarViewProps)
 const emit = defineEmits(['change', 'update:modelValue', 'pickstart', 'pickend'])
@@ -76,7 +106,3 @@ defineExpose<CalendarViewExpose>({
   scrollIntoView
 })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

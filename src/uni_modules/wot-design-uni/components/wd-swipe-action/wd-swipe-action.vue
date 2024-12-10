@@ -1,17 +1,24 @@
 <template>
   <!--注意阻止横向滑动的穿透：横向移动时阻止冒泡-->
-  <div :class="`wd-swipe-action ${customClass}`" :style="customStyle" @click.stop="onClick()" @touchstart="startDrag"
-    @touchmove="onDrag" @touchend="endDrag" @touchcancel="endDrag">
+  <div
+    :class="cn(`wd-swipe-action relative overflow-hidden`, customClass)"
+    :style="customStyle"
+    @click.stop="onClick()"
+    @touchstart="startDrag"
+    @touchmove="onDrag"
+    @touchend="endDrag"
+    @touchcancel="endDrag"
+  >
     <!--容器-->
     <div class="wd-swipe-action__wrapper" :style="wrapperStyle">
       <!--左侧操作-->
-      <div class="wd-swipe-action__left" @click="onClick('left')">
+      <div class="wd-swipe-action__left left-0 -translate-x-full absolute top-0 h-full" @click="onClick('left')">
         <slot name="left" />
       </div>
       <!--内容-->
       <slot />
       <!--右侧操作-->
-      <div class="wd-swipe-action__right" @click="onClick('right')">
+      <div class="wd-swipe-action__right right-0 translate-x-full absolute top-0 h-full" @click="onClick('right')">
         <slot name="right" />
       </div>
     </div>
@@ -32,7 +39,7 @@ import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, 
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { useTouch } from '../composables/useTouch'
-import { getRect } from '../common/util'
+import { cn, getRect } from '../common/util'
 import { swipeActionProps, type SwipeActionPosition, type SwipeActionReason, type SwipeActionStatus } from './types'
 
 const props = defineProps(swipeActionProps)
@@ -282,6 +289,3 @@ function close(reason: SwipeActionReason, position?: SwipeActionPosition) {
 
 defineExpose({ close })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

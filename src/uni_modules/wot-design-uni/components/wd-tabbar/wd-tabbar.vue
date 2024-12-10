@@ -1,8 +1,18 @@
 <template>
-  <div :class="{ 'wd-tabbar__placeholder': fixed && placeholder && safeAreaInsetBottom && shape === 'round' }"
-    :style="{ height: addUnit(height) }">
-    <div :class="`wd-tabbar wd-tabbar--${shape} ${customClass} ${fixed ? 'is-fixed' : ''} ${safeAreaInsetBottom ? 'is-safe' : ''} ${bordered ? 'is-border' : ''
-      }`" :style="rootStyle">
+  <div
+    :class="cn({ 'wd-tabbar__placeholder': fixed && placeholder && safeAreaInsetBottom && shape === 'round' })"
+    :style="{ height: addUnit(height) }"
+  >
+    <div
+      :class="
+        cn(
+          `wd-tabbar wd-tabbar--${shape} ${customClass} ${fixed ? 'is-fixed' : ''} ${safeAreaInsetBottom ? 'is-safe' : ''} ${
+            bordered ? 'is-border' : ''
+          }`
+        )
+      "
+      :style="rootStyle"
+    >
       <slot></slot>
     </div>
   </div>
@@ -20,7 +30,7 @@ export default {
 <script lang="ts" setup>
 import { getCurrentInstance, onMounted, ref, watch, nextTick, computed, type CSSProperties } from 'vue'
 import type { TabbarItem } from '../wd-tabbar-item/types'
-import { addUnit, getRect, isDef, objToStyle } from '../common/util'
+import { addUnit, cn, getRect, isDef, objToStyle } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { TABBAR_KEY, tabbarProps } from './types'
 

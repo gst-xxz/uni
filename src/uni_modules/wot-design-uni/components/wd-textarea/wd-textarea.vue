@@ -2,8 +2,7 @@
   <div :class="rootClass" :style="customStyle">
     <div v-if="label || useLabelSlot" :class="labelClass" :style="labelStyle">
       <div v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
-        <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon"
-          @click="onClickPrefixIcon" />
+        <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
         <slot v-else name="prefix"></slot>
       </div>
       <div class="wd-textarea__label-inner">
@@ -13,17 +12,38 @@
     </div>
 
     <!-- 文本域 -->
-    <div
-      :class="`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`">
-      <spanarea :class="`wd-textarea__inner ${customTextareaClass}`" v-model="inputValue" :show-count="false"
-        :placeholder="placeholderValue" :disabled="disabled || readonly" :maxlength="maxlength" :focus="focused"
-        :auto-focus="autoFocus" :placeholder-style="placeholderStyle" :placeholder-class="inputPlaceholderClass"
-        :auto-height="autoHeight" :cursor-spacing="cursorSpacing" :fixed="fixed" :cursor="cursor"
-        :show-confirm-bar="showConfirmBar" :selection-start="selectionStart" :selection-end="selectionEnd"
-        :adjust-position="adjustPosition" :hold-keyboard="holdKeyboard" :confirm-type="confirmType"
-        :confirm-hold="confirmHold" :disable-default-padding="disableDefaultPadding"
-        :ignoreCompositionEvent="ignoreCompositionEvent" @input="handleInput" @focus="handleFocus" @blur="handleBlur"
-        @confirm="handleConfirm" @linechange="handleLineChange" @keyboardheightchange="handleKeyboardheightchange" />
+    <div :class="cn(`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`)">
+      <spanarea
+        :class="cn(`wd-textarea__inner ${customTextareaClass}`)"
+        v-model="inputValue"
+        :show-count="false"
+        :placeholder="placeholderValue"
+        :disabled="disabled || readonly"
+        :maxlength="maxlength"
+        :focus="focused"
+        :auto-focus="autoFocus"
+        :placeholder-style="placeholderStyle"
+        :placeholder-class="inputPlaceholderClass"
+        :auto-height="autoHeight"
+        :cursor-spacing="cursorSpacing"
+        :fixed="fixed"
+        :cursor="cursor"
+        :show-confirm-bar="showConfirmBar"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :disable-default-padding="disableDefaultPadding"
+        :ignoreCompositionEvent="ignoreCompositionEvent"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @confirm="handleConfirm"
+        @linechange="handleLineChange"
+        @keyboardheightchange="handleKeyboardheightchange"
+      />
       <div v-if="errorMessage" class="wd-textarea__error-message">{{ errorMessage }}</div>
 
       <div v-if="readonly" class="wd-textarea__readonly-mask" />
@@ -52,9 +72,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { computed, onBeforeMount, ref, watch } from 'vue'
-import { objToStyle, isDef, pause } from '../common/util'
+import { objToStyle, isDef, pause, cn } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
@@ -155,9 +174,11 @@ const currentLength = computed(() => {
 })
 
 const rootClass = computed(() => {
-  return `wd-textarea   ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${cell.border.value ? 'is-border' : ''
-    } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''} ${props.autoHeight ? 'is-auto-height' : ''
-    } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
+  return `wd-textarea   ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${
+    cell.border.value ? 'is-border' : ''
+  } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''} ${
+    props.autoHeight ? 'is-auto-height' : ''
+  } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
 })
 
 const labelClass = computed(() => {
@@ -175,9 +196,9 @@ const countClass = computed(() => {
 const labelStyle = computed(() => {
   return props.labelWidth
     ? objToStyle({
-      'min-width': props.labelWidth,
-      'max-width': props.labelWidth
-    })
+        'min-width': props.labelWidth,
+        'max-width': props.labelWidth
+      })
     : ''
 })
 

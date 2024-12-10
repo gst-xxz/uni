@@ -1,5 +1,5 @@
 <template>
-  <wd-config-provider :theme="theme" :theme-vars="isRed ? themeVars : {}">
+  <wd-config-provider :theme="theme">
     <div class="page-wraper">
       <wd-cell title="切换暗黑" title-width="240px" center v-if="showDarkMode">
         <wd-switch v-model="isDark" />
@@ -12,13 +12,15 @@
       <!-- 横幅广告和格子广告可以共存，但插屏广告展示时，不显示横幅广告和格子广告 -->
       <template v-if="useWxAd && !showWxAd3">
         <ad-custom v-if="showWxAd" unit-id="adunit-06191d6d3d1ddfc4"></ad-custom>
-        <ad-custom v-if="showWxAd2"
+        <ad-custom
+          v-if="showWxAd2"
           style="width: 120rpx; height: auto; position: fixed; right: 12rpx; top: 160rpx; z-index: 999"
-          unit-id="adunit-95aad07aafad3619"></ad-custom>
+          unit-id="adunit-95aad07aafad3619"
+        ></ad-custom>
       </template>
       <!-- #endif -->
 
-      <wd-gap height="0" v-if="safeAreaInsetBottom" safe-area-bottom></wd-gap>
+      <div v-if="safeAreaInsetBottom" class="pb-safe" />
     </div>
     <wd-notify />
     <wd-toast />
@@ -35,7 +37,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, ref, onMounted, nextTick } from 'vue'
-import { setNotifyDefaultOptions, type ConfigProviderThemeVars } from '@/uni_modules/wot-design-uni'
+import { setNotifyDefaultOptions } from '@/uni_modules/wot-design-uni'
 import { useDark } from '../../store'
 
 interface Props {
@@ -60,10 +62,6 @@ const showWxAd2 = ref<boolean>(Math.random() > 0.33) // 格子广告
 const showWxAd3 = ref<boolean>(Math.random() > 0.66) // 插屏广告
 let interstitialAd: UniApp.InterstitialAdContext | null = null
 // #endif
-
-const themeVars: ConfigProviderThemeVars = {
-  colorTheme: 'red'
-}
 
 const theme = computed(() => {
   return darkMode.isDark.value || isDark.value ? 'dark' : 'light'

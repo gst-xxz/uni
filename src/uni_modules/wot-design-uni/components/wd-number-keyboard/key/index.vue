@@ -1,6 +1,5 @@
 <template>
-  <div :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart"
-    @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <div :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
     <div :class="keyClass">
       <wd-loading custom-class="wd-key__loading-icon" v-if="props.loading" />
       <template v-if="type === 'delete'">
@@ -31,8 +30,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdLoading from '../../wd-loading/wd-loading.vue'
-import wdIcon from '../../wd-icon/wd-icon.vue'
 import { computed, ref } from 'vue'
 import { useTouch } from '../../composables/useTouch'
 import { keyProps } from './types'
@@ -44,8 +41,9 @@ const touch = useTouch()
 const active = ref<boolean>(false)
 
 const keyClass = computed(() => {
-  return `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${props.type === 'close' ? 'wd-key--close' : ''
-    }`
+  return `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${
+    props.type === 'close' ? 'wd-key--close' : ''
+  }`
 })
 
 function onTouchStart(event: TouchEvent) {

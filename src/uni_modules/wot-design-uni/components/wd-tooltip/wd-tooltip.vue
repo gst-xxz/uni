@@ -1,17 +1,14 @@
 <template>
-  <div :class="`wd-tooltip ${customClass}`" :style="customStyle" id="tooltip" @click.stop="popover.noop">
+  <div :class="cn(`wd-tooltip ${customClass}`)" :style="customStyle" id="tooltip" @click.stop="popover.noop">
     <!-- 用于为渲染获取宽高的元素 -->
     <div class="wd-tooltip__pos wd-tooltip__hidden" id="pos">
       <div class="wd-tooltip__container custom-pop">
         <div v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</div>
       </div>
     </div>
-    <wd-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip" name="fade"
-      :duration="200">
+    <wd-transition custom-class="wd-tooltip__pos" :custom-style="popover.popStyle.value" :show="showTooltip" name="fade" :duration="200">
       <div class="wd-tooltip__container custom-pop">
-        <div v-if="visibleArrow" :class="`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`"
-          :style="popover.arrowStyle.value">
-        </div>
+        <div v-if="visibleArrow" :class="cn(`wd-tooltip__arrow ${popover.arrowClass.value} ${customArrow}`)" :style="popover.arrowStyle.value"></div>
         <!-- 普通模式 -->
         <div v-if="!useContentSlot" class="wd-tooltip__inner">{{ content }}</div>
         <!-- 用户自定义样式 -->
@@ -37,13 +34,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
 import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { usePopover } from '../composables/usePopover'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { tooltipProps, type TooltipExpose } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(tooltipProps)
 const emit = defineEmits(['update:modelValue', 'menuclick', 'change', 'open', 'close'])
