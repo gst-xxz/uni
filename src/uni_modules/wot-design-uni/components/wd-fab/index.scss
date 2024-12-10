@@ -1,116 +1,108 @@
-@import "../common/abstracts/variable";
-@import "../common/abstracts/mixin";
-
-.wot-theme-dark {
-  @include b(fab) {}
+.wd-fab {
+  position: fixed;
+  z-index: 99
 }
 
-@include b(fab) {
-  position: fixed;
-  z-index: 99;
+ .wd-fab__trigger {
+  min-width: auto!important;
+  box-sizing: border-box;
+  width: var(--wot-fab-trigger-width, 56px)!important;
+  height: var(--wot-fab-trigger-height, 56px)!important;
+  border-radius: calc(var(--wot-fab-trigger-height, 56px) / 2)!important
+}
 
-  @include edeep(trigger) {
-    min-width: auto !important;
-    box-sizing: border-box;
-    width: $-fab-trigger-width !important;
-    height: $-fab-trigger-height !important;
-    border-radius: calc($-fab-trigger-height / 2) !important;
-  }
+.wd-fab .wd-fab__actions {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--wot-actions-padding, 12px) 0
+}
 
-  :deep() {
-    @include e(actions) {
-      position: absolute;
-      z-index: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: $-fab-actions-padding 0;
+.wd-fab .wd-fab__actions--left,.wd-fab .wd-fab__actions--right {
+  height: 100%;
+  top: 0;
+  padding: 0 var(--wot-actions-padding, 12px)
+}
 
-      @include m(left, right) {
-        height: 100%;
-        top: 0;
-        padding: 0 $-fab-actions-padding;
-      }
+.wd-fab .wd-fab__actions--left {
+  flex-direction: row-reverse;
+  right: 100%
+}
 
-      @include m(left) {
-        flex-direction: row-reverse;
-        right: 100%;
-      }
+.wd-fab .wd-fab__actions--right {
+  flex-direction: row;
+  left: 100%
+}
 
-      @include m(right) {
-        flex-direction: row;
-        left: 100%;
-      }
+.wd-fab .wd-fab__actions--top,.wd-fab .wd-fab__actions--bottom {
+  width: 100%;
+  left: 0
+}
 
-      @include m(top, bottom) {
-        width: 100%;
-        left: 0;
-      }
+.wd-fab .wd-fab__actions--top {
+  flex-direction: column-reverse;
+  bottom: 100%
+}
 
-      @include m(top) {
-        flex-direction: column-reverse;
-        bottom: 100%;
-      }
+.wd-fab .wd-fab__actions--bottom {
+  flex-direction: column;
+  top: 100%
+}
 
-      @include m(bottom) {
-        flex-direction: column;
-        top: 100%;
-      }
-    }
+.wd-fab .wd-fab__transition-enter-active,.wd-fab .wd-fab__transition-leave-active {
+  transition: .3s cubic-bezier(.4,0,.2,1)!important
+}
 
-    // 动画
-    @include e(transition-enter-active, transition-leave-active) {
-      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
+.wd-fab .wd-fab__transition-enter--top {
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px)
+}
 
+.wd-fab .wd-fab__transition-enter--bottom {
+  opacity: 0;
+  -webkit-transform: translateY(-40px);
+  transform: translateY(-40px)
+}
 
-    @include e(transition-enter) {
-      @include m(top) {
-        opacity: 0;
-        transform: translateY(40px);
-      }
+.wd-fab .wd-fab__transition-enter--left {
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+  transform: translate(40px)
+}
 
-      @include m(bottom) {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
+.wd-fab .wd-fab__transition-enter--right {
+  opacity: 0;
+  -webkit-transform: translateX(-40px);
+  transform: translate(-40px)
+}
 
-      @include m(left) {
-        opacity: 0;
-        transform: translateX(40px);
-      }
+.wd-fab .wd-fab__transition-leave-to--top {
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px)
+}
 
-      @include m(right) {
-        opacity: 0;
-        transform: translateX(-40px);
-      }
-    }
+.wd-fab .wd-fab__transition-leave-to--bottom {
+  opacity: 0;
+  -webkit-transform: translateY(-40px);
+  transform: translateY(-40px)
+}
 
-    @include e(transition-leave-to) {
-      @include m(top) {
-        opacity: 0;
-        transform: translateY(40px);
-      }
+.wd-fab .wd-fab__transition-leave-to--left {
+  opacity: 0;
+  -webkit-transform: translateX(40px);
+  transform: translate(40px)
+}
 
-      @include m(bottom) {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
+.wd-fab .wd-fab__transition-leave-to--right {
+  opacity: 0;
+  -webkit-transform: translateX(-40px);
+  transform: translate(-40px)
+}
 
-      @include m(left) {
-        opacity: 0;
-        transform: translateX(40px);
-      }
-
-      @include m(right) {
-        opacity: 0;
-        transform: translateX(-40px);
-      }
-    }
-
-  }
-
-  @include edeep(icon) {
-    font-size: $-fab-icon-fs;
-  }
+ .wd-fab__icon {
+  font-size: var(--wot-fab-icon-fs, 20px)
 }

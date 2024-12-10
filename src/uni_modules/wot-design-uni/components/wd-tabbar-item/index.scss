@@ -1,55 +1,39 @@
-@import '../common/abstracts/variable';
-@import '../common/abstracts/mixin';
-
-.wot-theme-dark {
-  @include b(tabbar-item) {
-    @include e(body) {
-      :deep(){
-        @include when(inactive) {
-          color: $-dark-color-gray;
-        }
-      }
-    }
-  }
+.wot-theme-dark .wd-tabbar-item__body .is-inactive {
+  color: #595959
 }
 
-
-@include b(tabbar-item) {
+.wd-tabbar-item {
   flex: 1;
   text-align: center;
   text-decoration: none;
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center
+}
+
+.wd-tabbar-item__body {
+  display: flex;
   align-items: center;
+  flex-direction: column;
+  line-height: 1;
+  padding: 0;
+  position: relative
+}
 
-  @include e(body) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    line-height: 1;
-    padding: 0;
-    position: relative;
-    
-    :deep(){
-      @include when(active) {
-        color: $-tabbar-active-color;
-      }
-  
-      @include when(inactive) {
-        color: $-tabbar-inactive-color;
-      }
-    }
-  }
+.wd-tabbar-item__body .is-active {
+  color: var(--wot-tabbar-active-color, var(--wot-color-theme, #4d80f0))
+}
 
+.wd-tabbar-item__body .is-inactive {
+  color: var(--wot-tabbar-inactive-color, var(--wot-color-title, var(--wot-color-black, rgb(0, 0, 0))))
+}
 
-  @include e(body-title) {
-    font-size: $-tabbar-item-title-font-size;
-    line-height: $-tabbar-item-title-line-height;
-  }
+.wd-tabbar-item__body-title {
+  font-size: var(--wot-tabbar-item-title-font-size, 10px);
+  line-height: var(--wot-tabbar-item-title-line-height, initial)
+}
 
-  @include edeep(body-icon) {
-    font-size: $-tabbar-item-icon-size;
-  }
-  
+ .wd-tabbar-item__body-icon {
+  font-size: var(--wot-tabbar-item-icon-size, 20px)
 }

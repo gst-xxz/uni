@@ -1,93 +1,94 @@
-@import "./../common/abstracts/_mixin.scss";
-@import "./../common/abstracts/variable.scss";
-
-.wot-theme-dark {
-  @include b(navbar) {
-    background-color: $-dark-background;
-
-    @include e(title) {
-      color: $-dark-color;
-    }
-
-    @include e(text) {
-      color: $-dark-color;
-    }
-
-    :deep(.wd-navbar__arrow) {
-      color: $-dark-color;
-    }
-  }
+.wot-theme-dark .wd-navbar {
+  background-color: #131313
 }
 
+.wot-theme-dark .wd-navbar__title,.wot-theme-dark .wd-navbar__text,.wot-theme-dark .wd-navbar .wd-navbar__arrow {
+  color: #fff
+}
 
-@include b(navbar) {
+.wd-navbar {
   position: relative;
   text-align: center;
+  -webkit-user-select: none;
   user-select: none;
-  height: $-navbar-height;
-  line-height: $-navbar-height;
-  background-color: $-navbar-background;
-  box-sizing: content-box;
+  height: var(--wot-navbar-height, 44px);
+  line-height: var(--wot-navbar-height, 44px);
+  background-color: var(--wot-navbar-background, var(--wot-color-white, rgb(255, 255, 255)));
+  box-sizing: content-box
+}
 
-  @include e(content) {
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
+.wd-navbar__content {
+  position: relative;
+  height: 100%;
+  width: 100%
+}
 
-  @include e(title) {
-    max-width: 60%;
-    height: 100%;
-    margin: 0 auto;
-    color: $-navbar-color;
-    font-weight: $-navbar-title-font-weight;
-    font-size: $-navbar-title-font-size;
-    @include lineEllipsis();
-  }
+.wd-navbar__title {
+  max-width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  color: var(--wot-navbar-color, var(--wot-font-gray-1, rgba(0, 0, 0, .9)));
+  font-weight: var(--wot-navbar-title-font-weight, 600);
+  font-size: var(--wot-navbar-title-font-size, 18px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
 
-  @include e(text) {
-    display: inline-block;
-    vertical-align: middle;
-    color: $-navbar-desc-font-color;
-  }
+.wd-navbar__text {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--wot-navbar-desc-font-color, var(--wot-font-gray-1, rgba(0, 0, 0, .9)))
+}
 
-  @include e(left, right, capsule) {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    font-size: $-navbar-desc-font-size;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
+.wd-navbar__left,.wd-navbar__right,.wd-navbar__capsule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  font-size: var(--wot-navbar-desc-font-size, 16px);
+  display: flex;
+  align-items: center;
+  padding: 0 12px
+}
 
-    @include when(disabled) {
-      opacity: $-navbar-disabled-opacity;
-    }
-  }
+.wd-navbar__left.is-disabled,.wd-navbar__right.is-disabled,.wd-navbar__capsule.is-disabled {
+  opacity: var(--wot-navbar-disabled-opacity, .6)
+}
 
-  @include e(left, capsule) {
-    left: 0;
-  }
+.wd-navbar__left,.wd-navbar__capsule {
+  left: 0
+}
 
-  @include e(right) {
-    right: 0;
-  }
+.wd-navbar__right {
+  right: 0
+}
 
-  @include edeep(arrow) {
-    font-size: $-navbar-arrow-size;
-    color: $-navbar-color;
-  }
+ .wd-navbar__arrow {
+  font-size: var(--wot-navbar-arrow-size, 24px);
+  color: var(--wot-navbar-color, var(--wot-font-gray-1, rgba(0, 0, 0, .9)))
+}
 
+.wd-navbar.is-border {
+  position: relative
+}
 
-  @include when(border) {
-    @include halfPixelBorder('bottom');
-  }
+.wd-navbar.is-border:after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: scaleY(.5);
+  transform: scaleY(.5);
+  background: var(--wot-color-border-light, #e8e8e8)
+}
 
-  @include when(fixed) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 500;
-  }
+.wd-navbar.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500
 }
