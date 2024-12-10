@@ -1,7 +1,7 @@
 <template>
   <div :class="cn(`wd-form`, customClass)" :style="customStyle">
     <slot></slot>
-    <wd-toast v-if="props.errorType === 'toast'" selector="wd-form-toast" />
+    <wd-toast v-if="errorType === 'toast'" selector="wd-form-toast" />
   </div>
 </template>
 

@@ -1,6 +1,10 @@
 <template>
-  <div :class="cn(`wd-tab ${customClass}`)" :style="customStyle">
-    <div :class="cn(['wd-tab__body', { 'wd-tab__body--inactive': !active }])" v-if="shouldBeRender" :style="tabBodyStyle">
+  <div :class="cn('wd-tab w-full shrink-0 box-border', customClass)" :style="customStyle">
+    <div
+      :class="cn('wd-tab__body', { 'wd-tab__body--inactive h-0 transition-[height_0.3s_ease-in-out]': !active })"
+      v-if="shouldBeRender"
+      :style="tabBodyStyle"
+    >
       <slot />
     </div>
   </div>
@@ -83,6 +87,3 @@ function checkName(self: any) {
     })
 }
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

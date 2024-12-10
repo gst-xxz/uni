@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-password-input ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-password-input`, customClass)" :style="customStyle">
     <div @touchstart="onTouchStart" class="wd-password-input__security">
       <div
         v-for="(_, index) in length"
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div v-if="info || errorInfo" :class="`wd-password-input__info ${errorInfo ? 'is-error' : ''}`">
+    <div v-if="info || errorInfo" :class="cn(`wd-password-input__info`, errorInfo ? 'is-error' : '')">
       {{ errorInfo || info }}
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { addUnit } from '../common/util'
+import { addUnit, cn } from '../common/util'
 import { passwordInputProps } from './types'
 
 defineProps(passwordInputProps)

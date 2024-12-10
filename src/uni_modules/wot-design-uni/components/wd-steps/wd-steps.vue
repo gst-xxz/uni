@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(`wd-steps text-[0] ${customClass} ${vertical ? 'is-vertical block' : ''}`)">
+  <div :class="cn('wd-steps text-[0]', vertical ? 'is-vertical block' : '', customClass)">
     <slot />
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { cn } from '../common/util';
+import { cn } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { STEPS_KEY, stepsProps } from './types'
 

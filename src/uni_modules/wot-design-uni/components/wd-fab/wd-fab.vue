@@ -1,17 +1,28 @@
 <template>
-  <div @touchmove.stop.prevent="handleTouchMove" @touchstart="handleTouchStart" @touchend="handleTouchEnd"
-    :class="`wd-fab ${customClass}`" :style="rootStyle" @click.stop="">
+  <div
+    @touchmove.stop.prevent="handleTouchMove"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+    :class="cn(`wd-fab`, customClass)"
+    :style="rootStyle"
+    @click.stop=""
+  >
     <div @click.stop="" :style="{ visibility: inited ? 'visible' : 'hidden' }" id="trigger">
       <slot name="trigger" v-if="$slots.trigger"></slot>
       <wd-button v-else @click="handleClick" custom-class="wd-fab__trigger" round :type="type" :disabled="disabled">
         <wd-icon custom-class="wd-fab__icon" :name="isActive ? activeIcon : inactiveIcon"></wd-icon>
       </wd-button>
     </div>
-    <wd-transition v-if="expandable" :enter-class="`wd-fab__transition-enter--${fabDirection}`"
+    <wd-transition
+      v-if="expandable"
+      :enter-class="`wd-fab__transition-enter--${fabDirection}`"
       enter-active-class="wd-fab__transition-enter-active"
       :leave-to-class="`wd-fab__transition-leave-to--${fabDirection}`"
       leave-active-class="wd-fab__transition-leave-active"
-      :custom-class="`wd-fab__actions wd-fab__actions--${fabDirection}`" :show="isActive" :duration="300">
+      :custom-class="`wd-fab__actions wd-fab__actions--${fabDirection}`"
+      :show="isActive"
+      :duration="300"
+    >
       <slot></slot>
     </wd-transition>
   </div>
@@ -31,7 +42,7 @@ export default {
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { type CSSProperties, computed, ref, watch, inject, getCurrentInstance, onBeforeUnmount, onMounted } from 'vue'
-import { getRect, isDef, isH5, objToStyle } from '../common/util'
+import { cn, getRect, isDef, isH5, objToStyle } from '../common/util'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { fabProps, type FabExpose } from './types'

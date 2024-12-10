@@ -3,15 +3,17 @@
     <!-- #ifdef MP-DINGTALK -->
     <div class="wd-index-bar" :id="indexBarId">
       <!-- #endif -->
-      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content"
-        @scroll="hanleScroll">
+      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content" @scroll="hanleScroll">
         <slot></slot>
       </scroll-view>
-      <div class="wd-index-bar__sidebar" @touchstart.stop.prevent="handleTouchStart"
-        @touchmove.stop.prevent="handleTouchMove" @touchend.stop.prevent="handleTouchEnd"
-        @touchcancel.stop.prevent="handleTouchEnd">
-        <div class="wd-index-bar__index" :class="{ 'is-active': item.index === state.activeIndex }"
-          v-for="item in children" :key="item.index">
+      <div
+        class="wd-index-bar__sidebar"
+        @touchstart.stop.prevent="handleTouchStart"
+        @touchmove.stop.prevent="handleTouchMove"
+        @touchend.stop.prevent="handleTouchEnd"
+        @touchcancel.stop.prevent="handleTouchEnd"
+      >
+        <div class="wd-index-bar__index" :class="{ 'is-active': item.index === state.activeIndex }" v-for="item in children" :key="item.index">
           {{ item.index }}
         </div>
       </div>

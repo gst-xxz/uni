@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-row ${customClass}`" :style="rowStyle">
+  <div :class="`wd-row after:clearfix ${customClass}`" :style="rowStyle">
     <!-- 每一行 -->
     <slot />
   </div>
@@ -37,6 +37,3 @@ const rowStyle = computed(() => {
   return `${objToStyle(style)}${props.customStyle}`
 })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

@@ -1,4 +1,3 @@
-
 import { type ExtractPropTypes, type InjectionKey } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp } from '../common/props'
 

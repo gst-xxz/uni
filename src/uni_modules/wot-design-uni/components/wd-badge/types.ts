@@ -1,5 +1,4 @@
-
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeBooleanProp, makeStringProp, numericProp } from '../common/props'
 
 export type BadgeType = 'primary' | 'success' | 'warning' | 'danger' | 'info'

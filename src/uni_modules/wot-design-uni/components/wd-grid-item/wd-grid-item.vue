@@ -1,8 +1,6 @@
 <template>
-  <div :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click"
-    :style="`${style};${customStyle}`">
-    <div :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`"
-      :style="gutterContentStyle">
+  <div :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click" :style="`${style};${customStyle}`">
+    <div :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`" :style="gutterContentStyle">
       <slot v-if="useSlot" />
       <block v-else>
         <div :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
@@ -31,7 +29,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import wdBadge from '../wd-badge/wd-badge.vue'
 import { onMounted, ref, watch, computed } from 'vue'
 import { useParent } from '../composables/useParent'

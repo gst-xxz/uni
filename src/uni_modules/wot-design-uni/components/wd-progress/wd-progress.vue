@@ -1,12 +1,15 @@
 <template>
-  <div :class="`wd-progress ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-progress`, customClass)" :style="customStyle">
     <div class="wd-progress__outer">
-      <div :class="`wd-progress__inner ${innerClass}`" :style="rootStyle">
-      </div>
+      <div :class="cn(`wd-progress__inner`, status ? `is-${status}` : '')" :style="rootStyle"></div>
     </div>
     <div v-if="!hideText" class="wd-progress__label">{{ percentage }}%</div>
-    <wd-icon v-else-if="status" :custom-class="`wd-progress__label wd-progress__icon ${innerClass}`" :name="iconName"
-      :color="typeof color === 'string' ? color : ''"></wd-icon>
+    <wd-icon
+      v-else-if="status"
+      :custom-class="cn(`wd-progress__label wd-progress__icon`, status ? `is-${status}` : '')"
+      :name="iconName"
+      :color="typeof color === 'string' ? color : ''"
+    ></wd-icon>
   </div>
 </template>
 
@@ -22,9 +25,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { computed, ref, watch } from 'vue'
-import { isArray, isDef, isObj, objToStyle, pause } from '../common/util'
+import { cn, isArray, isDef, isObj, objToStyle, pause } from '../common/util'
 import { progressProps, type ProgressColor } from './types'
 
 const props = defineProps(progressProps)
@@ -40,8 +42,6 @@ const rootStyle = computed(() => {
     'transition-duration': `${changeCount.value * props.duration * 0.001}s`
   })
 })
-
-const innerClass = computed(() => (props.status ? `is-${props.status}` : ''))
 
 const iconName = computed(() => {
   let icon: string = ''
@@ -168,9 +168,9 @@ function createPartList(colorArray: string[] | ProgressColor[]) {
   return isProgressColorArray(colorArray)
     ? colorArray.sort((a, b) => a.percentage - b.percentage)
     : colorArray.map((item, index) => ({
-      color: item,
-      percentage: (index + 1) * partNum
-    }))
+        color: item,
+        percentage: (index + 1) * partNum
+      }))
 }
 
 function update(targetPercent: number, color: string) {

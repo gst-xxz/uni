@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(`wot-theme-${theme}`, customClass)">
+  <div :class="cn(`wot-theme-${theme} min-h-full w-full`, customClass)">
     <slot />
   </div>
 </template>

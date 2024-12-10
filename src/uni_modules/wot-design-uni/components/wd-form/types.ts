@@ -1,4 +1,3 @@
-
 import { type ComponentPublicInstance, type ExtractPropTypes, type InjectionKey, type PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeRequiredProp } from '../common/props'
 

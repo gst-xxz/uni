@@ -1,9 +1,20 @@
 <template>
   <div>
-    <wd-picker-view ref="datePickerview" :custom-class="customClass" :custom-style="customStyle"
-      :immediate-change="immediateChange" v-model="pickerValue" :columns="columns" :columns-height="columnsHeight"
-      :columnChange="columnChange" :loading="loading" :loading-color="loadingColor" @change="onChange"
-      @pickstart="onPickStart" @pickend="onPickEnd"></wd-picker-view>
+    <wd-picker-view
+      ref="datePickerview"
+      :custom-class="customClass"
+      :custom-style="customStyle"
+      :immediate-change="immediateChange"
+      v-model="pickerValue"
+      :columns="columns"
+      :columns-height="columnsHeight"
+      :columnChange="columnChange"
+      :loading="loading"
+      :loading-color="loadingColor"
+      @change="onChange"
+      @pickstart="onPickStart"
+      @pickend="onPickEnd"
+    ></wd-picker-view>
   </div>
 </template>
 <script lang="ts">
@@ -16,7 +27,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
 import { getCurrentInstance, onBeforeMount, ref, watch } from 'vue'
 import { debounce, isFunction, isDef, padZero, range, isArray } from '../common/util'
 import {
@@ -487,7 +497,3 @@ function getSelects() {
   return [pickerVal]
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

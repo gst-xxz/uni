@@ -1,5 +1,14 @@
 <template>
-  <div :class="cn(`wd-checkbox-group ${shape === 'button' && cell ? 'is-button' : ''} ${customClass}`)" :style="customStyle">
+  <div
+    :class="
+      cn(
+        `wd-checkbox-group`,
+        shape === 'button' && cell ? 'is-button w-full py-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : '',
+        customClass
+      )
+    "
+    :style="customStyle"
+  >
     <slot />
   </div>
 </template>
@@ -94,7 +103,3 @@ function changeSelectState(value: string | number | boolean) {
   })
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

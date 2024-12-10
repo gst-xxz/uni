@@ -27,7 +27,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { ref, watch, nextTick, computed, getCurrentInstance, type CSSProperties, onMounted, onActivated, onDeactivated, reactive } from 'vue'
 import { getRect, isArray, isDef, objToStyle } from '../common/util'
 import { type NoticeBarExpose, noticeBarProps } from './types'
@@ -248,13 +247,13 @@ function animationEnd() {
 function handleClick() {
   const result = isArray(props.text)
     ? {
-      index: currentIndex.value,
-      text: props.text[currentIndex.value]
-    }
+        index: currentIndex.value,
+        text: props.text[currentIndex.value]
+      }
     : {
-      index: 0,
-      text: props.text
-    }
+        index: 0,
+        text: props.text
+      }
   emit('click', result)
 }
 

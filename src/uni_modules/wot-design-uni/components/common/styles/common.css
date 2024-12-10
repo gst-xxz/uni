@@ -30,6 +30,9 @@
     --gray-7: 0 0.99% 39.61%;
     /* #323233 */
     --gray-8: 0 0.99% 19.8%;
+
+    /* #262626 */
+    --main: 0 0% 14.9%;
   }
 
   .dark {
@@ -44,4 +47,10 @@
 .mb-safe {
   margin-bottom: constant(safe-area-inset-bottom);
   margin-bottom: env(safe-area-inset-bottom);
+}
+
+.after\:clearfix::after {
+  display: table;
+  clear: both;
+  content: '';
 }

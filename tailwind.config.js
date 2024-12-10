@@ -3,11 +3,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        main: 'hsl(var(--main))',
+
         primary: 'hsl(var(--theme))',
         success: 'hsl(var(--success))',
         warning: 'hsl(var(--warning))',
         danger: 'hsl(var(--danger))',
-        info: 'hsl(var(--info))'
+        info: 'hsl(var(--info))',
+
+        'gray-1': 'hsl(var(--gray-1))',
+        'gray-2': 'hsl(var(--gray-2))',
+        'gray-3': 'hsl(var(--gray-3))',
+        'gray-4': 'hsl(var(--gray-4))',
+        'gray-5': 'hsl(var(--gray-5))',
+        'gray-6': 'hsl(var(--gray-6))',
+        'gray-7': 'hsl(var(--gray-7))',
+        'gray-8': 'hsl(var(--gray-8))'
       }
     }
   },

@@ -1,6 +1,11 @@
 <template>
-  <div :class="cn(`wd-video-preview`, customClass)" :style="customStyle" v-if="showPopup" @click="close">
-    <div class="wd-video-preview__video" @click.stop="">
+  <div
+    :class="cn(`wd-video-preview fixed top-0 left-0 z-[999] w-full h-full flex flex-col justify-center items-center bg-black/80`, customClass)"
+    :style="customStyle"
+    v-if="showPopup"
+    @click="close"
+  >
+    <div class="wd-video-preview__video w-full h-[242px] transition-[all_.3s_ease]" @click.stop="">
       <video
         class="wd-video-preview__video"
         v-if="previdewVideo.url"
@@ -13,7 +18,11 @@
         :enable-progress-gesture="false"
       ></video>
     </div>
-    <wd-icon name="close" :custom-class="`wd-video-preview__close`" @click="close" />
+    <wd-icon
+      name="close"
+      custom-class="wd-video-preview__close absolute box-border top-0 right-0 p-3 text-center cursor-pointer text-xl text-white"
+      @click="close"
+    />
   </div>
 </template>
 
@@ -68,6 +77,3 @@ defineExpose<VideoPreviewExpose>({
   close
 })
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

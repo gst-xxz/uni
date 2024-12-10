@@ -1,12 +1,19 @@
 <template>
   <wd-transition :show="show" name="fade">
     <div
-      :class="cn(`wd-backtop ${customClass} is-${shape}`)"
+      :class="
+        cn(
+          `wd-backtop fixed bg-[#e1e1e1] w-10 h-10 flex justify-center items-center text-gray-8`,
+          shape === 'circle' ? 'rounded-full' : '',
+          shape === 'square' ? 'rounded' : '',
+          customClass
+        )
+      "
       :style="`z-index: ${zIndex}; bottom: ${bottom}px; right: ${right}px; ${customStyle}`"
       @click="handleBacktop"
     >
       <slot v-if="$slots.default"></slot>
-      <wd-icon v-else custom-class="wd-backtop__backicon" name="backtop" :custom-style="iconStyle" />
+      <wd-icon v-else custom-class="wd-backtop__backicon text-xl" name="backtop" :custom-style="iconStyle" />
     </div>
   </wd-transition>
 </template>
@@ -38,7 +45,3 @@ function handleBacktop() {
   })
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

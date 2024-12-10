@@ -12,7 +12,7 @@
         :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''"
       >
         <!--左侧icon部位-->
-        <wd-icon v-if="icon" :name="icon" :custom-class="`wd-cell__icon  ${customIconClass}`"></wd-icon>
+        <wd-icon v-if="icon" :name="icon" :custom-class="cn(`wd-cell__icon`, customIconClass)"></wd-icon>
         <slot v-else name="icon" />
 
         <div class="wd-cell__title">
@@ -22,7 +22,7 @@
           <!--title END-->
 
           <!--label BEGIN-->
-          <div v-if="label" :class="cn(`wd-cell__label ${customLabelClass}`)">{{ label }}</div>
+          <div v-if="label" :class="cn(`wd-cell__label`, customLabelClass)">{{ label }}</div>
           <slot v-else name="label" />
           <!--label END-->
         </div>

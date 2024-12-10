@@ -21,6 +21,7 @@ import { computed, watch } from 'vue'
 import { useChildren } from '../composables/useChildren'
 import { GRID_KEY, gridProps } from './types'
 import { cn, debounce } from '../common/util'
+
 const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20))
 
 const props = defineProps(gridProps)

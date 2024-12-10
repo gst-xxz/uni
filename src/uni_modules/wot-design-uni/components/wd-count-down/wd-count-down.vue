@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-count-down ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-count-down text-gray-8 text-sm`, customClass)" :style="customStyle">
     <slot :current="current" v-if="$slots.default" />
     <block v-else>{{ timeText }}</block>
   </div>
@@ -21,6 +21,7 @@ import { watch, computed, onMounted } from 'vue'
 import { parseFormat } from './utils'
 import { useCountDown } from '../composables/useCountDown'
 import { countDownProps, type CountDownExpose } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(countDownProps)
 
@@ -54,7 +55,3 @@ defineExpose<CountDownExpose>({
   reset: resetTime
 })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

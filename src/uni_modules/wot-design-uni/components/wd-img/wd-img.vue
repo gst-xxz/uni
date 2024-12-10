@@ -1,9 +1,18 @@
 <template>
-  <div :class="cn(`wd-img relative inline-block`, round ? 'is-round overflow-hidden rounded-full' : '', customClass)"
-    @click="handleClick" :style="rootStyle">
-    <img :class="cn(`wd-img__image block w-full h-full box-border`, customImage)"
-      :style="status !== 'success' ? 'width: 0;height: 0;' : ''" :src="src" :mode="mode"
-      :show-menu-by-longpress="showMenuByLongpress" :lazy-load="lazyLoad" @load="handleLoad" @error="handleError" />
+  <div
+    :class="cn(`wd-img relative inline-block`, round ? 'is-round overflow-hidden rounded-full' : '', customClass)"
+    @click="handleClick"
+    :style="rootStyle"
+  >
+    <img
+      :class="cn(`wd-img__image block w-full h-full box-border`, status !== 'success' ? 'w-0 h-0' : '', customImage)"
+      :src="src"
+      :mode="mode"
+      :show-menu-by-longpress="showMenuByLongpress"
+      :lazy-load="lazyLoad"
+      @load="handleLoad"
+      @error="handleError"
+    />
     <slot v-if="status === 'loading'" name="loading"></slot>
     <slot v-if="status === 'error'" name="error"></slot>
   </div>

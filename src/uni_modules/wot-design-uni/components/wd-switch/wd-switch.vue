@@ -1,7 +1,10 @@
 <template>
-  <div :class="rootClass" :style="rootStyle" @click="switchValue">
-    <div class="wd-switch__circle" :style="circleStyle">
-    </div>
+  <div
+    :class="cn(`wd-switch`, customClass, disabled ? 'is-disabled' : '', modelValue === activeValue ? 'is-checked' : '')"
+    :style="rootStyle"
+    @click="switchValue"
+  >
+    <div class="wd-switch__circle" :style="circleStyle"></div>
   </div>
 </template>
 <script lang="ts">
@@ -17,15 +20,11 @@ export default {
 
 <script lang="ts" setup>
 import { computed, type CSSProperties, onBeforeMount } from 'vue'
-import { addUnit, isFunction, objToStyle } from '../common/util'
+import { addUnit, cn, isFunction, objToStyle } from '../common/util'
 import { switchProps } from './types'
 
 const props = defineProps(switchProps)
 const emit = defineEmits(['change', 'update:modelValue'])
-
-const rootClass = computed(() => {
-  return `wd-switch ${props.customClass} ${props.disabled ? 'is-disabled' : ''} ${props.modelValue === props.activeValue ? 'is-checked' : ''}`
-})
 
 const rootStyle = computed(() => {
   const rootStyle: CSSProperties = {

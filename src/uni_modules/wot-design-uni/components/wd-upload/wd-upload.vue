@@ -1,18 +1,39 @@
 <template>
-  <div :class="cn('wd-upload', customClass)" :style="customStyle">
+  <div :class="cn('wd-upload relative flex flex-wrap', customClass)" :style="customStyle">
     <!-- 预览列表 -->
-    <div :class="cn('wd-upload__preview', customPreviewClass)" v-for="(file, index) in uploadFiles" :key="index">
+    <div
+      :class="cn('wd-upload__preview relative w-20 h-20 mt-0 mr-3 mb-3 ml-0', customPreviewClass)"
+      v-for="(file, index) in uploadFiles"
+      :key="index"
+    >
       <!-- 成功时展示图片 -->
       <div class="wd-upload__status-content">
-        <img v-if="isImage(file)" :src="file.url" :mode="imageMode" class="wd-upload__picture" @click="onPreviewImage(file)" />
+        <img
+          v-if="isImage(file)"
+          :src="file.url"
+          :mode="imageMode"
+          class="wd-upload__picture relative block w-full h-full"
+          @click="onPreviewImage(file)"
+        />
         <template v-else-if="isVideo(file)">
-          <div class="wd-upload__video" v-if="file.thumb" @click="onPreviewVideo(file)">
-            <img :src="file.thumb" :mode="imageMode" class="wd-upload__picture" />
-            <wd-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></wd-icon>
+          <div
+            class="wd-upload__video relative w-full h-full flex flex-col items-center justify-center bg-black/5"
+            v-if="file.thumb"
+            @click="onPreviewVideo(file)"
+          >
+            <img :src="file.thumb" :mode="imageMode" class="wd-upload__picture relative block w-full h-full" />
+            <wd-icon
+              name="play-circle-filled"
+              custom-class="wd-upload__video-paly absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white before:bg-black/50 before:rounded-full"
+            ></wd-icon>
           </div>
-          <div v-else class="wd-upload__video" @click="onPreviewVideo(file)">
+          <div
+            v-else
+            class="wd-upload__video relative w-full h-full flex flex-col items-center justify-center bg-black/5"
+            @click="onPreviewVideo(file)"
+          >
             <!-- #ifdef APP-PLUS || MP-DINGTALK -->
-            <wd-icon custom-class="wd-upload__video-icon" name="video"></wd-icon>
+            <wd-icon custom-class="wd-upload__video-icon text-[22px]" name="video"></wd-icon>
             <!-- #endif -->
             <!-- #ifndef APP-PLUS -->
             <!-- #ifndef MP-DINGTALK -->
@@ -31,37 +52,47 @@
               :show-mute-btn="false"
               :enable-progress-gesture="false"
               :enableNative="true"
-              class="wd-upload__video"
+              class="wd-upload__video relative w-full h-full flex flex-col items-center justify-center bg-black/5"
             ></video>
-            <wd-icon name="play-circle-filled" custom-class="wd-upload__video-paly"></wd-icon>
+            <wd-icon
+              name="play-circle-filled"
+              custom-class="wd-upload__video-paly absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white before:bg-black/50 before:rounded-full"
+            ></wd-icon>
             <!-- #endif -->
             <!-- #endif -->
           </div>
         </template>
 
-        <div v-else class="wd-upload__file" @click="onPreviewFile(file)">
-          <wd-icon name="file" custom-class="wd-upload__file-icon"></wd-icon>
-          <div class="wd-upload__file-name">{{ file.name || file.url }}</div>
+        <div v-else class="wd-upload__file relative w-full h-full flex flex-col items-center justify-center bg-black/5" @click="onPreviewFile(file)">
+          <wd-icon name="file" custom-class="wd-upload__file-icon text-[22px]"></wd-icon>
+          <div
+            class="wd-upload__file-name w-full text-xs text-[#595959] box-border py-0 px-1 text-center mt-2 overflow-hidden text-ellipsis whitespace-nowrap"
+          >
+            {{ file.name || file.url }}
+          </div>
         </div>
       </div>
 
-      <div v-if="file[props.statusKey] !== 'success'" class="wd-upload__mask wd-upload__status-content">
+      <div
+        v-if="file[props.statusKey] !== 'success'"
+        class="wd-upload__mask absolute top-0 left-0 bg-black/60 wd-upload__status-content flex flex-col justify-center items-center w-full h-full"
+      >
         <!-- loading时展示loading图标和进度 -->
-        <div v-if="file[props.statusKey] === 'loading'" class="wd-upload__status-content">
+        <div v-if="file[props.statusKey] === 'loading'" class="wd-upload__status-content flex flex-col justify-center items-center w-full h-full">
           <wd-loading :type="loadingType" :size="loadingSize" :color="loadingColor" />
-          <span class="wd-upload__progress-txt">{{ file.percent }}%</span>
+          <span class="wd-upload__progress-txt text-sm leading-[1] mt-[9px] text-white">{{ file.percent }}%</span>
         </div>
         <!-- 失败时展示失败图标以及失败信息 -->
-        <div v-if="file[props.statusKey] === 'fail'" class="wd-upload__status-content">
-          <wd-icon name="close-outline" custom-class="wd-upload__icon"></wd-icon>
-          <span class="wd-upload__progress-txt">{{ file.error || translate('error') }}</span>
+        <div v-if="file[props.statusKey] === 'fail'" class="wd-upload__status-content flex flex-col justify-center items-center w-full h-full">
+          <wd-icon name="close-outline" custom-class="wd-upload__icon text-2x text-white"></wd-icon>
+          <span class="wd-upload__progress-txt text-sm leading-[1] mt-[9px] text-white">{{ file.error || translate('error') }}</span>
         </div>
       </div>
       <!-- 上传状态为上传中时不展示移除按钮 -->
       <wd-icon
         v-if="file[props.statusKey] !== 'loading' && !disabled"
         name="error-fill"
-        custom-class="wd-upload__close"
+        custom-class="wd-upload__close absolute -right-2 -top-2 text-base leading-[1] z-[1] text-black/65 w-4 h-4 after:absolute after:w-full after:h-full after:rounded-full after:bg-white after:left-0 after:z-[-1]"
         @click="removeFile(index)"
       ></wd-icon>
       <!-- 自定义预览样式 -->
@@ -73,11 +104,21 @@
         <slot></slot>
       </div>
       <!-- 唤起项 -->
-      <div v-else @click="handleChoose" :class="cn(['wd-upload__evoke', disabled ? 'is-disabled' : '', customEvokeClass])">
+      <div
+        v-else
+        @click="handleChoose"
+        :class="
+          cn([
+            'wd-upload__evoke relative inline-flex flex-col justify-center items-center w-20 h-20 text-[32px] bg-black/5 text-black/25 mb-3',
+            disabled ? 'is-disabled text-black/10' : '',
+            customEvokeClass
+          ])
+        "
+      >
         <!-- 唤起项图标 -->
-        <wd-icon class="wd-upload__evoke-icon" name="fill-camera"></wd-icon>
+        <wd-icon class="wd-upload__evoke-icon w-8 h-8" name="fill-camera"></wd-icon>
         <!-- 有限制个数时确认是否展示限制个数 -->
-        <div v-if="limit && showLimitNum" class="wd-upload__evoke-num">（{{ uploadFiles.length }}/{{ limit }}）</div>
+        <div v-if="limit && showLimitNum" class="wd-upload__evoke-num text-sm leading-[1] mt-2">（{{ uploadFiles.length }}/{{ limit }}）</div>
       </div>
     </block>
   </div>
@@ -698,6 +739,3 @@ function isImage(file: UploadFileItem) {
   return (file.name && isImageUrl(file.name)) || isImageUrl(file.url)
 }
 </script>
-<style lang="scss">
-@import './index.scss';
-</style>

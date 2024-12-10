@@ -83,7 +83,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdPickerView from '../wd-picker-view/wd-picker-view.vue'
+
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'
 import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
 import { useCell } from '../composables/useCell'

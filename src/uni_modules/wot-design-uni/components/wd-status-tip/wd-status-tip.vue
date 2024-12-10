@@ -1,8 +1,7 @@
 <template>
   <div :class="`wd-status-tip  ${customClass}`" :style="customStyle">
     <slot name="image" v-if="$slots.image"></slot>
-    <wd-img v-else-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image"
-      :custom-style="imgStyle"></wd-img>
+    <wd-img v-else-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image" :custom-style="imgStyle"></wd-img>
     <div v-if="tip" class="wd-status-tip__text">{{ tip }}</div>
   </div>
 </template>
