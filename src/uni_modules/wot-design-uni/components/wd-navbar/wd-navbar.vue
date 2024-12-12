@@ -1,32 +1,66 @@
 <template>
   <div :style="{ height: addUnit(height) }">
-    <div :class="`wd-navbar ${customClass} ${fixed ? 'is-fixed' : ''} ${bordered ? 'is-border' : ''}`"
-      :style="rootStyle">
-      <div class="wd-navbar__content">
-        <div class="wd-navbar__capsule" v-if="$slots.capsule">
+    <div
+      :class="
+        cn(
+          `wd-navbar relative text-center select-none h-11 leading-[44px] bg-white box-border`,
+          customClass,
+          fixed ? 'is-fixed fixed left-0 top-0 w-full z-[500]' : '',
+          bordered ? 'is-border border-default' : ''
+        )
+      "
+      :style="rootStyle"
+    >
+      <div class="wd-navbar__content relative w-full h-full">
+        <div class="wd-navbar__capsule absolute top-0 bottom-0 text-base flex items-center py-0 px-3 left-0" v-if="$slots.capsule">
           <slot name="capsule" />
         </div>
 
-        <div :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft"
-          v-else-if="!$slots.left">
-          <wd-icon v-if="leftArrow" name="arrow-left" custom-class="wd-navbar__arrow" />
-          <div v-if="leftText" class="wd-navbar__text">{{ leftText }}</div>
+        <div
+          :class="
+            cn(`wd-navbar__left absolute top-0 bottom-0 text-base flex items-center py-0 px-3 left-0`, leftDisabled ? 'is-disabled opacity-60' : '')
+          "
+          @click="handleClickLeft"
+          v-else-if="!$slots.left"
+        >
+          <wd-icon v-if="leftArrow" name="arrow-left" custom-class="wd-navbar__arrow text-2xl text-black/10" />
+          <div v-if="leftText" class="wd-navbar__text inline-block align-middle text-black/10">{{ leftText }}</div>
         </div>
 
-        <div v-else :class="`wd-navbar__left ${leftDisabled ? 'is-disabled' : ''}`" @click="handleClickLeft">
+        <div
+          v-else
+          :class="
+            cn(`wd-navbar__left absolute top-0 bottom-0 text-base flex items-center py-0 px-3 left-0`, leftDisabled ? 'is-disabled opacity-60' : '')
+          "
+          @click="handleClickLeft"
+        >
           <slot name="left" />
         </div>
 
-        <div class="wd-navbar__title">
+        <div
+          class="wd-navbar__title max-w-[60%] h-full my-0 mx-auto text-black/10 font-semibold text-lg overflow-hidden text-ellipsis whitespace-nowrap"
+        >
           <slot name="title" />
           <block v-if="!$slots.title && title">{{ title }}</block>
         </div>
-        <div :class="`wd-navbar__right ${rightDisabled ? 'is-disabled' : ''}`" @click="handleClickRight"
-          v-if="$slots.right || rightText">
+        <div
+          :class="
+            cn(
+              `wd-navbar__right absolute top-0 bottom-0 text-base flex items-center py-0 px-3 right-0`,
+              rightDisabled ? 'is-disabled opacity-60' : ''
+            )
+          "
+          @click="handleClickRight"
+          v-if="$slots.right || rightText"
+        >
           <slot name="right" />
 
-          <div v-if="!$slots.right && rightText" class="wd-navbar__text" hover-class="wd-navbar__text--hover"
-            :hover-stay-time="70">
+          <div
+            v-if="!$slots.right && rightText"
+            class="wd-navbar__text inline-block align-middle text-black/10"
+            hover-class="wd-navbar__text--hover"
+            :hover-stay-time="70"
+          >
             {{ rightText }}
           </div>
         </div>
@@ -46,9 +80,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { type CSSProperties, computed, getCurrentInstance, nextTick, onMounted, ref, watch } from 'vue'
-import { getRect, addUnit, isDef, objToStyle } from '../common/util'
+import { getRect, addUnit, isDef, objToStyle, cn } from '../common/util'
 import { navbarProps } from './types'
 
 const props = defineProps(navbarProps)
@@ -109,7 +142,3 @@ function setPlaceholderHeight() {
   })
 }
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>

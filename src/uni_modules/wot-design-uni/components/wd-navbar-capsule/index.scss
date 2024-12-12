@@ -1,17 +1,4 @@
 
-.wot-theme-dark .wd-navbar-capsule:before {
-  border: .0625rem solid var(--wot-dark-border-color, #3a3a3c)
-}
-
-.wot-theme-dark .wd-navbar-capsule:after {
-  background: var(--wot-dark-border-color, #3a3a3c)
-}
-
-.wot-theme-dark .wd-navbar-capsule .wd-navbar-capsule__icon {
-  color: #fff
-}
-
-
 .wd-navbar-capsule {
   position: relative;
   box-sizing: border-box;

@@ -3,23 +3,30 @@
     @touchmove.stop.prevent="handleTouchMove"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
-    :class="cn(`wd-fab`, customClass)"
+    :class="cn(`wd-fab fixed z-[99]`, customClass)"
     :style="rootStyle"
     @click.stop=""
   >
     <div @click.stop="" :style="{ visibility: inited ? 'visible' : 'hidden' }" id="trigger">
       <slot name="trigger" v-if="$slots.trigger"></slot>
-      <wd-button v-else @click="handleClick" custom-class="wd-fab__trigger" round :type="type" :disabled="disabled">
-        <wd-icon custom-class="wd-fab__icon" :name="isActive ? activeIcon : inactiveIcon"></wd-icon>
+      <wd-button
+        v-else
+        @click="handleClick"
+        custom-class="wd-fab__trigger min-w-[auto] box-border w-14 h-14 rounded-full"
+        round
+        :type="type"
+        :disabled="disabled"
+      >
+        <wd-icon custom-class="wd-fab__icon text-xl" :name="isActive ? activeIcon : inactiveIcon"></wd-icon>
       </wd-button>
     </div>
     <wd-transition
       v-if="expandable"
       :enter-class="`wd-fab__transition-enter--${fabDirection}`"
-      enter-active-class="wd-fab__transition-enter-active"
+      enter-active-class="wd-fab__transition-enter-active !transition-[0.3s_cubic-bezier(.4,0,.2,1)]"
       :leave-to-class="`wd-fab__transition-leave-to--${fabDirection}`"
-      leave-active-class="wd-fab__transition-leave-active"
-      :custom-class="`wd-fab__actions wd-fab__actions--${fabDirection}`"
+      leave-active-class="wd-fab__transition-leave-active !transition-[0.3s_cubic-bezier(.4,0,.2,1)]"
+      :custom-class="`wd-fab__actions absolute z-0 flex justify-center items-center py-3 px-0 wd-fab__actions--${fabDirection}`"
       :show="isActive"
       :duration="300"
     >

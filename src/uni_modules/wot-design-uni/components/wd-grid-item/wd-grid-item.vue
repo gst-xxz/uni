@@ -29,7 +29,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdBadge from '../wd-badge/wd-badge.vue'
 import { onMounted, ref, watch, computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { GRID_KEY } from '../wd-grid/types'

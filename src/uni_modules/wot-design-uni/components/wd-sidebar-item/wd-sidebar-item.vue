@@ -24,7 +24,7 @@ export default {
 
 <script lang="ts" setup>
 
-import wdBadge from '../wd-badge/wd-badge.vue'
+
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { SIDEBAR_KEY } from '../wd-sidebar/types'

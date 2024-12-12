@@ -1,20 +1,38 @@
 <template>
-  <div v-if="showWrapper" :class="`wd-drop-item  ${customClass}`"
-    :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
-    <wd-popup v-model="showPop" :z-index="zIndex" :duration="duration" :position="position"
-      :custom-style="`position: absolute; max-height: 80%;${customPopupStyle}`" :custom-class="customPopupClass"
-      modal-style="position: absolute;" :modal="modal" :close-on-click-modal="false"
-      @click-modal="closeOnClickModal && close()" @before-enter="beforeEnter" @after-enter="afterEnter"
-      @before-leave="beforeLeave" @after-leave="afterLeave">
+  <div v-if="showWrapper" :class="`wd-drop-item  ${customClass}`" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
+    <wd-popup
+      v-model="showPop"
+      :z-index="zIndex"
+      :duration="duration"
+      :position="position"
+      :custom-style="`position: absolute; max-height: 80%;${customPopupStyle}`"
+      :custom-class="customPopupClass"
+      modal-style="position: absolute;"
+      :modal="modal"
+      :close-on-click-modal="false"
+      @click-modal="closeOnClickModal && close()"
+      @before-enter="beforeEnter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @after-leave="afterLeave"
+    >
       <div v-if="options.length">
-        <div v-for="(item, index) in options" :key="index" @click="choose(index)"
-          :class="`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`">
+        <div
+          v-for="(item, index) in options"
+          :key="index"
+          @click="choose(index)"
+          :class="`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`"
+        >
           <div :class="`wd-drop-item__title ${customTitle}`">
             <span>{{ item[labelKey] ? item[labelKey] : item }}</span>
             <span v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</span>
           </div>
-          <wd-icon v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue" :name="iconName" size="20px"
-            :class="`wd-drop-item__icon ${customIcon}`" />
+          <wd-icon
+            v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue"
+            :name="iconName"
+            size="20px"
+            :class="`wd-drop-item__icon ${customIcon}`"
+          />
         </div>
       </div>
       <slot v-else />
@@ -33,8 +51,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
 import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue'
 import { pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'

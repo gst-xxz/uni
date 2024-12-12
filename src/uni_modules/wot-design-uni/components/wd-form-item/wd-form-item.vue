@@ -1,6 +1,13 @@
 <template>
-  <wd-cell custom-class="wd-form-item" :required="required" :title="label" :center="center" :border="border"
-    :title-width="labelWidth" :is-link="isLink">
+  <wd-cell
+    custom-class="wd-form-item"
+    :required="required"
+    :title="label"
+    :center="center"
+    :border="border"
+    :title-width="labelWidth"
+    :is-link="isLink"
+  >
     <slot></slot>
     <div v-if="errorMessage" class="wd-form-item__error-message">{{ errorMessage }}</div>
   </wd-cell>

@@ -1,9 +1,12 @@
 <template>
   <!-- #ifdef MP-DINGTALK -->
-  <div :class="`wd-index-anchor-ding ${isSticky ? 'is-sticky' : ''}`">
+  <div :class="cn(`wd-index-anchor-ding`, isSticky ? 'is-sticky sticky top-0 left-0 z-[1]' : '')">
     <!-- #endif -->
-    <div :class="`wd-index-anchor ${isSticky ? 'is-sticky' : ''} ${customClass}`" :style="customStyle"
-      :id="indexAnchorId">
+    <div
+      :class="cn(`wd-index-anchor p-2.5 text-sm text-black bg-gray-2`, isSticky ? 'is-sticky sticky top-0 left-0 z-[1]' : '', customClass)"
+      :style="customStyle"
+      :id="indexAnchorId"
+    >
       <slot>
         {{ index }}
       </slot>
@@ -17,7 +20,7 @@
 import { indexAnchorProps } from './type'
 import { onMounted, getCurrentInstance, ref, computed } from 'vue'
 import { indexBarInjectionKey } from '../wd-index-bar/type'
-import { getRect, isDef, uuid } from '../common/util'
+import { cn, getRect, isDef, uuid } from '../common/util'
 import { useParent } from '../composables/useParent'
 
 const props = defineProps(indexAnchorProps)
@@ -50,7 +53,3 @@ defineExpose({
   top
 })
 </script>
-
-<style lang="scss">
-@import './index.scss';
-</style>
