@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-picker-view ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-picker-view ${customClass}`)" :style="customStyle">
     <div class="wd-picker-view__loading" v-if="loading">
       <wd-loading :color="loadingColor" />
     </div>
@@ -19,9 +19,13 @@
           <div
             v-for="(row, rowIndex) in col"
             :key="rowIndex"
-            :class="`wd-picker-view-column__item ${row['disabled'] ? 'wd-picker-view-column__item--disabled' : ''}  ${
-              selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
-            }`"
+            :class="
+              cn(
+                `wd-picker-view-column__item ${row['disabled'] ? 'wd-picker-view-column__item--disabled' : ''}  ${
+                  selectedIndex[colIndex] == rowIndex ? 'wd-picker-view-column__item--active' : ''
+                }`
+              )
+            "
             :style="`line-height: ${itemHeight}px;`"
           >
             {{ row[labelKey] }}
@@ -44,7 +48,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { getCurrentInstance, ref, watch, nextTick } from 'vue'
-import { deepClone, getType, isArray, isDef, isEqual, range } from '../common/util'
+import { cn, deepClone, getType, isArray, isDef, isEqual, range } from '../common/util'
 import { formatArray, pickerViewProps, type ColumnItem, type PickerViewExpose } from './types'
 
 const props = defineProps(pickerViewProps)

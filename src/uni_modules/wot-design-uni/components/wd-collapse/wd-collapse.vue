@@ -1,13 +1,15 @@
 <template>
-  <div :class="`wd-collapse ${viewmore ? 'is-viewmore' : ''} ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-collapse ${viewmore ? 'is-viewmore' : ''}`, customClass)" :style="customStyle">
     <!-- 普通或手风琴 -->
     <block v-if="!viewmore">
       <slot></slot>
     </block>
     <!-- 查看更多模式 -->
     <div v-else>
-      <div :class="`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `"
-        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`">
+      <div
+        :class="cn(`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `)"
+        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`"
+      >
         <slot></slot>
       </div>
       <div class="wd-collapse__more" @click="handleMore">
@@ -18,7 +20,7 @@
         <!-- 显示展开或折叠按钮 -->
         <block v-else>
           <span class="wd-collapse__more-txt">{{ !modelValue ? translate('expand') : translate('retract') }}</span>
-          <div :class="`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`">
+          <div :class="cn(`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`)">
             <wd-icon name="arrow-down"></wd-icon>
           </div>
         </block>
@@ -39,11 +41,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { onBeforeMount, ref, watch } from 'vue'
 import { COLLAPSE_KEY, collapseProps, type CollapseExpose, type CollapseToggleAllOptions } from './types'
 import { useChildren } from '../composables/useChildren'
-import { isArray, isBoolean, isDef } from '../common/util'
+import { cn, isArray, isBoolean, isDef } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 
 const props = defineProps(collapseProps)

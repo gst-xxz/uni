@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`" :style="customStyle">
+  <div :class="cn(`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`)" :style="customStyle">
     <slot />
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
 import { watch } from 'vue'
 import { useChildren } from '../composables/useChildren'
 import { RADIO_GROUP_KEY, radioGroupProps } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(radioGroupProps)
 const emit = defineEmits(['change', 'update:modelValue'])

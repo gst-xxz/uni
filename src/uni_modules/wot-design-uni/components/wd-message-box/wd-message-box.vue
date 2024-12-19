@@ -10,8 +10,8 @@
       :z-index="messageState.zIndex"
       :duration="200"
     >
-      <div :class="rootClass">
-        <div :class="bodyClass">
+      <div :class="cn(`wd-message-box__container ${props.customClass}`)">
+        <div :class="cn(`wd-message-box__body ${!messageState.title ? 'is-no-title' : ''} ${messageState.type === 'prompt' ? 'is-prompt' : ''}`)">
           <div v-if="messageState.title" class="wd-message-box__title">
             {{ messageState.title }}
           </div>
@@ -31,7 +31,7 @@
             <slot>{{ messageState.msg }}</slot>
           </div>
         </div>
-        <div :class="`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`">
+        <div :class="cn(`wd-message-box__actions ${messageState.showCancelButton ? 'wd-message-box__flex' : 'wd-message-box__block'}`)">
           <wd-button v-bind="customCancelProps" v-if="messageState.showCancelButton" @click="toggleModal('cancel')">
             {{ messageState.cancelButtonText || translate('cancel') }}
           </wd-button>
@@ -58,21 +58,13 @@ export default {
 import { computed, inject, reactive, ref, watch } from 'vue'
 import { messageBoxProps, type MessageOptionsWithCallBack, type MessageResult } from './types'
 import { defaultOptions, getMessageDefaultOptionKey } from '.'
-import { deepAssign, isDef, isFunction, isUndefined, omitBy } from '../common/util'
+import { cn, deepAssign, isDef, isFunction, isUndefined, omitBy } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import type { ButtonProps } from '../wd-button/types'
 
 const props = defineProps(messageBoxProps)
 
 const { translate } = useTranslate('message-box')
-
-const rootClass = computed(() => {
-  return `wd-message-box__container ${props.customClass}`
-})
-
-const bodyClass = computed(() => {
-  return `wd-message-box__body ${!messageState.title ? 'is-no-title' : ''} ${messageState.type === 'prompt' ? 'is-prompt' : ''}`
-})
 
 const messageOptionKey = getMessageDefaultOptionKey(props.selector)
 const messageOption = inject(messageOptionKey, ref<MessageOptionsWithCallBack>(defaultOptions)) // message选项

@@ -7,14 +7,23 @@
           <wd-icon name="search" custom-class="wd-search__search-icon"></wd-icon>
           <span class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</span>
         </div>
-        <wd-icon v-if="showInput || str || placeholderLeft" name="search"
-          custom-class="wd-search__search-left-icon"></wd-icon>
-        <input v-if="showInput || str || placeholderLeft" :placeholder="placeholder || translate('search')"
-          placeholder-class="wd-search__placeholder-txt" confirm-type="search" v-model="str" class="wd-search__input"
-          @focus="searchFocus" @input="inputValue" @blur="searchBlur" @confirm="search" :disabled="disabled"
-          :maxlength="maxlength" :focus="isFocused" />
-        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="error-fill"
-          @click="clearSearch" />
+        <wd-icon v-if="showInput || str || placeholderLeft" name="search" custom-class="wd-search__search-left-icon"></wd-icon>
+        <input
+          v-if="showInput || str || placeholderLeft"
+          :placeholder="placeholder || translate('search')"
+          placeholder-class="wd-search__placeholder-txt"
+          confirm-type="search"
+          v-model="str"
+          class="wd-search__input"
+          @focus="searchFocus"
+          @input="inputValue"
+          @blur="searchBlur"
+          @confirm="search"
+          :disabled="disabled"
+          :maxlength="maxlength"
+          :focus="isFocused"
+        />
+        <wd-icon v-if="str" custom-class="wd-search__clear wd-search__clear-icon" name="error-fill" @click="clearSearch" />
       </div>
     </div>
 
@@ -38,7 +47,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { type CSSProperties, computed, onMounted, ref, watch } from 'vue'
 import { objToStyle, pause } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'

@@ -1,5 +1,10 @@
 <template>
-  <div :class="`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <div
+    :class="cn(`wd-key-wrapper ${wider ? 'wd-key-wrapper--wider' : ''}`)"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+  >
     <div :class="cn('wd-key', large ? 'wd-key--large' : '', type === 'delete' ? 'wd-key--delete' : '', type === 'close' ? 'wd-key--close' : '')">
       <wd-loading custom-class="wd-key__loading-icon" v-if="loading" />
       <template v-if="type === 'delete'">

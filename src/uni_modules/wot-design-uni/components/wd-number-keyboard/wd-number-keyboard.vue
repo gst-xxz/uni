@@ -9,7 +9,7 @@
     :lockScroll="lockScroll"
     @click-modal="handleClose"
   >
-    <div :class="`wd-number-keyboard ${customClass}`" :style="customStyle">
+    <div :class="cn(`wd-number-keyboard ${customClass}`)" :style="customStyle">
       <div class="wd-number-keyboard__header" v-if="showTitle">
         <slot name="title">
           <span class="wd-number-keyboard__title">{{ title }}</span>
@@ -46,6 +46,7 @@ import { computed, ref, watch } from 'vue'
 import WdKey from './key/index.vue'
 import { numberKeyboardProps, type Key } from './types'
 import type { NumberKeyType } from './key/types'
+import { cn } from '../common/util'
 
 const props = defineProps(numberKeyboardProps)
 const emit = defineEmits(['update:visible', 'input', 'close', 'delete', 'update:modelValue'])

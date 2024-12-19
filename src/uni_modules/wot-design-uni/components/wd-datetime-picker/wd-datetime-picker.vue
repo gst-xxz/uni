@@ -1,17 +1,21 @@
 <template>
   <div
-    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
-      alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`"
+    :class="
+      cn(
+        `wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
+          alignRight ? 'is-align-right' : ''
+        } ${error ? 'is-error' : ''} ${customClass}`
+      )
+    "
     :style="customStyle"
   >
     <!--文案-->
     <div class="wd-picker__field" @click="showPopup">
       <slot v-if="useDefaultSlot"></slot>
-      <div v-else :class="['wd-picker__cell', customCellClass]">
+      <div v-else :class="cn(['wd-picker__cell', customCellClass])">
         <div
           v-if="label || useLabelSlot"
-          :class="`wd-picker__label ${customLabelClass} ${isRequired ? 'is-required' : ''}`"
+          :class="cn(`wd-picker__label ${customLabelClass} ${isRequired ? 'is-required' : ''}`)"
           :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
         >
           <block v-if="label">{{ label }}</block>
@@ -19,7 +23,7 @@
         </div>
         <div class="wd-picker__body">
           <div class="wd-picker__value-wraper">
-            <div :class="`wd-picker__value ${customValueClass}`">
+            <div :class="cn(`wd-picker__value ${customValueClass}`)">
               <template v-if="region">
                 <div v-if="isArray(showValue)">
                   <span :class="showValue[0] ? '' : 'wd-picker__placeholder'">
@@ -65,17 +69,17 @@
           <!--标题-->
           <div v-if="title" class="wd-picker__title">{{ title }}</div>
           <!--确定按钮-->
-          <div :class="`wd-picker__action ${loading || isLoading ? 'is-loading' : ''}`" @click="onConfirm">
+          <div :class="cn(`wd-picker__action ${loading || isLoading ? 'is-loading' : ''}`)" @click="onConfirm">
             {{ confirmButtonText || translate('confirm') }}
           </div>
         </div>
         <!-- 区域选择tab展示 -->
         <div v-if="region" class="wd-picker__region-tabs">
-          <div :class="`wd-picker__region ${showStart ? 'is-active' : ''} `" @click="tabChange">
+          <div :class="cn(`wd-picker__region ${showStart ? 'is-active' : ''} `)" @click="tabChange">
             <div>{{ translate('start') }}</div>
             <div class="wd-picker__region-time">{{ showTabLabel[0] }}</div>
           </div>
-          <div :class="`wd-picker__region ${showStart ? '' : 'is-active'}`" @click="tabChange">
+          <div :class="cn(`wd-picker__region ${showStart ? '' : 'is-active'}`)" @click="tabChange">
             <div>{{ translate('end') }}</div>
             <div class="wd-picker__region-time">{{ showTabLabel[1] }}</div>
           </div>
@@ -154,7 +158,7 @@ export default {
 <script lang="ts" setup>
 import wdDatetimePickerView from '../wd-datetime-picker-view/wd-datetime-picker-view.vue'
 import { computed, getCurrentInstance, nextTick, onBeforeMount, onMounted, ref, watch } from 'vue'
-import { deepClone, isArray, isDef, isEqual, isFunction, padZero } from '../common/util'
+import { cn, deepClone, isArray, isDef, isEqual, isFunction, padZero } from '../common/util'
 import { useCell } from '../composables/useCell'
 import {
   getPickerValue,

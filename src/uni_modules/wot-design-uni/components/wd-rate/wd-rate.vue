@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-rate ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-rate ${customClass}`)" :style="customStyle">
     <div
       v-for="(rate, index) in rateList"
       :key="index"
@@ -31,6 +31,7 @@ export default {
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { rateProps } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(rateProps)
 const emit = defineEmits(['update:modelValue', 'change'])

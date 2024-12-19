@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" :class="`wd-notice-bar ${customClass} ${noticeBarClass}`" :style="rootStyle">
+  <div v-if="show" :class="cn(`wd-notice-bar ${customClass} ${noticeBarClass}`)" :style="rootStyle">
     <wd-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></wd-icon>
     <slot v-else name="prefix"></slot>
     <div class="wd-notice-bar__wrap">
@@ -28,7 +28,7 @@ export default {
 
 <script lang="ts" setup>
 import { ref, watch, nextTick, computed, getCurrentInstance, type CSSProperties, onMounted, onActivated, onDeactivated, reactive } from 'vue'
-import { getRect, isArray, isDef, objToStyle } from '../common/util'
+import { cn, getRect, isArray, isDef, objToStyle } from '../common/util'
 import { type NoticeBarExpose, noticeBarProps } from './types'
 const $wrap = '.wd-notice-bar__wrap'
 const $content = '.wd-notice-bar__content'

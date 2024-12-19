@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showWrapper" :class="`wd-drop-item  ${customClass}`" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
+  <div v-if="showWrapper" :class="cn(`wd-drop-item  ${customClass}`)" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
     <wd-popup
       v-model="showPop"
       :z-index="zIndex"
@@ -21,9 +21,9 @@
           v-for="(item, index) in options"
           :key="index"
           @click="choose(index)"
-          :class="`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`"
+          :class="cn(`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`)"
         >
-          <div :class="`wd-drop-item__title ${customTitle}`">
+          <div :class="cn(`wd-drop-item__title ${customTitle}`)">
             <span>{{ item[labelKey] ? item[labelKey] : item }}</span>
             <span v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</span>
           </div>
@@ -31,7 +31,7 @@
             v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue"
             :name="iconName"
             size="20px"
-            :class="`wd-drop-item__icon ${customIcon}`"
+            :class="cn(`wd-drop-item__icon ${customIcon}`)"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ import { type Queue, queueKey } from '../composables/useQueue'
 import type { PopupType } from '../wd-popup/types'
 import { useParent } from '../composables/useParent'
 import { DROP_MENU_KEY } from '../wd-drop-menu/types'
-import { isDef, isFunction } from '../common/util'
+import { cn, isDef, isFunction } from '../common/util'
 import { dorpMenuItemProps, type DropMenuItemExpose } from './types'
 
 const props = defineProps(dorpMenuItemProps)

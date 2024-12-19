@@ -1,11 +1,15 @@
 <template>
-  <div :style="customStyle" :class="`wd-drop-menu ${customClass}`" @click.stop="noop" :id="dropMenuId">
+  <div :style="customStyle" :class="cn(`wd-drop-menu`, customClass)" @click.stop="noop" :id="dropMenuId">
     <!-- #ifdef MP-DINGTALK -->
     <div :id="dropMenuId">
       <!-- #endif -->
       <div class="wd-drop-menu__list">
-        <div v-for="(child, index) in children" :key="index" @click="toggle(child)"
-          :class="`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`">
+        <div
+          v-for="(child, index) in children"
+          :key="index"
+          @click="toggle(child)"
+          :class="cn(`wd-drop-menu__item ${child.disabled ? 'is-disabled' : ''} ${child.$.exposed!.getShowPop() ? 'is-active' : ''}`)"
+        >
           <div class="wd-drop-menu__item-title">
             <div class="wd-drop-menu__item-title-text">{{ getDisplayTitle(child) }}</div>
             <wd-icon :name="child.icon" :size="child.iconSize" custom-class="wd-drop-menu__arrow" />
@@ -33,7 +37,7 @@ export default {
 import { getCurrentInstance, inject, onBeforeMount, ref, watch } from 'vue'
 import { closeOther } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
-import { getRect, uuid } from '../common/util'
+import { cn, getRect, uuid } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { DROP_MENU_KEY, dropMenuProps } from './types'
 

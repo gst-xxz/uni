@@ -17,13 +17,15 @@
           <slot name="prefix"></slot>
         </div>
         <input
-          :class="[
-            'wd-input__inner',
-            prefixIcon ? 'wd-input__inner--prefix' : '',
-            showWordCount ? 'wd-input__inner--count' : '',
-            alignRight ? 'is-align-right' : '',
-            customInputClass
-          ]"
+          :class="
+            cn([
+              'wd-input__inner',
+              prefixIcon ? 'wd-input__inner--prefix' : '',
+              showWordCount ? 'wd-input__inner--count' : '',
+              alignRight ? 'is-align-right' : '',
+              customInputClass
+            ])
+          "
           :type="type"
           :password="showPassword && !isPwdVisible"
           v-model="inputValue"
@@ -55,10 +57,10 @@
           <wd-icon v-if="showPassword" custom-class="wd-input__icon" :name="isPwdVisible ? 'view' : 'eye-close'" @click="togglePwdVisible" />
           <div v-if="showWordCount" class="wd-input__count">
             <span
-              :class="[
+              :class="cn([
               inputValue && String(inputValue).length > 0 ? 'wd-input__count-current' : '',
               String(inputValue).length > maxlength! ? 'is-error' : ''
-            ]"
+            ])"
             >
               {{ String(inputValue).length }}
             </span>
@@ -86,7 +88,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, onBeforeMount, ref, watch } from 'vue'
-import { isDef, objToStyle, pause } from '../common/util'
+import { cn, isDef, objToStyle, pause } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'

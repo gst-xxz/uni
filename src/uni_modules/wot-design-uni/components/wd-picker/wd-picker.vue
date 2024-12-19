@@ -1,8 +1,12 @@
 <template>
   <div
-    :class="`wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
-      alignRight ? 'is-align-right' : ''
-    } ${error ? 'is-error' : ''} ${customClass}`"
+    :class="
+      cn(
+        `wd-picker ${disabled ? 'is-disabled' : ''} ${size ? 'is-' + size : ''}  ${cell.border.value ? 'is-border' : ''} ${
+          alignRight ? 'is-align-right' : ''
+        } ${error ? 'is-error' : ''} ${customClass}`
+      )
+    "
     :style="customStyle"
   >
     <div class="wd-picker__field" @click="showPopup">
@@ -10,7 +14,7 @@
       <div v-else class="wd-picker__cell">
         <div
           v-if="label || useLabelSlot"
-          :class="`wd-picker__label ${customLabelClass}  ${isRequired ? 'is-required' : ''}`"
+          :class="cn(`wd-picker__label ${customLabelClass}  ${isRequired ? 'is-required' : ''}`)"
           :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
         >
           <template v-if="label">{{ label }}</template>
@@ -18,7 +22,7 @@
         </div>
         <div class="wd-picker__body">
           <div class="wd-picker__value-wraper">
-            <div :class="`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`">
+            <div :class="cn(`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`)">
               {{ showValue ? showValue : placeholder || translate('placeholder') }}
             </div>
             <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow" />
@@ -46,7 +50,7 @@
             {{ cancelButtonText || translate('cancel') }}
           </div>
           <div v-if="title" class="wd-picker__title">{{ title }}</div>
-          <div :class="`wd-picker__action ${isLoading ? 'is-loading' : ''}`" @click="onConfirm">
+          <div :class="cn(`wd-picker__action ${isLoading ? 'is-loading' : ''}`)" @click="onConfirm">
             {{ confirmButtonText || translate('done') }}
           </div>
         </div>
@@ -83,9 +87,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
 import { getCurrentInstance, onBeforeMount, ref, watch, computed, onMounted, nextTick } from 'vue'
-import { deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
+import { cn, deepClone, defaultDisplayFormat, getType, isArray, isDef, isFunction } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { type ColumnItem, formatArray, type PickerViewInstance } from '../wd-picker-view/types'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'

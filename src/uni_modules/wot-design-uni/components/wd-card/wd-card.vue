@@ -6,10 +6,10 @@
         <slot v-else name="title"></slot>
       </div>
     </div>
-    <div :class="cn(`wd-card__content ${customContentClass}`)">
+    <div :class="cn(`wd-card__content`, customContentClass)">
       <slot></slot>
     </div>
-    <div :class="cn(`wd-card__footer ${customFooterClass}`)">
+    <div :class="cn(`wd-card__footer`, customFooterClass)">
       <slot name="footer"></slot>
     </div>
   </div>

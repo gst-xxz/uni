@@ -1,14 +1,27 @@
 <template>
-  <div :class="`wd-radio ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${sizeValue ? 'is-' + sizeValue : ''
-    } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${disabledValue ? 'is-disabled' : ''
-    } icon-placement-${iconPlacement} ${customClass}`" :style="customStyle" @click="handleClick">
-    <div class="wd-radio__label" :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
-      }`">
+  <div
+    :class="
+      cn(
+        `wd-radio ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${
+          sizeValue ? 'is-' + sizeValue : ''
+        } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${
+          disabledValue ? 'is-disabled' : ''
+        } icon-placement-${iconPlacement} ${customClass}`
+      )
+    "
+    :style="customStyle"
+    @click="handleClick"
+  >
+    <div
+      class="wd-radio__label"
+      :style="`${maxWidth ? 'max-width:' + maxWidth : ''};  ${
+        isChecked && shapeValue === 'button' && !disabledValue ? 'color :' + checkedColorValue : ''
+      }`"
+    >
       <slot></slot>
     </div>
     <div class="wd-radio__shape" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''">
-      <wd-icon v-if="shapeValue === 'check'" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''"
-        name="check"></wd-icon>
+      <wd-icon v-if="shapeValue === 'check'" :style="isChecked && !disabledValue ? 'color: ' + checkedColorValue : ''" name="check"></wd-icon>
     </div>
   </div>
 </template>
@@ -23,12 +36,11 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
 import { computed, watch } from 'vue'
 import { useParent } from '../composables/useParent'
 import { RADIO_GROUP_KEY } from '../wd-radio-group/types'
 import { radioProps, type RadioIconPlacement } from './types'
-import { getPropByPath, isDef } from '../common/util'
+import { cn, getPropByPath, isDef } from '../common/util'
 
 const props = defineProps(radioProps)
 

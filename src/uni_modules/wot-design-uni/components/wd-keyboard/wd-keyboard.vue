@@ -1,8 +1,15 @@
 <template>
-  <wd-popup v-model="show" position="bottom" :z-index="zIndex" :safe-area-inset-bottom="safeAreaInsetBottom"
-    :modal-style="modal ? '' : 'opacity: 0;'" :modal="hideOnClickOutside" :lockScroll="lockScroll"
-    @click-modal="handleClose">
-    <div :class="`wd-keyboard ${customClass}`" :style="customStyle">
+  <wd-popup
+    v-model="show"
+    position="bottom"
+    :z-index="zIndex"
+    :safe-area-inset-bottom="safeAreaInsetBottom"
+    :modal-style="modal ? '' : 'opacity: 0;'"
+    :modal="hideOnClickOutside"
+    :lockScroll="lockScroll"
+    @click-modal="handleClose"
+  >
+    <div :class="cn(`wd-keyboard ${customClass}`)" :style="customStyle">
       <div class="wd-keyboard__header" v-if="showTitle">
         <slot name="title">
           <span class="wd-keyboard__title">{{ title }}</span>
@@ -14,8 +21,7 @@
       <template v-if="mode !== 'car'">
         <div class="wd-keyboard__body">
           <div class="wd-keyboard__keys">
-            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
-              @press="handlePress"></wd-key>
+            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider" @press="handlePress"></wd-key>
           </div>
           <div class="wd-keyboard__sidebar" v-if="mode === 'custom'">
             <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
@@ -26,8 +32,7 @@
       <template v-if="mode === 'car'">
         <div class="wd-keyboard-car__body">
           <div class="wd-keyboard-car__keys">
-            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider"
-              @press="handlePress"></wd-key>
+            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider" @press="handlePress"></wd-key>
           </div>
         </div>
       </template>
@@ -52,6 +57,7 @@ import WdKey from './key/index.vue'
 import { keyboardProps, type Key } from './types'
 import type { NumberKeyType } from './key/types'
 import { CAR_KEYBOARD_AREAS, CAR_KEYBOARD_KEYS } from './constants'
+import { cn } from '../common/util'
 
 const props = defineProps(keyboardProps)
 const emit = defineEmits(['update:visible', 'input', 'close', 'delete', 'update:modelValue'])
@@ -86,8 +92,8 @@ function shuffleArray<T>(arr: T[]): T[] {
     // 生成一个随机索引 j，范围是 [0, i]
     const j = Math.floor(Math.random() * (i + 1))
 
-      // 交换索引 i 和 j 处的元素
-      ;[newArr[i], newArr[j]] = [newArr[j], newArr[i]]
+    // 交换索引 i 和 j 处的元素
+    ;[newArr[i], newArr[j]] = [newArr[j], newArr[i]]
   }
   return newArr
 }

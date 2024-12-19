@@ -1,5 +1,5 @@
 <template>
-  <div :class="['wd-col', span && 'wd-col__' + span, offset && 'wd-col__offset-' + offset, customClass]" :style="style">
+  <div :class="cn(['wd-col', span && 'wd-col__' + span, offset && 'wd-col__offset-' + offset, customClass])" :style="style">
     <!-- 每一列 -->
     <slot />
   </div>
@@ -21,6 +21,7 @@ import { ref } from 'vue'
 import { useParent } from '../composables/useParent'
 import { ROW_KEY } from '../wd-row/types'
 import { colProps } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(colProps)
 

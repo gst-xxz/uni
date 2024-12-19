@@ -31,7 +31,7 @@
       <div class="wd-cell__right">
         <div class="wd-cell__body">
           <!--文案内容-->
-          <div :class="cn(`wd-cell__value ${customValueClass}`)">
+          <div :class="cn(`wd-cell__value`, customValueClass)">
             <slot>{{ value }}</slot>
           </div>
           <!--箭头-->

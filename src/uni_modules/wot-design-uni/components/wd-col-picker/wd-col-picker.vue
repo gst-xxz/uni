@@ -1,16 +1,20 @@
 <template>
-  <div :class="`wd-col-picker ${cell.border.value ? 'is-border' : ''} ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-col-picker ${cell.border.value ? 'is-border' : ''} ${customClass}`)" :style="customStyle">
     <div class="wd-col-picker__field" @click="showPicker">
       <slot v-if="useDefaultSlot"></slot>
       <div
         v-else
-        :class="`wd-col-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
-          error && 'is-error'
-        }  ${size && 'is-' + size}`"
+        :class="
+          cn(
+            `wd-col-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
+              error && 'is-error'
+            }  ${size && 'is-' + size}`
+          )
+        "
       >
         <div
           v-if="label || useLabelSlot"
-          :class="`wd-col-picker__label ${isRequired && 'is-required'} ${customLabelClass}`"
+          :class="cn(`wd-col-picker__label ${isRequired && 'is-required'} ${customLabelClass}`)"
           :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
         >
           <block v-if="label">{{ label }}</block>
@@ -19,7 +23,9 @@
         <div class="wd-col-picker__body">
           <div class="wd-col-picker__value-wraper">
             <div
-              :class="`wd-col-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-col-picker__value--placeholder'}`"
+              :class="
+                cn(`wd-col-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-col-picker__value--placeholder'}`)
+              "
             >
               {{ showValue || placeholder || translate('placeholder') }}
             </div>
@@ -46,7 +52,7 @@
             <div
               v-for="(_, colIndex) in selectList"
               :key="colIndex"
-              :class="`wd-col-picker__selected-item  ${colIndex === currentCol && 'is-selected'}`"
+              :class="cn(`wd-col-picker__selected-item  ${colIndex === currentCol && 'is-selected'}`)"
               @click="handleColClick(colIndex)"
             >
               {{ selectShowList[colIndex] || translate('select') }}
@@ -65,9 +71,13 @@
           <div
             v-for="(item, index) in col"
             :key="index"
-            :class="`wd-col-picker__list-item ${pickerColSelected[colIndex] && item[valueKey] === pickerColSelected[colIndex] && 'is-selected'} ${
-              item.disabled && 'is-disabled'
-            }`"
+            :class="
+              cn(
+                `wd-col-picker__list-item ${pickerColSelected[colIndex] && item[valueKey] === pickerColSelected[colIndex] && 'is-selected'} ${
+                  item.disabled && 'is-disabled'
+                }`
+              )
+            "
             @click="chooseItem(colIndex, index)"
           >
             <div>
@@ -97,7 +107,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties, reactive, nextTick } from 'vue'
-import { addUnit, debounce, getRect, isArray, isBoolean, isDef, isFunction, objToStyle } from '../common/util'
+import { addUnit, cn, debounce, getRect, isArray, isBoolean, isDef, isFunction, objToStyle } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'

@@ -1,6 +1,6 @@
 <template>
-  <div :class="`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`" @click="click" :style="`${style};${customStyle}`">
-    <div :class="`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`" :style="gutterContentStyle">
+  <div :class="cn(`wd-grid-item ${border && !gutter ? itemClass : ''} ${customClass}`)" @click="click" :style="`${style};${customStyle}`">
+    <div :class="cn(`wd-grid-item__content ${square ? 'is-square' : ''} ${border && gutter > 0 ? 'is-round' : ''}`)" :style="gutterContentStyle">
       <slot v-if="useSlot" />
       <block v-else>
         <div :style="'width:' + iconSize + '; height: ' + iconSize" class="wd-grid-item__wrapper">
@@ -32,7 +32,7 @@ export default {
 import { onMounted, ref, watch, computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { GRID_KEY } from '../wd-grid/types'
-import { deepAssign, isDef, isUndefined, omitBy } from '../common/util'
+import { cn, deepAssign, isDef, isUndefined, omitBy } from '../common/util'
 import { gridItemProps } from './types'
 import type { BadgeProps } from '../wd-badge/types'
 

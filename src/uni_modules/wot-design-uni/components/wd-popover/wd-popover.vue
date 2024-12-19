@@ -1,8 +1,8 @@
 <template>
-  <div :class="`wd-popover ${customClass}`" :style="customStyle" id="popover" @click.stop="popover.noop">
+  <div :class="cn(`wd-popover ${customClass}`)" :style="customStyle" id="popover" @click.stop="popover.noop">
     <!-- 使用插槽时无法获取正确宽高 -->
     <div class="wd-popover__pos wd-popover__hidden" id="pos">
-      <div :class="`wd-popover__container ${customPop}`">
+      <div :class="cn(`wd-popover__container ${customPop}`)">
         <div v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
           {{ content }}
         </div>
@@ -14,24 +14,28 @@
         </div>
       </div>
     </div>
-    <wd-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover" name="fade"
-      :duration="200">
-      <div :class="`wd-popover__container ${customPop}`">
-        <div v-if="props.visibleArrow" :class="`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`"
-          :style="popover.arrowStyle.value">
-        </div>
+    <wd-transition custom-class="wd-popover__pos" :custom-style="popover.popStyle.value" :show="showPopover" name="fade" :duration="200">
+      <div :class="cn(`wd-popover__container ${customPop}`)">
+        <div
+          v-if="props.visibleArrow"
+          :class="cn(`wd-popover__arrow ${popover.arrowClass.value} ${customArrow}`)"
+          :style="popover.arrowStyle.value"
+        ></div>
         <!-- 普通模式 -->
         <div v-if="!useContentSlot && mode === 'normal'" class="wd-popover__inner">
           {{ content }}
         </div>
         <!-- 列表模式 -->
         <div v-if="!useContentSlot && mode === 'menu'" class="wd-popover__menu">
-          <div v-for="(item, index) in content" :key="index" class="wd-popover__menu-inner" @click="menuClick(index)"
-            :style="index === 0 ? 'border-top: none' : ''">
-            <wd-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass"
-              custom-class="wd-popover__icon" />
-            <div style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content
-              : '' }}</div>
+          <div
+            v-for="(item, index) in content"
+            :key="index"
+            class="wd-popover__menu-inner"
+            @click="menuClick(index)"
+            :style="index === 0 ? 'border-top: none' : ''"
+          >
+            <wd-icon v-if="typeof item === 'object' && item.iconClass" :name="item.iconClass" custom-class="wd-popover__icon" />
+            <div style="display: inline-block">{{ typeof item === 'object' && item.content ? item.content : '' }}</div>
           </div>
         </div>
         <!-- 用户自定义样式 -->
@@ -57,14 +61,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
 import { getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { usePopover } from '../composables/usePopover'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { popoverProps, type PopoverExpose } from './types'
-import { isArray } from '../common/util'
+import { cn, isArray } from '../common/util'
 
 const props = defineProps(popoverProps)
 const emit = defineEmits(['update:modelValue', 'menuclick', 'change', 'open', 'close'])

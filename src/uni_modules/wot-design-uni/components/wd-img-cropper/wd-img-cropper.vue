@@ -1,16 +1,16 @@
 <template>
   <!-- 绘制的图片canvas -->
-  <div v-if="modelValue" :class="`wd-img-cropper ${customClass}`" :style="customStyle" @touchmove="preventTouchMove">
+  <div v-if="modelValue" :class="cn(`wd-img-cropper ${customClass}`)" :style="customStyle" @touchmove="preventTouchMove">
     <!-- 展示在用户面前的裁剪框 -->
     <div class="wd-img-cropper__wrapper">
       <!-- 画出裁剪框 -->
       <div class="wd-img-cropper__cut">
         <!-- 上方阴影块 -->
-        <div :class="`wd-img-cropper__cut--top ${IS_TOUCH_END ? '' : 'is-hightlight'}`" :style="`height: ${cutTop}px;`"></div>
+        <div :class="cn(`wd-img-cropper__cut--top ${IS_TOUCH_END ? '' : 'is-hightlight'}`)" :style="`height: ${cutTop}px;`"></div>
         <div class="wd-img-cropper__cut--middle">
           <!-- 左侧阴影块 -->
           <div
-            :class="`wd-img-cropper__cut--left ${IS_TOUCH_END ? '' : 'is-hightlight'}`"
+            :class="cn(`wd-img-cropper__cut--left ${IS_TOUCH_END ? '' : 'is-hightlight'}`)"
             :style="`width: ${cutLeft}px; height: ${cutWidth}px;`"
           ></div>
           <!-- 裁剪框 -->
@@ -25,11 +25,11 @@
             <div class="is-right-bottom"></div>
           </div>
           <!-- 右侧阴影块 -->
-          <div :class="`wd-img-cropper__cut--right ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></div>
+          <div :class="cn(`wd-img-cropper__cut--right ${IS_TOUCH_END ? '' : 'is-hightlight'}`)"></div>
         </div>
 
         <!-- 底部阴影块 -->
-        <div :class="`wd-img-cropper__cut--bottom ${IS_TOUCH_END ? '' : 'is-hightlight'}`"></div>
+        <div :class="cn(`wd-img-cropper__cut--bottom ${IS_TOUCH_END ? '' : 'is-hightlight'}`)"></div>
       </div>
       <!-- 展示的传过来的图片: 控制图片的旋转角度(rotate)、缩放程度(imgScale)、移动位置(translate) -->
       <img
@@ -78,7 +78,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, ref, watch } from 'vue'
-import { addUnit, objToStyle } from '../common/util'
+import { addUnit, cn, objToStyle } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { imgCropperProps, type ImgCropperExpose } from './types'
 

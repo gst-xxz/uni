@@ -4,11 +4,11 @@
       <div
         v-for="(_, index) in length"
         :key="index"
-        :class="`wd-password-input__item ${gutter ? '' : 'is-border'}`"
+        :class="cn(`wd-password-input__item ${gutter ? '' : 'is-border'}`)"
         :style="{ marginLeft: index !== 0 && gutter ? addUnit(gutter) : 0 }"
       >
         <div v-if="focused && index === modelValue.length" class="wd-password-input__cursor"></div>
-        <div v-else :class="`wd-password-input__value`">
+        <div v-else :class="cn(`wd-password-input__value`)">
           <div :style="{ visibility: mask && modelValue[index] ? 'visible' : 'hidden' }" class="wd-password-input__mask"></div>
           <span v-if="!mask && modelValue[index]">{{ modelValue[index] }}</span>
         </div>

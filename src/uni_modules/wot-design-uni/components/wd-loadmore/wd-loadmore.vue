@@ -1,5 +1,5 @@
 <template>
-  <div :class="['wd-loadmore', customClass]" :style="customStyle" @click="reload">
+  <div :class="cn(['wd-loadmore', customClass])" :style="customStyle" @click="reload">
     <wd-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</wd-divider>
     <block v-if="state === 'error'">
       <span class="wd-loadmore__text">{{ errorText || translate('error') }}</span>
@@ -29,7 +29,7 @@ import { computed, ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'
 import type { LoadingProps } from '../wd-loading/types'
-import { isDef, isUndefined, omitBy } from '../common/util'
+import { cn, isDef, isUndefined, omitBy } from '../common/util'
 
 const customLoadingProps = computed(() => {
   const loadingProps: Partial<LoadingProps> = isDef(props.loadingProps) ? omitBy(props.loadingProps, isUndefined) : {}
