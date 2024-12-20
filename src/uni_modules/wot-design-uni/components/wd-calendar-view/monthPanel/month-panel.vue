@@ -369,6 +369,89 @@ defineExpose<MonthPanelExpose>({
 })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-month-panel__title {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-month-panel__weeks {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.02);
+  color: #fff;
+}
+
+.wot-theme-dark .wd-month-panel__time-label {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-month-panel__time-label:after {
+  background: #323233;
+}
+
+.wd-month-panel {
+  font-size: var(--wot-calendar-fs, 16px);
+}
+
+.wd-month-panel__title {
+  padding: 5px 0;
+  text-align: center;
+  font-size: var(--wot-calendar-panel-title-fs, 14px);
+  color: var(--wot-calendar-panel-title-color, rgba(0, 0, 0, 0.85));
+  padding: var(--wot-calendar-panel-padding, 0 12px);
+}
+
+.wd-month-panel__weeks {
+  display: flex;
+  height: var(--wot-calendar-week-height, 36px);
+  line-height: var(--wot-calendar-week-height, 36px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+  color: var(--wot-calendar-week-color, rgba(0, 0, 0, 0.85));
+  font-size: var(--wot-calendar-week-fs, 12px);
+  padding: var(--wot-calendar-panel-padding, 0 12px);
+}
+
+.wd-month-panel__week {
+  flex: 1;
+  text-align: center;
+}
+
+.wd-month-panel__container {
+  padding: var(--wot-calendar-panel-padding, 0 12px);
+  box-sizing: border-box;
+}
+
+.wd-month-panel__time {
+  display: flex;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.02);
+}
+
+.wd-month-panel__time-label {
+  position: relative;
+  flex: 1;
+  font-size: var(--wot-picker-column-fs, 16px);
+  text-align: center;
+  line-height: 125px;
+  color: var(--wot-picker-column-color, rgba(0, 0, 0, 0.85));
+}
+
+.wd-month-panel__time-label:after {
+  position: absolute;
+  content: '';
+  height: 35px;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background: var(--wot-picker-column-select-bg, #f5f5f5);
+  z-index: 0;
+}
+
+.wd-month-panel__time-text {
+  position: relative;
+  z-index: 1;
+}
+
+.wd-month-panel__time-picker {
+  flex: 3;
+}
 </style>

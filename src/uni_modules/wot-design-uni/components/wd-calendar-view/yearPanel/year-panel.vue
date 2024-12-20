@@ -1,12 +1,22 @@
 <template>
   <div class="wd-year-panel">
     <div v-if="showPanelTitle" class="wd-year-panel__title">{{ title }}</div>
-    <scroll-view class="wd-year-panel__container" :style="`height: ${scrollHeight}px`" scroll-y @scroll="yearScroll"
-      :scroll-top="scrollTop">
+    <scroll-view class="wd-year-panel__container" :style="`height: ${scrollHeight}px`" scroll-y @scroll="yearScroll" :scroll-top="scrollTop">
       <div v-for="(item, index) in years" :key="index" :id="`year${index}`">
-        <year :type="type" :date="item.date" :value="value" :min-date="minDate" :max-date="maxDate"
-          :max-range="maxRange" :formatter="formatter" :range-prompt="rangePrompt" :allow-same-day="allowSameDay"
-          :default-time="defaultTime" :showTitle="index !== 0" @change="handleDateChange" />
+        <year
+          :type="type"
+          :date="item.date"
+          :value="value"
+          :min-date="minDate"
+          :max-date="maxDate"
+          :max-range="maxRange"
+          :formatter="formatter"
+          :range-prompt="rangePrompt"
+          :allow-same-day="allowSameDay"
+          :default-time="defaultTime"
+          :showTitle="index !== 0"
+          @change="handleDateChange"
+        />
       </div>
     </scroll-view>
   </div>
@@ -120,6 +130,22 @@ defineExpose<YearPanelExpose>({
 })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-year-panel__title {
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.02);
+}
+
+.wd-year-panel {
+  font-size: var(--wot-calendar-fs, 16px);
+  padding: var(--wot-calendar-panel-padding, 0 12px);
+}
+
+.wd-year-panel__title {
+  padding: 5px 0;
+  text-align: center;
+  font-size: var(--wot-calendar-panel-title-fs, 14px);
+  color: var(--wot-calendar-panel-title-color, rgba(0, 0, 0, 0.85));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+}
 </style>

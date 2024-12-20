@@ -201,6 +201,140 @@ function getFormatterDate(date: number, month: number, type?: CalendarDayType) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-year__title,
+.wot-theme-dark .wd-year__months {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-year__month.is-disabled .wd-year__month-text {
+  color: #595959;
+}
+
+.wd-year__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  font-size: var(--wot-calendar-panel-title-fs, 14px);
+  color: var(--wot-calendar-panel-title-color, rgba(0, 0, 0, 0.85));
+}
+
+.wd-year__months {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--wot-calendar-day-fs, 16px);
+  color: var(--wot-calendar-day-color, rgba(0, 0, 0, 0.85));
+}
+
+.wd-year__month {
+  position: relative;
+  width: 25%;
+  height: var(--wot-calendar-day-height, 64px);
+  line-height: var(--wot-calendar-day-height, 64px);
+  text-align: center;
+  margin-bottom: var(--wot-calendar-item-margin-bottom, 4px);
+}
+
+.wd-year__month.is-disabled .wd-year__month-text {
+  color: var(--wot-calendar-disabled-color, rgba(0, 0, 0, 0.25));
+}
+
+.wd-year__month.is-current {
+  color: var(--wot-calendar-active-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-year__month.is-selected {
+  color: #fff;
+}
+
+.wd-year__month.is-selected .wd-year__month-text {
+  border-radius: var(--wot-calendar-active-border, 8px);
+  background: var(--wot-calendar-active-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-year__month.is-middle {
+  background: var(--wot-calendar-range-color, rgba(77, 128, 240, 0.09));
+}
+
+.wd-year__month.is-start {
+  color: var(--wot-calendar-selected-color, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-year__month.is-start:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 50%;
+  bottom: 0;
+  content: '';
+  background: var(--wot-calendar-range-color, rgba(77, 128, 240, 0.09));
+}
+
+.wd-year__month.is-start .wd-year__month-text {
+  background: var(--wot-calendar-active-color, var(--wot-color-theme, #4d80f0));
+  border-radius: var(--wot-calendar-active-border, 8px) 0 0 var(--wot-calendar-active-border, 8px);
+}
+
+.wd-year__month.is-start.is-without-end:after {
+  display: none;
+}
+
+.wd-year__month.is-end {
+  color: var(--wot-calendar-selected-color, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-year__month.is-end:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 50%;
+  bottom: 0;
+  content: '';
+  background: var(--wot-calendar-range-color, rgba(77, 128, 240, 0.09));
+}
+
+.wd-year__month.is-end .wd-year__month-text {
+  background: var(--wot-calendar-active-color, var(--wot-color-theme, #4d80f0));
+  border-radius: 0 var(--wot-calendar-active-border, 8px) var(--wot-calendar-active-border, 8px) 0;
+}
+
+.wd-year__month.is-same {
+  color: var(--wot-calendar-selected-color, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-year__month.is-same .wd-year__month-text {
+  background: var(--wot-calendar-active-color, var(--wot-color-theme, #4d80f0));
+  border-radius: var(--wot-calendar-active-border, 8px);
+}
+
+.wd-year__month.is-last-row {
+  margin-bottom: 0;
+}
+
+.wd-year__month-text {
+  width: var(--wot-calendar-month-width, 50px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wd-year__month-top {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  line-height: 1.1;
+  font-size: var(--wot-calendar-info-fs, 10px);
+  text-align: center;
+}
+
+.wd-year__month-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  line-height: 1.1;
+  font-size: var(--wot-calendar-info-fs, 10px);
+  text-align: center;
+}
 </style>

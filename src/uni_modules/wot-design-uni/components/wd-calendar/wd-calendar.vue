@@ -424,6 +424,240 @@ defineExpose<CalendarExpose>({
 })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-calendar__cell {
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.wot-theme-dark .wd-calendar__label,
+.wot-theme-dark .wd-calendar__value,
+.wot-theme-dark .wd-calendar__title,
+.wot-theme-dark .wd-calendar .wd-calendar__arrow,
+.wot-theme-dark .wd-calendar .wd-calendar__close {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-calendar.is-border .wd-calendar__cell {
+  position: relative;
+}
+
+.wot-theme-dark .wd-calendar.is-border .wd-calendar__cell:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
+  height: 1px;
+  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wot-theme-dark .wd-calendar__range-label-item {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-calendar__range-label-item.is-placeholder,
+.wot-theme-dark .wd-calendar__range-sperator {
+  color: #595959;
+}
+
+.wd-calendar.is-border .wd-calendar__cell {
+  position: relative;
+}
+
+.wd-calendar.is-border .wd-calendar__cell:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
+  height: 1px;
+  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-color-border-light, #e8e8e8);
+}
+
+.wd-calendar__cell {
+  position: relative;
+  display: flex;
+  padding: var(--wot-cell-wrapper-padding, 10px) var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  align-items: flex-start;
+  background-color: var(--wot-color-white, rgb(255, 255, 255));
+  text-decoration: none;
+  color: var(--wot-cell-title-color, rgba(0, 0, 0, 0.85));
+  font-size: var(--wot-cell-title-fs, 14px);
+  overflow: hidden;
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wd-calendar__cell.is-disabled .wd-calendar__value {
+  color: var(--wot-input-disabled-color, #d9d9d9);
+}
+
+.wd-calendar__cell.is-align-right .wd-calendar__value {
+  text-align: right;
+}
+
+.wd-calendar__cell.is-error .wd-calendar__value,
+.wd-calendar__cell.is-error .wd-calendar__arrow {
+  color: var(--wot-input-error-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-calendar__cell.is-large {
+  font-size: var(--wot-cell-title-fs-large, 16px);
+}
+
+.wd-calendar__cell.is-large .wd-calendar__arrow {
+  font-size: var(--wot-cell-icon-size-large, 18px);
+}
+
+.wd-calendar__cell.is-center {
+  align-items: center;
+}
+
+.wd-calendar__cell.is-center .wd-calendar__arrow {
+  margin-top: 0;
+}
+
+.wd-calendar__error-message {
+  color: var(--wot-form-item-error-message-color, var(--wot-color-danger, #fa4350));
+  font-size: var(--wot-form-item-error-message-font-size, var(--wot-fs-secondary, 12px));
+  line-height: var(--wot-form-item-error-message-line-height, 24px);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.wd-calendar__label {
+  position: relative;
+  width: var(--wot-input-cell-label-width, 33%);
+  margin-right: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  color: var(--wot-cell-title-color, rgba(0, 0, 0, 0.85));
+  box-sizing: border-box;
+}
+
+.wd-calendar__label.is-required {
+  padding-left: 12px;
+}
+
+.wd-calendar__label.is-required:after {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  content: '*';
+  font-size: var(--wot-cell-required-size, 18px);
+  line-height: 1.1;
+  color: var(--wot-cell-required-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-calendar__value-wraper {
+  display: flex;
+}
+
+.wd-calendar__value {
+  flex: 1;
+  margin-right: 10px;
+  color: var(--wot-cell-value-color, rgba(0, 0, 0, 0.85));
+}
+
+.wd-calendar__value.is-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wd-calendar__value--placeholder {
+  color: var(--wot-input-placeholder-color, #bfbfbf);
+}
+
+.wd-calendar__body {
+  flex: 1;
+}
+
+.wd-calendar__arrow {
+  display: block;
+  font-size: var(--wot-cell-icon-size, 16px);
+  color: var(--wot-cell-arrow-color, rgba(0, 0, 0, 0.25));
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wd-calendar__header {
+  position: relative;
+  overflow: hidden;
+}
+
+.wd-calendar__title {
+  color: var(--wot-action-sheet-color, rgba(0, 0, 0, 0.85));
+  height: var(--wot-action-sheet-title-height, 64px);
+  line-height: var(--wot-action-sheet-title-height, 64px);
+  text-align: center;
+  font-size: var(--wot-action-sheet-title-fs, var(--wot-fs-title, 16px));
+  font-weight: var(--wot-action-sheet-weight, 500);
+}
+
+.wd-calendar__close {
+  position: absolute;
+  top: var(--wot-action-sheet-close-top, 25px);
+  right: var(--wot-action-sheet-close-right, 15px);
+  color: var(--wot-action-sheet-close-color, rgba(0, 0, 0, 0.65));
+  font-size: var(--wot-action-sheet-close-fs, var(--wot-fs-title, 16px));
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  line-height: 1.1;
+}
+
+.wd-calendar__tabs {
+  width: 222px;
+  margin: 10px auto 12px;
+}
+
+.wd-calendar__shortcuts {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.wd-calendar__tag {
+  margin-right: 8px;
+}
+
+.wd-calendar__view.is-show-confirm {
+  height: 394px;
+}
+
+.wd-calendar__view.is-show-confirm.is-range {
+  height: 384px;
+}
+
+.wd-calendar__range-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.wd-calendar__range-label.is-monthrange {
+  padding-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+}
+
+.wd-calendar__range-label-item {
+  flex: 1;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.wd-calendar__range-label-item.is-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.wd-calendar__range-sperator {
+  margin: 0 24px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.wd-calendar__confirm {
+  padding: 12px 25px 14px;
+}
 </style>
