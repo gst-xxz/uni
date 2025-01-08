@@ -425,45 +425,6 @@ defineExpose<CalendarExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-calendar__cell {
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-calendar__label,
-.wot-theme-dark .wd-calendar__value,
-.wot-theme-dark .wd-calendar__title,
-.wot-theme-dark .wd-calendar .wd-calendar__arrow,
-.wot-theme-dark .wd-calendar .wd-calendar__close {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-calendar.is-border .wd-calendar__cell {
-  position: relative;
-}
-
-.wot-theme-dark .wd-calendar.is-border .wd-calendar__cell:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
-  height: 1px;
-  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-calendar__range-label-item {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-calendar__range-label-item.is-placeholder,
-.wot-theme-dark .wd-calendar__range-sperator {
-  color: #595959;
-}
-
 .wd-calendar.is-border .wd-calendar__cell {
   position: relative;
 }

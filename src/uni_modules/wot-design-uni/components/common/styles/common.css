@@ -69,3 +69,7 @@
   transform: scaleY(0.5);
   background: #e8e8e8;
 }
+
+.overflow-scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}

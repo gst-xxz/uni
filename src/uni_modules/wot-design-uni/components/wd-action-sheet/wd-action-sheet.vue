@@ -17,7 +17,7 @@
       :z-index="zIndex"
     >
       <div
-        :class="cn(`wd-action-sheet`, customClass)"
+        :class="cn(`wd-action-sheet bg-white pb-px`, customClass)"
         :style="`${
           (actions && actions.length) || (panels && panels.length)
             ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
@@ -26,33 +26,49 @@
       >
         <div v-if="title" :class="cn(`wd-action-sheet__header`, customHeaderClass)">
           {{ title }}
-          <wd-icon custom-class="wd-action-sheet__close" name="add" @click="close" />
+          <wd-icon custom-class="wd-action-sheet__close" name="cross" @click="close" />
         </div>
-        <div class="wd-action-sheet__actions" v-if="actions && actions.length">
+        <div class="wd-action-sheet__actions py-2 px-0 max-h-[50vh] overflow-y-auto overflow-scrolling-touch" v-if="actions && actions.length">
           <button
             v-for="(action, rowIndex) in actions"
             :key="rowIndex"
             :class="
               cn(
-                'wd-action-sheet__action',
-                action.disabled ? 'wd-action-sheet__action--disabled' : '',
-                action.loading ? 'wd-action-sheet__action--loading' : ''
+                'wd-action-sheet__action relative block w-full h-12 text-black/85 text-base leading-[48px] text-center border-none bg-white outline-none',
+                'after:hidden',
+                action.disabled ? 'wd-action-sheet__action--disabled text-black/25 cursor-not-allowed' : '',
+                action.loading ? 'wd-action-sheet__action--loading flex justify-center items-center leading-[initial]' : ''
               )
             "
             :style="`color: ${action.color}`"
             @click="select(rowIndex, 'action')"
           >
-            <wd-loading custom-class="`wd-action-sheet__action-loading" v-if="action.loading" />
-            <div v-else class="wd-action-sheet__name">{{ action.name }}</div>
-            <div v-if="!action.loading && action.subname" class="wd-action-sheet__subname">{{ action.subname }}</div>
+            <wd-loading custom-class="`wd-action-sheet__action-loading w-5 h-5" v-if="action.loading" />
+            <div v-else class="wd-action-sheet__name inline-block">{{ action.name }}</div>
+            <div v-if="!action.loading && action.subname" class="wd-action-sheet__subname inline-block ml-1 text-xs text-black/45">
+              {{ action.subname }}
+            </div>
           </button>
         </div>
         <div v-if="formatPanels && formatPanels.length">
-          <div v-for="(panel, rowIndex) in formatPanels" :key="rowIndex" class="wd-action-sheet__panels">
-            <div class="wd-action-sheet__panels-content">
-              <div v-for="(col, colIndex) in panel" :key="colIndex" class="wd-action-sheet__panel" @click="select(rowIndex, 'panels', colIndex)">
-                <img class="wd-action-sheet__panel-img" :src="(col as any).iconUrl" />
-                <div class="wd-action-sheet__panel-title">{{ (col as any).title }}</div>
+          <div
+            v-for="(panel, rowIndex) in formatPanels"
+            :key="rowIndex"
+            class="wd-action-sheet__panels h-[84px] overflow-y-hidden first-of-type:mt-5 last-of-type:mb-3"
+          >
+            <div class="wd-action-sheet__panels-content flex overflow-x-auto overflow-scrolling-touch">
+              <div
+                v-for="(col, colIndex) in panel"
+                :key="colIndex"
+                class="wd-action-sheet__panel w-[88px] flex-[0_0_auto] inline-block pt-3 px-0 pb-[11px]"
+                @click="select(rowIndex, 'panels', colIndex)"
+              >
+                <img class="wd-action-sheet__panel-img block w-10 h-10 mt-0 mx-auto mb-[7px] rounded" :src="(col as any).iconUrl" />
+                <div
+                  class="wd-action-sheet__panel-title text-xs leading-[1.2] text-center text-black/85 overflow-hidden text-ellipsis whitespace-nowrap"
+                >
+                  {{ (col as any).title }}
+                </div>
               </div>
             </div>
           </div>
@@ -152,110 +168,12 @@ function handleClosed() {
 </script>
 
 <style>
-.wot-theme-dark .wd-action-sheet {
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-action-sheet__action {
-  color: #fff;
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-action-sheet__action:not(.wd-action-sheet__action--disabled):not(.wd-action-sheet__action--loading):active {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-action-sheet__action--disabled {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-action-sheet__subname {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-action-sheet__cancel {
-  color: #fff;
-  background: #323233;
-}
-
-.wot-theme-dark .wd-action-sheet__cancel:active {
-  background: #646566;
-}
-
-.wot-theme-dark .wd-action-sheet .wd-action-sheet__close {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-action-sheet__panel-title,
-.wot-theme-dark .wd-action-sheet__header {
-  color: #fff;
-}
-
-.wd-action-sheet {
-  background-color: var(--wot-color-white, rgb(255, 255, 255));
-  padding-bottom: 1px;
-}
-
 .wd-action-sheet__popup {
   border-radius: var(--wot-action-sheet-radius, 16px) var(--wot-action-sheet-radius, 16px) 0 0;
 }
 
-.wd-action-sheet__actions {
-  padding: 8px 0;
-  max-height: 50vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.wd-action-sheet__action {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: var(--wot-action-sheet-action-height, 48px);
-  line-height: var(--wot-action-sheet-action-height, 48px);
-  color: var(--wot-action-sheet-color, rgba(0, 0, 0, 0.85));
-  font-size: var(--wot-action-sheet-fs, var(--wot-fs-title, 16px));
-  text-align: center;
-  border: none;
-  background: var(--wot-action-sheet-bg, var(--wot-color-white, rgb(255, 255, 255)));
-  outline: none;
-}
-
-.wd-action-sheet__action:after {
-  display: none;
-}
-
 .wd-action-sheet__action:not(.wd-action-sheet__action--disabled):not(.wd-action-sheet__action--loading):active {
   background: var(--wot-action-sheet-active-color, var(--wot-color-bg, #f5f5f5));
-}
-
-.wd-action-sheet__action--disabled {
-  color: var(--wot-action-sheet-disabled-color, rgba(0, 0, 0, 0.25));
-  cursor: not-allowed;
-}
-
-.wd-action-sheet__action--loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: initial;
-}
-
-.wd-action-sheet__action-loading {
-  width: var(--wot-action-sheet-loading-size, 20px);
-  height: var(--wot-action-sheet-loading-size, 20px);
-}
-
-.wd-action-sheet__name {
-  display: inline-block;
-}
-
-.wd-action-sheet__subname {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: var(--wot-action-sheet-subname-fs, var(--wot-fs-secondary, 12px));
-  color: var(--wot-action-sheet-subname-color, rgba(0, 0, 0, 0.45));
 }
 
 .wd-action-sheet__cancel {
@@ -301,49 +219,5 @@ function handleClosed() {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   line-height: 1.1;
-}
-
-.wd-action-sheet__panels {
-  height: 84px;
-  overflow-y: hidden;
-}
-
-.wd-action-sheet__panels:first-of-type {
-  margin-top: 20px;
-}
-
-.wd-action-sheet__panels:last-of-type {
-  margin-bottom: 12px;
-}
-
-.wd-action-sheet__panels-content {
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.wd-action-sheet__panel {
-  width: 88px;
-  flex: 0 0 auto;
-  display: inline-block;
-  padding: var(--wot-action-sheet-panel-padding, 12px 0 11px);
-}
-
-.wd-action-sheet__panel-img {
-  display: block;
-  width: var(--wot-action-sheet-panel-img-fs, 40px);
-  height: var(--wot-action-sheet-panel-img-fs, 40px);
-  margin: 0 auto 7px;
-  border-radius: var(--wot-action-sheet-panel-img-radius, 4px);
-}
-
-.wd-action-sheet__panel-title {
-  font-size: var(--wot-action-sheet-subname-fs, var(--wot-fs-secondary, 12px));
-  line-height: 1.2;
-  text-align: center;
-  color: var(--wot-action-sheet-color, rgba(0, 0, 0, 0.85));
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 </style>
