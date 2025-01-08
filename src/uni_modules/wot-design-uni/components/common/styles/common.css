@@ -58,6 +58,7 @@
 .border-default {
   position: relative;
 }
+
 .border-default::after {
   position: absolute;
   display: block;

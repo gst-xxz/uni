@@ -28,7 +28,7 @@ class Dayjs {
     this.mSecond = this.date.getSeconds()
   }
 
-  parseConfig(dateStr?:string | number | Date) {
+  parseConfig(dateStr?: string | number | Date) {
     if (!dateStr) return new Date()
     if (isDate(dateStr)) return dateStr
     if (/^(\d){8}$/.test(dateStr as string)) {
@@ -38,7 +38,7 @@ class Dayjs {
     return dateStr
   }
 
-  padNumber(num:string, length:number, padChar:string) {
+  padNumber(num: string, length: number, padChar: string) {
     return !num || num.length >= length ? num : `${Array(length + 1 - num.length).join(padChar)}${num}`
   }
 
@@ -59,7 +59,7 @@ class Dayjs {
     return this.date.toUTCString()
   }
 
-  startOf(unit:string) {
+  startOf(unit: string) {
     switch (unit) {
       case 'year':
         return new Dayjs(new Date(this.year(), 0, 1))
@@ -70,7 +70,7 @@ class Dayjs {
     }
   }
 
-  add(amount:number, unit:string) {
+  add(amount: number, unit: string) {
     let interval
     switch (unit) {
       case 'm':
@@ -96,7 +96,7 @@ class Dayjs {
     return new Dayjs(1000 * newUnixTime)
   }
 
-  subtract(amount:number, unit:string) {
+  subtract(amount: number, unit: string) {
     return this.add(-1 * amount, unit)
   }
 
@@ -143,6 +143,6 @@ class Dayjs {
   }
 }
 
-export  function dayjs(dateStr?: string | number | Date) {
- return new Dayjs(dateStr)
+export function dayjs(dateStr?: string | number | Date) {
+  return new Dayjs(dateStr)
 }

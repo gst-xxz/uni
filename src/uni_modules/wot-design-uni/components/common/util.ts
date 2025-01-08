@@ -28,7 +28,7 @@ function s4() {
  * @param {Number} num
  * @return {string} num+px
  */
-export function addUnit(num: number | string) {
+export function addUnit(num: number | string): string {
   return Number.isNaN(Number(num)) ? `${num}` : `${num}px`
 }
 
@@ -71,13 +71,6 @@ export const defaultDisplayFormat = function (items: any[] | Record<string, any>
     return items[labelKey]
   }
 }
-
-/**
- * @description 默认函数占位符 - pickerView组件
- * @param value 值
- * @return value
- */
-export const defaultFunction = <T>(value: T): T => value
 
 /**
  * @description 检查值是否不为空

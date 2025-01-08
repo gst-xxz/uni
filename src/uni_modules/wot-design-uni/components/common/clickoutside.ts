@@ -1,4 +1,3 @@
-
 let queue: any[] = []
 
 export function pushToQueue(comp: any) {
