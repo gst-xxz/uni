@@ -1,7 +1,7 @@
 <template>
-  <div :class="`wd-sidebar ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-sidebar flex flex-col overflow-y-auto w-[104px] h-full bg-white`, customClass)" :style="customStyle">
     <slot></slot>
-    <div class="wd-sidebar__padding"></div>
+    <div class="wd-sidebar__padding flex-auto bg-gray-1"></div>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { isFunction } from '../common/util'
+import { cn, isFunction } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { SIDEBAR_KEY, sidebarProps } from './types'
 
@@ -57,19 +57,3 @@ function updateValue(value: number | string, label: string) {
   emit('change', { value, label })
 }
 </script>
-
-<style>
-.wd-sidebar {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  width: var(--wot-sidebar-width, 104px);
-  height: var(--wot-sidebar-height, 100%);
-  background: var(--wot-color-white, rgb(255, 255, 255));
-}
-
-.wd-sidebar__padding {
-  flex: 1 1 auto;
-  background: var(--wot-sidebar-bg, var(--wot-color-gray-1, #f7f8fa));
-}
-</style>

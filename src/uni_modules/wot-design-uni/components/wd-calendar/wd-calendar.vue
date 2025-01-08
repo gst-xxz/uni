@@ -46,18 +46,18 @@
     >
       <div class="wd-calendar__header">
         <div v-if="!showTypeSwitch && shortcuts.length === 0" class="wd-calendar__title">{{ title || translate('title') }}</div>
-        <div v-if="showTypeSwitch" class="wd-calendar__tabs">
+        <div v-if="showTypeSwitch" class="wd-calendar__tabs w-[222px] mt-2.5 mx-auto mb-3">
           <wd-tabs ref="calendarTabs" v-model="currentTab" @change="handleTypeChange">
             <wd-tab :title="translate('day')" :name="translate('day')" />
             <wd-tab :title="translate('week')" :name="translate('week')" />
             <wd-tab :title="translate('month')" :name="translate('month')" />
           </wd-tabs>
         </div>
-        <div v-if="shortcuts.length > 0" class="wd-calendar__shortcuts">
+        <div v-if="shortcuts.length > 0" class="wd-calendar__shortcuts py-5 px-0 text-center">
           <wd-tag
             v-for="(item, index) in shortcuts"
             :key="index"
-            custom-class="wd-calendar__tag"
+            custom-class="wd-calendar__tag mr-2"
             type="primary"
             plain
             round
@@ -72,14 +72,26 @@
         v-if="inited"
         :class="cn(`wd-calendar__view  ${currentType.indexOf('range') > -1 ? 'is-range' : ''} ${showConfirm ? 'is-show-confirm' : ''}`)"
       >
-        <div v-if="range(type)" :class="cn(`wd-calendar__range-label ${type === 'monthrange' ? 'is-monthrange' : ''}`)">
+        <div
+          v-if="range(type)"
+          :class="
+            cn(
+              `wd-calendar__range-label flex justify-center items-center text-sm`,
+              type === 'monthrange' ? 'is-monthrange pb-2.5 shadow-[0_4px_8px_rgba(0,0,0,0.02)]' : ''
+            )
+          "
+        >
           <div
-            :class="cn(`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[0] ? 'is-placeholder' : ''}`)"
-            style="text-align: right"
+            :class="
+              cn(
+                `wd-calendar__range-label-item flex-1 text-black/85 text-right`,
+                !calendarValue || !isArray(calendarValue) || !calendarValue[0] ? 'is-placeholder text-black/25' : ''
+              )
+            "
           >
             {{ rangeLabel[0] }}
           </div>
-          <div class="wd-calendar__range-sperator">/</div>
+          <div class="wd-calendar__range-sperator my-0 mx-auto text-black/25">/</div>
           <div :class="cn(`wd-calendar__range-label-item ${!calendarValue || !isArray(calendarValue) || !calendarValue[1] ? 'is-placeholder' : ''}`)">
             {{ rangeLabel[1] }}
           </div>
@@ -104,7 +116,7 @@
           @change="handleChange"
         />
       </div>
-      <div v-if="showConfirm" class="wd-calendar__confirm">
+      <div v-if="showConfirm" class="wd-calendar__confirm pt-3 px-[25px] pb-[14px]">
         <wd-button block :disabled="confirmBtnDisabled" @click="handleConfirm">{{ confirmText || translate('confirm') }}</wd-button>
       </div>
     </wd-action-sheet>
@@ -570,55 +582,11 @@ defineExpose<CalendarExpose>({
   line-height: 1.1;
 }
 
-.wd-calendar__tabs {
-  width: 222px;
-  margin: 10px auto 12px;
-}
-
-.wd-calendar__shortcuts {
-  padding: 20px 0;
-  text-align: center;
-}
-
-.wd-calendar__tag {
-  margin-right: 8px;
-}
-
 .wd-calendar__view.is-show-confirm {
   height: 394px;
 }
 
 .wd-calendar__view.is-show-confirm.is-range {
   height: 384px;
-}
-
-.wd-calendar__range-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-}
-
-.wd-calendar__range-label.is-monthrange {
-  padding-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
-}
-
-.wd-calendar__range-label-item {
-  flex: 1;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.wd-calendar__range-label-item.is-placeholder {
-  color: rgba(0, 0, 0, 0.25);
-}
-
-.wd-calendar__range-sperator {
-  margin: 0 24px;
-  color: rgba(0, 0, 0, 0.25);
-}
-
-.wd-calendar__confirm {
-  padding: 12px 25px 14px;
 }
 </style>

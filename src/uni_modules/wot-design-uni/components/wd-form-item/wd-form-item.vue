@@ -9,7 +9,7 @@
     :is-link="isLink"
   >
     <slot></slot>
-    <div v-if="errorMessage" class="wd-form-item__error-message">{{ errorMessage }}</div>
+    <div v-if="errorMessage" class="wd-form-item__error-message text-danger text-xs leading-6 text-left align-middle">{{ errorMessage }}</div>
   </wd-cell>
 </template>
 <script lang="ts">
@@ -50,13 +50,3 @@ const border = computed(() => {
   }
 })
 </script>
-
-<style>
-.wd-form-item__error-message {
-  color: var(--wot-form-item-error-message-color, var(--wot-color-danger, #fa4350));
-  font-size: var(--wot-form-item-error-message-font-size, var(--wot-fs-secondary, 12px));
-  line-height: var(--wot-form-item-error-message-line-height, 24px);
-  text-align: left;
-  vertical-align: middle;
-}
-</style>

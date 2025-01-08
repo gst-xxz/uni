@@ -9,30 +9,43 @@
     :lockScroll="lockScroll"
     @click-modal="handleClose"
   >
-    <div :class="cn(`wd-keyboard ${customClass}`)" :style="customStyle">
-      <div class="wd-keyboard__header" v-if="showTitle">
+    <div :class="cn(`wd-keyboard w-full select-none text-black bg-[#f2f3f5]`, customClass)" :style="customStyle">
+      <div class="wd-keyboard__header relative flex items-center justify-center box-border h-[34px] pt-1.5 text-[#646566] text-base" v-if="showTitle">
         <slot name="title">
-          <span class="wd-keyboard__title">{{ title }}</span>
+          <span class="wd-keyboard__title inline-block font-medium">{{ title }}</span>
         </slot>
-        <div class="wd-keyboard__close" hover-class="wd-keyboard__close--hover" v-if="showClose" @click="handleClose">
+        <div
+          class="wd-keyboard__close absolute flex items-center right-0 h-full py-0 px-4 text-primary text-sm bg-transparent border-none"
+          hover-class="wd-keyboard__close--hover opacity-60"
+          v-if="showClose"
+          @click="handleClose"
+        >
           <span>{{ closeText }}</span>
         </div>
       </div>
       <template v-if="mode !== 'car'">
-        <div class="wd-keyboard__body">
-          <div class="wd-keyboard__keys">
+        <div class="wd-keyboard__body flex pt-1.5 pr-0 pb-0 pl-1.5">
+          <div class="wd-keyboard__keys flex flex-[3] flex-wrap">
             <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider" @press="handlePress"></wd-key>
           </div>
-          <div class="wd-keyboard__sidebar" v-if="mode === 'custom'">
+          <div class="wd-keyboard__sidebar flex flex-1 flex-col" v-if="mode === 'custom'">
             <wd-key v-if="showDeleteKey" large :text="deleteText" type="delete" @press="handlePress"></wd-key>
             <wd-key large :text="closeText" type="close" :loading="closeButtonLoading" @press="handlePress"></wd-key>
           </div>
         </div>
       </template>
       <template v-if="mode === 'car'">
-        <div class="wd-keyboard-car__body">
-          <div class="wd-keyboard-car__keys">
-            <wd-key v-for="key in keys" :key="key.text" :text="key.text" :type="key.type" :wider="key.wider" @press="handlePress"></wd-key>
+        <div class="wd-keyboard-car__body flex pt-1.5 pr-0 pb-0 pl-1.5">
+          <div class="wd-keyboard-car__keys flex flex-[10] flex-wrap">
+            <wd-key
+              v-for="key in keys"
+              :key="key.text"
+              :text="key.text"
+              :type="key.type"
+              :wider="key.wider"
+              @press="handlePress"
+              custom-class=""
+            ></wd-key>
           </div>
         </div>
       </template>
@@ -176,60 +189,8 @@ const handlePress = (text: string, type: NumberKeyType) => {
 </script>
 
 <style>
-.wd-keyboard {
-  width: 100%;
-  background: var(--wot-keyboard-background, var(--wot-color-gray-2, #f2f3f5));
-  color: var(--wot-color-black, rgb(0, 0, 0));
-  -webkit-user-select: none;
-  user-select: none;
-}
-
 .wd-keyboard--with-title {
   border-radius: 20px 20px 0 0;
-}
-
-.wd-keyboard__header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
-  height: var(--wot-keyboard-title-height, 34px);
-  padding-top: 6px;
-  color: var(--wot-keyboard-title-color, var(--wot-color-gray-7, #646566));
-  font-size: var(--wot-keyboard-title-font-size, 16px);
-}
-
-.wd-keyboard__title {
-  display: inline-block;
-  font-weight: 400;
-}
-
-.wd-keyboard__title-left {
-  position: absolute;
-  left: 0;
-}
-
-.wd-keyboard__body {
-  display: flex;
-  padding: 6px 0 0 6px;
-}
-
-.wd-keyboard__keys {
-  display: flex;
-  flex: 3;
-  flex-wrap: wrap;
-}
-
-.wd-keyboard-car__body {
-  display: flex;
-  padding: 6px 0 0 6px;
-}
-
-.wd-keyboard-car__keys {
-  display: flex;
-  flex: 10;
-  flex-wrap: wrap;
 }
 
 .wd-keyboard-car__keys .wd-key-wrapper {
@@ -239,28 +200,5 @@ const handlePress = (text: string, type: NumberKeyType) => {
 
 .wd-keyboard-car__keys .wd-key-wrapper--wider {
   flex-basis: 20%;
-}
-
-.wd-keyboard__close {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  right: 0;
-  height: 100%;
-  padding: var(--wot-keyboard-title-font-size, 0 16px);
-  color: var(--wot-keyboard-close-color, var(--wot-color-theme, #4d80f0));
-  font-size: var(--wot-keyboard-close-font-size, 14px);
-  background-color: transparent;
-  border: none;
-}
-
-.wd-keyboard__close--hover {
-  opacity: 0.6;
-}
-
-.wd-keyboard__sidebar {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
 }
 </style>

@@ -193,7 +193,6 @@ defineExpose<CollapseExpose>({
 }
 
 .wd-collapse__arrow.is-retract {
-  -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
 </style>

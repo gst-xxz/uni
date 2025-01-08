@@ -1,5 +1,10 @@
 <template>
-  <div :class="cn(`wd-key-wrapper`, wider ? 'wd-key-wrapper--wider' : '')" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <div
+    :class="cn(`wd-key-wrapper`, wider ? 'wd-key-wrapper--wider' : '', customClass)"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+  >
     <div
       :class="
         cn(
