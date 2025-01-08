@@ -51,6 +51,12 @@ const border = computed(() => {
 })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wd-form-item__error-message {
+  color: var(--wot-form-item-error-message-color, var(--wot-color-danger, #fa4350));
+  font-size: var(--wot-form-item-error-message-font-size, var(--wot-fs-secondary, 12px));
+  line-height: var(--wot-form-item-error-message-line-height, 24px);
+  text-align: left;
+  vertical-align: middle;
+}
 </style>

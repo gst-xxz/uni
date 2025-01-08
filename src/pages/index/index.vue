@@ -54,10 +54,6 @@ const list = ref([
         name: 'Icon 图标'
       },
       {
-        id: 'layout',
-        name: 'Layout 布局'
-      },
-      {
         id: 'configProvider',
         name: 'ConfigProvider 全局配置'
       },

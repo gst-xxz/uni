@@ -2,6 +2,7 @@
   <div>
     <wd-popup
       custom-class="wd-action-sheet__popup"
+      class="rounded-none rounded-tr-2xl rounded-tl-2xl"
       :custom-style="`${(actions && actions.length) || (panels && panels.length) ? 'background: transparent;' : ''}`"
       v-model="showPopup"
       :duration="duration"
@@ -24,9 +25,16 @@
             : 'margin-bottom: var(--window-bottom);'
         } ${customStyle}`"
       >
-        <div v-if="title" :class="cn(`wd-action-sheet__header`, customHeaderClass)">
+        <div
+          v-if="title"
+          :class="cn(`wd-action-sheet__header text-black/85 relative h-16 text-base leading-[64px] text-center font-medium`, customHeaderClass)"
+        >
           {{ title }}
-          <wd-icon custom-class="wd-action-sheet__close" name="cross" @click="close" />
+          <wd-icon
+            custom-class="wd-action-sheet__close absolute top-[25px] right-[15px] text-black/65 text-base leading-[1.1]"
+            name="cross"
+            @click="close"
+          />
         </div>
         <div class="wd-action-sheet__actions py-2 px-0 max-h-[50vh] overflow-y-auto overflow-scrolling-touch" v-if="actions && actions.length">
           <button
@@ -37,7 +45,8 @@
                 'wd-action-sheet__action relative block w-full h-12 text-black/85 text-base leading-[48px] text-center border-none bg-white outline-none',
                 'after:hidden',
                 action.disabled ? 'wd-action-sheet__action--disabled text-black/25 cursor-not-allowed' : '',
-                action.loading ? 'wd-action-sheet__action--loading flex justify-center items-center leading-[initial]' : ''
+                action.loading ? 'wd-action-sheet__action--loading flex justify-center items-center leading-[initial]' : '',
+                !action.disabled && !action.loading ? 'active:bg-[#f5f5f5]' : ''
               )
             "
             :style="`color: ${action.color}`"
@@ -74,7 +83,19 @@
           </div>
         </div>
         <slot />
-        <button v-if="cancelText" class="wd-action-sheet__cancel" @click="handleCancel">{{ cancelText }}</button>
+        <button
+          v-if="cancelText"
+          :class="
+            cn(
+              'wd-action-sheet__cancel block w-[calc(100%-48px)] text-center border-none outline-none p-0 font-medium mt-0 mx-auto mb-6 rounded-[22px] text-base leading-[44px] text-[#131415] bg-[rgb(240,240,240)]',
+              'after:hidden',
+              'active:bg-[#f5f5f5]'
+            )
+          "
+          @click="handleCancel"
+        >
+          {{ cancelText }}
+        </button>
       </div>
     </wd-popup>
   </div>
@@ -166,58 +187,3 @@ function handleClosed() {
   emit('closed')
 }
 </script>
-
-<style>
-.wd-action-sheet__popup {
-  border-radius: var(--wot-action-sheet-radius, 16px) var(--wot-action-sheet-radius, 16px) 0 0;
-}
-
-.wd-action-sheet__action:not(.wd-action-sheet__action--disabled):not(.wd-action-sheet__action--loading):active {
-  background: var(--wot-action-sheet-active-color, var(--wot-color-bg, #f5f5f5));
-}
-
-.wd-action-sheet__cancel {
-  display: block;
-  width: calc(100% - 48px);
-  line-height: var(--wot-action-sheet-cancel-height, 44px);
-  padding: 0;
-  color: var(--wot-action-sheet-cancel-color, #131415);
-  font-size: var(--wot-action-sheet-fs, var(--wot-fs-title, 16px));
-  text-align: center;
-  border-radius: var(--wot-action-sheet-cancel-radius, 22px);
-  border: none;
-  background: var(--wot-action-sheet-cancel-bg, rgb(240, 240, 240));
-  outline: none;
-  margin: 0 auto 24px;
-  font-weight: var(--wot-action-sheet-weight, 500);
-}
-
-.wd-action-sheet__cancel:active {
-  background: var(--wot-action-sheet-active-color, var(--wot-color-bg, #f5f5f5));
-}
-
-.wd-action-sheet__cancel:after {
-  display: none;
-}
-
-.wd-action-sheet__header {
-  color: var(--wot-action-sheet-color, rgba(0, 0, 0, 0.85));
-  position: relative;
-  height: var(--wot-action-sheet-title-height, 64px);
-  line-height: var(--wot-action-sheet-title-height, 64px);
-  text-align: center;
-  font-size: var(--wot-action-sheet-title-fs, var(--wot-fs-title, 16px));
-  font-weight: var(--wot-action-sheet-weight, 500);
-}
-
-.wd-action-sheet__close {
-  position: absolute;
-  top: var(--wot-action-sheet-close-top, 25px);
-  right: var(--wot-action-sheet-close-right, 15px);
-  color: var(--wot-action-sheet-close-color, rgba(0, 0, 0, 0.65));
-  font-size: var(--wot-action-sheet-close-fs, var(--wot-fs-title, 16px));
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  line-height: 1.1;
-}
-</style>

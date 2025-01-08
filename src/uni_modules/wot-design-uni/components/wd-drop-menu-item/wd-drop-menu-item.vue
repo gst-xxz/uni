@@ -209,6 +209,66 @@ function beforeLeave() {
 defineExpose<DropMenuItemExpose>({ getShowPop, open, close, toggle })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-drop-item {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-drop-item__tip {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wd-drop-item {
+  position: fixed;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  font-size: var(--wot-drop-menu-item-fs, var(--wot-fs-content, 14px));
+  color: var(--wot-drop-menu-item-color, var(--wot-color-content, #262626));
+  width: 100%;
+  z-index: 101;
+}
+
+.wd-drop-item .wd-drop-item__popup {
+  position: absolute;
+  max-height: 80%;
+}
+
+.wd-drop-item__option {
+  display: flex;
+  height: var(--wot-drop-menu-item-height, 48px);
+  line-height: var(--wot-drop-menu-item-height, 48px);
+  padding: 0 var(--wot-drop-menu-side-padding, var(--wot-size-side-padding, 15px));
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.wd-drop-item__option.is-active {
+  color: var(--wot-drop-menu-item-color-active, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-drop-item__title {
+  display: block;
+}
+
+.wd-drop-item__tip {
+  display: inline-block;
+  color: var(--wot-drop-menu-item-color-tip, rgba(0, 0, 0, 0.45));
+  font-size: var(--wot-drop-menu-item-fs-tip, var(--wot-fs-secondary, 12px));
+  margin-left: 2px;
+}
+
+.wd-drop-item__icon {
+  display: block;
+  font-size: var(--wot-drop-menu-option-check-size, 20px);
+}
+
+.wd-drop-item__modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
 </style>

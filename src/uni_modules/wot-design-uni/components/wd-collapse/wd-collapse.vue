@@ -145,6 +145,63 @@ defineExpose<CollapseExpose>({
 })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-collapse {
+  background: #1b1b1b;
+}
+
+.wot-theme-dark .wd-collapse__content {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wd-collapse {
+  background: var(--wot-color-white, rgb(255, 255, 255));
+}
+
+.wd-collapse.is-viewmore {
+  padding: var(--wot-collapse-side-padding, var(--wot-size-side-padding, 15px));
+}
+
+.wd-collapse__content {
+  font-size: var(--wot-collapse-body-fs, 14px);
+  color: var(--wot-collapse-body-color, rgba(0, 0, 0, 0.65));
+}
+
+.wd-collapse__content.is-retract {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--wot-collapse-retract-fs, 14px);
+}
+
+.wd-collapse__more {
+  display: inline-block;
+  font-size: var(--wot-collapse-retract-fs, 14px);
+  margin-top: 8px;
+  color: var(--wot-collapse-more-color, var(--wot-color-theme, #4d80f0));
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wd-collapse__more-txt {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.wd-collapse__arrow {
+  display: inline-block;
+  vertical-align: middle;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+  font-size: var(--wot-collapse-arrow-size, 18px);
+  height: var(--wot-collapse-arrow-size, 18px);
+  line-height: var(--wot-collapse-arrow-size, 18px);
+}
+
+.wd-collapse__arrow.is-retract {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
 </style>

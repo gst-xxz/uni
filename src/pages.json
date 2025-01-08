@@ -72,16 +72,6 @@
       }
     },
     {
-      "path": "pages/layout/Index",
-      "name": "layout",
-      "style": {
-        "mp-alipay": {
-          "allowsBounceVertical": "NO"
-        },
-        "navigationBarTitleText": "Layout 布局"
-      }
-    },
-    {
       "path": "pages/card/Index",
       "name": "card",
       "style": {
@@ -813,12 +803,7 @@
       }
     }
   ],
-  // "tabBar": {
-  //   "color": "#7a7e83",
-  //   "selectedColor": "#1C64FD",
-  //   "backgroundColor": "#ffffff",
-  //   "list": [ ]
-  // },
+
   "globalStyle": {
     "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTxtStyle",
@@ -828,9 +813,5 @@
     "backgroundColorTop": "@bgColorTop",
     "backgroundColorBottom": "@bgColorBottom",
     "navigationStyle": "default"
-
-    // "navigationBarTextStyle": "black",
-    // "navigationBarBackgroundColor": "#FFF",
-    // "backgroundColor": "#F8F8F8"
   }
 }
