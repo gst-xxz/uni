@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(['wd-cell-group bg-white', border ? 'is-border border-default' : '', customClass])" :style="customStyle">
+  <div :class="cn(['wd-cell-group bg-white', border ? 'is-border hairline hairline--bottom' : '', customClass])" :style="customStyle">
     <div
       v-if="title || value || useSlot"
       class="wd-cell-group__title relative flex justify-between py-[13px] px-[15px] bg-white text-base text-black/85 font-medium leading-[1.43]"

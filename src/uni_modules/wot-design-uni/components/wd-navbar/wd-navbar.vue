@@ -6,7 +6,7 @@
           `wd-navbar relative text-center select-none h-11 leading-[44px] bg-white box-border`,
           customClass,
           fixed ? 'is-fixed fixed left-0 top-0 w-full z-[500]' : '',
-          bordered ? 'is-border border-default' : ''
+          bordered ? 'is-border hairline hairline--bottom' : ''
         )
       "
       :style="rootStyle"
