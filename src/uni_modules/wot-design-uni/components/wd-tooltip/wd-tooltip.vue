@@ -136,53 +136,6 @@ defineExpose<TooltipExpose>({
 })
 </script>
 <style>
-.wot-theme-dark .wd-tooltip__pos {
-  background: #323233;
-  color: var(--wot-tooltip-color, var(--wot-color-white, rgb(255, 255, 255)));
-}
-
-.wot-theme-dark .wd-tooltip__arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
-.wot-theme-dark .wd-tooltip__arrow-down {
-  border-left: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-right: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-top: var(--wot-tooltip-arrow-size, 5px) solid #323233;
-  -webkit-transform: translateX(-50%);
-  transform: translate(-50%);
-  bottom: calc(-1 * var(--wot-tooltip-arrow-size, 5px));
-}
-
-.wot-theme-dark .wd-tooltip__arrow-up {
-  border-left: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-right: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-bottom: var(--wot-tooltip-arrow-size, 5px) solid #323233;
-  -webkit-transform: translateX(-50%);
-  transform: translate(-50%);
-  top: calc(-1 * var(--wot-tooltip-arrow-size, 5px));
-}
-
-.wot-theme-dark .wd-tooltip__arrow-left {
-  border-top: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-bottom: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-right: var(--wot-tooltip-arrow-size, 5px) solid #323233;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: calc(-1 * var(--wot-tooltip-arrow-size, 5px));
-}
-
-.wot-theme-dark .wd-tooltip__arrow-right {
-  border-top: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-bottom: var(--wot-tooltip-arrow-size, 5px) solid transparent;
-  border-left: var(--wot-tooltip-arrow-size, 5px) solid #323233;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: calc(-1 * var(--wot-tooltip-arrow-size, 5px));
-}
-
 .wd-tooltip {
   position: relative;
   display: inline-block;

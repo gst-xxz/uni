@@ -370,23 +370,6 @@ defineExpose<MonthPanelExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-month-panel__title {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-month-panel__weeks {
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.02);
-  color: #fff;
-}
-
-.wot-theme-dark .wd-month-panel__time-label {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-month-panel__time-label:after {
-  background: #323233;
-}
-
 .wd-month-panel {
   font-size: var(--wot-calendar-fs, 16px);
 }

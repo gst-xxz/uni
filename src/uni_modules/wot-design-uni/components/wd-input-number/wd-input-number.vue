@@ -211,24 +211,6 @@ function formatValue(value: string | number) {
 </script>
 
 <style>
-.wot-theme-dark .wd-input-number__action {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-input-number__action.is-disabled {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-input-number__input {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-input-number.is-disabled .wd-input-number__input,
-.wot-theme-dark .wd-input-number.is-disabled .wd-input-number__sub,
-.wot-theme-dark .wd-input-number.is-disabled .wd-input-number__add {
-  color: #595959;
-}
-
 .wd-input-number {
   display: inline-block;
   -webkit-user-select: none;

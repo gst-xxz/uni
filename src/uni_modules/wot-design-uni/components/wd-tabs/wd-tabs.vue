@@ -430,58 +430,6 @@ defineExpose<TabsExpose>({
 })
 </script>
 <style>
-.wot-theme-dark .wd-tabs,
-.wot-theme-dark .wd-tabs__nav {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-tabs__nav-item {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-tabs__nav-item.is-active {
-  font-weight: 600;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-tabs__nav-item.is-disabled {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-tabs__map-nav-btn {
-  background-color: #323233;
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-tabs__map-nav-btn.is-active {
-  color: #fff;
-  border: 1px solid var(--wot-tabs-nav-active-color, var(--wot-color-theme, #4d80f0));
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-tabs__map-nav-btn.is-disabled {
-  color: #595959;
-  border-color: #f4f4f4;
-}
-
-.wot-theme-dark .wd-tabs__map-btn {
-  background: #1b1b1b;
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-tabs__map-header {
-  background: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-tabs__map-header:after {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-tabs__map-body {
-  background: #1b1b1b;
-}
-
 .wd-tabs {
   position: relative;
   background: #fff;

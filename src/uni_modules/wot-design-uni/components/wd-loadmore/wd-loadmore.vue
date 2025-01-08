@@ -52,10 +52,6 @@ function reload() {
 </script>
 
 <style>
-.wot-theme-dark .wd-loadmore {
-  color: #fff;
-}
-
 .wd-loadmore {
   width: 100%;
   height: var(--wot-loadmore-height, 48px);

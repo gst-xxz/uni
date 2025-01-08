@@ -117,41 +117,6 @@ function onClick() {
 </script>
 
 <style>
-.wot-theme-dark .wd-cell {
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-cell__value,
-.wot-theme-dark .wd-cell__label {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-cell.is-hover {
-  background-color: #323233;
-}
-
-.wot-theme-dark .wd-cell.is-border .wd-cell__wrapper {
-  position: relative;
-}
-
-.wot-theme-dark .wd-cell.is-border .wd-cell__wrapper:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1px;
-  left: 0;
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-cell .wd-cell__arrow-right {
-  color: #fff;
-}
-
 .wd-cell {
   position: relative;
   padding-left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));

@@ -514,55 +514,6 @@ defineExpose<ColPickerExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-col-picker.is-border .wd-col-picker__cell {
-  position: relative;
-}
-
-.wot-theme-dark .wd-col-picker.is-border .wd-col-picker__cell:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
-  height: 1px;
-  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-col-picker__label {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-col-picker__cell {
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-col-picker__cell.is-disabled .wd-col-picker__value,
-.wot-theme-dark .wd-col-picker__list-item.is-disabled {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-col-picker__list-item-tip {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-col-picker__value {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-col-picker__value--placeholder {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-col-picker .wd-col-picker__arrow,
-.wot-theme-dark .wd-col-picker__list,
-.wot-theme-dark .wd-col-picker__selected {
-  color: #fff;
-}
-
 .wd-col-picker.is-border .wd-col-picker__cell {
   position: relative;
 }

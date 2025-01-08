@@ -67,16 +67,6 @@ function onTouchEnd() {
 </script>
 
 <style>
-.wot-theme-dark .wd-key {
-  background: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-key:active,
-.wot-theme-dark .wd-key--active {
-  background-color: #323233;
-}
-
 .wd-key-wrapper {
   position: relative;
   flex: 1;

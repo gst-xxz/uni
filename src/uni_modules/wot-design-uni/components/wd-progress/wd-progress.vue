@@ -190,10 +190,6 @@ function update(targetPercent: number, color: string) {
 </script>
 
 <style>
-.wot-theme-dark .wd-progress__label {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-progress {
   width: 100%;
   height: var(--wot-progress-height, 3px);

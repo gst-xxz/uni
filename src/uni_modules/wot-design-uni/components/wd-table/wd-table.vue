@@ -280,32 +280,6 @@ function rowClick(index: number) {
 </script>
 
 <style>
-.wot-theme-dark .wd-table {
-  background: #131313;
-}
-
-.wot-theme-dark .wd-table.is-border {
-  border: 1px solid var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-table__cell {
-  color: #fff;
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-table__cell.is-stripe {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-table__cell.is-border {
-  border-right: 1px solid var(--wot-dark-border-color, #3a3a3c);
-  border-bottom: 1px solid var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-table__cell.is-shadow:after {
-  background: linear-gradient(270deg, rgba(17, 17, 17, 0.2), rgba(0, 0, 0, 0));
-}
-
 .wd-table {
   position: relative;
   width: 100%;

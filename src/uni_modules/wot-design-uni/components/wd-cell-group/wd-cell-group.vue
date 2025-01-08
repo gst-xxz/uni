@@ -42,40 +42,6 @@ linkChildren({ props })
 </script>
 
 <style>
-.wot-theme-dark .wd-cell-group {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-cell-group.is-border .wd-cell-group__title {
-  position: relative;
-}
-
-.wot-theme-dark .wd-cell-group.is-border .wd-cell-group__title:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1px;
-  left: 0;
-  bottom: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-cell-group__title {
-  background: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-cell-group__right {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-cell-group__body {
-  background: #1b1b1b;
-}
-
 .wd-cell-group {
   background-color: var(--wot-color-white, rgb(255, 255, 255));
 }

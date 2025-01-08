@@ -385,15 +385,6 @@ function getFormatterDate(date: number, day: string | number, type?: CalendarDay
 }
 </script>
 <style>
-.wot-theme-dark .wd-month__title,
-.wot-theme-dark .wd-month__days {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-month__day.is-disabled .wd-month__day-text {
-  color: #595959;
-}
-
 .wd-month__title {
   display: flex;
   align-items: center;

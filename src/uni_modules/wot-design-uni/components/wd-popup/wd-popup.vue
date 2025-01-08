@@ -126,14 +126,6 @@ function close() {
 function noop() {}
 </script>
 <style>
-.wot-theme-dark .wd-popup-wrapper .wd-popup {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-popup-wrapper .wd-popup__close {
-  color: #fff;
-}
-
 .wd-popup-wrapper .wd-popup {
   position: fixed;
   max-height: 100%;

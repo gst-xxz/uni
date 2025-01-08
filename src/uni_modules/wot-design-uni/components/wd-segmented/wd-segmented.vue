@@ -130,34 +130,6 @@ defineExpose<SegmentedExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-segmented {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-segmented__item {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-segmented__item.is-active {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-segmented__item.is-active.is-disabled {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-segmented__item.is-disabled {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-segmented__item--active {
-  background-color: var(--wot-color-theme, #4d80f0);
-}
-
-.wot-theme-dark .wd-segmented__item--active.is-disabled {
-  opacity: 0.6;
-}
-
 .wd-segmented {
   position: relative;
   display: flex;

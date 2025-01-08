@@ -59,14 +59,6 @@ function updateValue(value: number | string, label: string) {
 </script>
 
 <style>
-.wot-theme-dark .wd-sidebar {
-  background: #131313;
-}
-
-.wot-theme-dark .wd-sidebar__padding {
-  background: #1b1b1b;
-}
-
 .wd-sidebar {
   display: flex;
   flex-direction: column;

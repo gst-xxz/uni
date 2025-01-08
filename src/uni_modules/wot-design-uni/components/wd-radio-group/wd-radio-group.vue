@@ -48,10 +48,6 @@ function updateValue(value: string | number | boolean) {
 }
 </script>
 <style>
-.wot-theme-dark .wd-radio-group {
-  background-color: #1b1b1b;
-}
-
 .wd-radio-group {
   background-color: var(--wot-radio-bg, var(--wot-color-white, rgb(255, 255, 255)));
   font-size: 0;

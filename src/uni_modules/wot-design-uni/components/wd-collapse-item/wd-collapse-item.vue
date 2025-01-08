@@ -170,36 +170,6 @@ defineExpose<CollapseItemExpose>({ getExpanded, updateExpand })
 </script>
 
 <style>
-.wot-theme-dark .wd-collapse-item {
-  position: relative;
-}
-
-.wot-theme-dark .wd-collapse-item:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1px;
-  left: 0;
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-collapse-item__title {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-collapse-item__body {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-collapse-item.is-disabled .wd-collapse-item__title,
-.wot-theme-dark .wd-collapse-item.is-disabled .wd-collapse-item__arrow {
-  color: #595959;
-}
-
 .wd-collapse-item {
   position: relative;
 }

@@ -762,49 +762,6 @@ defineExpose<DatetimePickerExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-picker__cell {
-  background-color: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-picker__title,
-.wot-theme-dark .wd-picker__label,
-.wot-theme-dark .wd-picker__value {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-picker__placeholder {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-picker.is-border .wd-picker__cell {
-  position: relative;
-}
-
-.wot-theme-dark .wd-picker.is-border .wd-picker__cell:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
-  height: 1px;
-  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-picker .wd-picker__arrow,
-.wot-theme-dark .wd-picker__action--cancel,
-.wot-theme-dark .wd-picker__region {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-picker__region.is-active {
-  background: var(--wot-picker-region-bg-active-color, var(--wot-color-theme, #4d80f0));
-  color: #fff;
-}
-
 .wd-picker__popup {
   border-radius: 16px 16px 0 0;
 }

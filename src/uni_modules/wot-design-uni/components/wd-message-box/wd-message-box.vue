@@ -275,22 +275,6 @@ function reset(option: MessageOptionsWithCallBack) {
 </script>
 
 <style>
-.wot-theme-dark .wd-message-box__body {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-message-box__title {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-message-box__content {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-message-box__content::-webkit-scrollbar-thumb {
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
 .wd-message-box,
 .wd-message-box {
   border-radius: var(--wot-message-box-radius, 16px);

@@ -146,14 +146,6 @@ defineExpose<CollapseExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-collapse {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-collapse__content {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-collapse {
   background: var(--wot-color-white, rgb(255, 255, 255));
 }

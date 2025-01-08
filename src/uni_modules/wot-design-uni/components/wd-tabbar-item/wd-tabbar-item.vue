@@ -93,10 +93,6 @@ function handleClick() {
 }
 </script>
 <style>
-.wot-theme-dark .wd-tabbar-item__body .is-inactive {
-  color: #595959;
-}
-
 .wd-tabbar-item {
   flex: 1;
   text-align: center;

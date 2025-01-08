@@ -117,48 +117,6 @@ function handleClick() {
 }
 </script>
 <style>
-.wot-theme-dark .wd-radio__shape {
-  background: transparent;
-}
-
-.wot-theme-dark .wd-radio__label {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-radio.is-button .wd-radio__label {
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-radio.is-button.is-checked .wd-radio__label {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-radio.is-disabled .wd-radio__label,
-.wot-theme-dark .wd-radio.is-disabled.is-checked .wd-radio__label {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-radio.is-disabled.is-button .wd-radio__label {
-  border-color: #c8c9cc;
-  background: #3a3a3c;
-  color: #595959;
-}
-
-.wot-theme-dark .wd-radio.is-disabled.is-button.is-checked .wd-radio__label {
-  border-color: #c8c9cc;
-  background: #3a3a3c;
-  color: #c8c9cc;
-}
-
-.wot-theme-dark .wd-radio.is-disabled.is-dot .wd-radio__shape {
-  border-color: #c8c9cc;
-  background: #3a3a3c;
-}
-
-.wot-theme-dark .wd-radio.is-disabled.is-dot .wd-radio__shape:before {
-  background-color: #c8c9cc;
-}
-
 .wd-radio {
   display: flex;
   margin-top: var(--wot-radio-margin, var(--wot-checkbox-margin, 10px));

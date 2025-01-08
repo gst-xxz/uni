@@ -110,28 +110,6 @@ function handleClick() {
 </script>
 
 <style>
-.wot-theme-dark .wd-sidebar-item {
-  background: #1b1b1b;
-  color: #fff;
-}
-
-.wot-theme-dark .wd-sidebar-item:active {
-  background-color: #323233;
-}
-
-.wot-theme-dark .wd-sidebar-item--active {
-  background: #131313;
-  color: var(--wot-sidebar-active-color, var(--wot-color-theme, #4d80f0));
-}
-
-.wot-theme-dark .wd-sidebar-item--disabled {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-sidebar-item--disabled:active {
-  background-color: #1b1b1b;
-}
-
 .wd-sidebar-item {
   display: flex;
   align-items: center;

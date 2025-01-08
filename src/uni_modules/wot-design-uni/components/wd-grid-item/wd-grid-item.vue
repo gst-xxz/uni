@@ -160,22 +160,6 @@ defineExpose({
 </script>
 
 <style>
-.wot-theme-dark .wd-grid-item.is-border:before {
-  background-color: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-grid-item.is-border:after {
-  background-color: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-grid-item.is-first:after {
-  background-color: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-grid-item__content {
-  background-color: #1b1b1b;
-}
-
 .wd-grid-item {
   height: 100%;
   font-size: var(--wot-grid-item-fs, 12px);

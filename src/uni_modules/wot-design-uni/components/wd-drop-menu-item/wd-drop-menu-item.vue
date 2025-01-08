@@ -210,14 +210,6 @@ defineExpose<DropMenuItemExpose>({ getShowPop, open, close, toggle })
 </script>
 
 <style>
-.wot-theme-dark .wd-drop-item {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-drop-item__tip {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-drop-item {
   position: fixed;
   right: 0;

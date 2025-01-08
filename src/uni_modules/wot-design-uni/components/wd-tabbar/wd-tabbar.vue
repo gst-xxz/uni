@@ -94,10 +94,6 @@ function setPlaceholderHeight() {
 }
 </script>
 <style>
-.wot-theme-dark .wd-tabbar {
-  background: #131313;
-}
-
 .wd-tabbar {
   display: flex;
   align-items: center;

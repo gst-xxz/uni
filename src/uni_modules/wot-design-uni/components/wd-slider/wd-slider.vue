@@ -354,21 +354,6 @@ defineExpose<SliderExpose>({
 })
 </script>
 <style>
-.wot-theme-dark .wd-slider__label-min,
-.wot-theme-dark .wd-slider__label-max {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-slider__label {
-  color: #fff;
-  background-color: rgba(27, 27, 27, 0.5);
-}
-
-.wot-theme-dark .wd-slider--disabled .wd-slider__label-min,
-.wot-theme-dark .wd-slider--disabled .wd-slider__label-max {
-  color: #595959;
-}
-
 .wd-slider {
   display: flex;
   flex-flow: row nowrap;

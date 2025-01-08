@@ -34,52 +34,6 @@ defineProps(cardProps)
 </script>
 
 <style>
-.wot-theme-dark .wd-card {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-card.is-rectangle .wd-card__content {
-  position: relative;
-}
-
-.wot-theme-dark .wd-card.is-rectangle .wd-card__content:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1px;
-  left: 0;
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-card.is-rectangle .wd-card__footer {
-  position: relative;
-}
-
-.wot-theme-dark .wd-card.is-rectangle .wd-card__footer:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1px;
-  left: 0;
-  top: 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  background: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-card__title-content {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-card__content {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-card {
   padding: var(--wot-card-padding, 0 var(--wot-size-side-padding, 15px));
   background-color: var(--wot-card-bg, var(--wot-color-white, rgb(255, 255, 255)));

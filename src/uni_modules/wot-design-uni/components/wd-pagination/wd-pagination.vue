@@ -107,14 +107,6 @@ function updateTotalPage() {
 </script>
 
 <style>
-.wot-theme-dark .wd-pager {
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-pager__message {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-pager {
   -webkit-user-select: none;
   user-select: none;

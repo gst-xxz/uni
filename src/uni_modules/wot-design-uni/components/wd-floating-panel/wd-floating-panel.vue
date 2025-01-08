@@ -136,11 +136,6 @@ onBeforeMount(() => {
 </script>
 
 <style>
-.wot-theme-dark .wd-floating-panel,
-.wot-theme-dark .wd-floating-panel__content {
-  background: #1b1b1b;
-}
-
 .wd-floating-panel {
   position: fixed;
   bottom: 0;

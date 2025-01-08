@@ -145,33 +145,6 @@ function getCurrentTitle(currentStatus: string) {
 }
 </script>
 <style>
-.wot-theme-dark .wd-step__icon {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-step__content {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-step__line,
-.wot-theme-dark .wd-step__dot {
-  background: #595959;
-}
-
-.wot-theme-dark .wd-step__description {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-step.is-wait .wd-step__description {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-step .wd-step__icon-outer,
-.wot-theme-dark .wd-step .wd-step__icon-inner {
-  color: rgba(232, 230, 227, 0.8);
-  border-color: #595959;
-}
-
 .wd-step {
   position: relative;
   display: inline-block;

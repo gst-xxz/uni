@@ -106,10 +106,6 @@ const show = computed(() => props.loading == undefined || props.loading === true
 </script>
 
 <style>
-.wot-theme-dark .wd-skeleton__col {
-  background-color: #323233;
-}
-
 .wd-skeleton {
   box-sizing: border-box;
 }

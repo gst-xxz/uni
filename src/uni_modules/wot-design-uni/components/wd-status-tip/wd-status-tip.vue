@@ -57,14 +57,6 @@ const imgStyle = computed(() => {
 })
 </script>
 <style>
-.wot-theme-dark {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-status-tip__text {
-  color: rgba(232, 230, 227, 0.8);
-}
-
 .wd-status-tip {
   padding: var(--wot-statustip-padding, 5px 10px);
   width: 100%;

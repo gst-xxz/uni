@@ -45,28 +45,6 @@ function onTouchStart(event: Event) {
 </script>
 
 <style>
-.wot-theme-dark .wd-password-input__item {
-  color: #fff;
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-password-input__item.is-border {
-  border-color: var(--wot-dark-border-color, #3a3a3c);
-}
-
-.wot-theme-dark .wd-password-input__mask,
-.wot-theme-dark .wd-password-input__cursor {
-  background-color: #fff;
-}
-
-.wot-theme-dark .wd-password-input__info {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-password-input__info.is-border {
-  color: #f2270c;
-}
-
 .wd-password-input {
   position: relative;
   margin: 0 var(--wot-password-input-margin, 16px);

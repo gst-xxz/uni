@@ -117,18 +117,6 @@ function fold(child: any) {
 </script>
 
 <style>
-.wot-theme-dark .wd-drop-menu {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-drop-menu__list {
-  background-color: #1b1b1b;
-}
-
-.wot-theme-dark .wd-drop-menu__item.is-disabled {
-  color: #595959;
-}
-
 .wd-drop-menu {
   box-sizing: border-box;
   color: var(--wot-drop-menu-color, var(--wot-color-content, #262626));

@@ -195,38 +195,6 @@ function handleCancel() {
 }
 </script>
 <style>
-.wot-theme-dark .wd-search {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-search__block {
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-search__input {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-search__cover {
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-search__search-icon,
-.wot-theme-dark .wd-search__search-left-icon,
-.wot-theme-dark .wd-search__clear,
-.wot-theme-dark .wd-search__cancel {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-search.is-light {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-search.is-light .wd-search__block,
-.wot-theme-dark .wd-search.is-light .wd-search__cover {
-  background: #707070;
-}
-
 .wd-search {
   display: flex;
   padding: var(--wot-search-padding, 10px 0 10px var(--wot-search-side-padding, var(--wot-size-side-padding, 15px)));

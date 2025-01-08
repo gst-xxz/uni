@@ -131,11 +131,6 @@ defineExpose<YearPanelExpose>({
 </script>
 
 <style>
-.wot-theme-dark .wd-year-panel__title {
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.02);
-}
-
 .wd-year-panel {
   font-size: var(--wot-calendar-fs, 16px);
   padding: var(--wot-calendar-panel-padding, 0 12px);

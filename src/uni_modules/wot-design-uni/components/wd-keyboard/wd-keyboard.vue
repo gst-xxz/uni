@@ -176,14 +176,6 @@ const handlePress = (text: string, type: NumberKeyType) => {
 </script>
 
 <style>
-.wot-theme-dark .wd-keyboard {
-  background: #646566;
-}
-
-.wot-theme-dark .wd-keyboard__header {
-  color: #fff;
-}
-
 .wd-keyboard {
   width: 100%;
   background: var(--wot-keyboard-background, var(--wot-color-gray-2, #f2f3f5));

@@ -145,10 +145,6 @@ defineExpose({ sortDirection: sortDirection })
 </script>
 
 <style>
-.wot-theme-dark .wd-table-col.is-shadow:after {
-  background: linear-gradient(270deg, rgba(17, 17, 17, 0.2), rgba(0, 0, 0, 0));
-}
-
 .wd-table-col .wd-table__cell {
   width: 100%;
 }

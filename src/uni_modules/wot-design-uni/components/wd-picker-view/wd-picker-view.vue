@@ -360,22 +360,6 @@ defineExpose<PickerViewExpose>({
 })
 </script>
 <style>
-.wot-theme-dark .wd-picker-view__columns {
-  background: #1b1b1b;
-}
-
-.wot-theme-dark .wd-picker-view .wd-picker-view__roller {
-  background: #323233;
-}
-
-.wot-theme-dark .wd-picker-view-column {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-picker-view-column__item--disabled {
-  color: #595959;
-}
-
 .wd-picker-view {
   position: relative;
   padding: 10px 0;

@@ -176,48 +176,6 @@ function toggle() {
 </script>
 
 <style>
-.wot-theme-dark .wd-checkbox__shape {
-  background: transparent;
-  border-color: var(--wot-checkbox-border-color, #dcdcdc);
-  color: var(--wot-checkbox-check-color, var(--wot-color-white, rgb(255, 255, 255)));
-}
-
-.wot-theme-dark .wd-checkbox__label {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-checkbox.is-disabled .wd-checkbox__shape {
-  border-color: #595959;
-  background: #323233;
-}
-
-.wot-theme-dark .wd-checkbox.is-disabled .wd-checkbox__label,
-.wot-theme-dark .wd-checkbox.is-disabled .wd-checkbox__check,
-.wot-theme-dark .wd-checkbox.is-disabled.is-checked .wd-checkbox__shape,
-.wot-theme-dark .wd-checkbox.is-disabled.is-checked .wd-checkbox__label {
-  color: #595959;
-}
-
-.wot-theme-dark .wd-checkbox.is-disabled.is-button .wd-checkbox__label {
-  border-color: #c8c9cc;
-  background: #3a3a3c;
-  color: #595959;
-}
-
-.wot-theme-dark .wd-checkbox.is-disabled.is-button.is-checked .wd-checkbox__label {
-  border-color: #c8c9cc;
-  background: #3a3a3c;
-  color: #c8c9cc;
-}
-
-.wot-theme-dark .wd-checkbox.is-button .wd-checkbox__label {
-  background-color: #131313;
-}
-
-.wot-theme-dark .wd-checkbox.is-button.is-checked .wd-checkbox__label {
-  background-color: #1b1b1b;
-}
-
 .wd-checkbox {
   display: block;
   margin-bottom: var(--wot-checkbox-margin, 10px);

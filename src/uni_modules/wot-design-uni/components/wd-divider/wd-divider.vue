@@ -48,14 +48,6 @@ const rootClass = computed(() => {
 </script>
 
 <style>
-.wot-theme-dark .wd-divider {
-  color: rgba(232, 230, 227, 0.8);
-}
-
-.wot-theme-dark .wd-divider__line {
-  background: #595959;
-}
-
 .wd-divider {
   position: relative;
   display: flex;

@@ -64,10 +64,6 @@ function handleClick() {
 }
 </script>
 <style>
-.wot-theme-dark .wd-sort-button__wrapper {
-  color: #fff;
-}
-
 .wd-sort-button {
   display: inline-block;
   height: var(--wot-sort-button-height, 48px);

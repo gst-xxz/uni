@@ -202,15 +202,6 @@ function getFormatterDate(date: number, month: number, type?: CalendarDayType) {
 </script>
 
 <style>
-.wot-theme-dark .wd-year__title,
-.wot-theme-dark .wd-year__months {
-  color: #fff;
-}
-
-.wot-theme-dark .wd-year__month.is-disabled .wd-year__month-text {
-  color: #595959;
-}
-
 .wd-year__title {
   display: flex;
   align-items: center;
