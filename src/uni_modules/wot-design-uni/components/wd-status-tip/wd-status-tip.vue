@@ -1,8 +1,17 @@
 <template>
-  <div :class="`wd-status-tip  ${customClass}`" :style="customStyle">
+  <div
+    :class="cn(`wd-status-tip py-[5px] px-2.5 w-full my-0 mx-auto text-black/45 text-sm box-border flex flex-col items-center`, customClass)"
+    :style="customStyle"
+  >
     <slot name="image" v-if="$slots.image"></slot>
-    <wd-img v-else-if="imgUrl" :mode="imageMode" :src="imgUrl" custom-class="wd-status-tip__image" :custom-style="imgStyle"></wd-img>
-    <div v-if="tip" class="wd-status-tip__text">{{ tip }}</div>
+    <wd-img
+      v-else-if="imgUrl"
+      :mode="imageMode"
+      :src="imgUrl"
+      custom-class="wd-status-tip__image my-0 mx-auto w-40 h-40"
+      :custom-style="imgStyle"
+    ></wd-img>
+    <div v-if="tip" class="wd-status-tip__text text-sm leading-4 text-black/45 text-center break-words mt-5 mx-auto mb-0">{{ tip }}</div>
   </div>
 </template>
 
@@ -20,7 +29,7 @@ export default {
 <script lang="ts" setup>
 import wdImg from '../wd-img/wd-img.vue'
 import { computed, type CSSProperties } from 'vue'
-import { addUnit, isDef, isObj, objToStyle } from '../common/util'
+import { addUnit, cn, isDef, isObj, objToStyle } from '../common/util'
 import { statusTipProps } from './types'
 
 const props = defineProps(statusTipProps)
@@ -56,31 +65,3 @@ const imgStyle = computed(() => {
   return `${objToStyle(style)}`
 })
 </script>
-<style>
-.wd-status-tip {
-  padding: var(--wot-statustip-padding, 5px 10px);
-  width: 100%;
-  margin: 0 auto;
-  color: var(--wot-statustip-color, rgba(0, 0, 0, 0.45));
-  font-size: var(--wot-statustip-fs, var(--wot-fs-content, 14px));
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.wd-status-tip__image {
-  margin: 0 auto;
-  width: 160px;
-  height: 160px;
-}
-
-.wd-status-tip__text {
-  margin: 20px auto 0;
-  font-size: var(--wot-statustip-fs, var(--wot-fs-content, 14px));
-  line-height: var(--wot-statustip-line-height, 16px);
-  color: var(--wot-statustip-color, rgba(0, 0, 0, 0.45));
-  text-align: center;
-  overflow-wrap: break-word;
-}
-</style>
