@@ -144,6 +144,33 @@ function getScope(index: number) {
 defineExpose({ sortDirection: sortDirection })
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-table-col.is-shadow:after {
+  background: linear-gradient(270deg, rgba(17, 17, 17, 0.2), rgba(0, 0, 0, 0));
+}
+
+.wd-table-col .wd-table__cell {
+  width: 100%;
+}
+
+.wd-table-col--fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+  left: 0;
+}
+
+.wd-table-col.is-shadow:after {
+  content: ' ';
+  position: absolute;
+  right: -0.9375rem;
+  top: 0;
+  width: 0.9375rem;
+  height: 100%;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.04));
+}
+
+.wd-table-col .wd-table__cell:last-child.is-border {
+  border-bottom: none;
+}
 </style>

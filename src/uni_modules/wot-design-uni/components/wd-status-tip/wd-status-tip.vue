@@ -56,6 +56,39 @@ const imgStyle = computed(() => {
   return `${objToStyle(style)}`
 })
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark {
+  background-color: #1b1b1b;
+}
+
+.wot-theme-dark .wd-status-tip__text {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wd-status-tip {
+  padding: var(--wot-statustip-padding, 5px 10px);
+  width: 100%;
+  margin: 0 auto;
+  color: var(--wot-statustip-color, rgba(0, 0, 0, 0.45));
+  font-size: var(--wot-statustip-fs, var(--wot-fs-content, 14px));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wd-status-tip__image {
+  margin: 0 auto;
+  width: 160px;
+  height: 160px;
+}
+
+.wd-status-tip__text {
+  margin: 20px auto 0;
+  font-size: var(--wot-statustip-fs, var(--wot-fs-content, 14px));
+  line-height: var(--wot-statustip-line-height, 16px);
+  color: var(--wot-statustip-color, rgba(0, 0, 0, 0.45));
+  text-align: center;
+  overflow-wrap: break-word;
+}
 </style>

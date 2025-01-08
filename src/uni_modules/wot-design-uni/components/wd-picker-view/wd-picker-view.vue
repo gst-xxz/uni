@@ -359,6 +359,91 @@ defineExpose<PickerViewExpose>({
   resetColumns
 })
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-picker-view__columns {
+  background: #1b1b1b;
+}
+
+.wot-theme-dark .wd-picker-view .wd-picker-view__roller {
+  background: #323233;
+}
+
+.wot-theme-dark .wd-picker-view-column {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-picker-view-column__item--disabled {
+  color: #595959;
+}
+
+.wd-picker-view {
+  position: relative;
+  padding: 10px 0;
+}
+
+.wd-picker-view__columns {
+  position: relative;
+  display: flex;
+  background: var(--wot-picker-bg, var(--wot-color-white, rgb(255, 255, 255)));
+  overflow: hidden;
+  align-items: center;
+}
+
+.wd-picker-view__mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--wot-picker-mask, linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.25)))
+    linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25));
+  background-position: top, bottom;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+
+.wd-picker-view__loading {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background: var(--wot-picker-loading-bg, rgba(var(--wot-color-white, rgb(255, 255, 255)), 0.8));
+}
+
+.wd-picker-view__roller {
+  background: #f5f5f5;
+  z-index: 0;
+}
+
+.wd-picker-view__roller:before,
+.wd-picker-view__roller:after {
+  display: none;
+}
+
+.wd-picker-view-column {
+  flex: 1;
+  font-size: var(--wot-picker-column-fs, 16px);
+  color: var(--wot-picker-column-color, rgba(0, 0, 0, 0.85));
+  text-align: center;
+  transition-timing-function: cubic-bezier(0.28, 0.8, 0.63, 1);
+}
+
+.wd-picker-view-column__item {
+  padding: var(--wot-picker-column-padding, 0 var(--wot-size-side-padding, 15px));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wd-picker-view-column__item--disabled {
+  color: var(--wot-picker-column-disabled-color, rgba(0, 0, 0, 0.25));
+}
 </style>

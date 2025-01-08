@@ -47,6 +47,22 @@ function updateValue(value: string | number | boolean) {
   })
 }
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-radio-group {
+  background-color: #1b1b1b;
+}
+
+.wd-radio-group {
+  background-color: var(--wot-radio-bg, var(--wot-color-white, rgb(255, 255, 255)));
+  font-size: 0;
+}
+
+.wd-radio-group.is-button {
+  width: 100%;
+  height: 100%;
+  padding: 8px 3px 20px 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: auto;
+}
 </style>

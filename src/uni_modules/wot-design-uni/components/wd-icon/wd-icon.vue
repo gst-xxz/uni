@@ -37,6 +37,6 @@ function handleClick(event: any) {
 }
 </script>
 
-<style lang="scss">
+<style>
 @import './assets/iconfont.css';
 </style>

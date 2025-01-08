@@ -141,6 +141,80 @@ const handlePress = (text: string, type: NumberKeyType) => {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-number-keyboard {
+  background: #646566;
+}
+
+.wot-theme-dark .wd-number-keyboard__header {
+  color: #fff;
+}
+
+.wd-number-keyboard {
+  width: 100%;
+  background: var(--wot-number-keyboard-background, var(--wot-color-gray-2, #f2f3f5));
+  color: var(--wot-color-black, rgb(0, 0, 0));
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wd-number-keyboard--with-title {
+  border-radius: 20px 20px 0 0;
+}
+
+.wd-number-keyboard__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  height: var(--wot-number-keyboard-title-height, 34px);
+  padding-top: 6px;
+  color: var(--wot-number-keyboard-title-color, var(--wot-color-gray-7, #646566));
+  font-size: var(--wot-number-keyboard-title-font-size, 16px);
+}
+
+.wd-number-keyboard__title {
+  display: inline-block;
+  font-weight: 400;
+}
+
+.wd-number-keyboard__title-left {
+  position: absolute;
+  left: 0;
+}
+
+.wd-number-keyboard__body {
+  display: flex;
+  padding: 6px 0 0 6px;
+}
+
+.wd-number-keyboard__keys {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+}
+
+.wd-number-keyboard__close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  height: 100%;
+  padding: var(--wot-number-keyboard-title-font-size, 0 16px);
+  color: var(--wot-number-keyboard-close-color, var(--wot-color-theme, #4d80f0));
+  font-size: var(--wot-number-keyboard-close-font-size, 14px);
+  background-color: transparent;
+  border: none;
+}
+
+.wd-number-keyboard__close--hover {
+  opacity: 0.6;
+}
+
+.wd-number-keyboard__sidebar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 </style>

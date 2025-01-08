@@ -69,6 +69,77 @@ function onTouchEnd() {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-key {
+  background: #1b1b1b;
+  color: #fff;
+}
+
+.wot-theme-dark .wd-key:active,
+.wot-theme-dark .wd-key--active {
+  background-color: #323233;
+}
+
+.wd-key-wrapper {
+  position: relative;
+  flex: 1;
+  flex-basis: 33%;
+  box-sizing: border-box;
+  padding: 0 6px 6px 0;
+}
+
+.wd-key-wrapper--wider {
+  flex-basis: 66%;
+}
+
+.wd-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--wot-keyboard-key-height, 48px);
+  font-size: var(--wot-keyboard-key-font-size, 28px);
+  line-height: 1.5;
+  background: var(--wot-keyboard-key-background, var(--wot-color-white, rgb(255, 255, 255)));
+  border-radius: var(--wot-keyboard-key-border-radius, 8px);
+}
+
+.wd-key:active {
+  background-color: var(--wot-keyboard-key-active-color, var(--wot-color-gray-3, #ebedf0));
+}
+
+.wd-key--large {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  bottom: 6px;
+  left: 0;
+  height: auto;
+}
+
+.wd-key--delete,
+.wd-key--close {
+  font-size: var(--wot-keyboard-delete-font-size, 16px);
+}
+
+.wd-key--active {
+  background-color: var(--wot-keyboard-key-active-color, var(--wot-color-gray-3, #ebedf0));
+}
+
+.wd-key--close {
+  color: var(--wot-keyboard-button-text-color, var(--wot-color-white, rgb(255, 255, 255)));
+  background: var(--wot-keyboard--button-background, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-key--close:active {
+  background: var(--wot-keyboard--button-background, var(--wot-color-theme, #4d80f0));
+  opacity: var(--wot-keyboard-button-active-opacity, 0.6);
+}
+
+.wd-key__loading-icon {
+  color: var(--wot-keyboard-button-text-color, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-key__icon {
+  font-size: var(--wot-keyboard-icon-size, 22px);
+}
 </style>

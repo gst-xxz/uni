@@ -7,18 +7,29 @@
         {{ minValue }}
       </div>
       <div class="wd-slider__bar-wrapper" :style="barWrapperStyle">
-        <div class="wd-slider__bar" :style="barCustomStyle">
-        </div>
+        <div class="wd-slider__bar" :style="barCustomStyle"></div>
         <!-- 左边 -->
-        <div class="wd-slider__button-wrapper" :style="buttonLeftStyle" @touchstart="onTouchStart"
-          @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd">
+        <div
+          class="wd-slider__button-wrapper"
+          :style="buttonLeftStyle"
+          @touchstart="onTouchStart"
+          @touchmove="onTouchMove"
+          @touchend="onTouchEnd"
+          @touchcancel="onTouchEnd"
+        >
           <div class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</div>
           <div class="wd-slider__button" />
         </div>
         <!-- 右边 -->
-        <div v-if="showRight" class="wd-slider__button-wrapper" :style="buttonRightStyle"
-          @touchstart="onTouchStartRight" @touchmove="onTouchMoveRight" @touchend="onTouchEndRight"
-          @touchcancel="onTouchEndRight">
+        <div
+          v-if="showRight"
+          class="wd-slider__button-wrapper"
+          :style="buttonRightStyle"
+          @touchstart="onTouchStartRight"
+          @touchmove="onTouchMoveRight"
+          @touchend="onTouchEndRight"
+          @touchcancel="onTouchEndRight"
+        >
           <div class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</div>
           <div class="wd-slider__button" />
         </div>
@@ -207,8 +218,8 @@ function onTouchStart(event: any) {
   startValue.value = !isArray(modelValue)
     ? format(modelValue)
     : leftBarPercent.value < rightBarPercent.value
-      ? format(modelValue[0])
-      : format(modelValue[1])
+    ? format(modelValue[0])
+    : format(modelValue[1])
   emit('dragstart', {
     value: currentValue.value
   })
@@ -342,6 +353,100 @@ defineExpose<SliderExpose>({
   initSlider
 })
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-slider__label-min,
+.wot-theme-dark .wd-slider__label-max {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-slider__label {
+  color: #fff;
+  background-color: rgba(27, 27, 27, 0.5);
+}
+
+.wot-theme-dark .wd-slider--disabled .wd-slider__label-min,
+.wot-theme-dark .wd-slider--disabled .wd-slider__label-max {
+  color: #595959;
+}
+
+.wd-slider {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: calc(var(--wot-slider-handle-radius, 12px) * 3);
+}
+
+.wd-slider__label-min,
+.wd-slider__label-max {
+  font-size: var(--wot-slider-fs, var(--wot-fs-content, 14px));
+  color: var(--wot-slider-color, #333);
+}
+
+.wd-slider__label {
+  text-align: center;
+  width: calc(var(--wot-slider-handle-radius, 12px) * 2);
+  line-height: calc(var(--wot-slider-handle-radius, 12px) * 2);
+  font-size: var(--wot-slider-fs, var(--wot-fs-content, 14px));
+  line-height: 1.2;
+  color: var(--wot-slider-color, #333);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  position: absolute;
+  bottom: calc(var(--wot-slider-handle-radius, 12px) * 2 + 8px);
+}
+
+.wd-slider__bar-wrapper {
+  flex: 1;
+  position: relative;
+  border-radius: calc(var(--wot-slider-axie-height, 3px) / 2);
+  background-color: #e5e5e5;
+  margin: calc(var(--wot-slider-handle-radius, 12px) - var(--wot-slider-axie-height, 3px) / 2) 0;
+}
+
+.wd-slider__bar {
+  position: relative;
+  border-radius: inherit;
+  height: var(--wot-slider-axie-height, 3px);
+  background: var(--wot-slider-line-color, linear-gradient(315deg, #517cf0 0%, #769ef5 100%));
+}
+
+.wd-slider__button-wrapper {
+  width: calc(var(--wot-slider-handle-radius, 12px) * 2);
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.wd-slider__has-label {
+  padding-top: calc(var(--wot-slider-fs, var(--wot-fs-content, 14px)) * 1.2 + 8px);
+}
+
+.wd-slider__button {
+  height: calc(var(--wot-slider-handle-radius, 12px) * 2);
+  width: calc(var(--wot-slider-handle-radius, 12px) * 2);
+  background: var(--wot-slider-handle-bg, linear-gradient(139deg, #ffffff 0%, #f7f7f7 100%));
+  border-radius: 100%;
+  border: 1px solid var(--wot-slider-axie-bg, #e5e5e5);
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(155, 155, 155, 0.5);
+}
+
+.wd-slider__label-min {
+  margin-right: calc(var(--wot-slider-handle-radius, 12px) * 2);
+}
+
+.wd-slider__label-max {
+  margin-left: calc(var(--wot-slider-handle-radius, 12px) * 2);
+}
+
+.wd-slider--disabled .wd-slider__bar {
+  opacity: 0.25;
+}
+
+.wd-slider--disabled .wd-slider__label-min,
+.wd-slider--disabled .wd-slider__label-max {
+  color: var(--wot-slider-disabled-color, rgba(0, 0, 0, 0.25));
+}
 </style>

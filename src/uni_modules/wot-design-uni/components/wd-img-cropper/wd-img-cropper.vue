@@ -628,6 +628,218 @@ module.exports= {
 </script>
 <!-- #endif -->
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wd-img-cropper {
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.wd-img-cropper__wrapper {
+  position: relative;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.wd-img-cropper__cut {
+  z-index: 9;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.wd-img-cropper__cut .wd-img-cropper__cut--top,
+.wd-img-cropper__cut .wd-img-cropper__cut--bottom,
+.wd-img-cropper__cut .wd-img-cropper__cut--left,
+.wd-img-cropper__cut .wd-img-cropper__cut--right {
+  background-color: rgba(0, 0, 0, 0.85);
+  transition: background 0.2s;
+}
+
+.wd-img-cropper__cut .wd-img-cropper__cut--top.is-hightlight,
+.wd-img-cropper__cut .wd-img-cropper__cut--bottom.is-hightlight,
+.wd-img-cropper__cut .wd-img-cropper__cut--left.is-hightlight,
+.wd-img-cropper__cut .wd-img-cropper__cut--right.is-hightlight {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.wd-img-cropper__cut .wd-img-cropper__cut--bottom,
+.wd-img-cropper__cut .wd-img-cropper__cut--right {
+  flex: auto;
+}
+
+.wd-img-cropper__cut--middle {
+  display: flex;
+}
+
+.wd-img-cropper__cut--body {
+  background-color: transparent;
+  position: relative;
+}
+
+.wd-img-cropper__cut--body:before {
+  content: '';
+  border: 1px solid #fff;
+  width: calc(200% - 1px);
+  height: calc(200% - 1px);
+  position: absolute;
+  -webkit-transform: scale(0.5) translate(-1px, -1px);
+  transform: scale(0.5) translate(-1px, -1px);
+  top: -50%;
+  left: -50%;
+}
+
+.wd-img-cropper__cut--body .is-left-top:before,
+.wd-img-cropper__cut--body .is-left-bottom:before,
+.wd-img-cropper__cut--body .is-right-top:before,
+.wd-img-cropper__cut--body .is-right-bottom:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background-color: #fff;
+}
+
+.wd-img-cropper__cut--body .is-left-top:after,
+.wd-img-cropper__cut--body .is-left-bottom:after,
+.wd-img-cropper__cut--body .is-right-top:after,
+.wd-img-cropper__cut--body .is-right-bottom:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.wd-img-cropper__cut--body .is-left-top:before,
+.wd-img-cropper__cut--body .is-left-top:after {
+  left: -2px;
+  top: -2px;
+}
+
+.wd-img-cropper__cut--body .is-left-bottom:before,
+.wd-img-cropper__cut--body .is-left-bottom:after {
+  left: -2px;
+  bottom: -2px;
+}
+
+.wd-img-cropper__cut--body .is-right-top:before,
+.wd-img-cropper__cut--body .is-right-top:after {
+  right: -2px;
+  top: -2px;
+}
+
+.wd-img-cropper__cut--body .is-right-bottom:before,
+.wd-img-cropper__cut--body .is-right-bottom:after {
+  right: -2px;
+  bottom: -2px;
+}
+
+.wd-img-cropper__cut--body .is-gridlines-x,
+.wd-img-cropper__cut--body .is-gridlines-y {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+}
+
+.wd-img-cropper__cut--body .is-gridlines-x {
+  justify-content: center;
+}
+
+.wd-img-cropper__cut--body .is-gridlines-x:before {
+  content: '';
+  display: inline-block;
+  width: 66.66%;
+  height: 200%;
+  border: 1px solid #fff;
+  border-top: none;
+  border-bottom: none;
+  -webkit-transform: scale(0.5) translate(0, -50%);
+  transform: scale(0.5) translateY(-50%);
+}
+
+.wd-img-cropper__cut--body .is-gridlines-y {
+  align-items: center;
+}
+
+.wd-img-cropper__cut--body .is-gridlines-y:after {
+  content: '';
+  flex-shrink: 0;
+  display: inline-block;
+  width: 200%;
+  height: 66.66%;
+  border: 1px solid #fff;
+  border-left: none;
+  border-right: none;
+  -webkit-transform: scale(0.5) translate(-50%, 0);
+  transform: scale(0.5) translate(-50%);
+}
+
+.wd-img-cropper__img {
+  z-index: 2;
+  top: 0;
+  left: 0;
+  position: absolute;
+  border: none;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+
+.wd-img-cropper__canvas {
+  position: fixed;
+  background: #fff;
+  width: 150px;
+  height: 150px;
+  z-index: 10;
+  top: -200%;
+  pointer-events: none;
+}
+
+.wd-img-cropper__footer {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  width: 100%;
+  height: 15vh;
+  text-align: center;
+}
+
+.wd-img-cropper__footer--button {
+  position: relative;
+  text-align: left;
+  margin: 0 20px;
+  padding-top: 4vh;
+  box-sizing: border-box;
+}
+
+.wd-img-cropper__footer--button .is-cancel {
+  display: inline-block;
+  color: #fff;
+  font-size: 16px;
+}
+
+.wd-img-cropper__footer--button .is-confirm {
+  position: absolute;
+  right: 0;
+  width: 56px;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+.wd-img-cropper__rotate {
+  font-size: var(--wot-img-cropper-icon-size, var(--wot-fs-big, 24px));
+  color: var(--wot-img-cropper-icon-color, #fff);
+}
 </style>

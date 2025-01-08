@@ -1,4 +1,3 @@
-
 import type { ExtractPropTypes, PropType } from 'vue'
 import { baseProps, makeStringProp } from '../common/props'
 import type { ImageMode } from '../wd-img/types'

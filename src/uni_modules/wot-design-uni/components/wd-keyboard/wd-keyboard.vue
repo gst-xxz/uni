@@ -175,6 +175,100 @@ const handlePress = (text: string, type: NumberKeyType) => {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-keyboard {
+  background: #646566;
+}
+
+.wot-theme-dark .wd-keyboard__header {
+  color: #fff;
+}
+
+.wd-keyboard {
+  width: 100%;
+  background: var(--wot-keyboard-background, var(--wot-color-gray-2, #f2f3f5));
+  color: var(--wot-color-black, rgb(0, 0, 0));
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wd-keyboard--with-title {
+  border-radius: 20px 20px 0 0;
+}
+
+.wd-keyboard__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  height: var(--wot-keyboard-title-height, 34px);
+  padding-top: 6px;
+  color: var(--wot-keyboard-title-color, var(--wot-color-gray-7, #646566));
+  font-size: var(--wot-keyboard-title-font-size, 16px);
+}
+
+.wd-keyboard__title {
+  display: inline-block;
+  font-weight: 400;
+}
+
+.wd-keyboard__title-left {
+  position: absolute;
+  left: 0;
+}
+
+.wd-keyboard__body {
+  display: flex;
+  padding: 6px 0 0 6px;
+}
+
+.wd-keyboard__keys {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+}
+
+.wd-keyboard-car__body {
+  display: flex;
+  padding: 6px 0 0 6px;
+}
+
+.wd-keyboard-car__keys {
+  display: flex;
+  flex: 10;
+  flex-wrap: wrap;
+}
+
+.wd-keyboard-car__keys .wd-key-wrapper {
+  --wot-keyboard-key-font-size: 18px;
+  flex-basis: 10%;
+}
+
+.wd-keyboard-car__keys .wd-key-wrapper--wider {
+  flex-basis: 20%;
+}
+
+.wd-keyboard__close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  height: 100%;
+  padding: var(--wot-keyboard-title-font-size, 0 16px);
+  color: var(--wot-keyboard-close-color, var(--wot-color-theme, #4d80f0));
+  font-size: var(--wot-keyboard-close-font-size, 14px);
+  background-color: transparent;
+  border: none;
+}
+
+.wd-keyboard__close--hover {
+  opacity: 0.6;
+}
+
+.wd-keyboard__sidebar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 </style>

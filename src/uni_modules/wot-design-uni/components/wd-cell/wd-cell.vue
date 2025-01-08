@@ -116,7 +116,7 @@ function onClick() {
 }
 </script>
 
-<style lang="scss">
+<style>
 .wot-theme-dark .wd-cell {
   background-color: #1b1b1b;
   color: #fff;

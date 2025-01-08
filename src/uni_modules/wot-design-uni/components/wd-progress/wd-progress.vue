@@ -189,6 +189,73 @@ function update(targetPercent: number, color: string) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-progress__label {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wd-progress {
+  width: 100%;
+  height: var(--wot-progress-height, 3px);
+  display: flex;
+  align-items: center;
+  padding: var(--wot-progress-padding, 9px 0 8px);
+}
+
+.wd-progress__outer {
+  display: block;
+  position: relative;
+  flex: 1;
+  height: var(--wot-progress-height, 3px);
+  border-radius: calc(var(--wot-progress-height, 3px) / 2);
+  background: var(--wot-progress-bg, rgb(229, 229, 229));
+}
+
+.wd-progress__inner {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: calc(var(--wot-progress-height, 3px) / 2);
+  background: var(--wot-progress-color, var(--wot-color-theme, #4d80f0));
+  transition-property: width;
+  transition-timing-function: linear;
+  font-size: var(--wot-progress-icon-fs, 18px);
+}
+
+.wd-progress__inner.is-danger {
+  background: var(--wot-progress-danger-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-progress__inner.is-success {
+  background: var(--wot-progress-success-color, var(--wot-color-success, #34d19d));
+}
+
+.wd-progress__inner.is-warning {
+  background: var(--wot-progress-warning-color, var(--wot-color-warning, #f0883a));
+}
+
+.wd-progress__label {
+  width: 30px;
+  margin-left: 9px;
+  color: var(--wot-progress-label-color, #333);
+  font-size: var(--wot-progress-label-fs, 14px);
+}
+
+.wd-progress__icon {
+  font-size: var(--wot-progress-icon-fs, 18px);
+}
+
+.wd-progress__icon.is-danger {
+  color: var(--wot-progress-danger-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-progress__icon.is-success {
+  color: var(--wot-progress-success-color, var(--wot-color-success, #34d19d));
+}
+
+.wd-progress__icon.is-warning {
+  color: var(--wot-progress-warning-color, var(--wot-color-warning, #f0883a));
+}
 </style>

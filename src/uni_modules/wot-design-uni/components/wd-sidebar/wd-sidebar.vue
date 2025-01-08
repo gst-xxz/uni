@@ -1,8 +1,7 @@
 <template>
   <div :class="`wd-sidebar ${customClass}`" :style="customStyle">
     <slot></slot>
-    <div class="wd-sidebar__padding">
-    </div>
+    <div class="wd-sidebar__padding"></div>
   </div>
 </template>
 
@@ -59,6 +58,26 @@ function updateValue(value: number | string, label: string) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-sidebar {
+  background: #131313;
+}
+
+.wot-theme-dark .wd-sidebar__padding {
+  background: #1b1b1b;
+}
+
+.wd-sidebar {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: var(--wot-sidebar-width, 104px);
+  height: var(--wot-sidebar-height, 100%);
+  background: var(--wot-color-white, rgb(255, 255, 255));
+}
+
+.wd-sidebar__padding {
+  flex: 1 1 auto;
+  background: var(--wot-sidebar-bg, var(--wot-color-gray-1, #f7f8fa));
+}
 </style>

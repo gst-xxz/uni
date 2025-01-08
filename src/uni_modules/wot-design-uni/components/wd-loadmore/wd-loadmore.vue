@@ -51,6 +51,42 @@ function reload() {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-loadmore {
+  color: #fff;
+}
+
+.wd-loadmore {
+  width: 100%;
+  height: var(--wot-loadmore-height, 48px);
+  line-height: var(--wot-loadmore-height, 48px);
+  text-align: center;
+  color: var(--wot-loadmore-color, rgba(0, 0, 0, 0.45));
+}
+
+.wd-loadmore__loading {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: var(--wot-loadmore-loading-size, var(--wot-fs-title, 16px));
+  height: var(--wot-loadmore-loading-size, var(--wot-fs-title, 16px));
+}
+
+.wd-loadmore__text {
+  display: inline-block;
+  font-size: var(--wot-loadmore-fs, 14px);
+  vertical-align: middle;
+}
+
+.wd-loadmore__text.is-light {
+  margin: 0 6px;
+  color: var(--wot-loadmore-error-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-loadmore__refresh {
+  display: inline-block;
+  color: var(--wot-loadmore-error-color, var(--wot-color-theme, #4d80f0));
+  vertical-align: middle;
+  font-size: var(--wot-loadmore-refresh-fs, var(--wot-fs-title, 16px));
+}
 </style>

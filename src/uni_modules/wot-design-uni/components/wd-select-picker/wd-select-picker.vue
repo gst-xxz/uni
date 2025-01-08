@@ -443,6 +443,206 @@ defineExpose<SelectPickerExpose>({
   open
 })
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-select-picker.is-border .wd-select-picker__cell {
+  position: relative;
+}
+
+.wot-theme-dark .wd-select-picker.is-border .wd-select-picker__cell:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
+  height: 1px;
+  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wot-theme-dark .wd-select-picker__cell {
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.wot-theme-dark .wd-select-picker__cell.is-disabled .wd-select-picker__value {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wot-theme-dark .wd-select-picker__label,
+.wot-theme-dark .wd-select-picker__value {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-select-picker__value--placeholder {
+  color: #595959;
+}
+
+.wot-theme-dark .wd-select-picker .wd-select-picker__arrow,
+.wot-theme-dark .wd-select-picker .wd-select-picker__close,
+.wot-theme-dark .wd-select-picker .wd-select-picker__clear {
+  color: #fff;
+}
+
+.wd-select-picker.is-border .wd-select-picker__cell {
+  position: relative;
+}
+
+.wd-select-picker.is-border .wd-select-picker__cell:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-cell-padding, var(--wot-size-side-padding, 15px)));
+  height: 1px;
+  left: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-color-border-light, #e8e8e8);
+}
+
+.wd-select-picker__cell {
+  position: relative;
+  display: flex;
+  padding: var(--wot-cell-wrapper-padding, 10px) var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  align-items: flex-start;
+  background-color: var(--wot-color-white, rgb(255, 255, 255));
+  text-decoration: none;
+  color: var(--wot-cell-title-color, rgba(0, 0, 0, 0.85));
+  font-size: var(--wot-cell-title-fs, 14px);
+  overflow: hidden;
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wd-select-picker__cell.is-disabled .wd-select-picker__value {
+  color: var(--wot-input-disabled-color, #d9d9d9);
+}
+
+.wd-select-picker__cell.is-align-right .wd-select-picker__value {
+  text-align: right;
+}
+
+.wd-select-picker__cell.is-error .wd-select-picker__value,
+.wd-select-picker__cell.is-error .wd-select-picker__arrow {
+  color: var(--wot-input-error-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-select-picker__cell.is-large {
+  font-size: var(--wot-cell-title-fs-large, 16px);
+}
+
+.wd-select-picker__cell.is-large .wd-select-picker__arrow,
+.wd-select-picker__cell.is-large .wd-select-picker__clear {
+  font-size: var(--wot-cell-icon-size-large, 18px);
+}
+
+.wd-select-picker__error-message {
+  color: var(--wot-form-item-error-message-color, var(--wot-color-danger, #fa4350));
+  font-size: var(--wot-form-item-error-message-font-size, var(--wot-fs-secondary, 12px));
+  line-height: var(--wot-form-item-error-message-line-height, 24px);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.wd-select-picker__label {
+  position: relative;
+  width: var(--wot-input-cell-label-width, 33%);
+  color: var(--wot-cell-title-color, rgba(0, 0, 0, 0.85));
+  margin-right: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  box-sizing: border-box;
+}
+
+.wd-select-picker__label.is-required {
+  padding-left: 12px;
+}
+
+.wd-select-picker__label.is-required:after {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  content: '*';
+  font-size: var(--wot-cell-required-size, 18px);
+  line-height: 1.1;
+  color: var(--wot-cell-required-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-select-picker__value-wraper {
+  display: flex;
+}
+
+.wd-select-picker__value {
+  flex: 1;
+  margin-right: 10px;
+  color: var(--wot-cell-value-color, rgba(0, 0, 0, 0.85));
+}
+
+.wd-select-picker__value.is-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wd-select-picker__value--placeholder {
+  color: var(--wot-input-placeholder-color, #bfbfbf);
+}
+
+.wd-select-picker__body {
+  flex: 1;
+}
+
+.wd-select-picker__arrow,
+.wd-select-picker__clear {
+  display: block;
+  font-size: var(--wot-cell-icon-size, 16px);
+  color: var(--wot-cell-arrow-color, rgba(0, 0, 0, 0.25));
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wd-select-picker__clear {
+  color: var(--wot-cell-clear-color, #585858);
+}
+
+.wd-select-picker__loading {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background: var(--wot-picker-loading-bg, rgba(var(--wot-color-white, rgb(255, 255, 255)), 0.8));
+}
+
+.wd-select-picker__header {
+  height: 72px;
+  line-height: 72px;
+}
+
+.wd-select-picker__wrapper {
+  padding: 0 10px;
+  position: relative;
+  max-height: 356px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.wd-select-picker__wrapper.is-filterable {
+  height: 314px;
+  max-height: 314px;
+}
+
+.wd-select-picker__wrapper.is-loading {
+  overflow: hidden;
+}
+
+.wd-select-picker__text-active {
+  color: var(--wot-color-theme, #4d80f0);
+}
+
+.wd-select-picker__footer {
+  padding: 24px 15px;
+}
 </style>

@@ -274,6 +274,100 @@ function reset(option: MessageOptionsWithCallBack) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-message-box__body {
+  background-color: #1b1b1b;
+}
+
+.wot-theme-dark .wd-message-box__title {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-message-box__content {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wot-theme-dark .wd-message-box__content::-webkit-scrollbar-thumb {
+  background: var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wd-message-box,
+.wd-message-box {
+  border-radius: var(--wot-message-box-radius, 16px);
+  overflow: hidden;
+}
+
+.wd-message-box__container {
+  width: var(--wot-message-box-width, 300px);
+  box-sizing: border-box;
+}
+
+.wd-message-box__body {
+  background-color: var(--wot-message-box-bg, var(--wot-color-white, rgb(255, 255, 255)));
+  padding: var(--wot-message-box-padding, 25px 24px 0);
+}
+
+.wd-message-box__body.is-no-title {
+  padding: 25px 24px 0;
+}
+
+.wd-message-box__title {
+  text-align: center;
+  font-size: var(--wot-message-box-title-fs, 16px);
+  color: var(--wot-message-box-title-color, rgba(0, 0, 0, 0.85));
+  line-height: 20px;
+  font-weight: 500;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.wd-message-box__content {
+  max-height: var(--wot-message-box-content-max-height, 264px);
+  color: var(--wot-message-box-content-color, #666666);
+  font-size: var(--wot-message-box-content-fs, 14px);
+  text-align: center;
+  overflow: auto;
+  line-height: 20px;
+}
+
+.wd-message-box__content::-webkit-scrollbar {
+  width: var(--wot-message-box-content-scrollbar-width, 4px);
+}
+
+.wd-message-box__content::-webkit-scrollbar-thumb {
+  width: var(--wot-message-box-content-scrollbar-width, 4px);
+  background: var(--wot-message-box-content-scrollbar-color, rgba(0, 0, 0, 0.1));
+  border-radius: calc(var(--wot-message-box-content-scrollbar-width, 4px) / 2);
+}
+
+.wd-message-box__input-error {
+  min-height: 18px;
+  margin-top: 2px;
+  color: var(--wot-message-box-input-error-color, var(--wot-input-error-color, var(--wot-color-danger, #fa4350)));
+  text-align: left;
+}
+
+.wd-message-box__input-error.is-hidden {
+  visibility: hidden;
+}
+
+.wd-message-box__actions {
+  padding: 24px;
+}
+
+.wd-message-box__actions-btn:not(:last-child) {
+  margin-right: 16px;
+}
+
+.wd-message-box__flex {
+  display: flex;
+}
+
+.wd-message-box__block {
+  display: block;
+}
+
+.wd-message-box__cancel {
+  margin-right: 16px;
+}
 </style>

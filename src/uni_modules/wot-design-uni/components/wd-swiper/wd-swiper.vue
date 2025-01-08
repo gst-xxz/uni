@@ -1,31 +1,67 @@
 <template>
   <div :class="`wd-swiper ${customClass}`" :style="customStyle">
-    <swiper :adjust-height="adjustHeight" :adjust-vertical-height="adjustVerticalHeight" class="wd-swiper__track"
-      :autoplay="autoplay && !videoPlaying" :current="navCurrent" :interval="interval" :duration="duration"
-      :circular="loop" :vertical="direction == 'vertical'" :easing-function="easingFunction"
-      :previous-margin="addUnit(previousMargin)" :next-margin="addUnit(nextMargin)" :snap-to-edge="snapToEdge"
-      :display-multiple-items="displayMultipleItems" :style="{ height: addUnit(height) }" @change="handleChange"
-      @animationfinish="handleAnimationfinish">
+    <swiper
+      :adjust-height="adjustHeight"
+      :adjust-vertical-height="adjustVerticalHeight"
+      class="wd-swiper__track"
+      :autoplay="autoplay && !videoPlaying"
+      :current="navCurrent"
+      :interval="interval"
+      :duration="duration"
+      :circular="loop"
+      :vertical="direction == 'vertical'"
+      :easing-function="easingFunction"
+      :previous-margin="addUnit(previousMargin)"
+      :next-margin="addUnit(nextMargin)"
+      :snap-to-edge="snapToEdge"
+      :display-multiple-items="displayMultipleItems"
+      :style="{ height: addUnit(height) }"
+      @change="handleChange"
+      @animationfinish="handleAnimationfinish"
+    >
       <swiper-item v-for="(item, index) in list" :key="index" class="wd-swiper__item">
-        <img v-if="isImage(item)" :src="isObj(item) ? item[valueKey] : item"
+        <img
+          v-if="isImage(item)"
+          :src="isObj(item) ? item[valueKey] : item"
           :class="`wd-swiper__image ${customImageClass} ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
-          :style="{ height: addUnit(height) }" :mode="imageMode" @click="handleClick(index, item)" />
-        <video v-else-if="isVideo(item)" :id="`video-${index}-${uid}`" :style="{ height: addUnit(height) }"
-          :src="isObj(item) ? item[valueKey] : item" :poster="isObj(item) ? item.poster : ''"
+          :style="{ height: addUnit(height) }"
+          :mode="imageMode"
+          @click="handleClick(index, item)"
+        />
+        <video
+          v-else-if="isVideo(item)"
+          :id="`video-${index}-${uid}`"
+          :style="{ height: addUnit(height) }"
+          :src="isObj(item) ? item[valueKey] : item"
+          :poster="isObj(item) ? item.poster : ''"
           :class="`wd-swiper__video ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
-          @play="handleVideoPaly" @pause="handleVideoPause" :enable-progress-gesture="false" loop muted
-          :autoplay="autoplayVideo" objectFit="cover" @click="handleClick(index, item)" />
-        <span v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`"
-          :style="customTextStyle">{{ item[textKey] }}</span>
+          @play="handleVideoPaly"
+          @pause="handleVideoPause"
+          :enable-progress-gesture="false"
+          loop
+          muted
+          :autoplay="autoplayVideo"
+          objectFit="cover"
+          @click="handleClick(index, item)"
+        />
+        <span v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`" :style="customTextStyle">{{ item[textKey] }}</span>
       </swiper-item>
     </swiper>
 
     <template v-if="indicator">
       <slot name="indicator" :current="currentValue" :total="list.length"></slot>
-      <wd-swiper-nav v-if="!$slots.indicator" :custom-class="customIndicatorClass" :type="swiperIndicator.type"
-        :current="swiperIndicator.current" :total="swiperIndicator.total" :direction="swiperIndicator.direction"
-        :indicator-position="swiperIndicator.indicatorPosition" :min-show-num="swiperIndicator.minShowNum"
-        :show-controls="swiperIndicator.showControls" @change="handleIndicatorChange" />
+      <wd-swiper-nav
+        v-if="!$slots.indicator"
+        :custom-class="customIndicatorClass"
+        :type="swiperIndicator.type"
+        :current="swiperIndicator.current"
+        :total="swiperIndicator.total"
+        :direction="swiperIndicator.direction"
+        :indicator-position="swiperIndicator.indicatorPosition"
+        :min-show-num="swiperIndicator.minShowNum"
+        :show-controls="swiperIndicator.showControls"
+        @change="handleIndicatorChange"
+      />
     </template>
   </div>
 </template>
@@ -260,6 +296,36 @@ function handleIndicatorChange({ dir }: { dir: 'prev' | 'next' }) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wd-swiper {
+  position: relative;
+}
+
+.wd-swiper__track {
+  border-radius: var(--wot-swiper-radius, 8px);
+  overflow: hidden;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.wd-swiper__item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: var(--wot-swiper-item-padding, 0);
+}
+
+.wd-swiper__image,
+.wd-swiper__video {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.wd-swiper__text {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  color: var(--wot-swiper-item-text-color, #ffffff);
+  font-size: var(--wot-swiper-item-text-fs, var(--wot-fs-title, 16px));
+}
 </style>

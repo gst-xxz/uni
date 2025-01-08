@@ -286,6 +286,331 @@ function handleClick(event: MouseEvent) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-input {
+  background: #1b1b1b;
+}
+
+.wot-theme-dark .wd-input:after {
+  background: #595959;
+}
+
+.wot-theme-dark .wd-input.is-not-empty:not(.is-disabled):after {
+  background-color: #fff;
+}
+
+.wot-theme-dark .wd-input__inner {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-input__inner::-webkit-input-placeholder {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wot-theme-dark .wd-input__placeholder {
+  color: rgba(232, 230, 227, 0.8);
+}
+
+.wot-theme-dark .wd-input__count {
+  color: rgba(232, 230, 227, 0.8);
+  background: transparent;
+}
+
+.wot-theme-dark .wd-input__count-current {
+  color: #fff;
+}
+
+.wot-theme-dark .wd-input .wd-input__icon,
+.wot-theme-dark .wd-input .wd-input__clear {
+  color: #fff;
+  background: transparent;
+}
+
+.wot-theme-dark .wd-input.is-cell {
+  background-color: #1b1b1b;
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wot-theme-dark .wd-input.is-cell.is-border {
+  position: relative;
+}
+
+.wot-theme-dark .wd-input.is-cell.is-border:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-input-cell-padding, 10px));
+  height: 1px;
+  left: var(--wot-input-cell-padding, 10px);
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wot-theme-dark .wd-input.is-disabled .wd-input__inner {
+  color: #595959;
+  background: transparent;
+}
+
+.wot-theme-dark .wd-input__label {
+  color: #fff;
+}
+
+.wd-input {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  background: var(--wot-input-bg, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-input:after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--wot-input-border-color, #dadada);
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.wd-input.is-not-empty:not(.is-disabled):after {
+  background-color: var(--wot-input-not-empty-border-color, #262626);
+}
+
+.wd-input__label {
+  position: relative;
+  display: flex;
+  width: var(--wot-input-cell-label-width, 33%);
+  color: var(--wot-cell-title-color, rgba(0, 0, 0, 0.85));
+  margin-right: var(--wot-cell-padding, var(--wot-size-side-padding, 15px));
+  box-sizing: border-box;
+  font-size: var(--wot-input-fs, var(--wot-cell-title-fs, 14px));
+  flex-shrink: 0;
+}
+
+.wd-input__label.is-required {
+  padding-left: 12px;
+}
+
+.wd-input__label.is-required:after {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  content: '*';
+  font-size: var(--wot-cell-required-size, 18px);
+  line-height: 1.1;
+  color: var(--wot-cell-required-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-input__label-inner {
+  display: inline-block;
+  font-size: var(--wot-input-fs, var(--wot-cell-title-fs, 14px));
+  line-height: var(--wot-cell-line-height, 24px);
+}
+
+.wd-input__body {
+  flex: 1;
+}
+
+.wd-input__value {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.wd-input__prefix {
+  margin-right: var(--wot-input-icon-margin, 8px);
+  font-size: var(--wot-input-fs, var(--wot-cell-title-fs, 14px));
+  line-height: initial;
+}
+
+.wd-input__prefix .wd-input__icon,
+.wd-input__prefix .wd-input__clear {
+  margin-left: 0;
+}
+
+.wd-input__suffix {
+  flex-shrink: 0;
+  margin-left: var(--wot-input-icon-margin, 8px);
+  line-height: initial;
+}
+
+.wd-input__error-message {
+  color: var(--wot-form-item-error-message-color, var(--wot-color-danger, #fa4350));
+  font-size: var(--wot-form-item-error-message-font-size, var(--wot-fs-secondary, 12px));
+  line-height: var(--wot-form-item-error-message-line-height, 24px);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.wd-input.is-disabled .wd-input__inner {
+  color: var(--wot-input-disabled-color, #d9d9d9);
+  background: transparent;
+}
+
+.wd-input.is-error .wd-input__inner {
+  color: var(--wot-input-error-color, var(--wot-color-danger, #fa4350));
+  background: transparent;
+}
+
+.wd-input.is-no-border:after {
+  display: none;
+}
+
+.wd-input.is-no-border .wd-input__inner {
+  height: var(--wot-input-inner-height-no-border, 24px);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wd-input.is-cell {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--wot-input-cell-padding, 10px) var(--wot-input-padding, var(--wot-size-side-padding, 15px));
+  background-color: var(--wot-input-cell-bg, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-input.is-cell.is-error:after {
+  background: var(--wot-input-cell-border-color, var(--wot-color-border-light, #e8e8e8));
+}
+
+.wd-input.is-cell .wd-input__icon,
+.wd-input.is-cell .wd-input__clear {
+  display: inline-flex;
+  align-items: center;
+  height: var(--wot-input-cell-height, 24px);
+  line-height: var(--wot-input-cell-height, 24px);
+}
+
+.wd-input.is-cell .wd-input__prefix {
+  display: inline-block;
+  margin-right: var(--wot-cell-icon-right, 4px);
+}
+
+.wd-input.is-cell .wd-input__inner {
+  height: var(--wot-input-cell-height, 24px);
+}
+
+.wd-input.is-cell.wd-input:after {
+  display: none;
+}
+
+.wd-input.is-cell.is-center {
+  align-items: center;
+}
+
+.wd-input.is-cell.is-border {
+  position: relative;
+}
+
+.wd-input.is-cell.is-border:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: calc(100% - var(--wot-input-cell-padding, 10px));
+  height: 1px;
+  left: var(--wot-input-cell-padding, 10px);
+  top: 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background: var(--wot-color-border-light, #e8e8e8);
+}
+
+.wd-input.is-large {
+  padding: var(--wot-input-cell-padding-large, 12px);
+}
+
+.wd-input.is-large .wd-input__prefix,
+.wd-input.is-large .wd-input__label-inner,
+.wd-input.is-large .wd-input__inner {
+  font-size: var(--wot-input-fs-large, var(--wot-cell-title-fs-large, 16px));
+}
+
+.wd-input.is-large .wd-input__count {
+  font-size: var(--wot-input-count-fs-large, 14px);
+}
+
+.wd-input.is-large .wd-input__icon,
+.wd-input.is-large .wd-input__clear {
+  font-size: var(--wot-input-icon-size-large, 18px);
+}
+
+.wd-input__inner {
+  flex: 1;
+  height: var(--wot-input-inner-height, 34px);
+  font-size: var(--wot-input-fs, var(--wot-cell-title-fs, 14px));
+  color: var(--wot-input-color, #262626);
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wd-input__inner::-webkit-input-placeholder {
+  color: var(--wot-input-placeholder-color, #bfbfbf);
+}
+
+.wd-input__inner.is-align-right {
+  text-align: right;
+}
+
+.wd-input__readonly-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.wd-input__icon {
+  margin-left: var(--wot-input-icon-margin, 8px);
+  font-size: var(--wot-input-icon-size, 16px);
+  color: var(--wot-input-icon-color, #bfbfbf);
+  vertical-align: middle;
+  background: var(--wot-input-bg, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-input__clear {
+  margin-left: var(--wot-input-icon-margin, 8px);
+  font-size: var(--wot-input-icon-size, 16px);
+  color: var(--wot-input-clear-color, #585858);
+  vertical-align: middle;
+  background: var(--wot-input-bg, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-input__count {
+  margin-left: 15px;
+  font-size: var(--wot-input-count-fs, 14px);
+  color: var(--wot-input-count-color, #bfbfbf);
+  vertical-align: middle;
+  background: var(--wot-input-bg, var(--wot-color-white, rgb(255, 255, 255)));
+}
+
+.wd-input__count-current {
+  color: var(--wot-input-count-current-color, #262626);
+}
+
+.wd-input__count-current.is-error {
+  color: var(--wot-input-error-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-input__placeholder {
+  color: var(--wot-input-placeholder-color, #bfbfbf);
+}
+
+.wd-input__placeholder.is-error {
+  color: var(--wot-input-error-color, var(--wot-color-danger, #fa4350));
+}
+
+.wd-input .wd-input__count,
+.wd-input .wd-input__count-current {
+  display: inline-flex;
+}
 </style>

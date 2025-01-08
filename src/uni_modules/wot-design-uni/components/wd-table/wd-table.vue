@@ -279,6 +279,153 @@ function rowClick(index: number) {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-table {
+  background: #131313;
+}
+
+.wot-theme-dark .wd-table.is-border {
+  border: 1px solid var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wot-theme-dark .wd-table__cell {
+  color: #fff;
+  background: #1b1b1b;
+}
+
+.wot-theme-dark .wd-table__cell.is-stripe {
+  background: #323233;
+}
+
+.wot-theme-dark .wd-table__cell.is-border {
+  border-right: 1px solid var(--wot-dark-border-color, #3a3a3c);
+  border-bottom: 1px solid var(--wot-dark-border-color, #3a3a3c);
+}
+
+.wot-theme-dark .wd-table__cell.is-shadow:after {
+  background: linear-gradient(270deg, rgba(17, 17, 17, 0.2), rgba(0, 0, 0, 0));
+}
+
+.wd-table {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  background: var(--wot-table-bg, #ffffff);
+}
+
+.wd-table.is-border {
+  border: 1px solid var(--wot-table-border-color, #ececec);
+}
+
+.wd-table .wd-table-col:last-child .wd-table__cell.is-border {
+  border-right: none;
+}
+
+.wd-table__header {
+  width: 100%;
+  height: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.wd-table__body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wd-table__content {
+  display: flex;
+}
+
+.wd-table__content--header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.wd-table__cell {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--wot-table-bg, #ffffff);
+  width: 100px;
+  min-height: 50px;
+  padding: 8px 10px;
+  font-size: var(--wot-table-font-size, 13px);
+  color: var(--wot-table-color, var(--wot-font-gray-1, rgba(0, 0, 0, 0.9)));
+  --wot-sort-button-height: 30px;
+}
+
+.wd-table__cell.is-border {
+  border-right: 1px solid var(--wot-table-border-color, #ececec);
+  border-bottom: 1px solid var(--wot-table-border-color, #ececec);
+}
+
+.wd-table__cell.is-stripe {
+  background: var(--wot-table-stripe-bg, #f3f3f3);
+}
+
+.wd-table__cell.is-fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+  left: 0;
+}
+
+.wd-table__cell.is-shadow:after {
+  content: ' ';
+  position: absolute;
+  right: -0.9375rem;
+  top: 0;
+  width: 0.9375rem;
+  height: 100%;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.04));
+}
+
+.wd-table__cell.is-left {
+  justify-content: flex-start;
+}
+
+.wd-table__cell.is-center {
+  justify-content: center;
+}
+
+.wd-table__cell.is-right {
+  justify-content: flex-end;
+}
+
+.wd-table__wrapper {
+  width: 100%;
+  overflow: auto;
+}
+
+.wd-table__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.wd-table__header-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.wd-table__body {
+  display: flex;
+  width: 100%;
+}
+
+.wd-table__value.is-ellipsis {
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 </style>

@@ -1,6 +1,11 @@
 <template>
-  <div @click="handleClick" :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${suffix ? 'wd-sidebar-item--suffix' : ''
-    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`" :style="customStyle">
+  <div
+    @click="handleClick"
+    :class="`wd-sidebar-item ${active ? 'wd-sidebar-item--active' : ''} ${prefix ? 'wd-sidebar-item--prefix' : ''}  ${
+      suffix ? 'wd-sidebar-item--suffix' : ''
+    } ${disabled ? 'wd-sidebar-item--disabled' : ''} ${customClass}`"
+    :style="customStyle"
+  >
     <slot name="icon"></slot>
     <template v-if="!$slots.icon && icon">
       <wd-icon custom-class="wd-sidebar-item__icon" :name="icon"></wd-icon>
@@ -23,8 +28,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-
-
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { SIDEBAR_KEY } from '../wd-sidebar/types'
@@ -106,6 +109,94 @@ function handleClick() {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-sidebar-item {
+  background: #1b1b1b;
+  color: #fff;
+}
+
+.wot-theme-dark .wd-sidebar-item:active {
+  background-color: #323233;
+}
+
+.wot-theme-dark .wd-sidebar-item--active {
+  background: #131313;
+  color: var(--wot-sidebar-active-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wot-theme-dark .wd-sidebar-item--disabled {
+  color: #595959;
+}
+
+.wot-theme-dark .wd-sidebar-item--disabled:active {
+  background-color: #1b1b1b;
+}
+
+.wd-sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+  font-size: var(--wot-sidebar-font-size, 16px);
+  color: var(--wot-sidebar-color, var(--wot-font-gray-1, rgba(0, 0, 0, 0.9)));
+  background: var(--wot-sidebar-bg, var(--wot-color-gray-1, #f7f8fa));
+  min-height: var(--wot-sidebar-item-height, 56px);
+  box-sizing: border-box;
+  white-space: wrap;
+  line-height: var(--wot-sidebar-item-line-height, 24px);
+}
+
+.wd-sidebar-item:active {
+  background-color: var(--wot-sidebar-hover-bg, var(--wot-color-gray-2, #f2f3f5));
+}
+
+.wd-sidebar-item--active {
+  font-weight: 600;
+  background: var(--wot-sidebar-active-bg, var(--wot-color-white, rgb(255, 255, 255)));
+  color: var(--wot-sidebar-active-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-sidebar-item--active:before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--wot-sidebar-active-border-width, 4px);
+  height: var(--wot-sidebar-active-border-height, 16px);
+  background: var(--wot-sidebar-active-color, var(--wot-color-theme, #4d80f0));
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  content: '';
+  border-radius: var(--wot-sidebar-active-border-width, 4px);
+}
+
+.wd-sidebar-item--active:active {
+  background-color: transparent;
+}
+
+.wd-sidebar-item--prefix {
+  border-bottom-right-radius: var(--wot-sidebar-border-radius, 8px);
+}
+
+.wd-sidebar-item--suffix {
+  border-top-right-radius: var(--wot-sidebar-border-radius, 8px);
+}
+
+.wd-sidebar-item--disabled {
+  color: var(--wot-side-bar-disabled-color, var(--wot-font-gray-4, rgba(0, 0, 0, 0.26)));
+  cursor: not-allowed;
+}
+
+.wd-sidebar-item--disabled:active {
+  background-color: var(--wot-sidebar-bg, var(--wot-color-gray-1, #f7f8fa));
+}
+
+.wd-sidebar-item__badge {
+  z-index: 2;
+}
+
+.wd-sidebar-item__icon {
+  font-size: var(--wot-sidebar-icon-size, 20px);
+  margin-right: 2px;
+}
 </style>

@@ -4,11 +4,13 @@
       <div class="wd-tabbar-item__body">
         <slot name="icon" :active="active"></slot>
         <template v-if="!$slots.icon && icon">
-          <wd-icon :name="icon" :custom-style="textStyle"
-            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"></wd-icon>
+          <wd-icon
+            :name="icon"
+            :custom-style="textStyle"
+            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"
+          ></wd-icon>
         </template>
-        <span v-if="title" :style="textStyle"
-          :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
+        <span v-if="title" :style="textStyle" :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
           {{ title }}
         </span>
       </div>
@@ -26,8 +28,6 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-
-
 import { type CSSProperties, computed } from 'vue'
 import { deepAssign, isDef, isUndefined, objToStyle, omitBy } from '../common/util'
 import { useParent } from '../composables/useParent'
@@ -92,6 +92,44 @@ function handleClick() {
   tabbar && tabbar.setChange({ name })
 }
 </script>
-<style lang="scss">
-@import './index.scss';
+<style>
+.wot-theme-dark .wd-tabbar-item__body .is-inactive {
+  color: #595959;
+}
+
+.wd-tabbar-item {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wd-tabbar-item__body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  line-height: 1;
+  padding: 0;
+  position: relative;
+}
+
+.wd-tabbar-item__body .is-active {
+  color: var(--wot-tabbar-active-color, var(--wot-color-theme, #4d80f0));
+}
+
+.wd-tabbar-item__body .is-inactive {
+  color: var(--wot-tabbar-inactive-color, var(--wot-color-title, var(--wot-color-black, rgb(0, 0, 0))));
+}
+
+.wd-tabbar-item__body-title {
+  font-size: var(--wot-tabbar-item-title-font-size, 10px);
+  line-height: var(--wot-tabbar-item-title-line-height, initial);
+}
+
+.wd-tabbar-item__body-icon {
+  font-size: var(--wot-tabbar-item-icon-size, 20px);
+}
 </style>
