@@ -1,9 +1,12 @@
 <template>
   <div>
     <wd-popup
-      custom-class="wd-action-sheet__popup"
-      class="rounded-none rounded-tr-2xl rounded-tl-2xl"
-      :custom-style="`${(actions && actions.length) || (panels && panels.length) ? 'background: transparent;' : ''}`"
+      :custom-class="
+        cn(
+          'wd-action-sheet__popup rounded-none rounded-tr-2xl rounded-tl-2xl',
+          (actions && actions.length) || (panels && panels.length) ? 'bg-transparent' : ''
+        )
+      "
       v-model="showPopup"
       :duration="duration"
       position="bottom"
@@ -19,11 +22,17 @@
     >
       <div
         :class="cn(`wd-action-sheet bg-white pb-px`, customClass)"
-        :style="`${
-          (actions && actions.length) || (panels && panels.length)
-            ? 'margin: 0 10px calc(var(--window-bottom) + 10px) 10px; border-radius: 16px;'
-            : 'margin-bottom: var(--window-bottom);'
-        } ${customStyle}`"
+        :style="{
+          ...customStyle,
+          ...((actions && actions.length) || (panels && panels.length)
+            ? {
+                margin: '0 10px calc(var(--window-bottom) + 10px) 10px',
+                'border-radius': '16px'
+              }
+            : {
+                marginBottom: 'var(--window-bottom)'
+              })
+        }"
       >
         <div
           v-if="title"
@@ -123,7 +132,13 @@ const formatPanels = ref<Array<Panel> | Array<Panel[]>>([])
 
 const showPopup = ref<boolean>(false)
 
-watch(() => props.panels, computedValue, { deep: true, immediate: true })
+watch(
+  () => props.panels,
+  () => {
+    formatPanels.value = isPanelArray() ? [props.panels as Panel[]] : (props.panels as Panel[][])
+  },
+  { deep: true, immediate: true }
+)
 
 watch(
   () => props.modelValue,
@@ -135,9 +150,6 @@ watch(
 
 function isPanelArray() {
   return props.panels.length && !isArray(props.panels[0])
-}
-function computedValue() {
-  formatPanels.value = isPanelArray() ? [props.panels as Panel[]] : (props.panels as Panel[][])
 }
 
 function select(rowIndex: number, type: 'action' | 'panels', colIndex?: number) {
@@ -165,9 +177,6 @@ function select(rowIndex: number, type: 'action' | 'panels', colIndex?: number) 
 }
 function handleClickModal() {
   emit('click-modal')
-  // if (props.closeOnClickModal) {
-  //   close()
-  // }
 }
 function handleCancel() {
   emit('cancel')

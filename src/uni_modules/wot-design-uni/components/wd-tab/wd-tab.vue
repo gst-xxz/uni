@@ -21,7 +21,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { getCurrentInstance, ref, watch, type CSSProperties } from 'vue'
-import { cn, isDef, isNumber, isString, objToStyle } from '../common/util'
+import { cn, isDef, isNumber, isString } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { TABS_KEY } from '../wd-tabs/types'
 import { computed } from 'vue'
@@ -44,7 +44,7 @@ const tabBodyStyle = computed(() => {
   if (!active.value && (!isDef(tabs) || !tabs.props.animated)) {
     style.display = 'none'
   }
-  return objToStyle(style)
+  return style
 })
 
 const shouldBeRender = computed(() => !props.lazy || painted.value || active.value)

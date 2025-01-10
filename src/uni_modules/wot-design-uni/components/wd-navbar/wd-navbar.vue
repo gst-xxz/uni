@@ -81,7 +81,7 @@ export default {
 
 <script lang="ts" setup>
 import { type CSSProperties, computed, getCurrentInstance, nextTick, onMounted, ref, watch } from 'vue'
-import { getRect, addUnit, isDef, objToStyle, cn } from '../common/util'
+import { getRect, addUnit, isDef, cn } from '../common/util'
 import { navbarProps } from './types'
 
 const props = defineProps(navbarProps)
@@ -100,14 +100,16 @@ watch(
 )
 
 const rootStyle = computed(() => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {
+    ...props.customStyle
+  }
   if (props.fixed && isDef(props.zIndex)) {
     style['z-index'] = props.zIndex
   }
   if (props.safeAreaInsetTop) {
     style['padding-top'] = addUnit(statusBarHeight || 0)
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 onMounted(() => {

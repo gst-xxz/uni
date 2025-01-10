@@ -58,15 +58,6 @@ watch(
 )
 
 watch(
-  () => props.shape,
-  (newValue) => {
-    const type = ['circle', 'square', 'button']
-    if (type.indexOf(newValue) === -1) console.error(`shape must be one of ${type.toString()}`)
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
   () => props.min,
   (newValue) => {
     checkNumRange(newValue, 'min')

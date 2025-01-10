@@ -49,7 +49,7 @@ export default {
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { type CSSProperties, computed, ref, watch, inject, getCurrentInstance, onBeforeUnmount, onMounted } from 'vue'
-import { cn, getRect, isDef, isH5, objToStyle } from '../common/util'
+import { cn, getRect, isDef, isH5 } from '../common/util'
 import { type Queue, queueKey } from '../composables/useQueue'
 import { closeOther, pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { fabProps, type FabExpose } from './types'
@@ -190,6 +190,7 @@ function handleTouchEnd() {
 
 const rootStyle = computed(() => {
   const style: CSSProperties = {
+    ...props.customStyle,
     top: top.value + 'px',
     left: left.value + 'px',
     transition: attractTransition.value ? 'all ease 0.3s' : 'none'
@@ -197,7 +198,7 @@ const rootStyle = computed(() => {
   if (isDef(props.zIndex)) {
     style['z-index'] = props.zIndex
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 onMounted(() => {

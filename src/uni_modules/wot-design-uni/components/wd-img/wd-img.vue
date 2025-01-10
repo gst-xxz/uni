@@ -30,7 +30,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { addUnit, cn, isDef, objToStyle } from '../common/util'
+import { addUnit, cn, isDef } from '../common/util'
 import { imgProps } from './types'
 
 const props = defineProps(imgProps)
@@ -41,7 +41,9 @@ const emit = defineEmits<{
 }>()
 
 const rootStyle = computed(() => {
-  const style: Record<string, string | number> = {}
+  const style: Record<string, string | number> = {
+    ...props.customStyle
+  }
   if (isDef(props.height)) {
     style['height'] = addUnit(props.height)
   }
@@ -52,7 +54,7 @@ const rootStyle = computed(() => {
     style['border-radius'] = addUnit(props.radius)
     style['overflow'] = 'hidden'
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 const status = ref<'loading' | 'error' | 'success'>('loading')

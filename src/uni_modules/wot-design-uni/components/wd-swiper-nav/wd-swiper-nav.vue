@@ -6,13 +6,13 @@
   <div
     v-if="total >= minShowNum"
     :style="customStyle"
-    :class="`wd-swiper-nav wd-swiper-nav--${direction} wd-swiper-nav--${type} wd-swiper-nav--${indicatorPosition} ${customClass}`"
+    :class="cn(`wd-swiper-nav`, `wd-swiper-nav--${direction}`, `wd-swiper-nav--${type}`, `wd-swiper-nav--${indicatorPosition}`, customClass)"
   >
     <block v-if="type === 'dots' || type === 'dots-bar'">
       <div
         v-for="(_, index) in total"
         :key="index"
-        :class="`wd-swiper-nav__item--${type} ${current === index ? 'is-active' : ''} is-${direction}`"
+        :class="cn(`wd-swiper-nav__item--${type}`, current === index ? 'is-active' : '', `is-${direction}`)"
       ></div>
     </block>
     <block v-if="type === 'fraction'">{{ current + 1 }}/{{ total }}</block>
@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts" setup>
+import { cn } from '../common/util'
 import { swiperNavprops } from './types'
 
 defineProps(swiperNavprops)

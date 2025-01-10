@@ -13,7 +13,7 @@ export const iconProps = {
   /**
    * 图标的字体大小
    */
-  size: String,
+  size: makeStringProp('14px'),
   /**
    * 类名前缀，用于使用自定义图标
    */

@@ -1,11 +1,6 @@
 <template>
   <div :class="cn(`wd-circle relative inline-block text-center`, customClass)" :style="customStyle">
-    <!-- #ifdef MP-WEIXIN -->
     <canvas :style="canvasStyle" :id="canvasId" :canvas-id="canvasId" type="2d"></canvas>
-    <!-- #endif -->
-    <!-- #ifndef MP-WEIXIN -->
-    <canvas :width="canvasSize" :height="canvasSize" :style="canvasStyle" :id="canvasId" :canvas-id="canvasId"></canvas>
-    <!-- #endif -->
 
     <div v-if="!text" class="wd-circle__text absolute z-10 top-1/2 left-0 w-full -translate-y-1/2 text-main">
       <!-- 自定义提示内容 -->
@@ -29,10 +24,10 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onBeforeMount, onMounted, onUnmounted, ref, watch } from 'vue'
-import { addUnit, cn, isObj, objToStyle, uuid } from '../common/util'
+import { addUnit, cn, isObj, uuid } from '../common/util'
 import { circleProps } from './types'
 // #ifdef MP-WEIXIN
-import { canvas2dAdapter } from '../common/canvasHelper'
+import { canvas2dAdapter } from './canvasHelper'
 // #endif
 
 // 大于等于0且小于等于100
@@ -80,7 +75,7 @@ const canvasStyle = computed(() => {
     width: addUnit(props.size),
     height: addUnit(props.size)
   }
-  return `${objToStyle(style)};`
+  return style
 })
 
 // 监听目标数值变化

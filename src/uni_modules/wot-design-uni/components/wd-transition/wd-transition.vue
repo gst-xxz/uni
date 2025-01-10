@@ -1,5 +1,11 @@
 <template>
-  <div v-if="!lazyRender || inited" :class="rootClass" :style="style" @transitionend="onTransitionEnd" @click="handleClick">
+  <div
+    v-if="!lazyRender || inited"
+    :class="cn(`wd-transition`, customClass, classes)"
+    :style="style"
+    @transitionend="onTransitionEnd"
+    @click="handleClick"
+  >
     <slot />
   </div>
 </template>
@@ -16,8 +22,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, onBeforeMount, ref, watch } from 'vue'
-import { isObj, isPromise, pause } from '../common/util'
+import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
+import { cn, isObj, isPromise, pause } from '../common/util'
 import { transitionProps, type TransitionName } from './types'
 import { AbortablePromise } from '../common/AbortablePromise'
 
@@ -72,14 +78,13 @@ const enterLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 // 动画离开的生命周期
 const leaveLifeCyclePromises = ref<AbortablePromise<unknown> | null>(null)
 
-const style = computed(() => {
-  return `-webkit-transition-duration:${currentDuration.value}ms;transition-duration:${currentDuration.value}ms;${
-    display.value || !props.destroy ? '' : 'display: none;'
-  }${props.customStyle}`
-})
-
-const rootClass = computed(() => {
-  return `wd-transition ${props.customClass}  ${classes.value}`
+const style = computed<CSSProperties>(() => {
+  return {
+    ...props.customStyle,
+    '-webkit-transition-duration': `${currentDuration.value}ms`,
+    'transition-duration': `${currentDuration.value}ms`,
+    ...(display.value || !props.destroy ? {} : { display: 'none' })
+  }
 })
 
 onBeforeMount(() => {

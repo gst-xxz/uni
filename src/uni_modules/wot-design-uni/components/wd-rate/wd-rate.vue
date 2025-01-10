@@ -1,18 +1,28 @@
 <template>
-  <div :class="cn(`wd-rate ${customClass}`)" :style="customStyle">
+  <div :class="cn(`wd-rate inline-block align-middle leading-none`, customClass)" :style="customStyle">
     <div
       v-for="(rate, index) in rateList"
       :key="index"
       :data-index="index"
       :style="{ 'margin-right': index == rateList.length - 1 ? 0 : space }"
-      class="wd-rate__item"
+      class="wd-rate__item relative inline-block"
       @click="changeRate(index)"
     >
-      <div class="wd-rate__item-star" :style="{ width: size, height: size }">
-        <wd-icon :name="icon" :size="size" :custom-style="iconStyle" />
+      <div class="wd-rate__item-star inline-block align-top" :style="{ width: size, height: size }">
+        <wd-icon :name="icon" :size="size" :custom-style="{ background: color }" custom-class="bg-clip-text text-transparent" />
       </div>
-      <div class="wd-rate__item-star wd-rate__item-star--active" :style="{ width: rate, height: size }">
-        <wd-icon :name="activeIcon" :size="size" :custom-style="iconActiveStyle" />
+      <div
+        class="wd-rate__item-star inline-block align-top wd-rate__item-star--active absolute top-0 left-0 overflow-hidden"
+        :style="{ width: rate, height: size }"
+      >
+        <wd-icon
+          :name="activeIcon"
+          :size="size"
+          :custom-style="{
+            background: disabled ? disabledColor : activeValue
+          }"
+          custom-class="bg-clip-text text-transparent"
+        />
       </div>
     </div>
   </div>
@@ -29,7 +39,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { rateProps } from './types'
 import { cn } from '../common/util'
 
@@ -38,14 +48,6 @@ const emit = defineEmits(['update:modelValue', 'change'])
 
 const rateList = ref<Array<string>>([])
 const activeValue = ref<string>('')
-
-const iconStyle = computed(() => {
-  return `background:${props.color}; -webkit-background-clip: text; color: transparent`
-})
-
-const iconActiveStyle = computed(() => {
-  return `background:${props.disabled ? props.disabledColor : activeValue.value}; -webkit-background-clip: text; color: transparent`
-})
 
 watch(
   () => props.activeColor,
@@ -123,27 +125,3 @@ function changeRate(index: number) {
   })
 }
 </script>
-<style>
-.wd-rate {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-}
-
-.wd-rate__item {
-  position: relative;
-  display: inline-block;
-}
-
-.wd-rate__item-star {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.wd-rate__item-star--active {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-}
-</style>

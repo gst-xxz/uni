@@ -1,5 +1,5 @@
 import type { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
-import { baseProps, makeArrayProp, makeBooleanProp, makeStringProp } from '../common/props'
+import { baseProps, makeArrayProp, makeBooleanProp, makeStringProp, makeStyleProp } from '../common/props'
 
 export type DropMenuItemBeforeToggleOption = {
   // 操作状态：true 打开下拉菜单，false 关闭下拉菜单
@@ -71,7 +71,7 @@ export const dorpMenuItemProps = {
   /**
    * 自定义下拉菜单popup样式
    */
-  customPopupStyle: makeStringProp('')
+  customPopupStyle: makeStyleProp({})
 }
 
 export type DropMenuItemProps = ExtractPropTypes<typeof dorpMenuItemProps>

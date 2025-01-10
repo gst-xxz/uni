@@ -313,50 +313,6 @@ export function isBase64Image(url: string) {
 }
 
 /**
- * 将外部传入的样式格式化为可读的 CSS 样式。
- * @param {object | object[]} styles 外部传入的样式对象或数组
- * @returns {string} 格式化后的 CSS 样式字符串
- */
-export function objToStyle(styles: Record<string, any> | Record<string, any>[]): string {
-  // 如果 styles 是数组类型
-  if (isArray(styles)) {
-    // 使用过滤函数去除空值和 null 值的元素
-    // 对每个非空元素递归调用 objToStyle，然后通过分号连接
-    return styles
-      .filter(function (item) {
-        return item != null && item !== ''
-      })
-      .map(function (item) {
-        return objToStyle(item)
-      })
-      .join(';')
-  }
-
-  if (isString(styles)) {
-    return styles
-  }
-
-  // 如果 styles 是对象类型
-  if (isObj(styles)) {
-    // 使用 Object.keys 获取所有属性名
-    // 使用过滤函数去除值为 null 或空字符串的属性
-    // 对每个属性名和属性值进行格式化，通过分号连接
-    return Object.keys(styles)
-      .filter(function (key) {
-        return styles[key] != null && styles[key] !== ''
-      })
-      .map(function (key) {
-        // 使用 kebabCase 函数将属性名转换为 kebab-case 格式
-        // 将属性名和属性值格式化为 CSS 样式的键值对
-        return [kebabCase(key), styles[key]].join(':')
-      })
-      .join(';')
-  }
-  // 如果 styles 不是对象也不是数组，则直接返回
-  return ''
-}
-
-/**
  * 暂停指定时间函数
  * @param ms 延迟时间
  * @returns

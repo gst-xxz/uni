@@ -48,7 +48,7 @@ export default {
 
 <script lang="ts" setup>
 import { type CSSProperties, computed, onMounted, ref, watch } from 'vue'
-import { objToStyle, pause, cn } from '../common/util'
+import { pause, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { searchProps } from './types'
 
@@ -95,7 +95,7 @@ const coverStyle = computed(() => {
     display: str.value === '' && showPlaceHolder.value ? 'flex' : 'none'
   }
 
-  return objToStyle(coverStyle)
+  return coverStyle
 })
 
 async function hackFocus(focus: boolean) {

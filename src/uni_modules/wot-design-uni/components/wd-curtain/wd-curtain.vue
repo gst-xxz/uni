@@ -15,7 +15,7 @@
       @after-leave="afterleave"
       @close="close"
       @click-modal="clickModal"
-      :custom-class="`wd-curtain ${customClass}`"
+      :custom-class="cn(`wd-curtain`, customClass)"
       :custom-style="customStyle"
     >
       <div class="wd-curtain__content">
@@ -23,7 +23,7 @@
         <slot name="close">
           <wd-icon
             name="close-outline"
-            :custom-class="`wd-curtain__content-close ${closePosition} ${customCloseClass}`"
+            :custom-class="cn(`wd-curtain__content-close`, closePosition, customCloseClass)"
             :custom-style="customCloseStyle"
             @click="close"
           />
@@ -45,8 +45,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, type CSSProperties } from 'vue'
 import { curtainProps } from './types'
+import { addUnit, cn } from '../common/util'
 
 const props = defineProps(curtainProps)
 
@@ -84,11 +85,11 @@ watch(
   }
 )
 
-const imgStyle = computed(() => {
-  let style = ''
+const imgStyle = computed<CSSProperties>(() => {
+  const style: CSSProperties = {}
   if (props.width) {
-    style += `width: ${props.width}px ;`
-    style += `height: ${props.width / imgScale.value}px`
+    style.width = addUnit(props.width)
+    style.height = addUnit(props.width / imgScale.value)
   }
   return style
 })

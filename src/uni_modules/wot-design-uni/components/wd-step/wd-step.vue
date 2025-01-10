@@ -43,7 +43,7 @@ export default {
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { STEPS_KEY } from '../wd-steps/types'
-import { isDef, objToStyle, cn } from '../common/util'
+import { isDef, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'
 import type { CSSProperties } from 'vue'
@@ -62,7 +62,9 @@ const currentTitle = computed(() => {
   return getCurrentTitle(currentStatus.value)
 })
 const rootStyle = computed(() => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {
+    ...props.customStyle
+  }
   if (steps) {
     const { vertical, space } = steps.props
     if (vertical) {
@@ -73,7 +75,7 @@ const rootStyle = computed(() => {
       style['width'] = space || 100 / steps.children.length + '%'
     }
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 const canAlignCenter = computed(() => {

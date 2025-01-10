@@ -43,7 +43,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
-import { cn, isArray, isDef, isObj, objToStyle, pause } from '../common/util'
+import { cn, isArray, isDef, isObj, pause } from '../common/util'
 import { progressProps, type ProgressColor } from './types'
 
 const props = defineProps(progressProps)
@@ -53,11 +53,11 @@ const changeCount = ref<number>(0)
 let timer: ReturnType<typeof setTimeout> | null = null
 
 const rootStyle = computed(() => {
-  return objToStyle({
+  return {
     background: showColor.value,
     width: `${showPercent.value}%`,
     'transition-duration': `${changeCount.value * props.duration * 0.001}s`
-  })
+  }
 })
 
 const iconName = computed(() => {

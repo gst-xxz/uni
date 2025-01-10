@@ -25,8 +25,7 @@
 
     <demo-block title="使用徽标" transparent>
       <wd-tabs v-model="tabWithBadge" @change="handleChange">
-        <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`"
-          :badge-props="item.badgeProps">
+        <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`" :badge-props="item.badgeProps">
           <div class="content">{{ item.title }}徽标</div>
         </wd-tab>
       </wd-tabs>
@@ -128,8 +127,7 @@
       </div>
     </demo-block>
 
-    <wd-popup v-model="showPopup" position="bottom" safe-area-inset-bottom @after-enter="handlePopupShow" closable
-      custom-style="padding: 0 24rpx;">
+    <wd-popup v-model="showPopup" position="bottom" safe-area-inset-bottom @after-enter="handlePopupShow" closable custom-style="padding: 0 24rpx;">
       <div class="title">在弹出框中使用</div>
       <wd-tabs v-model="tab10" ref="tabsRef">
         <wd-tab v-for="item in tabs" :key="item" :title="`${item}`" :name="item">

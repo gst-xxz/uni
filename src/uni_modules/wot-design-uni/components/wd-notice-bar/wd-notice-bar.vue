@@ -42,7 +42,7 @@ export default {
 
 <script lang="ts" setup>
 import { ref, watch, nextTick, computed, getCurrentInstance, type CSSProperties, onMounted, onActivated, onDeactivated, reactive } from 'vue'
-import { cn, getRect, isArray, isDef, objToStyle } from '../common/util'
+import { cn, getRect, isArray, isDef } from '../common/util'
 import { type NoticeBarExpose, noticeBarProps } from './types'
 const $wrap = '.wd-notice-bar__wrap'
 const $content = '.wd-notice-bar__content'
@@ -70,11 +70,13 @@ const transitionState = reactive<CSSProperties>({
 })
 
 const animation = computed(() => {
-  return objToStyle(transitionState)
+  return transitionState
 })
 
 const rootStyle = computed(() => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {
+    ...props.customStyle
+  }
   if (isDef(props.color)) {
     style.color = props.color
   }
@@ -83,7 +85,7 @@ const rootStyle = computed(() => {
     style.background = props.backgroundColor
   }
 
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 const { proxy } = getCurrentInstance() as any

@@ -39,7 +39,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onMounted, ref } from 'vue'
-import { addUnit, cn, objToStyle, uuid } from '../common/util'
+import { addUnit, cn, uuid } from '../common/util'
 import { resizeProps } from './types'
 
 const props = defineProps(resizeProps)
@@ -55,10 +55,11 @@ const scrollEventCount = ref<number>(0)
 
 const rootStyle = computed(() => {
   const style: Record<string, string | number> = {
+    ...props.customStyle,
     width: addUnit(width.value),
     height: addUnit(height.value)
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 let onScrollHandler = () => {}
 const { proxy } = getCurrentInstance() as any

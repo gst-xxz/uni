@@ -1,13 +1,13 @@
 <template>
-  <div v-if="showWrapper" :class="cn(`wd-drop-item`, customClass)" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
+  <div v-if="showWrapper" :class="cn(`wd-drop-item`, customClass)" :style="positionStyle">
     <wd-popup
       v-model="showPop"
       :z-index="zIndex"
       :duration="duration"
       :position="position"
-      :custom-style="`position: absolute; max-height: 80%;${customPopupStyle}`"
-      :custom-class="customPopupClass"
-      modal-style="position: absolute;"
+      :custom-style="customPopupStyle"
+      :custom-class="cn('absolute max-h-[80%]', customPopupClass)"
+      modalClass="absolute"
       :modal="modal"
       :close-on-click-modal="false"
       @click-modal="closeOnClickModal && close()"
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, getCurrentInstance, inject, onBeforeMount, onBeforeUnmount, ref, watch, type CSSProperties } from 'vue'
 import { pushToQueue, removeFromQueue } from '../common/clickoutside'
 import { type Queue, queueKey } from '../composables/useQueue'
 import type { PopupType } from '../wd-popup/types'
@@ -76,15 +76,14 @@ const { parent: dropMenu } = useParent(DROP_MENU_KEY)
 
 const { proxy } = getCurrentInstance() as any
 
-const positionStyle = computed(() => {
-  let style: string = ''
+const positionStyle = computed<CSSProperties>(() => {
+  const style: CSSProperties = {
+    ...props.customStyle,
+    zIndex: zIndex.value
+  }
   if (showWrapper.value && dropMenu) {
-    style =
-      dropMenu.props.direction === 'down'
-        ? `top: calc(var(--window-top) + ${dropMenu.offset.value}px); bottom: 0;`
-        : `top: 0; bottom: calc(var(--window-bottom) + ${dropMenu.offset.value}px)`
-  } else {
-    style = ''
+    style.top = dropMenu.props.direction === 'down' ? `calc(var(--window-top) + ${dropMenu.offset.value}px)` : 0
+    style.bottom = dropMenu.props.direction === 'down' ? 0 : `calc(var(--window-bottom) + ${dropMenu.offset.value}px)`
   }
   return style
 })

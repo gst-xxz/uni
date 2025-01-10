@@ -28,7 +28,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { type CSSProperties, computed, ref } from 'vue'
-import { addUnit, isDef, objToStyle, isOdd, isFunction, cn } from '../common/util'
+import { addUnit, isDef, isOdd, isFunction, cn } from '../common/util'
 import { tableColumnProps, type SortDirection } from './types'
 import { useParent } from '../composables/useParent'
 import { TABLE_KEY } from '../wd-table/types'
@@ -107,7 +107,7 @@ const cellStyle = computed(() => {
   if (props.fixed && isDef(table) && isFunction(table.getFixedStyle)) {
     style = table.getFixedStyle(columnIndex.value, style)
   }
-  return objToStyle(style)
+  return style
 })
 
 // 列数据

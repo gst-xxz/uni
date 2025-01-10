@@ -88,7 +88,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, onBeforeMount, ref, watch } from 'vue'
-import { cn, isDef, objToStyle, pause } from '../common/util'
+import { cn, isDef, pause } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
@@ -203,11 +203,11 @@ const inputPlaceholderClass = computed(() => {
 
 const labelStyle = computed(() => {
   return props.labelWidth
-    ? objToStyle({
+    ? {
         'min-width': props.labelWidth,
         'max-width': props.labelWidth
-      })
-    : ''
+      }
+    : {}
 })
 
 onBeforeMount(() => {

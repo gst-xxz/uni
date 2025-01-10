@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-tabbar-item ${customClass}`" :style="customStyle" @click="handleClick">
+  <div :class="cn(`wd-tabbar-item`, customClass)" :style="customStyle" @click="handleClick">
     <wd-badge v-bind="customBadgeProps">
       <div class="wd-tabbar-item__body">
         <slot name="icon" :active="active"></slot>
@@ -7,10 +7,10 @@
           <wd-icon
             :name="icon"
             :custom-style="textStyle"
-            :custom-class="`wd-tabbar-item__body-icon ${active ? 'is-active' : 'is-inactive'}`"
+            :custom-class="cn(`wd-tabbar-item__body-icon`, active ? 'is-active' : 'is-inactive')"
           ></wd-icon>
         </template>
-        <span v-if="title" :style="textStyle" :class="`wd-tabbar-item__body-title ${active ? 'is-active' : 'is-inactive'}`">
+        <span v-if="title" :style="textStyle" :class="cn(`wd-tabbar-item__body-title`, active ? 'is-active' : 'is-inactive')">
           {{ title }}
         </span>
       </div>
@@ -29,7 +29,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { type CSSProperties, computed } from 'vue'
-import { deepAssign, isDef, isUndefined, objToStyle, omitBy } from '../common/util'
+import { cn, deepAssign, isDef, isUndefined, omitBy } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { TABBAR_KEY } from '../wd-tabbar/types'
 import { tabbarItemProps } from './types'
@@ -68,7 +68,7 @@ const textStyle = computed(() => {
     }
   }
 
-  return `${objToStyle(style)}`
+  return style
 })
 
 const active = computed(() => {

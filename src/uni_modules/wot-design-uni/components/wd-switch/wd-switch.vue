@@ -20,34 +20,36 @@ export default {
 
 <script lang="ts" setup>
 import { computed, type CSSProperties, onBeforeMount } from 'vue'
-import { addUnit, cn, isFunction, objToStyle } from '../common/util'
+import { addUnit, cn, isFunction } from '../common/util'
 import { switchProps } from './types'
 
 const props = defineProps(switchProps)
 const emit = defineEmits(['change', 'update:modelValue'])
 
+const isActive = computed(() => props.modelValue === props.activeValue)
+
 const rootStyle = computed(() => {
+  const color = isActive.value ? props.activeColor : props.inactiveColor
   const rootStyle: CSSProperties = {
-    background: props.modelValue === props.activeValue ? props.activeColor : props.inactiveColor,
-    'border-color': props.modelValue === props.activeValue ? props.activeColor : props.inactiveColor
+    ...props.customStyle,
+    background: color,
+    'border-color': color
   }
   if (props.size) {
     rootStyle['font-size'] = addUnit(props.size)
   }
-  return `${objToStyle(rootStyle)};${props.customStyle}`
+  return rootStyle
 })
 
 const circleStyle = computed(() => {
   const circleStyle: string =
-    (props.modelValue === props.activeValue && props.activeColor) || (props.modelValue !== props.activeValue && props.inactiveColor)
-      ? 'box-shadow: none;'
-      : ''
+    (isActive.value && props.activeColor) || (props.modelValue !== props.activeValue && props.inactiveColor) ? 'box-shadow: none;' : ''
   return circleStyle
 })
 
 function switchValue() {
   if (props.disabled) return
-  const newVal = props.modelValue === props.activeValue ? props.inactiveValue : props.activeValue
+  const newVal = isActive.value ? props.inactiveValue : props.activeValue
 
   if (props.beforeChange && isFunction(props.beforeChange)) {
     props.beforeChange({

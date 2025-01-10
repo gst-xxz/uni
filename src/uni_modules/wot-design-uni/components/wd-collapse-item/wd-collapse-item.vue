@@ -36,7 +36,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties } from 'vue'
-import { addUnit, cn, getRect, isArray, isDef, isPromise, isString, objToStyle, pause, uuid } from '../common/util'
+import { addUnit, cn, getRect, isArray, isDef, isPromise, isString, pause, uuid } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { COLLAPSE_KEY } from '../wd-collapse/types'
 import { collapseItemProps, type CollapseItemExpose } from './types'
@@ -72,7 +72,7 @@ const contentStyle = computed(() => {
   } else if (height.value) {
     style.height = addUnit(height.value)
   }
-  return objToStyle(style)
+  return style
 })
 
 /**

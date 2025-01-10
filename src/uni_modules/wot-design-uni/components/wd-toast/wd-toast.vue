@@ -1,5 +1,5 @@
 <template>
-  <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show" custom-style="background-color: transparent;pointer-events: auto;"></wd-overlay>
+  <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show" custom-class="bg-transparent pointer-events-auto"></wd-overlay>
   <wd-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter" @after-leave="handleAfterLeave">
     <div :class="rootClass">
       <!--iconName优先级更高-->
@@ -34,7 +34,7 @@ export default {
 import { computed, inject, ref, watch, type CSSProperties } from 'vue'
 import { defaultOptions, getToastOptionKey } from '.'
 import { toastProps, type ToastLoadingType, type ToastOptions } from './types'
-import { addUnit, isDef, isFunction, objToStyle } from '../common/util'
+import { addUnit, isDef, isFunction } from '../common/util'
 
 const props = defineProps(toastProps)
 const iconName = ref<string>('') // 图标类型
@@ -82,7 +82,7 @@ const transitionStyle = computed(() => {
     transform: 'translate(0, -50%)',
     'text-align': 'center'
   }
-  return objToStyle(style)
+  return style
 })
 
 const rootClass = computed(() => {

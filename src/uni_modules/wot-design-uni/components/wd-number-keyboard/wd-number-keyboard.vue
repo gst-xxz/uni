@@ -4,7 +4,7 @@
     position="bottom"
     :z-index="zIndex"
     :safe-area-inset-bottom="safeAreaInsetBottom"
-    :modal-style="modal ? '' : 'opacity: 0;'"
+    :modalClass="cn(modal ? '' : 'opacity-0')"
     :modal="hideOnClickOutside"
     :lockScroll="lockScroll"
     @click-modal="handleClose"

@@ -1,4 +1,4 @@
-import { type ComponentPublicInstance, type ExtractPropTypes, type InjectionKey, type PropType } from 'vue'
+import { type ComponentObjectPropsOptions, type ComponentPublicInstance, type ExtractPropTypes, type InjectionKey, type PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
 
 export type CollapseToggleAllOptions =
@@ -42,7 +42,7 @@ export const collapseProps = {
   /**
    * 查看更多的折叠面板，收起时的显示行数
    */
-  lineNum: makeNumberProp(2)
+  lineNum: makeNumberProp(2, { min: 0 })
 }
 
 export type CollapseProps = ExtractPropTypes<typeof collapseProps>

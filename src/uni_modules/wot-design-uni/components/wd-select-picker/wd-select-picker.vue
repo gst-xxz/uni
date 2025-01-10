@@ -4,9 +4,13 @@
       <slot v-if="useDefaultSlot"></slot>
       <div
         v-else
-        :class="`wd-select-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
-          error && 'is-error'
-        } ${size && 'is-' + size}`"
+        :class="
+          cn(
+            `wd-select-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
+              error && 'is-error'
+            } ${size && 'is-' + size}`
+          )
+        "
       >
         <div
           v-if="label || useLabelSlot"
@@ -125,7 +129,7 @@ import wdRadioGroup from '../wd-radio-group/wd-radio-group.vue'
 
 import { getCurrentInstance, onBeforeMount, ref, watch, nextTick, computed } from 'vue'
 import { useCell } from '../composables/useCell'
-import { getRect, isArray, isDef, isFunction, pause } from '../common/util'
+import { getRect, isArray, isDef, isFunction, pause, cn } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useTranslate } from '../composables/useTranslate'

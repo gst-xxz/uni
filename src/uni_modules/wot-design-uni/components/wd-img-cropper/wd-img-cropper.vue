@@ -59,7 +59,9 @@
       <wd-icon custom-class="wd-img-cropper__rotate" v-if="!disabledRotate" name="rotate" @click="handleRotate"></wd-icon>
       <div class="wd-img-cropper__footer--button">
         <div class="is-cancel" @click="handleCancel">{{ cancelButtonText || translate('cancel') }}</div>
-        <wd-button size="small" :custom-style="buttonStyle" @click="handleConfirm">{{ confirmButtonText || translate('confirm') }}</wd-button>
+        <wd-button size="small" @click="handleConfirm" customClass="absolute right-0 w-14 rounded-2xl text-base">
+          {{ confirmButtonText || translate('confirm') }}
+        </wd-button>
       </div>
     </div>
   </div>
@@ -77,8 +79,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, ref, watch } from 'vue'
-import { addUnit, cn, objToStyle } from '../common/util'
+import { computed, getCurrentInstance, ref, watch, type CSSProperties } from 'vue'
+import { addUnit, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { imgCropperProps, type ImgCropperExpose } from './types'
 
@@ -226,19 +228,6 @@ watch(
   }
 )
 
-const buttonStyle = computed(() => {
-  const style: Record<string, string | number> = {
-    position: 'absolute',
-    right: 0,
-    // height: 32px;
-    width: '56px',
-    'border-radius': '16px',
-    'font-size': '16px'
-  }
-
-  return objToStyle(style)
-})
-
 const imageStyle = computed(() => {
   const style: Record<string, string | number> = {
     width: picWidth.value ? addUnit(picWidth.value) : 'auto',
@@ -248,7 +237,7 @@ const imageStyle = computed(() => {
     }) rotate(${imgAngle.value}deg)`,
     'transition-duration': (isAnimation.value ? 0.4 : 0) + 's'
   }
-  return objToStyle(style)
+  return style
 })
 
 /**

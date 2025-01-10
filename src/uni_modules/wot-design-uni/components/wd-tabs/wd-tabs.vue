@@ -136,7 +136,7 @@ export default {
 import wdSticky from '../wd-sticky/wd-sticky.vue'
 import wdStickyBox from '../wd-sticky-box/wd-sticky-box.vue'
 import { computed, getCurrentInstance, onMounted, watch, nextTick, reactive, type CSSProperties, type ComponentInstance } from 'vue'
-import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, objToStyle, cn } from '../common/util'
+import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, cn } from '../common/util'
 import { useTouch } from '../composables/useTouch'
 import { TABS_KEY, tabsProps, type TabsExpose } from './types'
 import { useChildren } from '../composables/useChildren'
@@ -153,7 +153,9 @@ const { translate } = useTranslate('tabs')
 
 const state = reactive({
   activeIndex: 0, // 选中值的索引，默认第一个
-  lineStyle: 'display:none;', // 激活项边框线样式
+  lineStyle: {
+    display: 'none'
+  } as CSSProperties, // 激活项边框线样式
   useInnerLine: false, // 是否使用内部激活项边框线，当外部激活下划线未成功渲染时显示内部定位的
   inited: false, // 是否初始化
   animating: false, // 是否动画中
@@ -177,11 +179,11 @@ const bodyStyle = computed(() => {
     return ''
   }
 
-  return objToStyle({
+  return {
     left: -100 * state.activeIndex + '%',
     'transition-duration': props.duration + 'ms',
     '-webkit-transition-duration': props.duration + 'ms'
-  })
+  }
 })
 
 const getTabName = (tab: ComponentInstance<any>, index: number) => {
@@ -328,7 +330,7 @@ async function updateLineStyle(animation: boolean = true) {
         lineStyle.transition = 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);'
       }
       state.useInnerLine = false
-      state.lineStyle = objToStyle(lineStyle)
+      state.lineStyle = lineStyle
     }
   } catch (error) {
     console.error('[wot design] error(wd-tabs): update line style failed', error)

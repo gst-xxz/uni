@@ -36,7 +36,7 @@ export default {
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, reactive, watch } from 'vue'
-import { getRect, isObj, objToStyle, addUnit, pause, cn } from '../common/util'
+import { getRect, isObj, addUnit, pause, cn } from '../common/util'
 import type { CSSProperties } from 'vue'
 import { segmentedProps, type SegmentedExpose, type SegmentedOption } from './types'
 const $item = '.wd-segmented__item'
@@ -44,9 +44,12 @@ const $item = '.wd-segmented__item'
 const props = defineProps(segmentedProps)
 const emit = defineEmits(['update:value', 'change', 'click'])
 
-const state = reactive({
+const state = reactive<{
+  activeIndex: number
+  activeStyle: CSSProperties
+}>({
   activeIndex: 0, // 选中项
-  activeStyle: '' // 选中样式
+  activeStyle: {} // 选中样式
 })
 
 const activeDisabled = computed(() => {
@@ -94,7 +97,7 @@ function updateActiveStyle(animation: boolean = true) {
     if (animation) {
       style.transition = 'all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)'
     }
-    state.activeStyle = objToStyle(style)
+    state.activeStyle = style
   })
 }
 

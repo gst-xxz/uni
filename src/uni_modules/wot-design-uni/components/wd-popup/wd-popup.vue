@@ -7,12 +7,13 @@
       :lock-scroll="lockScroll"
       :duration="duration"
       :custom-style="modalStyle"
+      :custom-class="modalClass"
       @click="handleClickModal"
       @touchmove="noop"
     />
     <wd-transition
       :lazy-render="lazyRender"
-      :custom-class="rootClass"
+      :custom-class="cn(`wd-popup wd-popup--${props.position} ${!props.transition && props.position === 'center' ? 'is-deep' : ''}`, customClass)"
       :custom-style="style"
       :duration="duration"
       :show="modelValue"
@@ -43,9 +44,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, onBeforeMount, ref, type CSSProperties } from 'vue'
 import { popupProps } from './types'
 import type { TransitionName } from '../wd-transition/types'
+import { addUnit, cn } from '../common/util'
 
 const props = defineProps(popupProps)
 const emit = defineEmits([
@@ -87,12 +89,12 @@ const transitionName = computed<TransitionName | TransitionName[]>(() => {
 
 const safeBottom = ref<number>(0)
 
-const style = computed(() => {
-  return `z-index:${props.zIndex}; padding-bottom: ${safeBottom.value}px;${props.customStyle}`
-})
-
-const rootClass = computed(() => {
-  return `wd-popup wd-popup--${props.position} ${!props.transition && props.position === 'center' ? 'is-deep' : ''} ${props.customClass || ''}`
+const style = computed<CSSProperties>(() => {
+  return {
+    ...props.customStyle,
+    zIndex: props.zIndex,
+    paddingBottom: addUnit(safeBottom.value)
+  }
 })
 
 onBeforeMount(() => {

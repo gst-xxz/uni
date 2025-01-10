@@ -1,20 +1,20 @@
 <template>
-  <div :class="cn(`wd-password-input`, customClass)" :style="customStyle">
-    <div @touchstart="onTouchStart" class="wd-password-input__security">
+  <div :class="cn(`wd-password-input relative my-0 mx-4 select-none`, customClass)" :style="customStyle">
+    <div @touchstart="onTouchStart" class="wd-password-input__security flex w-full h-[50px] cursor-pointer">
       <div
         v-for="(_, index) in length"
         :key="index"
-        :class="cn(`wd-password-input__item ${gutter ? '' : 'is-border'}`)"
+        :class="cn(`wd-password-input__item`, gutter ? '' : 'is-border')"
         :style="{ marginLeft: index !== 0 && gutter ? addUnit(gutter) : 0 }"
       >
         <div v-if="focused && index === modelValue.length" class="wd-password-input__cursor"></div>
         <div v-else :class="cn(`wd-password-input__value`)">
-          <div :style="{ visibility: mask && modelValue[index] ? 'visible' : 'hidden' }" class="wd-password-input__mask"></div>
+          <div :class="cn('wd-password-input__mask', mask && modelValue[index] ? 'visible' : 'invisible')"></div>
           <span v-if="!mask && modelValue[index]">{{ modelValue[index] }}</span>
         </div>
       </div>
     </div>
-    <div v-if="info || errorInfo" :class="cn(`wd-password-input__info`, errorInfo ? 'is-error' : '')">
+    <div v-if="info || errorInfo" :class="cn(`wd-password-input__info`, errorInfo ? 'is-error text-danger' : '')">
       {{ errorInfo || info }}
     </div>
   </div>
@@ -45,20 +45,6 @@ function onTouchStart(event: Event) {
 </script>
 
 <style>
-.wd-password-input {
-  position: relative;
-  margin: 0 var(--wot-password-input-margin, 16px);
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.wd-password-input__security {
-  display: flex;
-  width: 100%;
-  height: var(--wot-password-input-height, 50px);
-  cursor: pointer;
-}
-
 .wd-password-input__item {
   position: relative;
   display: flex;
@@ -110,10 +96,8 @@ function onTouchStart(event: Event) {
   width: var(--wot-password-input-cursor-width, 1px);
   height: var(--wot-password-input-cursor-height, 40%);
   background: var(--wot-password-input-cursor-color, var(--wot-color-gray-8, #323233));
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  -webkit-animation: var(--wot-password-input-cursor-duration, 1s) cursor-flicker-991c123b infinite;
-  animation: var(--wot-password-input-cursor-duration, 1s) cursor-flicker-991c123b infinite;
+  animation: var(--wot-password-input-cursor-duration, 1s) cursor-flicker infinite;
 }
 
 .wd-password-input__info {
@@ -123,11 +107,7 @@ function onTouchStart(event: Event) {
   color: var(--wot-password-input-info-color, var(--wot-color-info, #909399));
 }
 
-.wd-password-input__info.is-error {
-  color: var(--wot-password-input-error-info-color, var(--wot-color-danger, #fa4350));
-}
-
-@keyframes cursor-flicker-991c123b {
+@keyframes cursor-flicker {
   0% {
     opacity: 0;
   }

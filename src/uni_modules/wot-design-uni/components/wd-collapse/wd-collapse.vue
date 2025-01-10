@@ -74,16 +74,6 @@ watch(
   { deep: true }
 )
 
-watch(
-  () => props.lineNum,
-  (newVal) => {
-    if (newVal <= 0) {
-      console.error('lineNum must greater than 0')
-    }
-  },
-  { deep: true, immediate: true }
-)
-
 function updateChange(activeNames: string | string[] | boolean) {
   emit('update:modelValue', activeNames)
   emit('change', {

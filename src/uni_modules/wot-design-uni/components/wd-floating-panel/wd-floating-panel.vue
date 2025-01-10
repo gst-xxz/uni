@@ -37,7 +37,7 @@ export default {
 <script lang="ts" setup>
 import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import { floatingPanelProps } from './type'
-import { addUnit, closest, cn, objToStyle } from '../common/util'
+import { addUnit, closest, cn } from '../common/util'
 import { useTouch } from '../composables/useTouch'
 
 const touch = useTouch()
@@ -61,12 +61,13 @@ const anchors = computed(() => (props.anchors.length >= 2 ? props.anchors : [bou
 
 const rootStyle = computed(() => {
   const style: CSSProperties = {
+    ...props.customStyle,
     height: addUnit(boundary.value.max),
     transform: `translateY(calc(100% + ${addUnit(-heightValue.value)}))`,
     transition: !dragging.value ? `transform ${props.duration}ms cubic-bezier(0.18, 0.89, 0.32, 1.28)` : 'none'
   }
 
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 const updateHeight = (value: number) => {

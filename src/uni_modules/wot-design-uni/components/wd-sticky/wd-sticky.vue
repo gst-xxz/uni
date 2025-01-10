@@ -1,5 +1,5 @@
 <template>
-  <div :style="`${stickyStyle};${customStyle}`" class="inline-block">
+  <div :style="{ ...customStyle, ...stickyStyle }" class="inline-block">
     <div :class="cn(`wd-sticky inline-block`, customClass)" :style="stickyStyle" :id="styckyId">
       <div class="wd-sticky__container inline-block" :style="containerStyle">
         <wd-resize @resize="handleResize" customClass="inline-block">
@@ -23,7 +23,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, reactive, ref, type CSSProperties } from 'vue'
-import { addUnit, cn, getRect, objToStyle, pause, uuid } from '../common/util'
+import { addUnit, cn, getRect, pause, uuid } from '../common/util'
 import { stickyProps } from './types'
 import { useParent } from '../composables/useParent'
 import { STICKY_BOX_KEY } from '../wd-sticky-box/types'
@@ -54,7 +54,7 @@ const stickyStyle = computed(() => {
   if (!stickyState.boxLeaved) {
     style['position'] = 'relative'
   }
-  return `${objToStyle(style)};`
+  return style
 })
 
 const containerStyle = computed(() => {
@@ -62,7 +62,7 @@ const containerStyle = computed(() => {
     position: stickyState.position as 'static' | 'relative' | 'absolute' | 'sticky' | 'fixed',
     top: addUnit(stickyState.top)
   }
-  return objToStyle(style)
+  return style
 })
 
 const innerOffsetTop = computed(() => {

@@ -1,6 +1,6 @@
 <template>
   <div :class="rootClass" :style="customStyle">
-    <div v-if="label || useLabelSlot" :class="labelClass" :style="labelStyle">
+    <div v-if="label || useLabelSlot" :class="cn(`wd-textarea__label`, customLabelClass, isRequired ? 'is-required' : '')" :style="labelStyle">
       <div v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
         <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
         <slot v-else name="prefix"></slot>
@@ -13,7 +13,7 @@
 
     <!-- 文本域 -->
     <div :class="cn(`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`)">
-      <spanarea
+      <textarea
         :class="cn(`wd-textarea__inner ${customTextareaClass}`)"
         v-model="inputValue"
         :show-count="false"
@@ -23,7 +23,7 @@
         :focus="focused"
         :auto-focus="autoFocus"
         :placeholder-style="placeholderStyle"
-        :placeholder-class="inputPlaceholderClass"
+        :placeholder-class="cn(`wd-textarea__placeholder`, placeholderClass)"
         :auto-height="autoHeight"
         :cursor-spacing="cursorSpacing"
         :fixed="fixed"
@@ -73,7 +73,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, onBeforeMount, ref, watch } from 'vue'
-import { objToStyle, isDef, pause, cn } from '../common/util'
+import { isDef, pause, cn } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
@@ -181,25 +181,17 @@ const rootClass = computed(() => {
   } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
 })
 
-const labelClass = computed(() => {
-  return `wd-textarea__label ${props.customLabelClass} ${isRequired.value ? 'is-required' : ''}`
-})
-
-const inputPlaceholderClass = computed(() => {
-  return `wd-textarea__placeholder  ${props.placeholderClass}`
-})
-
 const countClass = computed(() => {
   return `${currentLength.value > 0 ? 'wd-textarea__count-current' : ''} ${currentLength.value > props.maxlength ? 'is-error' : ''}`
 })
 
 const labelStyle = computed(() => {
   return props.labelWidth
-    ? objToStyle({
+    ? {
         'min-width': props.labelWidth,
         'max-width': props.labelWidth
-      })
-    : ''
+      }
+    : {}
 })
 
 onBeforeMount(() => {

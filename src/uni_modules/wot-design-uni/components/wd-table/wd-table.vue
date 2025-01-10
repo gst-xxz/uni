@@ -122,7 +122,7 @@ export default {
 import wdTableCol from '../wd-table-col/wd-table-col.vue'
 import wdSortButton from '../wd-sort-button/wd-sort-button.vue'
 import { type CSSProperties, computed, reactive, ref } from 'vue'
-import { addUnit, debounce, isDef, isObj, objToStyle, uuid } from '../common/util'
+import { addUnit, debounce, isDef, isObj, uuid } from '../common/util'
 import type { SortDirection, TableColumn, TableColumnInstance, TableColumnProps } from '../wd-table-col/types'
 import { TABLE_KEY, tableProps, type TableProvide } from './types'
 import WdTableCol from '../wd-table-col/wd-table-col.vue'
@@ -159,11 +159,13 @@ const scroll = debounce(handleScroll, 100, { leading: false }) // 滚动事件
  * 容器样式
  */
 const tableStyle = computed(() => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {
+    ...props.customStyle
+  }
   if (isDef(props.height)) {
     style['max-height'] = addUnit(props.height)
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 const realWidthStyle = computed(() => {
@@ -175,7 +177,7 @@ const realWidthStyle = computed(() => {
     width = width ? `${width} + ${addUnit(child.width)}` : addUnit(child.width)
   })
   style['width'] = `calc(${width})`
-  return objToStyle(style)
+  return style
 })
 
 const bodyStyle = computed(() => {
@@ -183,7 +185,7 @@ const bodyStyle = computed(() => {
   if (isDef(props.height)) {
     style['height'] = isDef(props.rowHeight) ? `calc(${props.data.length} * ${addUnit(props.rowHeight)})` : `calc(${props.data.length} * 50px)`
   }
-  return `${objToStyle(style)};`
+  return style
 })
 
 /**
@@ -214,7 +216,7 @@ function getCellStyle(columnIndex: number) {
   if (children[columnIndex].fixed) {
     style = getFixedStyle(columnIndex, style)
   }
-  return objToStyle(style)
+  return style
 }
 
 /**

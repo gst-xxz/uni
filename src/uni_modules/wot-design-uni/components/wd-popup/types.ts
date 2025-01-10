@@ -1,6 +1,5 @@
-
 import type { PropType } from 'vue'
-import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp } from '../common/props'
+import { baseProps, makeBooleanProp, makeNumberProp, makeStringProp, makeStyleProp } from '../common/props'
 import type { TransitionName } from '../wd-transition/types'
 
 export type PopupType = 'center' | 'top' | 'right' | 'bottom' | 'left'
@@ -61,10 +60,16 @@ export const popupProps = {
   hideWhenClose: makeBooleanProp(true),
   /**
    * 遮罩样式
+   * 类型：CSSProperties
+   * 默认值：{}
+   */
+  modalStyle: makeStyleProp({}),
+  /**
+   * 遮罩样式
    * 类型：string
    * 默认值：''
    */
-  modalStyle: makeStringProp(''),
+  modalClass: makeStringProp(''),
   /**
    * 弹出面板是否设置底部安全距离（iphone X 类型的机型）
    * 类型：boolean

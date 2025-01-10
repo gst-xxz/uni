@@ -1,45 +1,39 @@
 <template>
   <div :class="rootClass" :style="customStyle" :id="sliderId">
-    <!-- #ifdef MP-DINGTALK -->
-    <div :id="sliderId" style="flex: 1" :class="rootClass">
-      <!-- #endif -->
-      <div :class="`wd-slider__label-min ${customMinClass}`" v-if="!hideMinMax">
-        {{ minValue }}
-      </div>
-      <div class="wd-slider__bar-wrapper" :style="barWrapperStyle">
-        <div class="wd-slider__bar" :style="barCustomStyle"></div>
-        <!-- 左边 -->
-        <div
-          class="wd-slider__button-wrapper"
-          :style="buttonLeftStyle"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-          @touchcancel="onTouchEnd"
-        >
-          <div class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</div>
-          <div class="wd-slider__button" />
-        </div>
-        <!-- 右边 -->
-        <div
-          v-if="showRight"
-          class="wd-slider__button-wrapper"
-          :style="buttonRightStyle"
-          @touchstart="onTouchStartRight"
-          @touchmove="onTouchMoveRight"
-          @touchend="onTouchEndRight"
-          @touchcancel="onTouchEndRight"
-        >
-          <div class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</div>
-          <div class="wd-slider__button" />
-        </div>
-      </div>
-      <div :class="`wd-slider__label-max ${customMaxClass}`" v-if="!hideMinMax">
-        {{ maxValue }}
-      </div>
-      <!-- #ifdef MP-DINGTALK -->
+    <div :class="`wd-slider__label-min ${customMinClass}`" v-if="!hideMinMax">
+      {{ minValue }}
     </div>
-    <!-- #endif -->
+    <div class="wd-slider__bar-wrapper" :style="barWrapperStyle">
+      <div class="wd-slider__bar" :style="barCustomStyle"></div>
+      <!-- 左边 -->
+      <div
+        class="wd-slider__button-wrapper"
+        :style="buttonLeftStyle"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
+        @touchend="onTouchEnd"
+        @touchcancel="onTouchEnd"
+      >
+        <div class="wd-slider__label" v-if="!hideLabel">{{ leftNewValue }}</div>
+        <div class="wd-slider__button" />
+      </div>
+      <!-- 右边 -->
+      <div
+        v-if="showRight"
+        class="wd-slider__button-wrapper"
+        :style="buttonRightStyle"
+        @touchstart="onTouchStartRight"
+        @touchmove="onTouchMoveRight"
+        @touchend="onTouchEndRight"
+        @touchcancel="onTouchEndRight"
+      >
+        <div class="wd-slider__label" v-if="!hideLabel">{{ rightNewValue }}</div>
+        <div class="wd-slider__button" />
+      </div>
+    </div>
+    <div :class="`wd-slider__label-max ${customMaxClass}`" v-if="!hideMinMax">
+      {{ maxValue }}
+    </div>
   </div>
 </template>
 

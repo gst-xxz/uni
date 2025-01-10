@@ -2,9 +2,12 @@
   <wd-transition
     :show="show"
     name="fade"
-    custom-class="wd-overlay fixed left-0 right-0 top-0 bottom-0 bg-black/75 dark:bg-black/65"
+    :custom-class="cn('wd-overlay fixed left-0 right-0 top-0 bottom-0 bg-black/75 dark:bg-black/65', customClass)"
     :duration="duration"
-    :custom-style="`z-index: ${zIndex}; ${customStyle}`"
+    :custom-style="{
+      ...customStyle,
+      zIndex
+    }"
     @click="handleClick"
     @touchmove.stop.prevent="lockScroll ? noop : ''"
   >
@@ -26,6 +29,7 @@ export default {
 import { overlayProps } from './types'
 // #ifdef H5
 import useLockScroll from '../composables/useLockScroll'
+import { cn } from '../common/util'
 // #endif
 
 const props = defineProps(overlayProps)

@@ -1,14 +1,17 @@
 <template>
-  <div :class="cn(`wd-col-picker ${cell.border.value ? 'is-border' : ''} ${customClass}`)" :style="customStyle">
+  <div :class="cn(`wd-col-picker`, cell.border.value ? 'is-border' : '', customClass)" :style="customStyle">
     <div class="wd-col-picker__field" @click="showPicker">
       <slot v-if="useDefaultSlot"></slot>
       <div
         v-else
         :class="
           cn(
-            `wd-col-picker__cell ${disabled && 'is-disabled'} ${readonly && 'is-readonly'} ${alignRight && 'is-align-right'} ${
-              error && 'is-error'
-            }  ${size && 'is-' + size}`
+            `wd-col-picker__cell`,
+            disabled && 'is-disabled',
+            readonly && 'is-readonly',
+            alignRight && 'is-align-right',
+            error && 'is-error',
+            size === 'large' && 'is-large'
           )
         "
       >
@@ -57,7 +60,7 @@
             >
               {{ selectShowList[colIndex] || translate('select') }}
             </div>
-            <div class="wd-col-picker__selected-line" :style="state.lineStyle"></div>
+            <div class="wd-col-picker__selected-line" :style="lineStyle"></div>
           </div>
         </scroll-view>
       </div>
@@ -106,8 +109,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties, reactive, nextTick } from 'vue'
-import { addUnit, cn, debounce, getRect, isArray, isBoolean, isDef, isFunction, objToStyle } from '../common/util'
+import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties } from 'vue'
+import { addUnit, cn, debounce, getRect, isArray, isBoolean, isDef, isFunction } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
@@ -135,8 +138,9 @@ const scrollLeft = ref<number>(0)
 const inited = ref<boolean>(false)
 const isCompleting = ref<boolean>(false)
 
-const state = reactive({
-  lineStyle: 'display:none;' // 激活项边框线样式
+const lineStyle = ref<CSSProperties>({
+  display: 'none'
+  // 激活项边框线样式
 })
 
 const { proxy } = getCurrentInstance() as any
@@ -443,23 +447,23 @@ function setLineStyle(animation: boolean = true) {
   const { lineWidth, lineHeight } = props
   getRect($item, true, proxy)
     .then((rects) => {
-      const lineStyle: CSSProperties = {}
+      const originLineStyle: CSSProperties = {}
       if (isDef(lineWidth)) {
-        lineStyle.width = addUnit(lineWidth)
+        originLineStyle.width = addUnit(lineWidth)
       }
       if (isDef(lineHeight)) {
-        lineStyle.height = addUnit(lineHeight)
-        lineStyle.borderRadius = `calc(${addUnit(lineHeight)} / 2)`
+        originLineStyle.height = addUnit(lineHeight)
+        originLineStyle.borderRadius = `calc(${addUnit(lineHeight)} / 2)`
       }
       const rect = rects[currentCol.value]
       let left = rects.slice(0, currentCol.value).reduce((prev, curr) => prev + Number(curr.width), 0) + Number(rect.width) / 2
-      lineStyle.transform = `translateX(${left}px) translateX(-50%)`
+      originLineStyle.transform = `translateX(${left}px) translateX(-50%)`
 
       if (animation) {
-        lineStyle.transition = 'width 300ms ease, transform 300ms ease'
+        originLineStyle.transition = 'width 300ms ease, transform 300ms ease'
       }
 
-      state.lineStyle = objToStyle(lineStyle)
+      lineStyle.value = originLineStyle
     })
     .catch(() => {})
 }

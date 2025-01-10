@@ -1,10 +1,10 @@
-import { type ComponentPublicInstance, type ExtractPropTypes, type InjectionKey } from 'vue'
+import { type ComponentPublicInstance, type CSSProperties, type ExtractPropTypes, type InjectionKey } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp, numericProp } from '../common/props'
 
 export type TabsProvide = {
   state: {
     activeIndex: number
-    lineStyle: string // 激活项边框线样式
+    lineStyle: CSSProperties // 激活项边框线样式
     inited: boolean // 是否初始化
     animating: boolean // 是否动画中
     mapShow: boolean // map的开关

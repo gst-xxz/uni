@@ -30,7 +30,7 @@ export default {
 <script lang="ts" setup>
 import { getCurrentInstance, onMounted, ref, watch, nextTick, computed, type CSSProperties } from 'vue'
 import type { TabbarItem } from '../wd-tabbar-item/types'
-import { addUnit, cn, getRect, isDef, objToStyle } from '../common/util'
+import { addUnit, cn, getRect, isDef } from '../common/util'
 import { useChildren } from '../composables/useChildren'
 import { TABBAR_KEY, tabbarProps } from './types'
 
@@ -48,11 +48,13 @@ linkChildren({
 })
 
 const rootStyle = computed(() => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {
+    ...props.customStyle
+  }
   if (isDef(props.zIndex)) {
     style['z-index'] = props.zIndex
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 watch(

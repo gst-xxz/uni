@@ -54,7 +54,7 @@ import {
   getWeekRange
 } from '../utils'
 import { useToast } from '../../wd-toast'
-import { cn, deepClone, isArray, isFunction, objToStyle } from '../../common/util'
+import { cn, deepClone, isArray, isFunction } from '../../common/util'
 import { useTranslate } from '../../composables/useTranslate'
 import type { CalendarDayItem, CalendarDayType } from '../types'
 import { monthProps } from './types'
@@ -89,7 +89,7 @@ const monthTitle = computed(() => {
 const firstDayStyle = computed(() => {
   const dayStyle: CSSProperties = {}
   dayStyle.marginLeft = `${(100 / 7) * offset.value}%`
-  return objToStyle(dayStyle)
+  return dayStyle
 })
 
 const isLastRow = (date: number) => {

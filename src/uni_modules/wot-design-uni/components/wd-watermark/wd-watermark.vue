@@ -12,7 +12,7 @@
     <canvas
       v-if="!canvasOffScreenable && showCanvas"
       type="2d"
-      :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px' }"
+      :style="{ height: addUnit(canvasHeight), width: addUnit(canvasWidth) }"
       class="invisible"
       :canvas-id="canvasId"
       :id="canvasId"
@@ -33,7 +33,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, onMounted, ref, watch, nextTick } from 'vue'
-import { addUnit, buildUrlWithParams, cn, isBase64Image, objToStyle, uuid } from '../common/util'
+import { addUnit, buildUrlWithParams, cn, isBase64Image, uuid } from '../common/util'
 import { watermarkProps } from './types'
 
 const props = defineProps(watermarkProps)
@@ -59,13 +59,14 @@ const showCanvas = ref<boolean>(true) // 是否展示canvas
  */
 const rootStyle = computed(() => {
   const style: Record<string, string | number> = {
+    ...props.customStyle,
     opacity: props.opacity,
     backgroundSize: addUnit(props.width + props.gutterX)
   }
   if (waterMarkUrl.value) {
     style['backgroundImage'] = `url('${waterMarkUrl.value}')`
   }
-  return `${objToStyle(style)};${props.customStyle}`
+  return style
 })
 
 onMounted(() => {

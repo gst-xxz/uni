@@ -1,4 +1,4 @@
-import { baseProps, makeNumberProp, makeStringProp } from '../common/props'
+import { baseProps, makeNumberProp, makeStringProp, makeStyleProp } from '../common/props'
 
 export const backtopProps = {
   ...baseProps,
@@ -17,7 +17,7 @@ export const backtopProps = {
   /**
    * icon样式
    */
-  iconStyle: makeStringProp(''),
+  iconStyle: makeStyleProp({}),
   /**
    * 形状
    */

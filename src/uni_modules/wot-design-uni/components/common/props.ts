@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { CSSProperties, Prop, PropType } from 'vue'
 
 export const unknownProp = null as unknown as PropType<unknown>
 
@@ -24,9 +24,27 @@ export const makeBooleanProp = <T>(defaultVal: T) => ({
   default: defaultVal
 })
 
-export const makeNumberProp = <T>(defaultVal: T) => ({
+export const makeNumberProp = (defaultVal: number, options?: { max?: number; min?: number }): Prop<number> => ({
   type: Number,
-  default: defaultVal
+  default: defaultVal,
+  ...(options && Object.keys(options).length > 0
+    ? {
+        validator(value: number) {
+          if (options.max) {
+            // return true
+            if (value >= options.max) {
+              return false
+            }
+          }
+          if (options.min) {
+            if (value <= options.min) {
+              return false
+            }
+          }
+          return true
+        }
+      }
+    : {})
 })
 
 export const makeNumericProp = <T>(defaultVal: T) => ({
@@ -39,11 +57,22 @@ export const makeStringProp = <T>(defaultVal: T) => ({
   default: defaultVal
 })
 
+export const makeObjectProp = <T extends object = object>(defaultVal: T): Prop<T> => ({
+  type: Object as PropType<T>,
+  default: defaultVal
+  // validator(){}
+})
+
+export const makeStyleProp = (defaultVal: CSSProperties): Prop<CSSProperties> => ({
+  type: Object as PropType<CSSProperties>,
+  default: defaultVal
+})
+
 export const baseProps = {
   /**
    * 自定义根节点样式
    */
-  customStyle: makeStringProp(''),
+  customStyle: makeStyleProp({}),
   /**
    * 自定义根节点样式类
    */

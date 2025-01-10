@@ -1,5 +1,5 @@
-import type { PropType, ExtractPropTypes, CSSProperties } from 'vue'
-import { makeArrayProp, makeBooleanProp, makeStringProp } from '../common/props'
+import type { PropType, ExtractPropTypes } from 'vue'
+import { makeArrayProp, makeBooleanProp, makeStringProp, makeStyleProp } from '../common/props'
 
 type SkeletonTheme = 'text' | 'avatar' | 'paragraph' | 'image'
 type SkeletonAnimation = 'gradient' | 'flashed'
@@ -58,12 +58,7 @@ export const skeletonProps = {
     default: ''
   },
   // 自定义样式
-  customStyle: {
-    type: Object as PropType<CSSProperties>,
-    default() {
-      return {}
-    }
-  }
+  customStyle: makeStyleProp({})
 }
 
 export type SkeletonProps = ExtractPropTypes<typeof skeletonProps>

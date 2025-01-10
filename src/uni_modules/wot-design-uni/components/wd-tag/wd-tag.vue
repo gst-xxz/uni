@@ -1,10 +1,38 @@
 <template>
-  <div :class="rootClass" :style="rootStyle" @click="handleClick">
-    <div v-if="useIconSlot" class="wd-tag__icon">
+  <div
+    :class="
+      cn(
+        `wd-tag`,
+        type && 'is-' + type,
+        plain && 'is-plain',
+        round && 'is-round',
+        mark && 'is-mark',
+        dynamic && 'is-dynamic box-border w-[88px] duration-[0.3s] active:text-primary active:border-primary',
+        dynamicInput && 'is-dynamic-input border-primary',
+        (icon || useIconSlot) && 'is-icon',
+        customClass
+      )
+    "
+    :style="{
+      ...customStyle,
+      ...(bgColor
+        ? {
+            'border-color': bgColor
+          }
+        : {}),
+      ...(!plain && bgColor
+        ? {
+            background: bgColor
+          }
+        : {})
+    }"
+    @click="handleClick"
+  >
+    <div v-if="useIconSlot" class="wd-tag__icon inline-block mr-1 text-xs leading-[1.2] align-baseline">
       <slot name="icon" />
     </div>
-    <wd-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon" />
-    <div class="wd-tag__text" :style="textStyle">
+    <wd-icon v-else-if="icon" :name="icon" custom-class="wd-tag__icon inline-block mr-1 text-xs leading-[1.2] align-baseline" />
+    <div class="wd-tag__text inline-block align-text-top" :style="color ? { color } : {}">
       <slot />
     </div>
     <div class="wd-tag__close" v-if="closable && round" @click.stop="handleClose">
@@ -20,10 +48,10 @@
       @blur="handleBlur"
       @confirm="handleConfirm"
     />
-    <div v-else-if="dynamic" class="wd-tag__text" :style="textStyle" @click.stop="handleAdd">
+    <div v-else-if="dynamic" class="wd-tag__text inline-block align-text-top" :style="color ? { color } : {}" @click.stop="handleAdd">
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
-        <wd-icon name="add" custom-class="wd-tag__add wd-tag__icon" />
+        <wd-icon name="add" custom-class="wd-tag__add wd-tag__icon inline-block mr-1 text-xs leading-[1.2] align-baseline" />
         <span>{{ translate('add') }}</span>
       </template>
     </div>
@@ -41,83 +69,18 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { objToStyle } from '../common/util'
-import { computed, ref, watch } from 'vue'
+import { cn } from '../common/util'
+import { ref } from 'vue'
 import { useTranslate } from '../composables/useTranslate'
 import { tagProps } from './types'
 
-const props = defineProps(tagProps)
+defineProps(tagProps)
 const emit = defineEmits(['click', 'close', 'confirm'])
 
 const { translate } = useTranslate('tag')
 
-const tagClass = ref<string>('')
 const dynamicValue = ref<string>('')
 const dynamicInput = ref<boolean>(false)
-
-watch(
-  [() => props.useIconSlot, () => props.icon, () => props.plain, () => props.dynamic, () => props.round, () => props.mark],
-  () => {
-    computeTagClass()
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
-  () => props.type,
-  (newValue) => {
-    if (!newValue) return
-    // type: 'primary', 'danger', 'warning', 'success'
-    const type = ['primary', 'danger', 'warning', 'success', 'default']
-    if (type.indexOf(newValue) === -1) console.error(`type must be one of ${type.toString()}`)
-    computeTagClass()
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
-  () => dynamicInput.value,
-  () => {
-    computeTagClass()
-  },
-  { deep: true, immediate: true }
-)
-
-const rootClass = computed(() => {
-  return `wd-tag ${props.customClass} ${tagClass.value}`
-})
-
-const rootStyle = computed(() => {
-  const rootStyle: Record<string, any> = {}
-  if (!props.plain && props.bgColor) {
-    rootStyle['background'] = props.bgColor
-  }
-  if (props.bgColor) {
-    rootStyle['border-color'] = props.bgColor
-  }
-  return `${objToStyle(rootStyle)};${props.customStyle}`
-})
-
-const textStyle = computed(() => {
-  const textStyle: Record<string, any> = {}
-  if (props.color) {
-    textStyle['color'] = props.color
-  }
-  return objToStyle(textStyle)
-})
-
-function computeTagClass() {
-  const { type, plain, round, mark, dynamic, icon, useIconSlot } = props
-  let tagClassList: string[] = []
-  type && tagClassList.push(`is-${type}`)
-  plain && tagClassList.push('is-plain')
-  round && tagClassList.push('is-round')
-  mark && tagClassList.push('is-mark')
-  dynamic && tagClassList.push('is-dynamic')
-  dynamicInput.value && tagClassList.push('is-dynamic-input')
-  if (icon || useIconSlot) tagClassList.push('is-icon')
-  tagClass.value = tagClassList.join(' ')
-}
 
 function handleClick(event: any) {
   emit('click', event)
@@ -335,34 +298,6 @@ function setDynamicInput() {
   padding: 2px 5px;
 }
 
-.wd-tag.is-dynamic {
-  box-sizing: border-box;
-  width: 88px;
-  transition: 0.3s;
-}
-
-.wd-tag.is-dynamic:active {
-  color: var(--wot-tag-primary-color, var(--wot-color-theme, #4d80f0));
-  border-color: var(--wot-tag-primary-color, var(--wot-color-theme, #4d80f0));
-}
-
-.wd-tag.is-dynamic-input {
-  border-color: var(--wot-tag-primary-color, var(--wot-color-theme, #4d80f0));
-}
-
-.wd-tag__icon {
-  display: inline-block;
-  margin-right: 4px;
-  font-size: var(--wot-tag-fs, var(--wot-fs-secondary, 12px));
-  line-height: 1.2;
-  vertical-align: baseline;
-}
-
-.wd-tag__text {
-  display: inline-block;
-  vertical-align: text-top;
-}
-
 .wd-tag__add-text {
   width: 60px;
   height: 14px;
@@ -386,9 +321,5 @@ function setDynamicInput() {
 
 .wd-tag__close:active {
   color: var(--wot-tag-close-active-color, rgba(0, 0, 0, 0.45));
-}
-
-.wd-tag__add {
-  vertical-align: bottom;
 }
 </style>

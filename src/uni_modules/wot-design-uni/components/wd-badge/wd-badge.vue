@@ -36,7 +36,7 @@ export default {
 <script lang="ts" setup>
 import { computed, type CSSProperties } from 'vue'
 import { badgeProps } from './types'
-import { addUnit, cn, isDef, isNumber, objToStyle } from '../common/util'
+import { addUnit, cn, isDef, isNumber } from '../common/util'
 
 const props = defineProps(badgeProps)
 const content = computed(() => {
@@ -62,7 +62,7 @@ const contentStyle = computed(() => {
   if (isDef(props.right)) {
     style.right = addUnit(props.right)
   }
-  return objToStyle(style)
+  return style
 })
 
 // 是否展示徽标数字
