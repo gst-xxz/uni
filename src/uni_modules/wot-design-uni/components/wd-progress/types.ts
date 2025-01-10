@@ -1,4 +1,3 @@
-
 import type { PropType } from 'vue'
 import { baseProps, makeBooleanProp, makeNumberProp } from '../common/props'
 

@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { baseProps } from '../common/props'
+import { baseProps, makeStringProp } from '../common/props'
 import type { LoadingProps } from '../wd-loading/types'
 
 export type LoadMoreState = 'loading' | 'error' | 'finished'
@@ -13,15 +13,15 @@ export const loadmoreProps = {
   /**
    * 加载提示文案
    */
-  loadingText: String,
+  loadingText: makeStringProp('正在努力加载中...'),
   /**
    * 全部加载完的提示文案
    */
-  finishedText: String,
+  finishedText: makeStringProp('已加载完毕'),
   /**
    * 加载失败的提示文案
    */
-  errorText: String,
+  errorText: makeStringProp('加载失败'),
   /**
    * 加载中loading组件的属性
    * 参考loading组件

@@ -9,7 +9,7 @@
       }"
     >
       <template v-if="type === 'spinner'">
-        <div v-for="(item, index) in array12" :key="index" class="wd-loading__dot" />
+        <div v-for="(_, index) in array12" :key="index" class="wd-loading__dot" />
       </template>
     </div>
     <div

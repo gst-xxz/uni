@@ -1,5 +1,5 @@
 <template>
-  <div :class="rootClass" :style="customStyle">
+  <div :class="cn(`wd-search`, light ? 'is-light' : '', hideCancel ? 'is-without-cancel' : '', customClass)" :style="customStyle">
     <div class="wd-search__block">
       <slot name="prefix"></slot>
       <div class="wd-search__field">
@@ -48,7 +48,7 @@ export default {
 
 <script lang="ts" setup>
 import { type CSSProperties, computed, onMounted, ref, watch } from 'vue'
-import { objToStyle, pause } from '../common/util'
+import { objToStyle, pause, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { searchProps } from './types'
 
@@ -88,10 +88,6 @@ onMounted(() => {
   if (props.focus) {
     closeCover()
   }
-})
-
-const rootClass = computed(() => {
-  return `wd-search  ${props.light ? 'is-light' : ''}  ${props.hideCancel ? 'is-without-cancel' : ''} ${props.customClass}`
 })
 
 const coverStyle = computed(() => {

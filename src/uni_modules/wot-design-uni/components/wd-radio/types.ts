@@ -1,6 +1,5 @@
-
 import type { PropType } from 'vue'
-import { baseProps, makeRequiredProp, makeStringProp } from '../common/props'
+import { baseProps, makeRequiredProp } from '../common/props'
 
 export type RadioShape = 'dot' | 'button' | 'check'
 

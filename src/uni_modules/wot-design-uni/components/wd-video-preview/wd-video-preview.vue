@@ -7,7 +7,7 @@
   >
     <div class="wd-video-preview__video w-full h-[242px] transition-[all_.3s_ease]" @click.stop="">
       <video
-        class="wd-video-preview__video"
+        class="wd-video-preview__video w-full h-[242px] transition-[all_.3s_ease]"
         v-if="previdewVideo.url"
         :controls="true"
         :poster="previdewVideo.poster"

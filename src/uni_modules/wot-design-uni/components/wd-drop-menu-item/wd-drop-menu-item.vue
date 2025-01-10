@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showWrapper" :class="cn(`wd-drop-item  ${customClass}`)" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
+  <div v-if="showWrapper" :class="cn(`wd-drop-item`, customClass)" :style="`z-index: ${zIndex}; ${positionStyle};${customStyle}`">
     <wd-popup
       v-model="showPop"
       :z-index="zIndex"
@@ -23,7 +23,7 @@
           @click="choose(index)"
           :class="cn(`wd-drop-item__option ${(item[valueKey] !== '' ? item[valueKey] : item) === modelValue ? 'is-active' : ''}`)"
         >
-          <div :class="cn(`wd-drop-item__title ${customTitle}`)">
+          <div :class="cn(`wd-drop-item__title`, customTitle)">
             <span>{{ item[labelKey] ? item[labelKey] : item }}</span>
             <span v-if="item[tipKey]" class="wd-drop-item__tip">{{ item[tipKey] }}</span>
           </div>
@@ -31,7 +31,7 @@
             v-if="(item[valueKey] !== '' ? item[valueKey] : item) === modelValue"
             :name="iconName"
             size="20px"
-            :class="cn(`wd-drop-item__icon ${customIcon}`)"
+            :class="cn(`wd-drop-item__icon`, customIcon)"
           />
         </div>
       </div>

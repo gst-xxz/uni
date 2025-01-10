@@ -1,18 +1,19 @@
 <template>
-  <div :class="cn(`wd-collapse-item ${disabled ? 'is-disabled' : ''} is-border ${customClass}`)" :style="customStyle">
+  <div :class="cn(`wd-collapse-item is-border`, disabled ? 'is-disabled' : '', customClass)" :style="customStyle">
     <div
       :class="
         cn(
-          `wd-collapse-item__header ${expanded ? 'is-expanded' : ''} ${isFirst ? 'wd-collapse-item__header-first' : ''} ${
-            $slots.title ? 'is-custom' : ''
-          }`
+          `wd-collapse-item__header`,
+          expanded ? 'is-expanded' : '',
+          isFirst ? 'wd-collapse-item__header-first' : '',
+          $slots.title ? 'is-custom' : ''
         )
       "
       @click="handleClick"
     >
       <slot name="title" :expanded="expanded" :disabled="disabled" :isFirst="isFirst">
         <span class="wd-collapse-item__title">{{ title }}</span>
-        <wd-icon name="arrow-down" :custom-class="`wd-collapse-item__arrow ${expanded ? 'is-retract' : ''}`" />
+        <wd-icon name="arrow-down" :custom-class="cn(`wd-collapse-item__arrow`, expanded ? 'is-retract' : '')" />
       </slot>
     </div>
     <div class="wd-collapse-item__wrapper" :style="contentStyle" @transitionend="handleTransitionEnd">

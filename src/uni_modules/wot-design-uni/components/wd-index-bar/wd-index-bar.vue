@@ -1,31 +1,23 @@
 <template>
   <div class="wd-index-bar relative w-full h-full" :id="indexBarId">
-    <!-- #ifdef MP-DINGTALK -->
-    <div class="wd-index-bar relative w-full h-full" :id="indexBarId">
-      <!-- #endif -->
-      <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content w-full h-full" @scroll="hanleScroll">
-        <slot></slot>
-      </scroll-view>
+    <scroll-view :scrollTop="scrollState.scrollTop" :scroll-y="true" class="wd-index-bar__content w-full h-full" @scroll="hanleScroll">
+      <slot></slot>
+    </scroll-view>
+    <div
+      class="wd-index-bar__sidebar absolute top-1/2 r-1 -translate-y-1/2"
+      @touchstart.stop.prevent="handleTouchStart"
+      @touchmove.stop.prevent="handleTouchMove"
+      @touchend.stop.prevent="handleTouchEnd"
+      @touchcancel.stop.prevent="handleTouchEnd"
+    >
       <div
-        class="wd-index-bar__sidebar absolute top-1/2 r-1 -translate-y-1/2"
-        @touchstart.stop.prevent="handleTouchStart"
-        @touchmove.stop.prevent="handleTouchMove"
-        @touchend.stop.prevent="handleTouchEnd"
-        @touchcancel.stop.prevent="handleTouchEnd"
+        :class="cn('wd-index-bar__index text-xs font-medium py-1 px-1.5 text-black', { 'is-active text-primary': item.index === state.activeIndex })"
+        v-for="item in children"
+        :key="item.index"
       >
-        <div
-          :class="
-            cn('wd-index-bar__index text-xs font-medium py-1 px-1.5 text-black', { 'is-active text-primary': item.index === state.activeIndex })
-          "
-          v-for="item in children"
-          :key="item.index"
-        >
-          {{ item.index }}
-        </div>
+        {{ item.index }}
       </div>
-      <!-- #ifdef MP-DINGTALK -->
     </div>
-    <!-- #endif -->
   </div>
 </template>
 

@@ -1,13 +1,11 @@
 <template>
   <div
     v-if="currentStatus"
-    :class="`wd-step ${customClass} ${currentStatus ? 'is-' + currentStatus : ''} ${canAlignCenter ? 'is-center' : ''}  ${
-      vertical ? 'is-vertical' : ''
-    }`"
+    :class="cn(`wd-step`, customClass, currentStatus ? 'is-' + currentStatus : '', canAlignCenter ? 'is-center' : '', vertical ? 'is-vertical' : '')"
     :style="rootStyle"
   >
-    <div :class="`wd-step__header  ${dot ? 'is-dot' : ''}`">
-      <div :class="`wd-step__icon  ${dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text'}`">
+    <div :class="cn(`wd-step__header`, dot ? 'is-dot' : '')">
+      <div :class="cn(`wd-step__icon`, dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text')">
         <div v-if="dot" class="wd-step__dot"></div>
         <slot v-else-if="$slots.icon" name="icon" />
         <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
@@ -20,7 +18,7 @@
       <div v-if="index < childrenLength - 1" class="wd-step__line"></div>
     </div>
     <div class="wd-step__content">
-      <div :class="`wd-step__title ${$slots.description || description ? 'is-description' : ''}`">
+      <div :class="cn(`wd-step__title`, $slots.description || description ? 'is-description' : '')">
         <slot v-if="$slots.title" name="title" />
         <span v-else>{{ currentTitle }}</span>
       </div>
@@ -45,7 +43,7 @@ export default {
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { STEPS_KEY } from '../wd-steps/types'
-import { isDef, objToStyle } from '../common/util'
+import { isDef, objToStyle, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'
 import type { CSSProperties } from 'vue'

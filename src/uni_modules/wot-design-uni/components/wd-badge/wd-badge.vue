@@ -4,7 +4,7 @@
     <div
       v-if="shouldShowBadge"
       :class="
-        cn([
+        cn(
           'wd-badge__content inline-block h-4 text-xs py-0 px-[5px] bg-danger rounded-[10px] text-white text-center whitespace-nowrap font-medium border-[2px] border-solid border-white',
           'is-fixed absolute top-0 right-0 -translate-y-1/2 translate-x-1/2',
           {
@@ -15,7 +15,7 @@
             'bg-danger': type === 'danger'
           },
           isDot ? 'is-dot h-1.5 w-1.5 p-0 rounded-full' : ''
-        ])
+        )
       "
       :style="contentStyle"
     >

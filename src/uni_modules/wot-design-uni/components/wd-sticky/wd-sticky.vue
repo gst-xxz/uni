@@ -1,5 +1,5 @@
 <template>
-  <div :style="rootStyle" class="inline-block">
+  <div :style="`${stickyStyle};${customStyle}`" class="inline-block">
     <div :class="cn(`wd-sticky inline-block`, customClass)" :style="stickyStyle" :id="styckyId">
       <div class="wd-sticky__container inline-block" :style="containerStyle">
         <wd-resize @resize="handleResize" customClass="inline-block">
@@ -44,18 +44,6 @@ const stickyState = reactive({
 const { parent: stickyBox } = useParent(STICKY_BOX_KEY)
 
 const { proxy } = getCurrentInstance() as any
-
-const rootStyle = computed(() => {
-  const style: CSSProperties = {
-    'z-index': props.zIndex,
-    height: addUnit(stickyState.height),
-    width: addUnit(stickyState.width)
-  }
-  if (!stickyState.boxLeaved) {
-    style['position'] = 'relative'
-  }
-  return `${objToStyle(style)};${props.customStyle}`
-})
 
 const stickyStyle = computed(() => {
   const style: CSSProperties = {

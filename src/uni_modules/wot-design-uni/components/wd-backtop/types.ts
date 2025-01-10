@@ -1,11 +1,7 @@
-import { baseProps, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
+import { baseProps, makeNumberProp, makeStringProp } from '../common/props'
 
 export const backtopProps = {
   ...baseProps,
-  /**
-   * 页面滚动距离
-   */
-  scrollTop: makeRequiredProp(Number),
   /**
    * 距离顶部多少距离时显示
    */

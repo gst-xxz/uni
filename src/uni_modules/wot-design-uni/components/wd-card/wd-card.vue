@@ -1,6 +1,6 @@
 <template>
-  <div :class="cn(['wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass])" :style="customStyle">
-    <div :class="cn(['wd-card__title-content', customTitleClass])">
+  <div :class="cn('wd-card', type == 'rectangle' ? 'is-rectangle' : '', customClass)" :style="customStyle">
+    <div :class="cn('wd-card__title-content', customTitleClass)">
       <div class="wd-card__title">
         <span v-if="title">{{ title }}</span>
         <slot v-else name="title"></slot>

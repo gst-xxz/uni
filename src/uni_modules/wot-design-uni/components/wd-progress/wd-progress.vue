@@ -1,12 +1,29 @@
 <template>
   <div :class="cn(`wd-progress`, customClass)" :style="customStyle">
     <div class="wd-progress__outer">
-      <div :class="cn(`wd-progress__inner`, status ? `is-${status}` : '')" :style="rootStyle"></div>
+      <div
+        :class="
+          cn(
+            `wd-progress__inner`,
+            status === 'success' ? 'is-success' : '',
+            status === 'danger' ? 'is-danger' : '',
+            status === 'warning' ? 'is-warning' : ''
+          )
+        "
+        :style="rootStyle"
+      ></div>
     </div>
     <div v-if="!hideText" class="wd-progress__label">{{ percentage }}%</div>
     <wd-icon
       v-else-if="status"
-      :custom-class="cn(`wd-progress__label wd-progress__icon`, status ? `is-${status}` : '')"
+      :custom-class="
+        cn(
+          `wd-progress__label wd-progress__icon`,
+          status === 'success' ? 'is-success' : '',
+          status === 'danger' ? 'is-danger' : '',
+          status === 'warning' ? 'is-warning' : ''
+        )
+      "
       :name="iconName"
       :color="typeof color === 'string' ? color : ''"
     ></wd-icon>

@@ -51,16 +51,6 @@ const { proxy } = getCurrentInstance() as any
 const showTooltip = ref<boolean>(false) // 控制tooltip显隐
 
 watch(
-  () => props.content,
-  (newVal) => {
-    if (newVal === null || newVal === undefined) {
-      // eslint-disable-next-line prettier/prettier
-      console.error('[wot-design] warning(wd-tooltip): content can\'t be null or undefined')
-    }
-  }
-)
-
-watch(
   () => props.placement,
   () => {
     popover.init(props.placement, props.visibleArrow, selector)

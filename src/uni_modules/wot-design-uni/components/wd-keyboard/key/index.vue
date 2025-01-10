@@ -5,16 +5,8 @@
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
   >
-    <div
-      :class="
-        cn(
-          `wd-key ${props.large ? 'wd-key--large' : ''} ${props.type === 'delete' ? 'wd-key--delete' : ''} ${
-            props.type === 'close' ? 'wd-key--close' : ''
-          }`
-        )
-      "
-    >
-      <wd-loading custom-class="wd-key__loading-icon" v-if="props.loading" />
+    <div :class="cn(`wd-key`, large ? 'wd-key--large' : '', type === 'delete' ? 'wd-key--delete' : '', type === 'close' ? 'wd-key--close' : '')">
+      <wd-loading custom-class="wd-key__loading-icon" v-if="loading" />
       <template v-if="type === 'delete'">
         <template v-if="text">
           {{ text }}

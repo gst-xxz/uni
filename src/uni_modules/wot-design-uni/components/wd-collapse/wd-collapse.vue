@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(`wd-collapse ${viewmore ? 'is-viewmore' : ''}`, customClass)" :style="customStyle">
+  <div :class="cn(`wd-collapse bg-white`, viewmore ? 'is-viewmore p-[15px]' : '', customClass)" :style="customStyle">
     <!-- 普通或手风琴 -->
     <block v-if="!viewmore">
       <slot></slot>
@@ -7,20 +7,27 @@
     <!-- 查看更多模式 -->
     <div v-else>
       <div
-        :class="cn(`wd-collapse__content ${!modelValue ? 'is-retract' : ''} `)"
-        :style="`-webkit-line-clamp: ${contentLineNum}; -webkit-box-orient: vertical`"
+        :class="cn(`wd-collapse__content text-sm text-black/65`, !modelValue ? 'is-retract line-clamp-1 text-sm' : '')"
+        :style="`-webkit-line-clamp: ${viewmore && !modelValue ? lineNum : 0};`"
       >
         <slot></slot>
       </div>
-      <div class="wd-collapse__more" @click="handleMore">
+      <div class="wd-collapse__more inline-block text-sm mt-2 text-primary select-none" @click="handleMore">
         <!-- 自定义展开按钮 -->
         <div v-if="useMoreSlot" :class="customMoreSlotClass">
           <slot name="more"></slot>
         </div>
         <!-- 显示展开或折叠按钮 -->
         <block v-else>
-          <span class="wd-collapse__more-txt">{{ !modelValue ? translate('expand') : translate('retract') }}</span>
-          <div :class="cn(`wd-collapse__arrow ${modelValue ? 'is-retract' : ''}`)">
+          <span class="wd-collapse__more-txt inline-block align-middle mr-1">{{ !modelValue ? '展开' : '收起' }}</span>
+          <div
+            :class="
+              cn(
+                `wd-collapse__arrow inline-block align-middle transition-[transform_0.1s] text-lg leading-[18px] h-[18px]`,
+                modelValue ? 'is-retract -rotate-180' : ''
+              )
+            "
+          >
             <wd-icon name="arrow-down"></wd-icon>
           </div>
         </block>
@@ -41,17 +48,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { onBeforeMount, ref, watch } from 'vue'
+import { watch } from 'vue'
 import { COLLAPSE_KEY, collapseProps, type CollapseExpose, type CollapseToggleAllOptions } from './types'
 import { useChildren } from '../composables/useChildren'
 import { cn, isArray, isBoolean, isDef } from '../common/util'
-import { useTranslate } from '../composables/useTranslate'
 
 const props = defineProps(collapseProps)
 const emit = defineEmits(['change', 'update:modelValue'])
-
-const { translate } = useTranslate('collapse')
-const contentLineNum = ref<number>(0) // 查看更多的折叠面板，收起时的显示行数
 
 const { linkChildren, children } = useChildren(COLLAPSE_KEY)
 
@@ -80,11 +83,6 @@ watch(
   },
   { deep: true, immediate: true }
 )
-
-onBeforeMount(() => {
-  const { lineNum, viewmore, modelValue } = props
-  contentLineNum.value = viewmore && !modelValue ? lineNum : 0
-})
 
 function updateChange(activeNames: string | string[] | boolean) {
   emit('update:modelValue', activeNames)
@@ -144,55 +142,3 @@ defineExpose<CollapseExpose>({
   toggleAll
 })
 </script>
-
-<style>
-.wd-collapse {
-  background: var(--wot-color-white, rgb(255, 255, 255));
-}
-
-.wd-collapse.is-viewmore {
-  padding: var(--wot-collapse-side-padding, var(--wot-size-side-padding, 15px));
-}
-
-.wd-collapse__content {
-  font-size: var(--wot-collapse-body-fs, 14px);
-  color: var(--wot-collapse-body-color, rgba(0, 0, 0, 0.65));
-}
-
-.wd-collapse__content.is-retract {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: var(--wot-collapse-retract-fs, 14px);
-}
-
-.wd-collapse__more {
-  display: inline-block;
-  font-size: var(--wot-collapse-retract-fs, 14px);
-  margin-top: 8px;
-  color: var(--wot-collapse-more-color, var(--wot-color-theme, #4d80f0));
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.wd-collapse__more-txt {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 4px;
-}
-
-.wd-collapse__arrow {
-  display: inline-block;
-  vertical-align: middle;
-  transition: -webkit-transform 0.1s;
-  transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
-  font-size: var(--wot-collapse-arrow-size, 18px);
-  height: var(--wot-collapse-arrow-size, 18px);
-  line-height: var(--wot-collapse-arrow-size, 18px);
-}
-
-.wd-collapse__arrow.is-retract {
-  transform: rotate(-180deg);
-}
-</style>

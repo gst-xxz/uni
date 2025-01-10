@@ -1,9 +1,13 @@
 <template>
-  <div :class="`wd-segmented ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-segmented`, customClass)" :style="customStyle">
     <div
-      :class="`wd-segmented__item is-${size} ${state.activeIndex === index ? 'is-active' : ''} ${
-        disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
-      }`"
+      :class="
+        cn(
+          `wd-segmented__item is-${size}`,
+          state.activeIndex === index ? 'is-active' : '',
+          disabled || (isObj(option) ? option.disabled : false) ? 'is-disabled' : ''
+        )
+      "
       @click="handleClick(option, index)"
       v-for="(option, index) in options"
       :key="index"
@@ -15,7 +19,7 @@
         </template>
       </div>
     </div>
-    <div :class="`wd-segmented__item--active ${activeDisabled ? 'is-disabled' : ''}`" :style="state.activeStyle"></div>
+    <div :class="cn(`wd-segmented__item--active`, activeDisabled ? 'is-disabled' : '')" :style="state.activeStyle"></div>
   </div>
 </template>
 
@@ -32,7 +36,7 @@ export default {
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, reactive, watch } from 'vue'
-import { getRect, isObj, objToStyle, addUnit, pause } from '../common/util'
+import { getRect, isObj, objToStyle, addUnit, pause, cn } from '../common/util'
 import type { CSSProperties } from 'vue'
 import { segmentedProps, type SegmentedExpose, type SegmentedOption } from './types'
 const $item = '.wd-segmented__item'

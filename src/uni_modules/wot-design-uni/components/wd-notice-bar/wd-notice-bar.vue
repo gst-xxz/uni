@@ -1,9 +1,23 @@
 <template>
-  <div v-if="show" :class="cn(`wd-notice-bar ${customClass} ${noticeBarClass}`)" :style="rootStyle">
-    <wd-icon v-if="prefix" custom-class="wd-notice-bar__prefix" :name="prefix"></wd-icon>
+  <div
+    v-if="show"
+    :class="
+      cn(
+        `wd-notice-bar flex items-center text-xs rounded-lg relative box-border py-[9px] pr-5 pl-[15px]`,
+        type === 'warning' ? 'is-warning' : '',
+        type === 'info' ? 'is-info' : '',
+        type === 'danger' ? 'is-danger' : '',
+        !isHorizontal || (isHorizontal && !wrapable && !scrollable) ? 'wd-notice-bar--ellipse' : '',
+        wrapable && !scrollable ? 'wd-notice-bar--wrap' : '',
+        customClass
+      )
+    "
+    :style="rootStyle"
+  >
+    <wd-icon v-if="prefix" custom-class="wd-notice-bar__prefix pr-1 text-lg" :name="prefix"></wd-icon>
     <slot v-else name="prefix"></slot>
-    <div class="wd-notice-bar__wrap">
-      <div class="wd-notice-bar__content" :style="animation" @transitionend="animationEnd" @click="handleClick">
+    <div class="wd-notice-bar__wrap relative flex-1 h-[18px] overflow-hidden leading-[18px]">
+      <div class="wd-notice-bar__content absolute whitespace-nowrap" :style="animation" @transitionend="animationEnd" @click="handleClick">
         <template v-if="isVertical">
           <div v-for="item in textArray" :key="item">{{ item }}</div>
           <div v-if="textArray.length > 1">{{ textArray[0] }}</div>
@@ -70,21 +84,6 @@ const rootStyle = computed(() => {
   }
 
   return `${objToStyle(style)};${props.customStyle}`
-})
-const noticeBarClass = computed(() => {
-  const { type, wrapable, scrollable } = props
-
-  let noticeBarClasses: string[] = []
-  type && noticeBarClasses.push(`is-${type}`)
-
-  if (isHorizontal.value) {
-    !wrapable && !scrollable && noticeBarClasses.push('wd-notice-bar--ellipse')
-  } else {
-    noticeBarClasses.push('wd-notice-bar--ellipse')
-  }
-
-  wrapable && !scrollable && noticeBarClasses.push('wd-notice-bar--wrap')
-  return noticeBarClasses.join(' ')
 })
 
 const { proxy } = getCurrentInstance() as any
@@ -261,16 +260,6 @@ defineExpose<NoticeBarExpose>({ reset })
 </script>
 
 <style>
-.wd-notice-bar {
-  display: flex;
-  padding: var(--wot-notice-bar-padding, 9px 20px 9px 15px);
-  align-items: center;
-  font-size: var(--wot-notice-bar-fs, 12px);
-  border-radius: var(--wot-notice-bar-border-radius, 8px);
-  position: relative;
-  box-sizing: border-box;
-}
-
 .wd-notice-bar.is-warning {
   background: var(--wot-notice-bar-warning-bg, #fff6c8);
   color: var(--wot-notice-bar-warning-color, var(--wot-color-warning, #f0883a));
@@ -286,11 +275,6 @@ defineExpose<NoticeBarExpose>({ reset })
   color: var(--wot-notice-bar-danger-color, var(--wot-color-danger, #fa4350));
 }
 
-.wd-notice-bar__prefix {
-  padding-right: 4px;
-  font-size: var(--wot-notice-bar-prefix-size, 18px);
-}
-
 .wd-notice-bar__suffix {
   text-align: center;
   font-size: var(--wot-notice-bar-close-size, 18px);
@@ -302,19 +286,6 @@ defineExpose<NoticeBarExpose>({ reset })
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.wd-notice-bar__wrap {
-  position: relative;
-  flex: 1;
-  height: var(--wot-notice-bar-line-height, 18px);
-  overflow: hidden;
-  line-height: var(--wot-notice-bar-line-height, 18px);
-}
-
-.wd-notice-bar__content {
-  position: absolute;
-  white-space: nowrap;
 }
 
 .wd-notice-bar--ellipse .wd-notice-bar__content {

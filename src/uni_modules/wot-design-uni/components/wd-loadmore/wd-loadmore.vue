@@ -1,14 +1,17 @@
 <template>
-  <div :class="cn(['wd-loadmore', customClass])" :style="customStyle" @click="reload">
-    <wd-divider v-if="state === 'finished'">{{ finishedText || translate('finished') }}</wd-divider>
+  <div :class="cn('wd-loadmore w-full h-12 leading-[48px] text-center text-black/45', customClass)" :style="customStyle" @click="reload">
+    <wd-divider v-if="state === 'finished'">{{ finishedText }}</wd-divider>
     <block v-if="state === 'error'">
-      <span class="wd-loadmore__text">{{ errorText || translate('error') }}</span>
-      <span class="wd-loadmore__text is-light">{{ translate('retry') }}</span>
-      <wd-icon name="refresh" custom-class="wd-loadmore__refresh" />
+      <span class="wd-loadmore__text inline-block text-sm align-middle">{{ errorText }}</span>
+      <span class="wd-loadmore__text inline-block text-sm align-middle is-light my-0 mx-1.5 text-primary">点击重试</span>
+      <wd-icon name="refresh" custom-class="wd-loadmore__refresh inline-block text-primary align-middle text-base" />
     </block>
     <block v-if="state === 'loading'">
-      <wd-loading v-bind="customLoadingProps" />
-      <span class="wd-loadmore__text">{{ loadingText || translate('loading') }}</span>
+      <wd-loading
+        v-bind="customLoadingProps"
+        :class="cn(`wd-loadmore__loading inline-block mr-2 align-middle w-4 h-4`, customLoadingProps.customClass)"
+      />
+      <span class="wd-loadmore__text">{{ loadingText }}</span>
     </block>
   </div>
 </template>
@@ -26,21 +29,17 @@ export default {
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { useTranslate } from '../composables/useTranslate'
 import { loadmoreProps, type LoadMoreState } from './types'
 import type { LoadingProps } from '../wd-loading/types'
 import { cn, isDef, isUndefined, omitBy } from '../common/util'
 
 const customLoadingProps = computed(() => {
   const loadingProps: Partial<LoadingProps> = isDef(props.loadingProps) ? omitBy(props.loadingProps, isUndefined) : {}
-  loadingProps.customClass = `wd-loadmore__loading ${loadingProps.customClass || ''}`
   return loadingProps
 })
 
 const props = defineProps(loadmoreProps)
 const emit = defineEmits(['reload'])
-
-const { translate } = useTranslate('loadmore')
 
 const currentState = ref<LoadMoreState | null>(null)
 
@@ -50,39 +49,3 @@ function reload() {
   emit('reload')
 }
 </script>
-
-<style>
-.wd-loadmore {
-  width: 100%;
-  height: var(--wot-loadmore-height, 48px);
-  line-height: var(--wot-loadmore-height, 48px);
-  text-align: center;
-  color: var(--wot-loadmore-color, rgba(0, 0, 0, 0.45));
-}
-
-.wd-loadmore__loading {
-  display: inline-block;
-  margin-right: 8px;
-  vertical-align: middle;
-  width: var(--wot-loadmore-loading-size, var(--wot-fs-title, 16px));
-  height: var(--wot-loadmore-loading-size, var(--wot-fs-title, 16px));
-}
-
-.wd-loadmore__text {
-  display: inline-block;
-  font-size: var(--wot-loadmore-fs, 14px);
-  vertical-align: middle;
-}
-
-.wd-loadmore__text.is-light {
-  margin: 0 6px;
-  color: var(--wot-loadmore-error-color, var(--wot-color-theme, #4d80f0));
-}
-
-.wd-loadmore__refresh {
-  display: inline-block;
-  color: var(--wot-loadmore-error-color, var(--wot-color-theme, #4d80f0));
-  vertical-align: middle;
-  font-size: var(--wot-loadmore-refresh-fs, var(--wot-fs-title, 16px));
-}
-</style>

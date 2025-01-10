@@ -1,5 +1,14 @@
 <template>
-  <div :class="cn(`wd-radio-group  ${customClass} ${cell && shape === 'button' ? 'is-button' : ''}`)" :style="customStyle">
+  <div
+    :class="
+      cn(
+        `wd-radio-group bg-white text-[0]`,
+        customClass,
+        cell && shape === 'button' ? 'is-button w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : ''
+      )
+    "
+    :style="customStyle"
+  >
     <slot />
   </div>
 </template>
@@ -15,7 +24,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { watch } from 'vue'
 import { useChildren } from '../composables/useChildren'
 import { RADIO_GROUP_KEY, radioGroupProps } from './types'
 import { cn } from '../common/util'
@@ -23,23 +31,10 @@ import { cn } from '../common/util'
 const props = defineProps(radioGroupProps)
 const emit = defineEmits(['change', 'update:modelValue'])
 
-const { linkChildren, children } = useChildren(RADIO_GROUP_KEY)
+const { linkChildren } = useChildren(RADIO_GROUP_KEY)
 
 linkChildren({ props, updateValue })
 
-watch(
-  () => props.shape,
-  (newValue) => {
-    // type: 'dot', 'button', 'check'
-    const type = ['check', 'dot', 'button']
-    if (type.indexOf(newValue) === -1) console.error(`shape must be one of ${type.toString()}`)
-  },
-  { deep: true, immediate: true }
-)
-
-/**
- * @description 处理radio子节点通知
- */
 function updateValue(value: string | number | boolean) {
   emit('update:modelValue', value)
   emit('change', {
@@ -47,18 +42,3 @@ function updateValue(value: string | number | boolean) {
   })
 }
 </script>
-<style>
-.wd-radio-group {
-  background-color: var(--wot-radio-bg, var(--wot-color-white, rgb(255, 255, 255)));
-  font-size: 0;
-}
-
-.wd-radio-group.is-button {
-  width: 100%;
-  height: 100%;
-  padding: 8px 3px 20px 15px;
-  box-sizing: border-box;
-  overflow: hidden;
-  height: auto;
-}
-</style>

@@ -1,10 +1,7 @@
 <template>
   <div :class="cn(`wd-resize`, customClass)" :style="rootStyle">
-    <!--插槽需要脱离父容器文档流，防止父容器固宽固高，进而导致插槽大小被被父容器限制-->
     <div :id="resizeId" :class="cn(`wd-resize__container absolute min-w-px min-h-px`, customContainerClass)">
-      <!--被监听的插槽-->
       <slot />
-      <!--监听插槽变大-->
       <scroll-view
         class="wd-resize__wrapper absolute top-0 bottom-0 left-0 right-0 -z-50 overflow-hidden invisible"
         :scroll-y="true"
@@ -15,7 +12,6 @@
       >
         <div class="wd-resize__wrapper--placeholder transition-none animate-none h-[100000px] w-[100000px]"></div>
       </scroll-view>
-      <!--监听插槽变小-->
       <scroll-view
         class="wd-resize__wrapper absolute top-0 bottom-0 left-0 right-0 -z-50 overflow-hidden invisible"
         :scroll-y="true"

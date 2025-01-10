@@ -91,78 +91,6 @@ export const checkNumRange = (num: number, label: string = 'value'): void => {
 }
 
 /**
- * @description 防止 pixel 无意义
- * @param {number} num
- * @param {string} label 标签
- */
-export const checkPixelRange = (num: number, label: string = 'value'): void => {
-  if (num <= 0) {
-    throw new Error(`${label} should be greater than zero`)
-  }
-}
-
-/**
- * 将 RGB 值转换为十六进制颜色代码。
- * @param {number} r - 红色分量 (0-255)。
- * @param {number} g - 绿色分量 (0-255)。
- * @param {number} b - 蓝色分量 (0-255)。
- * @returns {string} 十六进制颜色代码 (#RRGGBB)。
- */
-export function rgbToHex(r: number, g: number, b: number): string {
-  // 将 RGB 分量组合成一个十六进制数。
-  const hex = ((r << 16) | (g << 8) | b).toString(16)
-
-  // 使用零填充十六进制数，确保它有 6 位数字（RGB 范围）。
-  const paddedHex = '#' + '0'.repeat(Math.max(0, 6 - hex.length)) + hex
-
-  return paddedHex
-}
-
-/**
- * 将十六进制颜色代码转换为 RGB 颜色数组。
- * @param hex 十六进制颜色代码（例如：'#RRGGBB'）
- * @returns 包含红、绿、蓝三个颜色分量的数组
- */
-function hexToRgb(hex: string): number[] {
-  const rgb: number[] = []
-
-  // 从第一个字符开始，每两个字符代表一个颜色分量
-  for (let i = 1; i < 7; i += 2) {
-    // 将两个字符的十六进制转换为十进制，并添加到 rgb 数组中
-    rgb.push(parseInt('0x' + hex.slice(i, i + 2), 16))
-  }
-
-  return rgb
-}
-
-/**
- * 计算渐变色的中间变量数组。
- * @param {string} startColor 开始颜色
- * @param {string} endColor 结束颜色
- * @param {number} step 获取渲染位置，默认为中间位置
- * @returns {string[]} 渐变色中间颜色变量数组
- */
-export const gradient = (startColor: string, endColor: string, step: number = 2): string[] => {
-  // 将hex转换为rgb
-  const sColor: number[] = hexToRgb(startColor)
-  const eColor: number[] = hexToRgb(endColor)
-
-  // 计算R\G\B每一步的差值
-  const rStep: number = (eColor[0] - sColor[0]) / step
-  const gStep: number = (eColor[1] - sColor[1]) / step
-  const bStep: number = (eColor[2] - sColor[2]) / step
-
-  const gradientColorArr: string[] = []
-  for (let i = 0; i < step; i++) {
-    // 计算每一步的hex值
-    gradientColorArr.push(
-      rgbToHex(parseInt(String(rStep * i + sColor[0])), parseInt(String(gStep * i + sColor[1])), parseInt(String(bStep * i + sColor[2])))
-    )
-  }
-  return gradientColorArr
-}
-
-/**
  * 确保数值不超出指定范围。
  * @param {number} num 要限制范围的数值
  * @param {number} min 最小范围
@@ -426,16 +354,6 @@ export function objToStyle(styles: Record<string, any> | Record<string, any>[]):
   }
   // 如果 styles 不是对象也不是数组，则直接返回
   return ''
-}
-
-export const requestAnimationFrame = (cb = () => {}) => {
-  return new AbortablePromise((resolve) => {
-    const timer = setInterval(() => {
-      clearInterval(timer)
-      resolve(true)
-      cb()
-    }, 1000 / 30)
-  })
 }
 
 /**

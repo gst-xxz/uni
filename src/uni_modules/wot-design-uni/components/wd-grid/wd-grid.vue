@@ -1,6 +1,5 @@
 <template>
   <div :class="cn(`wd-grid relative box-border overflow-hidden h-auto`, customClass)" :style="rootStyle">
-    <!-- 默认插入的 item -->
     <slot />
   </div>
 </template>

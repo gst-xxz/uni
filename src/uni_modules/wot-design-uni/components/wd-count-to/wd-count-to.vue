@@ -13,7 +13,7 @@
         customClass
       )
     "
-    :style="{ color: props.color }"
+    :style="{ color }"
   >
     <!-- 前缀插槽 -->
     <slot name="prefix">

@@ -2,11 +2,17 @@
   <div
     :class="
       cn(
-        `wd-checkbox ${innerCell ? 'is-cell-box' : ''} ${innerShape === 'button' ? 'is-button-box' : ''} ${isChecked ? 'is-checked' : ''} ${
-          isFirst ? 'is-first-child' : ''
-        } ${isLast ? 'is-last-child' : ''} ${innerInline ? 'is-inline' : ''} ${innerShape === 'button' ? 'is-button' : ''} ${
-          innerDisabled ? 'is-disabled' : ''
-        } ${innerSize ? 'is-' + innerSize : ''} ${customClass}`
+        `wd-checkbox`,
+        innerCell ? 'is-cell-box' : '',
+        innerShape === 'button' ? 'is-button-box' : '',
+        isChecked ? 'is-checked' : '',
+        isFirst ? 'is-first-child' : '',
+        isLast ? 'is-last-child' : '',
+        innerInline ? 'is-inline' : '',
+        innerShape === 'button' ? 'is-button' : '',
+        innerDisabled ? 'is-disabled' : '',
+        innerSize ? 'is-' + innerSize : '',
+        customClass
       )
     "
     :style="customStyle"
@@ -51,7 +57,7 @@ import { computed, getCurrentInstance, onBeforeMount, watch } from 'vue'
 import { useParent } from '../composables/useParent'
 import { CHECKBOX_GROUP_KEY } from '../wd-checkbox-group/types'
 import { cn, getPropByPath, isDef } from '../common/util'
-import { checkboxProps, type CheckboxExpose } from './types'
+import { checkboxProps, type CheckboxExpose, type CheckShape } from './types'
 
 const props = defineProps(checkboxProps)
 const emit = defineEmits(['change', 'update:modelValue'])
@@ -98,7 +104,7 @@ watch(
   }
 )
 
-const innerShape = computed(() => {
+const innerShape = computed<CheckShape>(() => {
   return props.shape || getPropByPath(checkboxGroup, 'props.shape') || 'circle'
 })
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="cn(['wd-cell', isBorder ? 'is-border' : '', size ? 'is-' + size : '', center ? 'is-center' : '', customClass])"
+    :class="cn(['wd-cell', isBorder ? 'is-border' : '', size === 'large' ? 'is-large' : '', center ? 'is-center' : '', customClass])"
     :style="customStyle"
     :hover-class="isLink || clickable ? 'is-hover' : 'none'"
     :hover-stay-time="70"
@@ -11,36 +11,27 @@
         :class="cn(['wd-cell__left', isRequired ? 'is-required' : ''])"
         :style="titleWidth ? 'min-width:' + titleWidth + ';max-width:' + titleWidth + ';' : ''"
       >
-        <!--左侧icon部位-->
         <wd-icon v-if="icon" :name="icon" :custom-class="cn(`wd-cell__icon`, customIconClass)"></wd-icon>
         <slot v-else name="icon" />
 
         <div class="wd-cell__title">
-          <!--title BEGIN-->
           <div v-if="title" :class="customTitleClass">{{ title }}</div>
           <slot v-else name="title"></slot>
-          <!--title END-->
 
-          <!--label BEGIN-->
           <div v-if="label" :class="cn(`wd-cell__label`, customLabelClass)">{{ label }}</div>
           <slot v-else name="label" />
-          <!--label END-->
         </div>
       </div>
-      <!--right content BEGIN-->
       <div class="wd-cell__right">
         <div class="wd-cell__body">
-          <!--文案内容-->
           <div :class="cn(`wd-cell__value`, customValueClass)">
             <slot>{{ value }}</slot>
           </div>
-          <!--箭头-->
           <wd-icon v-if="isLink" custom-class="wd-cell__arrow-right" name="arrow" />
           <slot v-else name="right-icon" />
         </div>
         <div v-if="errorMessage" class="wd-cell__error-message">{{ errorMessage }}</div>
       </div>
-      <!--right content END-->
     </div>
   </div>
 </template>

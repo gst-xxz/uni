@@ -4,14 +4,19 @@
     <wd-privacy-popup></wd-privacy-popup>
     <!-- #endif -->
     <demo-block title="基本用法" style="text-align: center">
-      <wd-img-cropper v-model="show" :img-src="src" @confirm="handleConfirm" @cancel="handleCancel"
-        @imgloaderror="imgLoaderror" @imgloaded="imgLoaded"></wd-img-cropper>
+      <wd-img-cropper
+        v-model="show"
+        :img-src="src"
+        @confirm="handleConfirm"
+        @cancel="handleCancel"
+        @imgloaderror="imgLoaderror"
+        @imgloaded="imgLoaded"
+      ></wd-img-cropper>
       <div class="profile">
         <div v-if="!imgSrc" class="img" @click="upload">
           <wd-icon name="fill-camera" custom-class="img-icon"></wd-icon>
         </div>
-        <wd-img v-if="imgSrc" round width="200px" height="200px" :src="imgSrc" mode="aspectFit"
-          custom-class="profile-img" @click="upload" />
+        <wd-img v-if="imgSrc" round width="200px" height="200px" :src="imgSrc" mode="aspectFit" custom-class="profile-img" @click="upload" />
         <div style="font-size: 14px">点击上传头像</div>
       </div>
     </demo-block>

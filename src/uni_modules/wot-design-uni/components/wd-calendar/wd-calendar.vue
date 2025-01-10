@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(`wd-calendar ${cell.border.value ? 'is-border' : ''} ${customClass}`)">
+  <div :class="cn(`wd-calendar`, cell.border.value ? 'is-border' : '', customClass)">
     <div class="wd-calendar__field" @click="open" v-if="withCell">
       <slot v-if="$slots.default"></slot>
       <div

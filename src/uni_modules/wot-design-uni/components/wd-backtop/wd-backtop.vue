@@ -30,13 +30,18 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { backtopProps } from './types'
 import { cn } from '../common/util'
+import { onPageScroll } from '@dcloudio/uni-app'
 
 const props = defineProps(backtopProps)
 
-const show = computed(() => props.scrollTop > props.top)
+const scrollTop = ref(0)
+onPageScroll((e) => {
+  scrollTop.value = e.scrollTop
+})
+const show = computed(() => scrollTop.value > props.top)
 
 function handleBacktop() {
   uni.pageScrollTo({

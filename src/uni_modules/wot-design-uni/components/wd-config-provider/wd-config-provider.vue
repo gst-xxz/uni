@@ -20,4 +20,5 @@ import { configProviderProps } from './types'
 import { cn } from '../common/util'
 
 defineProps(configProviderProps)
+// todo 实现 auto theme
 </script>

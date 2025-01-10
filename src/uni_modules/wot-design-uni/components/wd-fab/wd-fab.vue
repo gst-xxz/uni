@@ -7,7 +7,7 @@
     :style="rootStyle"
     @click.stop=""
   >
-    <div @click.stop="" :style="{ visibility: inited ? 'visible' : 'hidden' }" id="trigger">
+    <div @click.stop="" :class="inited ? 'visible' : 'invisible'" id="trigger">
       <slot name="trigger" v-if="$slots.trigger"></slot>
       <wd-button
         v-else

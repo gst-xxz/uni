@@ -1,5 +1,5 @@
 <template>
-  <div class="wd-navbar-capsule">
+  <div class="wd-navbar-capsule relative box-border w-[88px] h-8 flex items-center justify-center empty:hidden">
     <wd-icon @click="handleBack" name="chevron-left" custom-class="wd-navbar-capsule__icon" />
     <wd-icon @click="handleBackHome" name="home" custom-class="wd-navbar-capsule__icon" />
   </div>
@@ -27,16 +27,6 @@ function handleBackHome() {
 </script>
 
 <style>
-.wd-navbar-capsule {
-  position: relative;
-  box-sizing: border-box;
-  width: var(--wot-navbar-capsule-width, 88px);
-  height: var(--wot-navbar-capsule-height, 32px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .wd-navbar-capsule:before {
   content: '';
   position: absolute;
@@ -64,10 +54,6 @@ function handleBackHome() {
   width: 1px;
   height: 1.125rem;
   background: var(--wot-navbar-capsule-border-color, #e7e7e7);
-}
-
-.wd-navbar-capsule:empty {
-  display: none;
 }
 
 .wd-navbar-capsule__icon {
