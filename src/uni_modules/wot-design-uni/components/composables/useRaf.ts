@@ -1,5 +1,5 @@
 import { ref, onUnmounted } from 'vue'
-import { isDef, isH5, isNumber } from '../common/util'
+import { isH5, isNumber } from '../common/util'
 
 // 定义回调函数类型
 type RafCallback = (time: number) => void
@@ -24,7 +24,7 @@ export function useRaf(callback: RafCallback) {
   const cancel = () => {
     if (isH5 && isNumber(requestRef.value)) {
       cancelAnimationFrame(requestRef.value!)
-    } else if (isDef(requestRef.value)) {
+    } else if (requestRef.value) {
       clearTimeout(requestRef.value)
     }
   }

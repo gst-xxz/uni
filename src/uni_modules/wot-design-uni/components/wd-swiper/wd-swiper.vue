@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-swiper ${customClass}`" :style="customStyle">
+  <div :class="cn(`wd-swiper`, customClass)" :style="customStyle">
     <swiper
       :adjust-height="adjustHeight"
       :adjust-vertical-height="adjustVerticalHeight"
@@ -23,7 +23,7 @@
         <img
           v-if="isImage(item)"
           :src="isObj(item) ? item[valueKey] : item"
-          :class="`wd-swiper__image ${customImageClass} ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
+          :class="cn(`wd-swiper__image ${customImageClass} ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`)"
           :style="{ height: addUnit(height) }"
           :mode="imageMode"
           @click="handleClick(index, item)"
@@ -34,7 +34,7 @@
           :style="{ height: addUnit(height) }"
           :src="isObj(item) ? item[valueKey] : item"
           :poster="isObj(item) ? item.poster : ''"
-          :class="`wd-swiper__video ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`"
+          :class="cn(`wd-swiper__video ${customItemClass} ${getCustomItemClass(currentValue, index, list)}`)"
           @play="handleVideoPaly"
           @pause="handleVideoPause"
           :enable-progress-gesture="false"
@@ -44,7 +44,7 @@
           objectFit="cover"
           @click="handleClick(index, item)"
         />
-        <span v-if="isObj(item) && item[textKey]" :class="`wd-swiper__text ${customTextClass}`" :style="customTextStyle">{{ item[textKey] }}</span>
+        <span v-if="isObj(item) && item[textKey]" :class="cn(`wd-swiper__text`, customTextClass)" :style="customTextStyle">{{ item[textKey] }}</span>
       </swiper-item>
     </swiper>
 
@@ -79,7 +79,7 @@ export default {
 <script lang="ts" setup>
 import wdSwiperNav from '../wd-swiper-nav/wd-swiper-nav.vue'
 import { computed, watch, ref, getCurrentInstance } from 'vue'
-import { addUnit, isObj, isImageUrl, isVideoUrl, uuid, isDef } from '../common/util'
+import { addUnit, isObj, isImageUrl, isVideoUrl, uuid, isDef, cn } from '../common/util'
 import { swiperProps, type SwiperList } from './types'
 import type { SwiperNavProps } from '../wd-swiper-nav/types'
 

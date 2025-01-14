@@ -404,7 +404,7 @@ function getDefaultInnerValue(isRegion?: boolean, isEnd?: boolean): string | num
     const minValue = type === 'time' ? dayjs(minDate).format('HH:mm') : minDate
     return targetValue || targetDefault || (isEnd ? maxValue : minValue)
   } else {
-    return isDef(value || defaultValue) ? (value as string) || (defaultValue as string) : ''
+    return value || defaultValue ? (value as string) || (defaultValue as string) : ''
   }
 }
 

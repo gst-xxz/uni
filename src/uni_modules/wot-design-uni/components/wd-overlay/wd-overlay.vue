@@ -26,10 +26,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { cn } from '../common/util'
 import { overlayProps } from './types'
 // #ifdef H5
 import useLockScroll from '../composables/useLockScroll'
-import { cn } from '../common/util'
 // #endif
 
 const props = defineProps(overlayProps)

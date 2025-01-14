@@ -2,8 +2,7 @@
   <page-wraper>
     <div class="container">
       <div v-for="index in num" :key="index" class="list-item">
-        <img
-          src="https://img10.360buyimg.com/jmadvertisement/jfs/t1/70325/36/14954/36690/5dcd3e3bEee5006e0/aed1ccf6d5ffc764.png" />
+        <img src="https://img10.360buyimg.com/jmadvertisement/jfs/t1/70325/36/14954/36690/5dcd3e3bEee5006e0/aed1ccf6d5ffc764.png" />
         <div class="right">这是一条测试{{ index + 1 }}</div>
       </div>
       <wd-loadmore :state="state" @reload="loadmore" />

@@ -10,7 +10,7 @@
       :z-index="messageState.zIndex"
       :duration="200"
     >
-      <div :class="cn(`wd-message-box__container ${customClass}`)">
+      <div :class="cn(`wd-message-box__container`, customClass)">
         <div :class="cn(`wd-message-box__body ${!messageState.title ? 'is-no-title' : ''} ${messageState.type === 'prompt' ? 'is-prompt' : ''}`)">
           <div v-if="messageState.title" class="wd-message-box__title">
             {{ messageState.title }}

@@ -51,7 +51,7 @@ export default {
 import { watch } from 'vue'
 import { COLLAPSE_KEY, collapseProps, type CollapseExpose, type CollapseToggleAllOptions } from './types'
 import { useChildren } from '../composables/useChildren'
-import { cn, isArray, isBoolean, isDef } from '../common/util'
+import { cn, isArray, isBoolean } from '../common/util'
 
 const props = defineProps(collapseProps)
 const emit = defineEmits(['change', 'update:modelValue'])
@@ -111,7 +111,7 @@ const toggleAll = (options: CollapseToggleAllOptions = {}) => {
       if (item.$.exposed!.getExpanded()) {
         names.push(item.name || index)
       }
-    } else if (isDef(expanded) ? expanded : !item.$.exposed!.getExpanded()) {
+    } else if (expanded ?? !item.$.exposed!.getExpanded()) {
       names.push(item.name || index)
     }
   })

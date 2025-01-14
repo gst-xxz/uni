@@ -110,7 +110,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onMounted, ref, watch, type CSSProperties } from 'vue'
-import { addUnit, cn, debounce, getRect, isArray, isBoolean, isDef, isFunction } from '../common/util'
+import { addUnit, cn, debounce, getRect, isArray, isBoolean } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
@@ -204,45 +204,6 @@ watch(
 
     if (newSelectedList.length > 0) {
       currentCol.value = newSelectedList.length - 1
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.columnChange,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of columnChange must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.displayFormat,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of displayFormat must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.beforeConfirm,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of beforeConfirm must be Function')
     }
   },
   {
@@ -448,10 +409,10 @@ function setLineStyle(animation: boolean = true) {
   getRect($item, true, proxy)
     .then((rects) => {
       const originLineStyle: CSSProperties = {}
-      if (isDef(lineWidth)) {
+      if (lineWidth) {
         originLineStyle.width = addUnit(lineWidth)
       }
-      if (isDef(lineHeight)) {
+      if (lineHeight) {
         originLineStyle.height = addUnit(lineHeight)
         originLineStyle.borderRadius = `calc(${addUnit(lineHeight)} / 2)`
       }

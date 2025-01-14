@@ -1,5 +1,5 @@
 <template>
-  <div :class="`wd-sort-button ${line ? 'wd-sort-button--line' : ''} ${customClass}`" :style="customStyle" @click="handleClick">
+  <div :class="cn(`wd-sort-button`, line ? 'wd-sort-button--line' : '', customClass)" :style="customStyle" @click="handleClick">
     <div class="wd-sort-button__wrapper">
       <div :class="`wd-sort-button__left ${modelValue !== 0 ? 'is-active' : ''}`">
         {{ title }}
@@ -25,6 +25,7 @@ export default {
 
 <script lang="ts" setup>
 import { sortButtonProps } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(sortButtonProps)
 

@@ -1,5 +1,4 @@
 import { ref, computed, onBeforeUnmount } from 'vue'
-import { isDef } from '../common/util'
 import { useRaf } from './useRaf'
 
 // 定义倒计时时间的数据结构
@@ -71,10 +70,10 @@ export function useCountDown(options: UseCountDownOptions) {
   // 设置剩余时间
   const setRemain = (value: number) => {
     remain.value = value
-    isDef(options.onChange) && options.onChange(current.value)
+    options.onChange?.(current.value)
     if (value === 0) {
       pause()
-      isDef(options.onFinish) && options.onFinish()
+      options.onFinish?.()
     }
   }
 

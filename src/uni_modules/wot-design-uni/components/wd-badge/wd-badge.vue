@@ -36,7 +36,7 @@ export default {
 <script lang="ts" setup>
 import { computed, type CSSProperties } from 'vue'
 import { badgeProps } from './types'
-import { addUnit, cn, isDef, isNumber } from '../common/util'
+import { addUnit, cn, isNumber } from '../common/util'
 
 const props = defineProps(badgeProps)
 const content = computed(() => {
@@ -50,18 +50,12 @@ const content = computed(() => {
 })
 
 const contentStyle = computed(() => {
-  const style: CSSProperties = {}
-  if (isDef(props.bgColor)) {
-    style.backgroundColor = props.bgColor
+  const style: CSSProperties = {
+    backgroundColor: props.bgColor,
+    top: props.top ? addUnit(props.top) : undefined,
+    right: props.right ? addUnit(props.right) : undefined
   }
 
-  if (isDef(props.top)) {
-    style.top = addUnit(props.top)
-  }
-
-  if (isDef(props.right)) {
-    style.right = addUnit(props.right)
-  }
   return style
 })
 

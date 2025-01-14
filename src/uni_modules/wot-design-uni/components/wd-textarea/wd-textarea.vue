@@ -12,9 +12,9 @@
     </div>
 
     <!-- 文本域 -->
-    <div :class="cn(`wd-textarea__value ${showClear ? 'is-suffix' : ''} ${customTextareaContainerClass} ${showWordCount ? 'is-show-limit' : ''}`)">
+    <div :class="cn(`wd-textarea__value`, showClear ? 'is-suffix' : '', customTextareaContainerClass, showWordCount ? 'is-show-limit' : '')">
       <textarea
-        :class="cn(`wd-textarea__inner ${customTextareaClass}`)"
+        :class="cn(`wd-textarea__inner`, customTextareaClass)"
         v-model="inputValue"
         :show-count="false"
         :placeholder="placeholderValue"

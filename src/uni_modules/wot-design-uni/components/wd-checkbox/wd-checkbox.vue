@@ -56,7 +56,7 @@ export default {
 import { computed, getCurrentInstance, onBeforeMount, watch } from 'vue'
 import { useParent } from '../composables/useParent'
 import { CHECKBOX_GROUP_KEY } from '../wd-checkbox-group/types'
-import { cn, getPropByPath, isDef } from '../common/util'
+import { cn, getPropByPath } from '../common/util'
 import { checkboxProps, type CheckboxExpose, type CheckShape } from './types'
 
 const props = defineProps(checkboxProps)
@@ -81,7 +81,7 @@ const isFirst = computed(() => {
 })
 
 const isLast = computed(() => {
-  const children = isDef(checkboxGroup) ? checkboxGroup.children : []
+  const children = checkboxGroup ? checkboxGroup.children : []
   return index.value === children.length - 1
 })
 const { proxy } = getCurrentInstance() as any
@@ -100,7 +100,7 @@ watch(
   () => props.shape,
   (newValue) => {
     const type = ['circle', 'square', 'button']
-    if (isDef(newValue) && type.indexOf(newValue) === -1) console.error(`shape must be one of ${type.toString()}`)
+    if (newValue && type.indexOf(newValue) === -1) console.error(`shape must be one of ${type.toString()}`)
   }
 )
 

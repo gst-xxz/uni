@@ -1,18 +1,25 @@
 <template>
   <div
-    :class="cn(`wd-floating-panel`, customClass, safeAreaInsetBottom ? 'is-safe pb-safe' : '')"
+    :class="
+      cn(
+        `wd-floating-panel fixed bottom-0 left-0 z-50 flex flex-col box-border w-screen rounded-t-2xl bg-white touch-none will-change-transform`,
+        'after:absolute after:bottom-[-100vh] after:block after:w-screen after:h-screen after:bg-inherit',
+        customClass,
+        safeAreaInsetBottom ? 'is-safe pb-safe' : ''
+      )
+    "
     :style="rootStyle"
     @touchstart.passive="handleTouchStart"
     @touchmove.passive="handleTouchMove"
     @touchend="handleTouchEnd"
     @touchcancel="handleTouchEnd"
   >
-    <div :class="`wd-floating-panel__header`">
-      <div :class="`wd-floating-panel__header-bar`"></div>
+    <div :class="cn(`wd-floating-panel__header flex justify-center items-center h-[30px] cursor-grab select-none`)">
+      <div :class="cn(`wd-floating-panel__header-bar w-5 h-[3px] bg-[#c8c9cc] rounded`)"></div>
     </div>
 
     <scroll-view
-      :class="`wd-floating-panel__content`"
+      :class="cn(`wd-floating-panel__content flex-1 min-w-0 min-h-0 bg-white`)"
       data-id="content"
       :show-scrollbar="showScrollbar"
       scroll-y
@@ -39,6 +46,7 @@ import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import { floatingPanelProps } from './type'
 import { addUnit, closest, cn } from '../common/util'
 import { useTouch } from '../composables/useTouch'
+import { ease } from './utils'
 
 const touch = useTouch()
 
@@ -47,7 +55,6 @@ const emit = defineEmits(['update:height', 'height-change'])
 
 const heightValue = ref<number>(props.height)
 
-const DAMP = 0.2 // 阻尼系数
 let startY: number // 起始位置
 const windowHeight = ref<number>(0)
 const dragging = ref<boolean>(false) // 是否正在拖拽
@@ -88,7 +95,7 @@ const handleTouchMove = (event: TouchEvent) => {
   }
   touch.touchMove(event)
   const moveY = touch.deltaY.value + startY
-  updateHeight(-ease(moveY))
+  updateHeight(-ease(moveY, boundary.value.min, boundary.value.max))
 }
 
 const handleTouchEnd = () => {
@@ -98,21 +105,6 @@ const handleTouchEnd = () => {
   if (heightValue.value !== -startY) {
     emit('height-change', { height: heightValue.value })
   }
-}
-
-const ease = (y: number) => {
-  const absDistance = Math.abs(y)
-  const { min, max } = boundary.value
-
-  if (absDistance > max) {
-    return -(max + (absDistance - max) * DAMP)
-  }
-
-  if (absDistance < min) {
-    return -(min - (min - absDistance) * DAMP)
-  }
-
-  return y
 }
 
 watch(
@@ -135,60 +127,3 @@ onBeforeMount(() => {
   windowHeight.value = _windowHeight
 })
 </script>
-
-<style>
-.wd-floating-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: var(--wot-floating-panel-z-index, 99);
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: 100vw;
-  border-top-left-radius: var(--wot-floating-panel-radius, 16px);
-  border-top-right-radius: var(--wot-floating-panel-radius, 16px);
-  background-color: var(--wot-floating-panel-bg, var(--wot-color-white, rgb(255, 255, 255)));
-  touch-action: none;
-  will-change: transform;
-}
-
-.wd-floating-panel.is-safe {
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-.wd-floating-panel:after {
-  position: absolute;
-  bottom: -100vh;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  content: '';
-  background-color: inherit;
-}
-
-.wd-floating-panel__header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--wot-floating-panel-header-height, 30px);
-  cursor: grab;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.wd-floating-panel__header-bar {
-  width: var(--wot-floating-panel-bar-width, 20px);
-  height: var(--wot-floating-panel-bar-height, 3px);
-  background-color: var(--wot-floating-panel-bar-bg, var(--wot-color-gray-5, #c8c9cc));
-  border-radius: var(--wot-floating-panel-bar-radius, 4px);
-}
-
-.wd-floating-panel__content {
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  background-color: var(--wot-floating-panel-content-bg, var(--wot-color-white, rgb(255, 255, 255)));
-}
-</style>

@@ -3,8 +3,8 @@
     :class="
       cn(
         `wd-radio-group bg-white text-[0]`,
-        customClass,
-        cell && shape === 'button' ? 'is-button w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : ''
+        cell && shape === 'button' ? 'is-button w-full pt-2 pr-[3px] pb-5 pl-[15px] box-border overflow-hidden h-auto' : '',
+        customClass
       )
     "
     :style="customStyle"

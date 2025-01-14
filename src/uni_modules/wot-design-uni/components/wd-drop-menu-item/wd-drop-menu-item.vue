@@ -88,19 +88,6 @@ const positionStyle = computed<CSSProperties>(() => {
   return style
 })
 
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (isDef(newValue) && typeof newValue !== 'number' && typeof newValue !== 'string') {
-      console.error('[wot-design] warning(wd-drop-menu-item): the type of value should be a number or a string.')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
 onBeforeMount(() => {
   if (queue && queue.pushToQueue) {
     queue.pushToQueue(proxy)

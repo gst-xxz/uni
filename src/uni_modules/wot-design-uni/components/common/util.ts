@@ -79,6 +79,18 @@ export const defaultDisplayFormat = function (items: any[] | Record<string, any>
  */
 export const isDef = <T>(value: T): value is NonNullable<T> => value !== undefined && value !== null
 
+export const filterUnDef = <T = Record<string, unknown>>(data: T) => {
+  return Object.values(data).reduce((prev, [key, value]) => {
+    if (isDef(value)) {
+      return prev
+    }
+    return {
+      ...prev,
+      [key]: value
+    }
+  }, {} as T)
+}
+
 /**
  * @description 防止数字小于零
  * @param {number} num

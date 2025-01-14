@@ -27,7 +27,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import wdImg from '../wd-img/wd-img.vue'
 import { computed, type CSSProperties } from 'vue'
 import { addUnit, cn, isDef, isObj } from '../common/util'
 import { statusTipProps } from './types'

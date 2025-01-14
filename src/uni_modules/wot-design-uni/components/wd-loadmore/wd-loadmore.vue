@@ -8,8 +8,8 @@
     </block>
     <block v-if="state === 'loading'">
       <wd-loading
-        v-bind="customLoadingProps"
-        :class="cn(`wd-loadmore__loading inline-block mr-2 align-middle w-4 h-4`, customLoadingProps.customClass)"
+        v-bind="loadingProps as Partial<LoadingProps>"
+        :class="cn(`wd-loadmore__loading inline-block mr-2 align-middle w-4 h-4`, customClass)"
       />
       <span class="wd-loadmore__text">{{ loadingText }}</span>
     </block>
@@ -28,15 +28,10 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { loadmoreProps, type LoadMoreState } from './types'
 import type { LoadingProps } from '../wd-loading/types'
-import { cn, isDef, isUndefined, omitBy } from '../common/util'
-
-const customLoadingProps = computed(() => {
-  const loadingProps: Partial<LoadingProps> = isDef(props.loadingProps) ? omitBy(props.loadingProps, isUndefined) : {}
-  return loadingProps
-})
+import { cn } from '../common/util'
 
 const props = defineProps(loadmoreProps)
 const emit = defineEmits(['reload'])
@@ -44,7 +39,9 @@ const emit = defineEmits(['reload'])
 const currentState = ref<LoadMoreState | null>(null)
 
 function reload() {
-  if (props.state !== 'error') return
+  if (props.state !== 'error') {
+    return
+  }
   currentState.value = 'loading'
   emit('reload')
 }

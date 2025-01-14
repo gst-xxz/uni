@@ -1,7 +1,17 @@
 <template>
   <wd-overlay v-if="cover" :z-index="zIndex" lock-scroll :show="show" custom-class="bg-transparent pointer-events-auto"></wd-overlay>
   <wd-transition name="fade" :show="show" :custom-style="transitionStyle" @after-enter="handleAfterEnter" @after-leave="handleAfterLeave">
-    <div :class="rootClass">
+    <div
+      :class="
+        cn(
+          `wd-toast`,
+          customClass,
+          `wd-toast--${position}`,
+          (iconName !== 'loading' || msg) && (iconName || iconClass) ? 'wd-toast--with-icon' : '',
+          iconName === 'loading' && !msg ? 'wd-toast--loading' : ''
+        )
+      "
+    >
       <!--iconName优先级更高-->
       <wd-loading v-if="iconName === 'loading'" :type="loadingType" :color="loadingColor" :size="loadingSize" custom-class="wd-toast__icon" />
       <div
@@ -34,7 +44,7 @@ export default {
 import { computed, inject, ref, watch, type CSSProperties } from 'vue'
 import { defaultOptions, getToastOptionKey } from '.'
 import { toastProps, type ToastLoadingType, type ToastOptions } from './types'
-import { addUnit, isDef, isFunction } from '../common/util'
+import { addUnit, cn, isDef, isFunction } from '../common/util'
 
 const props = defineProps(toastProps)
 const iconName = ref<string>('') // 图标类型
@@ -83,12 +93,6 @@ const transitionStyle = computed(() => {
     'text-align': 'center'
   }
   return style
-})
-
-const rootClass = computed(() => {
-  return `wd-toast ${props.customClass} wd-toast--${position.value} ${
-    (iconName.value !== 'loading' || msg.value) && (iconName.value || iconClass.value) ? 'wd-toast--with-icon' : ''
-  } ${iconName.value === 'loading' && !msg.value ? 'wd-toast--loading' : ''}`
 })
 
 function handleAfterEnter() {

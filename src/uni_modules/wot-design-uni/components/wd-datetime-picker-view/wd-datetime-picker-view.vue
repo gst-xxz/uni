@@ -28,7 +28,7 @@ export default {
 
 <script lang="ts" setup>
 import { getCurrentInstance, onBeforeMount, ref, watch } from 'vue'
-import { debounce, isFunction, isDef, padZero, range, isArray } from '../common/util'
+import { debounce, isFunction, padZero, range, isArray } from '../common/util'
 import {
   getPickerValue,
   datetimePickerViewProps,
@@ -40,7 +40,7 @@ import type { PickerViewInstance } from '../wd-picker-view/types'
 
 // 本地时间戳
 /** @description 判断时间戳是否合法 */
-const isValidDate = (date: string | number | Date) => isDef(date) && !Number.isNaN(date)
+const isValidDate = (date: string | number | Date) => date && !Number.isNaN(date)
 /**
  * @description 生成n个元素，并使用iterator接口进行填充
  * @param n

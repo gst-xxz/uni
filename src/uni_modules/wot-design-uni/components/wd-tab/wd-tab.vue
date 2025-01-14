@@ -21,7 +21,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { getCurrentInstance, ref, watch, type CSSProperties } from 'vue'
-import { cn, isDef, isNumber, isString } from '../common/util'
+import { cn, isNumber, isString } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { TABS_KEY } from '../wd-tabs/types'
 import { computed } from 'vue'
@@ -34,14 +34,14 @@ const { parent: tabs, index } = useParent(TABS_KEY)
 
 // 激活项下标
 const active = computed(() => {
-  return isDef(tabs) ? tabs.state.activeIndex === index.value : false
+  return tabs ? tabs.state.activeIndex === index.value : false
 })
 
 const painted = ref<boolean>(active.value) // 初始状态tab不会渲染，必须通过tabs来设置painted使tab渲染
 
 const tabBodyStyle = computed(() => {
   const style: CSSProperties = {}
-  if (!active.value && (!isDef(tabs) || !tabs.props.animated)) {
+  if (!active.value && (!tabs || !tabs.props.animated)) {
     style.display = 'none'
   }
   return style
@@ -56,7 +56,7 @@ watch(active, (val) => {
 watch(
   () => props.name,
   (newValue) => {
-    if (isDef(newValue) && !isNumber(newValue) && !isString(newValue)) {
+    if (newValue && !isNumber(newValue) && !isString(newValue)) {
       console.error('[wot design] error(wd-tab): the type of name should be number or string')
       return
     }

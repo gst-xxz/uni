@@ -2,11 +2,16 @@
   <div
     :class="
       cn(
-        `wd-radio ${cellValue ? 'is-cell-radio' : ''} ${cellValue && shapeValue == 'button' ? 'is-button-radio' : ''} ${
-          sizeValue ? 'is-' + sizeValue : ''
-        } ${inlineValue ? 'is-inline' : ''} ${isChecked ? 'is-checked' : ''} ${shapeValue !== 'check' ? 'is-' + shapeValue : ''} ${
-          disabledValue ? 'is-disabled' : ''
-        } icon-placement-${iconPlacement} ${customClass}`
+        `wd-radio`,
+        cellValue ? 'is-cell-radio' : '',
+        cellValue && shapeValue == 'button' ? 'is-button-radio' : '',
+        sizeValue ? 'is-' + sizeValue : '',
+        inlineValue ? 'is-inline' : '',
+        isChecked ? 'is-checked' : '',
+        shapeValue !== 'check' ? 'is-' + shapeValue : '',
+        disabledValue ? 'is-disabled' : '',
+        `icon-placement-${iconPlacement}`,
+        customClass
       )
     "
     :style="customStyle"

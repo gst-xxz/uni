@@ -1,4 +1,3 @@
-
 import { isArray, isDef } from '../common/util'
 import type { ChooseFile, ChooseFileOption } from './types'
 
