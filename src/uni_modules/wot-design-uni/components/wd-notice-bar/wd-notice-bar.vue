@@ -4,9 +4,9 @@
     :class="
       cn(
         `wd-notice-bar flex items-center text-xs rounded-lg relative box-border py-[9px] pr-5 pl-[15px]`,
-        type === 'warning' ? 'is-warning' : '',
-        type === 'info' ? 'is-info' : '',
-        type === 'danger' ? 'is-danger' : '',
+        type === 'warning' ? 'is-warning text-warning bg-[#fff6c8]' : '',
+        type === 'info' ? 'is-info text-primary bg-[#f4f9ff]' : '',
+        type === 'danger' ? 'is-danger bg-[#feeced] text-danger' : '',
         !isHorizontal || (isHorizontal && !wrapable && !scrollable) ? 'wd-notice-bar--ellipse' : '',
         wrapable && !scrollable ? 'wd-notice-bar--wrap' : '',
         customClass
@@ -25,7 +25,13 @@
         <slot v-else>{{ currentText }}</slot>
       </div>
     </div>
-    <wd-icon v-if="closable" custom-class="wd-notice-bar__suffix" name="close-bold" @click="handleClose"></wd-icon>
+    <wd-icon
+      v-if="closable"
+      custom-class="wd-notice-bar__suffix"
+      class="text-center inline-block text-lg bg-black/15 text-white p-0"
+      name="close-bold"
+      @click="handleClose"
+    ></wd-icon>
     <slot v-else name="suffix"></slot>
   </div>
 </template>
@@ -262,25 +268,7 @@ defineExpose<NoticeBarExpose>({ reset })
 </script>
 
 <style>
-.wd-notice-bar.is-warning {
-  background: var(--wot-notice-bar-warning-bg, #fff6c8);
-  color: var(--wot-notice-bar-warning-color, var(--wot-color-warning, #f0883a));
-}
-
-.wd-notice-bar.is-info {
-  background: var(--wot-notice-bar-info-bg, #f4f9ff);
-  color: var(--wot-notice-bar-info-color, var(--wot-color-theme, #4d80f0));
-}
-
-.wd-notice-bar.is-danger {
-  background: var(--wot-notice-bar-danger-bg, #feeced);
-  color: var(--wot-notice-bar-danger-color, var(--wot-color-danger, #fa4350));
-}
-
 .wd-notice-bar__suffix {
-  text-align: center;
-  font-size: var(--wot-notice-bar-close-size, 18px);
-  display: inline-block;
   background-color: var(--wot-notice-bar-close-bg, rgba(0, 0, 0, 0.15));
   color: var(--wot-notice-bar-close-color, var(--wot-color-white, rgb(255, 255, 255)));
   padding: 0;

@@ -10,8 +10,17 @@
     @enter="onOpened"
   >
     <div
-      :class="cn('wd-notify flex justify-center items-center box-border whitespace-pre-wrap text-center', `wd-notify--${state.type}`)"
-      :style="{ color: state.color, background: state.background }"
+      :class="
+        cn(
+          'wd-notify flex justify-center items-center box-border whitespace-pre-wrap text-center',
+          `wd-notify--${state.type}`,
+          state.type === 'primary' && 'bg-primary',
+          state.type === 'success' && 'bg-success',
+          state.type === 'danger' && 'bg-danger',
+          state.type === 'warning' && 'bg-warning'
+        )
+      "
+      :style="{ color: state.color, background: state.background, wordWrap: 'break-word' }"
       @click="onClick"
     >
       <slot>{{ state.message }}</slot>
@@ -81,35 +90,3 @@ watch(
   { deep: true }
 )
 </script>
-
-<style>
-.wd-notify {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  padding: var(--wot-notify-padding, 8px 16px);
-  font-size: var(--wot-notify-font-size, var(--wot-fs-content, 14px));
-  line-height: var(--wot-notify-line-height, 20px);
-  color: var(--wot-notify-text-color, var(--wot-color-white, rgb(255, 255, 255)));
-  white-space: pre-wrap;
-  text-align: center;
-  word-wrap: break-word;
-}
-
-.wd-notify--primary {
-  background: var(--wot-notify-primary-background, var(--wot-color-theme, #4d80f0));
-}
-
-.wd-notify--success {
-  background: var(--wot-notify-success-background, var(--wot-color-success, #34d19d));
-}
-
-.wd-notify--danger {
-  background: var(--wot-notify-danger-background, var(--wot-color-danger, #fa4350));
-}
-
-.wd-notify--warning {
-  background: var(--wot-notify-warning-background, var(--wot-color-warning, #f0883a));
-}
-</style>

@@ -1,4 +1,4 @@
-import { inject, provide, reactive, ref } from 'vue'
+import { inject, provide, ref } from 'vue'
 import type { NotifyProps } from './types'
 import { deepMerge, isString } from '../common/util'
 

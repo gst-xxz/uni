@@ -1,4 +1,4 @@
-import type { PropType, ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import { makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
 
 export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
