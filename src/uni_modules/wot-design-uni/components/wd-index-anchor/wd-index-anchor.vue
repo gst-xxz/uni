@@ -1,19 +1,13 @@
 <template>
-  <!-- #ifdef MP-DINGTALK -->
-  <div :class="cn(`wd-index-anchor-ding`, isSticky ? 'is-sticky sticky top-0 left-0 z-[1]' : '')">
-    <!-- #endif -->
-    <div
-      :class="cn(`wd-index-anchor p-2.5 text-sm text-black bg-gray-2`, isSticky ? 'is-sticky sticky top-0 left-0 z-[1]' : '', customClass)"
-      :style="customStyle"
-      :id="indexAnchorId"
-    >
-      <slot>
-        {{ index }}
-      </slot>
-    </div>
-    <!-- #ifdef MP-DINGTALK -->
+  <div
+    :class="cn(`wd-index-anchor p-2.5 text-sm text-black bg-gray-2`, isSticky ? 'is-sticky sticky top-0 left-0 z-[1]' : '', customClass)"
+    :style="customStyle"
+    :id="indexAnchorId"
+  >
+    <slot>
+      {{ index }}
+    </slot>
   </div>
-  <!-- #endif -->
 </template>
 
 <script setup lang="ts">

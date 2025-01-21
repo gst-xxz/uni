@@ -41,7 +41,7 @@
     <input
       v-if="dynamicInput && dynamic"
       class="wd-tag__add-text"
-      :placeholder="translate('placeholder')"
+      placeholder="请输入"
       type="text"
       :focus="true"
       v-model="dynamicValue"
@@ -52,7 +52,7 @@
       <slot name="add" v-if="$slots.add"></slot>
       <template v-else>
         <wd-icon name="add" custom-class="wd-tag__add wd-tag__icon inline-block mr-1 text-xs leading-[1.2] align-baseline" />
-        <span>{{ translate('add') }}</span>
+        <span>新增标签</span>
       </template>
     </div>
   </div>
@@ -71,13 +71,10 @@ export default {
 <script lang="ts" setup>
 import { cn } from '../common/util'
 import { ref } from 'vue'
-import { useTranslate } from '../composables/useTranslate'
 import { tagProps } from './types'
 
 defineProps(tagProps)
 const emit = defineEmits(['click', 'close', 'confirm'])
-
-const { translate } = useTranslate('tag')
 
 const dynamicValue = ref<string>('')
 const dynamicInput = ref<boolean>(false)

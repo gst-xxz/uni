@@ -32,7 +32,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch, nextTick } from 'vue'
+import { computed, onMounted, ref, watch, nextTick, type CSSProperties } from 'vue'
 import { addUnit, buildUrlWithParams, cn, isBase64Image, uuid } from '../common/util'
 import { watermarkProps } from './types'
 
@@ -58,13 +58,13 @@ const showCanvas = ref<boolean>(true) // 是否展示canvas
  * 水印样式
  */
 const rootStyle = computed(() => {
-  const style: Record<string, string | number> = {
+  const style: CSSProperties = {
     ...props.customStyle,
     opacity: props.opacity,
     backgroundSize: addUnit(props.width + props.gutterX)
   }
   if (waterMarkUrl.value) {
-    style['backgroundImage'] = `url('${waterMarkUrl.value}')`
+    style.backgroundImage = `url('${waterMarkUrl.value}')`
   }
   return style
 })

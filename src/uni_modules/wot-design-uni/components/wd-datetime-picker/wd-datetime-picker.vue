@@ -220,67 +220,6 @@ watch(
 )
 
 watch(
-  () => props.displayFormat,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of displayFormat must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-watch(
-  () => props.filter,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of filter must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-watch(
-  () => props.formatter,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of formatter must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-watch(
-  () => props.beforeConfirm,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of beforeConfirm must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-watch(
-  () => props.displayFormatTabLabel,
-  (fn) => {
-    if (fn && !isFunction(fn)) {
-      console.error('The type of displayFormatTabLabel must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
   () => props.defaultValue,
   (val) => {
     if (isArray(val) || region.value) {

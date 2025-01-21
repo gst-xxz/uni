@@ -26,7 +26,6 @@ export default {
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
-import WdCell from '../wd-cell/wd-cell.vue'
 import { FORM_KEY } from '../wd-form/types'
 import { formItemProps } from './types'
 

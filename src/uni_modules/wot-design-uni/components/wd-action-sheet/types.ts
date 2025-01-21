@@ -1,4 +1,3 @@
-
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeArrayProp, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
 

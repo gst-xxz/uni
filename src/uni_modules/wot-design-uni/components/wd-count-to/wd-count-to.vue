@@ -48,7 +48,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, watch, onMounted } from 'vue'
+import { computed, watch, onMounted, type CSSProperties } from 'vue'
 import { countToProps } from './types'
 import { addUnit, cn, easingFn, isNumber } from '../common/util'
 import { useCountDown } from '../composables/useCountDown'
@@ -57,10 +57,10 @@ import type { CountDownExpose } from '../wd-count-down/types'
 const props = defineProps(countToProps)
 const emit = defineEmits(['mounted', 'finish'])
 
-const prefixSuffixStyle = computed(() => ({
+const prefixSuffixStyle = computed<CSSProperties>(() => ({
   fontSize: addUnit(props.fontSize * 0.7)
 }))
-const textStyle = computed(() => ({
+const textStyle = computed<CSSProperties>(() => ({
   fontSize: addUnit(props.fontSize)
 }))
 

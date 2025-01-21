@@ -12,7 +12,7 @@
         type === 'info' ? 'bg-info text-black' : '',
         type === 'warning' ? 'bg-warning text-white' : '',
         type === 'error' ? 'bg-danger text-white' : '',
-        type === 'text' ? 'text-primary min-w-0 py-1 px-0' : '',
+        type === 'text' ? 'text-primary min-w-0 py-1 px-0 after:hidden' : '',
         type === 'icon' ? '' : '',
         // 'is-' + type,
         size === 'small' ? 'h-7 py-0 px-3 rounded-sm text-xs font-medium' : '',
@@ -182,10 +182,6 @@ function handleAgreePrivacyAuthorization(event: any) {
   animation: wd-rotate-5cd5873a 0.8s linear infinite;
   -webkit-animation-duration: 2s;
   animation-duration: 2s; */
-}
-
-.wd-button.is-text:after {
-  display: none;
 }
 
 .wd-button.is-text.wd-button--active {

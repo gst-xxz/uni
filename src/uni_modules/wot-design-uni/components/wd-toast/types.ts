@@ -1,4 +1,3 @@
-
 import type { ExtractPropTypes } from 'vue'
 import { baseProps, makeStringProp } from '../common/props'
 import type { LoadingType } from '../wd-loading/types'

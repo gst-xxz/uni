@@ -27,7 +27,7 @@
                 showValue ? '' : 'wd-select-picker__value--placeholder'
               }`"
             >
-              {{ showValue || placeholder || translate('placeholder') }}
+              {{ showValue || placeholder || '请选择' }}
             </div>
             <wd-icon v-if="showArrow" custom-class="wd-select-picker__arrow" name="arrow" />
             <div v-else-if="showClear" @click.stop="handleClear">
@@ -42,7 +42,7 @@
     <wd-action-sheet
       v-model="pickerShow"
       :duration="250"
-      :title="title || translate('title')"
+      :title="title || '请选择'"
       :close-on-click-modal="closeOnClickModal"
       :z-index="zIndex"
       :safe-area-inset-bottom="safeAreaInsetBottom"
@@ -53,7 +53,7 @@
       <wd-search
         v-if="filterable"
         v-model="filterVal"
-        :placeholder="filterPlaceholder || translate('filterPlaceholder')"
+        :placeholder="filterPlaceholder || '搜索'"
         hide-cancel
         placeholder-left
         @change="handleFilterChange"
@@ -105,7 +105,7 @@
       </scroll-view>
       <!-- 确认按钮 -->
       <div v-if="showConfirm" class="wd-select-picker__footer">
-        <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText || translate('confirm') }}</wd-button>
+        <wd-button block size="large" @click="onConfirm" :disabled="loading">{{ confirmButtonText || '确认' }}</wd-button>
       </div>
     </wd-action-sheet>
   </div>
@@ -132,10 +132,7 @@ import { useCell } from '../composables/useCell'
 import { getRect, isArray, isDef, isFunction, pause, cn } from '../common/util'
 import { useParent } from '../composables/useParent'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
-import { useTranslate } from '../composables/useTranslate'
 import { selectPickerProps, type SelectPickerExpose } from './types'
-
-const { translate } = useTranslate('select-picker')
 
 const props = defineProps(selectPickerProps)
 const emit = defineEmits(['change', 'cancel', 'confirm', 'clear', 'update:modelValue', 'open', 'close'])

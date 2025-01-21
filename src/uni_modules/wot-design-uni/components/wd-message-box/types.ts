@@ -1,4 +1,3 @@
-
 import { baseProps, makeStringProp } from '../common/props'
 import type { ButtonProps } from '../wd-button/types'
 import { type InputSize, type InputType } from '../wd-input/types'
@@ -125,5 +124,9 @@ export const messageBoxProps = {
   /**
    * 指定唯一标识
    */
-  selector: makeStringProp('')
+  selector: makeStringProp(''),
+  /**
+   * 标题
+   */
+  inputError: makeStringProp('输入的数据不合法')
 }

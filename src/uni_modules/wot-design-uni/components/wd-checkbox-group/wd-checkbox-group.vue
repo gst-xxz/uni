@@ -37,27 +37,6 @@ const { linkChildren } = useChildren(CHECKBOX_GROUP_KEY)
 linkChildren({ props, changeSelectState })
 
 watch(
-  () => props.modelValue,
-  (newValue) => {
-    // 传入的value数组中包括重复的元素，这种情况非法。
-    if (new Set(newValue).size !== newValue.length) {
-      // eslint-disable-next-line quotes
-      console.error("checkboxGroup's bound value includes same value")
-    }
-    if (newValue.length < props.min) {
-      // eslint-disable-next-line quotes
-      console.error("checkboxGroup's bound value's length can't be less than min")
-    }
-    if (props.max !== 0 && newValue.length > props.max) {
-      // eslint-disable-next-line quotes
-      console.error("checkboxGroup's bound value's length can't be large than max")
-    }
-    // 每次value变化都会触发重新匹配选中项
-  },
-  { deep: true, immediate: true }
-)
-
-watch(
   () => props.min,
   (newValue) => {
     checkNumRange(newValue, 'min')

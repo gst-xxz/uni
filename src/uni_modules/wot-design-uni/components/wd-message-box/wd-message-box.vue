@@ -25,7 +25,7 @@
                 @input="inputValChange"
               />
               <div v-if="messageState.showErr" class="wd-message-box__input-error">
-                {{ messageState.inputError || translate('inputNoValidate') }}
+                {{ messageState.inputError }}
               </div>
             </block>
             <slot>{{ messageState.msg }}</slot>

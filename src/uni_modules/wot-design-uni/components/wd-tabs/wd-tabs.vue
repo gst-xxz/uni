@@ -35,7 +35,7 @@
                 </div>
               </div>
               <div class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
-                {{ mapTitle || translate('all') }}
+                {{ mapTitle || '全部' }}
               </div>
               <div :class="cn(`wd-tabs__map-body  ${state.animating ? 'is-open' : ''}`)" :style="state.mapShow ? '' : 'display:none'">
                 <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index" @click="handleSelect(index)">
@@ -99,9 +99,7 @@
               <wd-icon name="arrow-down" />
             </div>
           </div>
-          <div class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">
-            {{ translate('all') }}
-          </div>
+          <div class="wd-tabs__map-header" :style="`${state.mapShow ? '' : 'display:none;'}  ${state.animating ? 'opacity:1;' : ''}`">全部</div>
           <div :class="cn(`wd-tabs__map-body ${state.animating ? 'is-open' : ''}`)" :style="state.mapShow ? '' : 'display:none'">
             <div class="wd-tabs__map-nav-item" v-for="(item, index) in children" :key="index" @click="handleSelect(index)">
               <div :class="cn(`wd-tabs__map-nav-btn ${state.activeIndex === index ? 'is-active' : ''}  ${item.disabled ? 'is-disabled' : ''}`)">
@@ -140,7 +138,6 @@ import { addUnit, checkNumRange, debounce, getRect, isDef, isNumber, isString, c
 import { useTouch } from '../composables/useTouch'
 import { TABS_KEY, tabsProps, type TabsExpose } from './types'
 import { useChildren } from '../composables/useChildren'
-import { useTranslate } from '../composables/useTranslate'
 
 const $item = '.wd-tabs__nav-item'
 const $itemText = '.wd-tabs__nav-item-text'
@@ -148,8 +145,6 @@ const $container = '.wd-tabs__nav-container'
 
 const props = defineProps(tabsProps)
 const emit = defineEmits(['change', 'disabled', 'click', 'update:modelValue'])
-
-const { translate } = useTranslate('tabs')
 
 const state = reactive({
   activeIndex: 0, // 选中值的索引，默认第一个

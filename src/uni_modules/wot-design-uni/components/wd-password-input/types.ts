@@ -1,4 +1,3 @@
-
 import { baseProps, makeBooleanProp, makeNumberProp, makeNumericProp, makeStringProp } from '../common/props'
 
 export const passwordInputProps = {

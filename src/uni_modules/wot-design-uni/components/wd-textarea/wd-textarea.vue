@@ -1,5 +1,22 @@
 <template>
-  <div :class="rootClass" :style="customStyle">
+  <div
+    :class="
+      cn(
+        'wd-textarea',
+        label || useLabelSlot ? 'is-cell' : '',
+        center ? 'is-center' : '',
+        cell.border.value ? 'is-border' : '',
+        size ? 'is-' + size : '',
+        error ? 'is-error' : '',
+        disabled ? 'is-disabled' : '',
+        autoHeight ? 'is-auto-height' : '',
+        currentLength > 0 ? 'is-not-empty' : '',
+        noBorder ? 'is-no-border' : '',
+        customClass
+      )
+    "
+    :style="customStyle"
+  >
     <div v-if="label || useLabelSlot" :class="cn(`wd-textarea__label`, customLabelClass, isRequired ? 'is-required' : '')" :style="labelStyle">
       <div v-if="prefixIcon || usePrefixSlot" class="wd-textarea__prefix">
         <wd-icon v-if="prefixIcon && !usePrefixSlot" custom-class="wd-textarea__icon" :name="prefixIcon" @click="onClickPrefixIcon" />
@@ -17,7 +34,7 @@
         :class="cn(`wd-textarea__inner`, customTextareaClass)"
         v-model="inputValue"
         :show-count="false"
-        :placeholder="placeholderValue"
+        :placeholder="placeholder ?? '请输入...'"
         :disabled="disabled || readonly"
         :maxlength="maxlength"
         :focus="focused"
@@ -50,7 +67,7 @@
       <div class="wd-textarea__suffix">
         <wd-icon v-if="showClear" custom-class="wd-textarea__clear" name="error-fill" @click="handleClear" />
         <div v-if="showWordCount" class="wd-textarea__count">
-          <span :class="countClass">
+          <span :class="cn(currentLength > 0 ? 'wd-textarea__count-current' : '', currentLength > props.maxlength ? 'is-error' : '')">
             {{ currentLength }}
           </span>
           /{{ maxlength }}
@@ -72,15 +89,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, onBeforeMount, ref, watch } from 'vue'
+import { computed, onBeforeMount, ref, watch, type CSSProperties } from 'vue'
 import { isDef, pause, cn } from '../common/util'
 import { useCell } from '../composables/useCell'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
-import { useTranslate } from '../composables/useTranslate'
 import { textareaProps } from './types'
-
-const { translate } = useTranslate('textarea')
 
 const props = defineProps(textareaProps)
 const emit = defineEmits([
@@ -96,10 +110,6 @@ const emit = defineEmits([
   'clickprefixicon',
   'click'
 ])
-
-const placeholderValue = computed(() => {
-  return isDef(props.placeholder) ? props.placeholder : translate('placeholder')
-})
 
 const clearing = ref<boolean>(false)
 const focused = ref<boolean>(false) // 控制聚焦
@@ -173,19 +183,7 @@ const currentLength = computed(() => {
   return String(formatValue(props.modelValue) || '').length
 })
 
-const rootClass = computed(() => {
-  return `wd-textarea   ${props.label || props.useLabelSlot ? 'is-cell' : ''} ${props.center ? 'is-center' : ''} ${
-    cell.border.value ? 'is-border' : ''
-  } ${props.size ? 'is-' + props.size : ''} ${props.error ? 'is-error' : ''} ${props.disabled ? 'is-disabled' : ''} ${
-    props.autoHeight ? 'is-auto-height' : ''
-  } ${currentLength.value > 0 ? 'is-not-empty' : ''}  ${props.noBorder ? 'is-no-border' : ''} ${props.customClass}`
-})
-
-const countClass = computed(() => {
-  return `${currentLength.value > 0 ? 'wd-textarea__count-current' : ''} ${currentLength.value > props.maxlength ? 'is-error' : ''}`
-})
-
-const labelStyle = computed(() => {
+const labelStyle = computed<CSSProperties>(() => {
   return props.labelWidth
     ? {
         'min-width': props.labelWidth,

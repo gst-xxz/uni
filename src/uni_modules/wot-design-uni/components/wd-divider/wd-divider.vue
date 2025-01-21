@@ -1,5 +1,18 @@
 <template>
-  <div :class="rootClass" :style="rootStyle">
+  <div
+    :class="
+      cn(
+        'wd-divider relative flex py-0 px-[15px] my-4 mx-0 items-center text-black/45 text-sm',
+        slots.default && 'wd-divider--center',
+        contentPosition === 'left' && 'wd-divider--left',
+        contentPosition === 'right' && 'wd-divider--right',
+        dashed && 'is-dashed',
+        hairline && 'is-hairline',
+        vertical && 'wd-divider--vertical'
+      )
+    "
+    :style="rootStyle"
+  >
     <slot v-if="!vertical"></slot>
   </div>
 </template>
@@ -15,49 +28,22 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, useSlots } from 'vue'
+import { computed, useSlots, type CSSProperties } from 'vue'
 import { dividerProps } from './types'
+import { cn } from '../common/util'
 
 const props = defineProps(dividerProps)
 const slots = useSlots()
 
-const rootStyle = computed(() => {
-  return `--wot-divider-color:${props.color};${props.customStyle}`
-})
-
-const rootClass = computed(() => {
-  const prefixCls = 'wd-divider'
-  if (!props.vertical) {
-    return {
-      [prefixCls]: true,
-      [`${prefixCls}--center`]: slots.default,
-      [`${prefixCls}--left`]: props.contentPosition === 'left',
-      [`${prefixCls}--right`]: props.contentPosition === 'right',
-      ['is-dashed']: props.dashed,
-      ['is-hairline']: props.hairline
-    }
-  } else {
-    return {
-      [prefixCls]: true,
-      [`${prefixCls}--vertical`]: true,
-      ['is-dashed']: props.dashed,
-      ['is-hairline']: props.hairline
-    }
+const rootStyle = computed<CSSProperties>(() => {
+  return {
+    ...props.customStyle,
+    color: props.color
   }
 })
 </script>
 
 <style>
-.wd-divider {
-  position: relative;
-  display: flex;
-  padding: var(--wot-divider-padding, 0 var(--wot-size-side-padding, 15px));
-  margin: var(--wot-divider-margin, 16px 0);
-  align-items: center;
-  color: var(--wot-divider-color, rgba(0, 0, 0, 0.45));
-  font-size: var(--wot-divider-fs, 14px);
-}
-
 .wd-divider:after,
 .wd-divider:before {
   flex: 1;

@@ -2,7 +2,7 @@
   <div :class="cn(`wd-pager ${customClass}`)" :style="customStyle" v-if="!(hideIfOnePage && totalPageNum === 1)">
     <div class="wd-pager__content">
       <wd-button :plain="modelValue > 1" type="info" size="small" :disabled="modelValue <= 1" custom-class="wd-pager__nav" @click="sub">
-        <span v-if="!showIcon">{{ prevText || translate('prev') }}</span>
+        <span v-if="!showIcon">{{ prevText }}</span>
         <wd-icon
           v-else
           :custom-class="`wd-pager__left wd-pager__icon ${modelValue <= 1 ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
@@ -22,7 +22,7 @@
         custom-class="wd-pager__nav"
         @click="add"
       >
-        <span v-if="!showIcon">{{ nextText || translate('next') }}</span>
+        <span v-if="!showIcon">{{ nextText }}</span>
         <wd-icon
           v-else
           :custom-class="`wd-pager__icon ${modelValue >= totalPageNum ? 'wd-pager__nav--disabled' : 'wd-pager__nav--active'}`"
@@ -31,9 +31,9 @@
       </wd-button>
     </div>
     <div class="wd-pager__message" v-if="showMessage">
-      <span>{{ translate('page', modelValue) }}，</span>
-      <span v-if="total">{{ translate('total', total) }}，</span>
-      <span>{{ translate('size', pageSize) }}</span>
+      <span>{{ `当前页：${modelValue}` }}，</span>
+      <span v-if="total">{{ `当前数据：${total}条` }}，</span>
+      <span>{{ `分页大小：${pageSize}` }}</span>
     </div>
   </div>
 </template>
@@ -51,11 +51,8 @@ export default {
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import { useTranslate } from '../composables/useTranslate'
 import { paginationProps } from './types'
 import { cn } from '../common/util'
-
-const { translate } = useTranslate('pagination')
 
 const props = defineProps(paginationProps)
 const emit = defineEmits(['change', 'update:modelValue'])

@@ -1,11 +1,26 @@
 <template>
   <div
     v-if="currentStatus"
-    :class="cn(`wd-step`, customClass, currentStatus ? 'is-' + currentStatus : '', canAlignCenter ? 'is-center' : '', vertical ? 'is-vertical' : '')"
+    :class="
+      cn(
+        `wd-step relative inline-block align-top`,
+        customClass,
+        currentStatus ? 'is-' + currentStatus : '',
+        canAlignCenter ? 'is-center' : '',
+        vertical ? 'is-vertical' : ''
+      )
+    "
     :style="rootStyle"
   >
-    <div :class="cn(`wd-step__header`, dot ? 'is-dot' : '')">
-      <div :class="cn(`wd-step__icon`, dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon' : 'is-text')">
+    <div :class="cn(`wd-step__header relative text-[0]`, dot ? 'is-dot' : '')">
+      <div
+        :class="
+          cn(
+            `wd-step__icon inline-block relative w-[22px] h-[22px] bg-white z-[1]`,
+            dot ? 'is-dot' : !!icon || $slots.icon ? 'is-icon w-[30px] text-center' : 'is-text'
+          )
+        "
+      >
         <div v-if="dot" class="wd-step__dot"></div>
         <slot v-else-if="$slots.icon" name="icon" />
         <wd-icon v-else-if="icon" custom-class="wd-step__icon-inner" :name="icon" />
@@ -15,7 +30,14 @@
           <span v-else>{{ index + 1 }}</span>
         </div>
       </div>
-      <div v-if="index < childrenLength - 1" class="wd-step__line"></div>
+      <div
+        v-if="index < childrenLength - 1"
+        :class="
+          cn('wd-step__line', {
+            '-mt-px': dot
+          })
+        "
+      ></div>
     </div>
     <div class="wd-step__content">
       <div :class="cn(`wd-step__title`, $slots.description || description ? 'is-description' : '')">
@@ -44,15 +66,12 @@ import { computed } from 'vue'
 import { useParent } from '../composables/useParent'
 import { STEPS_KEY } from '../wd-steps/types'
 import { isDef, cn } from '../common/util'
-import { useTranslate } from '../composables/useTranslate'
 import { stepProps } from './types'
 import type { CSSProperties } from 'vue'
 
 const props = defineProps(stepProps)
 
 const { parent: steps, index } = useParent(STEPS_KEY)
-
-const { translate } = useTranslate('steps')
 
 const currentStatus = computed(() => {
   return getCurrentStatus(index.value)
@@ -133,42 +152,18 @@ function getCurrentTitle(currentStatus: string) {
 
   switch (currentStatus) {
     case 'finished':
-      return translate('finished')
+      return '已完成'
     case 'error':
-      return translate('failed')
+      return '已完成'
     case 'process':
-      return translate('process')
+      return '进行中'
     case 'wait':
     default:
-      return translate('wait')
+      return '未开始'
   }
 }
 </script>
 <style>
-.wd-step {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.wd-step__header {
-  position: relative;
-  font-size: 0;
-}
-
-.wd-step__header.is-dot .wd-step__line {
-  margin-top: -1px;
-}
-
-.wd-step__icon {
-  display: inline-block;
-  position: relative;
-  width: var(--wot-steps-icon-size, 22px);
-  height: var(--wot-steps-icon-size, 22px);
-  background: #fff;
-  z-index: 1;
-}
-
 .wd-step__icon.is-icon {
   width: var(--wot-steps-is-icon-width, 30px);
   text-align: center;

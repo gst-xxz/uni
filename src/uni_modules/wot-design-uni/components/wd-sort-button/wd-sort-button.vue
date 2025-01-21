@@ -1,10 +1,10 @@
 <template>
   <div :class="cn(`wd-sort-button`, line ? 'wd-sort-button--line' : '', customClass)" :style="customStyle" @click="handleClick">
     <div class="wd-sort-button__wrapper">
-      <div :class="`wd-sort-button__left ${modelValue !== 0 ? 'is-active' : ''}`">
+      <div :class="cn(`wd-sort-button__left ${modelValue !== 0 ? 'is-active' : ''}`)">
         {{ title }}
       </div>
-      <div :class="`wd-sort-button__right ${modelValue !== 0 ? 'is-active' : ''}`">
+      <div :class="cn(`wd-sort-button__right ${modelValue !== 0 ? 'is-active' : ''}`)">
         <wd-icon v-if="modelValue !== 1" name="arrow-up" custom-class="wd-sort-button__icon-up" />
         <wd-icon v-if="modelValue !== -1" name="arrow-down" custom-class="wd-sort-button__icon-down" />
       </div>

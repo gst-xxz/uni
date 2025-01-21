@@ -23,7 +23,7 @@
         <div class="wd-picker__body">
           <div class="wd-picker__value-wraper">
             <div :class="cn(`wd-picker__value ${ellipsis && 'is-ellipsis'} ${customValueClass} ${showValue ? '' : 'wd-picker__placeholder'}`)">
-              {{ showValue ? showValue : placeholder || translate('placeholder') }}
+              {{ showValue ? showValue : placeholder || '请选择' }}
             </div>
             <wd-icon v-if="showArrow" custom-class="wd-picker__arrow" name="arrow" />
             <div v-else-if="showClear" @click.stop="handleClear">
@@ -47,11 +47,11 @@
       <div class="wd-picker__wraper">
         <div class="wd-picker__toolbar" @touchmove="noop">
           <div class="wd-picker__action wd-picker__action--cancel" @click="onCancel">
-            {{ cancelButtonText || translate('cancel') }}
+            {{ cancelButtonText || '取消' }}
           </div>
           <div v-if="title" class="wd-picker__title">{{ title }}</div>
           <div :class="cn(`wd-picker__action ${isLoading ? 'is-loading' : ''}`)" @click="onConfirm">
-            {{ confirmButtonText || translate('done') }}
+            {{ confirmButtonText || '完成' }}
           </div>
         </div>
         <wd-picker-view
@@ -93,9 +93,7 @@ import { useCell } from '../composables/useCell'
 import { type ColumnItem, formatArray, type PickerViewInstance } from '../wd-picker-view/types'
 import { FORM_KEY, type FormItemRule } from '../wd-form/types'
 import { useParent } from '../composables/useParent'
-import { useTranslate } from '../composables/useTranslate'
 import { pickerProps, type PickerExpose } from './types'
-const { translate } = useTranslate('picker')
 
 const props = defineProps(pickerProps)
 const emit = defineEmits(['confirm', 'open', 'cancel', 'clear', 'update:modelValue'])

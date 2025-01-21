@@ -5,12 +5,12 @@
       <div class="wd-search__field">
         <div v-if="!placeholderLeft" :style="coverStyle" class="wd-search__cover" @click="closeCover">
           <wd-icon name="search" custom-class="wd-search__search-icon"></wd-icon>
-          <span class="wd-search__placeholder-txt">{{ placeholder || translate('search') }}</span>
+          <span class="wd-search__placeholder-txt">{{ placeholder || '搜索' }}</span>
         </div>
         <wd-icon v-if="showInput || str || placeholderLeft" name="search" custom-class="wd-search__search-left-icon"></wd-icon>
         <input
           v-if="showInput || str || placeholderLeft"
-          :placeholder="placeholder || translate('search')"
+          :placeholder="placeholder || '搜索'"
           placeholder-class="wd-search__placeholder-txt"
           confirm-type="search"
           v-model="str"
@@ -28,9 +28,7 @@
     </div>
 
     <slot v-if="!hideCancel" name="suffix">
-      <div class="wd-search__cancel" @click="handleCancel">
-        {{ cancelTxt || translate('cancel') }}
-      </div>
+      <div class="wd-search__cancel" @click="handleCancel">取消</div>
     </slot>
   </div>
 </template>
@@ -49,13 +47,10 @@ export default {
 <script lang="ts" setup>
 import { type CSSProperties, computed, onMounted, ref, watch } from 'vue'
 import { pause, cn } from '../common/util'
-import { useTranslate } from '../composables/useTranslate'
 import { searchProps } from './types'
 
 const props = defineProps(searchProps)
 const emit = defineEmits(['update:modelValue', 'change', 'clear', 'search', 'focus', 'blur', 'cancel'])
-
-const { translate } = useTranslate('search')
 
 const isFocused = ref<boolean>(false) // 是否聚焦中
 const showInput = ref<boolean>(false) // 是否显示输入框 用于实现聚焦的hack

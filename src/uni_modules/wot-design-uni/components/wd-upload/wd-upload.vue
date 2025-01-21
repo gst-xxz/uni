@@ -85,7 +85,7 @@
         <!-- 失败时展示失败图标以及失败信息 -->
         <div v-if="file[props.statusKey] === 'fail'" class="wd-upload__status-content flex flex-col justify-center items-center w-full h-full">
           <wd-icon name="close-outline" custom-class="wd-upload__icon text-2x text-white"></wd-icon>
-          <span class="wd-upload__progress-txt text-sm leading-[1] mt-[9px] text-white">{{ file.error || translate('error') }}</span>
+          <span class="wd-upload__progress-txt text-sm leading-[1] mt-[9px] text-white">{{ file.error || '上传失败' }}</span>
         </div>
       </div>
       <!-- 上传状态为上传中时不展示移除按钮 -->
@@ -140,9 +140,8 @@ export default {
 import wdVideoPreview from '../wd-video-preview/wd-video-preview.vue'
 
 import { computed, ref, watch } from 'vue'
-import { context, getType, isEqual, isImageUrl, isVideoUrl, isFunction, isDef, deepClone, cn } from '../common/util'
+import { context, isEqual, isImageUrl, isVideoUrl, isFunction, isDef, deepClone, cn } from '../common/util'
 import { chooseFile } from './utils'
-import { useTranslate } from '../composables/useTranslate'
 import {
   uploadProps,
   type UploadFileItem,
@@ -175,8 +174,6 @@ defineExpose<UploadExpose>({
   submit: () => startUploadFiles()
 })
 
-const { translate } = useTranslate('upload')
-
 const uploadFiles = ref<UploadFileItem[]>([])
 
 const showUpload = computed(() => !props.limit || uploadFiles.value.length < props.limit)
@@ -194,97 +191,6 @@ watch(
       return { ...item, uid: context.id++ }
     })
     uploadFiles.value = uploadFileList
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.limit,
-  (val) => {
-    if (val && val < uploadFiles.value.length) {
-      console.error('[wot-design]Error: props limit must less than fileList.length')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.beforePreview,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of beforePreview must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.onPreviewFail,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of onPreviewFail must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.beforeRemove,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of beforeRemove must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.beforeUpload,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of beforeUpload must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.beforeChoose,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of beforeChoose must be Function')
-    }
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => props.buildFormData,
-  (fn) => {
-    if (fn && !isFunction(fn) && getType(fn) !== 'asyncfunction') {
-      console.error('The type of buildFormData must be Function')
-    }
   },
   {
     deep: true,

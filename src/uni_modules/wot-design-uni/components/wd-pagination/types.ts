@@ -1,4 +1,4 @@
-import { baseProps, makeBooleanProp, makeNumberProp, makeRequiredProp } from '../common/props'
+import { baseProps, makeBooleanProp, makeNumberProp, makeRequiredProp, makeStringProp } from '../common/props'
 
 export const paginationProps = {
   ...baseProps,
@@ -29,11 +29,11 @@ export const paginationProps = {
   /**
    * 上一页文本
    */
-  prevText: String,
+  prevText: makeStringProp('上一页'),
   /**
    * 下一页文本
    */
-  nextText: String,
+  nextText: makeStringProp('下一页'),
   /**
    * 总页数只有一页时是否隐藏
    */

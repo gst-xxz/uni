@@ -1,6 +1,6 @@
 <template>
   <!-- 绘制的图片canvas -->
-  <div v-if="modelValue" :class="cn(`wd-img-cropper ${customClass}`)" :style="customStyle" @touchmove="preventTouchMove">
+  <div v-if="modelValue" :class="cn(`wd-img-cropper`, customClass)" :style="customStyle" @touchmove="preventTouchMove">
     <!-- 展示在用户面前的裁剪框 -->
     <div class="wd-img-cropper__wrapper">
       <!-- 画出裁剪框 -->
@@ -79,7 +79,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, ref, watch, type CSSProperties } from 'vue'
+import { computed, getCurrentInstance, ref, watch } from 'vue'
 import { addUnit, cn } from '../common/util'
 import { useTranslate } from '../composables/useTranslate'
 import { imgCropperProps, type ImgCropperExpose } from './types'

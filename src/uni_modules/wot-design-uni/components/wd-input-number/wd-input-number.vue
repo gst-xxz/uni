@@ -1,7 +1,7 @@
 <template>
   <div :class="cn(`wd-input-number ${customClass} ${disabled ? 'is-disabled' : ''} ${withoutInput ? 'is-without-input' : ''}`)" :style="customStyle">
     <div :class="cn(`wd-input-number__action ${minDisabled || disableMinus ? 'is-disabled' : ''}`)" @click="sub">
-      <wd-icon name="decrease" custom-class="wd-input-number__action-icon"></wd-icon>
+      <wd-icon name="minus" custom-class="wd-input-number__action-icon"></wd-icon>
     </div>
     <div v-if="!withoutInput" class="wd-input-number__inner" @click.stop="">
       <input
@@ -19,7 +19,7 @@
       <div class="wd-input-number__input-border"></div>
     </div>
     <div :class="cn(`wd-input-number__action ${maxDisabled || disablePlus ? 'is-disabled' : ''}`)" @click="add">
-      <wd-icon name="add" custom-class="wd-input-number__action-icon"></wd-icon>
+      <wd-icon name="plus" custom-class="wd-input-number__action-icon"></wd-icon>
     </div>
   </div>
 </template>

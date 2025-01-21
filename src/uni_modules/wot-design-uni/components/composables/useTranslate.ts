@@ -1,4 +1,3 @@
-
 import { camelCase, getPropByPath, isFunction } from '../common/util'
 import Locale from '../../locale'
 

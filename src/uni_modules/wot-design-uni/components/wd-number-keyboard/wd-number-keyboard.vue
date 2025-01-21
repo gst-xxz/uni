@@ -9,7 +9,7 @@
     :lockScroll="lockScroll"
     @click-modal="handleClose"
   >
-    <div :class="cn(`wd-number-keyboard ${customClass}`)" :style="customStyle">
+    <div :class="cn(`wd-number-keyboard`, customClass)" :style="customStyle">
       <div class="wd-number-keyboard__header" v-if="showTitle">
         <slot name="title">
           <span class="wd-number-keyboard__title">{{ title }}</span>

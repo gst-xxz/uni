@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed, getCurrentInstance, onBeforeMount, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, getCurrentInstance, onBeforeMount, onMounted, onUnmounted, ref, watch, type CSSProperties } from 'vue'
 import { addUnit, cn, isObj, uuid } from '../common/util'
 import { circleProps } from './types'
 // #ifdef MP-WEIXIN
@@ -53,9 +53,6 @@ let ctx: UniApp.CanvasContext | null = null
 // canvas渲染大小
 const canvasSize = computed(() => {
   let size = props.size
-  // #ifdef MP-ALIPAY
-  size = size * pixelRatio.value
-  // #endif
 
   return size
 })
@@ -63,15 +60,12 @@ const canvasSize = computed(() => {
 // 进度条宽度
 const sWidth = computed(() => {
   let sWidth = props.strokeWidth
-  // #ifdef MP-ALIPAY
-  sWidth = sWidth * pixelRatio.value
-  // #endif
   return sWidth
 })
 
 // Circle 样式
 const canvasStyle = computed(() => {
-  const style = {
+  const style: CSSProperties = {
     width: addUnit(props.size),
     height: addUnit(props.size)
   }

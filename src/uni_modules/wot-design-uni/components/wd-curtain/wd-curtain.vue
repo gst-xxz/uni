@@ -15,15 +15,34 @@
       @after-leave="afterleave"
       @close="close"
       @click-modal="clickModal"
-      :custom-class="cn(`wd-curtain`, customClass)"
+      :custom-class="cn(`wd-curtain inline-block rounded-3xl !overflow-y-visible bg-transparent text-[0]`, customClass)"
       :custom-style="customStyle"
     >
-      <div class="wd-curtain__content">
-        <img :src="src" class="wd-curtain__content-img" :style="imgStyle" @click="clickImage" @error="imgErr" @load="imgLoad" />
+      <div class="wd-curtain__content relative inline-block bg-transparent rounded-3xl">
+        <img
+          :src="src"
+          class="wd-curtain__content-img block w-auto h-auto rounded-3xl"
+          :style="imgStyle"
+          @click="clickImage"
+          @error="imgErr"
+          @load="imgLoad"
+        />
         <slot name="close">
           <wd-icon
             name="close-outline"
-            :custom-class="cn(`wd-curtain__content-close`, closePosition, customCloseClass)"
+            class=""
+            :custom-class="
+              cn(
+                `wd-curtain__content-close absolute m-0 p-1.5 top-2.5 right-2.5 text-white text-2xl tap-highlight-transparent`,
+                closePosition === 'top' && 'my-0 mr-0 -ml-[18px] -top-[62px] right-[unset] left-1/2 bottom-[unset]',
+                closePosition === 'top-left' && 'm-0 -top-[62px] right-[unset] -left-1.5 bottom-[unset]',
+                closePosition === 'top-right' && 'm-0 -top-[62px] left-[unset] -right-1.5 bottom-[unset]',
+                closePosition === 'bottom' && 'my-0 mr-0 -ml-[18px] -bottom-[62px] right-[unset] left-1/2 top-[unset]',
+                closePosition === 'bottom-left' && 'm-0 -bottom-[62px] right-[unset] -left-1.5 top-[unset]',
+                closePosition === 'bottom-right' && 'm-0 -bottom-[62px] left-[unset] -right-1.5 top-[unset]',
+                customCloseClass
+              )
+            "
             :custom-style="customCloseStyle"
             @click="close"
           />
@@ -148,91 +167,3 @@ function clickImage() {
   close()
 }
 </script>
-
-<style>
-.wd-curtain-wrapper .wd-curtain {
-  display: inline-block;
-  border-radius: var(--wot-curtain-content-radius, 24px);
-  overflow-y: visible !important;
-  background: transparent;
-  font-size: 0;
-}
-
-.wd-curtain__content {
-  position: relative;
-  display: inline-block;
-  background: transparent;
-  border-radius: var(--wot-curtain-content-radius, 24px);
-}
-
-.wd-curtain__content-link {
-  display: block;
-  border-radius: var(--wot-curtain-content-radius, 24px);
-}
-
-.wd-curtain__content-img {
-  display: block;
-  width: auto;
-  height: auto;
-  border-radius: var(--wot-curtain-content-radius, 24px);
-}
-
-.wd-curtain__content-close {
-  position: absolute;
-  margin: 0;
-  padding: 6px;
-  top: 10px;
-  right: 10px;
-  color: var(--wot-curtain-content-close-color, var(--wot-color-white, rgb(255, 255, 255)));
-  font-size: var(--wot-curtain-content-close-fs, var(--wot-fs-big, 24px));
-  -webkit-tap-highlight-color: transparent;
-}
-
-.wd-curtain__content-close.top {
-  margin: 0 0 0 -18px;
-  top: -62px;
-  right: unset;
-  left: 50%;
-  bottom: unset;
-}
-
-.wd-curtain__content-close.top-left {
-  margin: 0;
-  top: -62px;
-  right: unset;
-  left: -6px;
-  bottom: unset;
-}
-
-.wd-curtain__content-close.top-right {
-  margin: 0;
-  top: -62px;
-  right: -6px;
-  left: unset;
-  bottom: unset;
-}
-
-.wd-curtain__content-close.bottom {
-  margin: 0 0 0 -18px;
-  top: unset;
-  right: unset;
-  left: 50%;
-  bottom: -62px;
-}
-
-.wd-curtain__content-close.bottom-left {
-  margin: 0;
-  top: unset;
-  right: unset;
-  left: -6px;
-  bottom: -62px;
-}
-
-.wd-curtain__content-close.bottom-right {
-  margin: 0;
-  top: unset;
-  right: -6px;
-  left: unset;
-  bottom: -62px;
-}
-</style>

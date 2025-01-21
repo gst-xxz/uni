@@ -18,7 +18,7 @@
       >
         <div
           v-if="label || $slots.label"
-          :class="cn(`wd-calendar__label ${isRequired ? 'is-required' : ''} ${customLabelClass}`)"
+          :class="cn(`wd-calendar__label`, isRequired ? 'is-required' : '', customLabelClass)"
           :style="labelWidth ? 'min-width:' + labelWidth + ';max-width:' + labelWidth + ';' : ''"
         >
           <slot name="label">{{ label }}</slot>
