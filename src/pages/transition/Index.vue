@@ -24,14 +24,22 @@
 
       <wd-transition :show="show" :name="name" custom-class="block" />
 
-      <wd-transition :show="customShow" :duration="{ enter: 700, leave: 1000 }" enter-class="custom-enter"
-        enter-active-class="custom-enter-active" enter-to-class="custom-enter-to" leave-class="custom-leave"
-        leave-active-class="custom-leave-active" leave-to-class="custom-leave-to" custom-class="block" />
+      <wd-transition
+        :show="customShow"
+        :duration="{ enter: 700, leave: 1000 }"
+        enter-class="custom-enter"
+        enter-active-class="custom-enter-active"
+        enter-to-class="custom-enter-to"
+        leave-class="custom-leave"
+        leave-active-class="custom-leave-active"
+        leave-to-class="custom-leave-to"
+        custom-class="block"
+      />
     </page-wraper>
   </div>
 </template>
 <script lang="ts" setup>
-import type { TransitionName } from '@/uni_modules/wot-design-uni/components/wd-transition/types'
+import type { TransitionName } from '@/uni_modules/wot-design-uni'
 import { ref } from 'vue'
 
 const show = ref<boolean>(false)

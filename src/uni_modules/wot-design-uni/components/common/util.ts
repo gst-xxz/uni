@@ -29,6 +29,9 @@ function s4() {
  * @return {string} num+px
  */
 export function addUnit(num: number | string): string {
+  if (num === undefined || num === null) {
+    return undefined
+  }
   return Number.isNaN(Number(num)) ? `${num}` : `${num}px`
 }
 

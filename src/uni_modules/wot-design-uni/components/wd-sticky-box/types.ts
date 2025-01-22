@@ -1,4 +1,3 @@
-
 import type { ComponentInternalInstance, InjectionKey } from 'vue'
 
 export type stickyBoxProvide = {

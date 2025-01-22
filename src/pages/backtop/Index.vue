@@ -11,7 +11,7 @@
       v-if="isCustomIcon"
       :shape="isSquare ? 'square' : undefined"
       :top="isTop ? 600 : undefined"
-      :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
+      :customStyle="isStyle ? { background: '#007aff', color: 'white' } : undefined"
       :duration="isDuration ? 1000 : undefined"
     >
       <span :style="`color: ${isStyle ? 'white' : '#333'};`">TOP</span>
@@ -20,20 +20,14 @@
       v-else
       :shape="isSquare ? 'square' : undefined"
       :top="isTop ? 600 : undefined"
-      :customStyle="isStyle ? 'background: #007aff;color:white;' : undefined"
+      :customStyle="isStyle ? { background: '#007aff', color: 'white' } : undefined"
       :duration="isDuration ? 1000 : undefined"
     ></wd-backtop>
     <div style="height: 2000px; color: red"></div>
   </page-wraper>
 </template>
 <script lang="ts" setup>
-import { onPageScroll } from '@dcloudio/uni-app'
 import { ref } from 'vue'
-
-const scrollTop = ref(0)
-onPageScroll((e) => {
-  scrollTop.value = e.scrollTop
-})
 
 const isSquare = ref(false)
 const isCustomIcon = ref(false)
@@ -41,4 +35,3 @@ const isTop = ref(false)
 const isStyle = ref(false)
 const isDuration = ref(false)
 </script>
-<style lang="scss"></style>

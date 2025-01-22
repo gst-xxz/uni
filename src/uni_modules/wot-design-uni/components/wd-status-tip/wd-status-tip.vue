@@ -28,7 +28,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed, type CSSProperties } from 'vue'
-import { addUnit, cn, isDef, isObj } from '../common/util'
+import { addUnit, cn, isObj } from '../common/util'
 import { statusTipProps } from './types'
 
 const props = defineProps(statusTipProps)
@@ -49,16 +49,14 @@ const imgUrl = computed(() => {
  * 图片样式
  */
 const imgStyle = computed(() => {
-  let style: CSSProperties = {}
+  const style: CSSProperties = {}
   if (props.imageSize) {
     if (isObj(props.imageSize)) {
-      isDef(props.imageSize.height) && (style.height = addUnit(props.imageSize.height))
-      isDef(props.imageSize.width) && (style.width = addUnit(props.imageSize.width))
+      style.height = addUnit(props.imageSize.height)
+      style.width = addUnit(props.imageSize.width)
     } else {
-      style = {
-        height: addUnit(props.imageSize),
-        width: addUnit(props.imageSize)
-      }
+      style.height = addUnit(props.imageSize)
+      style.width = addUnit(props.imageSize)
     }
   }
   return style

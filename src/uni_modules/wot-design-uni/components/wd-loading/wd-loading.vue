@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(`wd-loading wd-loading-${type}`, customClass)">
+  <div :class="cn(`wd-loading wd-loading-${type}`, customClass)" :style="customStyle">
     <div
       :class="cn(`wd-loading__spinner wd-loading__spinner--${type}`)"
       :style="{

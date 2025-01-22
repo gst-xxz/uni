@@ -9,12 +9,7 @@
           customClass
         )
       "
-      :style="{
-        ...customStyle,
-        'z-index': zIndex,
-        bottom: addUnit(bottom),
-        right: addUnit(right)
-      }"
+      :style="style"
       @click="handleBacktop"
     >
       <slot v-if="$slots.default"></slot>
@@ -35,7 +30,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed, ref, type CSSProperties } from 'vue'
 import { backtopProps } from './types'
 import { addUnit, cn } from '../common/util'
 import { onPageScroll } from '@dcloudio/uni-app'
@@ -54,4 +49,11 @@ function handleBacktop() {
     duration: props.duration
   })
 }
+
+const style = computed<CSSProperties>(() => ({
+  ...props.customStyle,
+  'z-index': props.zIndex,
+  bottom: addUnit(props.bottom),
+  right: addUnit(props.right)
+}))
 </script>

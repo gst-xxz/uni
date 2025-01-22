@@ -22,7 +22,7 @@ export const statusTipProps = {
    * 可选值: search, network, content, collect, comment, halo, message
    * 默认值: network
    */
-  image: makeStringProp('network'),
+  image: makeStringProp<'search' | 'network' | 'content' | 'collect' | 'comment' | 'halo' | 'message'>('network'),
 
   /**
    * 图片大小，默认单位为 `px`。

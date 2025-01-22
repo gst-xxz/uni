@@ -21,7 +21,7 @@ export const backtopProps = {
   /**
    * 形状
    */
-  shape: makeStringProp('circle'),
+  shape: makeStringProp<'circle' | 'square'>('circle'),
   /**
    * 距离屏幕底部距离
    */

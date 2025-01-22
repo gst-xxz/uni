@@ -47,9 +47,9 @@ const getClassNames = (name?: TransitionName | TransitionName[]) => {
     leaveTo = `wd-${name}-leave-to wd-${name}-leave-active ${leaveTo}`
   }
   return {
-    enter: enter,
+    enter,
     'enter-to': enterTo,
-    leave: leave,
+    leave,
     'leave-to': leaveTo
   }
 }
